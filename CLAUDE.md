@@ -32,3 +32,12 @@ Named workflow state files are the source of truth for every routed workflow.
 - On resume after interruption, inspect the YAML frontmatter and current phase before acting.
 - Each workflow directory must contain a `routing.yaml`. After creating, changing, renaming, or deleting a workflow, run `.claude/scripts/sync-workflow-routing.sh`; the update is incomplete until `.claude/scripts/sync-workflow-routing.sh --check` passes.
 <!-- workflow-todo-state:end -->
+
+<!-- obsidian-content:claude:begin -->
+## Obsidian 内容规范
+
+- 生成任何 Markdown 内容（880 产物的卷子/答案卷/错题本/进度总览，以及文档、ADR、笔记、报告）时，遵循 `.claude/rules/common/obsidian-content.md`。
+- 每个生成文件必须带 YAML frontmatter（`type` + `date`/`updated` + `tags`）；站内引用用 `[[wikilink]]`；高亮用 `> [!callout]`；表格只用 Markdown；公式用 LaTeX。
+- 修改 880 产物格式时：先改规则文件，再同步改 `scripts/` 生成脚本与对应 skill（`880-paper`/`880-grade`/`880-wrongbook`/`880-progress`）。
+<!-- obsidian-content:claude:end -->
+

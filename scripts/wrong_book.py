@@ -40,6 +40,7 @@ def build_wrong_list(schema, index, attempts):
             "grade": last["grade"],
             "grade_zh": GRADE_ZH.get(last["grade"], last["grade"]),
             "when": last["when"],
+            "paper_id": last.get("paper_id"),
             "state": attempts["wrong_book_status"].get(q["id"], {}).get("state", "未复习"),
             "priority": "重点" if last["grade"] in focus else ("轻" if last["grade"] in light else ""),
         }
@@ -49,19 +50,23 @@ def build_wrong_list(schema, index, attempts):
 
 
 def render(schema, index, attempts, wrong):
+    total = len(wrong)
+    n_focus = sum(1 for e in wrong if e["priority"] == "重点")
+    n_mastered = sum(1 for e in wrong if e["state"] == "已掌握")
     lines = []
     lines.append("---")
     lines.append("type: 错题本")
     lines.append(f"updated: {lib880.today_str()}")
+    lines.append("tags: [高数, 880, 错题本]")
+    lines.append(f"total: {total}")
+    lines.append(f"focus_count: {n_focus}")
+    lines.append(f"mastered_count: {n_mastered}")
     lines.append("---")
     lines.append("")
     lines.append("# 880 错题本")
     lines.append("")
     lines.append("> 判分中『不会』『半会』为重点，『错』『粗心』为轻标记。复习状态：未复习 → 已重做 → 已掌握。")
     lines.append("")
-    total = len(wrong)
-    n_focus = sum(1 for e in wrong if e["priority"] == "重点")
-    n_mastered = sum(1 for e in wrong if e["state"] == "已掌握")
     lines.append(f"共 {total} 道错题（重点 {n_focus} · 已掌握 {n_mastered}）")
     lines.append("")
 
@@ -100,9 +105,15 @@ def render(schema, index, attempts, wrong):
                 lines.append("")
                 lines.append(q["solution"].strip())
                 lines.append("")
+            if e.get("paper_id"):
+                lines.append(f"*来源卷子：[[卷子-{e['paper_id'].split('-')[-1]}]]*")
             if e["when"]:
                 lines.append(f"*最近判分：{e['when']}*")
             lines.append("")
+    lines.append("## 关联")
+    lines.append("")
+    lines.append("- 进度：[[进度总览]]")
+    lines.append("")
     return "\n".join(lines)
 
 

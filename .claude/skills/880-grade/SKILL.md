@@ -29,4 +29,9 @@ description: 判分记录（五态：对/错/不会/半会/粗心），更新判
 ## 禁止
 
 - 不要猜测未提到的题目状态（保持未判）；
-- 不要修改题目索引或卷子内容。
+- 不要修改题目索引或卷子内容（卷子文件的 `status` 由判分流程更新为 `graded`）。
+
+## 内容规范
+
+- 判分后刷新的 错题本/进度总览 遵循 `.claude/rules/common/obsidian-content.md` 的「错题本」「进度总览」两节；
+- 判分流程需把对应 `卷子-XX.md` 的 frontmatter `status` 更新为 `graded`、`updated` 更新为当日。

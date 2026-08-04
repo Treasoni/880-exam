@@ -26,3 +26,8 @@ description: 生成或查看进度总览——哪些题已完成/未完成/做�
 ## 禁止
 
 - 不要臆造判分数据，一切以 `workspace/records/attempts.json` 为准。
+
+## 内容规范
+
+- 进度总览 frontmatter（`total`/`graded`/`pending`/`undone`/`wrong`）与结构遵循 `.claude/rules/common/obsidian-content.md` 的「进度总览」一节；
+- 若需调整格式，先改规则文件，再改 `scripts/progress.py`。

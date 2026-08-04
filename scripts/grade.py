@@ -11,6 +11,7 @@ grading 中 key 为题型内题号（1 起），value 为中文或英文判分�
 """
 
 import argparse
+import re
 import sys
 from pathlib import Path
 
@@ -93,6 +94,15 @@ def main():
     lib880.save_attempts(attempts)
     paper["status"] = "graded"
     lib880.save_papers(papers)
+
+    # 更新卷子文件 frontmatter：status → graded、updated → 当日
+    n = args.paper.split("-")[-1]
+    paper_path = lib880.PAPERS_DIR / f"卷子-{n}.md"
+    if paper_path.exists():
+        text = paper_path.read_text(encoding="utf-8")
+        text = re.sub(r"^status: .*$", "status: graded", text, count=1, flags=re.MULTILINE)
+        text = re.sub(r"^updated: .*$", f"updated: {today}", text, count=1, flags=re.MULTILINE)
+        paper_path.write_text(text, encoding="utf-8")
 
     # 重生成报告
     import subprocess

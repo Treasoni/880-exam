@@ -34,3 +34,9 @@ description: 查看/重生成错题本，更新复习状态（未复习/已重�
 
 - 不要随意把题从错题本删除（除非用户明确要求）；
 - 复习状态由用户报告更新，不要自行推断。
+
+## 内容规范
+
+- 错题本 frontmatter（`total`/`focus_count`/`mastered_count`）与结构遵循 `.claude/rules/common/obsidian-content.md` 的「错题本」一节；
+- 每题条目带 `*来源卷子：[[卷子-XX]]*`（取最近一次判分的卷子）；
+- 若需调整格式，先改规则文件，再改 `scripts/wrong_book.py`。

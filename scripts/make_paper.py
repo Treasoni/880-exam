@@ -174,18 +174,22 @@ def pick_cell(schema, index, attempts, chapter_no, type_key, k, ignore_extension
 
 
 def render_paper(schema, paper_id, sections_plan, questions_by_id):
+    num = paper_id.split("-")[-1]
     lines = []
     lines.append("---")
-    lines.append(f"paper_id: {paper_id}")
-    lines.append(f"date: {lib880.today_str()}")
     lines.append("type: 卷子")
+    lines.append(f"paper_id: {paper_id}")
+    lines.append(f"paper_no: \"{num}\"")
+    lines.append(f"date: {lib880.today_str()}")
+    lines.append(f"updated: {lib880.today_str()}")
     lines.append(f"subject: {schema['subject']}")
     lines.append(f"duration_minutes: {schema['paper']['duration_minutes']}")
     lines.append(f"total_score: {schema['paper']['total_score']}")
     lines.append("status: created")
+    lines.append(f"tags: [{schema['subject']}, 880, 卷子]")
+    lines.append(f"aliases: [第 {int(num)} 套]")
     lines.append("---")
     lines.append("")
-    num = paper_id.split("-")[-1]
     lines.append(f"# 880 高数模拟卷 · 第 {int(num)} 套")
     lines.append("")
     lines.append("> [!info] 卷头")
@@ -235,22 +239,32 @@ def render_paper(schema, paper_id, sections_plan, questions_by_id):
         for idx, q in enumerate(sections_plan[type_key], start=1):
             lines.append(f"| {TYPE_ORDER[type_key]}{idx} | {TYPE_ZH[type_key]} |  |")
     lines.append("")
+    lines.append("## 关联")
+    lines.append("")
+    lines.append(f"- 答案：[[卷子-{num}-答案]]")
+    lines.append("- 错题本：[[错题本]]")
+    lines.append("- 进度：[[进度总览]]")
+    lines.append("")
     return "\n".join(lines)
 
 
 def render_answers(schema, paper_id, sections_plan):
+    num = paper_id.split("-")[-1]
     lines = []
     lines.append("---")
+    lines.append("type: 答案卷")
     lines.append(f"paper_id: {paper_id}")
     lines.append(f"date: {lib880.today_str()}")
-    lines.append("type: 答案")
+    lines.append(f"updated: {lib880.today_str()}")
     lines.append(f"subject: {schema['subject']}")
+    lines.append(f"tags: [{schema['subject']}, 880, 答案]")
     lines.append("---")
     lines.append("")
-    num = paper_id.split("-")[-1]
     lines.append(f"# 卷子-{num} 答案与解析")
     lines.append("")
-    lines.append("> 答案与解析摘自李林880解析册（按做题本↔解析册内容对齐）。")
+    lines.append(f"> [!info] 卷头")
+    lines.append(f"> 答案与解析摘自李林880解析册（按做题本↔解析册内容对齐）。")
+    lines.append(f"> 对应卷子：[[卷子-{num}]]")
     lines.append("")
     for type_key in ("choice", "fill", "solution"):
         if type_key == "solution":
@@ -268,6 +282,10 @@ def render_answers(schema, paper_id, sections_plan):
                 lines.append("> ⚠️ 解析册中未找到该题答案。")
                 lines.append("")
         lines.append("")
+    lines.append("## 关联")
+    lines.append("")
+    lines.append(f"- 对应卷子：[[卷子-{num}]]")
+    lines.append("")
     return "\n".join(lines)
 
 

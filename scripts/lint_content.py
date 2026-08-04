@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+"""lint_content.py — 校验生成的 Markdown 符合 .claude/rules/common/obsidian-content.md。
+
+检查项：
+1. YAML frontmatter 必填键（type/date|updated/tags）存在；
+2. type 取值合法；
+3. 站内 [[wikilink]] 指向的文件存在（在 workspace 范围内解析）；
+4. 卷子/答案卷/错题本/进度总览 的专属属性齐全。
+
+用法：
+  python3 scripts/lint_content.py            # 校验全部生成产物
+"""
+
+import re
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lib880
+
+FM_RE = re.compile(r"^---\n(.*?)\n---", re.DOTALL)
+WIKI_RE = re.compile(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]")
+
+VALID_TYPES = {"卷子", "答案卷", "错题本", "进度总览", "文档", "记录"}
+REQUIRED = ["type", "tags"]  # date|updated 二选一
+PER_TYPE = {
+    "卷子": ["paper_id", "paper_no", "date", "subject", "duration_minutes", "total_score", "status"],
+    "答案卷": ["paper_id", "date", "subject"],
+    "错题本": ["updated", "total", "focus_count", "mastered_count"],
+    "进度总览": ["updated", "total", "graded", "pending", "undone", "wrong"],
+}
+
+# wikilink 解析根（各产物都在 workspace 下，按文件名匹配）
+WORKSPACE_FILES = set()
+for p in (lib880.ROOT / "workspace").rglob("*.md"):
+    WORKSPACE_FILES.add(p.stem)
+
+
+def parse_fm(text):
+    m = FM_RE.match(text)
+    if not m:
+        return None
+    kv = {}
+    for line in m.group(1).splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or ":" not in line:
+            continue
+        k, v = line.split(":", 1)
+        kv[k.strip()] = v.strip()
+    return kv
+
+
+def lint_file(path: Path):
+    rel = path.relative_to(lib880.ROOT)
+    text = path.read_text(encoding="utf-8")
+    errors = []
+    fm = parse_fm(text)
+    if fm is None:
+        return rel, ["缺少 YAML frontmatter"]
+    if "type" not in fm or fm["type"] not in VALID_TYPES:
+        errors.append(f"type 缺失或非法: {fm.get('type')!r}")
+    if "tags" not in fm:
+        errors.append("缺少 tags")
+    if "date" not in fm and "updated" not in fm:
+        errors.append("缺少 date 或 updated")
+    for k in PER_TYPE.get(fm.get("type"), []):
+        if k not in fm:
+            errors.append(f"缺少专属属性 {k}")
+    # wikilink 校验
+    for target in WIKI_RE.findall(text):
+        if target not in WORKSPACE_FILES:
+            errors.append(f"wikilink 指向不存在的文件: [[{target}]]")
+    return rel, errors
+
+
+def main():
+    targets = []
+    if lib880.PAPERS_DIR.exists():
+        targets += sorted(lib880.PAPERS_DIR.glob("*.md"))
+    if lib880.WRONG_BOOK_PATH.exists():
+        targets.append(lib880.WRONG_BOOK_PATH)
+    if lib880.PROGRESS_PATH.exists():
+        targets.append(lib880.PROGRESS_PATH)
+    if not targets:
+        print("没有可校验的产物（先拼卷/判分）。")
+        return
+    all_ok = True
+    for path in targets:
+        rel, errors = lint_file(path)
+        if errors:
+            all_ok = False
+            print(f"✗ {rel}")
+            for e in errors:
+                print(f"    - {e}")
+        else:
+            print(f"✓ {rel}")
+    print("=== 结果:", "全部通过" if all_ok else "存在问题", "===")
+    sys.exit(0 if all_ok else 1)
+
+
+if __name__ == "__main__":
+    main()

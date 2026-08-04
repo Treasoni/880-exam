@@ -57,6 +57,12 @@ def main():
     lines.append("---")
     lines.append("type: 进度总览")
     lines.append(f"updated: {lib880.today_str()}")
+    lines.append("tags: [高数, 880, 进度]")
+    lines.append(f"total: {total}")
+    lines.append(f"graded: {n_graded}")
+    lines.append(f"pending: {n_pending}")
+    lines.append(f"undone: {n_undone}")
+    lines.append(f"wrong: {n_wrong}")
     lines.append("---")
     lines.append("")
     lines.append("# 880 进度总览")
@@ -106,6 +112,14 @@ def main():
                 icon = "⬜ 未做"
             lines.append(f"| {q['q_num']} | {TYPE_ZH[q['type']]} | {DIFF_ZH[q['difficulty']]} | {icon} |")
         lines.append("")
+
+    lines.append("## 关联")
+    lines.append("")
+    lines.append("- 错题本：[[错题本]]")
+    if papers["papers"]:
+        links = "、".join(f"[[卷子-{p['paper_id'].split('-')[-1]}]]" for p in papers["papers"])
+        lines.append(f"- 卷子：{links}")
+    lines.append("")
 
     lib880.PROGRESS_PATH.parent.mkdir(parents=True, exist_ok=True)
     lib880.PROGRESS_PATH.write_text("\n".join(lines), encoding="utf-8")

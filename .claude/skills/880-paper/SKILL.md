@@ -28,3 +28,8 @@ description: 拼一张 880 高数模拟卷（真题模式：选10×5分+填6×5�
 
 - 不要手动挑选题目或改动抽题结果；
 - 不要把答案写进卷子（答案在独立答案卷）。
+
+## 内容规范
+
+- 卷子与答案卷的 frontmatter、结构、`## 关联` wikilink 遵循 `.claude/rules/common/obsidian-content.md` 的「卷子」「答案卷」两节。
+- 脚本已按规范输出；若需调整格式，先改规则文件，再改 `scripts/make_paper.py`。
