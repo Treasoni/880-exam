@@ -12,7 +12,7 @@
 | 错题本 | `880-wrongbook` | 错题本、看错题、重练 |
 | 进度总览 | `880-progress` | 预览、进度、进度总览 |
 
-完整技能表见 `.claude/rules/common/skill-invocation.md`。涉及拼卷/判分/错题本/预览/入库的操作，先读 `.claude/rules/workflow-routing.md` 匹配 `880-exam` 工作流。
+完整技能表见 `.codex/rules/common/skill-invocation.md`。涉及拼卷/判分/错题本/预览/入库的操作，先读 `.codex/rules/workflow-routing.md` 匹配 `880-exam` 工作流。
 
 ## 数据模型与关键路径
 
@@ -39,50 +39,50 @@ python3 scripts/grade.py --paper <paper_id> --grading-file <UTF-8 判分文件> 
 
 Windows 下用 `py -3` 替代 `python3`。
 
-<!-- env-template:claude:begin -->
+<!-- env-template:codex:begin -->
 ## Environment Variables
 
-- Follow `.claude/rules/common/env.md` whenever creating, updating, migrating, or auditing `.env`, `.env.example`, or environment-variable documentation.
+- Follow `.codex/rules/common/env.md` whenever creating, updating, migrating, or auditing `.env`, `.env.example`, or environment-variable documentation.
 - Keep committed env templates minimal, project-specific, and free of real secrets or machine-local absolute paths.
-- After env template changes, run `.claude/scripts/check-env-template.sh`. Use `--strict` when you want unused documented variables to fail the check.
-<!-- env-template:claude:end -->
+- After env template changes, run `.codex/scripts/check-env-template.sh`. Use `--strict` when you want unused documented variables to fail the check.
+<!-- env-template:codex:end -->
 
-<!-- prompt-cache-bootstrap:claude:begin -->
+<!-- prompt-cache-bootstrap:codex:begin -->
 ## Prompt Cache
 
-- Follow `.claude/rules/common/prompt-cache.md` for high-frequency prompt design.
+- Follow `.codex/rules/common/prompt-cache.md` for high-frequency prompt design.
 - Keep stable instructions and output formats before dynamic user input, file excerpts, dates, IDs, and runtime state.
 - Reuse canonical templates and load long context only when needed.
-<!-- prompt-cache-bootstrap:claude:end -->
+<!-- prompt-cache-bootstrap:codex:end -->
 
 <!-- workflow-todo-state:start -->
 ## Workflow Todo State
 
 Named workflow state files are the source of truth for every routed workflow.
 
-- Workflow definitions live under `.claude/workflows/{workflow-id}/`.
+- Workflow definitions live under `.codex/workflows/{workflow-id}/`.
 - Workflow state files live under `workspace/workflow-runs/` and should be named after the task, for example `payment-refactor.workflow.md`.
-- Before any action that changes project files, runs project commands, or calls external services, read `.claude/rules/workflow-routing.md` and match the user's original request against its triggers and exclusions.
+- Before any action that changes project files, runs project commands, or calls external services, read `.codex/rules/workflow-routing.md` and match the user's original request against its triggers and exclusions.
 - When a `Required: yes` workflow matches, read its `workflow.md`, create or resume its state file, and start the current phase before doing the work. Do not take the ordinary execution path instead.
 - If the route is ambiguous, ask the user before acting.
 - Read the active workflow state file before starting any phase; do not skip prerequisite phases.
-- Change phase state only through `.claude/scripts/todo-state.sh`.
+- Change phase state only through `.codex/scripts/todo-state.sh`.
 - Use one unique phase status line per phase, for example `> [P0] ⬜ 未开始`.
 - On resume after interruption, inspect the YAML frontmatter and current phase before acting.
-- Each workflow directory must contain a `routing.yaml`. After creating, changing, renaming, or deleting a workflow, run `.claude/scripts/sync-workflow-routing.sh`; the update is incomplete until `.claude/scripts/sync-workflow-routing.sh --check` passes.
+- Each workflow directory must contain a `routing.yaml`. After creating, changing, renaming, or deleting a workflow, run `.codex/scripts/sync-workflow-routing.sh`; the update is incomplete until `.codex/scripts/sync-workflow-routing.sh --check` passes.
 <!-- workflow-todo-state:end -->
 
-<!-- obsidian-content:claude:begin -->
+<!-- obsidian-content:codex:begin -->
 ## Obsidian 内容规范
 
-- 生成任何 Markdown 内容（880 产物的卷子/答案卷/错题本/进度总览，以及文档、ADR、笔记、报告）时，遵循 `.claude/rules/common/obsidian-content.md`。
+- 生成任何 Markdown 内容（880 产物的卷子/答案卷/错题本/进度总览，以及文档、ADR、笔记、报告）时，遵循 `.codex/rules/common/obsidian-content.md`。
 - 每个生成文件必须带 YAML frontmatter（`type` + `date`/`updated` + `tags`）；站内引用用 `[[wikilink]]`；高亮用 `> [!callout]`；表格只用 Markdown；公式用 LaTeX。
 - 修改 880 产物格式时：先改规则文件，再同步改 `scripts/` 生成脚本与对应 skill（`880-paper`/`880-grade`/`880-wrongbook`/`880-progress`）。
-<!-- obsidian-content:claude:end -->
+<!-- obsidian-content:codex:end -->
 
 ## 跨平台（Linux / macOS / Windows）
 
 - 880 脚本统一用 Python 3 + `pathlib`，命令写 `python3`；Windows 用 `py -3` 替代，或 `make <target> PYTHON='py -3'`。
 - 判分 JSON 建议用 `grade.py --grading-file <UTF-8 文件>`，避免 shell 引号问题。
-- `.claude/scripts/*.sh` 与 hooks 是 bash 脚本，Windows 下需要 Git Bash / WSL 运行。
+- `.codex/scripts/*.sh` 与 hooks 是 bash 脚本，Windows 下需要 Git Bash / WSL 运行。
 - 文本换行由 `.gitattributes` 强制 LF，防止 Windows `autocrlf` 破坏脚本。
