@@ -55,7 +55,4 @@ skills-lock.json*
 .claude/skills/obsidian-cli
 .claude/skills/obsidian-markdown
 
-# === 多 Agent 同步（可再生成运行时 + 后续引入的 agent profile） ===
-.agent-sync/
-.codex/
-.codebuddy/
+

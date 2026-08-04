@@ -1,0 +1,20 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: 880-build-index
+  version: 0.1.0
+  description: "从做题本与解析册解析并按内容对齐，重建题目索引并生成 question-index.json。"
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - question-index.rebuild
+    - exam.import
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

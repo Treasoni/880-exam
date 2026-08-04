@@ -1,0 +1,20 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: 880-progress
+  version: 0.1.0
+  description: "生成或查看 880 进度总览，展示每题状态、章节完成率与弱点排行。"
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - exam.progress
+    - exam.weakness
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

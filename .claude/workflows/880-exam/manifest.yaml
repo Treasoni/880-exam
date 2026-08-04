@@ -1,0 +1,28 @@
+apiVersion: agent-platform/v1
+kind: Workflow
+metadata:
+  name: 880-exam
+  version: 0.1.0
+  description: "Track a full 880 practice flow (拼卷→判分→错题→进度) across sessions with resumable phase state."
+spec:
+  entrypoint: workflow.md
+  capabilities:
+    - exam.ingest
+    - exam.paper
+    - exam.grade
+    - exam.wrongbook
+    - exam.progress
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn:
+    - Skill/880-build-index
+    - Skill/880-paper
+    - Skill/880-grade
+    - Skill/880-wrongbook
+    - Skill/880-progress
+  lifecycle:
+    discoverable: true
+    deprecated: false

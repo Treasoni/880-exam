@@ -1,0 +1,21 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: 880-paper
+  version: 0.2.0
+  description: "按真题模式从题库加权抽题拼一张 880 高数模拟卷，生成卷子、答案卷与判分卡。"
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - exam.paper
+    - exam.answer-key
+    - exam.grading-card
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

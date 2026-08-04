@@ -1,0 +1,21 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: 880-grade
+  version: 0.1.1
+  description: "读取判分卡勾选或口述判分（五态：对/错/不会/半会/粗心），落库并刷新错题本与进度总览。"
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - exam.grade
+    - exam.update-wrongbook
+    - exam.update-progress
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

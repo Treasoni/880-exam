@@ -1,0 +1,21 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: 880-wrongbook
+  version: 0.1.0
+  description: "查看/重生成错题本，更新复习状态（未复习/已重做/已掌握）。"
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - exam.wrongbook
+    - exam.review-status
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn:
+    - Skill/880-grade
+  lifecycle:
+    discoverable: true
+    deprecated: false

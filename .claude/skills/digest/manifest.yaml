@@ -1,0 +1,21 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: digest
+  version: 0.1.0
+  description: "回顾本次会话，记录真实发生的学习点和错误到 .learnings/，经验库过长时压缩去重并更新 RULES.md。"
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - learnings.digest
+    - learnings.compress
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn:
+    - Skill/maintain-learnings
+  lifecycle:
+    discoverable: true
+    deprecated: false
