@@ -29,3 +29,22 @@ venv/
 # === 日志 ===
 *.log
 npm-debug.log*
+
+# === 中间产物（可重生成） ===
+workspace/.build/
+
+# === MinerU 解析中间产物（系统不需要，可再生成） ===
+880/**/content_list*.json
+880/**/layout.json
+880/**/*_model.json
+880/**/*_origin.pdf
+880/**/block_list.json
+
+# === 环境技能与备份（不属于本系统） ===
+.agents/
+skills-lock.json*
+.claude/skills/defuddle
+.claude/skills/json-canvas
+.claude/skills/obsidian-bases
+.claude/skills/obsidian-cli
+.claude/skills/obsidian-markdown

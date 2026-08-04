@@ -1,17 +1,23 @@
 # Skill Invocation
 
 ## 技能列表
-<!-- skill-registry:managed ["ask-matt","batch-grill-me","claude-handoff","code-review","codebase-design","design-an-interface","diagnosing-bugs","digest","domain-modeling","edit-article","git-guardrails-claude-code","grill-me","grill-with-docs","grilling","handoff","implement","improve-codebase-architecture","loop-me","maintain-learnings","migrate-to-shoehorn","obsidian-vault","prompt-cache-optimizer","prototype","qa","request-refactor-plan","research","resolving-merge-conflicts","scaffold-exercises","setup-matt-pocock-skills","setup-pre-commit","setup-ts-deep-modules","sync-skill-registry","tdd","teach","to-questionnaire","to-spec","to-tickets","triage","ubiquitous-language","wayfinder","wizard","workflow-todo-state","writing-beats","writing-fragments","writing-great-skills","writing-shape"] -->
+<!-- skill-registry:managed ["880-build-index","880-grade","880-paper","880-progress","880-wrongbook","ask-matt","batch-grill-me","claude-handoff","code-review","codebase-design","defuddle","design-an-interface","diagnosing-bugs","digest","domain-modeling","edit-article","git-guardrails-claude-code","grill-me","grill-with-docs","grilling","handoff","implement","improve-codebase-architecture","json-canvas","loop-me","maintain-learnings","migrate-to-shoehorn","obsidian-bases","obsidian-cli","obsidian-markdown","obsidian-vault","prompt-cache-optimizer","prototype","qa","request-refactor-plan","research","resolving-merge-conflicts","scaffold-exercises","setup-matt-pocock-skills","setup-pre-commit","setup-ts-deep-modules","sync-skill-registry","tdd","teach","to-questionnaire","to-spec","to-tickets","triage","ubiquitous-language","wayfinder","wizard","workflow-todo-state","writing-beats","writing-fragments","writing-great-skills","writing-shape"] -->
 
 #### 未分类
 
 | 技能 | 触发场景 | 关键触发词 |
 |------|----------|-----------|
+| `880-build-index` | 从做题本+解析册重建题目索引（首次入库或源文件更新后用）。 | 入库、重建索引、初始化题库 |
+| `880-grade` | 判分记录（五态：对/错/不会/半会/粗心），更新判分记录、错题本与进度总览。 | 判分、改卷、对答案、交判分 |
+| `880-paper` | 拼一张 880 高数模拟卷（真题模式：选10×5分+填6×5分+解6题=150分/180分钟），生成卷子与答案卷。 | 拼卷、拼张卷、出卷、生成卷子、来张卷 |
+| `880-progress` | 生成或查看进度总览——哪些题已完成/未完成/做错，章节完成率与弱点排行。 | 预览、进度、看进度、进度总览 |
+| `880-wrongbook` | 查看/重生成错题本，更新复习状态（未复习/已重做/已掌握）。 | 错题本、看错题、重练、复习错题 |
 | `ask-matt` | Ask which skill or flow fits your situation. A router over the skills in this… | Ask which skill or flow fits your situat… |
 | `batch-grill-me` | A relentless interview that asks every frontier question at once | A relentless interview that asks every f… |
 | `claude-handoff` | Hand the current conversation off to a fresh background agent that picks up t… | Hand the current conversation off to a f… |
 | `code-review` | Review the changes since a fixed point (commit, branch, tag | review since X |
 | `codebase-design` | Shared vocabulary for designing deep modules. Use when the user wants to desi… | Shared vocabulary for designing deep mod… |
+| `defuddle` | Extract clean markdown content from web pages using Defuddle CLI | Extract clean markdown content from web … |
 | `design-an-interface` | Generate multiple radically different interface designs for a module using pa… | design it twice |
 | `diagnosing-bugs` | Diagnosis loop for hard bugs and performance regressions. Use when the user s… | diagnose、debug this |
 | `digest` | 自我学习阶段。回顾本次会话，记录真实发生的学习点和错误到 .learnings/； | 自我学习阶段 |
@@ -24,9 +30,13 @@
 | `handoff` | Compact the current conversation into a handoff document for another agent to… | Compact the current conversation into a … |
 | `implement` | "Implement a piece of work based on a spec or set of tickets." | Implement a piece of work based on a spec or set of tickets. |
 | `improve-codebase-architecture` | Scan a codebase for deepening opportunities | Scan a codebase for deepening opportunit… |
+| `json-canvas` | Create and edit JSON Canvas files (.canvas) with nodes, edges, groups | Create and edit JSON Canvas files (.canv… |
 | `loop-me` | Grill me about specs for the workflows I want to build, within this workspace. | Grill me about specs for the workflows I… |
 | `maintain-learnings` | 维护 .learnings/ 经验库，把过多或反复出现的学习记录、错误日志、规则失效问题聚类诊断，追溯并修改对应 skill、模板、hook、校验脚本或项目规则； | 维护 .learnings/ 经验库，把过多或反复出现的学习记录、错误日志、规则… |
 | `migrate-to-shoehorn` | Migrate test files from `as` type assertions to @total-typescript/shoehorn. U… | Migrate test files from `as` type assert… |
+| `obsidian-bases` | Create and edit Obsidian Bases (.base files) with views, filters, formulas | Create and edit Obsidian Bases (.base fi… |
+| `obsidian-cli` | Interact with Obsidian vaults using the Obsidian CLI to read, create, search | Interact with Obsidian vaults using the … |
+| `obsidian-markdown` | Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts | Create and edit Obsidian Flavored Markdo… |
 | `obsidian-vault` | Search, create, and manage notes in the Obsidian vault with wikilinks and ind… | Search, create, and manage notes in the … |
 | `prompt-cache-optimizer` | 审计并优化 LLM 提示缓存命中率、输入 token、延迟与调用成本。 | 优化缓存命中、降低 token 成本、审计 LLM 调用、提示词缓存优化、优化 AI 调用费用 |
 | `prototype` | Build a throwaway prototype to answer a design question. Use when the user wa… | Build a throwaway prototype to answer a … |

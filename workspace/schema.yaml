@@ -1,0 +1,83 @@
+# 880 考研数学习题系统 · 核心配置
+# 题目索引、卷子、判分、错题本、补弱全部依据本文件。
+
+subject: 高数              # 科目；预留线代，将来加第二科目时可扩展为列表
+subject_code: gs
+version: 1
+
+chapters:
+  - {no: 1, title: 函数、极限、连续, aliases: [函数极限, 极限与连续]}
+  - {no: 2, title: 一元函数微分学及其应用, aliases: [一元微分, 微分学]}
+  - {no: 3, title: 一元函数积分学及其应用, aliases: [一元积分, 积分学, 一重积分]}
+  - {no: 4, title: 多元函数微分学及其应用, aliases: [多元微分]}
+  - {no: 5, title: 二重积分, aliases: [二重]}
+  - {no: 6, title: 微分方程及其应用, aliases: [微分方程]}
+
+# === 卷子规格：真题模式（数二新大纲） ===
+paper:
+  duration_minutes: 180
+  total_score: 150
+  sections:
+    choice:   {count: 10, per_score: 5}
+    fill:     {count: 6,  per_score: 5}
+    solution: {count: 6,  per_score: 0}   # 解答题共 70 分，按真题习惯每题 10~12 分
+  # 章节配额表：每章每题型题数；合计必须等于 choice 10 / fill 6 / solution 6
+  quota:
+    1: {choice: 2, fill: 1, solution: 1}
+    2: {choice: 2, fill: 1, solution: 1}
+    3: {choice: 2, fill: 2, solution: 1}
+    4: {choice: 1, fill: 1, solution: 1}
+    5: {choice: 2, fill: 1, solution: 1}
+    6: {choice: 1, fill: 0, solution: 1}
+
+# === 难度配比（每类题型内按比例抽，不足按可用量补齐） ===
+difficulty_mix:
+  basic: 4
+  comprehensive: 5
+  extension: 1
+extension_enabled: true    # 拓展题开关
+
+# === 加权随机抽题 ===
+sampling:
+  base_weight: 1.0
+  attempt_decay: 0.5          # 每做过一次，基础权重 ×0.5
+  recency_half_life_days: 14  # 最近一次做过的时间衰减半衰期（天）
+  # 判分结果对后续抽题权重的提升（相对 base_weight 的倍数，随时间衰减）
+  grade_boost:
+    cannot:  6.0
+    half:    3.0
+    wrong:   2.0
+    careless: 1.4
+    correct: 0.5
+  boost_half_life_days: 21
+  # 章节弱点对配额浮动的强度
+  quota_float_strength: 0.6   # 0 = 不浮动，越大弱章节上浮越激进
+  quota_float_cap: 2          # 单章单题型配额最多浮动 ±题数
+
+# === 判分五态（错题本/补弱/进度的统一口径） ===
+grades:
+  - {key: correct,  zh: 对,   weight: 0.0}
+  - {key: wrong,    zh: 错,   weight: 0.3}
+  - {key: cannot,   zh: 不会, weight: 1.0}
+  - {key: half,     zh: 半会, weight: 0.6}
+  - {key: careless, zh: 粗心, weight: 0.15}
+
+# === 弱点分计算 ===
+weakness:
+  decay_half_life_days: 21    # 判分记录的时间衰减半衰期
+  min_attempts: 2             # 每章至少有几次判分才开始影响抽题
+
+# === 错题本 ===
+wrong_book:
+  focus_grades: [cannot, half]   # 列为重点复习的判分态
+  light_grades: [wrong, careless] # 轻标记的判分态
+  review_states: [未复习, 已重做, 已掌握]
+
+# === 存储路径（相对项目根） ===
+paths:
+  question_index: workspace/question-index.json
+  attempts: workspace/records/attempts.json
+  papers: workspace/records/papers.json
+  papers_dir: workspace/papers
+  wrong_book: workspace/wrong-book/错题本.md
+  progress: workspace/preview/进度总览.md

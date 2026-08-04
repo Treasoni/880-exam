@@ -1,0 +1,6 @@
+workflow_id: 880-exam
+required: no
+when_to_use: 用户使用 880 习题系统（拼卷/判分/错题本/预览/入库），或需要恢复进行中的做题流程时。
+triggers: 拼卷、拼张卷、判分、改卷、错题本、预览、进度、补弱、重练、880、模拟卷、做题
+excludes: 与 880 习题系统无关的通用开发任务
+state_file_pattern: workspace/workflow-runs/880-exam.workflow.md
