@@ -1,7 +1,7 @@
 # Skill Invocation
 
 ## 技能列表
-<!-- skill-registry:managed ["880-build-index","880-grade","880-paper","880-progress","880-wrongbook","ask-matt","batch-grill-me","claude-handoff","code-review","codebase-design","defuddle","design-an-interface","diagnosing-bugs","digest","domain-modeling","edit-article","git-guardrails-claude-code","grill-me","grill-with-docs","grilling","handoff","implement","improve-codebase-architecture","json-canvas","loop-me","maintain-learnings","migrate-to-shoehorn","obsidian-bases","obsidian-cli","obsidian-markdown","obsidian-vault","prompt-cache-optimizer","prototype","qa","request-refactor-plan","research","resolving-merge-conflicts","scaffold-exercises","setup-matt-pocock-skills","setup-pre-commit","setup-ts-deep-modules","sync-skill-registry","tdd","teach","to-questionnaire","to-spec","to-tickets","triage","ubiquitous-language","wayfinder","wizard","workflow-todo-state","writing-beats","writing-fragments","writing-great-skills","writing-shape"] -->
+<!-- skill-registry:managed ["880-build-index","880-grade","880-paper","880-progress","880-wrongbook","ask-matt","batch-grill-me","claude-handoff","code-review","codebase-design","defuddle","design-an-interface","diagnosing-bugs","digest","domain-modeling","edit-article","git-guardrails-claude-code","grill-me","grill-with-docs","grilling","handoff","implement","improve-codebase-architecture","json-canvas","loop-me","maintain-learnings","manifest-platform","migrate-to-shoehorn","obsidian-bases","obsidian-cli","obsidian-markdown","obsidian-vault","prompt-cache-optimizer","prototype","qa","request-refactor-plan","research","resolving-merge-conflicts","scaffold-exercises","setup-matt-pocock-skills","setup-pre-commit","setup-ts-deep-modules","sync-skill-registry","tdd","teach","to-questionnaire","to-spec","to-tickets","triage","ubiquitous-language","wayfinder","wizard","workflow-todo-state","writing-beats","writing-fragments","writing-great-skills","writing-shape"] -->
 
 #### 未分类
 
@@ -33,6 +33,7 @@
 | `json-canvas` | Create and edit JSON Canvas files (.canvas) with nodes, edges, groups | Create and edit JSON Canvas files (.canv… |
 | `loop-me` | Grill me about specs for the workflows I want to build, within this workspace. | Grill me about specs for the workflows I… |
 | `maintain-learnings` | 维护 .learnings/ 经验库，把过多或反复出现的学习记录、错误日志、规则失效问题聚类诊断，追溯并修改对应 skill、模板、hook、校验脚本或项目规则； | 维护 .learnings/ 经验库，把过多或反复出现的学习记录、错误日志、规则… |
+| `manifest-platform` | Install, configure, migrate, and validate a portable manifest registry for ag… | Install, configure, migrate, and validat… |
 | `migrate-to-shoehorn` | Migrate test files from `as` type assertions to @total-typescript/shoehorn. U… | Migrate test files from `as` type assert… |
 | `obsidian-bases` | Create and edit Obsidian Bases (.base files) with views, filters, formulas | Create and edit Obsidian Bases (.base fi… |
 | `obsidian-cli` | Interact with Obsidian vaults using the Obsidian CLI to read, create, search | Interact with Obsidian vaults using the … |
