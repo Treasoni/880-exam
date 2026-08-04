@@ -1,0 +1,31 @@
+# === 系统与编辑器 ===
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# === 环境与密钥 ===
+.env
+.env.local
+.env.*.local
+
+# === 主机本地配置 ===
+.claude/settings.local.json
+
+# === 独立子仓库（自行版本管理） ===
+/template_ai/
+
+# === 工具安装状态（可再生成） ===
+.agent-template-kits/
+
+# === 日志 ===
+*.log
+npm-debug.log*
