@@ -34,10 +34,12 @@ npm-debug.log*
 workspace/.build/
 
 # === MinerU 解析中间产物（系统不需要，可再生成） ===
-880/**/content_list*.json
+880/**/*_content_list.json
+880/**/*_content_list_v2.json
 880/**/layout.json
 880/**/*_model.json
 880/**/*_origin.pdf
+880/**/*_block_list.json
 880/**/block_list.json
 
 # === 环境技能与备份（不属于本系统） ===
