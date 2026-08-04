@@ -1,0 +1,25 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: wayfinder
+  version: 0.1.0
+  description: "Plan a huge chunk of work as a shared map of decision tickets on an issue tracker, resolved one at a time until the route is clear."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - planning.chart
+    - planning.resolve
+  permissions:
+    filesystem: none
+    network: none
+    subprocess: none
+    git: none
+  dependsOn:
+    - Skill/grilling
+    - Skill/domain-modeling
+    - Skill/research
+    - Skill/prototype
+    - Skill/setup-matt-pocock-skills
+  lifecycle:
+    discoverable: true
+    deprecated: false

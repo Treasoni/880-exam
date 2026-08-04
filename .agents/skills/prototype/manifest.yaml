@@ -1,0 +1,20 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: prototype
+  version: 0.1.0
+  description: "Build a throwaway prototype to answer a design question."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - prototype.build
+    - design.explore
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: write
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

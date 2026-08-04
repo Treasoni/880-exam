@@ -1,0 +1,19 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: codebase-design
+  version: 0.1.0
+  description: "Shared vocabulary for designing deep modules."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - design.deep-module
+  permissions:
+    filesystem: none
+    network: none
+    subprocess: none
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

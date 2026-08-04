@@ -1,0 +1,21 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: teach
+  version: 0.1.0
+  description: "Teach the user a new skill or concept, within this workspace."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - teach.lesson
+    - teach.reference
+    - teach.record
+  permissions:
+    filesystem: write
+    network: allow
+    subprocess: allow
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

@@ -1,0 +1,21 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: code-review
+  version: 0.1.0
+  description: "Reviews code changes since a fixed point (commit/branch/tag) along two axes: Standards and Spec compliance, via parallel sub-agents."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - code.review
+    - code.standards-check
+    - code.spec-check
+  permissions:
+    filesystem: read
+    network: none
+    subprocess: allow
+    git: read
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

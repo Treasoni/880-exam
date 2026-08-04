@@ -1,0 +1,20 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: qa
+  version: 0.1.0
+  description: "Interactive QA session where the agent clarifies user-reported bugs and files durable GitHub issues in the project's domain language."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - qa.session
+    - issues.file
+  permissions:
+    filesystem: read
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

@@ -1,0 +1,21 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: setup-ts-deep-modules
+  version: 0.1.0
+  description: "Wire dependency-cruiser into a TypeScript repo so each package is a deep module, reachable only through its entry-point files."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - setup.dependency-cruiser
+    - boundaries.enforce
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn:
+    - Skill/codebase-design
+  lifecycle:
+    discoverable: true
+    deprecated: false

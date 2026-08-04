@@ -1,0 +1,20 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: setup-matt-pocock-skills
+  version: 0.1.0
+  description: "Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - repo.setup
+    - agents.configure
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: read
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

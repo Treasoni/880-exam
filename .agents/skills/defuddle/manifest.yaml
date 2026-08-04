@@ -1,0 +1,19 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: defuddle
+  version: 0.1.0
+  description: "Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - web.content.extract
+  permissions:
+    filesystem: write
+    network: allow
+    subprocess: allow
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

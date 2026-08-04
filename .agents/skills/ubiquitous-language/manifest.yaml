@@ -1,0 +1,20 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: ubiquitous-language
+  version: 0.1.0
+  description: "Extract a DDD-style ubiquitous language glossary from the current conversation, flagging ambiguities and proposing canonical terms."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - modeling.ubiquitous-language
+    - language.ambiguity-analysis
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: none
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

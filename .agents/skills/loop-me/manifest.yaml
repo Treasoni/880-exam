@@ -1,0 +1,21 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: loop-me
+  version: 0.1.0
+  description: "Grill me about specs for the workflows I want to build."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - workflow.grill
+    - workflow.spec
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: none
+    git: none
+  dependsOn:
+    - Skill/grilling
+  lifecycle:
+    discoverable: true
+    deprecated: false

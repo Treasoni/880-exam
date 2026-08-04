@@ -1,0 +1,20 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: batch-grill-me
+  version: 0.1.0
+  description: "A relentless interview that asks every frontier question at once, round by round."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - interview.grill
+    - design.requirements
+  permissions:
+    filesystem: none
+    network: none
+    subprocess: none
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

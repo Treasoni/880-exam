@@ -1,0 +1,22 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: diagnosing-bugs
+  version: 0.1.0
+  description: "Diagnosis loop for hard bugs and performance regressions: build a tight repro, hypothesize, instrument, fix, add regression test."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - debug.diagnose
+    - debug.feedback-loop
+    - testing.regression
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: read
+  dependsOn:
+    - Skill/improve-codebase-architecture
+  lifecycle:
+    discoverable: true
+    deprecated: false

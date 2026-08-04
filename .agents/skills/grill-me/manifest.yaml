@@ -1,0 +1,21 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: grill-me
+  version: 0.1.0
+  description: "A relentless interview to sharpen a plan or design."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - plan.sharpen
+    - design.sharpen
+  permissions:
+    filesystem: none
+    network: none
+    subprocess: none
+    git: none
+  dependsOn:
+    - Skill/grilling
+  lifecycle:
+    discoverable: true
+    deprecated: false

@@ -1,0 +1,20 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: design-an-interface
+  version: 0.1.0
+  description: "Generate multiple radically different interface designs for a module using parallel sub-agents."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - design.generate-interface
+    - design.compare-options
+  permissions:
+    filesystem: none
+    network: none
+    subprocess: none
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

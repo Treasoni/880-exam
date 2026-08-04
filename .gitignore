@@ -46,13 +46,6 @@ workspace/.build/
 880/**/*_block_list.json
 880/**/block_list.json
 
-# === 环境技能与备份（不属于本系统） ===
-.agents/
-skills-lock.json*
-.claude/skills/defuddle
-.claude/skills/json-canvas
-.claude/skills/obsidian-bases
-.claude/skills/obsidian-cli
-.claude/skills/obsidian-markdown
+
 
 

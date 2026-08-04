@@ -1,0 +1,21 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: obsidian-vault
+  version: 0.1.0
+  description: "Search, create, and manage notes in the Obsidian vault with wikilinks and index notes."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - obsidian.search
+    - obsidian.create
+    - obsidian.manage
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

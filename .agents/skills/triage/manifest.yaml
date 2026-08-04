@@ -1,0 +1,23 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: triage
+  version: 0.1.0
+  description: "Move issues and external PRs through triage roles — categorise, verify, grill if needed, and write agent-ready briefs."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - issues.triage
+    - issues.verify
+    - issues.brief
+  permissions:
+    filesystem: write
+    network: allow
+    subprocess: allow
+    git: read
+  dependsOn:
+    - Skill/grilling
+    - Skill/domain-modeling
+  lifecycle:
+    discoverable: true
+    deprecated: false

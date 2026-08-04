@@ -1,0 +1,19 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: migrate-to-shoehorn
+  version: 0.1.0
+  description: "Migrate test files from `as` type assertions to @total-typescript/shoehorn."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - code.migrate
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

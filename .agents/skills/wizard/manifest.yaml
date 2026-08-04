@@ -1,0 +1,19 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: wizard
+  version: 0.1.0
+  description: "Generate an interactive bash wizard that walks a human through a manual setup or migration step by step."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - wizard.generate
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: write
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

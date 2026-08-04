@@ -1,0 +1,19 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: edit-article
+  version: 0.1.0
+  description: "Edit and improve articles by restructuring sections, improving clarity, and tightening prose."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - writing.edit
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: none
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

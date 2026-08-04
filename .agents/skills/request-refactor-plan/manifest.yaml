@@ -1,0 +1,20 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: request-refactor-plan
+  version: 0.1.0
+  description: "Create a detailed refactor plan with tiny commits via user interview, then file it as a GitHub issue."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - refactor.plan
+    - github.issue
+  permissions:
+    filesystem: read
+    network: allow
+    subprocess: none
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

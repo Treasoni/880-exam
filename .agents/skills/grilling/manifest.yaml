@@ -1,0 +1,20 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: grilling
+  version: 0.1.0
+  description: "Grill the user relentlessly about a plan, decision, or idea to stress-test their thinking."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - planning.grill
+    - decision.grill
+  permissions:
+    filesystem: read
+    network: none
+    subprocess: none
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

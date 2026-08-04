@@ -1,0 +1,21 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: obsidian-cli
+  version: 0.1.0
+  description: "Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and manage notes, tasks, and properties, plus plugin and theme development."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - obsidian.vault
+    - obsidian.search
+    - obsidian.plugin-dev
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false

@@ -1,0 +1,21 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: domain-modeling
+  version: 0.1.0
+  description: "Build and sharpen a project's domain model."
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - domain.glossary
+    - domain.adr
+    - domain.model
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: none
+    git: none
+  dependsOn: []
+  lifecycle:
+    discoverable: true
+    deprecated: false
