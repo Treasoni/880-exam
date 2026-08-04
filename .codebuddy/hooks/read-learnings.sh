@@ -14,7 +14,7 @@ echo ""
 if [ -f "$PROJECT_ROOT/$LEARNINGS_DIR/RULES.md" ]; then
     echo "## Rules (highest priority)"
     echo ""
-    cat "$PROJECT_ROOT/$LEARNINGS_DIR/RULES.md"
+    tail -n 50 "$PROJECT_ROOT/$LEARNINGS_DIR/RULES.md"
     echo ""
     echo "---"
     echo ""
@@ -23,7 +23,7 @@ fi
 if [ -f "$PROJECT_ROOT/$LEARNINGS_DIR/ERRORS.md" ]; then
     echo "## Error Log (avoid repeating)"
     echo ""
-    cat "$PROJECT_ROOT/$LEARNINGS_DIR/ERRORS.md"
+    tail -n 50 "$PROJECT_ROOT/$LEARNINGS_DIR/ERRORS.md"
     echo ""
     echo "---"
     echo ""

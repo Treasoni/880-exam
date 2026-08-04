@@ -35,7 +35,7 @@ def print_section(title: str, body: str) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project-root", default=None, help="Project root. Defaults to two directories above this hook.")
-    parser.add_argument("--tail-lines", type=int, default=50, help="Number of recent LEARNINGS.md lines to include.")
+    parser.add_argument("--tail-lines", type=int, default=50, help="Number of recent lines to include per section (RULES.md, ERRORS.md, LEARNINGS.md).")
     args = parser.parse_args()
 
     project_root = Path(args.project_root).resolve() if args.project_root else default_project_root()
@@ -45,8 +45,8 @@ def main() -> int:
     print("# Learnings Reminder")
     print("")
 
-    print_section("Rules (highest priority)", read_text(learnings_dir / "RULES.md"))
-    print_section("Error Log (avoid repeating)", read_text(learnings_dir / "ERRORS.md"))
+    print_section("Rules (highest priority)", tail_lines(read_text(learnings_dir / "RULES.md"), args.tail_lines))
+    print_section("Error Log (avoid repeating)", tail_lines(read_text(learnings_dir / "ERRORS.md"), args.tail_lines))
 
     learnings = read_text(learnings_dir / "LEARNINGS.md")
     if learnings:
