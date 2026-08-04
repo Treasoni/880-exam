@@ -4,9 +4,11 @@
 用法：
   python3 scripts/grade.py --paper paper-01 \
       --grading '{"choice":{"1":"不会","2":"对"},"fill":{"3":"半会"},"solution":{"1":"不会"}}'
-  python3 scripts/grade.py --paper paper-01 --grading '{"choice":{"1":"cannot"}}' --note "看了解析才懂"
+  python3 scripts/grade.py --paper paper-01 --grading-file grade.json --redo
+  # Windows 把 python3 换成 py -3；JSON 建议走 --grading-file，避免 cmd/PowerShell 引号问题
 
 grading 中 key 为题型内题号（1 起），value 为中文或英文判分态。
+--grading 可接受带外层单/双引号的字符串；也可用 --grading-file <UTF-8 文件> 读取 JSON。
 可加 --redo：表示这是错题重练（若判为『对』则复习状态置为已掌握，否则保持未复习）。
 """
 
@@ -30,16 +32,26 @@ GRADE_ALIAS = {
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--paper", required=True)
-    ap.add_argument("--grading", required=True, help="JSON：题型→{题号:判分}")
+    ap.add_argument("--grading", default=None, help="JSON：题型→{题号:判分}（可带外层引号）")
+    ap.add_argument("--grading-file", default=None,
+                    help="从 UTF-8 文件读取判分 JSON（推荐，避免 shell 引号问题）")
     ap.add_argument("--note", default="")
     ap.add_argument("--redo", action="store_true", help="错题重练模式")
     args = ap.parse_args()
 
     import json
+    if not args.grading and not args.grading_file:
+        ap.error("必须提供 --grading 或 --grading-file")
     try:
-        grading = json.loads(args.grading)
-    except json.JSONDecodeError:
-        print(f"!! --grading 不是合法 JSON: {args.grading}", file=sys.stderr)
+        if args.grading_file:
+            grading = json.loads(Path(args.grading_file).read_text(encoding="utf-8"))
+        else:
+            raw = args.grading.strip()
+            if len(raw) >= 2 and raw[0] in "'\"" and raw[-1] == raw[0]:
+                raw = raw[1:-1]  # cmd.exe 会原样保留单引号，先去外层引号再解析
+            grading = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        print(f"!! 判分 JSON 解析失败: {exc}", file=sys.stderr)
         sys.exit(2)
 
     schema = lib880.load_schema()

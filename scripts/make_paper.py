@@ -6,6 +6,7 @@
   python3 scripts/make_paper.py --n 3 --seed 42     # 指定卷号与随机种子
   python3 scripts/make_paper.py --ignore-extension  # 不使用拓展题
   python3 scripts/make_paper.py --no-weakness       # 忽略弱点浮动
+  # Windows 请把 python3 换成 py -3（如 py -3 scripts/make_paper.py）
 """
 
 import argparse

@@ -14,6 +14,7 @@ description: 拼一张 880 高数模拟卷（真题模式：选10×5分+填6×5�
    python3 scripts/make_paper.py [--seed N] [--ignore-extension] [--no-weakness]
    ```
    - 默认自动取下一卷号；`--seed` 可复现同一张卷；`--ignore-extension` 不用拓展题；`--no-weakness` 忽略弱点浮动。
+   - Windows 把 `python3` 换成 `py -3`（或 `make paper PYTHON='py -3'`）。
 2. 向用户报告：
    - 生成的卷子路径与答案卷路径（`workspace/papers/卷子-XX.md`、`卷子-XX-答案.md`）；
    - 卷子规格（选择/填空/解答数量）；

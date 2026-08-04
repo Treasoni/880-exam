@@ -13,6 +13,7 @@ description: 生成或查看进度总览——哪些题已完成/未完成/做�
    ```
    python3 scripts/progress.py
    ```
+   - Windows 把 `python3` 换成 `py -3`（或 `make progress PYTHON='py -3'`）。
 2. 向用户展示关键统计：
    - 总题数 / 已判 / 做过未判（欠账）/ 未做 / 非"对"数量；
    - 章节弱点排行；

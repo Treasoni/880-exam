@@ -253,7 +253,8 @@ install_skill() {
   if [ -n "$PROFILE_ROOT" ] && [ -d "$PROFILE_ROOT" ]; then
     cp -R "$PROFILE_ROOT" "$target_skill/profiles"
   fi
-  chmod +x "${target_skill}/scripts/todo-state.sh" "${target_skill}/scripts/install.sh"
+  chmod +x "${target_skill}/scripts/todo-state.sh" "${target_skill}/scripts/install.sh" \
+           "${target_skill}/scripts/sync-workflow-routing.sh"
   echo "installed: ${target_skill}"
 }
 

@@ -50,6 +50,11 @@ if ! command -v rg >/dev/null 2>&1; then
   exit 1
 fi
 
+if ! command -v perl >/dev/null 2>&1; then
+  echo "check-env-template: perl is required" >&2
+  exit 1
+fi
+
 TMP_DIR="$(mktemp -d "${TMPDIR:-/tmp}/check-env-template.XXXXXX")"
 trap 'rm -rf "$TMP_DIR"' EXIT
 
@@ -126,7 +131,7 @@ rg -n --hidden --no-heading \
   -g '!templates/env/**' \
   '^[[:space:]]*(local[[:space:]]+)?[A-Z][A-Z0-9_]*[[:space:]]*=' \
   "$PROJECT_ROOT" \
-  | perl -ne 's/^[^:]*:\d+://; print "$1\n" if /^[[:space:]]*(?:local[[:space:]]+)?([A-Z][A-Z0-9_]*)[[:space:]]*=/;' \
+  | perl -ne 's/^.*?:\d+://; print "$1\n" if /^[[:space:]]*(?:local[[:space:]]+)?([A-Z][A-Z0-9_]*)[[:space:]]*=/;' \
   | sort -u > "$assigned_vars_file" || true
 cat "$assigned_vars_file" >> "$ignored_vars_file"
 sort -u -o "$ignored_vars_file" "$ignored_vars_file"

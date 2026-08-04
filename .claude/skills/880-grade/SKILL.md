@@ -20,6 +20,8 @@ description: 判分记录（五态：对/错/不会/半会/粗心），更新判
    python3 scripts/grade.py --paper paper-01 --grading '<JSON>' [--redo] [--note "备注"]
    ```
    - `--redo`：错题重练模式——判为"对"则该题复习状态→已掌握，否则保持未复习。
+   - Windows 把 `python3` 换成 `py -3`；JSON 含引号不好传时改用 `--grading-file <UTF-8 文件>`。
+   - 判分 JSON 解析已容错：`--grading` 可带外层单/双引号，cmd.exe 原样传的单引号也能识别。
 4. 报告：记录条数、卷子状态、错题本与进度已刷新。
 
 ## 勾选式辅助

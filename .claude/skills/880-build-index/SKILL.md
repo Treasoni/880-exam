@@ -19,6 +19,7 @@ description: 从做题本+解析册重建题目索引（首次入库或源文件
    ```
    python3 scripts/merge_extraction.py --journal <journal.jsonl 路径>
    ```
+   - Windows 把 `python3` 换成 `py -3`。
 4. 校验：
    - 总题数应约 606（做题本全部题目）；
    - 缺答案数应极少（解析册确实缺失的题会被标记 `answer_status: missing`，不会进入拼卷池）。

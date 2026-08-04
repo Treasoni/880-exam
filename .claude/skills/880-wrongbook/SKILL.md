@@ -23,6 +23,7 @@ description: 查看/重生成错题本，更新复习状态（未复习/已重�
    python3 scripts/wrong_book.py --mark gs-c01-basic-choice-003=已掌握
    ```
    状态可选：未复习 / 已重做 / 已掌握。
+   - Windows 把 `python3` 换成 `py -3`（或 `make wrongbook PYTHON='py -3'`）。
 
 ## 重练流程（对话式）
 

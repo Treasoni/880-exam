@@ -4,6 +4,7 @@
 用法：
   python3 scripts/merge_extraction.py --journal <journal.jsonl>
   也可 --journal 缺省时自动用 workspace/.build/latest_journal.jsonl
+  # Windows 请把 python3 换成 py -3
 """
 
 import argparse

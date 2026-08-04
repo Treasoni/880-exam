@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# 依赖：awk/perl（跨平台：macOS/Linux/Git Bash 均自带；缺 perl 时提前报错）
+if ! command -v perl >/dev/null 2>&1; then
+  echo "todo-state: perl is required" >&2
+  exit 1
+fi
+
 usage() {
   cat <<'USAGE'
 Usage:

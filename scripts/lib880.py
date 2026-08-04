@@ -4,6 +4,7 @@
 import json
 import math
 import re
+import sys
 from datetime import datetime, date
 from pathlib import Path
 
@@ -15,6 +16,22 @@ PAPERS_PATH = ROOT / "workspace/records/papers.json"
 PAPERS_DIR = ROOT / "workspace/papers"
 WRONG_BOOK_PATH = ROOT / "workspace/wrong-book/错题本.md"
 PROGRESS_PATH = ROOT / "workspace/preview/进度总览.md"
+
+
+def ensure_utf8_stdio():
+    """把 stdout/stderr 强制为 UTF-8，避免 Windows 旧控制台或非 UTF-8 locale 下 print 中文报 UnicodeEncodeError。
+
+    Windows 自带控制台与部分 Linux locale（如 LC_ALL=C）默认编码不是 UTF-8；
+    脚本统一用 UTF-8 写文件，但 print 的输出流若不重配会在编码失败时直接抛异常。
+    hasattr 守卫兼容 Python < 3.7；errors="replace" 保证任何情况下都不崩溃。
+    """
+    for name in ("stdout", "stderr"):
+        stream = getattr(sys, name, None)
+        if stream is not None and hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
+
+
+ensure_utf8_stdio()
 
 
 # ---------------------------------------------------------------- YAML subset

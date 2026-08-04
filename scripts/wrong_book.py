@@ -5,6 +5,7 @@
   python3 scripts/wrong_book.py                     # 重新生成错题本
   python3 scripts/wrong_book.py --mark qid=已掌握   # 更新某题复习状态后重新生成
   python3 scripts/wrong_book.py --list-states       # 列出全部错题及状态
+  # Windows 请把 python3 换成 py -3（如 py -3 scripts/wrong_book.py）
 """
 
 import argparse

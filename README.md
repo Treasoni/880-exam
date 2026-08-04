@@ -6,11 +6,23 @@
 
 | 你想做什么 | 直接说 | 实际执行 |
 | --- | --- | --- |
-| 拼卷 | “拼张卷” | `scripts/make_paper.py` |
-| 判分 | “判分：一1对 一2错 二3不会 三1半会” | `scripts/grade.py` |
-| 错题本 | “看错题本” / “重练了第X题会了” | `scripts/wrong_book.py` |
-| 预览进度 | “看进度” | `scripts/progress.py` |
-| 重建索引 | “入库” | `prepare_sections` + 提取 Workflow + `merge_extraction` |
+| 拼卷 | “拼张卷” | `python3 scripts/make_paper.py` |
+| 判分 | “判分：一1对 一2错 二3不会 三1半会” | `python3 scripts/grade.py --paper <id> --grading-file <json>` |
+| 错题本 | “看错题本” / “重练了第X题会了” | `python3 scripts/wrong_book.py` |
+| 预览进度 | “看进度” | `python3 scripts/progress.py` |
+| 重建索引 | “入库” | `python3 scripts/prepare_sections.py` + 提取 Workflow + `python3 scripts/merge_extraction.py --journal <jsonl>` |
+
+> Windows 下把 `python3` 换成 `py -3`（如 `py -3 scripts/make_paper.py`），或 `make paper PYTHON='py -3'`。
+
+## 平台兼容（Linux / macOS / Windows）
+
+- **解释器**：命令统一写 `python3`（Linux/macOS）；Windows 用 `py -3` 替代。
+- **Makefile**：提供 `make paper` / `make grade` / `make wrongbook` / `make progress` / `make lint` / `make index-check`，解释器可用 `PYTHON ?= python3` 覆盖。
+- **输出编码**：脚本统一把 stdout/stderr 重配为 UTF-8，Windows 控制台或非 UTF-8 locale 下打印中文不会报 `UnicodeEncodeError`。
+- **判分 JSON**：建议用 `grade.py --grading-file <UTF-8 文件>` 从文件读判分 JSON，避免 cmd/PowerShell 引号问题；`--grading` 也容忍外层单/双引号。
+- **换行**：`.gitattributes` 强制 `.sh/.py/.md` 等文本文件在仓库与检出时均用 LF，防止 Windows `autocrlf` 把脚本转坏。
+- **Shell 工具**（`.claude/scripts/*.sh`、hooks）：仅用于 Claude Code 钩子/插件，需要 bash；Windows 请用 Git Bash 或 WSL 运行。
+- **技能软链**：`.claude/skills/*` 下有 41 个软链指向 `.agents/skills/*`（去重设计）。Windows 上克隆后需 `git config core.symlinks true` 并开启系统「开发者模式」才能正确还原；否则这些软链会退化为普通文本文件。
 
 ## 卷子规格（真题模式）
 

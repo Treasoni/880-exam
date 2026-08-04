@@ -9,6 +9,7 @@
 
 用法：
   python3 scripts/lint_content.py            # 校验全部生成产物
+  # Windows 请把 python3 换成 py -3（如 py -3 scripts/lint_content.py）
 """
 
 import re

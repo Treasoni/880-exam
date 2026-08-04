@@ -41,3 +41,10 @@ Named workflow state files are the source of truth for every routed workflow.
 - 修改 880 产物格式时：先改规则文件，再同步改 `scripts/` 生成脚本与对应 skill（`880-paper`/`880-grade`/`880-wrongbook`/`880-progress`）。
 <!-- obsidian-content:claude:end -->
 
+## 跨平台（Linux / macOS / Windows）
+
+- 880 脚本统一用 Python 3 + `pathlib`，命令写 `python3`；Windows 用 `py -3` 替代，或 `make <target> PYTHON='py -3'`。
+- 判分 JSON 建议用 `grade.py --grading-file <UTF-8 文件>`，避免 shell 引号问题。
+- `.claude/scripts/*.sh` 与 hooks 是 bash 脚本，Windows 下需要 Git Bash / WSL 运行。
+- 文本换行由 `.gitattributes` 强制 LF，防止 Windows `autocrlf` 破坏脚本。
+

@@ -13,6 +13,7 @@ build-question-index.py — 解析做题本 + 解析册，生成题目索引。
 用法：
   python3 scripts/build-question-index.py --check   # 只输出对齐校验报告
   python3 scripts/build-question-index.py           # 生成索引
+  # Windows 请把 python3 换成 py -3
 """
 
 import json
@@ -21,6 +22,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+# 跨平台：Windows 控制台/非 UTF-8 locale 下 print 中文不崩溃（同 lib880.ensure_utf8_stdio）
+for _stream in (sys.stdout, sys.stderr):
+    if _stream is not None and hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
 WORKBOOK = ROOT / "880/【A4紧凑版】李林880数二高数篇做题本/full.md"
 ANSWER_15 = ROOT / "880/第一章到第五章解析/full.md"
 ANSWER_6 = ROOT / "880/第六章解析/full.md"

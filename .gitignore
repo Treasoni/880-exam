@@ -4,6 +4,10 @@
 *.swo
 .idea/
 .vscode/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
 
 # === Python ===
 __pycache__/
