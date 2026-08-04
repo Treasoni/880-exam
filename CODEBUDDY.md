@@ -20,7 +20,7 @@
 - `workspace/question-index.json` — 题目索引（由 `scripts/build-question-index.py` 重建）
 - `workspace/records/attempts.json` — 判分记录
 - `workspace/records/papers.json` — 卷子记录
-- `workspace/papers/` — 生成的卷子与答案（`卷子-XX.md`）
+- `workspace/papers/paper-XX/` — 每卷一个文件夹：`卷子-XX.md`、`卷子-XX-答案.md`、`判分卡-XX.md`
 - `workspace/wrong-book/错题本.md` — 错题本
 - `workspace/preview/进度总览.md` — 进度总览
 
@@ -33,7 +33,9 @@ python3 scripts/build-question-index.py
 # 拼一张模拟卷（默认：选10×5分 + 填6×5分 + 解6题 = 150分 / 180分钟）
 python3 scripts/make_paper.py [--n N] [--seed SEED] [--ignore-extension] [--no-weakness]
 
-# 判分（推荐用 --grading-file 传 JSON，避免 shell 引号问题）
+# 判分（推荐：读取判分卡勾选，paper_id 自动从卡片 frontmatter 获取）
+python3 scripts/grade.py --sheet workspace/papers/paper-01/判分卡-01.md [--redo]
+# 判分（兜底：--grading-file 传 JSON，避免 shell 引号问题）
 python3 scripts/grade.py --paper <paper_id> --grading-file <UTF-8 判分文件> [--redo]
 ```
 
@@ -83,6 +85,6 @@ Named workflow state files are the source of truth for every routed workflow.
 ## 跨平台（Linux / macOS / Windows）
 
 - 880 脚本统一用 Python 3 + `pathlib`，命令写 `python3`；Windows 用 `py -3` 替代，或 `make <target> PYTHON='py -3'`。
-- 判分 JSON 建议用 `grade.py --grading-file <UTF-8 文件>`，避免 shell 引号问题。
+- 判分优先用 `grade.py --sheet <判分卡>` 读取勾选；JSON 兜底用 `--grading-file <UTF-8 文件>`，避免 shell 引号问题。
 - `.codebuddy/scripts/*.sh` 与 hooks 是 bash 脚本，Windows 下需要 Git Bash / WSL 运行。
 - 文本换行由 `.gitattributes` 强制 LF，防止 Windows `autocrlf` 破坏脚本。

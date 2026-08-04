@@ -4,8 +4,11 @@
 #   make paper PYTHON='py -3'
 #   或直接 py -3 scripts/make_paper.py
 #
-# 判分 JSON 建议用 --grading-file 从文件读取，避免 cmd/PowerShell 引号问题：
-#   make grade PAPER=paper-01 EXTRA='--grading-file grade.json --redo'
+# 判分优先读判分卡勾选：
+#   make grade SHEET=workspace/papers/paper-01/判分卡-01.md
+#   make grade SHEET=workspace/papers/paper-01/判分卡-01.md EXTRA='--redo'
+# JSON 兜底（避免 cmd/PowerShell 引号问题）：
+#   make grade PAPER=paper-01 EXTRA='--grading-file grade.json'
 
 PYTHON ?= python3
 
@@ -13,7 +16,7 @@ PYTHON ?= python3
 
 help: ## 列出可用命令
 	@echo "make paper        — 拼一张卷"
-	@echo "make grade        — 判分（make grade PAPER=paper-01 EXTRA='--grading-file grade.json [--redo]'）"
+	@echo "make grade        — 判分（make grade SHEET=workspace/papers/paper-01/判分卡-01.md [EXTRA='--redo']）"
 	@echo "make wrongbook    — 重新生成错题本"
 	@echo "make progress     — 生成进度总览"
 	@echo "make lint         — 校验生成产物格式"
@@ -25,8 +28,8 @@ help: ## 列出可用命令
 paper: ## 拼一张卷
 	$(PYTHON) scripts/make_paper.py
 
-grade: ## 判分：make grade PAPER=paper-01 EXTRA='--grading-file grade.json --redo'
-	$(PYTHON) scripts/grade.py --paper $(PAPER) $(EXTRA)
+grade: ## 判分：make grade SHEET=workspace/papers/paper-01/判分卡-01.md [EXTRA='--redo']；JSON 兜底：make grade PAPER=paper-01 EXTRA='--grading-file grade.json'
+	$(PYTHON) scripts/grade.py $(if $(SHEET),--sheet $(SHEET),--paper $(PAPER)) $(EXTRA)
 
 wrongbook: ## 重新生成错题本
 	$(PYTHON) scripts/wrong_book.py

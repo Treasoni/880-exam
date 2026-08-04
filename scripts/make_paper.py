@@ -290,6 +290,53 @@ def render_answers(schema, paper_id, sections_plan):
     return "\n".join(lines)
 
 
+def _cell_escape(s):
+    """表格单元格转义：把 | 换成 \\|，把换行折叠成空格，避免破坏 Markdown 表格。"""
+    return str(s).replace("|", "\\|").replace("\n", " ").strip()
+
+
+def render_grading_card(schema, paper_id, sections_plan):
+    """生成判分卡：每题一行（题号/答案/对/错/不会/半会/粗心），用户勾选后由 grade.py --sheet 读取。"""
+    num = paper_id.split("-")[-1]
+    grade_cols = [g["zh"] for g in schema["grades"]]  # 对/错/不会/半会/粗心
+    lines = []
+    lines.append("---")
+    lines.append("type: 判分卡")
+    lines.append(f"paper_id: {paper_id}")
+    lines.append(f"date: {lib880.today_str()}")
+    lines.append(f"updated: {lib880.today_str()}")
+    lines.append(f"subject: {schema['subject']}")
+    lines.append(f"tags: [{schema['subject']}, 880, 判分卡]")
+    lines.append("---")
+    lines.append("")
+    lines.append(f"# 判分卡 · 卷子-{num}")
+    lines.append("")
+    lines.append("> [!info] 判分说明")
+    lines.append("> 对照答案核对，在对应状态列写 `x`（对/错/不会/半会/粗心）。没做的题留空即可。")
+    lines.append("")
+    for type_key in ("choice", "fill", "solution"):
+        lines.append(f"## {TYPE_ORDER[type_key]}、{TYPE_ZH[type_key]}")
+        lines.append("")
+        lines.append("| # | 答案 | " + " | ".join(grade_cols) + " |")
+        lines.append("| --- | --- | " + " | ".join(["---"] * len(grade_cols)) + " |")
+        for idx, q in enumerate(sections_plan[type_key], start=1):
+            if type_key == "solution":
+                ans = "（见答案卷）"
+            elif q.get("answer_status") == "missing" or not q.get("answer"):
+                ans = "（解析册未找到）"
+            else:
+                ans = q["answer"]
+            cells = " | ".join("[ ]" for _ in grade_cols)
+            lines.append(f"| {idx} | {_cell_escape(ans)} | {cells} |")
+        lines.append("")
+    lines.append("## 关联")
+    lines.append("")
+    lines.append(f"- 卷子：[[卷子-{num}]]")
+    lines.append(f"- 答案：[[卷子-{num}-答案]]")
+    lines.append("")
+    return "\n".join(lines)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=None)
@@ -344,13 +391,16 @@ def main():
     if total != 22:
         print(f"!! 卷子题目数异常: {total}（预期 22）", file=sys.stderr)
 
-    # 写文件
-    lib880.PAPERS_DIR.mkdir(parents=True, exist_ok=True)
-    paper_path = lib880.PAPERS_DIR / f"卷子-{n:02d}.md"
-    answer_path = lib880.PAPERS_DIR / f"卷子-{n:02d}-答案.md"
+    # 写文件（每卷一个子文件夹：卷子/答案/判分卡）
+    paper_dir = lib880.paper_dir(paper_id)
+    paper_dir.mkdir(parents=True, exist_ok=True)
+    paper_path = paper_dir / f"卷子-{n:02d}.md"
+    answer_path = paper_dir / f"卷子-{n:02d}-答案.md"
+    card_path = paper_dir / f"判分卡-{n:02d}.md"
     paper_path.write_text(render_paper(schema, paper_id, sections_plan, index["by_id"]),
                           encoding="utf-8")
     answer_path.write_text(render_answers(schema, paper_id, sections_plan), encoding="utf-8")
+    card_path.write_text(render_grading_card(schema, paper_id, sections_plan), encoding="utf-8")
 
     # 记录
     papers["papers"].append({
@@ -371,6 +421,7 @@ def main():
 
     print(f"已生成卷子：{paper_path}")
     print(f"已生成答案：{answer_path}")
+    print(f"已生成判分卡：{card_path}")
     print(f"卷子规格：选择 {len(sections_plan['choice'])} · 填空 {len(sections_plan['fill'])} · 解答 {len(sections_plan['solution'])}")
     if weakness:
         wl = sorted(weakness.items(), key=lambda kv: -kv[1])

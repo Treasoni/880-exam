@@ -5,7 +5,7 @@
 1. YAML frontmatter 必填键（type/date|updated/tags）存在；
 2. type 取值合法；
 3. 站内 [[wikilink]] 指向的文件存在（在 workspace 范围内解析）；
-4. 卷子/答案卷/错题本/进度总览 的专属属性齐全。
+4. 卷子/答案卷/判分卡/错题本/进度总览 的专属属性齐全。
 
 用法：
   python3 scripts/lint_content.py            # 校验全部生成产物
@@ -22,11 +22,12 @@ import lib880
 FM_RE = re.compile(r"^---\n(.*?)\n---", re.DOTALL)
 WIKI_RE = re.compile(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]")
 
-VALID_TYPES = {"卷子", "答案卷", "错题本", "进度总览", "文档", "记录"}
+VALID_TYPES = {"卷子", "答案卷", "判分卡", "错题本", "进度总览", "文档", "记录"}
 REQUIRED = ["type", "tags"]  # date|updated 二选一
 PER_TYPE = {
     "卷子": ["paper_id", "paper_no", "date", "subject", "duration_minutes", "total_score", "status"],
     "答案卷": ["paper_id", "date", "subject"],
+    "判分卡": ["paper_id", "date", "subject"],
     "错题本": ["updated", "total", "focus_count", "mastered_count"],
     "进度总览": ["updated", "total", "graded", "pending", "undone", "wrong"],
 }
@@ -77,7 +78,7 @@ def lint_file(path: Path):
 def main():
     targets = []
     if lib880.PAPERS_DIR.exists():
-        targets += sorted(lib880.PAPERS_DIR.glob("*.md"))
+        targets += sorted(lib880.PAPERS_DIR.rglob("*.md"))
     if lib880.WRONG_BOOK_PATH.exists():
         targets.append(lib880.WRONG_BOOK_PATH)
     if lib880.PROGRESS_PATH.exists():

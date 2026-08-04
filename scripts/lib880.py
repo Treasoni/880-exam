@@ -206,6 +206,11 @@ def today_str():
     return date.today().isoformat()
 
 
+def paper_dir(paper_id):
+    """每张卷的文件目录：workspace/papers/<paper_id>/（卷子/答案/判分卡都放这里）。"""
+    return PAPERS_DIR / paper_id
+
+
 def qid(chapter_no, difficulty, type_key, qnum):
     return (f"gs-c{int(chapter_no):02d}-{difficulty}-{type_key}-{int(qnum):03d}")
 

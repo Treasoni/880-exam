@@ -29,7 +29,7 @@
 ```
 question-index.json  ←  解析册+做题本（入库）
         ↓ 抽题
-papers/卷子-XX.md + 卷子-XX-答案.md  →  papers.json（快照）
-        ↓ 判分
+papers/paper-XX/（卷子-XX.md + 卷子-XX-答案.md + 判分卡-XX.md）  →  papers.json（快照）
+        ↓ 判分（读判分卡勾选）
 records/attempts.json  →  错题本.md / 进度总览.md / 弱点分 → 下一张卷配额
 ```
