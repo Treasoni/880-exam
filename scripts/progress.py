@@ -16,10 +16,8 @@ TYPE_ZH = {"choice": "选", "fill": "填", "solution": "解"}
 
 
 def latest_grade(qid, attempts):
-    hits = [a for a in attempts["attempts"] if a["qid"] == qid]
-    if not hits:
-        return None
-    return hits[-1]["grade"]  # 按插入顺序，最后一条即最近一次判分
+    last = lib880.latest_attempt(qid, attempts)
+    return last["grade"] if last else None
 
 
 def main():

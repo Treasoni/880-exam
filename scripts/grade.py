@@ -14,7 +14,7 @@
 grading 中 key 为题型内题号（1 起），value 为中文或英文判分态。
 --grading 可接受带外层单/双引号的字符串；也可用 --grading-file <UTF-8 文件> 读取 JSON。
 可加 --redo：表示这是错题重练（若判为『对』则复习状态置为已掌握，否则保持未复习）。
-判分后会回填卷子文件判分表、把 frontmatter status 更新为 graded，并刷新错题本与进度总览。
+判分后会回填卷子文件判分表、把 frontmatter status 更新为 partially_graded / graded，并刷新错题本与进度总览。
 """
 
 import argparse
@@ -151,6 +151,16 @@ def _backfill_grade_table(text, graded_rows):
     return "\n".join(out)
 
 
+def paper_grade_status(paper, attempts):
+    """根据本卷每题是否至少有一次判分，返回部分或完整判分状态。"""
+    expected = {q["qid"] for q in paper["questions"]}
+    graded = {
+        a.get("qid") for a in attempts["attempts"]
+        if a.get("paper_id") == paper["paper_id"]
+    }
+    return "graded" if expected and expected <= graded else "partially_graded"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--paper", default=None, help="卷子 id；用 --sheet 时可不传（从卡片 frontmatter 读）")
@@ -195,10 +205,14 @@ def main():
     attempts = lib880.load_attempts()
     papers = lib880.load_papers()
 
-    paper = next((p for p in papers["papers"] if p["paper_id"] == args.paper), None)
-    if not paper:
+    matching_papers = [p for p in papers["papers"] if p["paper_id"] == args.paper]
+    if not matching_papers:
         print(f"!! 找不到卷子 {args.paper}", file=sys.stderr)
         sys.exit(2)
+    if len(matching_papers) > 1:
+        print(f"!! 卷子 {args.paper} 有 {len(matching_papers)} 条重复记录，请先修复 papers.json", file=sys.stderr)
+        sys.exit(2)
+    paper = matching_papers[0]
 
     qmap = {}  # (section, pos) -> qid
     for q in paper["questions"]:
@@ -229,6 +243,7 @@ def main():
                 "paper_id": args.paper,
                 "grade": grade_key,
                 "when": today,
+                "recorded_at": lib880.now_timestamp(),
                 "note": args.note,
             }
             # 幂等：同日同题同态判分不重复记录（判分卡重复跑不会叠加记录）
@@ -257,7 +272,7 @@ def main():
         print("判分卡勾选与已有记录重复，无新增记录（复习状态/判分表已刷新）")
 
     lib880.save_attempts(attempts)
-    paper["status"] = "graded"
+    paper["status"] = paper_grade_status(paper, attempts)
     lib880.save_papers(papers)
 
     # 更新卷子文件：frontmatter status → graded、updated → 当日；判分表回填判分态
@@ -269,7 +284,7 @@ def main():
     paper_path = lib880.paper_dir(args.paper) / f"卷子-{n:02d}.md"
     if paper_path.exists():
         text = paper_path.read_text(encoding="utf-8")
-        text = re.sub(r"^status: .*$", "status: graded", text, count=1, flags=re.MULTILINE)
+        text = re.sub(r"^status: .*$", f"status: {paper['status']}", text, count=1, flags=re.MULTILINE)
         text = re.sub(r"^updated: .*$", f"updated: {today}", text, count=1, flags=re.MULTILINE)
         text = _backfill_grade_table(text, graded_rows)
         paper_path.write_text(text, encoding="utf-8")
@@ -284,7 +299,8 @@ def main():
     subprocess.run([py, str(scripts / "wrong_book.py")], check=True)
     subprocess.run([py, str(scripts / "progress.py")], check=True)
 
-    print(f"已记录 {added} 条判分 → 卷子 {args.paper} 标记为已判分")
+    status_zh = "已判完" if paper["status"] == "graded" else "部分判分"
+    print(f"已记录 {added} 条判分 → 卷子 {args.paper} 标记为{status_zh}")
     print(f"已重生成错题本与进度总览")
 
 

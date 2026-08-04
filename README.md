@@ -23,6 +23,7 @@
 - **输出编码**：脚本统一把 stdout/stderr 重配为 UTF-8，Windows 控制台或非 UTF-8 locale 下打印中文不会报 `UnicodeEncodeError`。
 - **判分**：优先 `grade.py --sheet <判分卡>` 读取勾选（paper_id 自动从卡片 frontmatter 获取）；JSON 兜底用 `--grading-file <UTF-8 文件>` 从文件读判分，避免 cmd/PowerShell 引号问题；`--grading` 也容忍外层单/双引号。
 - **换行**：`.gitattributes` 强制 `.sh/.py/.md` 等文本文件在仓库与检出时均用 LF，防止 Windows `autocrlf` 把脚本转坏。
+- **质量检查**：`make test` 运行不触碰真实学习记录的核心规则与安全生成测试；`make index-check` 严格阻断待复核索引，`make index-check-structure` 只校验索引结构。
 - **Shell 工具**（`.claude/scripts/*.sh`、hooks）：仅用于 Claude Code 钩子/插件，需要 bash；Windows 请用 Git Bash 或 WSL 运行。
 - **技能软链**：`.claude/skills/*` 下有 41 个软链指向 `.agents/skills/*`（去重设计）。Windows 上克隆后需 `git config core.symlinks true` 并开启系统「开发者模式」才能正确还原；否则这些软链会退化为普通文本文件。
 
@@ -58,3 +59,4 @@ workspace/
 - 答案全部来自解析册，**不做 AI 生成**（见 `docs/adr/0001`）；两个源文件有 OCR 标记丢失/合并问题，入库时用 LLM 按内容对齐并逐个校验。
 - 当前只含高数；数据模型预留 `科目→章节` 两级，线代题库可随时加入。
 - 生成的 Markdown 兼容 Obsidian，可直接用 Obsidian 打开本仓库浏览。
+- 指定已存在的卷号会被拒绝，防止覆盖答题卡和学习记录；只有尚未判分的卷子可用 `--replace-ungraded` 显式重生成。

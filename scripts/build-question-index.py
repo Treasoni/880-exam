@@ -18,8 +18,12 @@ build-question-index.py — 解析做题本 + 解析册，生成题目索引。
 
 import json
 import re
+import argparse
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import lib880
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -121,7 +125,8 @@ def summarize(entries):
     return stat
 
 
-def check():
+def check_source_alignment():
+    """审计原始 Markdown 的可解析数量；OCR 造成的差异只作提示，不能据此覆盖 LLM 对齐结果。"""
     wb = parse_questions(WORKBOOK)
     a = parse_questions(ANSWER_15) + parse_questions(ANSWER_6)
 
@@ -141,12 +146,37 @@ def check():
         else:
             flag = "OK"
         print(f"  第{k[0]}章 | {k[1]} | {k[2]} → {w:>3} vs {x:<3}  {flag}")
-    print("\n总对齐: ", "通过" if ok else "存在不一致")
+    print("\n原始 Markdown 计数: ", "一致" if ok else "存在 OCR/标记差异（需以逐节提取日志复核）")
+    return ok
+
+
+def check_index(*, allow_pending_review=False):
+    """校验当前可运行索引；返回 True 时才可作为稳定输入使用。"""
+    try:
+        schema = lib880.load_schema()
+        index = lib880.load_index()
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"!! 无法读取索引或配置: {exc}", file=sys.stderr)
+        return False
+    errors = lib880.validate_index(schema, index, strict_review=not allow_pending_review)
+    if errors:
+        print("\n=== 索引契约校验失败 ===", file=sys.stderr)
+        for error in errors:
+            print(f"  - {error}", file=sys.stderr)
+        if not allow_pending_review and index.get("stats", {}).get("verify_needs_review", 0):
+            print("  可用 --allow-pending-review 仅确认结构完整；不要把它当作人工复核完成。", file=sys.stderr)
+        return False
+    print("\n索引契约校验: 通过")
+    return True
 
 
 if __name__ == "__main__":
-    if "--check" in sys.argv:
-        check()
-        sys.exit(0)
-    check()
-    print("\n(尚未实现索引输出，先跑 --check)")
+    ap = argparse.ArgumentParser(description="审计原始题库与当前 question-index.json")
+    ap.add_argument("--check", action="store_true", help="严格校验当前索引；待人工复核项会使命令失败")
+    ap.add_argument("--allow-pending-review", action="store_true",
+                    help="只校验索引结构；保留待复核警告")
+    args = ap.parse_args()
+    check_source_alignment()
+    if args.check:
+        sys.exit(0 if check_index(allow_pending_review=args.allow_pending_review) else 1)
+    print("\n提示：题目索引由 prepare_sections + extraction workflow + merge_extraction.py 生成。")

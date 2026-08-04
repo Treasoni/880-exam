@@ -22,10 +22,7 @@ CN = "零一二三四五六七八九"
 
 
 def latest_grade(qid, attempts):
-    hits = [a for a in attempts["attempts"] if a["qid"] == qid]
-    if not hits:
-        return None
-    return hits[-1]  # 按插入顺序，最后一条即最近一次判分
+    return lib880.latest_attempt(qid, attempts)
 
 
 def build_wrong_list(schema, index, attempts):

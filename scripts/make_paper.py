@@ -106,6 +106,7 @@ def cell_pool(index, chapter_no, type_key, difficulty):
         q for q in index["questions"]
         if q["chapter_no"] == chapter_no and q["type"] == type_key
         and q["difficulty"] == difficulty
+        and q.get("answer_status") == "ok"
     ]
 
 
@@ -135,7 +136,8 @@ def allocate_difficulties(schema, index, chapter_no, type_key, k, ignore_extensi
         ]
         if not candidates:
             break
-        d = max(candidates, key=lambda d: alloc[d] and mix.get(d, 0))
+        d = max(candidates, key=lambda d: (mix.get(d, 0),
+                                            len(cell_pool(index, chapter_no, type_key, d)) - alloc[d]))
         alloc[d] += 1
     return {d: v for d, v in alloc.items() if v > 0}
 
@@ -343,6 +345,8 @@ def main():
     ap.add_argument("--seed", type=int, default=None)
     ap.add_argument("--ignore-extension", action="store_true")
     ap.add_argument("--no-weakness", action="store_true")
+    ap.add_argument("--replace-ungraded", action="store_true",
+                    help="仅替换尚无判分记录的同编号卷子；防止意外覆盖学习记录")
     args = ap.parse_args()
 
     schema = lib880.load_schema()
@@ -362,6 +366,15 @@ def main():
         ]
         n = (max(existing) + 1) if existing else 1
     paper_id = f"paper-{n:02d}"
+
+    existing_papers = [p for p in papers["papers"] if p["paper_id"] == paper_id]
+    paper_dir = lib880.paper_dir(paper_id)
+    if existing_papers or paper_dir.exists():
+        has_attempts = any(a.get("paper_id") == paper_id for a in attempts["attempts"])
+        if not args.replace_ungraded:
+            ap.error(f"卷子 {paper_id} 已存在；请换一个 --n。仅未判分卷子可用 --replace-ungraded 重生成")
+        if len(existing_papers) != 1 or has_attempts:
+            ap.error(f"卷子 {paper_id} 已有判分记录或记录异常，拒绝覆盖以保护学习数据")
 
     weakness = {} if args.no_weakness else lib880.chapter_weakness(schema, index, attempts)
     quota = effective_quota(schema, weakness)
@@ -386,13 +399,18 @@ def main():
         sections_plan[type_key] = picked
         all_picked += picked
 
-    # 校验合计
+    # 在落盘前严格校验：题库不足绝不能生成一张残缺的卷子。
+    expected_total = sum(spec["count"] for spec in schema["paper"]["sections"].values())
     total = sum(len(v) for v in sections_plan.values())
-    if total != 22:
-        print(f"!! 卷子题目数异常: {total}（预期 22）", file=sys.stderr)
+    shortages = [
+        f"{TYPE_ZH[t]} {len(sections_plan.get(t, []))}/{spec['count']}"
+        for t, spec in schema["paper"]["sections"].items()
+        if len(sections_plan.get(t, [])) != spec["count"]
+    ]
+    if total != expected_total or shortages:
+        ap.error("题库可用题目不足，未生成卷子：" + "；".join(shortages))
 
     # 写文件（每卷一个子文件夹：卷子/答案/判分卡）
-    paper_dir = lib880.paper_dir(paper_id)
     paper_dir.mkdir(parents=True, exist_ok=True)
     paper_path = paper_dir / f"卷子-{n:02d}.md"
     answer_path = paper_dir / f"卷子-{n:02d}-答案.md"
@@ -403,7 +421,7 @@ def main():
     card_path.write_text(render_grading_card(schema, paper_id, sections_plan), encoding="utf-8")
 
     # 记录
-    papers["papers"].append({
+    paper_record = {
         "paper_id": paper_id,
         "date": lib880.today_str(),
         "duration_minutes": schema["paper"]["duration_minutes"],
@@ -416,7 +434,10 @@ def main():
         ],
         "status": "created",
         "weakness_scores": weakness,
-    })
+    }
+    if existing_papers:
+        papers["papers"] = [p for p in papers["papers"] if p["paper_id"] != paper_id]
+    papers["papers"].append(paper_record)
     lib880.save_papers(papers)
 
     print(f"已生成卷子：{paper_path}")

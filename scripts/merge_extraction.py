@@ -17,6 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import lib880
 
 Q_MARK_RE = re.compile(r"^[（(]\d+[)）]\s*")
+REVIEW_OVERRIDES_PATH = lib880.ROOT / "workspace/review-overrides.json"
 
 
 def load_journal(path):
@@ -41,19 +42,31 @@ def load_journal(path):
     return extracts, verifies
 
 
+def load_review_overrides():
+    """读取人工复核结论；索引本身始终由 journal 合并生成，不接受手工改题。"""
+    if not REVIEW_OVERRIDES_PATH.exists():
+        return {}
+    data = json.loads(REVIEW_OVERRIDES_PATH.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError(f"{REVIEW_OVERRIDES_PATH} 必须是对象")
+    return data
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--journal", required=True)
     args = ap.parse_args()
 
     extracts, verifies = load_journal(args.journal)
+    overrides = load_review_overrides()
     manifest = json.loads(
         (lib880.ROOT / "workspace/.build/sections/manifest.json").read_text(encoding="utf-8"))
     meta = {m["id"]: m for m in manifest}
 
     questions = []
     missing = 0
-    verify_issues = 0
+    review_sections = []
+    applied_overrides = []
     skipped = []
     for sid, m in meta.items():
         ex = extracts.get(sid)
@@ -67,8 +80,13 @@ def main():
             print(f"!! {sid} 题号不连续: {nums}")
         vf = verifies.get(sid)
         if vf and vf.get("verdict") == "needs_review":
-            verify_issues += 1
-            print(f"!! {sid} 校验需复查: {[i.get('description') for i in vf.get('issues', [])]}")
+            override = overrides.get(sid, {})
+            if override.get("resolution") == "verified":
+                applied_overrides.append(sid)
+                print(f"✓ {sid} 已由人工复核确认：{override.get('note', '无备注')}")
+            else:
+                review_sections.append(sid)
+                print(f"!! {sid} 校验需复查: {[i.get('description') for i in vf.get('issues', [])]}")
         for q in qs:
             flags = q.get("flags", [])
             text = Q_MARK_RE.sub("", q.get("text", "")).strip()
@@ -102,14 +120,16 @@ def main():
         "stats": {
             "total": len(questions),
             "answer_missing": missing,
-            "verify_needs_review": verify_issues,
+            "verify_needs_review": len(review_sections),
+            "review_sections": review_sections,
+            "review_overrides_applied": applied_overrides,
             "sections_skipped": skipped,
         },
     }
     lib880.INDEX_PATH.parent.mkdir(parents=True, exist_ok=True)
     lib880.INDEX_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"题目索引已生成：{lib880.INDEX_PATH}")
-    print(f"总题数 {len(questions)} · 缺答案 {missing} · 校验需复查 {verify_issues}")
+    print(f"总题数 {len(questions)} · 缺答案 {missing} · 校验需复查 {len(review_sections)}")
     if skipped:
         print(f"!! 未提取的节: {skipped}")
 

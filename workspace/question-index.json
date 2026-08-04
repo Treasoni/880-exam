@@ -9898,7 +9898,11 @@
  "stats": {
   "total": 618,
   "answer_missing": 0,
-  "verify_needs_review": 1,
+  "verify_needs_review": 0,
+  "review_sections": [],
+  "review_overrides_applied": [
+   "ch4-extension-choice"
+  ],
   "sections_skipped": []
  }
 }

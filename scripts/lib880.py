@@ -206,6 +206,28 @@ def today_str():
     return date.today().isoformat()
 
 
+def now_timestamp():
+    """返回可排序的本地时区时间戳，供判分记录确定先后顺序。"""
+    return datetime.now().astimezone().isoformat(timespec="seconds")
+
+
+def attempt_sort_key(attempt):
+    """兼容旧记录的稳定判分排序键。"""
+    raw = attempt.get("recorded_at") or f"{attempt.get('when', '')}T00:00:00"
+    try:
+        return datetime.fromisoformat(raw).timestamp()
+    except (TypeError, ValueError):
+        return float("-inf")
+
+
+def latest_attempt(qid_, attempts):
+    """返回一道题按记录时间最新的判分；同一时间按写入顺序决胜。"""
+    hits = [a for a in attempts["attempts"] if a.get("qid") == qid_]
+    if not hits:
+        return None
+    return max(enumerate(hits), key=lambda item: (attempt_sort_key(item[1]), item[0]))[1]
+
+
 def paper_dir(paper_id):
     """每张卷的文件目录：workspace/papers/<paper_id>/（卷子/答案/判分卡都放这里）。"""
     return PAPERS_DIR / paper_id
@@ -235,6 +257,7 @@ def chapter_weakness(schema, index, attempts, now=None):
     grade_weight = {g["key"]: g["weight"] for g in schema["grades"]}
     ch_accum = {}
     ch_count = {}
+    ch_attempts = {}
     for a in attempts["attempts"]:
         q = index["by_id"].get(a["qid"])
         if not q:
@@ -249,9 +272,11 @@ def chapter_weakness(schema, index, attempts, now=None):
         gw = grade_weight.get(a["grade"], 0.5)
         ch_accum[ch] = ch_accum.get(ch, 0.0) + gw * decay
         ch_count[ch] = ch_count.get(ch, 0) + decay
+        ch_attempts[ch] = ch_attempts.get(ch, 0) + 1
     scores = {}
+    min_attempts = schema["weakness"].get("min_attempts", 1)
     for ch in sorted(ch_accum):
-        if ch_count[ch] <= 0:
+        if ch_count[ch] <= 0 or ch_attempts[ch] < min_attempts:
             continue
         scores[ch] = ch_accum[ch] / ch_count[ch]
     return scores
@@ -266,7 +291,7 @@ def question_weight(schema, q, attempts, now=None):
     w = base
     if q_attempts:
         w *= schema["sampling"]["attempt_decay"] ** len(q_attempts)
-        last = max(q_attempts, key=lambda a: a["when"])
+        last = latest_attempt(qid_, attempts)
         try:
             days = max(0.0, (now - date.fromisoformat(last["when"])).days)
         except Exception:
@@ -284,3 +309,53 @@ def build_index_map(index):
     for q in index["questions"]:
         index["by_id"][q["id"]] = q
     return index
+
+
+def validate_index(schema, index, *, strict_review=True):
+    """校验题目索引的运行时契约，返回所有错误文本而非在首个错误处退出。"""
+    errors = []
+    questions = index.get("questions")
+    if not isinstance(questions, list) or not questions:
+        return ["questions 必须是非空列表"]
+
+    chapter_ids = {c["no"] for c in schema["chapters"]}
+    type_ids = set(schema["paper"]["sections"])
+    difficulty_ids = set(schema["difficulty_mix"])
+    required = {
+        "id", "chapter_no", "difficulty", "type", "q_num", "text",
+        "answer", "solution", "answer_status",
+    }
+    seen = set()
+    for n, q in enumerate(questions, start=1):
+        missing = required - set(q)
+        if missing:
+            errors.append(f"第 {n} 题缺字段: {', '.join(sorted(missing))}")
+            continue
+        qid_ = q["id"]
+        if not qid_ or qid_ in seen:
+            errors.append(f"第 {n} 题 ID 为空或重复: {qid_!r}")
+        seen.add(qid_)
+        if q["chapter_no"] not in chapter_ids:
+            errors.append(f"{qid_}: 未知章节 {q['chapter_no']!r}")
+        if q["type"] not in type_ids:
+            errors.append(f"{qid_}: 未知题型 {q['type']!r}")
+        if q["difficulty"] not in difficulty_ids:
+            errors.append(f"{qid_}: 未知难度 {q['difficulty']!r}")
+        if not isinstance(q["q_num"], int) or q["q_num"] < 1:
+            errors.append(f"{qid_}: q_num 必须为正整数")
+        if not str(q["text"] or "").strip():
+            errors.append(f"{qid_}: 题干为空")
+        if q["answer_status"] not in {"ok", "missing"}:
+            errors.append(f"{qid_}: 非法 answer_status {q['answer_status']!r}")
+        if q["answer_status"] == "ok" and not (
+            str(q["answer"] or "").strip() or str(q["solution"] or "").strip()
+        ):
+            errors.append(f"{qid_}: 标记为 ok 但答案和解析均为空")
+
+    stats = index.get("stats", {})
+    if stats.get("total") != len(questions):
+        errors.append(f"stats.total={stats.get('total')!r}，实际题数={len(questions)}")
+    pending = stats.get("verify_needs_review", 0)
+    if strict_review and pending:
+        errors.append(f"仍有 {pending} 个小节待人工复核")
+    return errors
