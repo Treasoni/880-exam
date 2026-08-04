@@ -1,0 +1,195 @@
+{
+  "version": "1",
+  "description": "880-exam 高频请求回归样本。指标由 .claude/scripts/collect_llm_usage.py 从 Claude Code transcript 自动采集；每次修改模板、模型、工具定义或上下文加载策略后，按同一样本重放并对比 baseline。",
+  "cases": [
+    {
+      "id": "880-paper-request",
+      "enabled": true,
+      "request_type": "paper",
+      "template_id": "skill/880-paper",
+      "input_fixture": "fixtures/880-paper-request.md",
+      "parameters": {
+        "mode": "真题模式",
+        "seed": "固定 seed 复现",
+        "paper_count": "1"
+      },
+      "quality_checks": [
+        "生成 workspace/papers/paper-XX/ 下 卷子-XX.md、卷子-XX-答案.md、判分卡-XX.md 三个文件",
+        "卷头规格为 选10×5分 + 填6×5分 + 解6题 = 150分/180分钟",
+        "frontmatter、结构、wikilink 符合 obsidian-content 规范",
+        "只向用户报告卷子路径，答案卷与判分卡不提前展示"
+      ],
+      "baseline": {
+        "input_tokens": null,
+        "cache_read_tokens": null,
+        "output_tokens": null,
+        "latency_ms": null,
+        "cost_usd": null,
+        "quality_score": null
+      }
+    },
+    {
+      "id": "880-grade-sheet",
+      "enabled": true,
+      "request_type": "grade",
+      "template_id": "skill/880-grade",
+      "input_fixture": "fixtures/880-grade-request.md",
+      "parameters": {
+        "mode": "勾选式判分卡",
+        "redo": "off"
+      },
+      "quality_checks": [
+        "读取判分卡勾选并落库，记录条数与勾选一致",
+        "卷子 frontmatter status 置为 graded，判分表回填",
+        "错题本与进度总览刷新且与 attempts.json 一致",
+        "空行/未勾选题目保持未判，不猜测"
+      ],
+      "baseline": {
+        "input_tokens": null,
+        "cache_read_tokens": null,
+        "output_tokens": null,
+        "latency_ms": null,
+        "cost_usd": null,
+        "quality_score": null
+      }
+    },
+    {
+      "id": "880-wrongbook-view",
+      "enabled": true,
+      "request_type": "wrongbook",
+      "template_id": "skill/880-wrongbook",
+      "input_fixture": "fixtures/880-wrongbook-request.md",
+      "parameters": {
+        "view": "错题本"
+      },
+      "quality_checks": [
+        "章节索引表与题目列表存在，判分/优先级/复习状态列完整",
+        "重点（不会/半会）与已掌握计数与 attempts.json 一致",
+        "题目引用来源卷子 wikilink 有效"
+      ],
+      "baseline": {
+        "input_tokens": null,
+        "cache_read_tokens": null,
+        "output_tokens": null,
+        "latency_ms": null,
+        "cost_usd": null,
+        "quality_score": null
+      }
+    },
+    {
+      "id": "880-progress-view",
+      "enabled": true,
+      "request_type": "progress",
+      "template_id": "skill/880-progress",
+      "input_fixture": "fixtures/880-progress-request.md",
+      "parameters": {
+        "view": "进度总览"
+      },
+      "quality_checks": [
+        "汇总表格（总题数/已判/欠账/未做/非对）存在且数字正确",
+        "章节弱点排行与章节进度表格齐全",
+        "已判卷子链接列表有效"
+      ],
+      "baseline": {
+        "input_tokens": null,
+        "cache_read_tokens": null,
+        "output_tokens": null,
+        "latency_ms": null,
+        "cost_usd": null,
+        "quality_score": null
+      }
+    },
+    {
+      "id": "880-build-index",
+      "enabled": true,
+      "request_type": "build-index",
+      "template_id": "skill/880-build-index",
+      "input_fixture": "fixtures/880-build-index-request.md",
+      "parameters": {
+        "source": "做题本 + 解析册"
+      },
+      "quality_checks": [
+        "workspace/question-index.json 重建且题数约为 606",
+        "入库后 validate 通过，无重复题号",
+        "不修改 880/ 下原始做题本与解析册"
+      ],
+      "baseline": {
+        "input_tokens": null,
+        "cache_read_tokens": null,
+        "output_tokens": null,
+        "latency_ms": null,
+        "cost_usd": null,
+        "quality_score": null
+      }
+    },
+    {
+      "id": "general-dev-fix",
+      "enabled": true,
+      "request_type": "general-dev",
+      "template_id": "claude-code/session",
+      "input_fixture": "fixtures/general-dev-fix-request.md",
+      "parameters": {
+        "task": "修复脚本缺陷"
+      },
+      "quality_checks": [
+        "改动范围限于目标文件，无无关重构",
+        "项目校验脚本（validate/lint）通过",
+        "输出与预期行为一致"
+      ],
+      "baseline": {
+        "input_tokens": null,
+        "cache_read_tokens": null,
+        "output_tokens": null,
+        "latency_ms": null,
+        "cost_usd": null,
+        "quality_score": null
+      }
+    },
+    {
+      "id": "code-review-since",
+      "enabled": true,
+      "request_type": "code-review",
+      "template_id": "skill/code-review",
+      "input_fixture": "fixtures/code-review-since-request.md",
+      "parameters": {
+        "since": "指定 commit/branch"
+      },
+      "quality_checks": [
+        "按 Standards 与 Spec compliance 双轴输出 findings",
+        "findings 可追溯到文件与行号",
+        "无虚构发现"
+      ],
+      "baseline": {
+        "input_tokens": null,
+        "cache_read_tokens": null,
+        "output_tokens": null,
+        "latency_ms": null,
+        "cost_usd": null,
+        "quality_score": null
+      }
+    },
+    {
+      "id": "research-question",
+      "enabled": true,
+      "request_type": "research",
+      "template_id": "skill/research",
+      "input_fixture": "fixtures/research-question-request.md",
+      "parameters": {
+        "source": "高可信一手资料"
+      },
+      "quality_checks": [
+        "结论逐条追溯到一手来源并引用",
+        "产出为单份 Markdown 且落在仓库惯例位置",
+        "不返回原始网页正文"
+      ],
+      "baseline": {
+        "input_tokens": null,
+        "cache_read_tokens": null,
+        "output_tokens": null,
+        "latency_ms": null,
+        "cost_usd": null,
+        "quality_score": null
+      }
+    }
+  ]
+}

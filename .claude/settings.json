@@ -7,6 +7,21 @@
           {
             "type": "command",
             "command": "python3 '.claude/hooks/read_learnings.py'"
+          },
+          {
+            "type": "command",
+            "command": "python3 '.claude/scripts/collect_llm_usage.py' --quiet"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '.claude/scripts/collect_llm_usage.py' --quiet"
           }
         ]
       }

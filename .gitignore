@@ -24,6 +24,10 @@ venv/
 # === 主机本地配置 ===
 .claude/settings.local.json
 
+# === LLM usage 观测（本地事件文件不入库，合同/样本保留） ===
+.llm/prompt-cache/usage-events.jsonl
+.llm/prompt-cache/collector-state.json
+
 # === 独立子仓库（自行版本管理） ===
 /template_ai/
 

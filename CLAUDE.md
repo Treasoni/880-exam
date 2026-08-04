@@ -57,6 +57,12 @@ Windows 下用 `py -3` 替代 `python3`。
 - Reuse canonical templates and load long context only when needed.
 <!-- prompt-cache-bootstrap:claude:end -->
 
+## LLM Usage Observability
+
+- 自动采集：`Stop` 与 `SessionStart` hooks 已注册，每轮结束/会话启动自动运行 `collect_llm_usage.py --quiet` 增量采集到 `.llm/prompt-cache/usage-events.jsonl`（本地文件，不入库）；也可手动 `python3 .claude/scripts/collect_llm_usage.py`。
+- 回归样本：`.llm/prompt-cache/regression-cases.json` 与 `fixtures/`；改动模板/模型/上下文加载策略后按同一样本重放对比。
+- 指标口径与近似说明见 `.llm/prompt-cache/README.md`；无实测前后数据不下「节省」结论。
+
 <!-- workflow-todo-state:start -->
 ## Workflow Todo State
 
