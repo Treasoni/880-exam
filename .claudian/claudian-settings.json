@@ -17,7 +17,7 @@
       "id": "snippet-1785892800175",
       "name": "deepseek",
       "description": "",
-      "envVars": "export ANTHROPIC_AUTH_TOKEN=\"sk-44de2aab48224ba6a1b0df0319c0063c\"\nexport ANTHROPIC_BASE_URL=\"https://api.deepseek.com/anthropic\"\nexport CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1\nexport ANTHROPIC_DEFAULT_HAIKU_MODEL=\"deepseek-v4-flash\"\nexport ANTHROPIC_DEFAULT_SONNET_MODEL=\"deepseek-v4-pro[1m]\"\nexport ANTHROPIC_DEFAULT_OPUS_MODEL=\"deepseek-v4-pro[1m]\"",
+      "envVars": "export ANTHROPIC_AUTH_TOKEN=\"sk-be6c6197af514b9fab9321315f4a2bef\"\nexport ANTHROPIC_BASE_URL=\"https://api.deepseek.com/anthropic\"\nexport CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1\nexport ANTHROPIC_DEFAULT_HAIKU_MODEL=\"deepseek-v4-flash\"\nexport ANTHROPIC_DEFAULT_SONNET_MODEL=\"deepseek-v4-pro[1m]\"\nexport ANTHROPIC_DEFAULT_OPUS_MODEL=\"deepseek-v4-pro[1m]\"",
       "scope": "provider:claude"
     }
   ],
@@ -44,14 +44,14 @@
       "environmentHash": "ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic|ANTHROPIC_DEFAULT_HAIKU_MODEL=deepseek-v4-flash|ANTHROPIC_DEFAULT_OPUS_MODEL=deepseek-v4-pro[1m]|ANTHROPIC_DEFAULT_SONNET_MODEL=deepseek-v4-pro[1m]"
     },
     "codex": {
-      "enabled": false,
+      "enabled": true,
       "safeMode": "workspace-write",
       "cliPath": "",
       "cliPathsByHost": {},
       "customModels": "",
       "reasoningSummary": "detailed",
-      "environmentVariables": "",
-      "environmentHash": "",
+      "environmentVariables": "OPENAI_BASE_URL=https://chatgpt.com/codex\nOPENAI_MODEL=gpt-5.6-luna\nCODEX_SANDBOX=workspace-write\n",
+      "environmentHash": "OPENAI_BASE_URL=https://chatgpt.com/codex|OPENAI_MODEL=gpt-5.6-luna",
       "installationMethodsByHost": {
         "zhqzncdeMacBook-Air.local": "native-windows"
       },
@@ -71,17 +71,21 @@
   },
   "settingsProvider": "claude",
   "savedProviderModel": {
-    "claude": "deepseek-v4-flash"
+    "claude": "deepseek-v4-flash",
+    "codex": "gpt-5.6-luna"
   },
   "savedProviderEffort": {
-    "claude": "high"
+    "claude": "high",
+    "codex": "high"
   },
   "savedProviderServiceTier": {},
   "savedProviderThinkingBudget": {
-    "claude": "xhigh"
+    "claude": "xhigh",
+    "codex": "xhigh"
   },
   "savedProviderPermissionMode": {
-    "claude": "yolo"
+    "claude": "yolo",
+    "codex": "yolo"
   },
   "lastCustomModel": "deepseek-v4-flash",
   "maxTabs": 3,

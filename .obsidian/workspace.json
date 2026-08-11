@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/paper-01/卷子-01.md",
+                "file": "workspace/papers/paper-01/卷子-01-答案.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "卷子-01"
+              "title": "卷子-01-答案"
             }
           }
         ],
@@ -191,13 +191,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-01/卷子-01.md",
+                "file": "workspace/papers/paper-01/卷子-01-答案.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "卷子-01 的大纲"
+              "title": "卷子-01-答案 的大纲"
             }
           },
           {
@@ -269,11 +269,14 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "7af8f20397d6695b",
+  "active": "d0d8383a692e3423",
   "lastOpenFiles": [
+    "workspace/records/analysis.json",
+    "scripts/__pycache__/lib880.cpython-313.pyc",
+    "scripts/__pycache__",
+    "workspace/papers/paper-01/卷子-01.md",
     "docs/使用指南.md",
     "workspace/papers/paper-01/判分卡-01.md",
-    "workspace/papers/paper-01/卷子-01.md",
     "workspace/papers/paper-01/卷子-01-答案.md",
     "workspace/workflow-runs/880-exam.workflow.md.sW3J7V",
     "workspace/workflow-runs/880-exam.workflow.md",
@@ -296,8 +299,6 @@
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/assets/有界与最值定理",
     "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/assets/定积分定义/定积分演示.html",
     "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数/assets/链式求导法则",
-    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets/微分的定义",
-    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets/differential_concept.py",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/3-涉及积分的中值定理/积分中值定理.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/📝 章节总结.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/费马定理.md",
@@ -316,7 +317,6 @@
     "external-notes/考研数学/高数-一元微分学/一元微分学的计算/9-幂指函数求导法/幂指函数求导法.md",
     "external-notes/考研数学/高数-一元微分学/一元微分学的计算/8-对数求导法/对数求导法.md",
     "external-notes/考研数学/高数-一元微分学/一元微分学的计算/7-参数方程求导/参数方程的二阶导数.md",
-    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/7-参数方程求导/参数方程的一阶导数.md",
     "考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/未命名.canvas"
   ]
 }
