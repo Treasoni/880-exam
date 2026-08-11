@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/papers/paper-01/卷子-01.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "错题本"
+              "title": "卷子-01"
             }
           }
         ],
@@ -191,13 +191,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/papers/paper-01/卷子-01.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "错题本 的大纲"
+              "title": "卷子-01 的大纲"
             }
           },
           {
@@ -271,9 +271,12 @@
   },
   "active": "d0d8383a692e3423",
   "lastOpenFiles": [
-    "external-notes/考研数学/高数-函数极限与连续/错题本.md",
-    "workspace/wrong-book/错题本.md",
+    "workspace/workflow-runs/880-exam.workflow.md.sW3J7V",
+    "workspace/workflow-runs/880-exam.workflow.md",
+    "workspace/papers/paper-01/判分卡-01.md",
     "workspace/papers/paper-01/卷子-01-答案.md",
+    "workspace/wrong-book/错题本.md",
+    "external-notes/考研数学/高数-函数极限与连续/错题本.md",
     "workspace/records/external-links.json",
     "workspace/papers/paper-01/卷子-01.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/费马定理/file-20260326155144130.png",
@@ -314,9 +317,6 @@
     "external-notes/考研数学/高数-一元微分学/一元微分学的计算/8-对数求导法/对数求导法.md",
     "external-notes/考研数学/高数-一元微分学/一元微分学的计算/7-参数方程求导/参数方程的二阶导数.md",
     "external-notes/考研数学/高数-一元微分学/一元微分学的计算/7-参数方程求导/参数方程的一阶导数.md",
-    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/6-隐函数求导法/隐函数求导法.md",
-    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/5-反函数的导数/反函数的二阶导数.md",
-    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/5-反函数的导数/反函数的一阶导数.md",
     "考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/未命名.canvas"
   ]
 }

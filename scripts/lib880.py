@@ -17,6 +17,7 @@ PAPERS_DIR = ROOT / "workspace/papers"
 WRONG_BOOK_PATH = ROOT / "workspace/wrong-book/错题本.md"
 PROGRESS_PATH = ROOT / "workspace/preview/进度总览.md"
 EXTERNAL_LINKS_PATH = ROOT / "workspace/records/external-links.json"
+ANALYSIS_PATH = ROOT / "workspace/records/analysis.json"
 
 
 def ensure_utf8_stdio():
@@ -215,6 +216,85 @@ def load_external_links():
     except ValueError as exc:
         print(f"!! external-links.json 解析失败，本次跳过外部关联: {exc}", file=sys.stderr)
         return {}
+
+
+def load_analysis():
+    """读取过程分析 {items: {qid: {paper_id, cause, step, advice, date}}}。
+
+    文件不存在返回空结构（功能未启用）；JSON 损坏时告警但不阻断主流程。
+    """
+    if not ANALYSIS_PATH.exists():
+        return {"items": {}}
+    try:
+        return json.loads(ANALYSIS_PATH.read_text(encoding="utf-8"))
+    except ValueError as exc:
+        print(f"!! analysis.json 解析失败，按空处理: {exc}", file=sys.stderr)
+        return {"items": {}}
+
+
+def save_analysis(data):
+    ANALYSIS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ANALYSIS_PATH.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def grade_score_ratio(schema, grade_key):
+    """判分态 → 得分比例（对 1.0 / 错 0 / 不会 0 / 半会 0.5 / 粗心 0.5）。"""
+    for g in schema["grades"]:
+        if g["key"] == grade_key:
+            return float(g.get("score_ratio", 0.0))
+    return 0.0
+
+
+def question_full_score(schema, section, idx):
+    """第 idx 题（1 起）满分：选择/填空 per_score，解答题取 score_seq。"""
+    spec = schema["paper"]["sections"][section]
+    if section == "solution":
+        seq = spec.get("score_seq") or [12] * spec["count"]
+        return seq[idx - 1] if idx - 1 < len(seq) else seq[-1]
+    return spec.get("per_score", 5)
+
+
+def compute_paper_scores(schema, paper, attempts, index):
+    """判分后算分：返回该卷每题的满分/得分、题型汇总、章节得分率。
+
+    index 需已 build_index_map（by_id 含 chapter_no）。
+    """
+    by_section = {s: {"earned": 0.0, "full": 0.0, "count": 0}
+                  for s in schema["paper"]["sections"]}
+    by_chapter = {}
+    q_rows = []
+    for q in paper["questions"]:
+        qid = q["qid"]
+        section = q["section"]
+        paper_no = q["paper_no"]
+        idx = int(paper_no[1:])
+        full = question_full_score(schema, section, idx)
+        last = latest_attempt(qid, attempts)
+        grade_key = last["grade"] if last else None
+        ratio = grade_score_ratio(schema, grade_key) if grade_key else 0.0
+        earned = round(full * ratio, 2)
+        q_rows.append({
+            "qid": qid, "paper_no": paper_no, "section": section,
+            "pos": idx, "full_score": full, "earned": earned,
+            "grade": grade_key,
+        })
+        by_section[section]["earned"] += earned
+        by_section[section]["full"] += full
+        by_section[section]["count"] += 1
+        meta = index["by_id"].get(qid)
+        if meta:
+            ch = meta["chapter_no"]
+            c = by_chapter.setdefault(ch, {"earned": 0.0, "full": 0.0})
+            c["earned"] += earned
+            c["full"] += full
+    return {
+        "total_earned": round(sum(s["earned"] for s in by_section.values()), 2),
+        "total_full": round(sum(s["full"] for s in by_section.values()), 2),
+        "sections": by_section,
+        "chapters": by_chapter,
+        "questions": q_rows,
+    }
 
 
 def today_str():

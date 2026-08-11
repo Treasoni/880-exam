@@ -7,11 +7,11 @@ updated: {date}
 
 # 880-exam 状态
 
-> [P0] ⬜ 未开始 — 入库
-> [P1] ⬜ 未开始 — 拼卷
-> [P2] ⬜ 未开始 — 判分
-> [P3] ⬜ 未开始 — 错题/补弱
-> [P4] ⬜ 未开始 — 预览
+> [P0] ⬜ 未开始 {not_started} — 入库
+> [P1] ⬜ 未开始 {not_started} — 拼卷
+> [P2] ⬜ 未开始 {not_started} — 判分
+> [P3] ⬜ 未开始 {not_started} — 错题/补弱
+> [P4] ⬜ 未开始 {not_started} — 预览
 
 ## 当前上下文
 

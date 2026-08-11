@@ -115,5 +115,58 @@ class PaperRulesTest(unittest.TestCase):
             self.assertEqual([p["paper_id"] for p in records], ["paper-01"])
 
 
+class ScoreAndAnalysisTest(unittest.TestCase):
+    def setUp(self):
+        self.schema = copy.deepcopy(lib880.load_schema())
+        self.schema["paper"]["sections"]["solution"]["score_seq"] = [10, 12, 12, 12]
+
+    def _paper(self):
+        return {"paper_id": "paper-01", "questions": [
+            {"qid": "q1", "section": "choice", "paper_no": "一1"},
+            {"qid": "q2", "section": "solution", "paper_no": "三1"},
+            {"qid": "q3", "section": "solution", "paper_no": "三2"},
+        ]}
+
+    def _attempts(self, grades):
+        return {"attempts": [
+            {"qid": q, "grade": g, "when": "2026-08-11",
+             "recorded_at": f"2026-08-11T{i:02d}:00:00+08:00"}
+            for i, (q, g) in enumerate(grades)
+        ]}
+
+    def test_question_full_score(self):
+        self.assertEqual(lib880.question_full_score(self.schema, "choice", 1), 5)
+        self.assertEqual(lib880.question_full_score(self.schema, "solution", 1), 10)
+        self.assertEqual(lib880.question_full_score(self.schema, "solution", 2), 12)
+
+    def test_score_ratios(self):
+        index = {"by_id": {"q1": {"chapter_no": 1}, "q2": {"chapter_no": 3}, "q3": {"chapter_no": 3}}}
+        paper = self._paper()
+        attempts = self._attempts([("q1", "correct"), ("q2", "half"), ("q3", "wrong")])
+        s = lib880.compute_paper_scores(self.schema, paper, attempts, index)
+        self.assertEqual(s["total_earned"], 10)          # 5 + 10*0.5 + 0
+        self.assertEqual(s["total_full"], 27)            # 5 + 10 + 12
+        self.assertEqual(s["sections"]["solution"]["earned"], 5)
+        self.assertEqual(s["sections"]["choice"]["earned"], 5)
+
+    def test_render_score_weakness_has_score_and_weakness(self):
+        index = {"by_id": {"q1": {"chapter_no": 1}, "q2": {"chapter_no": 3}, "q3": {"chapter_no": 3}}}
+        paper = self._paper()
+        attempts = self._attempts([("q1", "correct"), ("q2", "cannot"), ("q3", "half")])
+        text = grade.render_score_weakness(self.schema, paper, attempts, index)
+        self.assertIn("## 得分与弱点分析", text)
+        self.assertIn("总分", text)
+        self.assertIn("本卷弱点", text)
+        self.assertIn("第三章", text)
+
+    def test_analysis_roundtrip(self):
+        with tempfile.TemporaryDirectory() as td:
+            fake = Path(td) / "analysis.json"
+            with patch.object(lib880, "ANALYSIS_PATH", fake):
+                lib880.save_analysis({"items": {"q1": {"cause": "计算/代数错误", "date": "2026-08-11"}}})
+                data = lib880.load_analysis()
+        self.assertEqual(data["items"]["q1"]["cause"], "计算/代数错误")
+
+
 if __name__ == "__main__":
     unittest.main()
