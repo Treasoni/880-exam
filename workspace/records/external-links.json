@@ -1,0 +1,89 @@
+{
+  "updated": "2026-08-11",
+  "links": {
+    "gs-c01-comprehensive-choice-018": {
+      "path": "external-notes/考研数学/高数-函数极限与连续/错题本",
+      "anchor": "错题07：极限函数的间断点判断",
+      "label": "极限函数的间断点判断",
+      "confidence": "high",
+      "note": "极限函数求间断点，完全同题"
+    },
+    "gs-c01-comprehensive-fill-003": {
+      "path": "external-notes/考研数学/高数-函数极限与连续/错题本",
+      "anchor": "错题10：高阶无穷小的运算与反例思维",
+      "label": "高阶无穷小的运算与反例思维",
+      "confidence": "medium",
+      "note": "无穷小阶数判定；也可参考数列极限/错题13"
+    },
+    "gs-c01-comprehensive-solution-009": {
+      "path": "external-notes/考研数学/高数-一元微分学/错题本",
+      "anchor": "错题81：拉格朗日中值定理求极限（经典真题）",
+      "label": "拉格朗日中值定理求极限（经典真题）",
+      "confidence": "high",
+      "note": "中值定理求数列极限，同技法"
+    },
+    "gs-c02-basic-choice-018": {
+      "path": "external-notes/考研数学/高数-一元微分学/错题本",
+      "anchor": "错题22：抽象函数极限与导数定义（禁用洛必达）",
+      "label": "抽象函数极限与导数定义（禁用洛必达）",
+      "confidence": "medium",
+      "note": "导数定义+保号性；备选错题57"
+    },
+    "gs-c02-comprehensive-fill-002": {
+      "path": "external-notes/考研数学/高数-一元微分学/错题本",
+      "anchor": "错题46：指数函数含参极值点问题——参数分离与单调性放缩",
+      "label": "指数函数含参极值点问题",
+      "confidence": "medium",
+      "note": "含参最值求参数"
+    },
+    "gs-c03-comprehensive-choice-008": {
+      "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
+      "anchor": "错题55：定积分比较定理——三积分比大小：找桥梁、泰勒放缩、连环求导",
+      "label": "定积分比较定理——三积分比大小",
+      "confidence": "medium",
+      "note": "积分不等式比大小"
+    },
+    "gs-c03-basic-choice-015": {
+      "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
+      "anchor": "错题13：变上限积分函数性质——被积函数跳跃→积分函数连续不可导",
+      "label": "变上限积分函数性质",
+      "confidence": "medium",
+      "note": "连续但不可导；含参积分载体不同"
+    },
+    "gs-c03-comprehensive-fill-006": {
+      "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
+      "anchor": "错题49：极坐标弧长——正切换元变量域映射与绝对值去留",
+      "label": "极坐标弧长",
+      "confidence": "high",
+      "note": "心形线弧长完全同题"
+    },
+    "gs-c04-comprehensive-choice-007": {
+      "path": "external-notes/考研数学/高数-多元函数微分学/错题本",
+      "anchor": "错题15：隐函数求极值 —— 隐式连求导与瞬间清零法",
+      "label": "隐函数求极值",
+      "confidence": "high",
+      "note": "隐函数极值判定同题"
+    },
+    "gs-c04-comprehensive-fill-002": {
+      "path": "external-notes/考研数学/高数-多元函数微分学/错题本",
+      "anchor": "错题07：偏导数反求原函数 - 积分常数陷阱",
+      "label": "偏导数反求原函数 - 积分常数陷阱",
+      "confidence": "high",
+      "note": "偏积分反求原函数同题"
+    },
+    "gs-c05-comprehensive-fill-001": {
+      "path": "external-notes/考研数学/二重积分/错题本",
+      "anchor": "错题10：分段函数乘积的有效积分区域：卷积模型下的平行四边形",
+      "label": "分段函数乘积的有效积分区域",
+      "confidence": "medium",
+      "note": "|sin(x-y)| 去绝对值分区域"
+    },
+    "gs-c05-comprehensive-solution-020": {
+      "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
+      "anchor": "错题62：积分方程——积分号下的常数可提取，双侧积分秒杀",
+      "label": "积分方程——积分号下的常数可提取",
+      "confidence": "medium",
+      "note": "二重积分方程，技法跨章（在积分学章）"
+    }
+  }
+}
