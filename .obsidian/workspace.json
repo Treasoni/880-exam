@@ -271,6 +271,9 @@
   },
   "active": "7af8f20397d6695b",
   "lastOpenFiles": [
+    "external-notes/考研数学/高数-函数极限与连续/错题本.md",
+    "workspace/papers/paper-01/卷子-01-答案.md",
+    "workspace/wrong-book/错题本.md",
     "workspace/records/external-links.json",
     "workspace/papers/paper-01/卷子-01.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/费马定理/file-20260326155144130.png",
@@ -292,7 +295,6 @@
     "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets/微分的定义",
     "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets/differential_concept.py",
     "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性",
-    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/3-涉及积分的中值定理/积分中值定理.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/📝 章节总结.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/费马定理.md",
@@ -315,8 +317,6 @@
     "external-notes/考研数学/高数-一元微分学/一元微分学的计算/6-隐函数求导法/隐函数求导法.md",
     "external-notes/考研数学/高数-一元微分学/一元微分学的计算/5-反函数的导数/反函数的二阶导数.md",
     "external-notes/考研数学/高数-一元微分学/一元微分学的计算/5-反函数的导数/反函数的一阶导数.md",
-    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/4-分段函数的导数/分段函数的导数.md",
-    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数/链式求导法则.md",
     "考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/未命名.canvas"
   ]
 }

@@ -213,6 +213,7 @@ mastered_count: 0    # 已掌握
    - `### 题目与解析`
    - `#### 第X章 选择题 第N题 · 判分：xx · 优先级：xx · 状态：xx`
      - `**题干：**` + `**答案：**` + `**解析：**` + `*来源卷子：[[卷子-XX]]*`
+     - 可选 `*相关笔记：[[external-notes/考研数学/…/错题本#锚点|显示名]]*`：当 `workspace/records/external-links.json` 为该题配置了外部错题本关联时由 `wrong_book.py` 自动输出（外部库经 `external-notes/` symlink 接入 vault，wikilink 才能跨库解析）
 4. `## 关联`：`- 进度：[[进度总览]]`
 
 ### 进度总览（`workspace/preview/进度总览.md`）
