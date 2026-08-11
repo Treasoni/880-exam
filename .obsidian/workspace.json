@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/paper-01/判分卡-01.md",
+                "file": "workspace/wrong-book/错题本.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "判分卡-01"
+              "title": "错题本"
             }
           }
         ],
@@ -191,13 +191,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-01/判分卡-01.md",
+                "file": "workspace/wrong-book/错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "判分卡-01 的大纲"
+              "title": "错题本 的大纲"
             }
           },
           {
@@ -269,11 +269,14 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "d0d8383a692e3423",
+  "active": "7af8f20397d6695b",
   "lastOpenFiles": [
-    "workspace/papers/paper-01/卷子-01-答案.md",
+    "workspace/preview/进度总览.md",
     "workspace/papers/paper-01/判分卡-01.md",
     "workspace/papers/paper-01/卷子-01.md",
+    "workspace/wrong-book/错题本.md",
+    "workspace/records/attempts.json",
+    "workspace/papers/paper-01/卷子-01-答案.md",
     "workspace/records/papers.json",
     "workspace/papers/paper-01",
     "线性代数/必背知识.md.tmp.27568.2560e6b7d506",
@@ -299,7 +302,6 @@
     "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/03-gm与rds参数.md.bak-20260803-1931",
     "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/01-FET核心思想与类型.md",
     "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/99-章节总复习.md",
-    "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/07-JFET及其放大电路.md",
     "数电资料/822 电子技术基础.pdf",
     "线性代数/第四章：向量与方程组/错题本.md.tmp.67149.14044ef8d0e3",
     "考研数学/二重积分/images/错题18-分子有理化拆分.png",
@@ -315,7 +317,6 @@
     "workspace/backups/note-reformat/03-基本共射放大电路.md.bak-20260802-1929",
     "workspace/backups/note-reformat",
     "workspace/backups",
-    "考研计划/每日计划/完成记录/8月计划",
     "考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/未命名.canvas"
   ]
 }
