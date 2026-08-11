@@ -16,6 +16,7 @@ PAPERS_PATH = ROOT / "workspace/records/papers.json"
 PAPERS_DIR = ROOT / "workspace/papers"
 WRONG_BOOK_PATH = ROOT / "workspace/wrong-book/错题本.md"
 PROGRESS_PATH = ROOT / "workspace/preview/进度总览.md"
+EXTERNAL_LINKS_PATH = ROOT / "workspace/records/external-links.json"
 
 
 def ensure_utf8_stdio():
@@ -200,6 +201,20 @@ def save_papers(data):
     PAPERS_PATH.parent.mkdir(parents=True, exist_ok=True)
     PAPERS_PATH.write_text(
         json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def load_external_links():
+    """读取外部错题本关联映射 {qid: {path, anchor, label, ...}}。
+
+    文件不存在返回空 dict（功能未启用）；JSON 损坏时告警但不阻断主流程。
+    """
+    if not EXTERNAL_LINKS_PATH.exists():
+        return {}
+    try:
+        return json.loads(EXTERNAL_LINKS_PATH.read_text(encoding="utf-8")).get("links", {})
+    except ValueError as exc:
+        print(f"!! external-links.json 解析失败，本次跳过外部关联: {exc}", file=sys.stderr)
+        return {}
 
 
 def today_str():

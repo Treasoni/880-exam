@@ -47,7 +47,8 @@ def build_wrong_list(schema, index, attempts):
     return wrong
 
 
-def render(schema, index, attempts, wrong):
+def render(schema, index, attempts, wrong, ext_links=None):
+    ext_links = ext_links or {}
     total = len(wrong)
     n_focus = sum(1 for e in wrong if e["priority"] == "重点")
     n_mastered = sum(1 for e in wrong if e["state"] == "已掌握")
@@ -107,6 +108,10 @@ def render(schema, index, attempts, wrong):
                 lines.append(f"*来源卷子：[[卷子-{e['paper_id'].split('-')[-1]}]]*")
             if e["when"]:
                 lines.append(f"*最近判分：{e['when']}*")
+            link = ext_links.get(q["id"])
+            if link and link.get("path") and link.get("anchor"):
+                label = link.get("label") or link["anchor"]
+                lines.append(f"*相关笔记：[[{link['path']}#{link['anchor']}|{label}]]*")
             lines.append("")
     lines.append("## 关联")
     lines.append("")
@@ -152,7 +157,8 @@ def main():
 
     lib880.WRONG_BOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
     lib880.WRONG_BOOK_PATH.write_text(
-        render(schema, index, attempts, wrong), encoding="utf-8")
+        render(schema, index, attempts, wrong, lib880.load_external_links()),
+        encoding="utf-8")
     print(f"已更新错题本：{lib880.WRONG_BOOK_PATH}（{len(wrong)} 道错题）")
 
 
