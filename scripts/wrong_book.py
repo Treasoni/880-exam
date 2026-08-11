@@ -47,8 +47,9 @@ def build_wrong_list(schema, index, attempts):
     return wrong
 
 
-def render(schema, index, attempts, wrong, ext_links=None):
+def render(schema, index, attempts, wrong, ext_links=None, analysis=None):
     ext_links = ext_links or {}
+    analysis = analysis or {"items": {}}
     total = len(wrong)
     n_focus = sum(1 for e in wrong if e["priority"] == "重点")
     n_mastered = sum(1 for e in wrong if e["state"] == "已掌握")
@@ -119,6 +120,16 @@ def render(schema, index, attempts, wrong, ext_links=None):
                         parts.append(f"[[{link['path']}#{link['anchor']}|{label}]]")
                 if parts:
                     lines.append("*相关笔记：" + " · ".join(parts) + "*")
+            an = analysis.get("items", {}).get(q["id"])
+            if an:
+                lines.append("")
+                lines.append("> [!info] 错因分析")
+                if an.get("cause"):
+                    lines.append(f"> **错因：** {an['cause']}")
+                if an.get("step"):
+                    lines.append(f"> **出错环节：** {an['step']}")
+                if an.get("advice"):
+                    lines.append(f"> **建议：** {an['advice']}")
             lines.append("")
     lines.append("## 关联")
     lines.append("")
@@ -164,7 +175,7 @@ def main():
 
     lib880.WRONG_BOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
     lib880.WRONG_BOOK_PATH.write_text(
-        render(schema, index, attempts, wrong, lib880.load_external_links()),
+        render(schema, index, attempts, wrong, lib880.load_external_links(), lib880.load_analysis()),
         encoding="utf-8")
     print(f"已更新错题本：{lib880.WRONG_BOOK_PATH}（{len(wrong)} 道错题）")
 

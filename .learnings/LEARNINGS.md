@@ -101,3 +101,53 @@ _最后更新：2026-08-11_
 - 下次做法：任务收尾（尤其涉及改 880 产物格式、脚本、规则、skill 时）主动走 digest：压缩阈值检查 → 回顾本次任务 → 写 LEARNINGS/ERRORS → 提炼 RULES → 验证无空条目。
 
 ---
+
+### 外部错题关联：先盘点源容量，用一对多结构
+
+**类别**：correction | best_practice
+**优先级**：high
+**状态**：pending
+**范围**：880-wrongbook / external-links.json / wrong_book.py / obsidian-content.md
+
+**摘要**：用户指出「能关联的就这几道吗？不应该吧？」——初始一对一映射覆盖不足；外部错题本实际有 316 条，扩展为每题 3–4 条、共 46 条后满足需求。
+
+**详情**：
+- 事实：外部错题本共 316 条（函数极限与连续 20 / 一元微分学 88 / 一元函数积分学 102 / 多元函数微分学 35 / 二重积分 18 / 数列极限 21 / 微分方程 32），我最初只给 12 道 880 错题各配了 1 条关联。
+- 根因：设计映射时只求「每道错题找一条最像的」，没先盘点源库存量与主题覆盖，默认了一对一结构。
+- 下次做法：做「题目→外部资源」映射/关联前，先统计源库存量与主题覆盖，判断能否/应该一对多；映射数据结构用 `qid → [多条]` 数组；锚点用 `^## {前缀}` 正则从源文件精确提取，并跳过含 `#` 的标题（会与 wikilink 锚点分隔符冲突）。
+
+---
+
+## 2026-08-11
+
+### lint 校验路径型 wikilink：拆锚点 + 跟随 symlink
+
+**类别**：correction | best_practice
+**优先级**：medium
+**状态**：pending
+**范围**：scripts/lint_content.py
+
+**摘要**：lint_content.py 只收集 workspace/ 下文件 stem，对 `[[external-notes/考研数学/…/错题本#错题1]]` 这类路径型、带锚点的跨库 wikilink 误报「指向不存在的文件」；修复为拆 `#锚点`、路径型按 vault 根 `Path.exists()`（跟随 symlink）解析。
+
+**详情**：
+- 事实：lint 重建后报「存在问题」，全是 external-notes 链接；实际文件经 `find -L` 验证存在。
+- 根因：`WORKSPACE_FILES` 是 workspace 下 `.md` 的 stem 集合；而外部链接目标含 `/` 和 `#锚点`，与 stem 集合永远对不上。`Path.exists()` 会跟随 `external-notes/` symlink，但 lint 从没用它解析路径型链接。
+- 下次做法：wikilink 校验分两类——裸名 `[[note]]` 按 workspace stem 匹配；路径型 `[[a/b/c#锚点]]` 先 `split('#')[0]` 再按 vault 根相对补 `.md` 后 `exists()`。
+
+---
+
+### 工作流状态模板与 todo-state.sh 的机器 token 必须同步
+
+**类别**：correction
+**优先级**：medium
+**状态**：pending
+**范围**：.claude/workflows/880-exam/state-template.md / todo-state.sh
+
+**摘要**：state-template.md 的阶段行缺 `{not_started}` 机器 token，导致 todo-state.sh 的状态机判据（`previous_open_phase_before`/`next_pending_phase_after` 匹配行尾 `{token}`）失效，`complete` 时把字面量 `{complete}` 写进行内。
+
+**详情**：
+- 事实：跑 `todo-state.sh complete P0` 后状态行变成 `> [P0] ✅ 已完成 {complete}`，`{complete}` 泄漏；连续 complete 报「previous phase is not complete」。
+- 根因：模板用 `> [P0] ⬜ 未开始 — 入库` 纯文本，而脚本全部状态判据都要求行尾带 `{not_started}`/`{in_progress}`/`{complete}`/`{skipped}` token；首行 P0 被替换成带 token 格式后，`next_pending_phase_after` 找不到 `{not_started}` 的 P1，直接跳到 done。
+- 下次做法：工作流状态模板的每行阶段必须带机器 token（`> [P0] ⬜ 未开始 {not_started} — 说明`）；改状态机脚本或模板任一侧后，用空状态文件重放一遍 start→complete 全链路验证。
+
+---

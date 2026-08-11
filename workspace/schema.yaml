@@ -20,7 +20,7 @@ paper:
   sections:
     choice:   {count: 10, per_score: 5}
     fill:     {count: 6,  per_score: 5}
-    solution: {count: 6,  per_score: 0}   # 解答题共 70 分，按真题习惯每题 10~12 分
+    solution: {count: 6,  per_score: 0, score_seq: [10, 12, 12, 12, 12, 12]}  # 解答题每题满分，真题惯例
   # 章节配额表：每章每题型题数；合计必须等于 choice 10 / fill 6 / solution 6
   quota:
     1: {choice: 2, fill: 1, solution: 1}
@@ -55,12 +55,17 @@ sampling:
   quota_float_cap: 2          # 单章单题型配额最多浮动 ±题数
 
 # === 判分五态（错题本/补弱/进度的统一口径） ===
+# score_ratio 用于判分后算分：每题得分 = 该题满分 × score_ratio
 grades:
-  - {key: correct,  zh: 对,   weight: 0.0}
-  - {key: wrong,    zh: 错,   weight: 0.3}
-  - {key: cannot,   zh: 不会, weight: 1.0}
-  - {key: half,     zh: 半会, weight: 0.6}
-  - {key: careless, zh: 粗心, weight: 0.15}
+  - {key: correct,  zh: 对,   weight: 0.0, score_ratio: 1.0}
+  - {key: wrong,    zh: 错,   weight: 0.3, score_ratio: 0.0}
+  - {key: cannot,   zh: 不会, weight: 1.0, score_ratio: 0.0}
+  - {key: half,     zh: 半会, weight: 0.6, score_ratio: 0.5}
+  - {key: careless, zh: 粗心, weight: 0.15, score_ratio: 0.5}
+
+# === 过程分析（判分后对话式错因归因） ===
+analysis:
+  cause_labels: [审题失误, 方法选择错误, 概念/定理错误, 计算/代数错误, 步骤/逻辑遗漏, 粗心]
 
 # === 弱点分计算 ===
 weakness:

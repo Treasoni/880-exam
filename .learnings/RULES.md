@@ -20,6 +20,12 @@ _最后更新：2026-08-11_
 - **跨库引用用 symlink**：wikilink 只在本 vault 内解析；引用外部库笔记时，把外部目录 symlink 进 vault（如 `external-notes/`，加入 .gitignore），再用真实 `[[external-notes/…]]`。
 - **生成产物不手改**：会被脚本重建的产物（错题本等），映射/配置存 `workspace/records/*.json`，由脚本渲染，禁止手改产物。
 - **wikilink 锚点先校验**：生成带 `#锚点` 的 wikilink 前，程序化确认锚点与目标文件标题精确一致（全角标点、空格都要对）。
+- **映射先盘点源容量**：做「题目→外部资源」映射/关联时，先统计源库存量与主题覆盖，再决定一对一或一对多结构，避免「每题只配一条」覆盖不足。
+- **lint 校验路径型 wikilink**：校验 wikilink 时，裸名按 workspace 文件 stem 匹配；路径型 `[[a/b#锚点]]` 先拆 `#锚点`、按 vault 根补 `.md` 后 `Path.exists()` 判定（跟随 `external-notes/` symlink）。
+
+## 工作流状态机
+
+- **状态模板带机器 token**：`.claude/workflows/*/state-template.md` 每行阶段必须带 `{not_started}`/`{in_progress}`/`{complete}`/`{skipped}` token（如 `> [P0] ⬜ 未开始 {not_started} — 入库`）；todo-state.sh 的判据全按行尾 token 匹配，模板缺 token 会导致 `{complete}` 字面量泄漏、状态机跳档。
 
 ## 工作流
 

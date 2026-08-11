@@ -38,6 +38,25 @@ for p in (lib880.ROOT / "workspace").rglob("*.md"):
     WORKSPACE_FILES.add(p.stem)
 
 
+def _wikilink_resolves(target):
+    """wikilink 目标能否解析到真实笔记文件。
+
+    - 带 `#锚点` 时先剥离锚点（Obsidian 锚点匹配不参与文件解析）；
+    - 路径型目标（含 `/`）按 vault 根相对解析，补 `.md` 后 `exists()` 判定——
+      `Path.exists()` 会跟随 `external-notes/` 这类 symlink，跨库链接因此可解析；
+    - 裸名目标（如 `[[卷子-01]]`）按 workspace 下文件 stem 匹配。
+    """
+    base = target.split("#", 1)[0].strip()
+    if not base:
+        return False
+    if "/" not in base:
+        return base in WORKSPACE_FILES
+    p = lib880.ROOT / base
+    if p.exists():
+        return True
+    return Path(str(p) + ".md").exists()
+
+
 def parse_fm(text):
     m = FM_RE.match(text)
     if not m:
@@ -70,7 +89,7 @@ def lint_file(path: Path):
             errors.append(f"缺少专属属性 {k}")
     # wikilink 校验
     for target in WIKI_RE.findall(text):
-        if target not in WORKSPACE_FILES:
+        if not _wikilink_resolves(target):
             errors.append(f"wikilink 指向不存在的文件: [[{target}]]")
     return rel, errors
 

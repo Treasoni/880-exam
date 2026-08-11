@@ -194,6 +194,62 @@ def paper_grade_status(paper, attempts):
     return "graded" if expected and expected <= graded else "partially_graded"
 
 
+_CN = "零一二三四五六七八九"
+
+
+def _upsert_section(text, title, section_text):
+    """把 section_text（以 ## <title> 开头）写入 text：已存在则整段替换，否则插到 `## 关联` 前。"""
+    section_text = section_text.rstrip() + "\n"
+    pat = re.compile(rf"^## {re.escape(title)}\n.*?(?=\n## |\Z)", re.DOTALL | re.MULTILINE)
+    if pat.search(text):
+        return pat.sub(section_text, text)
+    anchor = re.search(r"^## 关联", text, re.MULTILINE)
+    if anchor:
+        return text[:anchor.start()] + section_text + "\n" + text[anchor.start():]
+    return text.rstrip() + "\n\n" + section_text
+
+
+def render_score_weakness(schema, paper, attempts, index):
+    """生成卷子『得分与弱点分析』小节（幂等，重跑判分整段替换）。"""
+    scores = lib880.compute_paper_scores(schema, paper, attempts, index)
+    zh = {g["key"]: g["zh"] for g in schema["grades"]}
+    type_zh = {"choice": "选择题", "fill": "填空题", "solution": "解答题"}
+    ch_title = {c["no"]: c["title"] for c in schema["chapters"]}
+
+    total_full = scores["total_full"] or 1
+    rate = scores["total_earned"] / total_full
+    lines = []
+    lines.append("## 得分与弱点分析")
+    lines.append("")
+    lines.append("> [!info] 得分")
+    lines.append(f"> 总分 **{scores['total_earned']:g} / {total_full:g}** 分（得分率 {rate:.1%}）")
+    parts = []
+    for s in ("choice", "fill", "solution"):
+        sec = scores["sections"][s]
+        parts.append(f"{type_zh[s]} {sec['earned']:g}/{sec['full']:g}")
+    lines.append("> " + " · ".join(parts))
+    lines.append("")
+    lines.append("| 题号 | 题型 | 判分 | 得分 |")
+    lines.append("| --- | --- | --- | --- |")
+    for row in scores["questions"]:
+        g = row["grade"]
+        gzh = zh.get(g, "未判") if g else "未判"
+        lines.append(f"| {row['paper_no']} | {type_zh[row['section']]} | {gzh} | {row['earned']:g} |")
+    lines.append("")
+    ch_loss = sorted(scores["chapters"].items(), key=lambda kv: -(kv[1]["full"] - kv[1]["earned"]))
+    if ch_loss:
+        lines.append("> [!warning] 本卷弱点")
+        for ch, c in ch_loss:
+            loss = c["full"] - c["earned"]
+            if loss <= 0:
+                continue
+            r = (c["earned"] / c["full"]) if c["full"] else 0
+            title = ch_title.get(ch, "")
+            lines.append(f"> - 第{_CN[ch]}章 {title}：失分 {loss:g}/{c['full']:g}（得分率 {r:.0%}）")
+        lines.append("")
+    return "\n".join(lines)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--paper", default=None, help="卷子 id；用 --sheet 时可不传（从卡片 frontmatter 读）")
@@ -320,6 +376,10 @@ def main():
         text = re.sub(r"^status: .*$", f"status: {paper['status']}", text, count=1, flags=re.MULTILINE)
         text = re.sub(r"^updated: .*$", f"updated: {today}", text, count=1, flags=re.MULTILINE)
         text = _backfill_grade_table(text, graded_rows)
+        # 判分后写『得分与弱点分析』（幂等：已存在则整段替换）
+        score_section = render_score_weakness(schema, paper, attempts, index)
+        if score_section:
+            text = _upsert_section(text, "得分与弱点分析", score_section)
         paper_path.write_text(text, encoding="utf-8")
     else:
         print(f"!! 警告：找不到卷子文件 {paper_path}，无法更新判分表与 status（判分记录已写入）",

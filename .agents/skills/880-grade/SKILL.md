@@ -44,4 +44,5 @@ description: 判分记录（五态：对/错/不会/半会/粗心），更新判
 ## 内容规范
 
 - 判分后刷新的 错题本/进度总览 遵循 `.codex/rules/common/obsidian-content.md` 的「错题本」「进度总览」两节；
-- 判分流程需把对应 `卷子-XX.md` 的 frontmatter `status` 更新为 `graded`、`updated` 更新为当日，并把判分态回填到卷子判分表。
+- 判分流程需把对应 `卷子-XX.md` 的 frontmatter `status` 更新为 `graded`、`updated` 更新为当日，并把判分态回填到卷子判分表；
+- 判分后自动写入卷子「得分与弱点分析」小节（总分/各题型得分/本卷弱点），算分规则：每题满分 × `score_ratio`，解答题满分按 `score_seq`；格式遵循 obsidian-content.md「卷子」一节。

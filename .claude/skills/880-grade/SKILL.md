@@ -19,7 +19,21 @@ description: 判分记录（五态：对/错/不会/半会/粗心），更新判
    - `--redo`：错题重练模式——判为"对"则该题复习状态→已掌握，否则保持未复习。
    - Windows 把 `python3` 换成 `py -3`。
    - 判分卡里某题勾了多个状态会报错，先让用户修正再跑。
-4. 报告：记录条数、卷子状态（`status` 已置 `graded`、判分表已回填）、错题本与进度已刷新。
+4. 报告：记录条数、卷子状态（`status` 已置 `graded`、判分表已回填）、**卷子已写入「得分与弱点分析」小节**（总分/各题型得分/本卷弱点）、错题本与进度已刷新。
+
+## 判分后过程分析（可选，对话式）
+
+用户判分后想追某道错题的错因时（「这题我是这么做的…分析一下」）：
+
+1. **读上下文**：读该题题干、答案、解析（从 `卷子-XX-答案.md` / 题目索引），对照用户贴的解题过程。
+2. **定位错因**：从 `schema.analysis.cause_labels`（审题失误/方法选择错误/概念定理错误/计算代数错误/步骤逻辑遗漏/粗心）选一个标签；指出具体出错环节（哪一步开始偏）并给一句可执行建议。
+3. **落库**：写入 `workspace/records/analysis.json`：
+   ```json
+   { "items": { "<qid>": { "paper_id": "paper-01", "cause": "…", "step": "…", "advice": "…", "date": "YYYY-MM-DD" } } }
+   ```
+   （用 `lib880.load_analysis()` / `save_analysis()` 读写，保留已有条目）
+4. **重生成**：`python3 scripts/wrong_book.py`，错题本该题条目会渲染「错因分析」callout。
+   - 只有用户主动要求分析时才做，不要对每道错题批量生成。
 
 ## 步骤（口述 JSON，兜底）
 
@@ -44,4 +58,5 @@ description: 判分记录（五态：对/错/不会/半会/粗心），更新判
 ## 内容规范
 
 - 判分后刷新的 错题本/进度总览 遵循 `.claude/rules/common/obsidian-content.md` 的「错题本」「进度总览」两节；
-- 判分流程需把对应 `卷子-XX.md` 的 frontmatter `status` 更新为 `graded`、`updated` 更新为当日，并把判分态回填到卷子判分表。
+- 判分流程需把对应 `卷子-XX.md` 的 frontmatter `status` 更新为 `graded`、`updated` 更新为当日，并把判分态回填到卷子判分表；
+- 卷子「得分与弱点分析」小节遵循 `.claude/rules/common/obsidian-content.md` 的「卷子」一节（算分规则：每题满分 × `score_ratio`，解答题满分按 `score_seq`）。
