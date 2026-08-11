@@ -4,8 +4,8 @@
   "title": "Remove solution problems 5 and 6 from paper",
   "titleGenerationStatus": "success",
   "createdAt": 1786418463267,
-  "updatedAt": 1786420583066,
-  "lastResponseAt": 1786420583066,
+  "updatedAt": 1786420652753,
+  "lastResponseAt": 1786420652753,
   "sessionId": "464b1e17-4a79-4e22-879e-abe6820f0539",
   "providerState": {
     "providerSessionId": "464b1e17-4a79-4e22-879e-abe6820f0539"
@@ -13,12 +13,12 @@
   "currentNote": "workspace/papers/paper-01/卷子-01.md",
   "usage": {
     "model": "deepseek-v4-flash",
-    "inputTokens": 698,
+    "inputTokens": 176,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 61440,
+    "cacheReadInputTokens": 68736,
     "contextWindow": 200000,
-    "contextTokens": 62138,
-    "percentage": 31,
+    "contextTokens": 68912,
+    "percentage": 34,
     "contextWindowIsAuthoritative": true
   }
 }
