@@ -13,7 +13,7 @@
         "2": {
           "choice": 2,
           "fill": 1,
-          "solution": 1
+          "solution": 0
         },
         "3": {
           "choice": 2,
@@ -33,7 +33,7 @@
         "6": {
           "choice": 1,
           "fill": 0,
-          "solution": 1
+          "solution": 0
         }
       },
       "questions": [
@@ -136,16 +136,6 @@
           "qid": "gs-c05-comprehensive-solution-020",
           "section": "solution",
           "paper_no": "三4"
-        },
-        {
-          "qid": "gs-c06-comprehensive-solution-006",
-          "section": "solution",
-          "paper_no": "三5"
-        },
-        {
-          "qid": "gs-c02-comprehensive-solution-008",
-          "section": "solution",
-          "paper_no": "三6"
         }
       ],
       "status": "created",
