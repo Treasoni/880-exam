@@ -241,7 +241,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -269,15 +269,16 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "d0d8383a692e3423",
+  "active": "f5f6330a45d67f9a",
   "lastOpenFiles": [
+    "conflict-files-obsidian-git.md",
+    "workspace/papers/paper-01/卷子-01-答案.md",
     "workspace/records/analysis.json",
     "scripts/__pycache__/lib880.cpython-313.pyc",
     "scripts/__pycache__",
     "workspace/papers/paper-01/卷子-01.md",
     "docs/使用指南.md",
     "workspace/papers/paper-01/判分卡-01.md",
-    "workspace/papers/paper-01/卷子-01-答案.md",
     "workspace/workflow-runs/880-exam.workflow.md.sW3J7V",
     "workspace/workflow-runs/880-exam.workflow.md",
     "workspace/wrong-book/错题本.md",
@@ -298,7 +299,6 @@
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/拉格朗日中值定理",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/assets/有界与最值定理",
     "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/assets/定积分定义/定积分演示.html",
-    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数/assets/链式求导法则",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/3-涉及积分的中值定理/积分中值定理.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/📝 章节总结.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/费马定理.md",
