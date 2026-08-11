@@ -36,6 +36,9 @@ GRADE_ALIAS = {
 SECTION_NO = {"choice": "一", "fill": "二", "solution": "三"}
 SECTION_ORDER = {"一": "choice", "二": "fill", "三": "solution"}
 TICK_RE = re.compile(r"^\[[xX✓✔☑✅]\]$|^[xX✓✔☑✅]$")
+# 新判分卡（任务清单）格式：题头 **N.** 答案：… 与勾选行 - [x] 对
+QHEAD_RE = re.compile(r"^\*\*(\d+)\.\*\*\s*答案")
+CHECK_RE = re.compile(r"^-\s+\[([ xX✓✔☑✅])\]\s*(\S+)\s*$")
 
 
 def _is_ticked(cell):
@@ -81,8 +84,11 @@ def _table_cells(line):
 def parse_grading_card(path):
     """解析判分卡 markdown → (paper_id, grading)。
 
+    支持两种格式：
+    - 新格式（任务清单，阅读视图可点击）：`**N.** 答案：…` 下一行起 `- [ ] 对` / `- [x] 错`；
+    - 旧格式（表格）：`| N | 答案 | [ ] | [x] | … |`。
     grading 形如 {"choice": {"1": "对", "2": "错"}, ...}，与 --grading JSON 同构。
-    每行只允许勾一个状态；零勾的行跳过（保持未判）；多勾直接报错。
+    每题只允许勾一个状态；零勾的题跳过（保持未判）；多勾直接报错。
     """
     text = Path(path).read_text(encoding="utf-8")
 
@@ -98,6 +104,7 @@ def parse_grading_card(path):
     section = None
     col_to_grade = {}
     seen_header = False
+    cur_pos = None  # 任务清单格式下当前题号
     grading = {}
     for line in text.splitlines():
         line = line.strip()
@@ -106,8 +113,34 @@ def parse_grading_card(path):
             section = SECTION_ORDER.get(mh.group(1)) if mh else None
             col_to_grade = {}
             seen_header = False
+            cur_pos = None
             continue
-        if not section or not line.startswith("|"):
+        if not section:
+            continue
+
+        # 任务清单格式：题头 **N.** 答案：…
+        mq = QHEAD_RE.match(line)
+        if mq:
+            cur_pos = int(mq.group(1))
+            continue
+
+        # 任务清单格式：- [x] 对（[ ] 为未勾，跳过保持未判）
+        mc = CHECK_RE.match(line)
+        if mc:
+            marker, gtext = mc.group(1), mc.group(2)
+            if marker == " " or cur_pos is None or gtext not in GRADE_ALIAS:
+                continue
+            sec_grades = grading.setdefault(section, {})
+            key = str(cur_pos)
+            if key in sec_grades:
+                print(f"!! 判分卡第 {SECTION_NO.get(section, section)} 第 {cur_pos} 题勾了多个状态："
+                      f"{sec_grades[key]} 与 {gtext}，每题只能勾一个", file=sys.stderr)
+                sys.exit(2)
+            sec_grades[key] = GRADE_ALIAS[gtext]
+            continue
+
+        # 旧格式（表格）兼容
+        if not line.startswith("|"):
             continue
         cells = _table_cells(line)
         if not cells:

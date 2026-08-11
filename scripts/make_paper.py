@@ -295,13 +295,8 @@ def render_answers(schema, paper_id, sections_plan):
     return "\n".join(lines)
 
 
-def _cell_escape(s):
-    """表格单元格转义：把 | 换成 \\|，把换行折叠成空格，避免破坏 Markdown 表格。"""
-    return str(s).replace("|", "\\|").replace("\n", " ").strip()
-
-
 def render_grading_card(schema, paper_id, sections_plan):
-    """生成判分卡：每题一行（题号/答案/对/错/不会/半会/粗心），用户勾选后由 grade.py --sheet 读取。"""
+    """生成判分卡：每题一个任务清单复选框（对/错/不会/半会/粗心），阅读视图可直接点击勾选。"""
     num = paper_id.split("-")[-1]
     grade_cols = [g["zh"] for g in schema["grades"]]  # 对/错/不会/半会/粗心
     lines = []
@@ -317,13 +312,11 @@ def render_grading_card(schema, paper_id, sections_plan):
     lines.append(f"# 判分卡 · 卷子-{num}")
     lines.append("")
     lines.append("> [!info] 判分说明")
-    lines.append("> 对照答案核对，在对应状态列写 `x`（对/错/不会/半会/粗心）。没做的题留空即可。")
+    lines.append("> 对照答案核对，勾选每题的一个状态（对/错/不会/半会/粗心）。没做的题留空即可。")
     lines.append("")
     for type_key in ("choice", "fill", "solution"):
         lines.append(f"## {TYPE_ORDER[type_key]}、{TYPE_ZH[type_key]}")
         lines.append("")
-        lines.append("| # | 答案 | " + " | ".join(grade_cols) + " |")
-        lines.append("| --- | --- | " + " | ".join(["---"] * len(grade_cols)) + " |")
         for idx, q in enumerate(sections_plan[type_key], start=1):
             if type_key == "solution":
                 ans = "（见答案卷）"
@@ -331,8 +324,11 @@ def render_grading_card(schema, paper_id, sections_plan):
                 ans = "（解析册未找到）"
             else:
                 ans = q["answer"]
-            cells = " | ".join("[ ]" for _ in grade_cols)
-            lines.append(f"| {idx} | {_cell_escape(ans)} | {cells} |")
+            lines.append(f"**{idx}.** 答案：{str(ans).replace(chr(10), ' ').strip()}")
+            lines.append("")
+            for g in grade_cols:
+                lines.append(f"- [ ] {g}")
+            lines.append("")
         lines.append("")
     lines.append("## 关联")
     lines.append("")
@@ -340,6 +336,50 @@ def render_grading_card(schema, paper_id, sections_plan):
     lines.append(f"- 答案：[[卷子-{num}-答案]]")
     lines.append("")
     return "\n".join(lines)
+
+
+def rebuild_paper(schema, index, papers, attempts, paper_id, ap):
+    """从 papers.json 记录重建已存在卷子的产物（不换题）。
+
+    判分卡总是重建（无状态，全空勾不影响已判数据）；
+    卷子/答案卷仅在无判分记录时重建（保护已回填的判分表与 status）。
+    """
+    record = next((p for p in papers["papers"] if p["paper_id"] == paper_id), None)
+    if record is None:
+        ap.error(f"找不到卷子记录 {paper_id}（workspace/records/papers.json）")
+
+    # 按 paper_no 顺序取回同一批题，禁止重新抽题
+    tmp = {"choice": [], "fill": [], "solution": []}
+    for q in record["questions"]:
+        qi = index["by_id"].get(q["qid"])
+        if qi is None:
+            ap.error(f"{paper_id} 的题目 {q['qid']} 不在索引中，请先重建索引")
+        try:
+            pos = int(q["paper_no"][1:])
+        except (ValueError, IndexError):
+            ap.error(f"{paper_id} 的题目 {q['qid']} paper_no 异常: {q['paper_no']}")
+        tmp[q["section"]].append((pos, qi))
+    sections_plan = {sec: [qi for _, qi in sorted(items, key=lambda t: t[0])]
+                     for sec, items in tmp.items()}
+
+    n = int(paper_id.split("-")[-1])
+    paper_dir = lib880.paper_dir(paper_id)
+    has_attempts = any(a.get("paper_id") == paper_id for a in attempts["attempts"])
+
+    card_path = paper_dir / f"判分卡-{n:02d}.md"
+    card_path.write_text(render_grading_card(schema, paper_id, sections_plan), encoding="utf-8")
+    print(f"已重建判分卡：{card_path}")
+
+    if not has_attempts:
+        paper_path = paper_dir / f"卷子-{n:02d}.md"
+        answer_path = paper_dir / f"卷子-{n:02d}-答案.md"
+        paper_path.write_text(render_paper(schema, paper_id, sections_plan, index["by_id"]),
+                              encoding="utf-8")
+        answer_path.write_text(render_answers(schema, paper_id, sections_plan), encoding="utf-8")
+        print(f"已重建卷子：{paper_path}")
+        print(f"已重建答案：{answer_path}")
+    else:
+        print(f"该卷已有判分记录，跳过卷子/答案重建（保护已回填的判分表与 status）")
 
 
 def main():
@@ -350,6 +390,8 @@ def main():
     ap.add_argument("--no-weakness", action="store_true")
     ap.add_argument("--replace-ungraded", action="store_true",
                     help="仅替换尚无判分记录的同编号卷子；防止意外覆盖学习记录")
+    ap.add_argument("--rebuild", metavar="PAPER_ID", default=None,
+                    help="从 papers.json 记录重建已存在卷子的产物（不换题）；判分卡总是重建，卷子/答案仅在未判分时重建")
     args = ap.parse_args()
 
     schema = lib880.load_schema()
@@ -357,6 +399,10 @@ def main():
     lib880.build_index_map(index)
     attempts = lib880.load_attempts()
     papers = lib880.load_papers()
+
+    if args.rebuild:
+        rebuild_paper(schema, index, papers, attempts, args.rebuild, ap)
+        return
 
     if args.seed is not None:
         random.seed(args.seed)
