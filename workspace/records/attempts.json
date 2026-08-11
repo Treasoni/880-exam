@@ -1,0 +1,198 @@
+{
+  "attempts": [
+    {
+      "qid": "gs-c05-comprehensive-choice-004",
+      "paper_id": "paper-01",
+      "grade": "correct",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c06-comprehensive-choice-001",
+      "paper_id": "paper-01",
+      "grade": "correct",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c02-comprehensive-choice-030",
+      "paper_id": "paper-01",
+      "grade": "correct",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-basic-choice-012",
+      "paper_id": "paper-01",
+      "grade": "correct",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-choice-018",
+      "paper_id": "paper-01",
+      "grade": "wrong",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-choice-007",
+      "paper_id": "paper-01",
+      "grade": "cannot",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c02-basic-choice-018",
+      "paper_id": "paper-01",
+      "grade": "half",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-choice-008",
+      "paper_id": "paper-01",
+      "grade": "cannot",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-basic-choice-015",
+      "paper_id": "paper-01",
+      "grade": "cannot",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-basic-choice-005",
+      "paper_id": "paper-01",
+      "grade": "correct",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-fill-006",
+      "paper_id": "paper-01",
+      "grade": "cannot",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-fill-002",
+      "paper_id": "paper-01",
+      "grade": "half",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-basic-fill-023",
+      "paper_id": "paper-01",
+      "grade": "correct",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-fill-001",
+      "paper_id": "paper-01",
+      "grade": "wrong",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c02-comprehensive-fill-002",
+      "paper_id": "paper-01",
+      "grade": "wrong",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-fill-003",
+      "paper_id": "paper-01",
+      "grade": "wrong",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-solution-007",
+      "paper_id": "paper-01",
+      "grade": "correct",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-solution-009",
+      "paper_id": "paper-01",
+      "grade": "cannot",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-solution-006",
+      "paper_id": "paper-01",
+      "grade": "correct",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-solution-020",
+      "paper_id": "paper-01",
+      "grade": "half",
+      "when": "2026-08-11",
+      "recorded_at": "2026-08-11T11:28:20+08:00",
+      "note": ""
+    }
+  ],
+  "wrong_book_status": {
+    "gs-c04-comprehensive-choice-007": {
+      "state": "未复习",
+      "updated": "2026-08-11"
+    },
+    "gs-c02-basic-choice-018": {
+      "state": "未复习",
+      "updated": "2026-08-11"
+    },
+    "gs-c03-comprehensive-choice-008": {
+      "state": "未复习",
+      "updated": "2026-08-11"
+    },
+    "gs-c03-basic-choice-015": {
+      "state": "未复习",
+      "updated": "2026-08-11"
+    },
+    "gs-c03-comprehensive-fill-006": {
+      "state": "未复习",
+      "updated": "2026-08-11"
+    },
+    "gs-c04-comprehensive-fill-002": {
+      "state": "未复习",
+      "updated": "2026-08-11"
+    },
+    "gs-c01-comprehensive-solution-009": {
+      "state": "未复习",
+      "updated": "2026-08-11"
+    },
+    "gs-c05-comprehensive-solution-020": {
+      "state": "未复习",
+      "updated": "2026-08-11"
+    }
+  }
+}
