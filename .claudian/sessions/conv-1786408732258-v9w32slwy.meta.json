@@ -4,20 +4,20 @@
   "title": "Generate 880 math mock exam paper",
   "titleGenerationStatus": "success",
   "createdAt": 1786408732264,
-  "updatedAt": 1786408769904,
-  "lastResponseAt": 1786408769904,
+  "updatedAt": 1786416506307,
+  "lastResponseAt": 1786416506307,
   "sessionId": "ef354827-6710-4734-9486-01a889823043",
   "providerState": {
     "providerSessionId": "ef354827-6710-4734-9486-01a889823043"
   },
   "usage": {
     "model": "deepseek-v4-flash",
-    "inputTokens": 186,
+    "inputTokens": 2584,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 37120,
+    "cacheReadInputTokens": 66176,
     "contextWindow": 200000,
-    "contextTokens": 37306,
-    "percentage": 19,
+    "contextTokens": 68760,
+    "percentage": 34,
     "contextWindowIsAuthoritative": true
   }
 }

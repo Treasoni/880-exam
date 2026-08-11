@@ -276,7 +276,10 @@ def render_answers(schema, paper_id, sections_plan):
             lines.append(f"## {TYPE_ORDER[type_key]}、{TYPE_ZH[type_key]}")
         lines.append("")
         for idx, q in enumerate(sections_plan[type_key], start=1):
-            lines.append(f"**{idx}.** " + (f"答案：**{q['answer']}**" if q.get("answer") else "（见解析）"))
+            # 题目原文（与卷子保持一致），再给答案与解析
+            lines.append(f"**{idx}.** {q.get('text', '').strip()}")
+            lines.append("")
+            lines.append("**答案：** " + (f"**{q['answer']}**" if q.get("answer") else "（见解析）"))
             lines.append("")
             if q.get("solution"):
                 lines.append(q["solution"].strip())
