@@ -108,10 +108,17 @@ def render(schema, index, attempts, wrong, ext_links=None):
                 lines.append(f"*来源卷子：[[卷子-{e['paper_id'].split('-')[-1]}]]*")
             if e["when"]:
                 lines.append(f"*最近判分：{e['when']}*")
-            link = ext_links.get(q["id"])
-            if link and link.get("path") and link.get("anchor"):
-                label = link.get("label") or link["anchor"]
-                lines.append(f"*相关笔记：[[{link['path']}#{link['anchor']}|{label}]]*")
+            raw_links = ext_links.get(q["id"])
+            if isinstance(raw_links, dict):  # 兼容旧的单条结构
+                raw_links = [raw_links]
+            if raw_links:
+                parts = []
+                for link in raw_links:
+                    if link.get("path") and link.get("anchor"):
+                        label = link.get("label") or link["anchor"]
+                        parts.append(f"[[{link['path']}#{link['anchor']}|{label}]]")
+                if parts:
+                    lines.append("*相关笔记：" + " · ".join(parts) + "*")
             lines.append("")
     lines.append("## 关联")
     lines.append("")
