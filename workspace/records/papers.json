@@ -1,0 +1,155 @@
+{
+  "papers": [
+    {
+      "paper_id": "paper-01",
+      "date": "2026-08-11",
+      "duration_minutes": 180,
+      "quota_used": {
+        "1": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        },
+        "2": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        },
+        "3": {
+          "choice": 2,
+          "fill": 2,
+          "solution": 1
+        },
+        "4": {
+          "choice": 1,
+          "fill": 1,
+          "solution": 1
+        },
+        "5": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        },
+        "6": {
+          "choice": 1,
+          "fill": 0,
+          "solution": 1
+        }
+      },
+      "questions": [
+        {
+          "qid": "gs-c05-comprehensive-choice-004",
+          "section": "choice",
+          "paper_no": "一1"
+        },
+        {
+          "qid": "gs-c06-comprehensive-choice-001",
+          "section": "choice",
+          "paper_no": "一2"
+        },
+        {
+          "qid": "gs-c02-comprehensive-choice-030",
+          "section": "choice",
+          "paper_no": "一3"
+        },
+        {
+          "qid": "gs-c01-basic-choice-012",
+          "section": "choice",
+          "paper_no": "一4"
+        },
+        {
+          "qid": "gs-c01-comprehensive-choice-018",
+          "section": "choice",
+          "paper_no": "一5"
+        },
+        {
+          "qid": "gs-c04-comprehensive-choice-007",
+          "section": "choice",
+          "paper_no": "一6"
+        },
+        {
+          "qid": "gs-c02-basic-choice-018",
+          "section": "choice",
+          "paper_no": "一7"
+        },
+        {
+          "qid": "gs-c03-comprehensive-choice-008",
+          "section": "choice",
+          "paper_no": "一8"
+        },
+        {
+          "qid": "gs-c03-basic-choice-015",
+          "section": "choice",
+          "paper_no": "一9"
+        },
+        {
+          "qid": "gs-c05-basic-choice-005",
+          "section": "choice",
+          "paper_no": "一10"
+        },
+        {
+          "qid": "gs-c03-comprehensive-fill-006",
+          "section": "fill",
+          "paper_no": "二1"
+        },
+        {
+          "qid": "gs-c04-comprehensive-fill-002",
+          "section": "fill",
+          "paper_no": "二2"
+        },
+        {
+          "qid": "gs-c03-basic-fill-023",
+          "section": "fill",
+          "paper_no": "二3"
+        },
+        {
+          "qid": "gs-c05-comprehensive-fill-001",
+          "section": "fill",
+          "paper_no": "二4"
+        },
+        {
+          "qid": "gs-c02-comprehensive-fill-002",
+          "section": "fill",
+          "paper_no": "二5"
+        },
+        {
+          "qid": "gs-c01-comprehensive-fill-003",
+          "section": "fill",
+          "paper_no": "二6"
+        },
+        {
+          "qid": "gs-c03-comprehensive-solution-007",
+          "section": "solution",
+          "paper_no": "三1"
+        },
+        {
+          "qid": "gs-c01-comprehensive-solution-009",
+          "section": "solution",
+          "paper_no": "三2"
+        },
+        {
+          "qid": "gs-c04-comprehensive-solution-006",
+          "section": "solution",
+          "paper_no": "三3"
+        },
+        {
+          "qid": "gs-c05-comprehensive-solution-020",
+          "section": "solution",
+          "paper_no": "三4"
+        },
+        {
+          "qid": "gs-c06-comprehensive-solution-006",
+          "section": "solution",
+          "paper_no": "三5"
+        },
+        {
+          "qid": "gs-c02-comprehensive-solution-008",
+          "section": "solution",
+          "paper_no": "三6"
+        }
+      ],
+      "status": "created",
+      "weakness_scores": {}
+    }
+  ]
+}
