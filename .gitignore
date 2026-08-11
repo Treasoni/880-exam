@@ -23,6 +23,8 @@ venv/
 
 # === 主机本地配置 ===
 .claude/settings.local.json
+# Claudian stores local sessions and credential-bearing provider configuration.
+/.claudian/
 
 # === LLM usage 观测（本地事件文件不入库，合同/样本保留） ===
 .llm/prompt-cache/usage-events.jsonl
