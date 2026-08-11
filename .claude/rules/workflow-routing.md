@@ -15,7 +15,7 @@ workspace/workflow-runs/*.workflow.md                   # active or historical r
 <!-- workflow-routing:generated:start -->
 | Workflow ID | Required | When To Use | Positive Triggers | Excludes | Definition | State File Pattern |
 | --- | --- | --- | --- | --- | --- | --- |
-| `880-exam` | no | 用户使用 880 习题系统（拼卷/判分/错题本/预览/入库），或需要恢复进行中的做题流程时。 | 拼卷、拼张卷、判分、改卷、错题本、预览、进度、补弱、重练、880、模拟卷、做题 | 与 880 习题系统无关的通用开发任务 | `.claude/workflows/880-exam/workflow.md` | `workspace/workflow-runs/880-exam.workflow.md` |
+| `880-exam` | no | 用户使用 880 习题系统（拼卷/判分/错因分析/错题本/预览/入库），或需要恢复进行中的做题流程时。 | 拼卷、拼张卷、判分、改卷、错因、归因、分析、错题本、预览、进度、补弱、重练、880、模拟卷、做题 | 与 880 习题系统无关的通用开发任务 | `.claude/workflows/880-exam/workflow.md` | `workspace/workflow-runs/880-exam.workflow.md` |
 <!-- workflow-routing:generated:end -->
 
 ## Routing Rules

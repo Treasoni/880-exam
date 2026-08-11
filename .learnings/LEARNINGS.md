@@ -151,3 +151,55 @@ _最后更新：2026-08-11_
 - 下次做法：工作流状态模板的每行阶段必须带机器 token（`> [P0] ⬜ 未开始 {not_started} — 说明`）；改状态机脚本或模板任一侧后，用空状态文件重放一遍 start→complete 全链路验证。
 
 ---
+
+## 2026-08-11
+
+### skill 拆分的判据：独立意图 + 独立流程 + 独立触发词
+
+**类别**：best_practice
+**优先级**：medium
+**状态**：pending
+**范围**：skills / skill-invocation.md / 880-analysis
+
+**摘要**：把嵌在 880-grade 里的「判分后过程分析」拆成独立 skill `880-analysis`——用户问是否需要独立入口，我判断需要并落地。判据：意图（归因 vs 判分）、流程（多步且自足）、触发词（分析/错因/归因 vs 判分/改卷）三者都独立时拆，否则留作子节。
+
+**详情**：
+- 事实：归因流程原为 880-grade 的一个可选小节；用户问「需要用一个 skill 作为入口开启吗」。独立后路由表、wrongbook 引用、grade 指针全部同步。
+- 根因：路由表按触发词匹配 skill description；归因意图没有自己的入口，会被误路由到判分。
+- 下次做法：发现某个 skill 里藏着「意图/流程/触发词」都独立的子流程时，主动评估拆成独立 skill；新 skill 三处镜像（.claude/.agents/.codebuddy）同步，跑 sync-skill-registry + sync-workflow-routing.sh。
+
+---
+
+### 技能注册表机制：.claude/skills 驱动，镜像手工同步
+
+**类别**：knowledge_gap
+**优先级**：low
+**状态**：pending
+**范围**：sync-skill-registry / 技能镜像
+
+**摘要**：skill-invocation.md 注册表由 `.claude/skills/*/SKILL.md` 驱动（sync-skill-registry 扫描该目录），`.agents/skills`、`.codebuddy/skills` 是手工镜像，不参与注册表；Skill 工具列表在 SKILL.md 创建后立即动态出现，注册表 sync 只改表格不改文件。
+
+**详情**：
+- 事实：建 .claude/skills/880-analysis/SKILL.md 后，system-reminder 立即显示该 skill 可用；跑 sync-skill-registry 只加了表格一行；.agents/.codebuddy 需要 cp 手工镜像。
+- 根因：Claude Code 的 skill 发现机制直接扫 .claude/skills 目录；注册表脚本只管理 `## 技能列表`~`### 1. 分析意图` 之间的表格。
+- 下次做法：新增 skill 时先写 `.claude/skills/<name>/SKILL.md`（注册表与工具列表自动生效），再手工 cp 镜像，最后 sync-skill-registry 补表格行。
+
+---
+
+## 2026-08-11
+
+### 功能变更要同步用户指南 docs/使用指南.md
+
+**类别**：best_practice
+**优先级**：medium
+**状态**：pending
+**范围**：docs / 文档同步
+
+**摘要**：新增 880-analysis skill、判分卡由表格改为任务清单后，docs/使用指南.md 仍是旧版（四步流程、旧判分表、无错因分析）。格式/功能变更链路（规则→脚本→skill→产物）之外，还应把**用户向指南**纳入同步范围。
+
+**详情**：
+- 事实：用户说「帮我更新使用笔记」，发现指南还在教「四步搞定」和表格勾选，与实际（五步、任务清单、错因分析、得分弱点）脱节。
+- 根因：变更链路只覆盖了规则/脚本/skill/产物，没覆盖 docs/使用指南.md 这类面向用户的文档。
+- 下次做法：改 880 功能（新增 skill、改判分卡格式、加产物小节）时，把 `docs/使用指南.md` 一并检查更新（流程步数、示例格式、速查表、数据位置、FAQ）。
+
+---

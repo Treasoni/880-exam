@@ -1,0 +1,24 @@
+{
+  "id": "conv-1786420963573-13v5x2p59",
+  "providerId": "claude",
+  "title": "Grade 880 exam paper",
+  "titleGenerationStatus": "success",
+  "createdAt": 1786420963574,
+  "updatedAt": 1786420998389,
+  "lastResponseAt": 1786420998389,
+  "sessionId": "27155a96-309e-4efc-8a92-232a4265a597",
+  "providerState": {
+    "providerSessionId": "27155a96-309e-4efc-8a92-232a4265a597"
+  },
+  "currentNote": "workspace/papers/paper-01/判分卡-01.md",
+  "usage": {
+    "model": "deepseek-v4-flash",
+    "inputTokens": 3610,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 40960,
+    "contextWindow": 200000,
+    "contextTokens": 44570,
+    "percentage": 22,
+    "contextWindowIsAuthoritative": true
+  }
+}

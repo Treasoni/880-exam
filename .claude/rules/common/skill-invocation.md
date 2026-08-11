@@ -1,12 +1,13 @@
 # Skill Invocation
 
 ## 技能列表
-<!-- skill-registry:managed ["880-build-index","880-grade","880-paper","880-progress","880-wrongbook","ask-matt","batch-grill-me","claude-handoff","code-review","codebase-design","defuddle","design-an-interface","diagnosing-bugs","digest","domain-modeling","edit-article","git-guardrails-claude-code","grill-me","grill-with-docs","grilling","handoff","implement","improve-codebase-architecture","json-canvas","loop-me","maintain-learnings","manifest-platform","migrate-to-shoehorn","obsidian-bases","obsidian-cli","obsidian-markdown","obsidian-vault","prompt-cache-optimizer","prototype","qa","request-refactor-plan","research","resolving-merge-conflicts","scaffold-exercises","setup-matt-pocock-skills","setup-pre-commit","setup-ts-deep-modules","sync-skill-registry","tdd","teach","to-questionnaire","to-spec","to-tickets","triage","ubiquitous-language","wayfinder","wizard","workflow-todo-state","writing-beats","writing-fragments","writing-great-skills","writing-shape"] -->
+<!-- skill-registry:managed ["880-analysis","880-build-index","880-grade","880-paper","880-progress","880-wrongbook","ask-matt","batch-grill-me","claude-handoff","code-review","codebase-design","defuddle","design-an-interface","diagnosing-bugs","digest","domain-modeling","edit-article","git-guardrails-claude-code","grill-me","grill-with-docs","grilling","handoff","implement","improve-codebase-architecture","json-canvas","loop-me","maintain-learnings","manifest-platform","migrate-to-shoehorn","obsidian-bases","obsidian-cli","obsidian-markdown","obsidian-vault","prompt-cache-optimizer","prototype","qa","request-refactor-plan","research","resolving-merge-conflicts","scaffold-exercises","setup-matt-pocock-skills","setup-pre-commit","setup-ts-deep-modules","sync-skill-registry","tdd","teach","to-questionnaire","to-spec","to-tickets","triage","ubiquitous-language","wayfinder","wizard","workflow-todo-state","writing-beats","writing-fragments","writing-great-skills","writing-shape"] -->
 
 #### 未分类
 
 | 技能 | 触发场景 | 关键触发词 |
 |------|----------|-----------|
+| `880-analysis` | 对话式过程归因——用户贴做题过程，定位出错环节并给出建议，写入 analysis.json 并由错题本渲染。 | 分析、错因、归因、这题我哪里错了、看我做题过程、我这样做的 |
 | `880-build-index` | 从做题本+解析册重建题目索引（首次入库或源文件更新后用）。 | 入库、重建索引、初始化题库 |
 | `880-grade` | 判分记录（五态：对/错/不会/半会/粗心），更新判分记录、错题本与进度总览。 | 判分、改卷、对答案、交判分 |
 | `880-paper` | 拼一张 880 高数模拟卷（真题模式：选10×5分+填6×5分+解6题=150分/180分钟），生成卷子、答案卷与判分卡。 | 拼卷、拼张卷、出卷、生成卷子、来张卷 |
