@@ -1,0 +1,303 @@
+{
+  "main": {
+    "id": "d0f70ea05a628ef8",
+    "type": "split",
+    "children": [
+      {
+        "id": "5cd0f96cdd16132a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "52ca960485aef7ee",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4186e719fd0193c2",
+    "type": "split",
+    "children": [
+      {
+        "id": "7a32e3c5ee76d442",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6317a39668190194",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "b7461b6e8db7ece1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "内积",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "7b98e39af17c05c3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          },
+          {
+            "id": "8f0801c840d50070",
+            "type": "leaf",
+            "state": {
+              "type": "langr-search-panel",
+              "state": {},
+              "icon": "book",
+              "title": "查词面板"
+            }
+          },
+          {
+            "id": "6102b6abc9f08367",
+            "type": "leaf",
+            "state": {
+              "type": "notebook-navigator",
+              "state": {},
+              "icon": "notebook-navigator",
+              "title": "笔记本导航器"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 295.5
+  },
+  "right": {
+    "id": "a99e901caa8bea67",
+    "type": "split",
+    "children": [
+      {
+        "id": "17d2024735c36e69",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8fea128a25517e69",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "线性代数/必背知识.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "必背知识 的反向链接列表"
+            }
+          },
+          {
+            "id": "1d92725e45f5caab",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "线性代数/第一章：行列式/错题题目.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "错题题目 的出链列表"
+            }
+          },
+          {
+            "id": "24c7595e5233b7bf",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "496a141e6f4cad04",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "f5f6330a45d67f9a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "线性代数/必背知识.md",
+                "followCursor": false,
+                "showSearch": true,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "必背知识 的大纲"
+            }
+          },
+          {
+            "id": "5bd92ebabbf49620",
+            "type": "leaf",
+            "state": {
+              "type": "langr-learn-panel",
+              "state": {},
+              "icon": "reading-glasses",
+              "title": "学习新单词"
+            }
+          },
+          {
+            "id": "1a1d7c445d99050d",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          },
+          {
+            "id": "1772bb87736101b7",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "d0d8383a692e3423",
+            "type": "leaf",
+            "state": {
+              "type": "claudian-view",
+              "state": {},
+              "icon": "bot",
+              "title": "Claudian"
+            }
+          }
+        ],
+        "currentTab": 8
+      }
+    ],
+    "direction": "horizontal",
+    "width": 355.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "daily-notes:打开/创建今天的日记": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false,
+      "obsidian-git:Open Git source control": false,
+      "obsidian-language-learner:打开查词面板": false,
+      "obsidian-language-learner:打开新词面板": false,
+      "obsidian-language-learner:打开统计": false,
+      "obsidian-language-learner:单词列表": false,
+      "obsidian42-brat:BRAT": false,
+      "claudian:Open Claudian": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "terminal:Open terminal": false,
+      "notebook-navigator:笔记本导航器": false,
+      "custom-sort:Toggle custom sorting": false
+    }
+  },
+  "active": "6317a39668190194",
+  "lastOpenFiles": [
+    "线性代数/必背知识.md.tmp.27568.2560e6b7d506",
+    "考研计划/每日计划/完成记录/8月计划/2026-08-05-每日计划.md",
+    "考研计划/每日计划/完成记录/8月计划/2026-08-04-每日计划.md",
+    "考研计划/每日计划/完成记录/8月计划/2026-08-04-完成记录.md",
+    "考研专业课/模拟电子技术/详细笔记/03-BJT与基本放大电路/03-基本共射放大电路.md",
+    "考研专业课/模拟电子技术/详细笔记/03-BJT与基本放大电路/02-直流通路与交流通路.md",
+    "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/02-MOSFET工作区判断.md",
+    "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/03-gm与rds参数.md",
+    "考研专业课/模拟电子技术/详细笔记/05-差分放大电路与集成运放/02-差分放大核心思想.md",
+    "考研数学/0-基础知识/高数必背公式.md",
+    "考研数学/微分方程/1-微分方程的概念/用概念解题.md",
+    "考研数学/微分方程/2-一阶微分方程的求解/齐次型微分方程.md",
+    "考研数学/微分方程/4-微分方程的综合应用/几何应用.md",
+    "考研数学/微分方程/4-微分方程的综合应用/📑 索引.md",
+    "考研数学/微分方程/错题本.md",
+    "考研数学/微分方程/1-微分方程的概念/线性微分方程.md",
+    "考研数学/微分方程/1-微分方程的概念/微分方程的解.md",
+    "考研数学/微分方程/1-微分方程的概念/常微分方程.md",
+    "考研计划/每日计划/完成记录/8月计划/2026-08-03-每日计划.md",
+    "考研计划/每日计划/完成记录/8月计划/2026-08-03-完成记录.md",
+    "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/03-gm与rds参数.md.bak-20260803-1931",
+    "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/01-FET核心思想与类型.md",
+    "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/99-章节总复习.md",
+    "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/07-JFET及其放大电路.md",
+    "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/06-共漏与共栅.md",
+    "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/05-共源小信号分析.md",
+    "考研专业课/模拟电子技术/详细笔记/02-场效应管及其放大电路/04-共源极静态与图解.md",
+    "数电资料/822 电子技术基础.pdf",
+    "线性代数/第四章：向量与方程组/错题本.md.tmp.67149.14044ef8d0e3",
+    "考研数学/二重积分/images/错题18-分子有理化拆分.png",
+    "考研数学/二重积分/images/错题17-伪对称区域.png",
+    "考研数学/二重积分/images/错题16-广义极坐标角度失真对比.png",
+    "考研数学/二重积分/images/错题15-玫瑰线积分区域.png",
+    "考研专业课/模拟电子技术/附件/03-BJT与基本放大电路/图-共基极-直流与微变等效.png",
+    "考研专业课/模拟电子技术/附件/03-BJT与基本放大电路/图-共基极-直流与微变等效.svg",
+    "考研专业课/模拟电子技术/附件/03-BJT与基本放大电路/手写原图-共基极动态指标-2026-08-02.jpg",
+    "考研专业课/模拟电子技术/附件/03-BJT与基本放大电路/手写原图-共基极结构与Q点计算-2026-08-02.jpg",
+    "考研专业课/模拟电子技术/附件/03-BJT与基本放大电路/图-共集极-直流与微变等效.png",
+    "考研专业课/模拟电子技术/附件/03-BJT与基本放大电路/图-共集极-直流与微变等效.svg",
+    "workspace/backups/note-reformat/03-基本共射放大电路.md.bak-20260802-1929",
+    "workspace/backups/note-reformat",
+    "workspace/backups",
+    "考研计划/每日计划/完成记录/8月计划",
+    "考研计划/每日计划/完成记录/7月计划",
+    "考研专业课/模拟电子技术/详细笔记/03-BJT与基本放大电路/未命名",
+    "考研数学/二重积分/images",
+    "考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/未命名.canvas"
+  ]
+}
