@@ -25,6 +25,11 @@ description: 查看/重生成错题本，更新复习状态（未复习/已重�
    状态可选：未复习 / 已重做 / 已掌握。
    - Windows 把 `python3` 换成 `py -3`（或 `make wrongbook PYTHON='py -3'`）。
 
+4. **补充题目解析/学习笔记时**：
+   - 不要直接编辑 `workspace/wrong-book/错题本.md`；它是生成产物，重建会覆盖手工修改。
+   - 将补充内容写入 `workspace/question-index.json` 对应题目的 `solution`（或修改负责渲染的脚本/事实源），然后运行 `python3 scripts/wrong_book.py`。
+   - 交付前用题号或新增内容 grep 错题本，确认补充确实出现在目标条目下。
+
 ## 重练流程（对话式）
 
 用户报"重练了某题，会了"时：
