@@ -240,7 +240,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -268,7 +268,7 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "f5f6330a45d67f9a",
+  "active": "d0d8383a692e3423",
   "lastOpenFiles": [
     "workspace/papers/paper-01/判分卡-01.md",
     "workspace/papers/paper-01/卷子-01-答案.md",
