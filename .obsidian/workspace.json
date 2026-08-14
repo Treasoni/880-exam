@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/papers/paper-02/判分卡-02.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "错题本"
+              "title": "判分卡-02"
             }
           },
           {
@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/papers/paper-02/卷子-02.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "错题本"
+              "title": "卷子-02"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -190,13 +191,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/papers/paper-02/卷子-02.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "错题本 的大纲"
+              "title": "卷子-02 的大纲"
             }
           },
           {
@@ -240,11 +241,11 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 380.5
+    "width": 354.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -268,16 +269,16 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "d0d8383a692e3423",
+  "active": "f5f6330a45d67f9a",
   "lastOpenFiles": [
-    "workspace/papers/paper-02/卷子-02.md",
-    "workspace/papers/paper-02/卷子-02-答案.md",
+    "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-02/判分卡-02.md",
+    "workspace/papers/paper-02/卷子-02-答案.md",
+    "workspace/papers/paper-02/卷子-02.md",
     "workspace/papers/paper-02",
     "workspace/wrong-book/images/心形线-弧长示意图.png",
     "workspace/wrong-book/images",
     "workspace/wrong-book/心形线-弧长示意图.png",
-    "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-01/判分卡-01.md",
     "workspace/papers/paper-01/卷子-01-答案.md",
     "workspace/papers/paper-01/卷子-01.md",
