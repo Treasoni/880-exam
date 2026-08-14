@@ -240,7 +240,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -268,8 +268,12 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "52ca960485aef7ee",
+  "active": "d0d8383a692e3423",
   "lastOpenFiles": [
+    "workspace/papers/paper-02/卷子-02.md",
+    "workspace/papers/paper-02/卷子-02-答案.md",
+    "workspace/papers/paper-02/判分卡-02.md",
+    "workspace/papers/paper-02",
     "workspace/wrong-book/images/心形线-弧长示意图.png",
     "workspace/wrong-book/images",
     "workspace/wrong-book/心形线-弧长示意图.png",
@@ -288,7 +292,6 @@
     "template_ai/skills/maintain-learnings/manifest.yaml",
     "template_ai/skills/maintain-learnings/agents",
     "template_ai/skills/maintain-learnings/SKILL.md",
-    "template_ai/skills/maintain-learnings",
     "template_ai/skills/digest/SKILL.md",
     "template_ai/workspace/workflow-runs/reusable-agent-assets-security-secret-audit.workflow.md",
     "conflict-files-obsidian-git.md",
@@ -303,7 +306,6 @@
     "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数/assets/链式求导法则/file-20260318141956843.png",
     "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets/微分的定义/file-20260317190102107.png",
     "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260518140935179.png",
-    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315214410376.png",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/3-涉及积分的中值定理/积分中值定理.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/📝 章节总结.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/费马定理.md",
@@ -314,8 +316,6 @@
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/📝 章节总结.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/零点定理.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/有界与最值定理.md",
-    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/平均值定理.md",
-    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/介值定理.md",
     "考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/未命名.canvas"
   ]
 }
