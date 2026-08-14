@@ -98,7 +98,7 @@ def render(schema, index, attempts, wrong, ext_links=None, analysis=None):
             lines.append(f"**题干：** {q['text']}")
             lines.append("")
             if q.get("answer"):
-                lines.append(f"**答案：** {q['answer']}")
+                lines.append(f"**答案：** {lib880.markdown_math_answer(q['answer'])}")
                 lines.append("")
             if q.get("solution"):
                 lines.append("**解析：**")

@@ -279,7 +279,8 @@ def render_answers(schema, paper_id, sections_plan):
             # 题目原文（与卷子保持一致），再给答案与解析
             lines.append(f"**{idx}.** {q.get('text', '').strip()}")
             lines.append("")
-            lines.append("**答案：** " + (f"**{q['answer']}**" if q.get("answer") else "（见解析）"))
+            answer = lib880.markdown_math_answer(q["answer"]) if q.get("answer") else "（见解析）"
+            lines.append("**答案：** " + (f"**{answer}**" if q.get("answer") else answer))
             lines.append("")
             if q.get("solution"):
                 lines.append(q["solution"].strip())
@@ -323,7 +324,7 @@ def render_grading_card(schema, paper_id, sections_plan):
             elif q.get("answer_status") == "missing" or not q.get("answer"):
                 ans = "（解析册未找到）"
             else:
-                ans = q["answer"]
+                ans = lib880.markdown_math_answer(q["answer"])
             lines.append(f"**{idx}.** 答案：{str(ans).replace(chr(10), ' ').strip()}")
             lines.append("")
             for g in grade_cols:

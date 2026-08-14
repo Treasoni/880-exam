@@ -20,6 +20,21 @@ EXTERNAL_LINKS_PATH = ROOT / "workspace/records/external-links.json"
 ANALYSIS_PATH = ROOT / "workspace/records/analysis.json"
 
 
+def markdown_math_answer(value):
+    """为未带数学定界符的公式答案补上行内 LaTeX 定界符。
+
+    题库中的答案既有纯文本（如 ``A``、``0``），也有裸 LaTeX（如
+    ``\\frac{1}{2}``）。只包装明显的公式，避免把普通答案强制渲染成数学体。
+    已带 ``$`` 的答案保持原样，因为其中可能混有公式和说明文字。
+    """
+    text = str(value or "").strip()
+    if not text or "$" in text:
+        return text
+    if re.search(r"\\[A-Za-z]+|[{}_^]", text):
+        return f"${text}$"
+    return text
+
+
 def ensure_utf8_stdio():
     """把 stdout/stderr 强制为 UTF-8，避免 Windows 旧控制台或非 UTF-8 locale 下 print 中文报 UnicodeEncodeError。
 

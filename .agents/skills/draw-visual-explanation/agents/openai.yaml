@@ -1,0 +1,4 @@
+interface:
+  display_name: "Draw Visual Explanations"
+  short_description: "Generate accurate diagrams and embed them in Obsidian notes"
+  default_prompt: "Use $draw-visual-explanation to decide whether a diagram helps, generate it, and embed it in the relevant note."

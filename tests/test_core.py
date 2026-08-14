@@ -24,6 +24,11 @@ class Lib880Test(unittest.TestCase):
     def setUp(self):
         self.schema = lib880.load_schema()
 
+    def test_markdown_math_answer_wraps_bare_latex_only(self):
+        self.assertEqual(lib880.markdown_math_answer(r"\frac{1}{2}"), r"$\frac{1}{2}$")
+        self.assertEqual(lib880.markdown_math_answer("$x^2$"), "$x^2$")
+        self.assertEqual(lib880.markdown_math_answer("A"), "A")
+
     def test_weakness_respects_minimum_attempts(self):
         schema = copy.deepcopy(self.schema)
         schema["weakness"]["min_attempts"] = 2
