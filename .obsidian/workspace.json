@@ -268,12 +268,14 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "f5f6330a45d67f9a",
+  "active": "52ca960485aef7ee",
   "lastOpenFiles": [
+    "workspace/wrong-book/images/心形线-弧长示意图.png",
+    "workspace/wrong-book/images",
     "workspace/wrong-book/心形线-弧长示意图.png",
+    "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-01/判分卡-01.md",
     "workspace/papers/paper-01/卷子-01-答案.md",
-    "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-01/卷子-01.md",
     "workspace/preview/进度总览.md",
     "template_ai/CLAUDE.md",
@@ -287,7 +289,6 @@
     "template_ai/skills/maintain-learnings/agents",
     "template_ai/skills/maintain-learnings/SKILL.md",
     "template_ai/skills/maintain-learnings",
-    "template_ai/skills/multi-agent-sync/scripts/__pycache__/validate_portability.cpython-313.pyc",
     "template_ai/skills/digest/SKILL.md",
     "template_ai/workspace/workflow-runs/reusable-agent-assets-security-secret-audit.workflow.md",
     "conflict-files-obsidian-git.md",
@@ -303,7 +304,6 @@
     "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets/微分的定义/file-20260317190102107.png",
     "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260518140935179.png",
     "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315214410376.png",
-    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315214400186.png",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/3-涉及积分的中值定理/积分中值定理.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/📝 章节总结.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/费马定理.md",
