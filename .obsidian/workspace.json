@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "external-notes/考研数学/高数-函数极限与连续/错题本.md",
+                "file": "workspace/wrong-book/错题本.md",
                 "mode": "source",
                 "source": false
               },
@@ -192,7 +192,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "external-notes/考研数学/高数-函数极限与连续/错题本.md",
+                "file": "workspace/wrong-book/错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -272,6 +272,7 @@
   },
   "active": "7af8f20397d6695b",
   "lastOpenFiles": [
+    "external-notes/考研数学/高数-函数极限与连续/错题本.md",
     "workspace/wrong-book/错题本.md",
     "docs/使用指南.md",
     "workspace/papers/paper-02/卷子-02-答案.md",
@@ -299,7 +300,6 @@
     "template_ai/workspace/workflow-runs/reusable-agent-assets-security-secret-audit.workflow.md",
     "conflict-files-obsidian-git.md",
     "workspace/workflow-runs/880-exam.workflow.md",
-    "external-notes/考研数学/高数-函数极限与连续/错题本.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/费马定理/file-20260326155144130.png",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/罗尔定理/file-20260327104542193.png",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/罗尔定理/file-20260327101434383.png",
