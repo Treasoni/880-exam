@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "external-notes/考研数学/高数-一元微分学/错题本.md",
                 "mode": "source",
                 "source": false
               },
@@ -192,7 +192,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "external-notes/考研数学/高数-一元微分学/错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -272,8 +272,8 @@
   },
   "active": "7af8f20397d6695b",
   "lastOpenFiles": [
-    "external-notes/考研数学/高数-函数极限与连续/错题本.md",
     "workspace/wrong-book/错题本.md",
+    "external-notes/考研数学/高数-函数极限与连续/错题本.md",
     "docs/使用指南.md",
     "workspace/papers/paper-02/卷子-02-答案.md",
     "workspace/papers/paper-02/判分卡-02.md",

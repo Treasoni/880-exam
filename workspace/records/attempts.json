@@ -175,6 +175,14 @@
       "when": "2026-08-21",
       "recorded_at": "2026-08-21T20:49:55+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c02-basic-choice-018",
+      "paper_id": "paper-01",
+      "grade": "correct",
+      "when": "2026-08-21",
+      "recorded_at": "2026-08-21T20:59:21+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -183,8 +191,8 @@
       "updated": "2026-08-11"
     },
     "gs-c02-basic-choice-018": {
-      "state": "未复习",
-      "updated": "2026-08-11"
+      "state": "已掌握",
+      "updated": "2026-08-21"
     },
     "gs-c03-comprehensive-choice-008": {
       "state": "未复习",
