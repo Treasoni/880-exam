@@ -10,6 +10,7 @@
     },
     "/": {
       "children": [
+        "external-notes",
         "880",
         "scripts",
         "template_ai",
@@ -2055,8 +2056,1499 @@
       ],
       "sortOrder": "custom"
     },
+    "external-notes": {
+      "children": [
+        "external-notes/考研数学"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学": {
+      "children": [
+        "external-notes/考研数学/0-基础知识",
+        "external-notes/考研数学/二重积分",
+        "external-notes/考研数学/高数-多元函数微分学",
+        "external-notes/考研数学/高数-函数极限与连续",
+        "external-notes/考研数学/高数-数列极限",
+        "external-notes/考研数学/高数-一元函数积分学",
+        "external-notes/考研数学/高数-一元微分学",
+        "external-notes/考研数学/微分方程",
+        "external-notes/考研数学/有价值的错题.md",
+        "external-notes/考研数学/sortspec.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/0-基础知识": {
+      "children": [
+        "external-notes/考研数学/0-基础知识/assets",
+        "external-notes/考研数学/0-基础知识/📋 高数必背速查（极限·连续·微分·积分）.md",
+        "external-notes/考研数学/0-基础知识/🧪 高数必背自测（遮挡式）.md",
+        "external-notes/考研数学/0-基础知识/常用平面图形.md",
+        "external-notes/考研数学/0-基础知识/常用数值近似值.md",
+        "external-notes/考研数学/0-基础知识/充分条件与必要条件.md",
+        "external-notes/考研数学/0-基础知识/高数必背公式.md",
+        "external-notes/考研数学/0-基础知识/函数运算性质速查表.md",
+        "external-notes/考研数学/0-基础知识/每天一背.md",
+        "external-notes/考研数学/0-基础知识/数列单调性证明方法.md",
+        "external-notes/考研数学/0-基础知识/重要公式.md",
+        "external-notes/考研数学/0-基础知识/做题直觉.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/0-基础知识/assets": {
+      "children": [
+        "external-notes/考研数学/0-基础知识/assets/常用平面图形",
+        "external-notes/考研数学/0-基础知识/assets/高数必背公式",
+        "external-notes/考研数学/0-基础知识/assets/limit-continuity-differentiability-relation-20260724.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/0-基础知识/assets/常用平面图形": {
+      "children": [
+        "external-notes/考研数学/0-基础知识/assets/常用平面图形/circle-drawing-20260728.png",
+        "external-notes/考研数学/0-基础知识/assets/常用平面图形/ellipse-hyperbola-drawing-20260728.png",
+        "external-notes/考研数学/0-基础知识/assets/常用平面图形/file-20260424162136500.png",
+        "external-notes/考研数学/0-基础知识/assets/常用平面图形/file-20260424162451321.png",
+        "external-notes/考研数学/0-基础知识/assets/常用平面图形/file-20260424162505792.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/0-基础知识/assets/高数必背公式": {
+      "children": [
+        "external-notes/考研数学/0-基础知识/assets/高数必背公式/file-20260724085405969.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分": {
+      "children": [
+        "external-notes/考研数学/二重积分/1-概念性质与对称性",
+        "external-notes/考研数学/二重积分/2-计算",
+        "external-notes/考研数学/二重积分/images",
+        "external-notes/考研数学/二重积分/📊 学习进度.md",
+        "external-notes/考研数学/二重积分/📑 索引.md",
+        "external-notes/考研数学/二重积分/3-古鲁金第二定理.md",
+        "external-notes/考研数学/二重积分/14.9-max函数二重积分区域拆分.svg",
+        "external-notes/考研数学/二重积分/14.10-极坐标区域转直角坐标.png",
+        "external-notes/考研数学/二重积分/14.12-积分区域取正部最大.svg",
+        "external-notes/考研数学/二重积分/错题本.md",
+        "external-notes/考研数学/二重积分/错题题目.md",
+        "external-notes/考研数学/二重积分/sortspec.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分/1-概念性质与对称性": {
+      "children": [
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/assets",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/概念.md",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/性质.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性": {
+      "children": [
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/轮换对称性.md",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/普通对称性.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets": {
+      "children": [
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets/轮换对称性",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets/普通对称性"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets/轮换对称性": {
+      "children": [
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets/轮换对称性/file-20260422090741205.png",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets/轮换对称性/file-20260422090806739.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets/普通对称性": {
+      "children": [
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets/普通对称性/file-20260421165501619.png",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets/普通对称性/file-20260421165528830.png",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets/普通对称性/file-20260421165545949.png",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets/普通对称性/file-20260421165604616.png",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets/普通对称性/file-20260421165619928.png",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/对称性/assets/普通对称性/file-20260421165631654.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分/1-概念性质与对称性/assets": {
+      "children": [
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/assets/概念"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分/1-概念性质与对称性/assets/概念": {
+      "children": [
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/assets/概念/file-20260421153656914.png",
+        "external-notes/考研数学/二重积分/1-概念性质与对称性/assets/概念/file-20260421154209502.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分/2-计算": {
+      "children": [
+        "external-notes/考研数学/二重积分/2-计算/assets",
+        "external-notes/考研数学/二重积分/2-计算/换元法.md",
+        "external-notes/考研数学/二重积分/2-计算/极坐标系.md",
+        "external-notes/考研数学/二重积分/2-计算/极坐标与直角坐标的互相转化.md",
+        "external-notes/考研数学/二重积分/2-计算/直角坐标系.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分/2-计算/assets": {
+      "children": [
+        "external-notes/考研数学/二重积分/2-计算/assets/极坐标系",
+        "external-notes/考研数学/二重积分/2-计算/assets/直角坐标系"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分/2-计算/assets/极坐标系": {
+      "children": [
+        "external-notes/考研数学/二重积分/2-计算/assets/极坐标系/三大高频场景-1-极点内边界.png",
+        "external-notes/考研数学/二重积分/2-计算/assets/极坐标系/三大高频场景-2-两曲线夹域.png",
+        "external-notes/考研数学/二重积分/2-计算/assets/极坐标系/三大高频场景-3-直线外边界.png",
+        "external-notes/考研数学/二重积分/2-计算/assets/极坐标系/file-20260422103016510.png",
+        "external-notes/考研数学/二重积分/2-计算/assets/极坐标系/file-20260422103033101.png",
+        "external-notes/考研数学/二重积分/2-计算/assets/极坐标系/file-20260422103046044.png",
+        "external-notes/考研数学/二重积分/2-计算/assets/极坐标系/file-20260422103058571.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分/2-计算/assets/直角坐标系": {
+      "children": [
+        "external-notes/考研数学/二重积分/2-计算/assets/直角坐标系/file-20260422092615135.png",
+        "external-notes/考研数学/二重积分/2-计算/assets/直角坐标系/file-20260422092645245.png",
+        "external-notes/考研数学/二重积分/2-计算/assets/直角坐标系/file-20260422092716462.png",
+        "external-notes/考研数学/二重积分/2-计算/assets/直角坐标系/file-20260422093336903.png",
+        "external-notes/考研数学/二重积分/2-计算/assets/直角坐标系/file-20260422093344171.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/二重积分/images": {
+      "children": [
+        "external-notes/考研数学/二重积分/images/错题15-玫瑰线积分区域.png",
+        "external-notes/考研数学/二重积分/images/错题16-广义极坐标角度失真对比.png",
+        "external-notes/考研数学/二重积分/images/错题17-伪对称区域.png",
+        "external-notes/考研数学/二重积分/images/错题18-分子有理化拆分.png",
+        "external-notes/考研数学/二重积分/images/例14.3-D1-正方形对称.png",
+        "external-notes/考研数学/二重积分/images/例14.3-D2-补辅助线.png",
+        "external-notes/考研数学/二重积分/images/例14.3-D3-补辅助线.png",
+        "external-notes/考研数学/二重积分/images/例14.5-卷积有效积分区域.png",
+        "external-notes/考研数学/二重积分/images/例14.6-换序积分区域.png",
+        "external-notes/考研数学/二重积分/images/例14.6-原题区域图.png",
+        "external-notes/考研数学/二重积分/images/例14.7-正弦区域辅助线对称性.png",
+        "external-notes/考研数学/二重积分/images/例14.8-圆域轮换对称.png",
+        "external-notes/考研数学/二重积分/images/例14.10-第一象限变上限圆环.png",
+        "external-notes/考研数学/二重积分/images/例14.10-原题第一象限圆环.png",
+        "external-notes/考研数学/二重积分/images/例14.15-变量代换区域映射.svg"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念",
+        "external-notes/考研数学/高数-多元函数微分学/2-微分法则",
+        "external-notes/考研数学/高数-多元函数微分学/3-极值与最值",
+        "external-notes/考研数学/高数-多元函数微分学/assets",
+        "external-notes/考研数学/高数-多元函数微分学/📊 学习进度.md",
+        "external-notes/考研数学/高数-多元函数微分学/📑 索引.md",
+        "external-notes/考研数学/高数-多元函数微分学/错题本.md",
+        "external-notes/考研数学/高数-多元函数微分学/错题题目.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/1-基本概念": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/📝 章节总结.md",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/极限.md",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/可微.md",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/连续.md",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/邻域.md",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/偏导数.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/极限",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/可微",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/邻域",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/偏导数"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/极限": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/极限/file-20260416152416751.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/可微": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/可微/file-20260417101324742.png",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/可微/file-20260417101335908.png",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/可微/file-20260417101348837.png",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/可微/file-20260417101404252.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/邻域": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/邻域/file-20260416151250683.png",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/邻域/file-20260416151318672.png",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/邻域/file-20260416151500802.png",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/邻域/file-20260416151542488.png",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/邻域/file-20260416151547474.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/偏导数": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/偏导数/file-20260416163512646.png",
+        "external-notes/考研数学/高数-多元函数微分学/1-基本概念/assets/偏导数/file-20260416163520545.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/2-微分法则": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/2-微分法则/assets",
+        "external-notes/考研数学/高数-多元函数微分学/2-微分法则/二元函数的拉格朗日定理.md",
+        "external-notes/考研数学/高数-多元函数微分学/2-微分法则/链式求导规则.md",
+        "external-notes/考研数学/高数-多元函数微分学/2-微分法则/全微分形式不变性.md",
+        "external-notes/考研数学/高数-多元函数微分学/2-微分法则/隐函数存在定理.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/2-微分法则/assets": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/2-微分法则/assets/链式求导规则"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/2-微分法则/assets/链式求导规则": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/2-微分法则/assets/链式求导规则/截屏2026-04-17 11.25.26.png",
+        "external-notes/考研数学/高数-多元函数微分学/2-微分法则/assets/链式求导规则/截屏2026-04-17 11.26.14.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/3-极值与最值": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/assets",
+        "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/概念.md",
+        "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/条件最值与拉格朗日乘数法.md",
+        "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/无条件极值.md",
+        "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/有界闭区域上连续函数的最值问题.md",
+        "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/最远最近点的垂线原理.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/assets": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/assets/无条件极值",
+        "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/assets/最远最近点的垂线原理"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/assets/无条件极值": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/assets/无条件极值/file-20260418150733490.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/assets/最远最近点的垂线原理": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/assets/最远最近点的垂线原理/截屏2026-05-02 13.27.00.png",
+        "external-notes/考研数学/高数-多元函数微分学/3-极值与最值/assets/最远最近点的垂线原理/截屏2026-05-02 13.27.51.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-多元函数微分学/assets": {
+      "children": [
+        "external-notes/考研数学/高数-多元函数微分学/assets/错题31-曲线到原点距离最值.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-函数极限与连续": {
+      "children": [
+        "external-notes/考研数学/高数-函数极限与连续/1-函数的概念与特性",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像",
+        "external-notes/考研数学/高数-函数极限与连续/3-函数极限的概念与性质",
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法",
+        "external-notes/考研数学/高数-函数极限与连续/5-函数的连续与间断",
+        "external-notes/考研数学/高数-函数极限与连续/💡错题精华提炼.md",
+        "external-notes/考研数学/高数-函数极限与连续/📊 学习进度.md",
+        "external-notes/考研数学/高数-函数极限与连续/📑 索引.md",
+        "external-notes/考研数学/高数-函数极限与连续/📝 章节总结.md",
+        "external-notes/考研数学/高数-函数极限与连续/错题本.md",
+        "external-notes/考研数学/高数-函数极限与连续/错题题目.md",
+        "external-notes/考研数学/高数-函数极限与连续/函数极限与连续.思维导图.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-函数极限与连续/1-函数的概念与特性": {
+      "children": [
+        "external-notes/考研数学/高数-函数极限与连续/1-函数的概念与特性/函数的概念与特性.md",
+        "external-notes/考研数学/高数-函数极限与连续/1-函数的概念与特性/函数的四种特性（重要）.md",
+        "external-notes/考研数学/高数-函数极限与连续/1-函数的概念与特性/README.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-函数极限与连续/2-函数的图像": {
+      "children": [
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/基本初等函数.md",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/README.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets": {
+      "children": [
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/函数的概念与特性",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/函数的概念与特性": {
+      "children": [
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/函数的概念与特性/file-20260228203658236.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/函数的概念与特性/file-20260228203727099.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/函数的概念与特性/file-20260228203759455.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/函数的概念与特性/file-20260228210411171.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/函数的概念与特性/file-20260228210418379.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/函数的概念与特性/file-20260228210426851.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/函数的概念与特性/file-20260301113203621.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数": {
+      "children": [
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260301182732271.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260301183135382.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260301183143239.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260301183148478.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260301185832780.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260301185852395.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260301191354338.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260301191359823.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302102709290.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302102723001.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302102757069.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302103237738.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302103247276.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302103701913.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302103712184.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302191233209.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302192020723.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302200820763.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302200832952.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302200846937.png",
+        "external-notes/考研数学/高数-函数极限与连续/2-函数的图像/assets/基本初等函数/file-20260302200856096.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-函数极限与连续/3-函数极限的概念与性质": {
+      "children": [
+        "external-notes/考研数学/高数-函数极限与连续/3-函数极限的概念与性质/极限的性质.md",
+        "external-notes/考研数学/高数-函数极限与连续/3-函数极限的概念与性质/极限定义.md",
+        "external-notes/考研数学/高数-函数极限与连续/3-函数极限的概念与性质/邻域概念.md",
+        "external-notes/考研数学/高数-函数极限与连续/3-函数极限的概念与性质/无穷小与无穷大.md",
+        "external-notes/考研数学/高数-函数极限与连续/3-函数极限的概念与性质/README.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法": {
+      "children": [
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/assets",
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/夹逼准则.md",
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/洛必达法则.md",
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/七种未定式.md",
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/四则运算规则.md",
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/泰勒公式.md",
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/泰勒展开原则.md",
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/无穷小的运算.md",
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/重要极限.md",
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/README.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/assets": {
+      "children": [
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/assets/七种未定式",
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/assets/重要极限"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/assets/七种未定式": {
+      "children": [
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/assets/七种未定式/file-20260306111835548.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/assets/重要极限": {
+      "children": [
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/assets/重要极限/file-20260306101827149.png",
+        "external-notes/考研数学/高数-函数极限与连续/4-极限计算方法/assets/重要极限/file-20260306101844675.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-函数极限与连续/5-函数的连续与间断": {
+      "children": [
+        "external-notes/考研数学/高数-函数极限与连续/5-函数的连续与间断/闭区间性质.md",
+        "external-notes/考研数学/高数-函数极限与连续/5-函数的连续与间断/间断点的定义与分类.md",
+        "external-notes/考研数学/高数-函数极限与连续/5-函数的连续与间断/连续点的定义.md",
+        "external-notes/考研数学/高数-函数极限与连续/5-函数的连续与间断/README.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/0-数列的概念",
+        "external-notes/考研数学/高数-数列极限/1-用定义",
+        "external-notes/考研数学/高数-数列极限/2-用性质",
+        "external-notes/考研数学/高数-数列极限/3-用四则运算规则",
+        "external-notes/考研数学/高数-数列极限/4-用海涅定理",
+        "external-notes/考研数学/高数-数列极限/5-用夹逼准则",
+        "external-notes/考研数学/高数-数列极限/6-用单调有界准则",
+        "external-notes/考研数学/高数-数列极限/7-收敛速度问题",
+        "external-notes/考研数学/高数-数列极限/💡错题精华提炼.md",
+        "external-notes/考研数学/高数-数列极限/📊 学习进度.md",
+        "external-notes/考研数学/高数-数列极限/📑 索引.md",
+        "external-notes/考研数学/高数-数列极限/📝 章节总结.md",
+        "external-notes/考研数学/高数-数列极限/错题本.md",
+        "external-notes/考研数学/高数-数列极限/错题题目.md",
+        "external-notes/考研数学/高数-数列极限/数列极限.详细思维导图.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/0-数列的概念": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/0-数列的概念/常见数列类型.md",
+        "external-notes/考研数学/高数-数列极限/0-数列的概念/数列的定义.md",
+        "external-notes/考研数学/高数-数列极限/0-数列的概念/子列.md",
+        "external-notes/考研数学/高数-数列极限/0-数列的概念/README.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/1-用定义": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/1-用定义/ε-N定义.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/2-用性质": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/2-用性质/保号性",
+        "external-notes/考研数学/高数-数列极限/2-用性质/唯一性",
+        "external-notes/考研数学/高数-数列极限/2-用性质/有界性",
+        "external-notes/考研数学/高数-数列极限/2-用性质/保号性应用-最值问题.md",
+        "external-notes/考研数学/高数-数列极限/2-用性质/README.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/2-用性质/保号性": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/2-用性质/保号性/保号性.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/2-用性质/唯一性": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/2-用性质/唯一性/唯一性.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/2-用性质/有界性": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/2-用性质/有界性/有界性.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/3-用四则运算规则": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/3-用四则运算规则/极限存在性判断.md",
+        "external-notes/考研数学/高数-数列极限/3-用四则运算规则/四则运算规则.md",
+        "external-notes/考研数学/高数-数列极限/3-用四则运算规则/README.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/4-用海涅定理": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/4-用海涅定理/海涅定理.md",
+        "external-notes/考研数学/高数-数列极限/4-用海涅定理/例-狄利克雷函数变形.md",
+        "external-notes/考研数学/高数-数列极限/4-用海涅定理/数列极限转函数极限.md",
+        "external-notes/考研数学/高数-数列极限/4-用海涅定理/README.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/5-用夹逼准则": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/5-用夹逼准则/夹逼准则.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/6-用单调有界准则": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/6-用单调有界准则/assets",
+        "external-notes/考研数学/高数-数列极限/6-用单调有界准则/单调有界准则.md",
+        "external-notes/考研数学/高数-数列极限/6-用单调有界准则/压缩映射原理.md",
+        "external-notes/考研数学/高数-数列极限/6-用单调有界准则/README.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/6-用单调有界准则/assets": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/6-用单调有界准则/assets/单调有界准则"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/6-用单调有界准则/assets/单调有界准则": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/6-用单调有界准则/assets/单调有界准则/file-20260314204446579.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-数列极限/7-收敛速度问题": {
+      "children": [
+        "external-notes/考研数学/高数-数列极限/7-收敛速度问题/收敛速度的比较.md",
+        "external-notes/考研数学/高数-数列极限/7-收敛速度问题/README.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3",
+        "external-notes/考研数学/高数-一元函数积分学/assets",
+        "external-notes/考研数学/高数-一元函数积分学/错题本.md",
+        "external-notes/考研数学/高数-一元函数积分学/错题题目.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/1-不定积分",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/3-变限积分",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/📊 学习进度.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/📑 索引.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/sortspec.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/1-不定积分": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/1-不定积分/原函数存在定理.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/1-不定积分/原函数与不定积分.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/assets",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/定积分存在定理.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/定积分定义.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/定积分性质.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/定积分演示.html"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/assets/定积分定义"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/assets/定积分定义": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/assets/定积分定义/定积分演示.html",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/assets/定积分定义/file-20260401102450220.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/assets/定积分定义/file-20260401103344744.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/assets/定积分定义/file-20260401103357421.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/assets/定积分定义/file-20260401103407064.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/assets/定积分定义/file-20260401110955482.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/3-变限积分": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/3-变限积分/变限积分概念.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/3-变限积分/变限积分性质.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/反常积分概念.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/反常积分判敛.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/反常积分收敛判断.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets/反常积分概念",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets/反常积分判敛"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets/反常积分概念": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets/反常积分概念/file-20260403105224585.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets/反常积分概念/file-20260403105317619.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets/反常积分概念/file-20260403105326060.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets/反常积分概念/file-20260403105338300.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets/反常积分概念/file-20260404145105297.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets/反常积分概念/file-20260404145120197.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets/反常积分概念/file-20260404145133222.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets/反常积分判敛": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分的概念与性质/4-反常积分/assets/反常积分判敛/file-20260404174712966.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/2-不定积分的积分法",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/4-变限积分的计算",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/assets",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/📊 学习进度.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/📑 索引.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/1-基本积分公式.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/3-定积分的计算.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/5-反常积分的计算.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/sortspec.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/2-不定积分的积分法": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/2-不定积分的积分法/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/2-不定积分的积分法/凑微分法.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/2-不定积分的积分法/分部积分法.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/2-不定积分的积分法/换元法.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/2-不定积分的积分法/有理函数的积分.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/4-变限积分的计算": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/4-变限积分的计算/求导公式.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/4-变限积分的计算/重要结论.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/assets/3-定积分的计算"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/assets/3-定积分的计算": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/assets/3-定积分的计算/file-20260408093900750.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学的计算/assets/3-定积分的计算/file-20260408093905460.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/4-其他几何应用",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/📊 学习进度.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/📑 索引.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/3-函数的平均值.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/sortspec.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/assets",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/参数方程下的面积.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/极坐标系下的面积.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/直角坐标系下的面积.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/assets/极坐标系下的面积",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/assets/直角坐标系下的面积"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/assets/极坐标系下的面积": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/assets/极坐标系下的面积/file-20260411095307873.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/assets/极坐标系下的面积/file-20260411095322299.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/assets/极坐标系下的面积/file-20260411095333304.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/assets/直角坐标系下的面积": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/1-平面图形的面积/assets/直角坐标系下的面积/file-20260411095227464.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/assets",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/绕定直线旋转.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/绕x轴旋转.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/绕y轴旋转.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/assets/绕x轴旋转",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/assets/绕y轴旋转"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/assets/绕x轴旋转": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/assets/绕x轴旋转/万能圆环法-绕y等于2示意图.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/assets/绕x轴旋转/file-20260411110746706.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/assets/绕y轴旋转": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/assets/绕y轴旋转/圆柱壳法-绕x等于3.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/assets/绕y轴旋转/file-20260411112913007.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/2-旋转体的体积/assets/绕y轴旋转/file-20260411112921879.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/4-其他几何应用": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/4-其他几何应用/平面曲线的弧长.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/4-其他几何应用/平行截面面积为已知的立体体积.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/4-其他几何应用/形心坐标公式.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用1/4-其他几何应用/旋转曲面的面积.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/1-积分等式",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/2-积分不等式",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/📊 学习进度.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/📑 索引.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/3-基础习题精练.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/sortspec.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/1-积分等式": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/1-积分等式/1-用中值定理.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/1-积分等式/2-用夹逼准则.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/1-积分等式/3-用积分法.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/2-积分不等式": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/2-积分不等式/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/2-积分不等式/1-用函数的单调性.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/2-积分不等式/2-用拉格朗日中值定理.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/2-积分不等式/3-用泰勒公式.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/2-积分不等式/4-用积分法.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用2/2-积分不等式/5-用牛顿-莱布尼茨公式.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/1-变力沿直线做功",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/2-抽水做功",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/3-静水压力",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/4-引力",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/5-古鲁金定理",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/📊 学习进度.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/📑 索引.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/6-基础习题精练.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/sortspec.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/1-变力沿直线做功": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/1-变力沿直线做功/变力做功公式与应用.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/2-抽水做功": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/2-抽水做功/抽水做功-半球水池示意.svg",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/2-抽水做功/抽水做功-倒圆锥示意.svg",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/2-抽水做功/抽水做功公式与应用.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/3-静水压力": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/3-静水压力/assets",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/3-静水压力/静水压力公式与应用.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/3-静水压力/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/3-静水压力/assets/静水压力-三角形平板例题图.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/3-静水压力/assets/静水压力-通用微元示意图.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/4-引力": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/4-引力/assets",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/4-引力/引力计算.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/4-引力/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/4-引力/assets/引力-非共线分量分解示意图.png",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/4-引力/assets/引力-细棒质点共线微元示意图.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/5-古鲁金定理": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/5-古鲁金定理/古鲁金第一定理.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/5-古鲁金定理/三心概念.md",
+        "external-notes/考研数学/高数-一元函数积分学/一元函数积分学应用3/5-古鲁金定理/质心与力矩公式.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题本",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题84-小数部分函数周期面积.png",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题96-解析原图.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题96-题目原图.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题96-细杆引力分力示意图.svg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题97-静水压力微元示意图.svg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题97-题目原图.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题97-我的示意图原图.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题97-我的做法-1.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题97-我的做法-2.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题98-摆脱地球引力做功示意图.svg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题98-题目原图.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题99-题目原图.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题99-我的做法.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题99-旋转抛物面水缸抽水做功示意图.svg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题100-横放圆柱容器抽水示意图.svg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题100-题目原图.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题101-题目原图.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题101-细杆引力做功示意图.svg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题102-题目原图.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题102-直角三角板静水压力最大示意图.svg"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元函数积分学/assets/错题本": {
+      "children": [
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题本/12bc1be2f378e0737f163e448597647d.jpg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题本/错题103-古鲁金定理绕斜线旋转.svg",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题本/file-20260410181239821.png",
+        "external-notes/考研数学/高数-一元函数积分学/assets/错题本/file-20260416124129766.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用3",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一",
+        "external-notes/考研数学/高数-一元微分学/assets",
+        "external-notes/考研数学/高数-一元微分学/attachments",
+        "external-notes/考研数学/高数-一元微分学/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元微分学/错题本.md",
+        "external-notes/考研数学/高数-一元微分学/错题题目.md",
+        "external-notes/考研数学/高数-一元微分学/辅助函数构造方法.md",
+        "external-notes/考研数学/高数-一元微分学/sortspec.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/2-微分等式",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/3-微分不等式",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/📊 学习进度.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/📑 索引.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/📝 章节总结.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/3-涉及积分的中值定理"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/assets",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/介值定理.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/零点定理.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/平均值定理.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/有界与最值定理.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/assets/有界与最值定理"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/assets/有界与最值定理": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/assets/有界与最值定理/file-20260326150839277.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/费马定理.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/柯西中值定理.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/拉格朗日中值定理.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/罗尔定理.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/泰勒公式.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/费马定理",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/拉格朗日中值定理",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/罗尔定理"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/费马定理": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/费马定理/file-20260326155144130.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/拉格朗日中值定理": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/拉格朗日中值定理/file-20260327111152780.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/罗尔定理": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/罗尔定理/file-20260327101434383.png",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/罗尔定理/file-20260327104542193.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/3-涉及积分的中值定理": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/3-涉及积分的中值定理/积分中值定理.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/2-微分等式": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/2-微分等式/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/2-微分等式/单调性证唯一性.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/2-微分等式/零点定理证存在性.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/2-微分等式/罗尔定理的推论.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/2-微分等式/实系数奇次方程.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/3-微分不等式": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/3-微分不等式/用常数变量化证明.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/3-微分不等式/用函数性态证明.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/3-微分不等式/用中值定理证明.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用3": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用3/1-物理应用与相关变化率",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用3/📊 学习进度.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用3/📑 索引.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用3/1-物理应用与相关变化率": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用3/1-物理应用与相关变化率/导数的物理意义.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用3/1-物理应用与相关变化率/典型例题.md",
+        "external-notes/考研数学/高数-一元微分学/一元函数微分的应用3/1-物理应用与相关变化率/相关变化率.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的概念": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/2-导数的几何意义",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/3-高阶导数",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/📊 学习进度.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/📑 索引.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/📝章节总结.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/一元微分学的概念.思维导图.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/单侧导数.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/导数的定义.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/导数与函数性质.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/绝对值函数的可导性.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/可导的必要条件.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/可导的充要条件.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/094a5466331c4368ebbe203687c09032.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315204320051.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315204340252.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315204359643.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315204531846.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315204542382.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315204552394.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315204958500.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315214111543.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315214123710.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315214209243.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315214221210.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315214400186.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260315214410376.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/1-导数/assets/绝对值函数的可导性/file-20260518140935179.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/2-导数的几何意义": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/2-导数的几何意义/assets",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/2-导数的几何意义/切线与法线.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/2-导数的几何意义/特殊情况.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/2-导数的几何意义/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/2-导数的几何意义/assets/special_cases_compare.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/3-高阶导数": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/3-高阶导数/高阶导数的定义.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/3-高阶导数/高阶导数的性质.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/可微与可导的关系.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/微分的定义.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/微分的几何意义.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets/微分的定义",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets/differential_concept.py",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets/differential_concept.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets/微分的定义": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的概念/4-微分的概念/assets/微分的定义/file-20260317190102107.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/1-基本求导公式",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/2-四则运算",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/4-分段函数的导数",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/5-反函数的导数",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/6-隐函数求导法",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/7-参数方程求导",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/8-对数求导法",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/9-幂指函数求导法",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/10-高阶导数",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/📊 学习进度.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/📑 索引.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/一元微分学的计算.思维导图.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/1-基本求导公式": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/1-基本求导公式/基本求导公式.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/2-四则运算": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/2-四则运算/四则运算.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数/assets",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数/链式求导法则.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数/微分形式不变性.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数/assets/链式求导法则"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数/assets/链式求导法则": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/3-复合函数的导数/assets/链式求导法则/file-20260318141956843.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/4-分段函数的导数": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/4-分段函数的导数/分段函数的导数.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/5-反函数的导数": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/5-反函数的导数/反函数的二阶导数.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/5-反函数的导数/反函数的一阶导数.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/6-隐函数求导法": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/6-隐函数求导法/隐函数求导法.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/7-参数方程求导": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/7-参数方程求导/参数方程的二阶导数.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/7-参数方程求导/参数方程的一阶导数.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/8-对数求导法": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/8-对数求导法/对数求导法.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/9-幂指函数求导法": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/9-幂指函数求导法/幂指函数求导法.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的计算/10-高阶导数": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/10-高阶导数/归纳法.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/10-高阶导数/莱布尼茨公式.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/10-高阶导数/泰勒展开式.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的计算/10-高阶导数/综合应用例题.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/3-极值点与拐点的重要结论",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/4-渐近线",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/5-最值或取值范围",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/7-曲率及曲率半径",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/📊 学习进度.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/📑 索引.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/一元微分学的应用一.思维导图.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/assets",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/单调性的判别.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/极值的定义.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/判别极值的第二充分条件.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/判别极值的第三充分条件.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/判别极值的第一充分条件.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/一阶可导点是极值点的必要条件.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/assets/极值的定义"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/assets/极值的定义": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/assets/极值的定义/file-20260321103349300.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/assets/极值的定义/file-20260321103413775.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/assets/极值的定义/file-20260321103443578.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/1-单调性与极值/assets/极值的定义/file-20260321103457445.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/assets",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/凹凸性的定义.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/二阶可导点是拐点的必要条件.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/拐点的定义.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/判别凹凸性.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/判别拐点的第二充分条件.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/判别拐点的第三充分条件.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/判别拐点的第一充分条件.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/assets/凹凸性的定义"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/assets/凹凸性的定义": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/assets/凹凸性的定义/file-20260321162253904.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/assets/凹凸性的定义/file-20260321162306557.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/assets/凹凸性的定义/file-20260321162326926.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/assets/凹凸性的定义/file-20260321162336806.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/assets/凹凸性的定义/file-20260321162433208.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/2-凹凸性与拐点/assets/凹凸性的定义/file-20260321162452757.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/3-极值点与拐点的重要结论": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/3-极值点与拐点的重要结论/重要结论.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/4-渐近线": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/4-渐近线/assets",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/4-渐近线/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/4-渐近线/铅直渐近线.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/4-渐近线/水平渐近线.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/4-渐近线/斜渐近线.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/4-渐近线/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/4-渐近线/assets/斜渐近线"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/4-渐近线/assets/斜渐近线": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/4-渐近线/assets/斜渐近线/file-20260323105629585.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/5-最值或取值范围": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/5-最值或取值范围/📝 章节总结.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/5-最值或取值范围/闭区间上连续函数的最值.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/5-最值或取值范围/开区间内连续函数的最值.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/5-最值或取值范围/最值的定义.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/函数图像绘制步骤.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤/file-20260324145651469.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤/file-20260324145724763.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤/file-20260324145809931.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤/file-20260324145821596.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤/file-20260324145911721.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤/file-20260324145922802.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤/file-20260324145936031.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤/file-20260324145947754.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤/file-20260324150002160.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤/file-20260324150017043.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤/file-20260324151456686.png",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/6-作函数图像/assets/函数图像绘制步骤/file-20260324151507575.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/7-曲率及曲率半径": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/7-曲率及曲率半径/曲率半径公式.md",
+        "external-notes/考研数学/高数-一元微分学/一元微分学的应用一/7-曲率及曲率半径/曲率公式.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/assets": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/assets/错题本"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/assets/错题本": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/assets/错题本/46abb25bea4415a26ef29575fd191175.jpg",
+        "external-notes/考研数学/高数-一元微分学/assets/错题本/684337dabceb4c41c2271e20249a1c8d.jpg"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/高数-一元微分学/attachments": {
+      "children": [
+        "external-notes/考研数学/高数-一元微分学/attachments/错题86-铁钉入木板.jpg",
+        "external-notes/考研数学/高数-一元微分学/attachments/错题88-水压力等腰直角三角形平板.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/微分方程": {
+      "children": [
+        "external-notes/考研数学/微分方程/1-微分方程的概念",
+        "external-notes/考研数学/微分方程/2-一阶微分方程的求解",
+        "external-notes/考研数学/微分方程/3-高阶线性微分方程的求解",
+        "external-notes/考研数学/微分方程/4-微分方程的综合应用",
+        "external-notes/考研数学/微分方程/📊 学习进度.md",
+        "external-notes/考研数学/微分方程/📑 索引.md",
+        "external-notes/考研数学/微分方程/错题本.md",
+        "external-notes/考研数学/微分方程/错题题目.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/微分方程/1-微分方程的概念": {
+      "children": [
+        "external-notes/考研数学/微分方程/1-微分方程的概念/📝 章节总结.md",
+        "external-notes/考研数学/微分方程/1-微分方程的概念/常微分方程.md",
+        "external-notes/考研数学/微分方程/1-微分方程的概念/初始条件与特解.md",
+        "external-notes/考研数学/微分方程/1-微分方程的概念/微分方程的解.md",
+        "external-notes/考研数学/微分方程/1-微分方程的概念/微分方程的通解.md",
+        "external-notes/考研数学/微分方程/1-微分方程的概念/微分方程及其阶.md",
+        "external-notes/考研数学/微分方程/1-微分方程的概念/线性微分方程.md",
+        "external-notes/考研数学/微分方程/1-微分方程的概念/用概念解题.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/微分方程/2-一阶微分方程的求解": {
+      "children": [
+        "external-notes/考研数学/微分方程/2-一阶微分方程的求解/可分离变量型微分方程",
+        "external-notes/考研数学/微分方程/2-一阶微分方程的求解/📑 索引.md",
+        "external-notes/考研数学/微分方程/2-一阶微分方程的求解/📝 章节总结.md",
+        "external-notes/考研数学/微分方程/2-一阶微分方程的求解/伯努利方程.md",
+        "external-notes/考研数学/微分方程/2-一阶微分方程的求解/二阶可降阶微分方程.md",
+        "external-notes/考研数学/微分方程/2-一阶微分方程的求解/齐次型微分方程.md",
+        "external-notes/考研数学/微分方程/2-一阶微分方程的求解/一阶线性微分方程.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/微分方程/2-一阶微分方程的求解/可分离变量型微分方程": {
+      "children": [
+        "external-notes/考研数学/微分方程/2-一阶微分方程的求解/可分离变量型微分方程/换元后可分离.md",
+        "external-notes/考研数学/微分方程/2-一阶微分方程的求解/可分离变量型微分方程/直接可分离.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/微分方程/3-高阶线性微分方程的求解": {
+      "children": [
+        "external-notes/考研数学/微分方程/3-高阶线性微分方程的求解/📑 索引.md",
+        "external-notes/考研数学/微分方程/3-高阶线性微分方程的求解/📝 章节总结.md",
+        "external-notes/考研数学/微分方程/3-高阶线性微分方程的求解/二阶常系数非齐次线性微分方程.md",
+        "external-notes/考研数学/微分方程/3-高阶线性微分方程的求解/二阶常系数齐次线性微分方程.md",
+        "external-notes/考研数学/微分方程/3-高阶线性微分方程的求解/欧拉方程.md",
+        "external-notes/考研数学/微分方程/3-高阶线性微分方程的求解/n阶常系数齐次线性微分方程.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "external-notes/考研数学/微分方程/4-微分方程的综合应用": {
+      "children": [
+        "external-notes/考研数学/微分方程/4-微分方程的综合应用/📑 索引.md",
+        "external-notes/考研数学/微分方程/4-微分方程的综合应用/几何应用.md",
+        "external-notes/考研数学/微分方程/4-微分方程的综合应用/物理应用.md"
+      ],
+      "sortOrder": "custom"
+    },
     "scripts": {
       "children": [
+        "scripts/__pycache__",
         "scripts/build-question-index.py",
         "scripts/grade.py",
         "scripts/lib880.py",
@@ -2069,8 +3561,17 @@
       ],
       "sortOrder": "custom"
     },
+    "scripts/__pycache__": {
+      "children": [
+        "scripts/__pycache__/grade.cpython-313.pyc",
+        "scripts/__pycache__/lib880.cpython-313.pyc",
+        "scripts/__pycache__/make_paper.cpython-313.pyc"
+      ],
+      "sortOrder": "custom"
+    },
     "template_ai": {
       "children": [
+        "template_ai/skills-lock.json",
         "template_ai/docs",
         "template_ai/profiles",
         "template_ai/scripts",
@@ -2139,6 +3640,8 @@
     },
     "template_ai/scripts": {
       "children": [
+        "template_ai/scripts/profile_contract.py",
+        "template_ai/scripts/render-user-guide.py",
         "template_ai/scripts/__pycache__",
         "template_ai/scripts/check-docs.py",
         "template_ai/scripts/install.py",
@@ -2150,6 +3653,8 @@
     },
     "template_ai/scripts/__pycache__": {
       "children": [
+        "template_ai/scripts/__pycache__/profile_contract.cpython-313.pyc",
+        "template_ai/scripts/__pycache__/render-user-guide.cpython-313.pyc",
         "template_ai/scripts/__pycache__/check-docs.cpython-313.pyc",
         "template_ai/scripts/__pycache__/install.cpython-313.pyc",
         "template_ai/scripts/__pycache__/sync-runtime-skills.cpython-313.pyc",
@@ -2159,6 +3664,8 @@
     },
     "template_ai/skills": {
       "children": [
+        "template_ai/skills/digest",
+        "template_ai/skills/maintain-learnings",
         "template_ai/skills/manifest-platform",
         "template_ai/skills/multi-agent-sync",
         "template_ai/skills/prompt-cache-optimizer",
@@ -2166,6 +3673,41 @@
         "template_ai/skills/sync-skill-registry",
         "template_ai/skills/workflow-todo-state",
         "template_ai/skills/README.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "template_ai/skills/digest": {
+      "children": [
+        "template_ai/skills/digest/manifest.yaml",
+        "template_ai/skills/digest/SKILL.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "template_ai/skills/maintain-learnings": {
+      "children": [
+        "template_ai/skills/maintain-learnings/agents",
+        "template_ai/skills/maintain-learnings/scripts",
+        "template_ai/skills/maintain-learnings/manifest.yaml",
+        "template_ai/skills/maintain-learnings/SKILL.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "template_ai/skills/maintain-learnings/agents": {
+      "children": [
+        "template_ai/skills/maintain-learnings/agents/openai.yaml"
+      ],
+      "sortOrder": "custom"
+    },
+    "template_ai/skills/maintain-learnings/scripts": {
+      "children": [
+        "template_ai/skills/maintain-learnings/scripts/__pycache__",
+        "template_ai/skills/maintain-learnings/scripts/audit_learnings.py"
+      ],
+      "sortOrder": "custom"
+    },
+    "template_ai/skills/maintain-learnings/scripts/__pycache__": {
+      "children": [
+        "template_ai/skills/maintain-learnings/scripts/__pycache__/audit_learnings.cpython-313.pyc"
       ],
       "sortOrder": "custom"
     },
@@ -2278,6 +3820,8 @@
     },
     "template_ai/skills/multi-agent-sync/scripts/__pycache__": {
       "children": [
+        "template_ai/skills/multi-agent-sync/scripts/__pycache__/bootstrap.cpython-313.pyc",
+        "template_ai/skills/multi-agent-sync/scripts/__pycache__/validate_portability.cpython-313.pyc",
         "template_ai/skills/multi-agent-sync/scripts/__pycache__/install.cpython-313.pyc",
         "template_ai/skills/multi-agent-sync/scripts/__pycache__/sync_agents.cpython-313.pyc"
       ],
@@ -2334,6 +3878,7 @@
     },
     "template_ai/skills/security-secret-audit/scripts": {
       "children": [
+        "template_ai/skills/security-secret-audit/scripts/detect-risks.pl",
         "template_ai/skills/security-secret-audit/scripts/audit-secrets.sh",
         "template_ai/skills/security-secret-audit/scripts/detect-secrets.pl"
       ],
@@ -2545,6 +4090,7 @@
     },
     "template_ai/tests/__pycache__": {
       "children": [
+        "template_ai/tests/__pycache__/test_multi_agent_sync.cpython-313.pyc",
         "template_ai/tests/__pycache__/test_quality_guards.cpython-313.pyc",
         "template_ai/tests/__pycache__/test_refactor_regressions.cpython-313.pyc"
       ],
@@ -2558,6 +4104,7 @@
     },
     "template_ai/workspace/workflow-runs": {
       "children": [
+        "template_ai/workspace/workflow-runs/reusable-agent-assets-security-secret-audit.workflow.md",
         "template_ai/workspace/workflow-runs/cross-platform-agent-sync.workflow.md",
         "template_ai/workspace/workflow-runs/reusable-agent-assets-core-refactor.workflow.md",
         "template_ai/workspace/workflow-runs/reusable-agent-assets-manifest-platform-canonical-source.workflow.md",
@@ -2573,7 +4120,14 @@
     },
     "tests": {
       "children": [
+        "tests/__pycache__",
         "tests/test_core.py"
+      ],
+      "sortOrder": "custom"
+    },
+    "tests/__pycache__": {
+      "children": [
+        "tests/__pycache__/test_core.cpython-313.pyc"
       ],
       "sortOrder": "custom"
     },
@@ -2591,23 +4145,60 @@
       "sortOrder": "custom"
     },
     "workspace/papers": {
-      "children": [],
+      "children": [
+        "workspace/papers/paper-01",
+        "workspace/papers/paper-02"
+      ],
+      "sortOrder": "custom"
+    },
+    "workspace/papers/paper-01": {
+      "children": [
+        "workspace/papers/paper-01/卷子-01.md",
+        "workspace/papers/paper-01/卷子-01-答案.md",
+        "workspace/papers/paper-01/判分卡-01.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "workspace/papers/paper-02": {
+      "children": [
+        "workspace/papers/paper-02/卷子-02.md",
+        "workspace/papers/paper-02/卷子-02-答案.md",
+        "workspace/papers/paper-02/判分卡-02.md"
+      ],
       "sortOrder": "custom"
     },
     "workspace/preview": {
-      "children": [],
+      "children": [
+        "workspace/preview/进度总览.md"
+      ],
       "sortOrder": "custom"
     },
     "workspace/records": {
-      "children": [],
+      "children": [
+        "workspace/records/analysis.json",
+        "workspace/records/attempts.json",
+        "workspace/records/external-links.json",
+        "workspace/records/papers.json"
+      ],
       "sortOrder": "custom"
     },
     "workspace/workflow-runs": {
-      "children": [],
+      "children": [
+        "workspace/workflow-runs/880-exam.workflow.md"
+      ],
       "sortOrder": "custom"
     },
     "workspace/wrong-book": {
-      "children": [],
+      "children": [
+        "workspace/wrong-book/images",
+        "workspace/wrong-book/错题本.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "workspace/wrong-book/images": {
+      "children": [
+        "workspace/wrong-book/images/心形线-弧长示意图.png"
+      ],
       "sortOrder": "custom"
     }
   },
