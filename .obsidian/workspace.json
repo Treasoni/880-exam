@@ -8,31 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "52ca960485aef7ee",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "workspace/papers/paper-02/卷子-02-答案.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "卷子-02-答案"
-            }
-          },
-          {
             "id": "7af8f20397d6695b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/paper-02/卷子-02-答案.md",
+                "file": "external-notes/考研数学/高数-函数极限与连续/错题本.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "卷子-02-答案"
+              "title": "错题本"
             }
           },
           {
@@ -206,13 +192,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-02/卷子-02-答案.md",
+                "file": "external-notes/考研数学/高数-函数极限与连续/错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "卷子-02-答案 的大纲"
+              "title": "大纲"
             }
           },
           {
@@ -284,12 +270,13 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "52ca960485aef7ee",
+  "active": "7af8f20397d6695b",
   "lastOpenFiles": [
-    "workspace/papers/paper-02/判分卡-02.md",
-    "workspace/papers/paper-02/卷子-02-答案.md",
-    "workspace/papers/paper-02/卷子-02.md",
     "workspace/wrong-book/错题本.md",
+    "docs/使用指南.md",
+    "workspace/papers/paper-02/卷子-02-答案.md",
+    "workspace/papers/paper-02/判分卡-02.md",
+    "workspace/papers/paper-02/卷子-02.md",
     "workspace/papers/paper-02",
     "workspace/wrong-book/images/心形线-弧长示意图.png",
     "workspace/wrong-book/images",
@@ -311,7 +298,6 @@
     "template_ai/skills/digest/SKILL.md",
     "template_ai/workspace/workflow-runs/reusable-agent-assets-security-secret-audit.workflow.md",
     "conflict-files-obsidian-git.md",
-    "docs/使用指南.md",
     "workspace/workflow-runs/880-exam.workflow.md",
     "external-notes/考研数学/高数-函数极限与连续/错题本.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/assets/费马定理/file-20260326155144130.png",

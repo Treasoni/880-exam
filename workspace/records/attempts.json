@@ -159,6 +159,14 @@
       "when": "2026-08-11",
       "recorded_at": "2026-08-11T11:28:20+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-solution-009",
+      "paper_id": "paper-01",
+      "grade": "wrong",
+      "when": "2026-08-21",
+      "recorded_at": "2026-08-21T20:38:52+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -188,7 +196,7 @@
     },
     "gs-c01-comprehensive-solution-009": {
       "state": "未复习",
-      "updated": "2026-08-11"
+      "updated": "2026-08-21"
     },
     "gs-c05-comprehensive-solution-020": {
       "state": "未复习",
