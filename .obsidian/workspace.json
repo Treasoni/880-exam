@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "external-notes/考研数学/高数-一元微分学/错题本.md",
+                "file": "workspace/wrong-book/错题本.md",
                 "mode": "source",
                 "source": false
               },
@@ -192,7 +192,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "external-notes/考研数学/高数-一元微分学/错题本.md",
+                "file": "workspace/wrong-book/错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -270,8 +270,9 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "7af8f20397d6695b",
+  "active": "d0d8383a692e3423",
   "lastOpenFiles": [
+    "external-notes/考研数学/高数-一元微分学/错题本.md",
     "workspace/wrong-book/错题本.md",
     "external-notes/考研数学/高数-函数极限与连续/错题本.md",
     "docs/使用指南.md",
@@ -317,7 +318,6 @@
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/2-涉及导数的中值定理/拉格朗日中值定理.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/📝 章节总结.md",
     "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/零点定理.md",
-    "external-notes/考研数学/高数-一元微分学/一元函数微分的应用2/1-中值定理/1-涉及函数的中值定理/有界与最值定理.md",
     "考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/未命名.canvas"
   ]
 }
