@@ -22,6 +22,20 @@
             }
           },
           {
+            "id": "28db7ae896c15c64",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/wrong-book/错题本.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "错题本"
+            }
+          },
+          {
             "id": "0cd1149a4d2d10d7",
             "type": "leaf",
             "state": {
@@ -35,7 +49,8 @@
               "title": "判分卡-02"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -271,10 +286,11 @@
       "notebook-navigator:Notebook Navigator": false
     }
   },
-  "active": "7af8f20397d6695b",
+  "active": "d0d8383a692e3423",
   "lastOpenFiles": [
-    "external-notes/考研数学/高数-一元函数积分学/错题本.md",
+    "workspace/preview/进度总览.md",
     "workspace/wrong-book/错题本.md",
+    "external-notes/考研数学/高数-一元函数积分学/错题本.md",
     "external-notes/线性代数/导入说明.md",
     "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/assets/4.3.2-利用定义法判断线性相关与无关/file-20260527100027167.png",
     "external-notes/线性代数/第五章：矩阵相似理论/5.5-实对称矩阵相似对角化/assets/5.5.3-实对称矩阵正交对角化的一般步骤/604181a9116490487f84da08956e661c.png",
@@ -309,7 +325,6 @@
     "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/📝 章节总结.md",
     "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/assets",
     "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/4.3.6-判断线性相关性的常用结论.md",
-    "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/4.3.5-从方程组和秩的角度理解线性表示.md",
     "external-notes/线性代数/第五章：矩阵相似理论/5.5-实对称矩阵相似对角化/assets",
     "external-notes/线性代数/第二章：矩阵/assets/错题38-正交伴随化简路线图.svg",
     "external-notes/线性代数/第二章：矩阵/assets/错题37-正交证明手写解析-转置求积.jpg",
