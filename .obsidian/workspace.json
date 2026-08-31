@@ -257,7 +257,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -286,7 +286,7 @@
       "notebook-navigator:Notebook Navigator": false
     }
   },
-  "active": "28db7ae896c15c64",
+  "active": "d0d8383a692e3423",
   "lastOpenFiles": [
     "scripts/__pycache__/wrong_book.cpython-313.pyc",
     "workspace/preview/进度总览.md",
