@@ -12,7 +12,7 @@
 
 PYTHON ?= python3
 
-.PHONY: help paper grade wrongbook progress lint index-check index-check-structure prepare test env-check
+.PHONY: help paper grade wrongbook progress lint index-check index-check-structure linear-index prepare test env-check
 
 help: ## 列出可用命令
 	@echo "make paper        — 拼一张卷"
@@ -21,6 +21,7 @@ help: ## 列出可用命令
 	@echo "make progress     — 生成进度总览"
 	@echo "make lint         — 校验生成产物格式"
 	@echo "make index-check  — 题库索引对齐校验（只读）"
+	@echo "make linear-index — 构建线代 880 独立题目索引"
 	@echo "make test         — 运行核心规则与安全生成测试"
 	@echo "make prepare      — 切分做题本/解析册小节"
 	@echo "make env-check    — 环境变量模板自检"
@@ -46,6 +47,9 @@ index-check: ## 题库索引对齐校验（只读）
 
 index-check-structure: ## 只校验索引结构；保留待人工复核提示
 	$(PYTHON) scripts/build-question-index.py --check --allow-pending-review
+
+linear-index: ## 从线代做题本与解析册构建独立索引（不影响已判分的高数卷）
+	$(PYTHON) scripts/build_linear_algebra_index.py
 
 test: ## 运行自动化测试（不写入真实学习记录）
 	$(PYTHON) -m unittest discover -s tests -v

@@ -1,6 +1,6 @@
 # 880 考研数学习题系统
 
-基于 **李林880 · 数二高数篇**（做题本 + 解析册）的个人做题系统：按真题模式拼卷、手动判分、整理错题本、补弱加权抽题、进度预览。
+基于 **李林880 · 数二高数篇**（做题本 + 解析册）的个人做题系统：按真题模式拼卷、手动判分、整理错题本、补弱加权抽题、进度预览。另收录线代篇的独立题目索引。
 
 详细实用文档请看[[docs/使用指南.md]]
 
@@ -13,6 +13,7 @@
 | 错题本 | “看错题本” / “重练了第X题会了” | `python3 scripts/wrong_book.py` |
 | 预览进度 | “看进度” | `python3 scripts/progress.py` |
 | 重建索引 | “入库” | `python3 scripts/prepare_sections.py` + 提取 Workflow + `python3 scripts/merge_extraction.py --journal <jsonl>` |
+| 构建线代索引 | “构建线代880” | `python3 scripts/build_linear_algebra_index.py` |
 
 > Windows 下把 `python3` 换成 `py -3`（如 `py -3 scripts/make_paper.py`），或 `make paper PYTHON='py -3'`。
 
@@ -44,6 +45,7 @@
 workspace/
 ├── schema.yaml                核心配置（配额/权重/判分口径）
 ├── question-index.json        题目索引（题目↔答案，LLM 按内容对齐提取）
+├── linear-algebra-question-index.json  线代 880 独立索引（不影响高数卷与判分记录）
 ├── papers/paper-XX/卷子-XX.md    卷子 + 答题卡 + 判分表
 ├── papers/paper-XX/卷子-XX-答案.md  独立答案卷（含解析）
 ├── papers/paper-XX/判分卡-XX.md  勾选判分卡（判分输入）
@@ -57,6 +59,6 @@ workspace/
 ## 说明
 
 - 答案全部来自解析册，**不做 AI 生成**（见 `docs/adr/0001`）；两个源文件有 OCR 标记丢失/合并问题，入库时用 LLM 按内容对齐并逐个校验。
-- 当前只含高数；数据模型预留 `科目→章节` 两级，线代题库可随时加入。
+- 高数索引仍是当前拼卷/判分工作流的题池；线代 880 已构建为独立索引，后续可在不影响既有学习记录的前提下接入独立组卷配置。
 - 生成的 Markdown 兼容 Obsidian，可直接用 Obsidian 打开本仓库浏览。
 - 指定已存在的卷号会被拒绝，防止覆盖答题卡和学习记录；只有尚未判分的卷子可用 `--replace-ungraded` 显式重生成。
