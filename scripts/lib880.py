@@ -11,13 +11,37 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_PATH = ROOT / "workspace/schema.yaml"
 INDEX_PATH = ROOT / "workspace/question-index.json"
+LINEAR_ALGEBRA_SCHEMA_PATH = ROOT / "workspace/linear-algebra-schema.yaml"
+LINEAR_ALGEBRA_INDEX_PATH = ROOT / "workspace/linear-algebra-question-index.json"
 ATTEMPTS_PATH = ROOT / "workspace/records/attempts.json"
 PAPERS_PATH = ROOT / "workspace/records/papers.json"
 PAPERS_DIR = ROOT / "workspace/papers"
 WRONG_BOOK_PATH = ROOT / "workspace/wrong-book/错题本.md"
 PROGRESS_PATH = ROOT / "workspace/preview/进度总览.md"
+LINEAR_ALGEBRA_WRONG_BOOK_PATH = ROOT / "workspace/wrong-book/线代错题本.md"
+LINEAR_ALGEBRA_PROGRESS_PATH = ROOT / "workspace/preview/线代进度总览.md"
 EXTERNAL_LINKS_PATH = ROOT / "workspace/records/external-links.json"
 ANALYSIS_PATH = ROOT / "workspace/records/analysis.json"
+
+
+# ``high-math`` is the historical/default workflow.  Keep its identifiers and
+# paths unchanged so adding the linear-algebra pool never moves or overwrites
+# an existing paper.  The aliases accept both CLI-friendly and Chinese input.
+SUBJECT_HIGH_MATH = "high-math"
+SUBJECT_LINEAR_ALGEBRA = "linear-algebra"
+_SUBJECT_ALIASES = {
+    SUBJECT_HIGH_MATH: SUBJECT_HIGH_MATH,
+    "high_math": SUBJECT_HIGH_MATH,
+    "calculus": SUBJECT_HIGH_MATH,
+    "gs": SUBJECT_HIGH_MATH,
+    "高数": SUBJECT_HIGH_MATH,
+    "高等数学": SUBJECT_HIGH_MATH,
+    SUBJECT_LINEAR_ALGEBRA: SUBJECT_LINEAR_ALGEBRA,
+    "linear_algebra": SUBJECT_LINEAR_ALGEBRA,
+    "la": SUBJECT_LINEAR_ALGEBRA,
+    "线代": SUBJECT_LINEAR_ALGEBRA,
+    "线性代数": SUBJECT_LINEAR_ALGEBRA,
+}
 
 
 def markdown_math_answer(value):
@@ -186,13 +210,126 @@ def load_yaml(path):
     return data
 
 
-# ---------------------------------------------------------------- data loads
-def load_schema():
-    return load_yaml(SCHEMA_PATH)
+# ---------------------------------------------------------------- subjects / data loads
+def normalize_subject(subject=None):
+    """Return the stable subject key for a CLI/record value.
+
+    The default remains high mathematics for backwards compatibility.  Callers
+    should surface ``ValueError`` through their argument parser rather than
+    silently falling back to a different question pool.
+    """
+    raw = str(subject or SUBJECT_HIGH_MATH).strip().lower()
+    try:
+        return _SUBJECT_ALIASES[raw]
+    except KeyError as exc:
+        raise ValueError(
+            "未知科目 " + repr(subject) + "（可选：high-math / linear-algebra）"
+        ) from exc
 
 
-def load_index():
-    return json.loads(INDEX_PATH.read_text(encoding="utf-8"))
+def subject_paths(subject=None):
+    """Return the schema/index/output paths and naming policy for one subject."""
+    key = normalize_subject(subject)
+    if key == SUBJECT_LINEAR_ALGEBRA:
+        return {
+            "key": key,
+            "schema": LINEAR_ALGEBRA_SCHEMA_PATH,
+            "index": LINEAR_ALGEBRA_INDEX_PATH,
+            "wrong_book": LINEAR_ALGEBRA_WRONG_BOOK_PATH,
+            "progress": LINEAR_ALGEBRA_PROGRESS_PATH,
+            "paper_id_prefix": "la-paper",
+            "paper_stem_prefix": "线代卷子",
+            "card_stem_prefix": "线代判分卡",
+        }
+    return {
+        "key": key,
+        "schema": SCHEMA_PATH,
+        "index": INDEX_PATH,
+        "wrong_book": WRONG_BOOK_PATH,
+        "progress": PROGRESS_PATH,
+        "paper_id_prefix": "paper",
+        "paper_stem_prefix": "卷子",
+        "card_stem_prefix": "判分卡",
+    }
+
+
+def load_schema(subject=None):
+    return load_yaml(subject_paths(subject)["schema"])
+
+
+def load_index(subject=None):
+    return json.loads(subject_paths(subject)["index"].read_text(encoding="utf-8"))
+
+
+def paper_id(subject, n):
+    """Return a subject-scoped paper id, e.g. ``paper-01`` or ``la-paper-01``."""
+    return f"{subject_paths(subject)['paper_id_prefix']}-{int(n):02d}"
+
+
+def paper_number(paper_id_):
+    """Extract the numeric suffix from a paper id without relying on its prefix."""
+    try:
+        return int(str(paper_id_).rsplit("-", 1)[1])
+    except (IndexError, ValueError) as exc:
+        raise ValueError(f"无法从 {paper_id_!r} 解析卷号") from exc
+
+
+def chapter_number_zh(number):
+    """Render a positive chapter number in Chinese (the 880 pools currently use 1–12)."""
+    n = int(number)
+    digits = "零一二三四五六七八九"
+    if 0 <= n < 10:
+        return digits[n]
+    if 10 <= n < 20:
+        return "十" if n == 10 else "十" + digits[n - 10]
+    if 20 <= n < 100:
+        tens, ones = divmod(n, 10)
+        return digits[tens] + "十" + (digits[ones] if ones else "")
+    return str(n)
+
+
+def paper_artifact_stems(subject, paper_id_):
+    """Return Obsidian file stems for a paper, answer sheet, and grading card."""
+    policy = subject_paths(subject)
+    n = paper_number(paper_id_)
+    paper_stem = f"{policy['paper_stem_prefix']}-{n:02d}"
+    return {
+        "paper": paper_stem,
+        "answers": f"{paper_stem}-答案",
+        "card": f"{policy['card_stem_prefix']}-{n:02d}",
+    }
+
+
+def paper_artifact_paths(subject, paper_id_):
+    """Return paths for all Markdown artefacts owned by a paper."""
+    stems = paper_artifact_stems(subject, paper_id_)
+    folder = paper_dir(paper_id_)
+    return {key: folder / f"{stem}.md" for key, stem in stems.items()}
+
+
+def wrong_book_path(subject=None):
+    return subject_paths(subject)["wrong_book"]
+
+
+def progress_path(subject=None):
+    return subject_paths(subject)["progress"]
+
+
+def subject_from_paper(paper):
+    """Resolve a record's subject, including records created before this field existed."""
+    for field in ("subject_key", "subject_code", "subject"):
+        value = paper.get(field)
+        if value:
+            try:
+                return normalize_subject(value)
+            except ValueError:
+                pass
+    # Old records are high-math papers.  The qid fallback also makes a manually
+    # restored pre-field linear-algebra record recoverable.
+    qids = [q.get("qid", "") for q in paper.get("questions", [])]
+    if qids and all(str(qid_).startswith("la-") for qid_ in qids):
+        return SUBJECT_LINEAR_ALGEBRA
+    return SUBJECT_HIGH_MATH
 
 
 def load_attempts():

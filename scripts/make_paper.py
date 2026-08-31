@@ -4,6 +4,7 @@
 用法：
   python3 scripts/make_paper.py                     # 自动取下一卷号
   python3 scripts/make_paper.py --n 3 --seed 42     # 指定卷号与随机种子
+  python3 scripts/make_paper.py --subject linear-algebra  # 拼线代独立卷
   python3 scripts/make_paper.py --ignore-extension  # 不使用拓展题
   python3 scripts/make_paper.py --no-weakness       # 忽略弱点浮动
   # Windows 请把 python3 换成 py -3（如 py -3 scripts/make_paper.py）
@@ -176,8 +177,13 @@ def pick_cell(schema, index, attempts, chapter_no, type_key, k, ignore_extension
     return picked
 
 
-def render_paper(schema, paper_id, sections_plan, questions_by_id):
-    num = paper_id.split("-")[-1]
+def render_paper(subject, schema, paper_id, sections_plan, questions_by_id):
+    num = f"{lib880.paper_number(paper_id):02d}"
+    stems = lib880.paper_artifact_stems(subject, paper_id)
+    solution_score = sum(schema["paper"]["sections"]["solution"].get("score_seq", []))
+    choice = schema["paper"]["sections"]["choice"]
+    fill = schema["paper"]["sections"]["fill"]
+    solution = schema["paper"]["sections"]["solution"]
     lines = []
     lines.append("---")
     lines.append("type: 卷子")
@@ -190,20 +196,25 @@ def render_paper(schema, paper_id, sections_plan, questions_by_id):
     lines.append(f"total_score: {schema['paper']['total_score']}")
     lines.append("status: created")
     lines.append(f"tags: [{schema['subject']}, 880, 卷子]")
-    lines.append(f"aliases: [第 {int(num)} 套]")
+    alias = f"第 {int(num)} 套" if subject == lib880.SUBJECT_HIGH_MATH else f"线代第 {int(num)} 套"
+    lines.append(f"aliases: [{alias}]")
     lines.append("---")
     lines.append("")
-    lines.append(f"# 880 高数模拟卷 · 第 {int(num)} 套")
+    lines.append(f"# 880 {schema['subject']}模拟卷 · 第 {int(num)} 套")
     lines.append("")
     lines.append("> [!info] 卷头")
     lines.append(f"> 满分 {schema['paper']['total_score']} 分 · 限时 {schema['paper']['duration_minutes']} 分钟")
-    lines.append("> 一、选择题 10 题×5 分 · 二、填空题 6 题×5 分 · 三、解答题 6 题共 70 分")
+    lines.append(
+        f"> 一、选择题 {choice['count']} 题×{choice['per_score']} 分 · "
+        f"二、填空题 {fill['count']} 题×{fill['per_score']} 分 · "
+        f"三、解答题 {solution['count']} 题共 {solution_score} 分"
+    )
     lines.append("")
 
     for type_key in ("choice", "fill", "solution"):
         spec = schema["paper"]["sections"][type_key]
         if type_key == "solution":
-            lines.append(f"## 三、解答题（共 70 分）")
+            lines.append(f"## 三、解答题（共 {solution_score} 分）")
         else:
             lines.append(f"## {TYPE_ORDER[type_key]}、{TYPE_ZH[type_key]}（每小题 {spec['per_score']} 分）")
         lines.append("")
@@ -244,15 +255,16 @@ def render_paper(schema, paper_id, sections_plan, questions_by_id):
     lines.append("")
     lines.append("## 关联")
     lines.append("")
-    lines.append(f"- 答案：[[卷子-{num}-答案]]")
-    lines.append("- 错题本：[[错题本]]")
-    lines.append("- 进度：[[进度总览]]")
+    lines.append(f"- 答案：[[{stems['answers']}]]")
+    lines.append(f"- 错题本：[[{lib880.wrong_book_path(subject).stem}]]")
+    lines.append(f"- 进度：[[{lib880.progress_path(subject).stem}]]")
     lines.append("")
     return "\n".join(lines)
 
 
-def render_answers(schema, paper_id, sections_plan):
-    num = paper_id.split("-")[-1]
+def render_answers(subject, schema, paper_id, sections_plan):
+    num = f"{lib880.paper_number(paper_id):02d}"
+    stems = lib880.paper_artifact_stems(subject, paper_id)
     lines = []
     lines.append("---")
     lines.append("type: 答案卷")
@@ -263,11 +275,11 @@ def render_answers(schema, paper_id, sections_plan):
     lines.append(f"tags: [{schema['subject']}, 880, 答案]")
     lines.append("---")
     lines.append("")
-    lines.append(f"# 卷子-{num} 答案与解析")
+    lines.append(f"# {stems['paper']} 答案与解析")
     lines.append("")
     lines.append(f"> [!info] 卷头")
     lines.append(f"> 答案与解析摘自李林880解析册（按做题本↔解析册内容对齐）。")
-    lines.append(f"> 对应卷子：[[卷子-{num}]]")
+    lines.append(f"> 对应卷子：[[{stems['paper']}]]")
     lines.append("")
     for type_key in ("choice", "fill", "solution"):
         if type_key == "solution":
@@ -291,14 +303,15 @@ def render_answers(schema, paper_id, sections_plan):
         lines.append("")
     lines.append("## 关联")
     lines.append("")
-    lines.append(f"- 对应卷子：[[卷子-{num}]]")
+    lines.append(f"- 对应卷子：[[{stems['paper']}]]")
     lines.append("")
     return "\n".join(lines)
 
 
-def render_grading_card(schema, paper_id, sections_plan):
+def render_grading_card(subject, schema, paper_id, sections_plan):
     """生成判分卡：每题一个任务清单复选框（对/错/不会/半会/粗心），阅读视图可直接点击勾选。"""
-    num = paper_id.split("-")[-1]
+    num = f"{lib880.paper_number(paper_id):02d}"
+    stems = lib880.paper_artifact_stems(subject, paper_id)
     grade_cols = [g["zh"] for g in schema["grades"]]  # 对/错/不会/半会/粗心
     lines = []
     lines.append("---")
@@ -310,7 +323,7 @@ def render_grading_card(schema, paper_id, sections_plan):
     lines.append(f"tags: [{schema['subject']}, 880, 判分卡]")
     lines.append("---")
     lines.append("")
-    lines.append(f"# 判分卡 · 卷子-{num}")
+    lines.append(f"# 判分卡 · {stems['paper']}")
     lines.append("")
     lines.append("> [!info] 判分说明")
     lines.append("> 对照答案核对，勾选每题的一个状态（对/错/不会/半会/粗心）。没做的题留空即可。")
@@ -333,13 +346,13 @@ def render_grading_card(schema, paper_id, sections_plan):
         lines.append("")
     lines.append("## 关联")
     lines.append("")
-    lines.append(f"- 卷子：[[卷子-{num}]]")
-    lines.append(f"- 答案：[[卷子-{num}-答案]]")
+    lines.append(f"- 卷子：[[{stems['paper']}]]")
+    lines.append(f"- 答案：[[{stems['answers']}]]")
     lines.append("")
     return "\n".join(lines)
 
 
-def rebuild_paper(schema, index, papers, attempts, paper_id, ap):
+def rebuild_paper(subject, schema, index, papers, attempts, paper_id, ap):
     """从 papers.json 记录重建已存在卷子的产物（不换题）。
 
     判分卡总是重建（无状态，全空勾不影响已判数据）；
@@ -363,20 +376,20 @@ def rebuild_paper(schema, index, papers, attempts, paper_id, ap):
     sections_plan = {sec: [qi for _, qi in sorted(items, key=lambda t: t[0])]
                      for sec, items in tmp.items()}
 
-    n = int(paper_id.split("-")[-1])
-    paper_dir = lib880.paper_dir(paper_id)
+    artefacts = lib880.paper_artifact_paths(subject, paper_id)
+    lib880.paper_dir(paper_id).mkdir(parents=True, exist_ok=True)
     has_attempts = any(a.get("paper_id") == paper_id for a in attempts["attempts"])
 
-    card_path = paper_dir / f"判分卡-{n:02d}.md"
-    card_path.write_text(render_grading_card(schema, paper_id, sections_plan), encoding="utf-8")
+    card_path = artefacts["card"]
+    card_path.write_text(render_grading_card(subject, schema, paper_id, sections_plan), encoding="utf-8")
     print(f"已重建判分卡：{card_path}")
 
     if not has_attempts:
-        paper_path = paper_dir / f"卷子-{n:02d}.md"
-        answer_path = paper_dir / f"卷子-{n:02d}-答案.md"
-        paper_path.write_text(render_paper(schema, paper_id, sections_plan, index["by_id"]),
+        paper_path = artefacts["paper"]
+        answer_path = artefacts["answers"]
+        paper_path.write_text(render_paper(subject, schema, paper_id, sections_plan, index["by_id"]),
                               encoding="utf-8")
-        answer_path.write_text(render_answers(schema, paper_id, sections_plan), encoding="utf-8")
+        answer_path.write_text(render_answers(subject, schema, paper_id, sections_plan), encoding="utf-8")
         print(f"已重建卷子：{paper_path}")
         print(f"已重建答案：{answer_path}")
     else:
@@ -386,6 +399,8 @@ def rebuild_paper(schema, index, papers, attempts, paper_id, ap):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=None)
+    ap.add_argument("--subject", default=lib880.SUBJECT_HIGH_MATH,
+                    help="题库：high-math（默认）或 linear-algebra；也接受 高数 / 线代")
     ap.add_argument("--seed", type=int, default=None)
     ap.add_argument("--ignore-extension", action="store_true")
     ap.add_argument("--no-weakness", action="store_true")
@@ -395,15 +410,27 @@ def main():
                     help="从 papers.json 记录重建已存在卷子的产物（不换题）；判分卡总是重建，卷子/答案仅在未判分时重建")
     args = ap.parse_args()
 
-    schema = lib880.load_schema()
-    index = lib880.load_index()
-    lib880.build_index_map(index)
     attempts = lib880.load_attempts()
     papers = lib880.load_papers()
 
     if args.rebuild:
-        rebuild_paper(schema, index, papers, attempts, args.rebuild, ap)
+        record = next((p for p in papers["papers"] if p["paper_id"] == args.rebuild), None)
+        if record is None:
+            ap.error(f"找不到卷子记录 {args.rebuild}（workspace/records/papers.json）")
+        subject = lib880.subject_from_paper(record)
+        schema = lib880.load_schema(subject)
+        index = lib880.load_index(subject)
+        lib880.build_index_map(index)
+        rebuild_paper(subject, schema, index, papers, attempts, args.rebuild, ap)
         return
+
+    try:
+        subject = lib880.normalize_subject(args.subject)
+    except ValueError as exc:
+        ap.error(str(exc))
+    schema = lib880.load_schema(subject)
+    index = lib880.load_index(subject)
+    lib880.build_index_map(index)
 
     if args.seed is not None:
         random.seed(args.seed)
@@ -411,11 +438,12 @@ def main():
     n = args.n
     if n is None:
         existing = [
-            int(p["paper_id"].split("-")[-1])
-            for p in papers["papers"] if p["paper_id"].startswith("paper-")
+            lib880.paper_number(p["paper_id"])
+            for p in papers["papers"]
+            if lib880.subject_from_paper(p) == subject
         ]
         n = (max(existing) + 1) if existing else 1
-    paper_id = f"paper-{n:02d}"
+    paper_id = lib880.paper_id(subject, n)
 
     existing_papers = [p for p in papers["papers"] if p["paper_id"] == paper_id]
     paper_dir = lib880.paper_dir(paper_id)
@@ -431,8 +459,9 @@ def main():
 
     # 上一张卷的题目，用于避免立即重复
     avoid = set()
-    if papers["papers"]:
-        avoid = {q["qid"] for q in papers["papers"][-1]["questions"]}
+    previous_papers = [p for p in papers["papers"] if lib880.subject_from_paper(p) == subject]
+    if previous_papers:
+        avoid = {q["qid"] for q in previous_papers[-1]["questions"]}
 
     sections_plan = {}
     all_picked = []
@@ -462,17 +491,21 @@ def main():
 
     # 写文件（每卷一个子文件夹：卷子/答案/判分卡）
     paper_dir.mkdir(parents=True, exist_ok=True)
-    paper_path = paper_dir / f"卷子-{n:02d}.md"
-    answer_path = paper_dir / f"卷子-{n:02d}-答案.md"
-    card_path = paper_dir / f"判分卡-{n:02d}.md"
-    paper_path.write_text(render_paper(schema, paper_id, sections_plan, index["by_id"]),
+    artefacts = lib880.paper_artifact_paths(subject, paper_id)
+    paper_path = artefacts["paper"]
+    answer_path = artefacts["answers"]
+    card_path = artefacts["card"]
+    paper_path.write_text(render_paper(subject, schema, paper_id, sections_plan, index["by_id"]),
                           encoding="utf-8")
-    answer_path.write_text(render_answers(schema, paper_id, sections_plan), encoding="utf-8")
-    card_path.write_text(render_grading_card(schema, paper_id, sections_plan), encoding="utf-8")
+    answer_path.write_text(render_answers(subject, schema, paper_id, sections_plan), encoding="utf-8")
+    card_path.write_text(render_grading_card(subject, schema, paper_id, sections_plan), encoding="utf-8")
 
     # 记录
     paper_record = {
         "paper_id": paper_id,
+        "subject_key": subject,
+        "subject_code": schema["subject_code"],
+        "subject": schema["subject"],
         "date": lib880.today_str(),
         "duration_minutes": schema["paper"]["duration_minutes"],
         "quota_used": quota,

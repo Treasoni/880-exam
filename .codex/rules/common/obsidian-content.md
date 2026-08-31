@@ -92,6 +92,20 @@ workspace/papers/
     └── 判分卡-01.md
 ```
 
+线性代数独立拼卷使用与高数卷隔离的标识和文件名，避免与同卷号的高数卷产生歧义：
+
+```text
+workspace/papers/
+└── la-paper-01/
+    ├── 线代卷子-01.md
+    ├── 线代卷子-01-答案.md
+    └── 线代判分卡-01.md
+```
+
+线代卷的 `paper_id` 为 `la-paper-XX`，`subject` 为 `线性代数`；其站内链接指向
+`[[线代卷子-XX]]`、`[[线代错题本]]` 和 `[[线代进度总览]]`。高数卷继续使用本节其余
+示例中的 `paper-XX` / `卷子-XX` 命名，保持既有链接稳定。
+
 ### 卷子（`workspace/papers/paper-01/卷子-01.md`）
 
 frontmatter：

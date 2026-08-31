@@ -1,0 +1,69 @@
+# 李林 880 线性代数独立拼卷配置。
+# 与高数 schema 分离：题库、卷号、错题本和进度都不影响既有高数学习记录。
+
+subject: 线性代数
+subject_code: la
+version: 1
+
+chapters:
+  - {no: 7, title: 行列式, aliases: [行列式]}
+  - {no: 8, title: 矩阵, aliases: [矩阵]}
+  - {no: 9, title: 向量, aliases: [向量]}
+  - {no: 10, title: 线性方程组, aliases: [线性方程组]}
+  - {no: 11, title: 相似矩阵, aliases: [特征值, 特征向量, 相似矩阵]}
+  - {no: 12, title: 二次型, aliases: [二次型]}
+
+# 独立线代练习卷沿用当前 880 组卷的 22 题/150 分规格，便于单科整卷训练。
+paper:
+  duration_minutes: 180
+  total_score: 150
+  sections:
+    choice:   {count: 10, per_score: 5}
+    fill:     {count: 6,  per_score: 5}
+    solution: {count: 6,  per_score: 0, score_seq: [10, 12, 12, 12, 12, 12]}
+  quota:
+    7:  {choice: 1, fill: 1, solution: 1}
+    8:  {choice: 2, fill: 1, solution: 1}
+    9:  {choice: 2, fill: 1, solution: 1}
+    10: {choice: 2, fill: 1, solution: 1}
+    11: {choice: 1, fill: 1, solution: 1}
+    12: {choice: 2, fill: 1, solution: 1}
+
+difficulty_mix:
+  basic: 4
+  comprehensive: 5
+  extension: 1
+extension_enabled: true
+
+sampling:
+  base_weight: 1.0
+  attempt_decay: 0.5
+  recency_half_life_days: 14
+  grade_boost:
+    cannot: 6.0
+    half: 3.0
+    wrong: 2.0
+    careless: 1.4
+    correct: 0.5
+  boost_half_life_days: 21
+  quota_float_strength: 0.6
+  quota_float_cap: 2
+
+grades:
+  - {key: correct,  zh: 对,   weight: 0.0, score_ratio: 1.0}
+  - {key: wrong,    zh: 错,   weight: 0.3, score_ratio: 0.0}
+  - {key: cannot,   zh: 不会, weight: 1.0, score_ratio: 0.0}
+  - {key: half,     zh: 半会, weight: 0.6, score_ratio: 0.5}
+  - {key: careless, zh: 粗心, weight: 0.15, score_ratio: 0.5}
+
+analysis:
+  cause_labels: [审题失误, 方法选择错误, 概念/定理错误, 计算/代数错误, 步骤/逻辑遗漏, 粗心]
+
+weakness:
+  decay_half_life_days: 21
+  min_attempts: 2
+
+wrong_book:
+  focus_grades: [cannot, half]
+  light_grades: [wrong, careless]
+  review_states: [未复习, 已重做, 已掌握]

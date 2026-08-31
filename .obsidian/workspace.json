@@ -288,6 +288,7 @@
   },
   "active": "d0d8383a692e3423",
   "lastOpenFiles": [
+    "workspace/linear-algebra-schema.yaml",
     "scripts/__pycache__/wrong_book.cpython-313.pyc",
     "workspace/preview/进度总览.md",
     "workspace/wrong-book/错题本.md",
@@ -333,7 +334,6 @@
     "external-notes/线性代数/第四章：向量与方程组/assets",
     "external-notes/线性代数/第四章：向量与方程组/4.7-向量空间",
     "external-notes/线性代数/第四章：向量与方程组/4.5-向量组等价",
-    "external-notes/线性代数/第四章：向量与方程组/4.6-基础解系与解的结构",
     "考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/未命名.canvas"
   ]
 }

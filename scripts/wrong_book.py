@@ -18,7 +18,7 @@ import lib880
 GRADE_ZH = {g["key"]: g["zh"] for g in lib880.load_schema()["grades"]}
 DIFF_ZH = {"basic": "基础", "comprehensive": "综合", "extension": "拓展"}
 TYPE_ZH = {"choice": "选择题", "fill": "填空题", "solution": "解答题"}
-CN = "零一二三四五六七八九"
+CN = {n: lib880.chapter_number_zh(n) for n in range(1, 100)}
 
 
 def latest_grade(qid, attempts):
@@ -65,7 +65,8 @@ def build_wrong_lists(schema, index, attempts):
     return active, mastered
 
 
-def render(schema, index, attempts, active, mastered, ext_links=None, analysis=None):
+def render(schema, index, attempts, active, mastered, ext_links=None, analysis=None,
+           subject=lib880.SUBJECT_HIGH_MATH):
     ext_links = ext_links or {}
     analysis = analysis or {"items": {}}
     total = len(active) + len(mastered)
@@ -75,13 +76,13 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
     lines.append("---")
     lines.append("type: 错题本")
     lines.append(f"updated: {lib880.today_str()}")
-    lines.append("tags: [高数, 880, 错题本]")
+    lines.append(f"tags: [{schema['subject']}, 880, 错题本]")
     lines.append(f"total: {total}")
     lines.append(f"focus_count: {n_focus}")
     lines.append(f"mastered_count: {n_mastered}")
     lines.append("---")
     lines.append("")
-    lines.append("# 880 错题本")
+    lines.append(f"# 880 {schema['subject']}错题本")
     lines.append("")
     lines.append("> 判分中『不会』『半会』为重点，『错』『粗心』为轻标记。复习状态：未复习 → 已重做 → 已掌握；已掌握题保留在文末归档。")
     lines.append("")
@@ -124,7 +125,8 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
                 lines.append(q["solution"].strip())
                 lines.append("")
             if e.get("paper_id"):
-                lines.append(f"*来源卷子：[[卷子-{e['paper_id'].split('-')[-1]}]]*")
+                stem = lib880.paper_artifact_stems(subject, e["paper_id"])["paper"]
+                lines.append(f"*来源卷子：[[{stem}]]*")
             if e["when"]:
                 lines.append(f"*最近判分：{e['when']}*")
             raw_links = ext_links.get(q["id"])
@@ -187,7 +189,8 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
                     lines.append(q["solution"].strip())
                     lines.append("")
                 if e.get("paper_id"):
-                    lines.append(f"*来源卷子：[[卷子-{e['paper_id'].split('-')[-1]}]]*")
+                    stem = lib880.paper_artifact_stems(subject, e["paper_id"])["paper"]
+                    lines.append(f"*来源卷子：[[{stem}]]*")
                 if e["when"]:
                     lines.append(f"*最近判分：{e['when']}*")
                 raw_links = ext_links.get(q["id"])
@@ -214,19 +217,25 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
                 lines.append("")
     lines.append("## 关联")
     lines.append("")
-    lines.append("- 进度：[[进度总览]]")
+    lines.append(f"- 进度：[[{lib880.progress_path(subject).stem}]]")
     lines.append("")
     return "\n".join(lines)
 
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--subject", default=lib880.SUBJECT_HIGH_MATH,
+                    help="题库：high-math（默认）或 linear-algebra")
     ap.add_argument("--mark", action="append", default=[], help="qid=状态")
     ap.add_argument("--list-states", action="store_true")
     args = ap.parse_args()
 
-    schema = lib880.load_schema()
-    index = lib880.load_index()
+    try:
+        subject = lib880.normalize_subject(args.subject)
+    except ValueError as exc:
+        ap.error(str(exc))
+    schema = lib880.load_schema(subject)
+    index = lib880.load_index(subject)
     lib880.build_index_map(index)
     attempts = lib880.load_attempts()
 
@@ -254,11 +263,12 @@ def main():
             print(f"{e['q']['id']}  {e['grade_zh']:<4} {e['priority']:<3} {e['state']}")
         return
 
-    lib880.WRONG_BOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
-    lib880.WRONG_BOOK_PATH.write_text(
-        render(schema, index, attempts, active, mastered, lib880.load_external_links(), lib880.load_analysis()),
+    output_path = lib880.wrong_book_path(subject)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        render(schema, index, attempts, active, mastered, lib880.load_external_links(), lib880.load_analysis(), subject),
         encoding="utf-8")
-    print(f"已更新错题本：{lib880.WRONG_BOOK_PATH}（待复习 {len(active)} 道 · 已掌握归档 {len(mastered)} 道）")
+    print(f"已更新错题本：{output_path}（待复习 {len(active)} 道 · 已掌握归档 {len(mastered)} 道）")
 
 
 if __name__ == "__main__":

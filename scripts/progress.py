@@ -21,15 +21,27 @@ def latest_grade(qid, attempts):
 
 
 def main():
-    schema = lib880.load_schema()
-    index = lib880.load_index()
+    import argparse
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--subject", default=lib880.SUBJECT_HIGH_MATH,
+                    help="题库：high-math（默认）或 linear-algebra")
+    args = ap.parse_args()
+    try:
+        subject = lib880.normalize_subject(args.subject)
+    except ValueError as exc:
+        ap.error(str(exc))
+
+    schema = lib880.load_schema(subject)
+    index = lib880.load_index(subject)
     lib880.build_index_map(index)
     attempts = lib880.load_attempts()
     papers = lib880.load_papers()
 
     # 抽到过但未判分 的题目集合
     drawn = {}
-    for p in papers["papers"]:
+    subject_papers = [p for p in papers["papers"] if lib880.subject_from_paper(p) == subject]
+    for p in subject_papers:
         for q in p["questions"]:
             drawn[q["qid"]] = True
 
@@ -55,7 +67,7 @@ def main():
     lines.append("---")
     lines.append("type: 进度总览")
     lines.append(f"updated: {lib880.today_str()}")
-    lines.append("tags: [高数, 880, 进度]")
+    lines.append(f"tags: [{schema['subject']}, 880, 进度]")
     lines.append(f"total: {total}")
     lines.append(f"graded: {n_graded}")
     lines.append(f"pending: {n_pending}")
@@ -63,7 +75,7 @@ def main():
     lines.append(f"wrong: {n_wrong}")
     lines.append("---")
     lines.append("")
-    lines.append("# 880 进度总览")
+    lines.append(f"# 880 {schema['subject']}进度总览")
     lines.append("")
     lines.append("## 汇总")
     lines.append("")
@@ -114,19 +126,23 @@ def main():
     lines.append("## 关联")
     lines.append("")
     lines.append("- 错题本：[[错题本]]")
-    if papers["papers"]:
-        links = "、".join(f"[[卷子-{p['paper_id'].split('-')[-1]}]]" for p in papers["papers"])
+    if subject_papers:
+        links = "、".join(
+            f"[[{lib880.paper_artifact_stems(subject, p['paper_id'])['paper']}]]"
+            for p in subject_papers
+        )
         lines.append(f"- 卷子：{links}")
     lines.append("")
 
-    lib880.PROGRESS_PATH.parent.mkdir(parents=True, exist_ok=True)
-    lib880.PROGRESS_PATH.write_text("\n".join(lines), encoding="utf-8")
-    print(f"已更新进度总览：{lib880.PROGRESS_PATH}")
+    output_path = lib880.progress_path(subject)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text("\n".join(lines), encoding="utf-8")
+    print(f"已更新进度总览：{output_path}")
     print(f"汇总：总{total} 已判{n_graded} 欠账{n_pending} 未做{n_undone} 非对{n_wrong}")
 
 
 def _cn(n):
-    return "零一二三四五六七八九"[n]
+    return lib880.chapter_number_zh(n)
 
 
 def _ch_title(schema, index, ch):

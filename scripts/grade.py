@@ -194,9 +194,6 @@ def paper_grade_status(paper, attempts):
     return "graded" if expected and expected <= graded else "partially_graded"
 
 
-_CN = "零一二三四五六七八九"
-
-
 def _upsert_section(text, title, section_text):
     """把 section_text（以 ## <title> 开头）写入 text：已存在则整段替换，否则插到 `## 关联` 前。"""
     section_text = section_text.rstrip() + "\n"
@@ -245,7 +242,10 @@ def render_score_weakness(schema, paper, attempts, index):
                 continue
             r = (c["earned"] / c["full"]) if c["full"] else 0
             title = ch_title.get(ch, "")
-            lines.append(f"> - 第{_CN[ch]}章 {title}：失分 {loss:g}/{c['full']:g}（得分率 {r:.0%}）")
+            lines.append(
+                f"> - 第{lib880.chapter_number_zh(ch)}章 {title}："
+                f"失分 {loss:g}/{c['full']:g}（得分率 {r:.0%}）"
+            )
         lines.append("")
     return "\n".join(lines)
 
@@ -288,9 +288,6 @@ def main():
             print(f"!! 判分 JSON 解析失败: {exc}", file=sys.stderr)
             sys.exit(2)
 
-    schema = lib880.load_schema()
-    index = lib880.load_index()
-    lib880.build_index_map(index)
     attempts = lib880.load_attempts()
     papers = lib880.load_papers()
 
@@ -302,6 +299,10 @@ def main():
         print(f"!! 卷子 {args.paper} 有 {len(matching_papers)} 条重复记录，请先修复 papers.json", file=sys.stderr)
         sys.exit(2)
     paper = matching_papers[0]
+    subject = lib880.subject_from_paper(paper)
+    schema = lib880.load_schema(subject)
+    index = lib880.load_index(subject)
+    lib880.build_index_map(index)
 
     qmap = {}  # (section, pos) -> qid
     for q in paper["questions"]:
@@ -365,12 +366,7 @@ def main():
     lib880.save_papers(papers)
 
     # 更新卷子文件：frontmatter status → graded、updated → 当日；判分表回填判分态
-    try:
-        n = int(args.paper.split("-")[-1])
-    except ValueError:
-        print(f"!! 无法从 {args.paper} 解析卷号", file=sys.stderr)
-        sys.exit(2)
-    paper_path = lib880.paper_dir(args.paper) / f"卷子-{n:02d}.md"
+    paper_path = lib880.paper_artifact_paths(subject, args.paper)["paper"]
     if paper_path.exists():
         text = paper_path.read_text(encoding="utf-8")
         text = re.sub(r"^status: .*$", f"status: {paper['status']}", text, count=1, flags=re.MULTILINE)
@@ -389,8 +385,8 @@ def main():
     import subprocess
     py = sys.executable
     scripts = Path(__file__).resolve().parent
-    subprocess.run([py, str(scripts / "wrong_book.py")], check=True)
-    subprocess.run([py, str(scripts / "progress.py")], check=True)
+    subprocess.run([py, str(scripts / "wrong_book.py"), "--subject", subject], check=True)
+    subprocess.run([py, str(scripts / "progress.py"), "--subject", subject], check=True)
 
     status_zh = "已判完" if paper["status"] == "graded" else "部分判分"
     print(f"已记录 {added} 条判分 → 卷子 {args.paper} 标记为{status_zh}")

@@ -15,7 +15,7 @@ PYTHON ?= python3
 .PHONY: help paper grade wrongbook progress lint index-check index-check-structure linear-index prepare test env-check
 
 help: ## 列出可用命令
-	@echo "make paper        — 拼一张卷"
+	@echo "make paper        — 拼一张卷（线代：make paper SUBJECT=linear-algebra）"
 	@echo "make grade        — 判分（make grade SHEET=workspace/papers/paper-01/判分卡-01.md [EXTRA='--redo']）"
 	@echo "make wrongbook    — 重新生成错题本"
 	@echo "make progress     — 生成进度总览"
@@ -27,17 +27,17 @@ help: ## 列出可用命令
 	@echo "make env-check    — 环境变量模板自检"
 	@echo "Windows 覆盖解释器：make <target> PYTHON='py -3'"
 
-paper: ## 拼一张卷
-	$(PYTHON) scripts/make_paper.py
+paper: ## 拼一张卷；线代：make paper SUBJECT=linear-algebra
+	$(PYTHON) scripts/make_paper.py $(if $(SUBJECT),--subject $(SUBJECT))
 
 grade: ## 判分：make grade SHEET=workspace/papers/paper-01/判分卡-01.md [EXTRA='--redo']；JSON 兜底：make grade PAPER=paper-01 EXTRA='--grading-file grade.json'
 	$(PYTHON) scripts/grade.py $(if $(SHEET),--sheet $(SHEET),--paper $(PAPER)) $(EXTRA)
 
-wrongbook: ## 重新生成错题本
-	$(PYTHON) scripts/wrong_book.py
+wrongbook: ## 重新生成错题本；线代：make wrongbook SUBJECT=linear-algebra
+	$(PYTHON) scripts/wrong_book.py $(if $(SUBJECT),--subject $(SUBJECT))
 
-progress: ## 生成进度总览
-	$(PYTHON) scripts/progress.py
+progress: ## 生成进度总览；线代：make progress SUBJECT=linear-algebra
+	$(PYTHON) scripts/progress.py $(if $(SUBJECT),--subject $(SUBJECT))
 
 lint: ## 校验生成产物格式
 	$(PYTHON) scripts/lint_content.py

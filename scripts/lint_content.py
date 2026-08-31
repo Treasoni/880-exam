@@ -98,10 +98,13 @@ def main():
     targets = []
     if lib880.PAPERS_DIR.exists():
         targets += sorted(lib880.PAPERS_DIR.rglob("*.md"))
-    if lib880.WRONG_BOOK_PATH.exists():
-        targets.append(lib880.WRONG_BOOK_PATH)
-    if lib880.PROGRESS_PATH.exists():
-        targets.append(lib880.PROGRESS_PATH)
+    for subject in (lib880.SUBJECT_HIGH_MATH, lib880.SUBJECT_LINEAR_ALGEBRA):
+        wrong_book = lib880.wrong_book_path(subject)
+        progress = lib880.progress_path(subject)
+        if wrong_book.exists():
+            targets.append(wrong_book)
+        if progress.exists():
+            targets.append(progress)
     if not targets:
         print("没有可校验的产物（先拼卷/判分）。")
         return

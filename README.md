@@ -1,6 +1,6 @@
 # 880 考研数学习题系统
 
-基于 **李林880 · 数二高数篇**（做题本 + 解析册）的个人做题系统：按真题模式拼卷、手动判分、整理错题本、补弱加权抽题、进度预览。另收录线代篇的独立题目索引。
+基于 **李林880 · 数二高数篇与线代篇**（做题本 + 解析册）的个人做题系统：按真题模式拼卷、手动判分、整理错题本、补弱加权抽题、进度预览。两科题池、卷号和学习报告彼此隔离。
 
 详细实用文档请看[[docs/使用指南.md]]
 
@@ -8,7 +8,8 @@
 
 | 你想做什么 | 直接说 | 实际执行 |
 | --- | --- | --- |
-| 拼卷 | “拼张卷” | `python3 scripts/make_paper.py` |
+| 拼高数卷 | “拼张卷” | `python3 scripts/make_paper.py` |
+| 拼线代卷 | “拼一张线代880卷” | `python3 scripts/make_paper.py --subject linear-algebra` |
 | 判分 | “判分卡填好了”（先在判分卡打勾） | `python3 scripts/grade.py --sheet workspace/papers/paper-01/判分卡-01.md` |
 | 错题本 | “看错题本” / “重练了第X题会了” | `python3 scripts/wrong_book.py` |
 | 预览进度 | “看进度” | `python3 scripts/progress.py` |
@@ -45,20 +46,20 @@
 workspace/
 ├── schema.yaml                核心配置（配额/权重/判分口径）
 ├── question-index.json        题目索引（题目↔答案，LLM 按内容对齐提取）
-├── linear-algebra-question-index.json  线代 880 独立索引（不影响高数卷与判分记录）
-├── papers/paper-XX/卷子-XX.md    卷子 + 答题卡 + 判分表
-├── papers/paper-XX/卷子-XX-答案.md  独立答案卷（含解析）
-├── papers/paper-XX/判分卡-XX.md  勾选判分卡（判分输入）
+├── linear-algebra-question-index.json  线代 880 题目索引
+├── linear-algebra-schema.yaml          线代独立拼卷配置
+├── papers/paper-XX/卷子-XX.md    高数卷子 + 答题卡 + 判分表
+├── papers/la-paper-XX/线代卷子-XX.md  线代卷子 + 答题卡 + 判分表
 ├── records/attempts.json      判分记录（补弱/错题/进度的唯一输入）
 ├── records/papers.json        卷子快照
-├── wrong-book/错题本.md        按章节，含复习状态
-├── preview/进度总览.md         全局进度与弱点排行
+├── wrong-book/{错题本,线代错题本}.md  分科错题本，含复习状态
+├── preview/{进度总览,线代进度总览}.md 分科进度与弱点排行
 └── workflow-runs/             工作流状态
 ```
 
 ## 说明
 
 - 答案全部来自解析册，**不做 AI 生成**（见 `docs/adr/0001`）；两个源文件有 OCR 标记丢失/合并问题，入库时用 LLM 按内容对齐并逐个校验。
-- 高数索引仍是当前拼卷/判分工作流的题池；线代 880 已构建为独立索引，后续可在不影响既有学习记录的前提下接入独立组卷配置。
+- 高数与线代都可独立拼卷、判分、补弱和查看进度；线代卷使用 `la-paper-XX` 与 `线代卷子-XX.md`，不会覆盖高数的 `paper-XX`。
 - 生成的 Markdown 兼容 Obsidian，可直接用 Obsidian 打开本仓库浏览。
 - 指定已存在的卷号会被拒绝，防止覆盖答题卡和学习记录；只有尚未判分的卷子可用 `--replace-ungraded` 显式重生成。
