@@ -271,8 +271,11 @@
       "notebook-navigator:Notebook Navigator": false
     }
   },
-  "active": "6317a39668190194",
+  "active": "d0d8383a692e3423",
   "lastOpenFiles": [
+    "workspace/linear-algebra-question-index.json",
+    "scripts/__pycache__/build_linear_algebra_index.cpython-313.pyc",
+    "scripts/build_linear_algebra_index.py",
     "880/线代880答案/images/ffde259fa0baf90586847c81db07d4049181f737cb42a4b70a12a3b5129a487a.jpg",
     "880/线代880答案/images/ff96e810785ec0d704484ca47807190cee6c1dd27a9edf0ba70352968dbc6a50.jpg",
     "880/线代880答案/images/ff805eaa5242161f7fc339421968a05281698155ac616ad9babe9baed50a9266.jpg",
@@ -283,7 +286,6 @@
     "880/线代880答案/images/fe8c549b1bc3cd7a0d4c93d173d977d3bf36321e6d0f2af18ff9cd72510ee00e.jpg",
     "880/线代880答案/images/fe6b473926e9e81c359ff00cd8170360d545e1478490f473983a4406e6d0ee15.jpg",
     "880/线代880答案/images/fe57ac361fba15945d6495d3eb20c52d24853b1215301f652d587b4ad087b3c5.jpg",
-    "880/线代880答案/images/fe524b464536787444ceb2c93eca9d5ce37aca74625cb2c6f096509cb429c346.jpg",
     "880/线代880答案/layout.json",
     "880/线代880答案/images",
     "880/线代880答案/full.md",
@@ -293,8 +295,6 @@
     "880/线代880答案/31d2fad2-9e8d-4631-a3b1-1318a89ddddd_content_list_v2.json",
     "880/线代880答案/31d2fad2-9e8d-4631-a3b1-1318a89ddddd_content_list.json",
     "880/线代880答案",
-    "880/range_221-354.pdf-e533398b-c8b3-4ec0-b0e0-6e727eed1428/31d2fad2-9e8d-4631-a3b1-1318a89ddddd_content_list.json",
-    "880/range_221-354.pdf-e533398b-c8b3-4ec0-b0e0-6e727eed1428/layout.json",
     "880/【A4紧凑版】李林880数二线代篇做题本.pdf-a0b47585-3160-443a-9edc-b283dfd7ec0d/full.md",
     "880/range_221-354.pdf-e533398b-c8b3-4ec0-b0e0-6e727eed1428/full.md",
     "external-notes/考研数学/高数-一元微分学/错题本.md",
