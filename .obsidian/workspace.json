@@ -257,7 +257,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -286,8 +286,9 @@
       "notebook-navigator:Notebook Navigator": false
     }
   },
-  "active": "d0d8383a692e3423",
+  "active": "28db7ae896c15c64",
   "lastOpenFiles": [
+    "scripts/__pycache__/wrong_book.cpython-313.pyc",
     "workspace/preview/进度总览.md",
     "workspace/wrong-book/错题本.md",
     "external-notes/考研数学/高数-一元函数积分学/错题本.md",
@@ -324,7 +325,6 @@
     "external-notes/线性代数/第四章：向量与方程组/4.4-向量组的极大线性无关组、秩/4.4.1-极大线性无关组定义.md",
     "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/📝 章节总结.md",
     "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/assets",
-    "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/4.3.6-判断线性相关性的常用结论.md",
     "external-notes/线性代数/第五章：矩阵相似理论/5.5-实对称矩阵相似对角化/assets",
     "external-notes/线性代数/第二章：矩阵/assets/错题38-正交伴随化简路线图.svg",
     "external-notes/线性代数/第二章：矩阵/assets/错题37-正交证明手写解析-转置求积.jpg",

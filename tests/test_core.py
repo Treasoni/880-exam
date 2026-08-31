@@ -18,6 +18,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import grade
 import lib880
 import make_paper
+import wrong_book
 
 
 class Lib880Test(unittest.TestCase):
@@ -171,6 +172,27 @@ class ScoreAndAnalysisTest(unittest.TestCase):
                 lib880.save_analysis({"items": {"q1": {"cause": "计算/代数错误", "date": "2026-08-11"}}})
                 data = lib880.load_analysis()
         self.assertEqual(data["items"]["q1"]["cause"], "计算/代数错误")
+
+
+class WrongBookTest(unittest.TestCase):
+    def test_mastered_redo_is_preserved_in_archive(self):
+        schema = lib880.load_schema()
+        index = {"questions": [
+            {"id": "active", "chapter_no": 1, "type": "choice", "difficulty": "basic", "q_num": 1},
+            {"id": "mastered", "chapter_no": 1, "type": "choice", "difficulty": "basic", "q_num": 2},
+            {"id": "ordinary-correct", "chapter_no": 1, "type": "choice", "difficulty": "basic", "q_num": 3},
+        ]}
+        attempts = {"attempts": [
+            {"qid": "active", "grade": "cannot", "when": "2026-08-11"},
+            {"qid": "mastered", "grade": "cannot", "when": "2026-08-11"},
+            {"qid": "mastered", "grade": "correct", "when": "2026-08-31"},
+            {"qid": "ordinary-correct", "grade": "correct", "when": "2026-08-31"},
+        ], "wrong_book_status": {"mastered": {"state": "已掌握", "updated": "2026-08-31"}}}
+
+        active, mastered = wrong_book.build_wrong_lists(schema, index, attempts)
+
+        self.assertEqual([e["q"]["id"] for e in active], ["active"])
+        self.assertEqual([e["q"]["id"] for e in mastered], ["mastered"])
 
 
 if __name__ == "__main__":
