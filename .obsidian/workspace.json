@@ -288,6 +288,11 @@
   },
   "active": "d0d8383a692e3423",
   "lastOpenFiles": [
+    "scripts/__pycache__/progress.cpython-313.pyc",
+    "scripts/__pycache__/prepare_sections.cpython-313.pyc",
+    "scripts/__pycache__/merge_extraction.cpython-313.pyc",
+    "scripts/__pycache__/lint_content.cpython-313.pyc",
+    "scripts/__pycache__/build-question-index.cpython-313.pyc",
     "workspace/linear-algebra-schema.yaml",
     "scripts/__pycache__/wrong_book.cpython-313.pyc",
     "workspace/preview/进度总览.md",
@@ -326,14 +331,9 @@
     "external-notes/线性代数/第四章：向量与方程组/4.4-向量组的极大线性无关组、秩/4.4.1-极大线性无关组定义.md",
     "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/📝 章节总结.md",
     "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/assets",
-    "external-notes/线性代数/第五章：矩阵相似理论/5.5-实对称矩阵相似对角化/assets",
     "external-notes/线性代数/第二章：矩阵/assets/错题38-正交伴随化简路线图.svg",
     "external-notes/线性代数/第二章：矩阵/assets/错题37-正交证明手写解析-转置求积.jpg",
     "external-notes/线性代数/第二章：矩阵/assets/错题37-正交证明手写解析-交换判定.jpg",
-    "external-notes/线性代数/第一章：行列式/1.4-特殊行列式的计算/attachments",
-    "external-notes/线性代数/第四章：向量与方程组/assets",
-    "external-notes/线性代数/第四章：向量与方程组/4.7-向量空间",
-    "external-notes/线性代数/第四章：向量与方程组/4.5-向量组等价",
     "考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/未命名.canvas"
   ]
 }

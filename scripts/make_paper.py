@@ -523,6 +523,13 @@ def main():
     papers["papers"].append(paper_record)
     lib880.save_papers(papers)
 
+    # Keep the new paper's report links valid immediately.  This also records
+    # its questions as "做过未判" in the matching subject's progress note.
+    import progress
+    import wrong_book
+    wrong_book.generate(subject)
+    progress.generate(subject)
+
     print(f"已生成卷子：{paper_path}")
     print(f"已生成答案：{answer_path}")
     print(f"已生成判分卡：{card_path}")

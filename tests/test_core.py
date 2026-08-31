@@ -106,6 +106,8 @@ class PaperRulesTest(unittest.TestCase):
                 ATTEMPTS_PATH=attempts_path,
                 PAPERS_PATH=papers_path,
                 PAPERS_DIR=papers_dir,
+                WRONG_BOOK_PATH=tmp / "wrong-book" / "错题本.md",
+                PROGRESS_PATH=tmp / "preview" / "进度总览.md",
             ):
                 with patch.object(sys, "argv", ["make_paper.py", "--n", "1", "--seed", "7"]):
                     make_paper.main()
@@ -119,6 +121,119 @@ class PaperRulesTest(unittest.TestCase):
 
             records = json.loads(papers_path.read_text(encoding="utf-8"))["papers"]
             self.assertEqual([p["paper_id"] for p in records], ["paper-01"])
+
+    def test_linear_algebra_paper_is_subject_scoped_and_uses_distinct_artifacts(self):
+        with tempfile.TemporaryDirectory() as directory:
+            tmp = Path(directory)
+            schema_path = tmp / "schema.yaml"
+            index_path = tmp / "question-index.json"
+            la_schema_path = tmp / "linear-algebra-schema.yaml"
+            la_index_path = tmp / "linear-algebra-question-index.json"
+            attempts_path = tmp / "records" / "attempts.json"
+            papers_path = tmp / "records" / "papers.json"
+            papers_dir = tmp / "papers"
+            schema_path.write_text((ROOT / "workspace/schema.yaml").read_text(encoding="utf-8"), encoding="utf-8")
+            index_path.write_text((ROOT / "workspace/question-index.json").read_text(encoding="utf-8"), encoding="utf-8")
+            la_schema_path.write_text((ROOT / "workspace/linear-algebra-schema.yaml").read_text(encoding="utf-8"), encoding="utf-8")
+            la_index_path.write_text((ROOT / "workspace/linear-algebra-question-index.json").read_text(encoding="utf-8"), encoding="utf-8")
+            attempts_path.parent.mkdir(parents=True)
+            attempts_path.write_text(json.dumps({"attempts": [], "wrong_book_status": {}}), encoding="utf-8")
+            papers_path.write_text(json.dumps({"papers": []}), encoding="utf-8")
+
+            with patch.multiple(
+                lib880,
+                SCHEMA_PATH=schema_path,
+                INDEX_PATH=index_path,
+                LINEAR_ALGEBRA_SCHEMA_PATH=la_schema_path,
+                LINEAR_ALGEBRA_INDEX_PATH=la_index_path,
+                ATTEMPTS_PATH=attempts_path,
+                PAPERS_PATH=papers_path,
+                PAPERS_DIR=papers_dir,
+                WRONG_BOOK_PATH=tmp / "wrong-book" / "错题本.md",
+                PROGRESS_PATH=tmp / "preview" / "进度总览.md",
+                LINEAR_ALGEBRA_WRONG_BOOK_PATH=tmp / "wrong-book" / "线代错题本.md",
+                LINEAR_ALGEBRA_PROGRESS_PATH=tmp / "preview" / "线代进度总览.md",
+            ):
+                with patch.object(sys, "argv", [
+                    "make_paper.py", "--subject", "linear-algebra", "--n", "1", "--seed", "7",
+                ]):
+                    make_paper.main()
+
+            records = json.loads(papers_path.read_text(encoding="utf-8"))["papers"]
+            self.assertEqual(len(records), 1)
+            paper = records[0]
+            self.assertEqual(paper["paper_id"], "la-paper-01")
+            self.assertEqual(paper["subject_key"], "linear-algebra")
+            self.assertEqual(paper["subject_code"], "la")
+            self.assertEqual(len(paper["questions"]), 22)
+            self.assertTrue(all(q["qid"].startswith("la-") for q in paper["questions"]))
+            folder = papers_dir / "la-paper-01"
+            self.assertTrue((folder / "线代卷子-01.md").exists())
+            self.assertTrue((folder / "线代卷子-01-答案.md").exists())
+            self.assertTrue((folder / "线代判分卡-01.md").exists())
+            self.assertTrue((tmp / "wrong-book" / "线代错题本.md").exists())
+            self.assertTrue((tmp / "preview" / "线代进度总览.md").exists())
+            paper_text = (folder / "线代卷子-01.md").read_text(encoding="utf-8")
+            progress_text = (tmp / "preview" / "线代进度总览.md").read_text(encoding="utf-8")
+            wrong_book_text = (tmp / "wrong-book" / "线代错题本.md").read_text(encoding="utf-8")
+            self.assertIn("[[线代错题本]]", paper_text)
+            self.assertIn("[[线代进度总览]]", paper_text)
+            self.assertIn("[[线代错题本]]", progress_text)
+            self.assertIn("[[线代进度总览]]", wrong_book_text)
+
+    def test_linear_algebra_card_is_graded_against_its_own_index(self):
+        with tempfile.TemporaryDirectory() as directory:
+            tmp = Path(directory)
+            schema_path = tmp / "schema.yaml"
+            index_path = tmp / "question-index.json"
+            la_schema_path = tmp / "linear-algebra-schema.yaml"
+            la_index_path = tmp / "linear-algebra-question-index.json"
+            attempts_path = tmp / "records" / "attempts.json"
+            papers_path = tmp / "records" / "papers.json"
+            papers_dir = tmp / "papers"
+            schema_path.write_text((ROOT / "workspace/schema.yaml").read_text(encoding="utf-8"), encoding="utf-8")
+            index_path.write_text((ROOT / "workspace/question-index.json").read_text(encoding="utf-8"), encoding="utf-8")
+            la_schema_path.write_text((ROOT / "workspace/linear-algebra-schema.yaml").read_text(encoding="utf-8"), encoding="utf-8")
+            la_index_path.write_text((ROOT / "workspace/linear-algebra-question-index.json").read_text(encoding="utf-8"), encoding="utf-8")
+            attempts_path.parent.mkdir(parents=True)
+            attempts_path.write_text(json.dumps({"attempts": [], "wrong_book_status": {}}), encoding="utf-8")
+            papers_path.write_text(json.dumps({"papers": []}), encoding="utf-8")
+
+            patches = dict(
+                SCHEMA_PATH=schema_path,
+                INDEX_PATH=index_path,
+                LINEAR_ALGEBRA_SCHEMA_PATH=la_schema_path,
+                LINEAR_ALGEBRA_INDEX_PATH=la_index_path,
+                ATTEMPTS_PATH=attempts_path,
+                PAPERS_PATH=papers_path,
+                PAPERS_DIR=papers_dir,
+                WRONG_BOOK_PATH=tmp / "wrong-book" / "错题本.md",
+                PROGRESS_PATH=tmp / "preview" / "进度总览.md",
+                LINEAR_ALGEBRA_WRONG_BOOK_PATH=tmp / "wrong-book" / "线代错题本.md",
+                LINEAR_ALGEBRA_PROGRESS_PATH=tmp / "preview" / "线代进度总览.md",
+            )
+            with patch.multiple(lib880, **patches):
+                with patch.object(sys, "argv", [
+                    "make_paper.py", "--subject", "linear-algebra", "--n", "1", "--seed", "7",
+                ]):
+                    make_paper.main()
+
+                card_path = papers_dir / "la-paper-01" / "线代判分卡-01.md"
+                card_path.write_text(
+                    card_path.read_text(encoding="utf-8").replace("- [ ] 对", "- [x] 对", 1),
+                    encoding="utf-8",
+                )
+                with patch("subprocess.run") as run:
+                    with patch.object(sys, "argv", ["grade.py", "--sheet", str(card_path)]):
+                        grade.main()
+                self.assertEqual(run.call_count, 2)
+
+            attempts = json.loads(attempts_path.read_text(encoding="utf-8"))["attempts"]
+            self.assertEqual(len(attempts), 1)
+            self.assertTrue(attempts[0]["qid"].startswith("la-"))
+            self.assertEqual(attempts[0]["paper_id"], "la-paper-01")
+            paper_text = (papers_dir / "la-paper-01" / "线代卷子-01.md").read_text(encoding="utf-8")
+            self.assertIn("status: partially_graded", paper_text)
 
 
 class ScoreAndAnalysisTest(unittest.TestCase):

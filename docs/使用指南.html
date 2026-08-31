@@ -147,7 +147,7 @@
 
 <header>
   <h1>880 做题系统使用指南</h1>
-  <p class="subtitle">基于李林 880 · 数二高数 —— 拼卷 · 判分 · 错题本 · 进度</p>
+  <p class="subtitle">基于李林 880 · 数二高数 / 线代 —— 拼卷 · 判分 · 错题本 · 进度</p>
 </header>
 
 <nav>
@@ -166,7 +166,7 @@
 <section id="intro">
   <div class="callout info">
     <span class="label">这是给谁看的</span>
-    给想用「李林 880 · 数二高数」刷题的人。你不需要懂代码——对着 AI 助手说人话，就能拼卷、判分、整理错题、看进度。
+    给想用「李林 880 · 数二高数 / 线代」刷题的人。你不需要懂代码——对着 AI 助手说人话，就能拼卷、判分、整理错题、看进度。
   </div>
 </section>
 
@@ -197,6 +197,7 @@
   <p>对 AI 说：</p>
   <div class="command">「拼张卷」</div>
   <p>系统会在 <code>workspace/papers/</code> 生成一张卷子和配套答案卷，并告诉你题号和分值。</p>
+  <p>练线代时说「拼一张线代880卷」：系统会生成独立的 <code>la-paper-XX/</code>、线代卷子、答案卷和判分卡，不会与高数卷冲突。</p>
 
   <h3>2. 做完，判分</h3>
   <p>做完后对照答案卷，把每道题的状态一次说清，例如：</p>
@@ -244,7 +245,8 @@
       <tr><th>你想做什么</th><th>直接对 AI 说</th></tr>
     </thead>
     <tbody>
-      <tr><td>拼一张卷</td><td>「拼张卷」</td></tr>
+      <tr><td>拼高数卷</td><td>「拼张卷」</td></tr>
+      <tr><td>拼线代卷</td><td>「拼一张线代880卷」</td></tr>
       <tr><td>判分</td><td>「判分：一1对 一2错 …」</td></tr>
       <tr><td>看错题</td><td>「看错题本」</td></tr>
       <tr><td>某题会了</td><td>「重练了第 X 题会了」</td></tr>
@@ -276,7 +278,7 @@
   <ul>
     <li><strong>Windows 报错？</strong> 把所有 <code>python3</code> 换成 <code>py -3</code>（如 <code>py -3 scripts/make_paper.py</code>）。</li>
     <li><strong>答案准吗？</strong> 答案全部来自解析册，<strong>不做 AI 生成</strong>；入库时逐题校验过。</li>
-    <li><strong>只有高数？</strong> 目前只有高数；数据结构预留了线代，以后可以加。</li>
+    <li><strong>线代怎么拼？</strong> 说「拼一张线代880卷」，或运行 <code>python3 scripts/make_paper.py --subject linear-algebra</code>；线代使用独立的卷号、错题本和进度。</li>
     <li><strong>生成的笔记能放进 Obsidian？</strong> 可以，卷子、错题本、进度总览都是 Obsidian 原生笔记，直接用 Obsidian 打开仓库即可。</li>
   </ul>
 </section>

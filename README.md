@@ -10,9 +10,9 @@
 | --- | --- | --- |
 | 拼高数卷 | “拼张卷” | `python3 scripts/make_paper.py` |
 | 拼线代卷 | “拼一张线代880卷” | `python3 scripts/make_paper.py --subject linear-algebra` |
-| 判分 | “判分卡填好了”（先在判分卡打勾） | `python3 scripts/grade.py --sheet workspace/papers/paper-01/判分卡-01.md` |
-| 错题本 | “看错题本” / “重练了第X题会了” | `python3 scripts/wrong_book.py` |
-| 预览进度 | “看进度” | `python3 scripts/progress.py` |
+| 判分 | “判分卡填好了”（先在判分卡打勾） | `python3 scripts/grade.py --sheet <对应判分卡>` |
+| 错题本 | “看错题本” / “重练了第X题会了” | `python3 scripts/wrong_book.py [--subject linear-algebra]` |
+| 预览进度 | “看进度” | `python3 scripts/progress.py [--subject linear-algebra]` |
 | 重建索引 | “入库” | `python3 scripts/prepare_sections.py` + 提取 Workflow + `python3 scripts/merge_extraction.py --journal <jsonl>` |
 | 构建线代索引 | “构建线代880” | `python3 scripts/build_linear_algebra_index.py` |
 

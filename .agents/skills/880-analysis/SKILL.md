@@ -12,9 +12,9 @@ description: 对话式过程归因——用户贴做题过程，定位出错环�
 ## 步骤
 
 1. **定位题目**：从用户说的卷子+题号（如「卷子01 三2」）定位：
-   - 卷子号 → `paper-XX`；
+   - 高数卷号 → `paper-XX`；线代「线代卷01」→ `la-paper-XX`；
    - 从 `workspace/records/papers.json` 该卷 `questions` 里按 `paper_no`（`一1`/`二3`/`三2`）反查 `qid`。
-2. **读上下文**：从题目索引（`workspace/question-index.json`）或 `卷子-XX-答案.md` 读题干、答案、解析；从 `attempts.json` 读该题判分态（对/错/不会/半会/粗心）。
+2. **读上下文**：按卷子 `subject_code` 选择索引：高数 `workspace/question-index.json`，线代 `workspace/linear-algebra-question-index.json`；或从对应答案卷读题干、答案、解析。再从 `attempts.json` 读该题判分态（对/错/不会/半会/粗心）。
 3. **对照分析**：把用户贴的解题过程与正确解析逐步对照，找出**第一个出错的具体步骤**（从哪一步开始偏离），不要只报「答案不对」。
 4. **归类并建议**：从 `schema.analysis.cause_labels`（审题失误 / 方法选择错误 / 概念定理错误 / 计算代数错误 / 步骤逻辑遗漏 / 粗心）选一个标签；写一句具体、可执行的建议。
 5. **落库**：写入 `workspace/records/analysis.json`：
@@ -34,7 +34,7 @@ description: 对话式过程归因——用户贴做题过程，定位出错环�
    ```
 
    用 `lib880.load_analysis()` 读、`save_analysis()` 写——**保留已有条目**（同题覆盖，异题追加）。
-6. **重生成**：`python3 scripts/wrong_book.py`，错题本该题条目末尾自动渲染「错因分析」callout。
+6. **重生成**：高数运行 `python3 scripts/wrong_book.py`；线代运行 `python3 scripts/wrong_book.py --subject linear-algebra`。对应错题本该题条目末尾自动渲染「错因分析」callout。
 7. **报告**：向用户展示 callout 内容（错因/出错环节/建议），说明已写入错题本。
 
 ## 触发词判断

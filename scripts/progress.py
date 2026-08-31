@@ -20,18 +20,9 @@ def latest_grade(qid, attempts):
     return last["grade"] if last else None
 
 
-def main():
-    import argparse
-
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--subject", default=lib880.SUBJECT_HIGH_MATH,
-                    help="题库：high-math（默认）或 linear-algebra")
-    args = ap.parse_args()
-    try:
-        subject = lib880.normalize_subject(args.subject)
-    except ValueError as exc:
-        ap.error(str(exc))
-
+def generate(subject=lib880.SUBJECT_HIGH_MATH):
+    """Regenerate one subject's progress note and return its summary counts."""
+    subject = lib880.normalize_subject(subject)
     schema = lib880.load_schema(subject)
     index = lib880.load_index(subject)
     lib880.build_index_map(index)
@@ -125,7 +116,7 @@ def main():
 
     lines.append("## 关联")
     lines.append("")
-    lines.append("- 错题本：[[错题本]]")
+    lines.append(f"- 错题本：[[{lib880.wrong_book_path(subject).stem}]]")
     if subject_papers:
         links = "、".join(
             f"[[{lib880.paper_artifact_stems(subject, p['paper_id'])['paper']}]]"
@@ -137,8 +128,32 @@ def main():
     output_path = lib880.progress_path(subject)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text("\n".join(lines), encoding="utf-8")
+    return output_path, {
+        "total": total,
+        "graded": n_graded,
+        "pending": n_pending,
+        "undone": n_undone,
+        "wrong": n_wrong,
+    }
+
+
+def main():
+    import argparse
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--subject", default=lib880.SUBJECT_HIGH_MATH,
+                    help="题库：high-math（默认）或 linear-algebra")
+    args = ap.parse_args()
+    try:
+        subject = lib880.normalize_subject(args.subject)
+    except ValueError as exc:
+        ap.error(str(exc))
+    output_path, summary = generate(subject)
     print(f"已更新进度总览：{output_path}")
-    print(f"汇总：总{total} 已判{n_graded} 欠账{n_pending} 未做{n_undone} 非对{n_wrong}")
+    print(
+        f"汇总：总{summary['total']} 已判{summary['graded']} "
+        f"欠账{summary['pending']} 未做{summary['undone']} 非对{summary['wrong']}"
+    )
 
 
 def _cn(n):

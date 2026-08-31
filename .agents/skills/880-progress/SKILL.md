@@ -5,19 +5,20 @@ description: 生成或查看进度总览——哪些题已完成/未完成/做�
 
 # 进度总览
 
-预览文件 `workspace/preview/进度总览.md` 展示：每题状态（✅对/❌错/⚠️不会/🔶半会/🟡粗心/📝做过未判/⬜未做）、章节完成率、弱点排行。
+预览文件按科目分开：高数 `workspace/preview/进度总览.md`，线代 `workspace/preview/线代进度总览.md`；均展示每题状态（✅对/❌错/⚠️不会/🔶半会/🟡粗心/📝做过未判/⬜未做）、章节完成率、弱点排行。
 
 ## 步骤
 
 1. 运行：
    ```
    python3 scripts/progress.py
+   # 线代：python3 scripts/progress.py --subject linear-algebra
    ```
    - Windows 把 `python3` 换成 `py -3`（或 `make progress PYTHON='py -3'`）。
 2. 向用户展示关键统计：
    - 总题数 / 已判 / 做过未判（欠账）/ 未做 / 非"对"数量；
    - 章节弱点排行；
-   - 直接打开或摘录 `workspace/preview/进度总览.md`。
+   - 直接打开或摘录对应科目的进度笔记。
 
 ## 说明
 

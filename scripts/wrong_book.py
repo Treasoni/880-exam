@@ -222,6 +222,23 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
     return "\n".join(lines)
 
 
+def generate(subject=lib880.SUBJECT_HIGH_MATH):
+    """Regenerate one subject's wrong-book note and return its summary."""
+    subject = lib880.normalize_subject(subject)
+    schema = lib880.load_schema(subject)
+    index = lib880.load_index(subject)
+    lib880.build_index_map(index)
+    attempts = lib880.load_attempts()
+
+    active, mastered = build_wrong_lists(schema, index, attempts)
+    output_path = lib880.wrong_book_path(subject)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        render(schema, index, attempts, active, mastered, lib880.load_external_links(), lib880.load_analysis(), subject),
+        encoding="utf-8")
+    return output_path, active, mastered
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--subject", default=lib880.SUBJECT_HIGH_MATH,
@@ -263,11 +280,7 @@ def main():
             print(f"{e['q']['id']}  {e['grade_zh']:<4} {e['priority']:<3} {e['state']}")
         return
 
-    output_path = lib880.wrong_book_path(subject)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(
-        render(schema, index, attempts, active, mastered, lib880.load_external_links(), lib880.load_analysis(), subject),
-        encoding="utf-8")
+    output_path, active, mastered = generate(subject)
     print(f"已更新错题本：{output_path}（待复习 {len(active)} 道 · 已掌握归档 {len(mastered)} 道）")
 
 
