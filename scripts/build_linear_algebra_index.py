@@ -204,6 +204,11 @@ def slice_items(lines: list[str], starts: list[tuple[int, int, int]], *, section
         chunk.extend(lines[line_i + 1:next_line])
         if index + 1 < len(starts) and next_line == line_i:
             chunk[-1] = chunk[-1][: next_col - col]
+        elif index + 1 < len(starts) and next_col:
+            # OCR sometimes joins the next item number to the end of an
+            # option line: ``D. ... (4) 设…``.  The prefix on that line still
+            # belongs to the current item and must not be discarded.
+            chunk.append(lines[next_line][:next_col])
         text = "\n".join(chunk).strip()
         if text:
             items.append((q_num, text))

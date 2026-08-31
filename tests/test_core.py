@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import grade
+import build_linear_algebra_index
 import lib880
 import make_paper
 import wrong_book
@@ -66,6 +67,19 @@ class Lib880Test(unittest.TestCase):
         }
         errors = lib880.validate_index(self.schema, index)
         self.assertTrue(any("重复" in error for error in errors))
+
+
+class LinearAlgebraIndexTest(unittest.TestCase):
+    def test_inline_next_question_keeps_the_previous_options(self):
+        second = "A. first B. second C. third D. fourth(2) 下一题"
+        items = build_linear_algebra_index.slice_items(
+            ["(1) 题干", second],
+            [(0, 0, 1), (1, second.index("(2)"), 2)],
+            section=build_linear_algebra_index.SectionKey(8, "综合题", "选择题"),
+        )
+        self.assertEqual(len(items), 2)
+        self.assertIn("D. fourth", items[0][1])
+        self.assertNotIn("(2)", items[0][1])
 
 
 class PaperRulesTest(unittest.TestCase):

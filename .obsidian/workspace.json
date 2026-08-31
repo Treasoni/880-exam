@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/papers/la-paper-01/线代卷子-01.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "错题本"
+              "title": "线代卷子-01"
             }
           },
           {
@@ -207,7 +207,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/papers/la-paper-01/线代卷子-01.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -261,7 +261,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 439.890625
+    "width": 349.296875
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -288,6 +288,7 @@
   },
   "active": "d0d8383a692e3423",
   "lastOpenFiles": [
+    "workspace/wrong-book/错题本.md",
     "workspace/preview/线代进度总览.md",
     "workspace/wrong-book/线代错题本.md",
     "workspace/papers/la-paper-01/线代卷子-01.md",
@@ -302,7 +303,6 @@
     "workspace/linear-algebra-schema.yaml",
     "scripts/__pycache__/wrong_book.cpython-313.pyc",
     "workspace/preview/进度总览.md",
-    "workspace/wrong-book/错题本.md",
     "external-notes/考研数学/高数-一元函数积分学/错题本.md",
     "external-notes/线性代数/导入说明.md",
     "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/assets/4.3.2-利用定义法判断线性相关与无关/file-20260527100027167.png",
