@@ -71,7 +71,10 @@ ANSWER_REPAIRS = {
         (2, "EXACT:\\left( \\begin{array}{c c c} 2 n + 1 & 4 n & 0 \\\\ - n & - 2 n + 1 & 0 \\\\ 3 n & 6 n & 1 \\end{array} \\right)."),
     ),
     SectionKey(8, "综合题", "填空题"): (
-        (4, "EXACT:\\left( \\begin{array}{c c c c} 1 & - 1 & 1 & - 1 \\\\ 0 & 1 & - 1 & 1 \\\\ 0 & 0 & 1 & - 1 \\\\ 0 & 0 & 0 & 1 \\end{array} \\right)."),
+        # OCR swallowed the (4) label inside a displayed answer.  Include the
+        # preceding opening $$ so the delimiter stays with item 4 rather than
+        # becoming a stray closing delimiter at the end of item 3.
+        (4, "PREV:EXACT:\\left( \\begin{array}{c c c c} 1 & - 1 & 1 & - 1 \\\\ 0 & 1 & - 1 & 1 \\\\ 0 & 0 & 1 & - 1 \\\\ 0 & 0 & 0 & 1 \\end{array} \\right)."),
     ),
     SectionKey(10, "基础题", "选择题"): (
         (8, "解 对于选项 B, 由 $r(AB)"),
@@ -176,7 +179,16 @@ def item_starts(
             starts.append((line_i, match.start(), q_num))
 
     for q_num, anchor in repairs.get(section, ()):
-        line_i, col = find_anchor(lines, anchor, section=section, q_num=q_num)
+        include_previous_delimiter = anchor.startswith("PREV:")
+        lookup_anchor = anchor.removeprefix("PREV:")
+        line_i, col = find_anchor(lines, lookup_anchor, section=section, q_num=q_num)
+        if include_previous_delimiter:
+            if line_i == 0 or lines[line_i - 1].strip() != "$$":
+                raise ValueError(
+                    f"{section} 第 {q_num} 题的 PREV 修复锚点前未找到 $$ 开始标记"
+                )
+            line_i -= 1
+            col = 0
         starts.append((line_i, col, q_num))
 
     # In the two OCR cases below, a question label lives inside a displayed
