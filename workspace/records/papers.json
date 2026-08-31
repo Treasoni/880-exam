@@ -297,6 +297,160 @@
         "4": 0.5333333333333332,
         "5": 0.22499999999999998
       }
+    },
+    {
+      "paper_id": "la-paper-01",
+      "subject_key": "linear-algebra",
+      "subject_code": "la",
+      "subject": "线性代数",
+      "date": "2026-08-31",
+      "duration_minutes": 180,
+      "quota_used": {
+        "7": {
+          "choice": 1,
+          "fill": 1,
+          "solution": 1
+        },
+        "8": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        },
+        "9": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        },
+        "10": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        },
+        "11": {
+          "choice": 1,
+          "fill": 1,
+          "solution": 1
+        },
+        "12": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        }
+      },
+      "questions": [
+        {
+          "qid": "la-c08-comprehensive-choice-003",
+          "section": "choice",
+          "paper_no": "一1"
+        },
+        {
+          "qid": "la-c07-comprehensive-choice-003",
+          "section": "choice",
+          "paper_no": "一2"
+        },
+        {
+          "qid": "la-c11-comprehensive-choice-005",
+          "section": "choice",
+          "paper_no": "一3"
+        },
+        {
+          "qid": "la-c10-basic-choice-004",
+          "section": "choice",
+          "paper_no": "一4"
+        },
+        {
+          "qid": "la-c08-basic-choice-007",
+          "section": "choice",
+          "paper_no": "一5"
+        },
+        {
+          "qid": "la-c12-basic-choice-008",
+          "section": "choice",
+          "paper_no": "一6"
+        },
+        {
+          "qid": "la-c09-basic-choice-007",
+          "section": "choice",
+          "paper_no": "一7"
+        },
+        {
+          "qid": "la-c09-comprehensive-choice-001",
+          "section": "choice",
+          "paper_no": "一8"
+        },
+        {
+          "qid": "la-c12-comprehensive-choice-006",
+          "section": "choice",
+          "paper_no": "一9"
+        },
+        {
+          "qid": "la-c10-comprehensive-choice-006",
+          "section": "choice",
+          "paper_no": "一10"
+        },
+        {
+          "qid": "la-c08-comprehensive-fill-003",
+          "section": "fill",
+          "paper_no": "二1"
+        },
+        {
+          "qid": "la-c11-comprehensive-fill-004",
+          "section": "fill",
+          "paper_no": "二2"
+        },
+        {
+          "qid": "la-c12-comprehensive-fill-002",
+          "section": "fill",
+          "paper_no": "二3"
+        },
+        {
+          "qid": "la-c10-comprehensive-fill-004",
+          "section": "fill",
+          "paper_no": "二4"
+        },
+        {
+          "qid": "la-c09-comprehensive-fill-001",
+          "section": "fill",
+          "paper_no": "二5"
+        },
+        {
+          "qid": "la-c07-comprehensive-fill-004",
+          "section": "fill",
+          "paper_no": "二6"
+        },
+        {
+          "qid": "la-c10-comprehensive-solution-007",
+          "section": "solution",
+          "paper_no": "三1"
+        },
+        {
+          "qid": "la-c08-comprehensive-solution-002",
+          "section": "solution",
+          "paper_no": "三2"
+        },
+        {
+          "qid": "la-c11-comprehensive-solution-009",
+          "section": "solution",
+          "paper_no": "三3"
+        },
+        {
+          "qid": "la-c09-comprehensive-solution-008",
+          "section": "solution",
+          "paper_no": "三4"
+        },
+        {
+          "qid": "la-c12-comprehensive-solution-005",
+          "section": "solution",
+          "paper_no": "三5"
+        },
+        {
+          "qid": "la-c07-comprehensive-solution-002",
+          "section": "solution",
+          "paper_no": "三6"
+        }
+      ],
+      "status": "created",
+      "weakness_scores": {}
     }
   ]
 }
