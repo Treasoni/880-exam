@@ -231,6 +231,14 @@
       "when": "2026-09-01",
       "recorded_at": "2026-09-01T10:43:13+08:00",
       "note": "错题本复习：用户重做正确"
+    },
+    {
+      "qid": "gs-c01-comprehensive-choice-018",
+      "paper_id": "paper-01",
+      "grade": "correct",
+      "when": "2026-09-01",
+      "recorded_at": "2026-09-01T10:49:47+08:00",
+      "note": "错题本复习：用户重做正确"
     }
   ],
   "wrong_book_status": {
@@ -265,6 +273,10 @@
     "gs-c05-comprehensive-solution-020": {
       "state": "已掌握",
       "updated": "2026-08-31"
+    },
+    "gs-c01-comprehensive-choice-018": {
+      "state": "已掌握",
+      "updated": "2026-09-01"
     }
   }
 }
