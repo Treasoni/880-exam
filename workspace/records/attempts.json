@@ -247,6 +247,14 @@
       "when": "2026-09-01",
       "recorded_at": "2026-09-01T10:53:37+08:00",
       "note": "错题本复习：用户重做正确"
+    },
+    {
+      "qid": "gs-c02-comprehensive-fill-002",
+      "paper_id": "paper-01",
+      "grade": "correct",
+      "when": "2026-09-01",
+      "recorded_at": "2026-09-01T11:05:00+08:00",
+      "note": "错题本复习：用户重做正确"
     }
   ],
   "wrong_book_status": {
@@ -287,6 +295,10 @@
       "updated": "2026-09-01"
     },
     "gs-c01-comprehensive-fill-003": {
+      "state": "已掌握",
+      "updated": "2026-09-01"
+    },
+    "gs-c02-comprehensive-fill-002": {
       "state": "已掌握",
       "updated": "2026-09-01"
     }
