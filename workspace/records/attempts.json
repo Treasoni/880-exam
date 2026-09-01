@@ -215,6 +215,14 @@
       "when": "2026-08-31",
       "recorded_at": "2026-08-31T11:49:03+08:00",
       "note": "错题本复习：用户重做正确"
+    },
+    {
+      "qid": "gs-c03-basic-choice-015",
+      "paper_id": "paper-01",
+      "grade": "correct",
+      "when": "2026-09-01",
+      "recorded_at": "2026-09-01T10:38:30+08:00",
+      "note": "错题本复习：用户重做正确"
     }
   ],
   "wrong_book_status": {
@@ -231,8 +239,8 @@
       "updated": "2026-08-21"
     },
     "gs-c03-basic-choice-015": {
-      "state": "未复习",
-      "updated": "2026-08-11"
+      "state": "已掌握",
+      "updated": "2026-09-01"
     },
     "gs-c03-comprehensive-fill-006": {
       "state": "未复习",
