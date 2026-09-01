@@ -18,6 +18,14 @@ Create and edit valid Obsidian Flavored Markdown. Obsidian extends CommonMark an
 
 > When choosing between wikilinks and Markdown links: use `[[wikilinks]]` for notes within the vault (Obsidian tracks renames automatically) and `[text](url)` for external URLs only.
 
+## Workflow: Editing an Existing Note
+
+1. **Read the target section first** and identify the nearest section heading, full question text, and the next sibling heading. Do not locate a repeated item with a short marker such as `**2.**` or `**3.**` alone.
+2. **Require a unique anchor**: combine the section heading with the complete question text and assert that it occurs exactly once before changing the file. If it is not unique, narrow the search to the bounded section instead of guessing.
+3. **Replace one bounded slice** and preserve everything outside that slice. After writing, inspect the diff and check that section headings, question counts, and question order have not changed unexpectedly.
+4. **Use the vault's established math syntax**: `$...$` for inline math and `$$...$$` for display math. Do not introduce `\[...\]` into a note that uses `$$...$$`.
+5. **Verify the exact edited region** in reading view. Check display-math delimiters are balanced and, when the note contains repeated question numbers, confirm the complete target heading appears once and its solution remains adjacent to it.
+
 ## Internal Links (Wikilinks)
 
 ```markdown
