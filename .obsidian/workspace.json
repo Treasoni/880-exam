@@ -69,16 +69,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/paper-02/卷子-02-答案.md",
+                "file": "workspace/papers/paper-02/卷子-02.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "卷子-02-答案"
+              "title": "卷子-02"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -285,7 +285,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -313,7 +313,7 @@
       "notebook-navigator:Notebook Navigator": false
     }
   },
-  "active": "28a526cb57ecc0c9",
+  "active": "0cd1149a4d2d10d7",
   "lastOpenFiles": [
     "workspace/papers/paper-02/卷子-02.md",
     "workspace/papers/paper-02/卷子-02-答案.md",
