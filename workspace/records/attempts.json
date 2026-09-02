@@ -447,6 +447,14 @@
       "when": "2026-09-02",
       "recorded_at": "2026-09-02T20:03:18+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-fill-002",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:06:36+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {

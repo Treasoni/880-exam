@@ -289,7 +289,7 @@
           "paper_no": "三6"
         }
       ],
-      "status": "partially_graded",
+      "status": "graded",
       "weakness_scores": {
         "1": 0.39999999999999997,
         "2": 0.29999999999999993,
