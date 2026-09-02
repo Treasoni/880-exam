@@ -19,6 +19,7 @@ import grade
 import build_linear_algebra_index
 import lib880
 import make_paper
+import merge_extraction
 import wrong_book
 
 
@@ -67,6 +68,15 @@ class Lib880Test(unittest.TestCase):
         }
         errors = lib880.validate_index(self.schema, index)
         self.assertTrue(any("重复" in error for error in errors))
+
+
+class MergeExtractionTest(unittest.TestCase):
+    def test_literal_newlines_are_decoded_without_changing_latex_commands(self):
+        extracted = r"前文\n$$\n\begin{array}{r l} x \neq 0 \n故\n$$"
+
+        normalized = merge_extraction.decode_literal_newlines(extracted)
+
+        self.assertEqual(normalized, "前文\n$$\n\\begin{array}{r l} x \\neq 0 \n故\n$$")
 
 
 class LinearAlgebraIndexTest(unittest.TestCase):

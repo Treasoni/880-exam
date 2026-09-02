@@ -20,6 +20,16 @@ Q_MARK_RE = re.compile(r"^[（(]\d+[)）]\s*")
 REVIEW_OVERRIDES_PATH = lib880.ROOT / "workspace/review-overrides.json"
 
 
+def decode_literal_newlines(value):
+    """Turn escaped line breaks from extraction output into real newlines.
+
+    Extraction results are JSON strings, but some runs returned the two literal
+    characters ``\\n`` instead of a newline.  Only decode ``\\n`` when it is
+    not the prefix of a LaTeX command such as ``\\neq``.
+    """
+    return re.sub(r"\\n(?![A-Za-z])", "\n", value)
+
+
 def load_journal(path):
     extracts, verifies = {}, {}
     for ln in Path(path).read_text(encoding="utf-8").splitlines():
@@ -89,9 +99,9 @@ def main():
                 print(f"!! {sid} 校验需复查: {[i.get('description') for i in vf.get('issues', [])]}")
         for q in qs:
             flags = q.get("flags", [])
-            text = Q_MARK_RE.sub("", q.get("text", "")).strip()
-            answer = (q.get("answer") or "").strip()
-            solution = (q.get("solution") or "").strip()
+            text = decode_literal_newlines(Q_MARK_RE.sub("", q.get("text", "")).strip())
+            answer = decode_literal_newlines((q.get("answer") or "").strip())
+            solution = decode_literal_newlines((q.get("solution") or "").strip())
             is_missing = ("answer_missing" in flags) or (not answer and not solution)
             if is_missing:
                 missing += 1
@@ -127,7 +137,7 @@ def main():
         },
     }
     lib880.INDEX_PATH.parent.mkdir(parents=True, exist_ok=True)
-    lib880.INDEX_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    lib880.INDEX_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"题目索引已生成：{lib880.INDEX_PATH}")
     print(f"总题数 {len(questions)} · 缺答案 {missing} · 校验需复查 {len(review_sections)}")
     if skipped:
