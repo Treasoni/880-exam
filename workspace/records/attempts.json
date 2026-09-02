@@ -279,6 +279,174 @@
       "when": "2026-09-01",
       "recorded_at": "2026-09-01T15:45:08+08:00",
       "note": "错题本复习：用户重做正确"
+    },
+    {
+      "qid": "gs-c02-comprehensive-choice-003",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-choice-007",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c02-basic-choice-006",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-basic-choice-004",
+      "paper_id": "paper-02",
+      "grade": "half",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-basic-choice-007",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-choice-002",
+      "paper_id": "paper-02",
+      "grade": "cannot",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-choice-006",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-choice-017",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-basic-choice-010",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-choice-003",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-fill-013",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-fill-013",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-fill-003",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-basic-fill-017",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-basic-fill-011",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-solution-001",
+      "paper_id": "paper-02",
+      "grade": "careless",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-basic-solution-008",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-solution-020",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c02-comprehensive-solution-011",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-basic-solution-011",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-solution-003",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-02",
+      "recorded_at": "2026-09-02T20:03:18+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -329,6 +497,14 @@
     "gs-c05-comprehensive-fill-001": {
       "state": "已掌握",
       "updated": "2026-09-01"
+    },
+    "gs-c04-basic-choice-004": {
+      "state": "未复习",
+      "updated": "2026-09-02"
+    },
+    "gs-c01-comprehensive-choice-002": {
+      "state": "未复习",
+      "updated": "2026-09-02"
     }
   }
 }
