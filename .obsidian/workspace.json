@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/la-paper-01/线代判分卡-01.md",
+                "file": "workspace/wrong-book/线代错题本.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "线代判分卡-01"
+              "title": "线代错题本"
             }
           },
           {
@@ -249,7 +249,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/la-paper-01/线代判分卡-01.md",
+                "file": "workspace/wrong-book/线代错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -329,10 +329,10 @@
   },
   "active": "d0d8383a692e3423",
   "lastOpenFiles": [
+    "workspace/papers/la-paper-01/线代卷子-01-答案.md",
+    "workspace/papers/la-paper-01/线代判分卡-01.md",
     "workspace/papers/la-paper-01/线代卷子-01.md",
     "workspace/papers/paper-02/卷子-02.md",
-    "workspace/papers/la-paper-01/线代判分卡-01.md",
-    "workspace/papers/la-paper-01/线代卷子-01-答案.md",
     "workspace/wrong-book/线代错题本.md",
     "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-02/卷子-02-答案.md",
