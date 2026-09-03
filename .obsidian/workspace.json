@@ -303,7 +303,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 618.3359375
+    "width": 391.04296875
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -327,7 +327,7 @@
       "notebook-navigator:Notebook Navigator": false
     }
   },
-  "active": "2d9e72e497847a29",
+  "active": "d0d8383a692e3423",
   "lastOpenFiles": [
     "workspace/papers/paper-02/卷子-02-答案.md",
     "workspace/wrong-book/错题本.md",
