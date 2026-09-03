@@ -719,6 +719,14 @@
       "when": "2026-09-03",
       "recorded_at": "2026-09-03T19:20:58+08:00",
       "note": ""
+    },
+    {
+      "qid": "la-c12-basic-choice-008",
+      "paper_id": "la-paper-01",
+      "grade": "correct",
+      "when": "2026-09-03",
+      "recorded_at": "2026-09-03T19:29:22+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -819,7 +827,7 @@
       "updated": "2026-09-03"
     },
     "la-c12-basic-choice-008": {
-      "state": "未复习",
+      "state": "已掌握",
       "updated": "2026-09-03"
     },
     "la-c10-comprehensive-choice-006": {
