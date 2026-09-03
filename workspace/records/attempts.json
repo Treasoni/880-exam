@@ -695,6 +695,14 @@
       "when": "2026-09-03",
       "recorded_at": "2026-09-03T16:51:08+08:00",
       "note": ""
+    },
+    {
+      "qid": "la-c08-comprehensive-choice-003",
+      "paper_id": "la-paper-01",
+      "grade": "correct",
+      "when": "2026-09-03",
+      "recorded_at": "2026-09-03T18:51:55+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -787,7 +795,7 @@
       "updated": "2026-09-03"
     },
     "la-c08-comprehensive-choice-003": {
-      "state": "未复习",
+      "state": "已掌握",
       "updated": "2026-09-03"
     },
     "la-c10-basic-choice-004": {
@@ -808,6 +816,10 @@
     },
     "la-c09-comprehensive-fill-001": {
       "state": "已重做",
+      "updated": "2026-09-03"
+    },
+    "la-c11-comprehensive-choice-005": {
+      "state": "未复习",
       "updated": "2026-09-03"
     }
   }
