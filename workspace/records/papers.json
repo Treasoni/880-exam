@@ -451,6 +451,166 @@
       ],
       "status": "created",
       "weakness_scores": {}
+    },
+    {
+      "paper_id": "paper-03",
+      "subject_key": "high-math",
+      "subject_code": "gs",
+      "subject": "高数",
+      "date": "2026-09-03",
+      "duration_minutes": 180,
+      "quota_used": {
+        "1": {
+          "choice": 3,
+          "fill": 2,
+          "solution": 2
+        },
+        "2": {
+          "choice": 1,
+          "fill": 0,
+          "solution": 0
+        },
+        "3": {
+          "choice": 3,
+          "fill": 2,
+          "solution": 2
+        },
+        "4": {
+          "choice": 2,
+          "fill": 2,
+          "solution": 2
+        },
+        "5": {
+          "choice": 1,
+          "fill": 0,
+          "solution": 0
+        },
+        "6": {
+          "choice": 0,
+          "fill": 0,
+          "solution": 0
+        }
+      },
+      "questions": [
+        {
+          "qid": "gs-c04-comprehensive-choice-005",
+          "section": "choice",
+          "paper_no": "一1"
+        },
+        {
+          "qid": "gs-c03-basic-choice-009",
+          "section": "choice",
+          "paper_no": "一2"
+        },
+        {
+          "qid": "gs-c03-comprehensive-choice-009",
+          "section": "choice",
+          "paper_no": "一3"
+        },
+        {
+          "qid": "gs-c01-basic-choice-005",
+          "section": "choice",
+          "paper_no": "一4"
+        },
+        {
+          "qid": "gs-c01-comprehensive-choice-012",
+          "section": "choice",
+          "paper_no": "一5"
+        },
+        {
+          "qid": "gs-c04-basic-choice-007",
+          "section": "choice",
+          "paper_no": "一6"
+        },
+        {
+          "qid": "gs-c05-comprehensive-choice-002",
+          "section": "choice",
+          "paper_no": "一7"
+        },
+        {
+          "qid": "gs-c03-comprehensive-choice-002",
+          "section": "choice",
+          "paper_no": "一8"
+        },
+        {
+          "qid": "gs-c02-comprehensive-choice-016",
+          "section": "choice",
+          "paper_no": "一9"
+        },
+        {
+          "qid": "gs-c01-comprehensive-choice-019",
+          "section": "choice",
+          "paper_no": "一10"
+        },
+        {
+          "qid": "gs-c04-comprehensive-fill-001",
+          "section": "fill",
+          "paper_no": "二1"
+        },
+        {
+          "qid": "gs-c03-comprehensive-fill-010",
+          "section": "fill",
+          "paper_no": "二2"
+        },
+        {
+          "qid": "gs-c01-comprehensive-fill-009",
+          "section": "fill",
+          "paper_no": "二3"
+        },
+        {
+          "qid": "gs-c04-basic-fill-016",
+          "section": "fill",
+          "paper_no": "二4"
+        },
+        {
+          "qid": "gs-c03-basic-fill-013",
+          "section": "fill",
+          "paper_no": "二5"
+        },
+        {
+          "qid": "gs-c01-basic-fill-004",
+          "section": "fill",
+          "paper_no": "二6"
+        },
+        {
+          "qid": "gs-c01-comprehensive-solution-005",
+          "section": "solution",
+          "paper_no": "三1"
+        },
+        {
+          "qid": "gs-c04-comprehensive-solution-019",
+          "section": "solution",
+          "paper_no": "三2"
+        },
+        {
+          "qid": "gs-c03-comprehensive-solution-015",
+          "section": "solution",
+          "paper_no": "三3"
+        },
+        {
+          "qid": "gs-c04-basic-solution-003",
+          "section": "solution",
+          "paper_no": "三4"
+        },
+        {
+          "qid": "gs-c01-basic-solution-003",
+          "section": "solution",
+          "paper_no": "三5"
+        },
+        {
+          "qid": "gs-c03-basic-solution-004",
+          "section": "solution",
+          "paper_no": "三6"
+        }
+      ],
+      "status": "created",
+      "weakness_scores": {
+        "1": 0.263227350676684,
+        "2": 0.12071830492059406,
+        "3": 0.2501982077635913,
+        "4": 0.30825496898554694,
+        "5": 0.15198034859216533
+      }
     }
   ]
 }

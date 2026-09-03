@@ -313,8 +313,12 @@
       "notebook-navigator:Notebook Navigator": false
     }
   },
-  "active": "df226b903711b3f9",
+  "active": "d0d8383a692e3423",
   "lastOpenFiles": [
+    "workspace/papers/paper-03/卷子-03.md",
+    "workspace/papers/paper-03/卷子-03-答案.md",
+    "workspace/papers/paper-03/判分卡-03.md",
+    "workspace/papers/paper-03",
     "workspace/papers/la-paper-01/线代卷子-01.md",
     "workspace/papers/la-paper-01/线代卷子-01-答案.md",
     "workspace/papers/paper-02/卷子-02.md",
@@ -342,7 +346,6 @@
     "external-notes/线性代数/第四章：向量与方程组/assets/错题本/截屏2026-06-09 19.16.02.png",
     "external-notes/线性代数/第四章：向量与方程组/assets/错题本/a8084425d3994c08da7b93700d30023e.jpg",
     "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/assets/4.3.2-利用定义法判断线性相关与无关",
-    "external-notes/线性代数/第五章：矩阵相似理论/5.5-实对称矩阵相似对角化/assets/5.5.3-实对称矩阵正交对角化的一般步骤",
     "external-notes/线性代数/第一章：行列式/1.4-特殊行列式的计算/attachments/递推型行列式-四角剥皮例13.png",
     "external-notes/线性代数/第一章：行列式/1.4-特殊行列式的计算/attachments/1.4.4-例10-加边法反对角行列式.png",
     "external-notes/线性代数/第四章：向量与方程组/4.7-向量空间/4.7.6-施密特正交化.md",
@@ -355,9 +358,6 @@
     "external-notes/线性代数/第四章：向量与方程组/4.5-向量组等价/4.5.3-向量组等价常用性质.md",
     "external-notes/线性代数/第四章：向量与方程组/4.5-向量组等价/4.5.2-向量组等价常用判据.md",
     "external-notes/线性代数/第四章：向量与方程组/4.5-向量组等价/4.5.1-向量组等价定义.md",
-    "external-notes/线性代数/第四章：向量与方程组/4.6-基础解系与解的结构/📝 章节总结.md",
-    "external-notes/线性代数/第四章：向量与方程组/4.6-基础解系与解的结构/4.6.5-非齐次线性方程组解的结构.md",
-    "external-notes/线性代数/第四章：向量与方程组/4.6-基础解系与解的结构/4.6.4-非齐次线性方程组解的性质.md",
     "external-notes/线性代数/第二章：矩阵/assets/错题38-正交伴随化简路线图.svg",
     "external-notes/线性代数/第二章：矩阵/assets/错题37-正交证明手写解析-转置求积.jpg",
     "external-notes/线性代数/第二章：矩阵/assets/错题37-正交证明手写解析-交换判定.jpg",
