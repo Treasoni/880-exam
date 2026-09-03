@@ -503,6 +503,14 @@
       "when": "2026-09-03",
       "recorded_at": "2026-09-03T15:37:47+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-solution-020",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-03",
+      "recorded_at": "2026-09-03T15:46:00+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -584,6 +592,10 @@
     },
     "gs-c03-basic-solution-008": {
       "state": "已掌握",
+      "updated": "2026-09-03"
+    },
+    "gs-c03-comprehensive-solution-020": {
+      "state": "未复习",
       "updated": "2026-09-03"
     }
   }
