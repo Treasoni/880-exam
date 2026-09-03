@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/papers/la-paper-01/线代卷子-01.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "错题本"
+              "title": "线代卷子-01"
             }
           },
           {
@@ -249,7 +249,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/papers/la-paper-01/线代卷子-01.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -299,7 +299,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -327,10 +327,14 @@
       "notebook-navigator:Notebook Navigator": false
     }
   },
-  "active": "d0d8383a692e3423",
+  "active": "f5f6330a45d67f9a",
   "lastOpenFiles": [
-    "workspace/papers/paper-02/卷子-02-答案.md",
+    "workspace/papers/la-paper-01/线代判分卡-01.md",
+    "workspace/papers/la-paper-01/线代卷子-01.md",
+    "workspace/papers/la-paper-01/线代卷子-01-答案.md",
+    "workspace/wrong-book/线代错题本.md",
     "workspace/wrong-book/错题本.md",
+    "workspace/papers/paper-02/卷子-02-答案.md",
     "external-notes/考研数学/0-基础知识/做题结论.md",
     "external-notes/考研数学/0-基础知识/未命名.md",
     "external-notes/考研数学/未命名.md",
@@ -338,11 +342,7 @@
     "workspace/papers/paper-03/卷子-03-答案.md",
     "workspace/papers/paper-03/判分卡-03.md",
     "workspace/papers/paper-03",
-    "workspace/papers/la-paper-01/线代卷子-01.md",
-    "workspace/papers/la-paper-01/线代卷子-01-答案.md",
     "workspace/papers/paper-02/卷子-02.md",
-    "workspace/papers/la-paper-01/线代判分卡-01.md",
-    "workspace/wrong-book/线代错题本.md",
     "workspace/papers/paper-02/判分卡-02.md",
     "workspace/preview/进度总览.md",
     "workspace/preview/线代进度总览.md",
