@@ -783,6 +783,14 @@
       "when": "2026-09-07",
       "recorded_at": "2026-09-07T16:11:14+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c03-basic-fill-011",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-07",
+      "recorded_at": "2026-09-07T16:18:42+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -860,7 +868,7 @@
     },
     "gs-c03-basic-fill-011": {
       "state": "未复习",
-      "updated": "2026-09-03"
+      "updated": "2026-09-07"
     },
     "gs-c03-basic-solution-008": {
       "state": "已掌握",
