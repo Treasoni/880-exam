@@ -775,6 +775,14 @@
       "when": "2026-09-07",
       "recorded_at": "2026-09-07T16:02:51+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-fill-002",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-07",
+      "recorded_at": "2026-09-07T16:11:14+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -896,6 +904,10 @@
     },
     "gs-c01-comprehensive-fill-013": {
       "state": "已掌握",
+      "updated": "2026-09-07"
+    },
+    "gs-c03-comprehensive-fill-002": {
+      "state": "未复习",
       "updated": "2026-09-07"
     }
   }
