@@ -791,6 +791,14 @@
       "when": "2026-09-07",
       "recorded_at": "2026-09-07T16:18:42+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-solution-020",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-07",
+      "recorded_at": "2026-09-07T16:28:45+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -875,8 +883,8 @@
       "updated": "2026-09-03"
     },
     "gs-c03-comprehensive-solution-020": {
-      "state": "未复习",
-      "updated": "2026-09-03"
+      "state": "已掌握",
+      "updated": "2026-09-07"
     },
     "gs-c04-comprehensive-choice-003": {
       "state": "未复习",
