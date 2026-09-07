@@ -735,6 +735,14 @@
       "when": "2026-09-07",
       "recorded_at": "2026-09-07T15:29:00+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-fill-013",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-07",
+      "recorded_at": "2026-09-07T15:35:28+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -853,6 +861,10 @@
     "la-c11-comprehensive-choice-005": {
       "state": "未复习",
       "updated": "2026-09-03"
+    },
+    "gs-c01-comprehensive-fill-013": {
+      "state": "已掌握",
+      "updated": "2026-09-07"
     }
   }
 }
