@@ -743,6 +743,14 @@
       "when": "2026-09-07",
       "recorded_at": "2026-09-07T15:36:51+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-solution-001",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-07",
+      "recorded_at": "2026-09-07T15:42:08+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -803,8 +811,8 @@
       "updated": "2026-09-07"
     },
     "gs-c01-comprehensive-solution-001": {
-      "state": "未复习",
-      "updated": "2026-09-03"
+      "state": "已掌握",
+      "updated": "2026-09-07"
     },
     "gs-c02-comprehensive-solution-011": {
       "state": "未复习",
