@@ -727,6 +727,14 @@
       "when": "2026-09-03",
       "recorded_at": "2026-09-03T19:29:22+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-choice-007",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-07",
+      "recorded_at": "2026-09-07T15:29:00+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -783,8 +791,8 @@
       "updated": "2026-09-02"
     },
     "gs-c01-comprehensive-choice-002": {
-      "state": "未复习",
-      "updated": "2026-09-02"
+      "state": "已掌握",
+      "updated": "2026-09-07"
     },
     "gs-c01-comprehensive-solution-001": {
       "state": "未复习",
@@ -795,8 +803,8 @@
       "updated": "2026-09-03"
     },
     "gs-c03-comprehensive-choice-007": {
-      "state": "未复习",
-      "updated": "2026-09-03"
+      "state": "已掌握",
+      "updated": "2026-09-07"
     },
     "gs-c03-basic-choice-010": {
       "state": "未复习",
