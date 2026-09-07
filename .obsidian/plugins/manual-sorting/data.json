@@ -3045,6 +3045,7 @@
     },
     "external-notes/考研数学": {
       "children": [
+        "external-notes/考研数学/未命名.md",
         "external-notes/考研数学/0-基础知识",
         "external-notes/考研数学/二重积分",
         "external-notes/考研数学/高数-多元函数微分学",
@@ -3060,6 +3061,7 @@
     },
     "external-notes/考研数学/0-基础知识": {
       "children": [
+        "external-notes/考研数学/0-基础知识/做题结论.md",
         "external-notes/考研数学/0-基础知识/assets",
         "external-notes/考研数学/0-基础知识/📋 高数必背速查（极限·连续·微分·积分）.md",
         "external-notes/考研数学/0-基础知识/🧪 高数必背自测（遮挡式）.md",
@@ -5575,6 +5577,7 @@
     },
     "workspace/papers": {
       "children": [
+        "workspace/papers/paper-03",
         "workspace/papers/la-paper-01",
         "workspace/papers/paper-01",
         "workspace/papers/paper-02"
@@ -5602,6 +5605,14 @@
         "workspace/papers/paper-02/卷子-02.md",
         "workspace/papers/paper-02/卷子-02-答案.md",
         "workspace/papers/paper-02/判分卡-02.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "workspace/papers/paper-03": {
+      "children": [
+        "workspace/papers/paper-03/卷子-03.md",
+        "workspace/papers/paper-03/卷子-03-答案.md",
+        "workspace/papers/paper-03/判分卡-03.md"
       ],
       "sortOrder": "custom"
     },
