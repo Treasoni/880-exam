@@ -13,6 +13,34 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "workspace/papers/paper-03/卷子-03-答案.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "卷子-03-答案"
+            }
+          },
+          {
+            "id": "716dcf17f1823e5e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/paper-03/卷子-03.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "卷子-03"
+            }
+          },
+          {
+            "id": "ce697d7cdd7efcab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "workspace/papers/paper-03/卷子-03.md",
                 "mode": "source",
                 "source": false
@@ -21,7 +49,8 @@
               "title": "卷子-03"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -256,8 +285,11 @@
       "notebook-navigator:Notebook Navigator": false
     }
   },
-  "active": "7af8f20397d6695b",
+  "active": "ce697d7cdd7efcab",
   "lastOpenFiles": [
+    "workspace/papers/paper-03/判分卡-03.md",
+    "workspace/papers/paper-03/卷子-03.md",
+    "workspace/papers/paper-03/卷子-03-答案.md",
     "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-02/卷子-02.md",
     "workspace/papers/la-paper-01/线代卷子-01.md",
@@ -271,9 +303,6 @@
     "external-notes/考研数学/0-基础知识/做题结论.md",
     "external-notes/考研数学/0-基础知识/未命名.md",
     "external-notes/考研数学/未命名.md",
-    "workspace/papers/paper-03/卷子-03.md",
-    "workspace/papers/paper-03/卷子-03-答案.md",
-    "workspace/papers/paper-03/判分卡-03.md",
     "workspace/papers/paper-03",
     "workspace/preview/线代进度总览.md",
     "external-notes/考研数学/0-基础知识/高数必背公式 1.md",
