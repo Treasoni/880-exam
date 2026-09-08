@@ -847,6 +847,14 @@
       "when": "2026-09-08",
       "recorded_at": "2026-09-08T15:48:03+08:00",
       "note": "错题重练做对"
+    },
+    {
+      "qid": "gs-c03-basic-choice-010",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-08",
+      "recorded_at": "2026-09-08T20:24:11+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -919,8 +927,8 @@
       "updated": "2026-09-07"
     },
     "gs-c03-basic-choice-010": {
-      "state": "未复习",
-      "updated": "2026-09-07"
+      "state": "已掌握",
+      "updated": "2026-09-08"
     },
     "gs-c03-basic-fill-011": {
       "state": "未复习",
