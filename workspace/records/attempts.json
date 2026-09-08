@@ -807,6 +807,14 @@
       "when": "2026-09-08",
       "recorded_at": "2026-09-08T14:53:41+08:00",
       "note": "错题重练做对"
+    },
+    {
+      "qid": "la-c08-comprehensive-fill-003",
+      "paper_id": "la-paper-01",
+      "grade": "correct",
+      "when": "2026-09-08",
+      "recorded_at": "2026-09-08T14:57:41+08:00",
+      "note": "错题重练做对"
     }
   ],
   "wrong_book_status": {
@@ -935,6 +943,10 @@
       "updated": "2026-09-07"
     },
     "la-c07-comprehensive-fill-004": {
+      "state": "已掌握",
+      "updated": "2026-09-08"
+    },
+    "la-c08-comprehensive-fill-003": {
       "state": "已掌握",
       "updated": "2026-09-08"
     }
