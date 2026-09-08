@@ -823,6 +823,14 @@
       "when": "2026-09-08",
       "recorded_at": "2026-09-08T15:01:21+08:00",
       "note": "错题重练做对"
+    },
+    {
+      "qid": "la-c09-comprehensive-fill-001",
+      "paper_id": "la-paper-01",
+      "grade": "correct",
+      "when": "2026-09-08",
+      "recorded_at": "2026-09-08T15:15:53+08:00",
+      "note": "错题重练做对"
     }
   ],
   "wrong_book_status": {
@@ -935,8 +943,8 @@
       "updated": "2026-09-03"
     },
     "la-c09-comprehensive-fill-001": {
-      "state": "已重做",
-      "updated": "2026-09-03"
+      "state": "已掌握",
+      "updated": "2026-09-08"
     },
     "la-c11-comprehensive-choice-005": {
       "state": "未复习",
