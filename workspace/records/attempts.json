@@ -839,6 +839,14 @@
       "when": "2026-09-08",
       "recorded_at": "2026-09-08T15:41:08+08:00",
       "note": "错题重练做对"
+    },
+    {
+      "qid": "la-c12-comprehensive-choice-006",
+      "paper_id": "la-paper-01",
+      "grade": "correct",
+      "when": "2026-09-08",
+      "recorded_at": "2026-09-08T15:48:03+08:00",
+      "note": "错题重练做对"
     }
   ],
   "wrong_book_status": {
@@ -975,6 +983,10 @@
       "updated": "2026-09-08"
     },
     "la-c08-comprehensive-solution-002": {
+      "state": "已掌握",
+      "updated": "2026-09-08"
+    },
+    "la-c12-comprehensive-choice-006": {
       "state": "已掌握",
       "updated": "2026-09-08"
     }
