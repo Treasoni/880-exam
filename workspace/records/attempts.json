@@ -895,6 +895,14 @@
       "when": "2026-09-09",
       "recorded_at": "2026-09-09T14:56:25+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c04-basic-solution-011",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-09",
+      "recorded_at": "2026-09-09T15:02:36+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -1043,6 +1051,10 @@
       "updated": "2026-09-09"
     },
     "gs-c04-comprehensive-solution-003": {
+      "state": "已掌握",
+      "updated": "2026-09-09"
+    },
+    "gs-c04-basic-solution-011": {
       "state": "已掌握",
       "updated": "2026-09-09"
     }
