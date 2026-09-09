@@ -879,6 +879,14 @@
       "when": "2026-09-09",
       "recorded_at": "2026-09-09T14:30:32+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c04-basic-fill-017",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-09",
+      "recorded_at": "2026-09-09T14:47:48+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -1021,6 +1029,10 @@
     "la-c12-comprehensive-choice-006": {
       "state": "已掌握",
       "updated": "2026-09-08"
+    },
+    "gs-c04-basic-fill-017": {
+      "state": "已掌握",
+      "updated": "2026-09-09"
     }
   }
 }
