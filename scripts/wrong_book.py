@@ -9,6 +9,7 @@
 """
 
 import argparse
+import re
 import sys
 from pathlib import Path
 
@@ -19,6 +20,36 @@ GRADE_ZH = {g["key"]: g["zh"] for g in lib880.load_schema()["grades"]}
 DIFF_ZH = {"basic": "基础", "comprehensive": "综合", "extension": "拓展"}
 TYPE_ZH = {"choice": "选择题", "fill": "填空题", "solution": "解答题"}
 CN = {n: lib880.chapter_number_zh(n) for n in range(1, 100)}
+
+HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.*)$")
+
+
+def demote_solution_headings(text, item_level):
+    """把解析文本内部的 Markdown 标题降到条目标题之下，保证嵌套排版。
+
+    条目标题为 item_level 级（待复习条目 = 4，已掌握归档条目 = 5）。
+    解析中最浅的标题被降到 item_level+1 级，更深的标题保持相对层级，
+    最深不超过 6 级（Obsidian 支持的最大标题深度）。
+    不含标题的解析原样返回。
+    """
+    levels = []
+    for line in text.splitlines():
+        m = HEADING_RE.match(line)
+        if m:
+            levels.append(len(m.group(1)))
+    if not levels:
+        return text
+    base = min(levels)
+    out = []
+    for line in text.splitlines():
+        m = HEADING_RE.match(line)
+        if m:
+            lvl = len(m.group(1))
+            new_lvl = min(6, item_level + 1 + (lvl - base))
+            out.append("#" * new_lvl + " " + m.group(2).strip())
+        else:
+            out.append(line)
+    return "\n".join(out)
 
 
 def latest_grade(qid, attempts):
@@ -122,7 +153,7 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
             if q.get("solution"):
                 lines.append("**解析：**")
                 lines.append("")
-                lines.append(q["solution"].strip())
+                lines.append(demote_solution_headings(q["solution"].strip(), 4))
                 lines.append("")
             if e.get("paper_id"):
                 stem = lib880.paper_artifact_stems(subject, e["paper_id"])["paper"]
@@ -186,7 +217,7 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
                 if q.get("solution"):
                     lines.append("**解析：**")
                     lines.append("")
-                    lines.append(q["solution"].strip())
+                    lines.append(demote_solution_headings(q["solution"].strip(), 5))
                     lines.append("")
                 if e.get("paper_id"):
                     stem = lib880.paper_artifact_stems(subject, e["paper_id"])["paper"]

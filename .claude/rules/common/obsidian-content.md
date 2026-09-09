@@ -228,6 +228,7 @@ mastered_count: 0    # 已掌握
    - `### 题目与解析`
    - `#### 第X章 选择题 第N题 · 判分：xx · 优先级：xx · 状态：xx`
      - `**题干：**` + `**答案：**` + `**解析：**` + `*来源卷子：[[卷子-XX]]*`
+     - 标题降级：索引 JSON `solution` 中的 Markdown 标题（解析册原文常用 `###`）由 `wrong_book.py` 渲染时自动降到条目标题之下，保证嵌套排版——待复习条目标题为 `####`，内容标题降为 `#####`（`###`→`#####`，更深的保持相对层级，最深不超 `######`）；已掌握归档条目标题为 `#####`，内容标题降为 `######`。源文本不改，供答案卷等场景保留原层级渲染。
      - 可选 `*相关笔记：[[external-notes/考研数学/…/错题本#锚点|显示名]]*`：当 `workspace/records/external-links.json` 为该题配置了外部错题本关联时由 `wrong_book.py` 自动输出；一题可关联多条（`links` 值为数组），同一条 `*相关笔记：*` 内用 ` · ` 分隔多个 wikilink（外部库经 `external-notes/` symlink 接入 vault，wikilink 才能跨库解析）
      - 可选「错因分析」callout：当 `workspace/records/analysis.json` 为该题配置了过程分析时，由 `wrong_book.py` 在 `*相关笔记：*` 后输出（对话式分析流程写入，按需生成）：
 

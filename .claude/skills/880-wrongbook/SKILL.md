@@ -42,4 +42,5 @@ description: 查看/重生成错题本，更新复习状态（未复习/已重�
 - 每题条目带 `*来源卷子：[[卷子-XX]]*`（取最近一次判分的卷子）；
 - 若 `workspace/records/external-links.json` 为该题配置了外部错题本关联（值为数组，每题可多条，每条含 `path`+`anchor`），自动输出 `*相关笔记：[[…]] · [[…]]*`（由 `wrong_book.py` 渲染，无需手改错题本）；
 - 若 `workspace/records/analysis.json` 为该题配置了过程分析，条目末尾自动渲染「错因分析」callout（错因/出错环节/建议，由 `wrong_book.py` 输出）；分析由 `880-analysis` skill 写入，非错题本流程生成；
-- 若需调整格式，先改规则文件，再改 `scripts/wrong_book.py`。
+- `wrong_book.py` 渲染每条 `解析` 时，会把源文本（索引 JSON `solution`）内部的 Markdown 标题自动降级到条目标题之下（待复习条目 `####` → 内容 `#####`；已掌握归档条目 `#####` → 内容 `######`），源文本不改；
+- 若需调整格式，先改规则文件（`.claude/rules/common/obsidian-content.md`），再改 `scripts/wrong_book.py`。
