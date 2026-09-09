@@ -903,6 +903,14 @@
       "when": "2026-09-09",
       "recorded_at": "2026-09-09T15:02:36+08:00",
       "note": ""
+    },
+    {
+      "qid": "la-c09-comprehensive-choice-001",
+      "paper_id": "la-paper-01",
+      "grade": "correct",
+      "when": "2026-09-09",
+      "recorded_at": "2026-09-09T15:19:43+08:00",
+      "note": "错题重练做对"
     }
   ],
   "wrong_book_status": {
@@ -1055,6 +1063,10 @@
       "updated": "2026-09-09"
     },
     "gs-c04-basic-solution-011": {
+      "state": "已掌握",
+      "updated": "2026-09-09"
+    },
+    "la-c09-comprehensive-choice-001": {
       "state": "已掌握",
       "updated": "2026-09-09"
     }
