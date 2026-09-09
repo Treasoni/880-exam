@@ -919,6 +919,14 @@
       "when": "2026-09-09",
       "recorded_at": "2026-09-09T15:22:05+08:00",
       "note": "错题重练做对"
+    },
+    {
+      "qid": "la-c10-comprehensive-solution-007",
+      "paper_id": "la-paper-01",
+      "grade": "correct",
+      "when": "2026-09-09",
+      "recorded_at": "2026-09-09T15:36:41+08:00",
+      "note": "错题重练做对"
     }
   ],
   "wrong_book_status": {
@@ -1079,6 +1087,10 @@
       "updated": "2026-09-09"
     },
     "la-c09-comprehensive-solution-008": {
+      "state": "已掌握",
+      "updated": "2026-09-09"
+    },
+    "la-c10-comprehensive-solution-007": {
       "state": "已掌握",
       "updated": "2026-09-09"
     }
