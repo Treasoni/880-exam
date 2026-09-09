@@ -611,6 +611,167 @@
         "4": 0.30825496898554694,
         "5": 0.15198034859216533
       }
+    },
+    {
+      "paper_id": "la-paper-02",
+      "subject_key": "linear-algebra",
+      "subject_code": "la",
+      "subject": "线性代数",
+      "date": "2026-09-09",
+      "duration_minutes": 180,
+      "quota_used": {
+        "7": {
+          "choice": 0,
+          "fill": 0,
+          "solution": 0
+        },
+        "8": {
+          "choice": 1,
+          "fill": 0,
+          "solution": 0
+        },
+        "9": {
+          "choice": 3,
+          "fill": 2,
+          "solution": 2
+        },
+        "10": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        },
+        "11": {
+          "choice": 1,
+          "fill": 1,
+          "solution": 1
+        },
+        "12": {
+          "choice": 3,
+          "fill": 2,
+          "solution": 2
+        }
+      },
+      "questions": [
+        {
+          "qid": "la-c12-comprehensive-choice-004",
+          "section": "choice",
+          "paper_no": "一1"
+        },
+        {
+          "qid": "la-c09-comprehensive-choice-008",
+          "section": "choice",
+          "paper_no": "一2"
+        },
+        {
+          "qid": "la-c10-basic-choice-003",
+          "section": "choice",
+          "paper_no": "一3"
+        },
+        {
+          "qid": "la-c12-basic-choice-010",
+          "section": "choice",
+          "paper_no": "一4"
+        },
+        {
+          "qid": "la-c09-basic-choice-002",
+          "section": "choice",
+          "paper_no": "一5"
+        },
+        {
+          "qid": "la-c11-comprehensive-choice-001",
+          "section": "choice",
+          "paper_no": "一6"
+        },
+        {
+          "qid": "la-c10-comprehensive-choice-004",
+          "section": "choice",
+          "paper_no": "一7"
+        },
+        {
+          "qid": "la-c12-comprehensive-choice-003",
+          "section": "choice",
+          "paper_no": "一8"
+        },
+        {
+          "qid": "la-c08-comprehensive-choice-006",
+          "section": "choice",
+          "paper_no": "一9"
+        },
+        {
+          "qid": "la-c09-comprehensive-choice-003",
+          "section": "choice",
+          "paper_no": "一10"
+        },
+        {
+          "qid": "la-c11-comprehensive-fill-002",
+          "section": "fill",
+          "paper_no": "二1"
+        },
+        {
+          "qid": "la-c09-comprehensive-fill-001",
+          "section": "fill",
+          "paper_no": "二2"
+        },
+        {
+          "qid": "la-c09-basic-fill-001",
+          "section": "fill",
+          "paper_no": "二3"
+        },
+        {
+          "qid": "la-c10-comprehensive-fill-002",
+          "section": "fill",
+          "paper_no": "二4"
+        },
+        {
+          "qid": "la-c12-basic-fill-002",
+          "section": "fill",
+          "paper_no": "二5"
+        },
+        {
+          "qid": "la-c12-comprehensive-fill-004",
+          "section": "fill",
+          "paper_no": "二6"
+        },
+        {
+          "qid": "la-c12-comprehensive-solution-011",
+          "section": "solution",
+          "paper_no": "三1"
+        },
+        {
+          "qid": "la-c12-basic-solution-002",
+          "section": "solution",
+          "paper_no": "三2"
+        },
+        {
+          "qid": "la-c11-comprehensive-solution-006",
+          "section": "solution",
+          "paper_no": "三3"
+        },
+        {
+          "qid": "la-c09-basic-solution-004",
+          "section": "solution",
+          "paper_no": "三4"
+        },
+        {
+          "qid": "la-c10-comprehensive-solution-001",
+          "section": "solution",
+          "paper_no": "三5"
+        },
+        {
+          "qid": "la-c09-comprehensive-solution-005",
+          "section": "solution",
+          "paper_no": "三6"
+        }
+      ],
+      "status": "created",
+      "weakness_scores": {
+        "7": 0.07178004671879643,
+        "8": 0.16306853901957816,
+        "9": 0.3089140360373939,
+        "10": 0.25,
+        "11": 0.21534014015638925,
+        "12": 0.29128879266955976
+      }
     }
   ]
 }

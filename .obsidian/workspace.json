@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/wrong-book/线代错题本.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "错题本"
+              "title": "线代错题本"
             }
           },
           {
@@ -206,7 +206,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/wrong-book/线代错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -256,7 +256,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -284,21 +284,25 @@
       "notebook-navigator:Notebook Navigator": false
     }
   },
-  "active": "d0d8383a692e3423",
+  "active": "7af8f20397d6695b",
   "lastOpenFiles": [
+    "workspace/papers/la-paper-02/线代卷子-02-答案.md",
+    "workspace/papers/la-paper-02/线代判分卡-02.md",
+    "workspace/papers/la-paper-02/线代卷子-02.md",
+    "workspace/papers/la-paper-02",
+    "workspace/papers/la-paper-01/线代判分卡-01.md",
+    "workspace/wrong-book/线代错题本.md",
+    "workspace/papers/la-paper-01/线代卷子-01-答案.md",
+    "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-03/卷子-03-答案.md",
     "workspace/papers/paper-03/判分卡-03.md",
     "workspace/papers/paper-03/卷子-03.md",
-    "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-02/卷子-02.md",
     "workspace/papers/la-paper-01/线代卷子-01.md",
-    "workspace/wrong-book/线代错题本.md",
     "external-notes/考研数学/0-基础知识/📘 高数每日必背（全书速刷）.md",
     "workspace/papers/paper-02/卷子-02-答案.md",
     "workspace/papers/paper-02/判分卡-02.md",
     "workspace/preview/进度总览.md",
-    "workspace/papers/la-paper-01/线代卷子-01-答案.md",
-    "workspace/papers/la-paper-01/线代判分卡-01.md",
     "external-notes/考研数学/0-基础知识/做题结论.md",
     "external-notes/考研数学/0-基础知识/未命名.md",
     "external-notes/考研数学/未命名.md",
@@ -320,15 +324,11 @@
     "external-notes/线性代数/第四章：向量与方程组/assets/错题本/截屏2026-06-09 19.16.22.png",
     "external-notes/线性代数/第四章：向量与方程组/assets/错题本/截屏2026-06-09 19.16.02.png",
     "external-notes/线性代数/第四章：向量与方程组/assets/错题本/a8084425d3994c08da7b93700d30023e.jpg",
-    "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/assets/4.3.2-利用定义法判断线性相关与无关",
     "external-notes/线性代数/第一章：行列式/1.4-特殊行列式的计算/attachments/递推型行列式-四角剥皮例13.png",
     "external-notes/线性代数/第一章：行列式/1.4-特殊行列式的计算/attachments/1.4.4-例10-加边法反对角行列式.png",
     "external-notes/线性代数/第四章：向量与方程组/4.7-向量空间/4.7.6-施密特正交化.md",
     "external-notes/线性代数/第四章：向量与方程组/4.7-向量空间/4.7.5-坐标变换.md",
     "external-notes/线性代数/第四章：向量与方程组/4.7-向量空间/4.7.4-基变换与过渡矩阵.md",
-    "external-notes/线性代数/第四章：向量与方程组/4.7-向量空间/4.7.3-向量在基下的坐标.md",
-    "external-notes/线性代数/第四章：向量与方程组/4.7-向量空间/4.7.2-向量空间的基和维数.md",
-    "external-notes/线性代数/第四章：向量与方程组/4.7-向量空间/4.7.1-向量空间的定义.md",
     "external-notes/线性代数/第二章：矩阵/assets/错题38-正交伴随化简路线图.svg",
     "external-notes/线性代数/第二章：矩阵/assets/错题37-正交证明手写解析-转置求积.jpg",
     "external-notes/线性代数/第二章：矩阵/assets/错题37-正交证明手写解析-交换判定.jpg",
