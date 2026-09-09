@@ -863,6 +863,14 @@
       "when": "2026-09-09",
       "recorded_at": "2026-09-09T14:05:58+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-choice-003",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-09",
+      "recorded_at": "2026-09-09T14:24:40+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -951,8 +959,8 @@
       "updated": "2026-09-07"
     },
     "gs-c04-comprehensive-choice-003": {
-      "state": "未复习",
-      "updated": "2026-09-03"
+      "state": "已掌握",
+      "updated": "2026-09-09"
     },
     "la-c08-comprehensive-choice-003": {
       "state": "已掌握",
