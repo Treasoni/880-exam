@@ -855,6 +855,14 @@
       "when": "2026-09-08",
       "recorded_at": "2026-09-08T20:24:11+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-fill-002",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-09",
+      "recorded_at": "2026-09-09T14:05:58+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -979,8 +987,8 @@
       "updated": "2026-09-07"
     },
     "gs-c03-comprehensive-fill-002": {
-      "state": "未复习",
-      "updated": "2026-09-07"
+      "state": "已掌握",
+      "updated": "2026-09-09"
     },
     "la-c07-comprehensive-fill-004": {
       "state": "已掌握",
