@@ -871,6 +871,14 @@
       "when": "2026-09-09",
       "recorded_at": "2026-09-09T14:24:40+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c04-basic-choice-004",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-09",
+      "recorded_at": "2026-09-09T14:30:32+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -923,8 +931,8 @@
       "updated": "2026-09-01"
     },
     "gs-c04-basic-choice-004": {
-      "state": "未复习",
-      "updated": "2026-09-02"
+      "state": "已掌握",
+      "updated": "2026-09-09"
     },
     "gs-c01-comprehensive-choice-002": {
       "state": "已掌握",
