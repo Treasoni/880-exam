@@ -110,11 +110,23 @@ def build_event(record: dict[str, Any], cls: dict[str, str], file_name: str, lat
             "git_branch": record.get("gitBranch"),
         },
     }
-    # Record cache tokens only when the provider supplies them; never fabricate.
+    # Record cache tokens only when the provider supplies them AND the values
+    # satisfy Anthropic cache semantics (cache_read <= input_tokens). Some
+    # gateways report a cumulative cache size or non-anthropic counter under the
+    # same field name; keeping those would corrupt the cache_read_rate metric.
+    input_tokens = usage.get("input_tokens", 0)
     if "cache_read_input_tokens" in usage:
-        event["cache_read_tokens"] = usage["cache_read_input_tokens"]
+        cr = usage["cache_read_input_tokens"]
+        if cr is not None and 0 <= cr <= input_tokens:
+            event["cache_read_tokens"] = cr
+        else:
+            event["metadata"]["cache_semantics"] = "non-anthropic"
     if "cache_creation_input_tokens" in usage:
-        event["cache_write_tokens"] = usage["cache_creation_input_tokens"]
+        cw = usage["cache_creation_input_tokens"]
+        if cw is not None and cw >= 0:
+            event["cache_write_tokens"] = cw
+        else:
+            event["metadata"]["cache_semantics"] = "non-anthropic"
     return event
 
 

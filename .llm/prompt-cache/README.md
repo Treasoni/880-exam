@@ -26,8 +26,8 @@ Claude Code 每会话一个 append-only JSONL，assistant 记录带 provider `us
 | --- | --- |
 | timestamp / model | transcript 记录字段 |
 | input/output_tokens | usage.input_tokens / output_tokens |
-| cache_read_tokens | usage.cache_read_input_tokens（提供方未返回时省略，不编造） |
-| cache_write_tokens | usage.cache_creation_input_tokens（同上） |
+| cache_read_tokens | usage.cache_read_input_tokens（提供方未返回、或违反 0≤cache_read≤input 语义时省略，不编造） |
+| cache_write_tokens | usage.cache_creation_input_tokens（非负才记录） |
 | latency_ms | 本 assistant 记录与其前一条记录的时间差（近似值） |
 | request_type / template_id | 按会话首个用户消息关键词分类（见下表） |
 | input_reference | `文件名:消息uuid`（安全引用，不含原始输入） |
@@ -67,6 +67,9 @@ python3 .claude/scripts/collect_llm_usage.py --transcript-dir /path/to/projects/
 
 - `cache_read_rate = Σcache_read_tokens / Σinput_tokens`，按
   request_type + template_id + template_version + model 分组计算，仅作同项目趋势指标。
+- **该口径只在 Anthropic cache 语义下有效**。部分网关在同一字段名下上报非标准
+  计数（如累计值，`cache_read > input`）。collector 对这类事件省略 cache 字段并在
+  `metadata.cache_semantics="non-anthropic"` 标记；计算 rate 前先剔除被标记事件。
 - 模型、工具定义或模板版本变化时分组比较，不混入同一基线。
 - 无实测数据不下"节省"结论；第一次运行得到的是基线，不是优化收益。
 

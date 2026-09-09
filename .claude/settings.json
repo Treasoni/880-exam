@@ -1,4 +1,8 @@
 {
+  "env": {
+    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "400000",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50"
+  },
   "hooks": {
     "SessionStart": [
       {

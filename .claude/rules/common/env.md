@@ -98,6 +98,8 @@ FEATURE_X_ENABLED=false
 
 ## .env.example 模板
 
+按「## 变量命名」的分组骨架产出；只保留当前项目真实需要或明确可选的变量，路径相对项目根：
+
 ```bash
 # === Project Identity ===
 APP_NAME=study-system
@@ -107,57 +109,22 @@ APP_PORT=3000
 APP_URL=http://localhost:3000
 
 # === Workspace Paths ===
-# Paths are relative to the project root.
 WORKSPACE_PATH=./workspace
 OUTPUT_PATH=${WORKSPACE_PATH}/output
-CHAPTERS_PATH=${WORKSPACE_PATH}/chapters
-WORKFLOW_RUNS_PATH=${WORKSPACE_PATH}/workflow-runs
-
-# Optional external publishing.
-OBSIDIAN_VAULT_PATH=
-OBSIDIAN_NOTES_DIR=
-OBSIDIAN_MOC_PATH=
 
 # === Runtime Behavior ===
 LOG_LEVEL=info
 DEBUG=false
 DRY_RUN=false
-AUTO_CONFIRM=false
-CODEX_AUTO_GIT=0
-CODEX_AUTO_GIT_PUSH=0
 
-# === LLM / Research Providers ===
+# === LLM / Research Providers（敏感项留空） ===
 OPENAI_API_KEY=
 ANTHROPIC_API_KEY=
-MINIMAX_API_KEY=
 DEFAULT_LLM_PROVIDER=
 DEFAULT_LLM_MODEL=
-
-# === Optional Services ===
-DATABASE_URL=
-REDIS_URL=
-SENTRY_DSN=
 ```
 
-## 代码中使用
-
-```javascript
-// Node.js
-const apiKey = process.env.API_KEY;
-
-// 必需变量启动时校验
-const required = ['API_KEY', 'DATABASE_URL'];
-for (const key of required) {
-  if (!process.env[key]) {
-    throw new Error(`Missing required env: ${key}`);
-  }
-}
-
-// 路径解析：使用 path.resolve 相对路径
-const path = require('path');
-const workspacePath = path.resolve(process.env.WORKSPACE_PATH);
-const outputPath = path.resolve(process.env.NOTES_OUTPUT_PATH);
-```
+代码读取示例：JS/TS 用 `process.env.X`，路径经 `path.resolve(process.env.X)` 解析；Python 用 `os.getenv`。必填变量启动时校验，禁止在日志打印值（详见「## 安全规则」与「## 路径规范」）。
 
 ## 更新 `.env.example` 的判断标准
 
