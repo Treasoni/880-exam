@@ -935,6 +935,14 @@
       "when": "2026-09-09",
       "recorded_at": "2026-09-09T16:11:12+08:00",
       "note": "错题重练做对"
+    },
+    {
+      "qid": "gs-c03-basic-fill-011",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-11",
+      "recorded_at": "2026-09-11T15:22:18+08:00",
+      "note": "错题重练：卷子-02 二5（gs-c03-basic-fill-011）"
     }
   ],
   "wrong_book_status": {
@@ -1011,8 +1019,8 @@
       "updated": "2026-09-08"
     },
     "gs-c03-basic-fill-011": {
-      "state": "未复习",
-      "updated": "2026-09-07"
+      "state": "已掌握",
+      "updated": "2026-09-11"
     },
     "gs-c03-basic-solution-008": {
       "state": "已掌握",
