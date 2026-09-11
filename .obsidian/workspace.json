@@ -1,84 +1,37 @@
 {
   "main": {
-    "id": "d0f70ea05a628ef8",
+    "id": "97d7437ddcc9f620",
     "type": "split",
     "children": [
       {
-        "id": "5cd0f96cdd16132a",
+        "id": "98386262e227a2cf",
         "type": "tabs",
         "children": [
           {
-            "id": "7af8f20397d6695b",
+            "id": "436a50b22630892a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "workspace/papers/la-paper-02/线代卷子-02.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "线代卷子-02"
-            }
-          },
-          {
-            "id": "1ec26730b536f939",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "workspace/papers/paper-03/卷子-03-答案.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "卷子-03-答案"
-            }
-          },
-          {
-            "id": "b7b68ee9b48f2e10",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "workspace/papers/paper-03/卷子-03-答案.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "卷子-03-答案"
-            }
-          },
-          {
-            "id": "02c6d3108cd86e53",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "workspace/papers/paper-03/判分卡-03.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "判分卡-03"
+              "title": "新标签页"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "4186e719fd0193c2",
+    "id": "d7d62b3db6fbbdfb",
     "type": "split",
     "children": [
       {
-        "id": "7a32e3c5ee76d442",
+        "id": "2ba55a15d27e1b52",
         "type": "tabs",
         "children": [
           {
-            "id": "6317a39668190194",
+            "id": "0c2c1c18417d48fd",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -93,12 +46,12 @@
             }
           },
           {
-            "id": "b7461b6e8db7ece1",
+            "id": "84a1b1d19fef13c2",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "内积",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -110,56 +63,38 @@
             }
           },
           {
-            "id": "7b98e39af17c05c3",
+            "id": "850e7ab88c74f313",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {},
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
               "icon": "lucide-bookmark",
               "title": "书签"
-            }
-          },
-          {
-            "id": "8f0801c840d50070",
-            "type": "leaf",
-            "state": {
-              "type": "langr-search-panel",
-              "state": {},
-              "icon": "book",
-              "title": "查词面板"
-            }
-          },
-          {
-            "id": "6102b6abc9f08367",
-            "type": "leaf",
-            "state": {
-              "type": "notebook-navigator",
-              "state": {},
-              "icon": "notebook-navigator",
-              "title": "笔记本导航器"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 295.5
+    "width": 300
   },
   "right": {
-    "id": "a99e901caa8bea67",
+    "id": "3bc35e4e578904ca",
     "type": "split",
     "children": [
       {
-        "id": "17d2024735c36e69",
+        "id": "eeb551ded4803b91",
         "type": "tabs",
         "children": [
           {
-            "id": "8fea128a25517e69",
+            "id": "220b0a3643de2fbc",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "线性代数/必背知识.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -169,25 +104,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "必背知识 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
-            "id": "1d92725e45f5caab",
+            "id": "7c863f99bc0f1bf1",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "线性代数/第一章：行列式/错题题目.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "错题题目 的出链列表"
+              "title": "出链"
             }
           },
           {
-            "id": "24c7595e5233b7bf",
+            "id": "014da5efdac26745",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -202,7 +136,7 @@
             }
           },
           {
-            "id": "496a141e6f4cad04",
+            "id": "02b2223ebc7c9082",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -216,14 +150,13 @@
             }
           },
           {
-            "id": "f5f6330a45d67f9a",
+            "id": "9f7d7ea400c72fad",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-03/卷子-03-答案.md",
                 "followCursor": false,
-                "showSearch": true,
+                "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
@@ -231,17 +164,7 @@
             }
           },
           {
-            "id": "5bd92ebabbf49620",
-            "type": "leaf",
-            "state": {
-              "type": "langr-learn-panel",
-              "state": {},
-              "icon": "reading-glasses",
-              "title": "学习新单词"
-            }
-          },
-          {
-            "id": "1a1d7c445d99050d",
+            "id": "0f58e0d2b630fcd1",
             "type": "leaf",
             "state": {
               "type": "calendar",
@@ -249,40 +172,20 @@
               "icon": "calendar-with-checkmark",
               "title": "Calendar"
             }
-          },
-          {
-            "id": "1772bb87736101b7",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
-          },
-          {
-            "id": "d0d8383a692e3423",
-            "type": "leaf",
-            "state": {
-              "type": "claudian-view",
-              "state": {},
-              "icon": "bot",
-              "title": "Claudian"
-            }
           }
-        ],
-        "currentTab": 8
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 377.359375
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "daily-notes:打开/创建今天的日记": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "bases:新建数据库": false,
@@ -295,58 +198,10 @@
       "claudian:Open Claudian": false,
       "obsidian-excalidraw-plugin:新建绘图文件": false,
       "terminal:Open terminal": false,
-      "custom-sort:Toggle custom sorting": false,
-      "notebook-navigator:Notebook Navigator": false
+      "notebook-navigator:Notebook Navigator": false,
+      "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "1ec26730b536f939",
-  "lastOpenFiles": [
-    "workspace/papers/paper-03/卷子-03.md",
-    "workspace/papers/paper-03/卷子-03-答案.md",
-    "workspace/papers/paper-03/判分卡-03.md",
-    "workspace/papers/la-paper-02/线代卷子-02.md",
-    "workspace/wrong-book/错题本.md",
-    "workspace/papers/la-paper-02/线代卷子-02-答案.md",
-    "workspace/papers/la-paper-02/线代判分卡-02.md",
-    "workspace/wrong-book/线代错题本.md",
-    "workspace/papers/la-paper-01/线代卷子-01-答案.md",
-    "workspace/papers/la-paper-01/线代卷子-01.md",
-    "workspace/papers/la-paper-02",
-    "workspace/papers/la-paper-01/线代判分卡-01.md",
-    "workspace/papers/paper-02/卷子-02.md",
-    "external-notes/考研数学/0-基础知识/📘 高数每日必背（全书速刷）.md",
-    "workspace/papers/paper-02/卷子-02-答案.md",
-    "workspace/papers/paper-02/判分卡-02.md",
-    "workspace/preview/进度总览.md",
-    "external-notes/考研数学/0-基础知识/做题结论.md",
-    "external-notes/考研数学/0-基础知识/未命名.md",
-    "external-notes/考研数学/未命名.md",
-    "workspace/papers/paper-03",
-    "workspace/preview/线代进度总览.md",
-    "external-notes/考研数学/0-基础知识/高数必背公式 1.md",
-    "workspace/papers/la-paper-01",
-    "scripts/__pycache__/progress.cpython-313.pyc",
-    "scripts/__pycache__/prepare_sections.cpython-313.pyc",
-    "scripts/__pycache__/merge_extraction.cpython-313.pyc",
-    "scripts/__pycache__/lint_content.cpython-313.pyc",
-    "scripts/__pycache__/build-question-index.cpython-313.pyc",
-    "workspace/linear-algebra-schema.yaml",
-    "scripts/__pycache__/wrong_book.cpython-313.pyc",
-    "external-notes/考研数学/高数-一元函数积分学/错题本.md",
-    "external-notes/线性代数/导入说明.md",
-    "external-notes/线性代数/第四章：向量与方程组/4.3-线性相关、线性无关与线性表示/assets/4.3.2-利用定义法判断线性相关与无关/file-20260527100027167.png",
-    "external-notes/线性代数/第五章：矩阵相似理论/5.5-实对称矩阵相似对角化/assets/5.5.3-实对称矩阵正交对角化的一般步骤/604181a9116490487f84da08956e661c.png",
-    "external-notes/线性代数/第四章：向量与方程组/assets/错题本/截屏2026-06-09 19.16.22.png",
-    "external-notes/线性代数/第四章：向量与方程组/assets/错题本/截屏2026-06-09 19.16.02.png",
-    "external-notes/线性代数/第四章：向量与方程组/assets/错题本/a8084425d3994c08da7b93700d30023e.jpg",
-    "external-notes/线性代数/第一章：行列式/1.4-特殊行列式的计算/attachments/递推型行列式-四角剥皮例13.png",
-    "external-notes/线性代数/第一章：行列式/1.4-特殊行列式的计算/attachments/1.4.4-例10-加边法反对角行列式.png",
-    "external-notes/线性代数/第四章：向量与方程组/4.7-向量空间/4.7.6-施密特正交化.md",
-    "external-notes/线性代数/第四章：向量与方程组/4.7-向量空间/4.7.5-坐标变换.md",
-    "external-notes/线性代数/第四章：向量与方程组/4.7-向量空间/4.7.4-基变换与过渡矩阵.md",
-    "external-notes/线性代数/第二章：矩阵/assets/错题38-正交伴随化简路线图.svg",
-    "external-notes/线性代数/第二章：矩阵/assets/错题37-正交证明手写解析-转置求积.jpg",
-    "external-notes/线性代数/第二章：矩阵/assets/错题37-正交证明手写解析-交换判定.jpg",
-    "考研数学/高数-一元函数积分学/一元函数积分的概念与性质/2-定积分/未命名.canvas"
-  ]
+  "active": "436a50b22630892a",
+  "lastOpenFiles": []
 }
