@@ -63,7 +63,8 @@
               "title": "卷子-03"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -141,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "workspace/papers/la-paper-02/线代卷子-02.md",
+                "file": "workspace/papers/la-paper-02/线代卷子-02-答案.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -160,7 +161,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "workspace/papers/la-paper-02/线代卷子-02.md",
+                "file": "workspace/papers/la-paper-02/线代卷子-02-答案.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -203,7 +204,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/la-paper-02/线代卷子-02.md",
+                "file": "workspace/papers/la-paper-02/线代卷子-02-答案.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -261,10 +262,10 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "436a50b22630892a",
+  "active": "69c0681557d95be1",
   "lastOpenFiles": [
-    "workspace/papers/la-paper-02/线代判分卡-02.md",
     "workspace/papers/la-paper-02/线代卷子-02.md",
+    "workspace/papers/la-paper-02/线代判分卡-02.md",
     "workspace/papers/la-paper-02/线代卷子-02-答案.md",
     "workspace/papers/paper-03/判分卡-03.md",
     "workspace/papers/paper-03/卷子-03.md",
