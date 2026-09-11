@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/paper-03/卷子-03.md",
+                "file": "workspace/papers/paper-03/卷子-03-答案.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "卷子-03"
+              "title": "卷子-03-答案"
             }
           },
           {
@@ -221,7 +221,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-03/卷子-03.md",
+                "file": "workspace/papers/paper-03/卷子-03-答案.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -271,7 +271,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -301,9 +301,9 @@
   },
   "active": "1ec26730b536f939",
   "lastOpenFiles": [
-    "workspace/papers/paper-03/判分卡-03.md",
-    "workspace/papers/paper-03/卷子-03-答案.md",
     "workspace/papers/paper-03/卷子-03.md",
+    "workspace/papers/paper-03/卷子-03-答案.md",
+    "workspace/papers/paper-03/判分卡-03.md",
     "workspace/papers/la-paper-02/线代卷子-02.md",
     "workspace/wrong-book/错题本.md",
     "workspace/papers/la-paper-02/线代卷子-02-答案.md",
