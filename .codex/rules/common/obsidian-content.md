@@ -249,4 +249,4 @@ wrong: 12
 - 生成产物的脚本（`scripts/make_paper.py`、`scripts/grade.py`、`wrong_book.py`、`progress.py`）按本规范输出。
 - 判分卡由 `make_paper.py` 生成、`grade.py --sheet` 读取勾选；判分后卷子 `status` 与判分表由判分流程更新。
 - 修改产物格式时：先改本规则，再同步改脚本与对应 skill（`880-paper`/`880-grade`/`880-wrongbook`/`880-progress`）。
-- 可选用 `scripts/lint_content.py` 校验生成文件是否符合本规范（键齐全、wikilink 指向存在）。
+- 生成或修改后运行 `scripts/lint_content.py` 校验生成文件是否符合本规范（键齐全、wikilink 指向存在、独立公式定界符成对、公式块未吞入 Markdown 题目/标题、无控制字符）。

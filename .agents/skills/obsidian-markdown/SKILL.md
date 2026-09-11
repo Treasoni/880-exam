@@ -24,7 +24,8 @@ Create and edit valid Obsidian Flavored Markdown. Obsidian extends CommonMark an
 2. **Require a unique anchor**: combine the section heading with the complete question text and assert that it occurs exactly once before changing the file. If it is not unique, narrow the search to the bounded section instead of guessing.
 3. **Replace one bounded slice** and preserve everything outside that slice. After writing, inspect the diff and check that section headings, question counts, and question order have not changed unexpectedly.
 4. **Use the vault's established math syntax**: `$...$` for inline math and `$$...$$` for display math. Do not introduce `\[...\]` into a note that uses `$$...$$`.
-5. **Verify the exact edited region** in reading view. Check display-math delimiters are balanced and, when the note contains repeated question numbers, confirm the complete target heading appears once and its solution remains adjacent to it.
+5. **Run the content linter** after editing generated vault content: `python3 scripts/lint_content.py`. It checks balanced display-math delimiters, rejects Markdown headings/question markers swallowed by a math block, and catches control characters from incorrect Python LaTeX escaping.
+6. **Verify the exact edited region** in reading view. Check display-math delimiters are balanced and, when the note contains repeated question numbers, confirm the complete target heading appears once and its solution remains adjacent to it.
 
 ## Internal Links (Wikilinks)
 

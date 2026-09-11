@@ -5,7 +5,8 @@
 1. YAML frontmatter 必填键（type/date|updated/tags）存在；
 2. type 取值合法；
 3. 站内 [[wikilink]] 指向的文件存在（在 workspace 范围内解析）；
-4. 卷子/答案卷/判分卡/错题本/进度总览 的专属属性齐全。
+4. 卷子/答案卷/判分卡/错题本/进度总览 的专属属性齐全；
+5. LaTeX 独立公式定界符成对、未混入 Markdown 结构标记，且文本不含控制字符。
 
 用法：
   python3 scripts/lint_content.py            # 校验全部生成产物
@@ -21,6 +22,9 @@ import lib880
 
 FM_RE = re.compile(r"^---\n(.*?)\n---", re.DOTALL)
 WIKI_RE = re.compile(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]")
+CONTROL_CHAR_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
+MARKDOWN_STRUCTURE_RE = re.compile(r"(?m)^\s*(?:#{1,6}\s|\*\*\d+\.\*\*)")
+LEGACY_DISPLAY_RE = re.compile(r"(?<!\\)\\[\[]|(?<!\\)\\[\]]")
 
 VALID_TYPES = {"卷子", "答案卷", "判分卡", "错题本", "进度总览", "文档", "记录"}
 REQUIRED = ["type", "tags"]  # date|updated 二选一
@@ -71,6 +75,49 @@ def parse_fm(text):
     return kv
 
 
+def lint_math(text):
+    """检查 Obsidian 独立公式块的基本结构。
+
+    仅把单独占行的 ``$$`` 视为独立公式定界符，避免误判行内公式。
+    额外拒绝公式块中出现 Markdown 标题/题号：这通常意味着多写了一个
+    ``$$``，导致后续题目正文被吞进数学环境。
+    """
+    errors = []
+    if CONTROL_CHAR_RE.search(text):
+        errors.append("正文含控制字符（尤其检查 LaTeX 反斜杠转义是否生成了 \\x0c）")
+
+    in_block = False
+    block_start = None
+    body = []
+    for line_no, line in enumerate(text.splitlines(), start=1):
+        if line.strip() != "$$":
+            if in_block:
+                body.append(line)
+            continue
+
+        if not in_block:
+            in_block = True
+            block_start = line_no
+            body = []
+            continue
+
+        block_text = "\n".join(body)
+        if MARKDOWN_STRUCTURE_RE.search(block_text):
+            errors.append(
+                f"第 {block_start}-{line_no} 行独立公式块混入 Markdown 结构标记，"
+                "可能存在多余或错位的 $$"
+            )
+        in_block = False
+        block_start = None
+        body = []
+
+    if in_block:
+        errors.append(f"第 {block_start} 行开始的独立公式块缺少结束 $$")
+    if LEGACY_DISPLAY_RE.search(text):
+        errors.append("使用了 \\[...\\] 独立公式定界符；Obsidian 产物统一使用 $$...$$")
+    return errors
+
+
 def lint_file(path: Path):
     rel = path.relative_to(lib880.ROOT)
     text = path.read_text(encoding="utf-8")
@@ -91,6 +138,7 @@ def lint_file(path: Path):
     for target in WIKI_RE.findall(text):
         if not _wikilink_resolves(target):
             errors.append(f"wikilink 指向不存在的文件: [[{target}]]")
+    errors.extend(lint_math(text))
     return rel, errors
 
 
