@@ -943,6 +943,14 @@
       "when": "2026-09-11",
       "recorded_at": "2026-09-11T15:22:18+08:00",
       "note": "错题重练：卷子-02 二5（gs-c03-basic-fill-011）"
+    },
+    {
+      "qid": "gs-c04-comprehensive-fill-003",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-11",
+      "recorded_at": "2026-09-11T15:25:26+08:00",
+      "note": "错题重练：卷子-02 二3（gs-c04-comprehensive-fill-003）"
     }
   ],
   "wrong_book_status": {
@@ -1113,6 +1121,10 @@
     "la-c11-comprehensive-solution-009": {
       "state": "已掌握",
       "updated": "2026-09-09"
+    },
+    "gs-c04-comprehensive-fill-003": {
+      "state": "已掌握",
+      "updated": "2026-09-11"
     }
   }
 }
