@@ -88,3 +88,21 @@ _最后更新：2026-09-09_
 - 下次做法：复用源文本进嵌套型产物时，由渲染层统一做标题降级（`scripts/wrong_book.py` 的 `demote_solution_headings`），源文本不改；先登记 `.claude/rules/common/obsidian-content.md` 再同步脚本与 skill，最后重建并核验大纲层级。
 
 ---
+
+## 2026-09-11
+
+### 重建产物前先认清 `--rebuild` 的破坏性副作用
+
+**类别**：workflow
+**优先级**：high
+**状态**：pending
+**范围**：880 / make_paper / 卷子产物
+
+**摘要**：`make_paper.py --rebuild` 并非无副作用重建：它清空判分卡上未判分的 `- [x]` 勾选、按 `question-index.json` 原文重渲染答案卷（未同步索引的手工解析会被回退）、并把 frontmatter `date` 重置为当天；因此重建前必须备份/提交，重建后逐项核验。
+
+**详情**：
+- 事实：替换 paper-03 第 6 题解析时执行 `--rebuild`，一次性造成 15 个判分卡勾选被清空、一8/一10 加强版解析被回退、三个文件 `date` 被改写三处副作用。
+- 根因：`render_grading_card()` 无条件输出 `- [ ]`（注释误以为「判分卡无状态」）；答案卷解析事实源是索引 `solution` 而非答案卷本身；生成函数每次构建都写 `date = today`。
+- 下次做法：把 `--rebuild` 当破坏性操作对待——先 `git status`/提交，重建后核验判分卡勾选与其它题解析与 `date`，被回退的用 `git checkout HEAD --` 还原；答案卷任何解析改动先写回索引 `solution` 再重建。
+
+---
