@@ -44,14 +44,62 @@ _SUBJECT_ALIASES = {
 }
 
 
+# 渲染层与 lint 共用的「坏内容」判据：单一出处，避免三份正则各自漂移
+# （本次 \(...\) 漏检正是因为 wrong_book.py 与 lint_content.py 各存一份只查
+# 独立式的旧正则）。CONTROL_CHAR_RE 挡 \x0c 这类把 LaTeX 反斜杠转义坏的控制字符。
+CONTROL_CHAR_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
+
+# Obsidian 只渲染 $...$（行内）与 $$...$$（独立）。LaTeX 式定界符 \(...\)
+# （行内）与 \[...\]（独立）会以原文裸露，必须在写入产物前归一或拒绝。
+# 两个正则都用 (?<!\\) 跳过 \\\( / \\\[ 这类转义形式（后者含 LaTeX 换行 \\）。
+LEGACY_INLINE_RE = re.compile(r"(?<!\\)\\[()]")
+LEGACY_DISPLAY_RE = re.compile(r"(?<!\\)\\[\[\]]")
+_ESCAPED_BACKSLASH_PAREN_RE = re.compile(r"\\\\[()]")
+
+
+def normalize_math_delimiters(text):
+    """把 LaTeX 式行内定界符 ``\\(...\\)`` 归一为 Obsidian 的 ``$...$``。
+
+    源文本不改，本函数在渲染层调用（与 ``demote_solution_headings`` 同一策略：
+    复用文本进产物时由渲染层适配，事实源保持原貌）。
+
+    无法安全自动转换时抛 ``ValueError`` 而不是盲替，避免替出更坏的渲染：
+
+    - 独立式 ``\\[...\\]`` 不归本函数管，沿用既有「拒绝、改用 ``$$...$$``」策略；
+    - 转义形式 ``\\\\`` 后紧跟括号语义不明（可能本就不是定界符），交人工判断；
+    - 归一后若新增相邻 ``$$``（如 ``\\)$`` → ``$$``）或某行 ``$`` 个数变成奇数，
+      说明替换会破坏定界符配对，一并拒绝。
+    """
+    text = str(text or "")
+    if LEGACY_DISPLAY_RE.search(text):
+        raise ValueError(
+            "含 \\[...\\] 独立公式定界符；请改用 $$...$$（见 obsidian-content.md）")
+    if _ESCAPED_BACKSLASH_PAREN_RE.search(text):
+        raise ValueError(
+            "含 \\\\( 或 \\\\) 转义形式，无法安全自动归一；请人工确认后再写入")
+    if not LEGACY_INLINE_RE.search(text):
+        return text
+    converted = LEGACY_INLINE_RE.sub("$", text)
+    if converted.count("$$") > text.count("$$"):
+        raise ValueError(
+            "归一行内定界符会产生相邻 $$，无法安全自动转换；请人工修正")
+    for line_no, line in enumerate(converted.splitlines(), start=1):
+        if line.count("$") % 2:
+            raise ValueError(
+                f"归一行内定界符后第 {line_no} 行 $ 定界符不配对；请人工修正")
+    return converted
+
+
 def markdown_math_answer(value):
     """为未带数学定界符的公式答案补上行内 LaTeX 定界符。
 
     题库中的答案既有纯文本（如 ``A``、``0``），也有裸 LaTeX（如
     ``\\frac{1}{2}``）。只包装明显的公式，避免把普通答案强制渲染成数学体。
     已带 ``$`` 的答案保持原样，因为其中可能混有公式和说明文字。
+    答案同样先过 ``normalize_math_delimiters``，避免答案里的 ``\\(...\\)``
+    裸露进判分卡与错题本。
     """
-    text = str(value or "").strip()
+    text = normalize_math_delimiters(value).strip()
     if not text or "$" in text:
         return text
     if re.search(r"\\[A-Za-z]+|[{}_^]", text):

@@ -6,7 +6,8 @@
 2. type 取值合法；
 3. 站内 [[wikilink]] 指向的文件存在（在 workspace 范围内解析）；
 4. 卷子/答案卷/判分卡/错题本/进度总览 的专属属性齐全；
-5. LaTeX 独立公式定界符成对、未混入 Markdown 结构标记，且文本不含控制字符。
+5. LaTeX 公式定界符成对、未混入 Markdown 结构标记、不含控制字符，且未使用
+   Obsidian 不渲染的 LaTeX 式定界符（行内 \\(...\\)、独立 \\[...\\]）。
 
 用法：
   python3 scripts/lint_content.py            # 校验全部生成产物
@@ -22,9 +23,12 @@ import lib880
 
 FM_RE = re.compile(r"^---\n(.*?)\n---", re.DOTALL)
 WIKI_RE = re.compile(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]")
-CONTROL_CHAR_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 MARKDOWN_STRUCTURE_RE = re.compile(r"(?m)^\s*(?:#{1,6}\s|\*\*\d+\.\*\*)")
-LEGACY_DISPLAY_RE = re.compile(r"(?<!\\)\\[\[]|(?<!\\)\\[\]]")
+# 坏内容判据统一取自 lib880，与渲染层同源，避免两边各存一份正则而漂移
+# （本次 \(...\) 漏检：渲染层与 lint 各存了一份只查独立式 \[...\] 的旧正则）。
+CONTROL_CHAR_RE = lib880.CONTROL_CHAR_RE
+LEGACY_DISPLAY_RE = lib880.LEGACY_DISPLAY_RE
+LEGACY_INLINE_RE = lib880.LEGACY_INLINE_RE
 
 VALID_TYPES = {"卷子", "答案卷", "判分卡", "错题本", "进度总览", "文档", "记录"}
 REQUIRED = ["type", "tags"]  # date|updated 二选一
@@ -115,6 +119,17 @@ def lint_math(text):
         errors.append(f"第 {block_start} 行开始的独立公式块缺少结束 $$")
     if LEGACY_DISPLAY_RE.search(text):
         errors.append("使用了 \\[...\\] 独立公式定界符；Obsidian 产物统一使用 $$...$$")
+    inline_hits = [
+        i for i, line in enumerate(text.splitlines(), start=1)
+        if LEGACY_INLINE_RE.search(line)
+    ]
+    if inline_hits:
+        shown = "、".join(str(i) for i in inline_hits[:5])
+        more = f" 等 {len(inline_hits)} 行" if len(inline_hits) > 5 else ""
+        errors.append(
+            f"使用了 \\(...\\) 行内公式定界符（第 {shown}{more}）；"
+            "Obsidian 只渲染 $...$，请改用 $...$"
+        )
     return errors
 
 

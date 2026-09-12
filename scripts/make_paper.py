@@ -295,7 +295,9 @@ def render_answers(subject, schema, paper_id, sections_plan):
             lines.append("**答案：** " + (f"**{answer}**" if q.get("answer") else answer))
             lines.append("")
             if q.get("solution"):
-                lines.append(q["solution"].strip())
+                # 与错题本同一渲染层归一：解析里的 \(...\) 属 LaTeX 式定界符，
+                # Obsidian 不渲染，须先转成 $...$（见 obsidian-content.md）。
+                lines.append(lib880.normalize_math_delimiters(q["solution"]).strip())
                 lines.append("")
             if q.get("answer_status") == "missing":
                 lines.append("> ⚠️ 解析册中未找到该题答案。")

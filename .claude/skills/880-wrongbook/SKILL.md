@@ -43,4 +43,5 @@ description: 查看/重生成错题本，更新复习状态（未复习/已重�
 - 若 `workspace/records/external-links.json` 为该题配置了外部错题本关联（值为数组，每题可多条，每条含 `path`+`anchor`），自动输出 `*相关笔记：[[…]] · [[…]]*`（由 `wrong_book.py` 渲染，无需手改错题本）；
 - 若 `workspace/records/analysis.json` 为该题配置了过程分析，条目末尾自动渲染「错因分析」callout（错因/出错环节/建议，由 `wrong_book.py` 输出）；分析由 `880-analysis` skill 写入，非错题本流程生成；
 - `wrong_book.py` 渲染每条 `解析` 时，会把源文本（索引 JSON `solution`）内部的 Markdown 标题自动降级到条目标题之下（待复习条目 `####` → 内容 `#####`；已掌握归档条目 `#####` → 内容 `######`），源文本不改；
-- 若需调整格式，先改规则文件（`.claude/rules/common/obsidian-content.md`），再改 `scripts/wrong_book.py`。
+- 公式定界符：Obsidian 只渲染 `$...$`（行内）与 `$$...$$`（独立），LaTeX 式 `\(...\)` / `\[...\]` 会以原文裸露。渲染层用 `lib880.normalize_math_delimiters` 把行内 `\(...\)` 归一为 `$...$`（源文本不改）；写入前 `validate_solution_text` 拒绝控制字符、`\[...\]` 独立定界符、以及归一失败或归一后仍残留 `\(...\)` 的解析——补写解析时直接用 `$...$`，不要写 `\(...\)`；
+- 若需调整格式，先改规则文件（`.claude/rules/common/obsidian-content.md`），再改 `scripts/wrong_book.py`，重建后运行 `python3 scripts/lint_content.py`（会同时拦截 `\(...\)` 与 `\[...\]`）。

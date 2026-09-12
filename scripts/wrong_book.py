@@ -22,17 +22,29 @@ TYPE_ZH = {"choice": "选择题", "fill": "填空题", "solution": "解答题"}
 CN = {n: lib880.chapter_number_zh(n) for n in range(1, 100)}
 
 HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.*)$")
-CONTROL_CHAR_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
-LEGACY_DISPLAY_RE = re.compile(r"(?<!\\)\\[\[]|(?<!\\)\\[\]]")
 
 
 def validate_solution_text(text, qid):
-    """在写入错题本前拒绝会破坏 Obsidian 渲染的解析文本。"""
+    """在写入错题本前拒绝会破坏 Obsidian 渲染的解析文本。
+
+    判据统一取自 lib880（CONTROL_CHAR_RE / normalize_math_delimiters），不再在本
+    文件另存一份正则——本次行内 ``\\(...\\)`` 漏检就是因为这里和 lint_content.py
+    各存了一份只查独立式的旧正则。独立式 ``\\[...\\]`` 与转义的反斜杠括号由
+    ``normalize_math_delimiters`` 统一拒绝（此处不再重复判一遍，避免同一问题报两次）。
+
+    行内 ``\\(...\\)`` 由渲染层归一出 ``$...$``；归一失败、或归一后仍残留
+    LaTeX 定界符的解析一律拒绝写入。
+    """
     errors = []
-    if CONTROL_CHAR_RE.search(text):
+    if lib880.CONTROL_CHAR_RE.search(text):
         errors.append("含控制字符（检查 LaTeX 反斜杠是否被 Python 字符串转义）")
-    if LEGACY_DISPLAY_RE.search(text):
-        errors.append("使用了 \\[...\\] 独立公式定界符；请改用 $$...$$")
+    try:
+        normalized = lib880.normalize_math_delimiters(text)
+    except ValueError as exc:
+        errors.append(str(exc))
+    else:
+        if lib880.LEGACY_INLINE_RE.search(normalized):
+            errors.append("归一后仍残留 \\(...\\) 行内定界符；请改用 $...$")
     if errors:
         raise ValueError(f"题目 {qid} 的解析无法渲染：" + "；".join(errors))
 
@@ -166,7 +178,8 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
             if q.get("solution"):
                 lines.append("**解析：**")
                 lines.append("")
-                lines.append(demote_solution_headings(q["solution"].strip(), 4))
+                lines.append(demote_solution_headings(
+                    lib880.normalize_math_delimiters(q["solution"]).strip(), 4))
                 lines.append("")
             if e.get("paper_id"):
                 stem = lib880.paper_artifact_stems(subject, e["paper_id"])["paper"]
@@ -230,7 +243,8 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
                 if q.get("solution"):
                     lines.append("**解析：**")
                     lines.append("")
-                    lines.append(demote_solution_headings(q["solution"].strip(), 5))
+                    lines.append(demote_solution_headings(
+                        lib880.normalize_math_delimiters(q["solution"]).strip(), 5))
                     lines.append("")
                 if e.get("paper_id"):
                     stem = lib880.paper_artifact_stems(subject, e["paper_id"])["paper"]

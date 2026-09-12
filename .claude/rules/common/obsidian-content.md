@@ -58,6 +58,7 @@ tags: [高数, 880, <分类>]
 
 - 只用 Markdown 表格（`| a | b |`），禁止 HTML `<table>`。
 - 数学公式用 LaTeX：行内 `$...$`、独立 `$$...$$`；禁止转成 HTML 或图片。
+- 定界符只认 Obsidian 原生的 `$...$`（行内）与 `$$...$$`（独立），**禁止** LaTeX 式 `\(...\)`（行内）与 `\[...\]`（独立）——Obsidian 不渲染它们，会以原文裸露。生成器须在写入前归一/拒绝：共享函数 `lib880.normalize_math_delimiters`，`scripts/lint_content.py` 会同时拦截两种形式。
 
 ### 6. 标题层级
 
