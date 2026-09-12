@@ -234,7 +234,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -262,7 +262,7 @@
       "custom-sort:Toggle custom sorting": false
     }
   },
-  "active": "9f7d7ea400c72fad",
+  "active": "db19ae777812cdea",
   "lastOpenFiles": [
     "workspace/papers/paper-04/卷子-04.md",
     "workspace/papers/paper-04/卷子-04-答案.md",
