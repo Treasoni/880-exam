@@ -31,7 +31,9 @@ description: 查看/重生成错题本，更新复习状态（未复习/已重�
 4. **补充题目解析/学习笔记时**：
    - 不要直接编辑 `workspace/wrong-book/错题本.md`；它是生成产物，重建会覆盖手工修改。
    - 将补充内容写入对应索引（高数 `workspace/question-index.json`；线代 `workspace/linear-algebra-question-index.json`）的 `solution`，再以同一 `--subject` 重建。
-   - 交付前用题号或新增内容 grep 错题本，确认补充确实出现在目标条目下。
+   - 公式独立块统一使用 `$$...$$`，禁止 `\\[...\\]`；写入 LaTeX 时使用 raw string/显式转义，避免 `\\f` 变成控制字符。
+   - `wrong_book.py` 会在写文件前拒绝旧式公式定界符和控制字符；若校验失败，先修索引再重建。
+   - 重建后运行 `python3 scripts/lint_content.py`，并用题号或新增内容 grep 错题本，确认补充确实出现在目标条目下。
 
 ## 重练流程（对话式）
 

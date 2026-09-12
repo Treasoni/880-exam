@@ -22,6 +22,19 @@ TYPE_ZH = {"choice": "选择题", "fill": "填空题", "solution": "解答题"}
 CN = {n: lib880.chapter_number_zh(n) for n in range(1, 100)}
 
 HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.*)$")
+CONTROL_CHAR_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
+LEGACY_DISPLAY_RE = re.compile(r"(?<!\\)\\[\[]|(?<!\\)\\[\]]")
+
+
+def validate_solution_text(text, qid):
+    """在写入错题本前拒绝会破坏 Obsidian 渲染的解析文本。"""
+    errors = []
+    if CONTROL_CHAR_RE.search(text):
+        errors.append("含控制字符（检查 LaTeX 反斜杠是否被 Python 字符串转义）")
+    if LEGACY_DISPLAY_RE.search(text):
+        errors.append("使用了 \\[...\\] 独立公式定界符；请改用 $$...$$")
+    if errors:
+        raise ValueError(f"题目 {qid} 的解析无法渲染：" + "；".join(errors))
 
 
 def demote_solution_headings(text, item_level):
@@ -260,6 +273,11 @@ def generate(subject=lib880.SUBJECT_HIGH_MATH):
     index = lib880.load_index(subject)
     lib880.build_index_map(index)
     attempts = lib880.load_attempts()
+
+    # 先校验事实源，再写生成产物，避免把坏公式写进错题本后才发现。
+    for q in index["questions"]:
+        if q.get("solution"):
+            validate_solution_text(q["solution"], q["id"])
 
     active, mastered = build_wrong_lists(schema, index, attempts)
     output_path = lib880.wrong_book_path(subject)
