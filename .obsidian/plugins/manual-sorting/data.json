@@ -12,6 +12,7 @@
     },
     "/": {
       "children": [
+        "个人服务器.md",
         "external-notes",
         "880",
         "scripts",
@@ -5577,6 +5578,7 @@
     },
     "workspace/papers": {
       "children": [
+        "workspace/papers/paper-04",
         "workspace/papers/la-paper-02",
         "workspace/papers/paper-03",
         "workspace/papers/la-paper-01",
@@ -5658,6 +5660,14 @@
     "workspace/wrong-book/images": {
       "children": [
         "workspace/wrong-book/images/心形线-弧长示意图.png"
+      ],
+      "sortOrder": "custom"
+    },
+    "workspace/papers/paper-04": {
+      "children": [
+        "workspace/papers/paper-04/卷子-04.md",
+        "workspace/papers/paper-04/卷子-04-答案.md",
+        "workspace/papers/paper-04/判分卡-04.md"
       ],
       "sortOrder": "custom"
     }
