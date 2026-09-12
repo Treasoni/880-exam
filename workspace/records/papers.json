@@ -772,6 +772,166 @@
         "11": 0.21534014015638925,
         "12": 0.29128879266955976
       }
+    },
+    {
+      "paper_id": "paper-04",
+      "subject_key": "high-math",
+      "subject_code": "gs",
+      "subject": "高数",
+      "date": "2026-09-12",
+      "duration_minutes": 180,
+      "quota_used": {
+        "1": {
+          "choice": 3,
+          "fill": 2,
+          "solution": 2
+        },
+        "2": {
+          "choice": 2,
+          "fill": 0,
+          "solution": 1
+        },
+        "3": {
+          "choice": 2,
+          "fill": 2,
+          "solution": 1
+        },
+        "4": {
+          "choice": 1,
+          "fill": 1,
+          "solution": 1
+        },
+        "5": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        },
+        "6": {
+          "choice": 0,
+          "fill": 0,
+          "solution": 0
+        }
+      },
+      "questions": [
+        {
+          "qid": "gs-c03-basic-choice-007",
+          "section": "choice",
+          "paper_no": "一1"
+        },
+        {
+          "qid": "gs-c01-comprehensive-choice-003",
+          "section": "choice",
+          "paper_no": "一2"
+        },
+        {
+          "qid": "gs-c05-comprehensive-choice-005",
+          "section": "choice",
+          "paper_no": "一3"
+        },
+        {
+          "qid": "gs-c03-comprehensive-choice-012",
+          "section": "choice",
+          "paper_no": "一4"
+        },
+        {
+          "qid": "gs-c02-basic-choice-007",
+          "section": "choice",
+          "paper_no": "一5"
+        },
+        {
+          "qid": "gs-c04-comprehensive-choice-001",
+          "section": "choice",
+          "paper_no": "一6"
+        },
+        {
+          "qid": "gs-c05-basic-choice-002",
+          "section": "choice",
+          "paper_no": "一7"
+        },
+        {
+          "qid": "gs-c02-comprehensive-choice-014",
+          "section": "choice",
+          "paper_no": "一8"
+        },
+        {
+          "qid": "gs-c01-basic-choice-013",
+          "section": "choice",
+          "paper_no": "一9"
+        },
+        {
+          "qid": "gs-c01-comprehensive-choice-016",
+          "section": "choice",
+          "paper_no": "一10"
+        },
+        {
+          "qid": "gs-c05-comprehensive-fill-003",
+          "section": "fill",
+          "paper_no": "二1"
+        },
+        {
+          "qid": "gs-c03-basic-fill-021",
+          "section": "fill",
+          "paper_no": "二2"
+        },
+        {
+          "qid": "gs-c04-comprehensive-fill-004",
+          "section": "fill",
+          "paper_no": "二3"
+        },
+        {
+          "qid": "gs-c03-comprehensive-fill-011",
+          "section": "fill",
+          "paper_no": "二4"
+        },
+        {
+          "qid": "gs-c01-comprehensive-fill-004",
+          "section": "fill",
+          "paper_no": "二5"
+        },
+        {
+          "qid": "gs-c01-basic-fill-005",
+          "section": "fill",
+          "paper_no": "二6"
+        },
+        {
+          "qid": "gs-c01-basic-solution-001",
+          "section": "solution",
+          "paper_no": "三1"
+        },
+        {
+          "qid": "gs-c04-comprehensive-solution-022",
+          "section": "solution",
+          "paper_no": "三2"
+        },
+        {
+          "qid": "gs-c03-comprehensive-solution-002",
+          "section": "solution",
+          "paper_no": "三3"
+        },
+        {
+          "qid": "gs-c02-comprehensive-solution-015",
+          "section": "solution",
+          "paper_no": "三4"
+        },
+        {
+          "qid": "gs-c01-comprehensive-solution-006",
+          "section": "solution",
+          "paper_no": "三5"
+        },
+        {
+          "qid": "gs-c05-comprehensive-solution-003",
+          "section": "solution",
+          "paper_no": "三6"
+        }
+      ],
+      "status": "created",
+      "weakness_scores": {
+        "1": 0.27445629794799986,
+        "2": 0.1501684751029462,
+        "3": 0.2156143417843231,
+        "4": 0.15306516031982526,
+        "5": 0.18419249648641756
+      }
     }
   ]
 }
