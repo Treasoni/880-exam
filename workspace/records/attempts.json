@@ -1135,6 +1135,14 @@
       "when": "2026-09-12",
       "recorded_at": "2026-09-12T15:35:03+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-choice-012",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-09-12",
+      "recorded_at": "2026-09-12T15:38:57+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -1321,6 +1329,10 @@
     "gs-c01-comprehensive-choice-019": {
       "state": "未复习",
       "updated": "2026-09-11"
+    },
+    "gs-c01-comprehensive-choice-012": {
+      "state": "已掌握",
+      "updated": "2026-09-12"
     }
   }
 }
