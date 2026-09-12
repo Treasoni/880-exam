@@ -1159,6 +1159,14 @@
       "when": "2026-09-12",
       "recorded_at": "2026-09-12T16:12:50+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-fill-009",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-09-12",
+      "recorded_at": "2026-09-12T16:20:44+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -1351,6 +1359,10 @@
       "updated": "2026-09-12"
     },
     "gs-c01-basic-fill-004": {
+      "state": "已掌握",
+      "updated": "2026-09-12"
+    },
+    "gs-c01-comprehensive-fill-009": {
       "state": "已掌握",
       "updated": "2026-09-12"
     }
