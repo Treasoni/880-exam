@@ -1,0 +1,6 @@
+workflow_id: zhenti-exam
+required: no
+when_to_use: 用户录入、复盘或重练考研数学真题（数一/数二/数三）错题，或维护真题错题本与年份覆盖表时。
+triggers: 真题、真题错题、真题错题本、收录真题、记一道真题、这道真题、真题重练、真题复盘、真题覆盖
+excludes: 880 习题系统（拼卷/判分/880 错题本/进度总览），走 880-exam；660/1000题/课本例题；不带「真题」限定的裸错题请求（只说「错题本」「重练」时归 880-exam，路由有歧义先问用户）
+state_file_pattern: workspace/workflow-runs/zhenti-exam.workflow.md

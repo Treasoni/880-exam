@@ -15,7 +15,8 @@ workspace/workflow-runs/*.workflow.md                   # active or historical r
 <!-- workflow-routing:generated:start -->
 | Workflow ID | Required | When To Use | Positive Triggers | Excludes | Definition | State File Pattern |
 | --- | --- | --- | --- | --- | --- | --- |
-| `880-exam` | no | 用户使用 880 习题系统（拼卷/判分/错因分析/错题本/预览/入库），或需要恢复进行中的做题流程时。 | 拼卷、拼张卷、判分、改卷、错因、归因、分析、错题本、预览、进度、补弱、重练、880、模拟卷、做题 | 与 880 习题系统无关的通用开发任务 | `.claude/workflows/880-exam/workflow.md` | `workspace/workflow-runs/880-exam.workflow.md` |
+| `880-exam` | no | 用户使用 880 习题系统（拼卷/判分/错因分析/错题本/预览/入库），或需要恢复进行中的做题流程时。 | 拼卷、拼张卷、判分、改卷、错因、归因、分析、错题本、预览、进度、补弱、重练、880、模拟卷、做题 | 考研数学真题体系（真题错题/真题收录/真题重练/真题覆盖表），走 zhenti-exam；与 880 习题系统无关的通用开发任务 | `.claude/workflows/880-exam/workflow.md` | `workspace/workflow-runs/880-exam.workflow.md` |
+| `zhenti-exam` | no | 用户录入、复盘或重练考研数学真题（数一/数二/数三）错题，或维护真题错题本与年份覆盖表时。 | 真题、真题错题、真题错题本、收录真题、记一道真题、这道真题、真题重练、真题复盘、真题覆盖 | 880 习题系统（拼卷/判分/880 错题本/进度总览），走 880-exam；660/1000题/课本例题；不带「真题」限定的裸错题请求（只说「错题本」「重练」时归 880-exam，路由有歧义先问用户） | `.claude/workflows/zhenti-exam/workflow.md` | `workspace/workflow-runs/zhenti-exam.workflow.md` |
 <!-- workflow-routing:generated:end -->
 
 ## Routing Rules

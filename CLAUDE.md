@@ -11,18 +11,26 @@
 | 判分 | `880-grade` | 判分、改卷、对答案 |
 | 错题本 | `880-wrongbook` | 错题本、看错题、重练 |
 | 进度总览 | `880-progress` | 预览、进度、进度总览 |
+| **真题**错题 | `zhenti-wrong` | **真题**错题、收录**真题**、**真题**重练、**真题**覆盖 |
 
-完整技能表见 `.claude/rules/common/skill-invocation.md`。涉及拼卷/判分/错题本/预览/入库的操作，先读 `.claude/rules/workflow-routing.md` 匹配 `880-exam` 工作流。
+完整技能表见 `.claude/rules/common/skill-invocation.md`。涉及拼卷/判分/错题本/预览/入库的操作，先读 `.claude/rules/workflow-routing.md` 匹配 `880-exam` 工作流；**真题**侧（数一/数二/数三历年真题）匹配 `zhenti-exam` 工作流，与 880 相互独立（见 `docs/adr/0006-zhenti-system-independent-of-880.md`）。
+
+> [!warning] 别把真题收进 880
+> 真题错题与 880 错题是两套独立系统：不同事实源、不同产物、不进 880 进度与拼卷配额。路由靠触发词区分——凡真题请求必带「真题」二字；裸说「错题本」「重练」时归 880，**语境指向真题也停下来问用户**，不要猜。收录真题前先查 `真题/` 原文源核对题号与题干（覆盖范围内**以原文题号为准**，用户口述只作线索），详见 `.claude/skills/zhenti-wrong/SKILL.md`。
 
 ## 数据模型与关键路径
 
 - `880/` — 原始题库（做题本 / 解析册，只读源，不修改）
+- `真题/` — 真题**原文源**（只读源，不修改）：目前只有 `真题/2010-2019考研数学二真题/`，其 `full.md` 是 **题号 + 题干** 的校对依据；**不含答案与解析**（ADR 0001 不受影响）。收录真题时先在此定位真实题号、核对题干，再回读给用户确认
 - `workspace/question-index.json` — 题目索引（由 `scripts/build-question-index.py` 重建）
 - `workspace/records/attempts.json` — 判分记录
 - `workspace/records/papers.json` — 卷子记录
+- `workspace/records/solution-overrides.json` — 题目级解析覆盖（`{qid: 自定义解析}`），渲染时替换解析册原文，答案卷与错题本都生效；索引里的 `solution` 保持解析册原文不动，重建索引不丢覆盖
 - `workspace/papers/paper-XX/` — 每卷一个文件夹：`卷子-XX.md`、`卷子-XX-答案.md`、`判分卡-XX.md`
 - `workspace/wrong-book/错题本.md` — 错题本
 - `workspace/preview/进度总览.md` — 进度总览
+- `workspace/records/zhenti-problems.json` — **真题**错题事实源（独立于 880，不进 `attempts.json`）
+- `workspace/wrong-book/真题错题本.md` — **真题**错题本（由 `scripts/zhenti_wrong_book.py` 渲染）
 
 ## 常用命令
 
@@ -76,6 +84,7 @@ Named workflow state files are the source of truth for every routed workflow.
 - Use one unique phase status line per phase, for example `> [P0] ⬜ 未开始`.
 - On resume after interruption, inspect the YAML frontmatter and current phase before acting.
 - Each workflow directory must contain a `routing.yaml`. After creating, changing, renaming, or deleting a workflow, run `.claude/scripts/sync-workflow-routing.sh`; the update is incomplete until `.claude/scripts/sync-workflow-routing.sh --check` passes.
+- State files and templates must match the state machine contract (phase token at line end, `## 异常记录` table present). After editing any `.claude/workflows/*/state-template.md` or `workspace/workflow-runs/*.workflow.md`, run `.claude/scripts/check-workflow-state.sh`.
 <!-- workflow-todo-state:end -->
 
 <!-- obsidian-content:claude:begin -->

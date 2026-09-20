@@ -1,0 +1,24 @@
+apiVersion: agent-platform/v1
+kind: Workflow
+metadata:
+  name: zhenti-exam
+  version: 0.1.0
+  description: "Track 考研数学真题 wrong-question intake, linking and review across sessions with resumable phase state. Independent from the 880 system."
+spec:
+  entrypoint: workflow.md
+  capabilities:
+    - exam.zhenti.ingest
+    - exam.zhenti.link
+    - exam.zhenti.record
+    - exam.zhenti.review
+    - exam.zhenti.render
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn:
+    - Skill/zhenti-wrong
+  lifecycle:
+    discoverable: true
+    deprecated: false
