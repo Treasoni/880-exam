@@ -275,9 +275,13 @@
         {
           "date": "2026-09-20",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-09-22",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
@@ -293,7 +297,8 @@
           "confidence": "medium",
           "note": "同为「用定积分求平面图形面积」，且同样以三角函数积分收尾"
         }
-      ]
+      ],
+      "review_updated": "2026-09-22"
     },
     "zt-2010-数二-解答19": {
       "module": "高数-多元函数微分学",
