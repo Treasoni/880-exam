@@ -66,7 +66,15 @@
           "confidence": "medium",
           "note": "同为导数的几何意义 / 求切线方程"
         }
-      ]
+      ],
+      "attempts": [
+        {
+          "date": "2026-09-22",
+          "grade": "correct"
+        }
+      ],
+      "review_state": "已重做",
+      "review_updated": "2026-09-22"
     },
     "zt-2010-数二-选择4": {
       "id": "zt-2010-数二-选择4",
