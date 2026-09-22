@@ -177,9 +177,13 @@
         {
           "date": "2026-09-20",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-09-22",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/线性代数/第四章：向量与方程组/错题本",
@@ -188,7 +192,8 @@
           "confidence": "medium",
           "note": "同为「向量组 I 可由向量组 II 线性表示」型命题判断 + 逐项排除（原题是李艳芳 900 题，不同题）"
         }
-      ]
+      ],
+      "review_updated": "2026-09-22"
     },
     "zt-2010-数二-填空13": {
       "id": "zt-2010-数二-填空13",
