@@ -39,7 +39,7 @@
           "grade": "correct"
         }
       ],
-      "review_state": "已重做",
+      "review_state": "已掌握",
       "review_updated": "2026-09-22"
     },
     "zt-2010-数二-选择3": {
@@ -73,7 +73,7 @@
           "grade": "correct"
         }
       ],
-      "review_state": "已重做",
+      "review_state": "已掌握",
       "review_updated": "2026-09-22"
     },
     "zt-2010-数二-选择4": {
@@ -152,7 +152,7 @@
           "grade": "correct"
         }
       ],
-      "review_state": "已重做",
+      "review_state": "已掌握",
       "links": [
         {
           "path": "external-notes/考研数学/二重积分/错题本",
@@ -183,7 +183,7 @@
           "grade": "correct"
         }
       ],
-      "review_state": "已重做",
+      "review_state": "已掌握",
       "links": [
         {
           "path": "external-notes/线性代数/第四章：向量与方程组/错题本",
@@ -214,7 +214,7 @@
           "grade": "correct"
         }
       ],
-      "review_state": "已重做",
+      "review_state": "已掌握",
       "links": [
         {
           "path": "external-notes/考研数学/高数-一元微分学/错题本",
@@ -281,7 +281,7 @@
           "grade": "correct"
         }
       ],
-      "review_state": "已重做",
+      "review_state": "已掌握",
       "links": [
         {
           "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
@@ -391,9 +391,13 @@
         {
           "date": "2026-09-20",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-09-22",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已掌握",
       "links": [
         {
           "path": "external-notes/考研数学/高数-一元微分学/错题本",
@@ -409,7 +413,8 @@
           "confidence": "high",
           "note": "本题第一步的「反推积分」正是原函数法的同一思路：把待证式里形式统一的部分包成一个辅助函数的导数（F'=f'-x²），再由端点关系收口。"
         }
-      ]
+      ],
+      "review_updated": "2026-09-22"
     }
   },
   "coverage": {}
