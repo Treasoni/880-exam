@@ -146,9 +146,13 @@
         {
           "date": "2026-09-20",
           "grade": "half"
+        },
+        {
+          "date": "2026-09-22",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/考研数学/二重积分/错题本",
@@ -157,7 +161,8 @@
           "confidence": "high",
           "note": "同一道题（例 14.1）：题干通项与四个选项逐字一致，答案同为 (D)"
         }
-      ]
+      ],
+      "review_updated": "2026-09-22"
     },
     "zt-2010-数二-选择7": {
       "id": "zt-2010-数二-选择7",
