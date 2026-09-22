@@ -25,9 +25,10 @@ def decode_literal_newlines(value):
 
     Extraction results are JSON strings, but some runs returned the two literal
     characters ``\\n`` instead of a newline.  Only decode ``\\n`` when it is
-    not the prefix of a LaTeX command such as ``\\neq``.
+    not the prefix of a LaTeX command such as ``\\neq``.  Decoder lives in
+    lib880 so the merge path and the render path share one definition.
     """
-    return re.sub(r"\\n(?![A-Za-z])", "\n", value)
+    return lib880.decode_literal_newlines(value)
 
 
 def load_journal(path):

@@ -5,10 +5,12 @@
   python3 scripts/wrong_book.py                     # 重新生成错题本
   python3 scripts/wrong_book.py --mark qid=已掌握   # 更新某题复习状态后重新生成
   python3 scripts/wrong_book.py --list-states       # 列出全部错题及状态
+  python3 scripts/wrong_book.py --check --all       # 检查盘面产物是否已陈旧（不写文件）
   # Windows 请把 python3 换成 py -3（如 py -3 scripts/wrong_book.py）
 """
 
 import argparse
+import difflib
 import re
 import sys
 from pathlib import Path
@@ -27,24 +29,28 @@ HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.*)$")
 def validate_solution_text(text, qid):
     """在写入错题本前拒绝会破坏 Obsidian 渲染的解析文本。
 
-    判据统一取自 lib880（CONTROL_CHAR_RE / normalize_math_delimiters），不再在本
-    文件另存一份正则——本次行内 ``\\(...\\)`` 漏检就是因为这里和 lint_content.py
-    各存了一份只查独立式的旧正则。独立式 ``\\[...\\]`` 与转义的反斜杠括号由
-    ``normalize_math_delimiters`` 统一拒绝（此处不再重复判一遍，避免同一问题报两次）。
+    判据统一取自 lib880（CONTROL_CHAR_RE / normalize_math_delimiters /
+    display_math_errors），不再在本文件另存一份正则——行内 ``\\(...\\)`` 漏检就是
+    因为这里和 lint_content.py 各存了一份只查独立式的旧正则。独立式 ``\\[...\\]``
+    与转义的反斜杠括号由 ``normalize_math_delimiters`` 统一拒绝（此处不再重复判一遍，
+    避免同一问题报两次）。
 
-    行内 ``\\(...\\)`` 由渲染层归一出 ``$...$``；归一失败、或归一后仍残留
-    LaTeX 定界符的解析一律拒绝写入。
+    字形换行与行内定界符由渲染层归一（``prepare_solution_text``）；归一前先解码
+    字面量 ``\\n``，否则整段解析只算一行、公式块根本无法成对识别。归一失败、
+    定界符残留、或独立公式块结构错误（``$$`` 多写/错位/丢失）一律拒绝写入。
     """
+    decoded = lib880.decode_literal_newlines(text)
     errors = []
-    if lib880.CONTROL_CHAR_RE.search(text):
+    if lib880.CONTROL_CHAR_RE.search(decoded):
         errors.append("含控制字符（检查 LaTeX 反斜杠是否被 Python 字符串转义）")
     try:
-        normalized = lib880.normalize_math_delimiters(text)
+        normalized = lib880.normalize_math_delimiters(decoded)
     except ValueError as exc:
         errors.append(str(exc))
     else:
         if lib880.LEGACY_INLINE_RE.search(normalized):
             errors.append("归一后仍残留 \\(...\\) 行内定界符；请改用 $...$")
+        errors.extend(lib880.display_math_errors(normalized))
     if errors:
         raise ValueError(f"题目 {qid} 的解析无法渲染：" + "；".join(errors))
 
@@ -122,9 +128,10 @@ def build_wrong_lists(schema, index, attempts):
 
 
 def render(schema, index, attempts, active, mastered, ext_links=None, analysis=None,
-           subject=lib880.SUBJECT_HIGH_MATH):
+           solution_overrides=None, subject=lib880.SUBJECT_HIGH_MATH):
     ext_links = ext_links or {}
     analysis = analysis or {"items": {}}
+    overrides = lib880.load_solution_overrides() if solution_overrides is None else solution_overrides
     total = len(active) + len(mastered)
     n_focus = sum(1 for e in active if e["priority"] == "重点")
     n_mastered = len(mastered)
@@ -175,11 +182,12 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
             if q.get("answer"):
                 lines.append(f"**答案：** {lib880.markdown_math_answer(q['answer'])}")
                 lines.append("")
-            if q.get("solution"):
+            solution = lib880.effective_solution(q, overrides)
+            if solution:
                 lines.append("**解析：**")
                 lines.append("")
                 lines.append(demote_solution_headings(
-                    lib880.normalize_math_delimiters(q["solution"]).strip(), 4))
+                    lib880.prepare_solution_text(solution), 4))
                 lines.append("")
             if e.get("paper_id"):
                 stem = lib880.paper_artifact_stems(subject, e["paper_id"])["paper"]
@@ -240,11 +248,12 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
                 if q.get("answer"):
                     lines.append(f"**答案：** {lib880.markdown_math_answer(q['answer'])}")
                     lines.append("")
-                if q.get("solution"):
+                solution = lib880.effective_solution(q, overrides)
+                if solution:
                     lines.append("**解析：**")
                     lines.append("")
                     lines.append(demote_solution_headings(
-                        lib880.normalize_math_delimiters(q["solution"]).strip(), 5))
+                        lib880.prepare_solution_text(solution), 5))
                     lines.append("")
                 if e.get("paper_id"):
                     stem = lib880.paper_artifact_stems(subject, e["paper_id"])["paper"]
@@ -280,26 +289,65 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
     return "\n".join(lines)
 
 
-def generate(subject=lib880.SUBJECT_HIGH_MATH):
-    """Regenerate one subject's wrong-book note and return its summary."""
+def build(subject=lib880.SUBJECT_HIGH_MATH):
+    """按当前事实源渲染错题本文本但不写盘（generate 与 --check 共用）。"""
     subject = lib880.normalize_subject(subject)
     schema = lib880.load_schema(subject)
     index = lib880.load_index(subject)
     lib880.build_index_map(index)
     attempts = lib880.load_attempts()
 
-    # 先校验事实源，再写生成产物，避免把坏公式写进错题本后才发现。
+    # 先校验事实源（含解析覆盖层），再生成产物，避免把坏公式写进错题本后才发现。
+    overrides = lib880.load_solution_overrides()
     for q in index["questions"]:
-        if q.get("solution"):
-            validate_solution_text(q["solution"], q["id"])
+        solution = lib880.effective_solution(q, overrides)
+        if solution:
+            validate_solution_text(solution, q["id"])
 
     active, mastered = build_wrong_lists(schema, index, attempts)
-    output_path = lib880.wrong_book_path(subject)
+    text = render(schema, index, attempts, active, mastered,
+                  lib880.load_external_links(), lib880.load_analysis(), overrides, subject)
+    return lib880.wrong_book_path(subject), text, active, mastered
+
+
+def generate(subject=lib880.SUBJECT_HIGH_MATH):
+    """Regenerate one subject's wrong-book note and return its summary."""
+    output_path, text, active, mastered = build(subject)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(
-        render(schema, index, attempts, active, mastered, lib880.load_external_links(), lib880.load_analysis(), subject),
-        encoding="utf-8")
+    output_path.write_text(text, encoding="utf-8")
     return output_path, active, mastered
+
+
+# 渲染里随当天变化的行，比对产物新旧时忽略
+_VOLATILE_PREFIXES = ("updated:",)
+
+
+def _stable_view(text):
+    return "\n".join(
+        line for line in text.splitlines()
+        if not line.startswith(_VOLATILE_PREFIXES)
+    )
+
+
+def check(subject=lib880.SUBJECT_HIGH_MATH, context=2):
+    """比对盘面上的错题本与按当前事实源渲染的结果，返回 (path, stale, diff 行)。
+
+    产物不会自动跟随事实源更新：索引修好、生成器收紧后，盘面上的旧文件仍可能
+    是坏的（2026-09-13 用户看到的坏渲染正是这种陈旧产物）。这里渲染一份内存副本
+    与磁盘内容比对，`updated:` 这类当天变化的行不参与比较。
+    """
+    path, text, _, _ = build(subject)
+    if not path.exists():
+        return path, True, ["（产物不存在，尚未生成）"]
+    on_disk = path.read_text(encoding="utf-8")
+    if _stable_view(on_disk) == _stable_view(text):
+        return path, False, []
+    diff = list(difflib.unified_diff(
+        _stable_view(on_disk).splitlines(),
+        _stable_view(text).splitlines(),
+        fromfile=f"{path.name}（盘面）", tofile=f"{path.name}（按事实源渲染）",
+        lineterm="", n=context))
+    return path, True, diff
 
 
 def main():
@@ -308,12 +356,37 @@ def main():
                     help="题库：high-math（默认）或 linear-algebra")
     ap.add_argument("--mark", action="append", default=[], help="qid=状态")
     ap.add_argument("--list-states", action="store_true")
+    ap.add_argument("--check", action="store_true",
+                    help="只比对盘面产物与事实源是否一致，不写文件；陈旧则退出码 1")
+    ap.add_argument("--all", action="store_true", help="配合 --check：两个科目都查")
     args = ap.parse_args()
 
     try:
         subject = lib880.normalize_subject(args.subject)
     except ValueError as exc:
         ap.error(str(exc))
+
+    if args.check:
+        subjects = ([lib880.SUBJECT_HIGH_MATH, lib880.SUBJECT_LINEAR_ALGEBRA]
+                    if args.all else [subject])
+        stale = 0
+        for subj in subjects:
+            path, is_stale, diff = check(subj)
+            rel = path.relative_to(lib880.ROOT)
+            if is_stale:
+                stale += 1
+                print(f"✗ {rel} 与事实源不一致（产物陈旧）")
+                for line in diff[:40]:
+                    print("    " + line)
+                if len(diff) > 40:
+                    print(f"    … 共 {len(diff)} 行 diff")
+            else:
+                print(f"✓ {rel} 与事实源一致")
+        if stale:
+            print("按事实源重刷：python3 scripts/wrong_book.py --subject <high-math|linear-algebra>")
+            sys.exit(1)
+        return
+
     schema = lib880.load_schema(subject)
     index = lib880.load_index(subject)
     lib880.build_index_map(index)

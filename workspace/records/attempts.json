@@ -1167,6 +1167,446 @@
       "when": "2026-09-12",
       "recorded_at": "2026-09-12T16:20:44+08:00",
       "note": ""
+    },
+    {
+      "qid": "la-c11-comprehensive-fill-004",
+      "paper_id": "la-paper-01",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T09:58:48+08:00",
+      "note": "错题本复习：用户重做正确"
+    },
+    {
+      "qid": "la-c12-comprehensive-fill-002",
+      "paper_id": "la-paper-01",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T10:00:55+08:00",
+      "note": "错题本复习：用户重做正确"
+    },
+    {
+      "qid": "la-c12-comprehensive-choice-004",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c09-comprehensive-choice-008",
+      "paper_id": "la-paper-02",
+      "grade": "wrong",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c10-basic-choice-003",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-basic-choice-010",
+      "paper_id": "la-paper-02",
+      "grade": "wrong",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c09-basic-choice-002",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c11-comprehensive-choice-001",
+      "paper_id": "la-paper-02",
+      "grade": "half",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c10-comprehensive-choice-004",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-comprehensive-choice-003",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c08-comprehensive-choice-006",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c09-comprehensive-choice-003",
+      "paper_id": "la-paper-02",
+      "grade": "wrong",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c11-comprehensive-fill-002",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c09-comprehensive-fill-001",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c09-basic-fill-001",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c10-comprehensive-fill-002",
+      "paper_id": "la-paper-02",
+      "grade": "wrong",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-basic-fill-002",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-comprehensive-fill-004",
+      "paper_id": "la-paper-02",
+      "grade": "half",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-comprehensive-solution-011",
+      "paper_id": "la-paper-02",
+      "grade": "half",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c11-comprehensive-solution-006",
+      "paper_id": "la-paper-02",
+      "grade": "half",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c09-basic-solution-004",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c10-comprehensive-solution-001",
+      "paper_id": "la-paper-02",
+      "grade": "wrong",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c09-comprehensive-solution-005",
+      "paper_id": "la-paper-02",
+      "grade": "half",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T11:03:25+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-solution-005",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T15:56:22+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c02-comprehensive-choice-016",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T16:04:45+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-choice-009",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T16:18:56+08:00",
+      "note": "错题本复习：用户重做正确"
+    },
+    {
+      "qid": "gs-c03-comprehensive-choice-002",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T16:31:22+08:00",
+      "note": "错题本复习：用户重做正确"
+    },
+    {
+      "qid": "gs-c03-basic-choice-009",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T16:47:40+08:00",
+      "note": "错题本复习：用户重做正确"
+    },
+    {
+      "qid": "gs-c01-basic-solution-003",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T16:47:59+08:00",
+      "note": "错题本复习：用户重做正确"
+    },
+    {
+      "qid": "gs-c03-basic-solution-004",
+      "paper_id": "paper-03",
+      "grade": "half",
+      "when": "2026-09-13",
+      "recorded_at": "2026-09-13T17:47:11+08:00",
+      "note": "错题本复习：6 小问中 Ⅰ/Ⅳ/Ⅵ 正确、Ⅴ 未回代、Ⅱ 符号错、Ⅲ 未完成，判半会"
+    },
+    {
+      "qid": "la-c11-comprehensive-choice-001",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-15",
+      "recorded_at": "2026-09-15T14:35:32+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-comprehensive-fill-004",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-15",
+      "recorded_at": "2026-09-15T14:41:19+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-basic-solution-004",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-09-15",
+      "recorded_at": "2026-09-15T14:54:19+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c09-comprehensive-solution-005",
+      "paper_id": "la-paper-02",
+      "grade": "wrong",
+      "when": "2026-09-15",
+      "recorded_at": "2026-09-15T15:06:56+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c11-comprehensive-solution-006",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-15",
+      "recorded_at": "2026-09-15T15:21:12+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-comprehensive-solution-011",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-15",
+      "recorded_at": "2026-09-15T15:43:22+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-fill-010",
+      "paper_id": "paper-03",
+      "grade": "wrong",
+      "when": "2026-09-16",
+      "recorded_at": "2026-09-16T09:43:48+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-choice-002",
+      "paper_id": "paper-03",
+      "grade": "wrong",
+      "when": "2026-09-16",
+      "recorded_at": "2026-09-16T10:41:02+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-choice-006",
+      "paper_id": "paper-02",
+      "grade": "wrong",
+      "when": "2026-09-16",
+      "recorded_at": "2026-09-16T10:41:02+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-fill-010",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-09-17",
+      "recorded_at": "2026-09-17T14:31:06+08:00",
+      "note": "错题重练（错题复习-02）：H1 曲线方程，重练正确"
+    },
+    {
+      "qid": "gs-c04-basic-solution-003",
+      "paper_id": "paper-03",
+      "grade": "wrong",
+      "when": "2026-09-17",
+      "recorded_at": "2026-09-17T14:39:43+08:00",
+      "note": "错题重练（错题复习-02）：H2 二元函数最值，方法正确但情形讨论不全、结论未达 e^{-1}"
+    },
+    {
+      "qid": "gs-c04-comprehensive-solution-019",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-09-17",
+      "recorded_at": "2026-09-17T14:39:47+08:00",
+      "note": "错题重练（错题复习-02）：H3 方程组确定的隐函数求导，重练正确（Cramer 行列式解得 dx/dy, dz/dy）"
+    },
+    {
+      "qid": "gs-c05-comprehensive-choice-002",
+      "paper_id": "paper-03",
+      "grade": "wrong",
+      "when": "2026-09-17",
+      "recorded_at": "2026-09-17T14:52:42+08:00",
+      "note": "错题重练（错题复习-02）：H4 二重积分比较大小，奇偶性化简正确但改为硬算 tan y^2 / sin y^2，未作比较、未给选项"
+    },
+    {
+      "qid": "gs-c05-comprehensive-choice-006",
+      "paper_id": "paper-02",
+      "grade": "correct",
+      "when": "2026-09-17",
+      "recorded_at": "2026-09-17T14:59:30+08:00",
+      "note": "错题重练（错题复习-02）：H5 二重积分定值，重练正确（设 A=∬_D f 为常数 → f=xy+A，比较 ∬_D f 与 ∬_D f(y,x)）"
+    },
+    {
+      "qid": "la-c09-comprehensive-choice-003",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-17",
+      "recorded_at": "2026-09-17T15:15:35+08:00",
+      "note": "错题重练（错题复习-02）：L1 向量组等价判定，重练正确（k1,k3≠0 ⇒ α1 可由 α2,α3 表示、α3 可由 α1,α2 表示 ⇒ {α1,α2} 与 {α2,α3} 等价，选 C）"
+    },
+    {
+      "qid": "la-c09-comprehensive-choice-008",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-17",
+      "recorded_at": "2026-09-17T15:38:32+08:00",
+      "note": "错题重练（错题复习-02）：L2 列满秩 A 时 AB 与 B 的行向量组等价，重练正确（ABX=0 与 BX=0 同解：Bα=0⇒ABα=0；ABα=0 且 r(A)=n⇒Bα∈N(A)={0}，同解即行向量组等价，选 B）"
+    },
+    {
+      "qid": "la-c09-comprehensive-solution-005",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-17",
+      "recorded_at": "2026-09-17T15:50:00+08:00",
+      "note": "错题重练（错题复习-02）：L3 特征向量表示与 A^n β，重练正确（(I) 解方程组得 β=2α1-2α2+α3；(II) 逐项 A^nαi=λi^n αi 得 2α1-2^{n+1}α2+3^n α3）"
+    },
+    {
+      "qid": "la-c10-comprehensive-fill-002",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-17",
+      "recorded_at": "2026-09-17T16:00:07+08:00",
+      "note": "错题重练（错题复习-02）：L4 代数余子式型正交矩阵解方程组，重练正确（A_ij=a_ij ⇒ A*=A^T，又 A*=A^{-1} ⇒ A 正交；X=A^Te3=(a31,a32,a33)^T，由正交性 a31^2+a32^2+a33^2=1 且 a33=1 ⇒ X=(0,0,1)^T）"
+    },
+    {
+      "qid": "la-c10-comprehensive-solution-001",
+      "paper_id": "la-paper-02",
+      "grade": "wrong",
+      "when": "2026-09-17",
+      "recorded_at": "2026-09-17T16:12:52+08:00",
+      "note": "错题重练（错题复习-02）：L5 由解向量组合求通解，重练错误（思路方向对：两非齐特之差为齐解；但 (1) 先解出单个 αi 走弯路且算错，α1=(7/2,3/2,-2,2) 被算成 (4,2,-2,3)，代回 2α3+3α1 不成立；(2) n-r(A)=2 需 2 个线性无关齐解，只给了 1 个 k 参数。正解：η*=(α1+α2)/2=(1/2,1,3/2,2)^T，η1=(7,4,-1,6)^T、η2=(12,2,-14,0)^T）"
+    },
+    {
+      "qid": "la-c12-basic-choice-010",
+      "paper_id": "la-paper-02",
+      "grade": "half",
+      "when": "2026-09-17",
+      "recorded_at": "2026-09-17T16:26:15+08:00",
+      "note": "错题重练（错题复习-02）：L6 二次型规范形，答案 B 正确但依据不成立——由 |A|=-2 只能得负特征值个数为奇数（1 或 3），不能排除 D；正解需看出 AB=BA(diag(1,2,-1)) ⇒ B^{-1}AB=Λ ⇒ A 特征值 1,2,-1"
+    },
+    {
+      "qid": "gs-c04-basic-solution-003",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-09-20",
+      "recorded_at": "2026-09-20T21:07:31+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-choice-002",
+      "paper_id": "paper-03",
+      "grade": "careless",
+      "when": "2026-09-20",
+      "recorded_at": "2026-09-20T21:20:23+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c10-comprehensive-solution-001",
+      "paper_id": "la-paper-02",
+      "grade": "wrong",
+      "when": "2026-09-20",
+      "recorded_at": "2026-09-20T21:34:55+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-basic-choice-010",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-09-20",
+      "recorded_at": "2026-09-20T21:37:05+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-comprehensive-solution-005",
+      "paper_id": "la-paper-01",
+      "grade": "correct",
+      "when": "2026-09-20",
+      "recorded_at": "2026-09-20T21:45:54+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -1275,8 +1715,8 @@
       "updated": "2026-09-03"
     },
     "la-c12-comprehensive-fill-002": {
-      "state": "已重做",
-      "updated": "2026-09-03"
+      "state": "已掌握",
+      "updated": "2026-09-13"
     },
     "la-c09-comprehensive-fill-001": {
       "state": "已掌握",
@@ -1343,8 +1783,8 @@
       "updated": "2026-09-11"
     },
     "gs-c03-comprehensive-choice-009": {
-      "state": "未复习",
-      "updated": "2026-09-11"
+      "state": "已掌握",
+      "updated": "2026-09-13"
     },
     "gs-c01-basic-choice-005": {
       "state": "已掌握",
@@ -1365,6 +1805,98 @@
     "gs-c01-comprehensive-fill-009": {
       "state": "已掌握",
       "updated": "2026-09-12"
+    },
+    "la-c11-comprehensive-fill-004": {
+      "state": "已掌握",
+      "updated": "2026-09-13"
+    },
+    "la-c11-comprehensive-choice-001": {
+      "state": "已掌握",
+      "updated": "2026-09-15"
+    },
+    "la-c12-comprehensive-fill-004": {
+      "state": "已掌握",
+      "updated": "2026-09-15"
+    },
+    "la-c12-comprehensive-solution-011": {
+      "state": "已掌握",
+      "updated": "2026-09-15"
+    },
+    "la-c11-comprehensive-solution-006": {
+      "state": "已掌握",
+      "updated": "2026-09-15"
+    },
+    "la-c09-comprehensive-solution-005": {
+      "state": "已掌握",
+      "updated": "2026-09-17"
+    },
+    "gs-c01-comprehensive-solution-005": {
+      "state": "已掌握",
+      "updated": "2026-09-13"
+    },
+    "gs-c02-comprehensive-choice-016": {
+      "state": "已掌握",
+      "updated": "2026-09-13"
+    },
+    "gs-c03-comprehensive-choice-002": {
+      "state": "已掌握",
+      "updated": "2026-09-13"
+    },
+    "gs-c03-basic-choice-009": {
+      "state": "已掌握",
+      "updated": "2026-09-13"
+    },
+    "gs-c01-basic-solution-003": {
+      "state": "已掌握",
+      "updated": "2026-09-13"
+    },
+    "gs-c03-basic-solution-004": {
+      "state": "已掌握",
+      "updated": "2026-09-15"
+    },
+    "gs-c03-comprehensive-fill-010": {
+      "state": "已掌握",
+      "updated": "2026-09-17"
+    },
+    "gs-c05-comprehensive-choice-002": {
+      "state": "未复习",
+      "updated": "2026-09-20"
+    },
+    "gs-c05-comprehensive-choice-006": {
+      "state": "已掌握",
+      "updated": "2026-09-17"
+    },
+    "gs-c04-basic-solution-003": {
+      "state": "已掌握",
+      "updated": "2026-09-20"
+    },
+    "gs-c04-comprehensive-solution-019": {
+      "state": "已掌握",
+      "updated": "2026-09-17"
+    },
+    "la-c09-comprehensive-choice-003": {
+      "state": "已掌握",
+      "updated": "2026-09-17"
+    },
+    "la-c09-comprehensive-choice-008": {
+      "state": "已掌握",
+      "updated": "2026-09-17"
+    },
+    "la-c10-comprehensive-fill-002": {
+      "state": "已掌握",
+      "updated": "2026-09-17"
+    },
+    "la-c10-comprehensive-solution-001": {
+      "state": "未复习",
+      "updated": "2026-09-20"
+    },
+    "la-c12-basic-choice-010": {
+      "state": "已掌握",
+      "updated": "2026-09-20"
+    },
+    "la-c12-comprehensive-solution-005": {
+      "state": "已掌握",
+      "updated": "2026-09-20"
     }
   }
 }

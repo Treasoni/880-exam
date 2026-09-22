@@ -22,6 +22,14 @@ LINEAR_ALGEBRA_WRONG_BOOK_PATH = ROOT / "workspace/wrong-book/线代错题本.md
 LINEAR_ALGEBRA_PROGRESS_PATH = ROOT / "workspace/preview/线代进度总览.md"
 EXTERNAL_LINKS_PATH = ROOT / "workspace/records/external-links.json"
 ANALYSIS_PATH = ROOT / "workspace/records/analysis.json"
+SOLUTION_OVERRIDES_PATH = ROOT / "workspace/records/solution-overrides.json"
+# 真题系统（zhenti-exam）：独立事实源与独立产物，不进 880 进度/配额
+ZHENTI_PROBLEMS_PATH = ROOT / "workspace/records/zhenti-problems.json"
+ZHENTI_WRONG_BOOK_PATH = ROOT / "workspace/wrong-book/真题错题本.md"
+# 真题记录的正文型字段。注意题干键是 ``stem`` 而非 880 索引用的 ``text``——两套
+# 事实源字段名不同，校验端必须各自用对的表，否则会去校验一个不存在的键：取出来是
+# None，全表零错误，检查静默空转。此处单一出处，渲染层与 lint 都引用它。
+ZHENTI_SOURCE_FIELDS = ("stem", "answer", "solution")
 
 
 # ``high-math`` is the historical/default workflow.  Keep its identifiers and
@@ -56,6 +64,62 @@ LEGACY_INLINE_RE = re.compile(r"(?<!\\)\\[()]")
 LEGACY_DISPLAY_RE = re.compile(r"(?<!\\)\\[\[\]]")
 _ESCAPED_BACKSLASH_PAREN_RE = re.compile(r"\\\\[()]")
 
+# 结构化提取（merge_extraction）用两个字符 ``\n`` 表示换行；残留到索引时渲染层会
+# 把整段解析挤成一行字面量 ``\n``，``$$`` 也就无法成对识别。
+#
+# 既不能全局替换（会把 ``\neq`` 改坏），也不能只按「``\n`` 后面是不是字母」判断：
+# 旧判据 ``(?![A-Za-z])`` 会漏掉 ``\nf (x)`` / ``\nS _ {1}`` / ``\nA (x)`` 这类
+# ``\n`` 后紧跟公式变量的换行残留——它们同样把整段解析挤成一行，正是本次错题本
+# 渲染故障的根因（13/20 道题的解析因此仍缺一个 ``$$`` 配对）。
+#
+# 判据改为「枚举真正以 n 开头的 LaTeX 命令」。但正则里的 ``\\n`` 已经吃掉了反斜杠
+# 和 n，否定前瞻看到的是命令名的**剩余部分**：``\neq`` 剩 ``eq``、``\nabla`` 剩
+# ``abla``、``\ne`` 剩 ``e``。所以下面列全名，再由 LATEX_N_COMMAND_TAILS 统一去掉
+# 开头那个 n 构成前瞻分支；若把全名直接塞进前瞻，每个分支都会落空，``\neq`` 反而
+# 会被解码成换行（上一版就是这样把 374 处 ``\neq`` 改成换行的）。
+# 尾部的 ``(?![A-Za-z])`` 要求按整条命令匹配：``\nearrow`` 不被 ``e`` 分支抢走，
+# ``\notin`` 不被 ``ot`` 分支抢走。
+#
+# 本库语料实测（两个索引的 text/answer/solution，405 处 ``\n``+字母）：真命令 383 处
+# （``eq`` 374、``e`` 6、``earrow`` 2、``Rightarrow`` 1），换行残留 22 处
+# （``f`` 8、``S`` 6、``F`` 3、``A`` 2、``I``/``L``/``V`` 各 1）。
+# 单字母命令（``\ne``/``\ni``/``\nu``）与「换行 + 变量 e/i/u」本就同形，文本本身
+# 无法区分；语料中逐条核对均为真命令，故按「保命令」处理——宁可漏解一个换行，
+# 也不把数学公式改坏。
+LATEX_N_COMMANDS = (
+    # 关系/否定符号（amssymb）
+    "nLeftrightarrow", "nleftrightarrow",
+    "nRightarrow", "nrightarrow", "nLeftarrow", "nleftarrow",
+    "ntrianglelefteq", "ntrianglerighteq", "ntriangleleft", "ntriangleright",
+    "nshortparallel", "nshortmid", "nparallel", "nmid", "nlsim",
+    "nsubseteqq", "nsupseteqq", "nsubseteq", "nsupseteq", "nsubset", "nsupset",
+    "nleqslant", "ngeqslant", "nleqq", "ngeqq", "nleq", "ngeq",
+    "nlessgtr", "ngtrless", "nless", "ngtr",
+    "npreccurlyeq", "nprecneqq", "nprecneq", "nprecsim", "npreceq", "nprec",
+    "nsucccurlyeq", "nsuccneqq", "nsuccneq", "nsuccsim", "nsucceq", "nsucc",
+    "nvdash", "nvDash", "nVdash", "nVDash",
+    "notin", "notni", "nexists",
+    "nsimeq", "nsime", "nsim", "ncong", "nasymp", "napprox", "nequiv",
+    "nwarrow", "nearrow",
+    # 普通符号
+    "nabla", "natural",
+    "neq", "ne", "neg", "not", "ni", "nu",
+    # 排版 / 空白 / 长度
+    "negthickspace", "negmedspace", "negthinspace",
+    "nobreakspace", "nolinebreak", "nonumber", "nobreak", "noindent",
+    "newenvironment", "newcommand", "newtheorem", "newcounter", "newlength",
+    "newsavebox", "newline", "newpage", "newif",
+)
+
+LATEX_N_COMMAND_TAILS = tuple(
+    sorted({c[1:] for c in LATEX_N_COMMANDS}, key=len, reverse=True))
+LITERAL_NEWLINE_RE = re.compile(
+    r"\\n(?!(?:" + "|".join(LATEX_N_COMMAND_TAILS) + r")(?![A-Za-z]))")
+
+# 独立公式块（单独占行的 $$）内部不应出现 Markdown 标题或题号；出现通常意味着
+# 多写、错位或丢失了一个 $$，把后续正文吞进了数学环境。
+DISPLAY_MATH_STRUCTURE_RE = re.compile(r"(?m)^\s*(?:#{1,6}\s|\*\*\d+\.\*\*)")
+
 
 def normalize_math_delimiters(text):
     """把 LaTeX 式行内定界符 ``\\(...\\)`` 归一为 Obsidian 的 ``$...$``。
@@ -88,6 +152,123 @@ def normalize_math_delimiters(text):
             raise ValueError(
                 f"归一行内定界符后第 {line_no} 行 $ 定界符不配对；请人工修正")
     return converted
+
+
+def decode_literal_newlines(value):
+    """把字面量 ``\\n``（反斜杠 + n 两个字符）解码为真实换行。
+
+    结构化提取的输出用 ``\\n`` 表示换行；这一步本该在合并（merge_extraction）时
+    完成，索引里若残留，渲染层会把整段解析挤成一行字面量 ``\\n``。
+
+    只解码不属于 LaTeX 命令的 ``\\n``（``LITERAL_NEWLINE_RE`` 按 ``LATEX_N_COMMANDS``
+    枚举真命令、取其去首字母的「命令剩余部分」做否定前瞻），以免把
+    ``\\neq`` / ``\\nabla`` / ``\\notin`` 改坏；禁止用全局 ``\\\\n`` 替换。
+    ``\\n`` 后跟公式变量（``\\nf (x)``、``\\nS _ {1}``）也算换行残留，必须解码，
+    否则整段解析仍被挤成一行、``$$`` 无法配对。
+    """
+    return LITERAL_NEWLINE_RE.sub("\n", str(value or ""))
+
+
+# 答案卷结构：章节标题 `## 一、选择题`，题干以 `**N.** ` 起头
+ANSWER_SECTION_RE = re.compile(r"^## *([一二三])、")
+ANSWER_QUESTION_RE = re.compile(r"^\*\*(\d+)\.\*\*[ \t]")
+
+
+def split_answer_sheet(text):
+    """把答案卷切成 ``{题号: 块文本}``，题号形如 ``一1``（章节序号 + 题号）。
+
+    切块是一切答案卷核验的基础：**块没切对时，「各块两版文本相同」是假绿**——
+    错分组或只切出一两块，比较结果会是「无差异」，看起来像「文件没被改动」。
+    所以调用方拿到结果后必须先跟期望题号集合比对（见
+    ``answer_sheet_key_errors``），不能只报「有无差异」。
+    """
+    blocks, section, key, buf = {}, None, None, []
+
+    def flush():
+        if key is not None:
+            blocks[key] = "\n".join(buf)
+
+    for line in str(text or "").split("\n"):
+        m = ANSWER_SECTION_RE.match(line)
+        if m:
+            flush()
+            section, key, buf = m.group(1), None, []
+            continue
+        m = ANSWER_QUESTION_RE.match(line)
+        if m and section:
+            flush()
+            key, buf = f"{section}{m.group(1)}", []
+            continue
+        if key is not None:
+            buf.append(line)
+    flush()
+    return blocks
+
+
+def answer_sheet_key_errors(paper_id, text):
+    """核验答案卷的题块集合与 ``papers.json`` 记录一一对应，返回错误说明列表。
+
+    期望集合取事实源记录的 ``paper_no``（如 ``一1``）——这是「本卷应该有哪些题」
+    的权威来源，缺块、多块、题号错位都能抓出来。判据必须锚定这个集合，而不是
+    「两版切块之间有无差异」：后者在切块本身出错时会伪装成「无改动」。
+    记录里查不到该卷时返回空列表（跳过，不误报）。
+    """
+    rec = next((p for p in load_papers().get("papers", [])
+                if p.get("paper_id") == paper_id), None)
+    if rec is None:
+        return []
+    expected = {q["paper_no"] for q in rec.get("questions", []) if q.get("paper_no")}
+    got = set(split_answer_sheet(text))
+    errors = []
+    missing = sorted(expected - got)
+    extra = sorted(got - expected)
+    if missing:
+        errors.append("答案卷缺少题块: " + "、".join(missing))
+    if extra:
+        errors.append("答案卷题块多出或题号错位: " + "、".join(extra))
+    return errors
+
+
+def display_math_errors(text):
+    """返回独立公式块（``$$``）的结构错误列表；渲染前置校验与 lint 共用同一判据。
+
+    仅把单独占行的 ``$$`` 视为独立公式定界符，避免误判行内公式。逐对扫描：
+    块内混入 Markdown 结构标记、或扫描结束时仍有未闭合的块，都说明 ``$$``
+    多写、错位或丢失（后一种会把后续题目正文吞进数学环境）。
+    """
+    errors = []
+    in_block = False
+    block_start = None
+    body = []
+    for line_no, line in enumerate(str(text or "").splitlines(), start=1):
+        if line.strip() != "$$":
+            if in_block:
+                body.append(line)
+            continue
+        if not in_block:
+            in_block = True
+            block_start = line_no
+            body = []
+            continue
+        if DISPLAY_MATH_STRUCTURE_RE.search("\n".join(body)):
+            errors.append(
+                f"第 {block_start}-{line_no} 行独立公式块混入 Markdown 结构标记，"
+                "可能存在多余或错位的 $$")
+        in_block = False
+        block_start = None
+        body = []
+    if in_block:
+        errors.append(f"第 {block_start} 行开始的独立公式块缺少结束 $$")
+    return errors
+
+
+def prepare_solution_text(value):
+    """渲染层统一的解析文本准备：解码字面量 ``\\n`` → 归一定界符 → 去首尾空白。
+
+    在写入产物前调用（``wrong_book.py`` / ``make_paper.py``），让事实源里的提取
+    残留（字面量 ``\\n``）与 LaTeX 式定界符都在同一处被吸收。
+    """
+    return normalize_math_delimiters(decode_literal_newlines(value)).strip()
 
 
 def markdown_math_answer(value):
@@ -436,6 +617,38 @@ def save_analysis(data):
     ANALYSIS_PATH.parent.mkdir(parents=True, exist_ok=True)
     ANALYSIS_PATH.write_text(
         json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def load_solution_overrides():
+    """读取题目级解析覆盖 {qid: 自定义解析文本}。
+
+    索引里的 ``solution`` 是解析册原文的忠实副本（见 ``build_linear_algebra_index.py``），
+    重建索引会从源文件重新拷贝，所以自定义讲解不能写回索引，只能走覆盖层：
+    渲染时优先取覆盖层，回退到解析册原文。任何产物里出现该题解析的地方都生效
+    （答案卷、错题本），且重建后不丢。
+
+    文件不存在返回空 dict（功能未启用）；JSON 损坏时告警但不阻断主流程。
+    """
+    if not SOLUTION_OVERRIDES_PATH.exists():
+        return {}
+    try:
+        data = json.loads(SOLUTION_OVERRIDES_PATH.read_text(encoding="utf-8"))
+    except ValueError as exc:
+        print(f"!! solution-overrides.json 解析失败，本次跳过解析覆盖: {exc}", file=sys.stderr)
+        return {}
+    overrides = {}
+    for qid, item in (data.get("solutions") or {}).items():
+        text = (item or {}).get("solution") if isinstance(item, dict) else item
+        if text:
+            overrides[qid] = text
+    return overrides
+
+
+def effective_solution(q, overrides=None):
+    """题目的最终解析：优先取覆盖层，回退到索引内的解析册原文。"""
+    if overrides is None:
+        overrides = load_solution_overrides()
+    return overrides.get(q.get("id")) or q.get("solution")
 
 
 def grade_score_ratio(schema, grade_key):

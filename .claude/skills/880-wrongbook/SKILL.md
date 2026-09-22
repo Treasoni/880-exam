@@ -18,11 +18,19 @@ description: 查看/重生成错题本，更新复习状态（未复习/已重�
    ```
    python3 scripts/wrong_book.py
    ```
+   改了事实源（`workspace/question-index.json` / `workspace/linear-algebra-question-index.json`）或 `scripts/` 生成器后，要对**全部**科目重生成（`--subject high-math` / `--subject linear-algebra`），**不能只重建被点名的那几条**——残留缺陷会随下一次生成流回产物。
 3. **更新复习状态**：
    ```
    python3 scripts/wrong_book.py --mark gs-c01-basic-choice-003=已掌握
    ```
    状态可选：未复习 / 已重做 / 已掌握。
+4. **校验（必做，两步都要绿）**：
+   ```
+   python3 scripts/lint_content.py                  # 先事实源、后全部产物
+   python3 scripts/wrong_book.py --check --all      # 盘面产物是否已跟上事实源
+   ```
+   - `lint_content.py` 会**先校验两个索引**的 `text`/`answer`/`solution`，再校验产物：坏公式、字面 `\n`、错位 `$$` 要在事实源就被拦住，不能等它流进产物。
+   - `--check` 报「产物陈旧」= 盘面文件与事实源不一致（生成器写入前校验只管新写入，旧文件不会自动重写）；按提示重跑生成器，**不要手工改产物**。
    - Windows 把 `python3` 换成 `py -3`（或 `make wrongbook PYTHON='py -3'`）。
 
 ## 重练流程（对话式）

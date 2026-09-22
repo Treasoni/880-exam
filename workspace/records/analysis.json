@@ -41,6 +41,20 @@
       "step": "第一次洛必达后，看到新的 0/0 型便再次对分子分母求导并写出 $f''(x)$；但题目只知 $f''(1)$ 存在，并未保证去心邻域内存在 $f''(x)$，因此把点处二阶导数存在扩大成邻域内二阶可导，违反了再次使用洛必达的前提。",
       "advice": "只用一次洛必达后停止求导，将分子分母同除以 $(x-1)$；分子按 $f''(1)$ 的定义取极限，分母第一项按 $f'(1)$ 的定义取极限，第二项利用 $f''(1)$ 存在推出 $f'(x)$ 在 $x=1$ 处连续，最终得到 $\\frac{f''(1)}{2[f'(1)]^2}$。",
       "date": "2026-09-03"
+    },
+    "la-c09-comprehensive-solution-005": {
+      "paper_id": "la-paper-02",
+      "cause": "方法选择错误",
+      "step": "第 (Ⅱ) 问没有思路、未起步：算完 (Ⅰ) 得到 $\\beta=2\\alpha_1-2\\alpha_2+\\alpha_3$ 后，没有把 $\\beta$ 的特征向量表示与 $A^{n}\\alpha_i=\\lambda_i^{n}\\alpha_i$ 接起来，卡在「$A$ 的高次幂作用在向量上怎么算」。",
+      "advice": "见到「求 $A^{n}\\beta$」的固定套路：①把 $\\beta$ 表示为特征向量的线性组合 $\\beta=\\sum k_i\\alpha_i$；②由 $A\\alpha_i=\\lambda_i\\alpha_i$ 两边反复左乘 $A$ 得 $A^{n}\\alpha_i=\\lambda_i^{n}\\alpha_i$；③直接 $A^{n}\\beta=\\sum k_i\\lambda_i^{n}\\alpha_i$，最后合并分量。$\\beta$ 不是特征向量时不要硬乘矩阵，先问「能不能用特征向量表示」。",
+      "date": "2026-09-15"
+    },
+    "gs-c03-comprehensive-fill-010": {
+      "paper_id": "paper-03",
+      "cause": "计算/代数错误",
+      "step": "前面全对：定义域定为 $x<-1$、换元 $x=\\sec t$、并用 $|\\tan t|=-\\tan t$ 正确去绝对值，得 $y=-t+C$（$t=\\arccos\\frac{1}{x}$）。唯一出错在最后一步代入初值求 $C$：把 $\\arccos\\left(-\\frac{1}{2}\\right)$ 当成了 $\\arccos\\frac{1}{2}=\\frac{\\pi}{3}$，得 $C=\\frac{\\pi}{3}$；而 $\\arccos\\left(-\\frac{1}{2}\\right)=\\frac{2\\pi}{3}$，故 $C$ 应为 $\\frac{2\\pi}{3}$。",
+      "advice": "求出特解后把已知点代回验算——本题 $y=-\\arccos\\frac{1}{x}+\\frac{\\pi}{3}$ 在 $x=-2$ 处得 $-\\frac{\\pi}{3}\\neq 0$，一眼可查出。负自变量处的反三角函数要单独记牢：$\\arccos\\left(-\\frac{1}{2}\\right)=\\frac{2\\pi}{3}$，正确结果 $y=-\\arccos\\frac{1}{x}+\\frac{2\\pi}{3}=\\arcsin\\frac{1}{x}+\\frac{\\pi}{6}$。",
+      "date": "2026-09-16"
     }
   }
 }

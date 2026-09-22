@@ -1,7 +1,7 @@
 # Skill Invocation
 
 ## 技能列表
-<!-- skill-registry:managed ["880-analysis","880-build-index","880-grade","880-paper","880-progress","880-wrongbook","ask-matt","batch-grill-me","claude-handoff","code-review","codebase-design","defuddle","design-an-interface","diagnosing-bugs","digest","domain-modeling","edit-article","git-guardrails-claude-code","grill-me","grill-with-docs","grilling","handoff","implement","improve-codebase-architecture","json-canvas","loop-me","maintain-learnings","manifest-platform","migrate-to-shoehorn","obsidian-bases","obsidian-cli","obsidian-markdown","obsidian-vault","prompt-cache-optimizer","prototype","qa","request-refactor-plan","research","resolving-merge-conflicts","scaffold-exercises","setup-matt-pocock-skills","setup-pre-commit","setup-ts-deep-modules","sync-skill-registry","tdd","teach","to-questionnaire","to-spec","to-tickets","triage","ubiquitous-language","wayfinder","wizard","workflow-todo-state","writing-beats","writing-fragments","writing-great-skills","writing-shape"] -->
+<!-- skill-registry:managed ["880-analysis","880-build-index","880-grade","880-paper","880-progress","880-wrongbook","ask-matt","batch-grill-me","claude-handoff","code-review","codebase-design","defuddle","design-an-interface","diagnosing-bugs","digest","domain-modeling","edit-article","git-guardrails-claude-code","grill-me","grill-with-docs","grilling","handoff","implement","improve-codebase-architecture","json-canvas","loop-me","maintain-learnings","manifest-platform","migrate-to-shoehorn","obsidian-bases","obsidian-cli","obsidian-markdown","obsidian-vault","prompt-cache-optimizer","prototype","qa","request-refactor-plan","research","resolving-merge-conflicts","scaffold-exercises","setup-matt-pocock-skills","setup-pre-commit","setup-ts-deep-modules","sync-skill-registry","tdd","teach","to-questionnaire","to-spec","to-tickets","triage","ubiquitous-language","wayfinder","wizard","workflow-todo-state","writing-beats","writing-fragments","writing-great-skills","writing-shape","zhenti-wrong"] -->
 
 #### 未分类
 
@@ -64,6 +64,7 @@
 | `writing-fragments` | Writing, explore — mine raw fragments, no structure yet. | Writing, explore — mine raw fragments, n… |
 | `writing-great-skills` | Reference for writing and editing skills well — the vocabulary and principles… | Reference for writing and editing skills… |
 | `writing-shape` | Writing, exploit — shape raw material into an article, paragraph by paragraph. | Writing, exploit — shape raw material in… |
+| `zhenti-wrong` | 收录/查看/重练考研数学真题错题（数一/数二/数三），维护真题错题本与年份覆盖表。 | 真题错题、真题错题本、收录真题、记一道真题、这道真题、真题重练、真题复盘、真题覆盖 |
 
 #### 工具发现
 

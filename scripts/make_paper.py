@@ -265,6 +265,7 @@ def render_paper(subject, schema, paper_id, sections_plan, questions_by_id):
 def render_answers(subject, schema, paper_id, sections_plan):
     num = f"{lib880.paper_number(paper_id):02d}"
     stems = lib880.paper_artifact_stems(subject, paper_id)
+    overrides = lib880.load_solution_overrides()
     lines = []
     lines.append("---")
     lines.append("type: 答案卷")
@@ -294,10 +295,12 @@ def render_answers(subject, schema, paper_id, sections_plan):
             answer = lib880.markdown_math_answer(q["answer"]) if q.get("answer") else "（见解析）"
             lines.append("**答案：** " + (f"**{answer}**" if q.get("answer") else answer))
             lines.append("")
-            if q.get("solution"):
-                # 与错题本同一渲染层归一：解析里的 \(...\) 属 LaTeX 式定界符，
-                # Obsidian 不渲染，须先转成 $...$（见 obsidian-content.md）。
-                lines.append(lib880.normalize_math_delimiters(q["solution"]).strip())
+            # 解析优先取覆盖层（solution-overrides.json），回退解析册原文。
+            solution = lib880.effective_solution(q, overrides)
+            if solution:
+                # 与错题本同一渲染层归一：先解码字面量 \n，再把 \(...\) 这类
+                # Obsidian 不渲染的 LaTeX 式定界符转成 $...$（见 obsidian-content.md）。
+                lines.append(lib880.prepare_solution_text(solution))
                 lines.append("")
             if q.get("answer_status") == "missing":
                 lines.append("> ⚠️ 解析册中未找到该题答案。")

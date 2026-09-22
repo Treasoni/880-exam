@@ -21,6 +21,7 @@ import lib880
 import make_paper
 import merge_extraction
 import wrong_book
+import zhenti_wrong_book
 
 
 class Lib880Test(unittest.TestCase):
@@ -332,6 +333,46 @@ class WrongBookTest(unittest.TestCase):
 
         self.assertEqual([e["q"]["id"] for e in active], ["active"])
         self.assertEqual([e["q"]["id"] for e in mastered], ["mastered"])
+
+
+class ZhentiWrongBookTest(unittest.TestCase):
+    """真题覆盖表的状态派生（回归：整卷聚合，不是首条记录说了算）。"""
+
+    MODULES = {"高数": ["微分方程", "高数-一元函数积分学"], "线代": []}
+
+    def _doc(self, coverage=None, attempts=True):
+        problems = {
+            # ★ 本题故意排在本卷最前且**没有** attempts：旧实现逐条 setdefault 时
+            # 由它定整卷状态，会把整卷误锁成「未做」。
+            "zt-2010-数二-选择1": {
+                "module": "微分方程", "year": 2010, "paper": "数二", "no": "选择1",
+                "stem": "题", "answer": "A", "solution": "解",
+            },
+            "zt-2010-数二-解答18": {
+                "module": "高数-一元函数积分学", "year": 2010, "paper": "数二", "no": "解答18",
+                "stem": "题", "answer": "A", "solution": "解",
+            },
+        }
+        if attempts:
+            problems["zt-2010-数二-解答18"]["attempts"] = [
+                {"date": "2026-09-20", "grade": "wrong"}]
+        return {"problems": problems, "coverage": coverage or {}}
+
+    def _coverage_row(self, doc):
+        text = zhenti_wrong_book.render(lib880.load_schema(), doc, self.MODULES)
+        return [ln for ln in text.splitlines()
+                if ln.startswith("| 2010-数二 |")][0]
+
+    def test_coverage_status_aggregates_over_whole_paper(self):
+        # 本卷 2 题中 1 题有作答 → 整卷「做过」；若某卷全无作答仍为「未做」。
+        self.assertIn("| 做过 | 2 |", self._coverage_row(self._doc()))
+        self.assertIn("| 未做 | 2 |", self._coverage_row(self._doc(attempts=False)))
+
+    def test_explicit_coverage_beats_derived_status(self):
+        doc = self._doc(coverage={"2010-数二": {"status": "已复盘", "note": "整卷过完"}})
+        row = self._coverage_row(doc)
+        self.assertIn("| 已复盘 |", row)
+        self.assertIn("整卷过完", row)
 
 
 if __name__ == "__main__":

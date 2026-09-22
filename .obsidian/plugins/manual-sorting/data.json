@@ -12,7 +12,8 @@
     },
     "/": {
       "children": [
-        "个人服务器.md",
+        "真题",
+        "assets",
         "external-notes",
         "880",
         "scripts",
@@ -3019,6 +3020,44 @@
       ],
       "sortOrder": "custom"
     },
+    "真题": {
+      "children": [
+        "真题/2010-2019考研数学二真题"
+      ],
+      "sortOrder": "custom"
+    },
+    "真题/2010-2019考研数学二真题": {
+      "children": [
+        "真题/2010-2019考研数学二真题/images",
+        "真题/2010-2019考研数学二真题/1b109864-1e67-4242-be6a-e618903f6e6e_content_list.json",
+        "真题/2010-2019考研数学二真题/1b109864-1e67-4242-be6a-e618903f6e6e_content_list_v2.json",
+        "真题/2010-2019考研数学二真题/1b109864-1e67-4242-be6a-e618903f6e6e_model.json",
+        "真题/2010-2019考研数学二真题/1b109864-1e67-4242-be6a-e618903f6e6e_origin.pdf",
+        "真题/2010-2019考研数学二真题/block_list.json",
+        "真题/2010-2019考研数学二真题/full.md",
+        "真题/2010-2019考研数学二真题/layout.json"
+      ],
+      "sortOrder": "custom"
+    },
+    "真题/2010-2019考研数学二真题/images": {
+      "children": [
+        "真题/2010-2019考研数学二真题/images/1d5215c16bb746dfb5b2a139d32874c7d8aa8c168fdc5bc878fb4b55f0383db7.jpg",
+        "真题/2010-2019考研数学二真题/images/8bacb0ab66f337c0422d96f278a97a745192a6ea8f0bca0da94c8d33919ce06c.jpg",
+        "真题/2010-2019考研数学二真题/images/89eda803d4a6890799aaa44d7d52c3eba72be2142e4aedfefdd95e52020620f1.jpg",
+        "真题/2010-2019考研数学二真题/images/130ff4a0b5ca6954cc2a74fda88558887f2793247d5e641895504a11f2dce066.jpg",
+        "真题/2010-2019考研数学二真题/images/4171dc8a48cfdbe74bec69ad3d05436c4a28714b5fc80920d1fc1995233fa229.jpg",
+        "真题/2010-2019考研数学二真题/images/4926ec3fa853a3a45bcddaee5a26d3c6d971f8cc2efadd06bdc11c4ca979d979.jpg",
+        "真题/2010-2019考研数学二真题/images/28046739c93881ea5ca2dd2a4be8de499174ef11254d9dfeaa2d5960fa765ff9.jpg",
+        "真题/2010-2019考研数学二真题/images/ac0d713b09848e687a8e5279f808cec2b281638f0946b0f96909fa687d9bbf11.jpg",
+        "真题/2010-2019考研数学二真题/images/c6b24f7127fd09c6911035743cd6a9384470720dce9758ff9b12d16ddef45a2a.jpg",
+        "真题/2010-2019考研数学二真题/images/d574044d5c00f7c204bdae9c5cbe8138f5f9d5e9b9972880050e612babb61cab.jpg"
+      ],
+      "sortOrder": "custom"
+    },
+    "assets": {
+      "children": [],
+      "sortOrder": "custom"
+    },
     "docs": {
       "children": [
         "docs/adr",
@@ -3029,6 +3068,7 @@
     },
     "docs/adr": {
       "children": [
+        "docs/adr/0006-zhenti-system-independent-of-880.md",
         "docs/adr/0001-answers-from-solution-book.md",
         "docs/adr/0002-repo-as-source-of-truth.md",
         "docs/adr/0003-paper-and-sampling-model.md",
@@ -3080,6 +3120,7 @@
     },
     "external-notes/考研数学/0-基础知识/assets": {
       "children": [
+        "external-notes/考研数学/0-基础知识/assets/二重积分-极坐标交换次序分块示意图.png",
         "external-notes/考研数学/0-基础知识/assets/常用平面图形",
         "external-notes/考研数学/0-基础知识/assets/高数必背公式",
         "external-notes/考研数学/0-基础知识/assets/limit-continuity-differentiability-relation-20260724.png"
@@ -4970,6 +5011,7 @@
     },
     "scripts": {
       "children": [
+        "scripts/zhenti_wrong_book.py",
         "scripts/build_linear_algebra_index.py",
         "scripts/__pycache__",
         "scripts/build-question-index.py",
@@ -5578,6 +5620,7 @@
     },
     "workspace/papers": {
       "children": [
+        "workspace/papers/la-paper-03",
         "workspace/papers/paper-04",
         "workspace/papers/la-paper-02",
         "workspace/papers/paper-03",
@@ -5600,6 +5643,14 @@
         "workspace/papers/la-paper-02/线代卷子-02.md",
         "workspace/papers/la-paper-02/线代卷子-02-答案.md",
         "workspace/papers/la-paper-02/线代判分卡-02.md"
+      ],
+      "sortOrder": "custom"
+    },
+    "workspace/papers/la-paper-03": {
+      "children": [
+        "workspace/papers/la-paper-03/线代卷子-03.md",
+        "workspace/papers/la-paper-03/线代卷子-03-答案.md",
+        "workspace/papers/la-paper-03/线代判分卡-03.md"
       ],
       "sortOrder": "custom"
     },
@@ -5627,6 +5678,14 @@
       ],
       "sortOrder": "custom"
     },
+    "workspace/papers/paper-04": {
+      "children": [
+        "workspace/papers/paper-04/卷子-04.md",
+        "workspace/papers/paper-04/卷子-04-答案.md",
+        "workspace/papers/paper-04/判分卡-04.md"
+      ],
+      "sortOrder": "custom"
+    },
     "workspace/preview": {
       "children": [
         "workspace/preview/线代进度总览.md",
@@ -5636,6 +5695,8 @@
     },
     "workspace/records": {
       "children": [
+        "workspace/records/solution-overrides.json",
+        "workspace/records/zhenti-problems.json",
         "workspace/records/analysis.json",
         "workspace/records/attempts.json",
         "workspace/records/external-links.json",
@@ -5645,12 +5706,15 @@
     },
     "workspace/workflow-runs": {
       "children": [
+        "workspace/workflow-runs/错题复习-02.workflow.md",
+        "workspace/workflow-runs/错题复习.workflow.md",
         "workspace/workflow-runs/880-exam.workflow.md"
       ],
       "sortOrder": "custom"
     },
     "workspace/wrong-book": {
       "children": [
+        "workspace/wrong-book/真题错题本.md",
         "workspace/wrong-book/线代错题本.md",
         "workspace/wrong-book/images",
         "workspace/wrong-book/错题本.md"
@@ -5659,15 +5723,13 @@
     },
     "workspace/wrong-book/images": {
       "children": [
+        "workspace/wrong-book/images/二重积分-极坐标交换次序分块示意图.png",
+        "workspace/wrong-book/images/zt-2010-数二-解答18.png",
+        "workspace/wrong-book/images/zt-2010-数二-解答18-建系与阴影区域示意图.png",
+        "workspace/wrong-book/images/zt-2010-数二-解答18-三角换元换限示意图.png",
+        "workspace/wrong-book/images/zt-2010-数二-解答20-极转直对照示意图.png",
+        "workspace/wrong-book/images/zt-2010-数二-解答21-区间分拆双中值示意图.png",
         "workspace/wrong-book/images/心形线-弧长示意图.png"
-      ],
-      "sortOrder": "custom"
-    },
-    "workspace/papers/paper-04": {
-      "children": [
-        "workspace/papers/paper-04/卷子-04.md",
-        "workspace/papers/paper-04/卷子-04-答案.md",
-        "workspace/papers/paper-04/判分卡-04.md"
       ],
       "sortOrder": "custom"
     }

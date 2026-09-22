@@ -264,9 +264,16 @@ def render(schema, doc, modules):
     cov = {}
     for key, v in (doc.get("coverage") or {}).items():
         cov[key] = {"status": v.get("status", "未做"), "note": v.get("note", "")}
-    for e in items:
-        key = f"{e['year']}-{e['paper']}"
-        cov.setdefault(key, {"status": "做过" if attempts_of(e["p"]) else "未做", "note": ""})
+    # 派生状态按「年份-卷种」**整卷聚合**：本卷任一条有作答即算「做过」。
+    # 不能用逐条 setdefault——那等于拿本卷第一条记录定整卷状态，首条恰好没作答
+    # 就把整卷误锁成「未做」（2010-数二 8 题里 6 题有 attempts，却显示「未做」）。
+    # 事实源里手写的 coverage 覆盖仍然优先。
+    for key in {f"{e['year']}-{e['paper']}" for e in items}:
+        if key in cov:
+            continue
+        done = any(attempts_of(e["p"]) for e in items
+                   if f"{e['year']}-{e['paper']}" == key)
+        cov[key] = {"status": "做过" if done else "未做", "note": ""}
     if cov:
         L.append("| 年份-卷种 | 状态 | 本册题数 | 备注 |")
         L.append("| --- | --- | --- | --- |")

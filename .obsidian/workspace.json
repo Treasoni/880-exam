@@ -4,39 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "98386262e227a2cf",
+        "id": "f8ad75e80d7fa606",
         "type": "tabs",
         "children": [
           {
-            "id": "436a50b22630892a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "workspace/papers/la-paper-02/线代卷子-02.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "线代卷子-02"
-            }
-          },
-          {
-            "id": "69c0681557d95be1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "workspace/wrong-book/错题本.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "错题本"
-            }
-          },
-          {
-            "id": "ca69cd11d32e592f",
+            "id": "3d1e895ea777c913",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -48,9 +20,51 @@
               "icon": "lucide-file",
               "title": "线代错题本"
             }
+          },
+          {
+            "id": "7e445c610e19c1d8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/wrong-book/线代错题本.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "线代错题本"
+            }
+          },
+          {
+            "id": "b1c4de80f507f097",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/la-paper-03/线代卷子-03-答案.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "线代卷子-03-答案"
+            }
+          },
+          {
+            "id": "e65af894ab0bc42f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/la-paper-03/线代判分卡-03.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "线代判分卡-03"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -192,7 +206,7 @@
               "state": {
                 "file": "workspace/wrong-book/线代错题本.md",
                 "followCursor": false,
-                "showSearch": false,
+                "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
@@ -210,11 +224,30 @@
             }
           },
           {
-            "id": "db19ae777812cdea",
+            "id": "b4b561f7809652dc",
             "type": "leaf",
             "state": {
               "type": "claudian-view",
-              "state": {},
+              "state": {
+                "tabWorkspace": {
+                  "version": 1,
+                  "openTabs": [
+                    {
+                      "tabId": "tab-1789811409398-ygmr8vo",
+                      "conversationId": "conv-1789811522601-onhdtsudl"
+                    },
+                    {
+                      "tabId": "tab-1789823654705-joggjse",
+                      "conversationId": "conv-1789823692409-juzl47i47"
+                    },
+                    {
+                      "tabId": "tab-1789908968076-9htz0xx",
+                      "conversationId": "conv-1789908974750-qycd6kgvp"
+                    }
+                  ],
+                  "activeTabId": "tab-1789908968076-9htz0xx"
+                }
+              },
               "icon": "bot",
               "title": "Claudian"
             }
@@ -224,7 +257,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 359.2109375
+    "width": 465.28515625
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -241,41 +274,60 @@
       "obsidian-language-learner:打开统计": false,
       "obsidian-language-learner:单词列表": false,
       "obsidian42-brat:BRAT": false,
-      "claudian:Open Claudian": false,
       "obsidian-excalidraw-plugin:新建绘图文件": false,
       "terminal:Open terminal": false,
       "notebook-navigator:Notebook Navigator": false,
-      "custom-sort:Toggle custom sorting": false
+      "custom-sort:Toggle custom sorting": false,
+      "realclaudian:Open Claudian": false
     }
   },
   "active": "9f7d7ea400c72fad",
   "lastOpenFiles": [
-    "个人服务器.md",
-    "assets/个人服务器/file-20260912195900878.png",
-    "assets/个人服务器/file-20260912195745413.png",
-    "assets/个人服务器/file-20260912195725109.png",
-    "assets/个人服务器/file-20260912195612798.png",
-    "assets/个人服务器/file-20260912195539578.png",
-    "assets/个人服务器/file-20260912195028985.png",
-    "assets/个人服务器/file-20260912194909112.png",
-    "assets/个人服务器",
-    "assets",
+    "workspace/workflow-runs/错题复习-02.workflow.md.plCKRT",
     "workspace/wrong-book/错题本.md",
-    "workspace/papers/la-paper-02/线代卷子-02-答案.md",
-    "workspace/papers/paper-04/卷子-04.md",
-    "workspace/papers/paper-04/卷子-04-答案.md",
-    "workspace/papers/paper-04/判分卡-04.md",
-    "workspace/papers/paper-04",
+    "workspace/wrong-book/真题错题本.md",
     "workspace/wrong-book/线代错题本.md",
+    "workspace/wrong-book/images/zt-2010-数二-解答21-区间分拆双中值示意图.png",
+    "workspace/wrong-book/images/zt-2010-数二-解答20-极转直对照示意图.png",
+    "workspace/wrong-book/images/zt-2010-数二-解答18-三角换元换限示意图.png",
+    "workspace/wrong-book/images/zt-2010-数二-解答18-建系与阴影区域示意图.png",
+    "workspace/wrong-book/images/zt-2010-数二-解答18.png",
+    "真题/2010-2019考研数学二真题/images/d574044d5c00f7c204bdae9c5cbe8138f5f9d5e9b9972880050e612babb61cab.jpg",
+    "真题/2010-2019考研数学二真题/images/ac0d713b09848e687a8e5279f808cec2b281638f0946b0f96909fa687d9bbf11.jpg",
+    "真题/2010-2019考研数学二真题/images/c6b24f7127fd09c6911035743cd6a9384470720dce9758ff9b12d16ddef45a2a.jpg",
+    "真题/2010-2019考研数学二真题/images/8bacb0ab66f337c0422d96f278a97a745192a6ea8f0bca0da94c8d33919ce06c.jpg",
+    "真题/2010-2019考研数学二真题/images/89eda803d4a6890799aaa44d7d52c3eba72be2142e4aedfefdd95e52020620f1.jpg",
+    "真题/2010-2019考研数学二真题/layout.json",
+    "真题/2010-2019考研数学二真题/images",
+    "真题/2010-2019考研数学二真题/full.md",
+    "真题/2010-2019考研数学二真题/block_list.json",
+    "真题/2010-2019考研数学二真题/1b109864-1e67-4242-be6a-e618903f6e6e_origin.pdf",
+    "真题/2010-2019考研数学二真题/1b109864-1e67-4242-be6a-e618903f6e6e_model.json",
+    "真题/2010-2019考研数学二真题/1b109864-1e67-4242-be6a-e618903f6e6e_content_list.json",
+    "真题/2010-2019考研数学二真题/1b109864-1e67-4242-be6a-e618903f6e6e_content_list_v2.json",
+    "真题/2010-2019考研数学二真题",
+    "真题/2010-2019考研数学二真题 .pdf-9fdbe1c7-e989-4350-9925-99fc6913d9d8/1b109864-1e67-4242-be6a-e618903f6e6e_content_list.json",
+    "真题/2010-2019考研数学二真题 .pdf-9fdbe1c7-e989-4350-9925-99fc6913d9d8/layout.json",
+    "真题/2010-2019考研数学二真题 .pdf-9fdbe1c7-e989-4350-9925-99fc6913d9d8/full.md",
+    "docs/adr/0006-zhenti-system-independent-of-880.md",
+    "workspace/workflow-runs/错题复习-02.workflow.md",
+    "workspace/papers/la-paper-03/线代卷子-03.md",
+    "workspace/papers/la-paper-03/线代判分卡-03.md",
+    "workspace/papers/la-paper-03/线代卷子-03-答案.md",
+    "workspace/papers/paper-04/判分卡-04.md",
+    "workspace/papers/paper-04/卷子-04-答案.md",
+    "workspace/papers/paper-04/卷子-04.md",
+    "workspace/papers/paper-04/_lint负样本.md",
+    "workspace/workflow-runs/_negtest.workflow.md",
+    "workspace/workflow-runs/错题复习.workflow.md",
+    "workspace/papers/la-paper-02/线代卷子-02-答案.md",
+    "workspace/papers/la-paper-02/线代判分卡-02.md",
+    "workspace/papers/la-paper-02/线代卷子-02.md",
+    "workspace/preview/线代进度总览.md",
+    "个人服务器.md",
     "workspace/papers/paper-01/卷子-01.md",
     "workspace/papers/paper-03/卷子-03.md",
     "workspace/papers/paper-02/判分卡-02.md",
-    "workspace/papers/paper-02/卷子-02.md",
-    "workspace/papers/paper-03/判分卡-03.md",
-    "workspace/preview/线代进度总览.md",
-    "workspace/preview/进度总览.md",
-    "workspace/papers/la-paper-02/线代判分卡-02.md",
-    "workspace/papers/la-paper-02/线代卷子-02.md",
-    "workspace/papers/paper-03/卷子-03-答案.md"
+    "workspace/papers/paper-02/卷子-02.md"
   ]
 }
