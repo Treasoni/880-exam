@@ -208,9 +208,13 @@
         {
           "date": "2026-09-20",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-09-22",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/考研数学/高数-一元微分学/错题本",
@@ -226,7 +230,8 @@
           "confidence": "high",
           "note": "同为「距离的速率」勾股型：$s^{2} = x^{2} + y^{2}$ 两边对 $t$ 求导再代值，与本题机制相同"
         }
-      ]
+      ],
+      "review_updated": "2026-09-22"
     },
     "zt-2010-数二-解答17": {
       "module": "高数-一元微分学",
