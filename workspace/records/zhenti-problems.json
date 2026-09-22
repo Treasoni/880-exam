@@ -355,6 +355,10 @@
         {
           "date": "2026-09-20",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-09-22",
+          "grade": "half"
         }
       ],
       "review_state": "未复习",
