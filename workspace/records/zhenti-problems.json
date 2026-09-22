@@ -32,7 +32,15 @@
           "confidence": "medium",
           "note": "同为解的结构反推，错题27 正文内部也链了它"
         }
-      ]
+      ],
+      "attempts": [
+        {
+          "date": "2026-09-22",
+          "grade": "correct"
+        }
+      ],
+      "review_state": "已重做",
+      "review_updated": "2026-09-22"
     },
     "zt-2010-数二-选择3": {
       "id": "zt-2010-数二-选择3",
