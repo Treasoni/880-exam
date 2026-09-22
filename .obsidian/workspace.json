@@ -242,7 +242,7 @@
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
-                      "conversationId": "conv-1789908974750-qycd6kgvp"
+                      "conversationId": "conv-1790038173572-46z80sgiz"
                     }
                   ],
                   "activeTabId": "tab-1789908968076-9htz0xx"
@@ -253,7 +253,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -281,8 +281,10 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "9f7d7ea400c72fad",
+  "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题错题复习.workflow.md.R8Jhsg",
+    "workspace/workflow-runs/真题错题复习.workflow.md",
     "workspace/workflow-runs/错题复习-02.workflow.md.plCKRT",
     "workspace/wrong-book/错题本.md",
     "workspace/wrong-book/真题错题本.md",
@@ -307,7 +309,6 @@
     "真题/2010-2019考研数学二真题/1b109864-1e67-4242-be6a-e618903f6e6e_content_list_v2.json",
     "真题/2010-2019考研数学二真题",
     "真题/2010-2019考研数学二真题 .pdf-9fdbe1c7-e989-4350-9925-99fc6913d9d8/1b109864-1e67-4242-be6a-e618903f6e6e_content_list.json",
-    "真题/2010-2019考研数学二真题 .pdf-9fdbe1c7-e989-4350-9925-99fc6913d9d8/layout.json",
     "真题/2010-2019考研数学二真题 .pdf-9fdbe1c7-e989-4350-9925-99fc6913d9d8/full.md",
     "docs/adr/0006-zhenti-system-independent-of-880.md",
     "workspace/workflow-runs/错题复习-02.workflow.md",
@@ -327,7 +328,6 @@
     "个人服务器.md",
     "workspace/papers/paper-01/卷子-01.md",
     "workspace/papers/paper-03/卷子-03.md",
-    "workspace/papers/paper-02/判分卡-02.md",
-    "workspace/papers/paper-02/卷子-02.md"
+    "workspace/papers/paper-02/判分卡-02.md"
   ]
 }
