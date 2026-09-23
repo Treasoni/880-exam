@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/papers/paper-04/判分卡-04.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "真题错题本"
+              "title": "判分卡-04"
             }
           }
         ],
@@ -218,7 +218,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/papers/paper-04/判分卡-04.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -257,9 +257,13 @@
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
                       "conversationId": "conv-1790038173572-46z80sgiz"
+                    },
+                    {
+                      "tabId": "tab-1790061594608-a0amw1a",
+                      "conversationId": "conv-1790061628174-k0nfoiqgb"
                     }
                   ],
-                  "activeTabId": "tab-1789908968076-9htz0xx"
+                  "activeTabId": "tab-1790061594608-a0amw1a"
                 }
               },
               "icon": "bot",
@@ -297,12 +301,13 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/papers/paper-04/卷子-04.md",
+    "workspace/wrong-book/真题错题本.md",
     "workspace/wrong-book/线代错题本.md",
     "workspace/workflow-runs/真题错题复习.workflow.md.R8Jhsg",
     "workspace/workflow-runs/真题错题复习.workflow.md",
     "workspace/workflow-runs/错题复习-02.workflow.md.plCKRT",
     "workspace/wrong-book/错题本.md",
-    "workspace/wrong-book/真题错题本.md",
     "workspace/wrong-book/images/zt-2010-数二-解答21-区间分拆双中值示意图.png",
     "workspace/wrong-book/images/zt-2010-数二-解答20-极转直对照示意图.png",
     "workspace/wrong-book/images/zt-2010-数二-解答18-三角换元换限示意图.png",
@@ -330,7 +335,6 @@
     "workspace/papers/la-paper-03/线代卷子-03-答案.md",
     "workspace/papers/paper-04/判分卡-04.md",
     "workspace/papers/paper-04/卷子-04-答案.md",
-    "workspace/papers/paper-04/卷子-04.md",
     "workspace/papers/paper-04/_lint负样本.md",
     "workspace/workflow-runs/_negtest.workflow.md",
     "workspace/workflow-runs/错题复习.workflow.md",
