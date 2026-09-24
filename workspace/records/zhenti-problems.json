@@ -373,9 +373,13 @@
         {
           "date": "2026-09-22",
           "grade": "half"
+        },
+        {
+          "date": "2026-09-24",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/考研数学/二重积分/错题本",
@@ -391,7 +395,8 @@
           "confidence": "high",
           "note": "同为「极坐标面积元素里的 $r$ 驱动凑微分」：该条是 $r$ 去凑无理式的微分，本题是 $r$ 与 $\\sin\\theta$ 拼成 $y$ 后凑 $\\mathrm{d}(1-x^{2}+y^{2})$"
         }
-      ]
+      ],
+      "review_updated": "2026-09-24"
     },
     "zt-2010-数二-解答21": {
       "module": "高数-一元微分学",

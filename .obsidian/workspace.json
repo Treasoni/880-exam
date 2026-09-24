@@ -83,12 +83,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/papers/la-paper-03/线代卷子-03.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "真题错题本"
+              "title": "线代卷子-03"
             }
           }
         ],
@@ -232,7 +232,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/papers/la-paper-03/线代卷子-03.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -313,16 +313,18 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "9f7d7ea400c72fad",
+  "active": "9adfb30f48fc2b6e",
   "lastOpenFiles": [
+    "workspace/papers/la-paper-03/线代判分卡-03.md",
+    "workspace/papers/la-paper-03/线代卷子-03.md",
+    "workspace/papers/paper-04/卷子-04.md",
+    "workspace/wrong-book/线代错题本.md",
+    "workspace/wrong-book/错题本.md",
+    "workspace/wrong-book/真题错题本.md",
     "workspace/workflow-runs/真题错题复习-02.workflow.md.TIbtzE",
     "workspace/workflow-runs/真题错题复习-02.workflow.md",
     "workspace/papers/paper-03/卷子-03.md",
-    "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-04/判分卡-04.md",
-    "workspace/papers/paper-04/卷子-04.md",
-    "workspace/wrong-book/真题错题本.md",
-    "workspace/wrong-book/线代错题本.md",
     "workspace/workflow-runs/真题错题复习.workflow.md.R8Jhsg",
     "workspace/workflow-runs/真题错题复习.workflow.md",
     "workspace/workflow-runs/错题复习-02.workflow.md.plCKRT",
@@ -344,12 +346,9 @@
     "真题/2010-2019考研数学二真题/1b109864-1e67-4242-be6a-e618903f6e6e_model.json",
     "真题/2010-2019考研数学二真题/1b109864-1e67-4242-be6a-e618903f6e6e_content_list.json",
     "真题/2010-2019考研数学二真题/1b109864-1e67-4242-be6a-e618903f6e6e_content_list_v2.json",
-    "真题/2010-2019考研数学二真题",
     "真题/2010-2019考研数学二真题 .pdf-9fdbe1c7-e989-4350-9925-99fc6913d9d8/full.md",
     "docs/adr/0006-zhenti-system-independent-of-880.md",
     "workspace/workflow-runs/错题复习-02.workflow.md",
-    "workspace/papers/la-paper-03/线代卷子-03.md",
-    "workspace/papers/la-paper-03/线代判分卡-03.md",
     "workspace/papers/la-paper-03/线代卷子-03-答案.md",
     "workspace/papers/paper-04/卷子-04-答案.md",
     "workspace/papers/paper-04/_lint负样本.md",
