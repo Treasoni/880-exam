@@ -325,9 +325,13 @@
         {
           "date": "2026-09-22",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-09-24",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/考研数学/高数-多元函数微分学/错题本",
@@ -350,7 +354,8 @@
           "confidence": "medium",
           "note": "都围绕「换变量后旧变量与新变量的关系」：该条是反求函数表达式，本题是问 $u=g(\\xi,\\eta)$ 与 $u=f(x,y)$ 是不是同一个函数"
         }
-      ]
+      ],
+      "review_updated": "2026-09-24"
     },
     "zt-2010-数二-解答20": {
       "module": "二重积分",
