@@ -91,7 +91,8 @@
               "title": "线代卷子-03-答案"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -231,7 +232,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-04/卷子-04.md",
+                "file": "workspace/papers/paper-04/卷子-04-答案.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -316,10 +317,10 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e65af894ab0bc42f",
+  "active": "153d717f83aa6690",
   "lastOpenFiles": [
-    "workspace/papers/paper-04/判分卡-04.md",
     "workspace/papers/paper-04/卷子-04.md",
+    "workspace/papers/paper-04/判分卡-04.md",
     "workspace/papers/paper-04/卷子-04-答案.md",
     "workspace/papers/la-paper-03/线代卷子-03-答案.md",
     "workspace/papers/la-paper-03/线代判分卡-03.md",
