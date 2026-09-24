@@ -83,12 +83,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/paper-03/卷子-03.md",
+                "file": "workspace/wrong-book/真题错题本.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "卷子-03"
+              "title": "真题错题本"
             }
           }
         ],
@@ -232,7 +232,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-03/卷子-03.md",
+                "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -274,7 +274,7 @@
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
-                      "conversationId": "conv-1790061628174-k0nfoiqgb"
+                      "conversationId": "conv-1790213440519-9y25kvyy1"
                     }
                   ],
                   "activeTabId": "tab-1790061594608-a0amw1a"
@@ -285,7 +285,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -313,8 +313,11 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "9adfb30f48fc2b6e",
+  "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题错题复习-02.workflow.md.TIbtzE",
+    "workspace/workflow-runs/真题错题复习-02.workflow.md",
+    "workspace/papers/paper-03/卷子-03.md",
     "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-04/判分卡-04.md",
     "workspace/papers/paper-04/卷子-04.md",
@@ -357,8 +360,6 @@
     "workspace/papers/la-paper-02/线代卷子-02.md",
     "workspace/preview/线代进度总览.md",
     "个人服务器.md",
-    "workspace/papers/paper-01/卷子-01.md",
-    "workspace/papers/paper-03/卷子-03.md",
-    "workspace/papers/paper-02/判分卡-02.md"
+    "workspace/papers/paper-01/卷子-01.md"
   ]
 }
