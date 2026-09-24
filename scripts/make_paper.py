@@ -7,11 +7,13 @@
   python3 scripts/make_paper.py --subject linear-algebra  # 拼线代独立卷
   python3 scripts/make_paper.py --ignore-extension  # 不使用拓展题
   python3 scripts/make_paper.py --no-weakness       # 忽略弱点浮动
+  python3 scripts/make_paper.py --rebuild-answers all   # 只按事实源重刷答案卷（不动判分卡/卷子）
   # Windows 请把 python3 换成 py -3（如 py -3 scripts/make_paper.py）
 """
 
 import argparse
 import random
+import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -23,6 +25,38 @@ TYPE_ZH = {"choice": "选择题", "fill": "填空题", "solution": "解答题"}
 DIFF_ZH = {"basic": "基础题", "comprehensive": "综合题", "extension": "拓展题"}
 TYPE_ORDER = {"choice": "一", "fill": "二", "solution": "三"}
 CN = "零一二三四五六七八九"
+
+
+def existing_date(path):
+    """读已产出物的 frontmatter `date`（创建日），用于重建时保留。
+
+    规范里 `date` 是创建日、`updated` 才是修改日；渲染函数过去两者都写今天，
+    于是每次重建都把创建日冲成当天（paper-04 的 date 就是这么坏的）。
+    """
+    if not path.exists():
+        return None
+    head = re.match(r"^---\n(.*?)\n---", path.read_text(encoding="utf-8"), re.DOTALL)
+    if not head:
+        return None
+    m = re.search(r"(?m)^date:[ \t]*(\S+)[ \t]*$", head.group(1))
+    return m.group(1) if m else None
+
+
+# 每次渲染都会随当天变化的行；比对内容新旧时忽略，避免无改动也刷新 updated
+_VOLATILE_PREFIXES = ("updated:",)
+
+
+def write_if_changed(path, text, label):
+    """内容（忽略 `updated:`）未变则不写盘，返回是否真的写了。"""
+    if path.exists():
+        stable = lambda s: "\n".join(l for l in s.splitlines()
+                                     if not l.startswith(_VOLATILE_PREFIXES))
+        if stable(path.read_text(encoding="utf-8")) == stable(text):
+            print(f"未变更（跳过写入）：{path}")
+            return False
+    path.write_text(text, encoding="utf-8")
+    print(f"已写入{label}：{path}")
+    return True
 
 
 def allocate(weights, target):
@@ -177,7 +211,7 @@ def pick_cell(schema, index, attempts, chapter_no, type_key, k, ignore_extension
     return picked
 
 
-def render_paper(subject, schema, paper_id, sections_plan, questions_by_id):
+def render_paper(subject, schema, paper_id, sections_plan, questions_by_id, created=None):
     num = f"{lib880.paper_number(paper_id):02d}"
     stems = lib880.paper_artifact_stems(subject, paper_id)
     solution_score = sum(schema["paper"]["sections"]["solution"].get("score_seq", []))
@@ -189,7 +223,7 @@ def render_paper(subject, schema, paper_id, sections_plan, questions_by_id):
     lines.append("type: 卷子")
     lines.append(f"paper_id: {paper_id}")
     lines.append(f"paper_no: \"{num}\"")
-    lines.append(f"date: {lib880.today_str()}")
+    lines.append(f"date: {created or lib880.today_str()}")
     lines.append(f"updated: {lib880.today_str()}")
     lines.append(f"subject: {schema['subject']}")
     lines.append(f"duration_minutes: {schema['paper']['duration_minutes']}")
@@ -320,7 +354,7 @@ def render_answers(subject, schema, paper_id, sections_plan, created=None):
     return "\n".join(lines)
 
 
-def render_grading_card(subject, schema, paper_id, sections_plan):
+def render_grading_card(subject, schema, paper_id, sections_plan, created=None):
     """生成判分卡：每题一个任务清单复选框（对/错/不会/半会/粗心），阅读视图可直接点击勾选。"""
     num = f"{lib880.paper_number(paper_id):02d}"
     stems = lib880.paper_artifact_stems(subject, paper_id)
@@ -329,7 +363,7 @@ def render_grading_card(subject, schema, paper_id, sections_plan):
     lines.append("---")
     lines.append("type: 判分卡")
     lines.append(f"paper_id: {paper_id}")
-    lines.append(f"date: {lib880.today_str()}")
+    lines.append(f"date: {created or lib880.today_str()}")
     lines.append(f"updated: {lib880.today_str()}")
     lines.append(f"subject: {schema['subject']}")
     lines.append(f"tags: [{schema['subject']}, 880, 判分卡]")
@@ -364,17 +398,8 @@ def render_grading_card(subject, schema, paper_id, sections_plan):
     return "\n".join(lines)
 
 
-def rebuild_paper(subject, schema, index, papers, attempts, paper_id, ap):
-    """从 papers.json 记录重建已存在卷子的产物（不换题）。
-
-    判分卡总是重建（无状态，全空勾不影响已判数据）；
-    卷子/答案卷仅在无判分记录时重建（保护已回填的判分表与 status）。
-    """
-    record = next((p for p in papers["papers"] if p["paper_id"] == paper_id), None)
-    if record is None:
-        ap.error(f"找不到卷子记录 {paper_id}（workspace/records/papers.json）")
-
-    # 按 paper_no 顺序取回同一批题，禁止重新抽题
+def sections_plan_of(record, index, paper_id, ap):
+    """按 paper_no 顺序取回该卷的同一批题，禁止重新抽题。"""
     tmp = {"choice": [], "fill": [], "solution": []}
     for q in record["questions"]:
         qi = index["by_id"].get(q["qid"])
@@ -385,25 +410,64 @@ def rebuild_paper(subject, schema, index, papers, attempts, paper_id, ap):
         except (ValueError, IndexError):
             ap.error(f"{paper_id} 的题目 {q['qid']} paper_no 异常: {q['paper_no']}")
         tmp[q["section"]].append((pos, qi))
-    sections_plan = {sec: [qi for _, qi in sorted(items, key=lambda t: t[0])]
-                     for sec, items in tmp.items()}
+    return {sec: [qi for _, qi in sorted(items, key=lambda t: t[0])]
+            for sec, items in tmp.items()}
 
+
+def refresh_answer_sheet(subject, schema, index, record, ap):
+    """只重刷答案卷（题级标题 / 解析降级 / 覆盖层改动后同步）。
+
+    答案卷是「索引 + 解析覆盖层」的纯投影，不含任何用户输入，可随时重刷：
+    不碰判分卡（保留待判勾选），也不碰卷子（保留已回填的判分表与 status）。
+    """
+    paper_id = record["paper_id"]
+    sections_plan = sections_plan_of(record, index, paper_id, ap)
+    lib880.paper_dir(paper_id).mkdir(parents=True, exist_ok=True)
+    answer_path = lib880.paper_artifact_paths(subject, paper_id)["answers"]
+    write_if_changed(
+        answer_path,
+        render_answers(subject, schema, paper_id, sections_plan,
+                       created=existing_date(answer_path)),
+        "答案卷")
+    return answer_path
+
+
+def rebuild_paper(subject, schema, index, papers, attempts, paper_id, ap):
+    """从 papers.json 记录重建已存在卷子的产物（不换题）。
+
+    判分卡总是重建（无状态，全空勾不影响已判数据）；
+    卷子/答案卷仅在无判分记录时重建（保护已回填的判分表与 status）。
+    只想同步答案卷时用 --rebuild-answers（不动判分卡与卷子）。
+    """
+    record = next((p for p in papers["papers"] if p["paper_id"] == paper_id), None)
+    if record is None:
+        ap.error(f"找不到卷子记录 {paper_id}（workspace/records/papers.json）")
+
+    sections_plan = sections_plan_of(record, index, paper_id, ap)
     artefacts = lib880.paper_artifact_paths(subject, paper_id)
     lib880.paper_dir(paper_id).mkdir(parents=True, exist_ok=True)
     has_attempts = any(a.get("paper_id") == paper_id for a in attempts["attempts"])
 
     card_path = artefacts["card"]
-    card_path.write_text(render_grading_card(subject, schema, paper_id, sections_plan), encoding="utf-8")
+    card_path.write_text(
+        render_grading_card(subject, schema, paper_id, sections_plan,
+                            created=existing_date(card_path)),
+        encoding="utf-8")
     print(f"已重建判分卡：{card_path}")
 
     if not has_attempts:
         paper_path = artefacts["paper"]
         answer_path = artefacts["answers"]
-        paper_path.write_text(render_paper(subject, schema, paper_id, sections_plan, index["by_id"]),
-                              encoding="utf-8")
-        answer_path.write_text(render_answers(subject, schema, paper_id, sections_plan), encoding="utf-8")
-        print(f"已重建卷子：{paper_path}")
-        print(f"已重建答案：{answer_path}")
+        write_if_changed(
+            paper_path,
+            render_paper(subject, schema, paper_id, sections_plan, index["by_id"],
+                         created=existing_date(paper_path)),
+            "卷子")
+        write_if_changed(
+            answer_path,
+            render_answers(subject, schema, paper_id, sections_plan,
+                           created=existing_date(answer_path)),
+            "答案卷")
     else:
         print(f"该卷已有判分记录，跳过卷子/答案重建（保护已回填的判分表与 status）")
 
@@ -420,10 +484,30 @@ def main():
                     help="仅替换尚无判分记录的同编号卷子；防止意外覆盖学习记录")
     ap.add_argument("--rebuild", metavar="PAPER_ID", default=None,
                     help="从 papers.json 记录重建已存在卷子的产物（不换题）；判分卡总是重建，卷子/答案仅在未判分时重建")
+    ap.add_argument("--rebuild-answers", metavar="PAPER_ID|all", default=None,
+                    help="只重刷答案卷（不碰判分卡与卷子）；all 覆盖两个科目全部卷子")
     args = ap.parse_args()
 
     attempts = lib880.load_attempts()
     papers = lib880.load_papers()
+
+    if args.rebuild_answers:
+        records = papers["papers"]
+        if args.rebuild_answers != "all":
+            records = [p for p in records if p["paper_id"] == args.rebuild_answers]
+            if not records:
+                ap.error(f"找不到卷子记录 {args.rebuild_answers}（workspace/records/papers.json）")
+        loaded = {}
+        for record in records:
+            subject = lib880.subject_from_paper(record)
+            if subject not in loaded:
+                schema = lib880.load_schema(subject)
+                index = lib880.load_index(subject)
+                lib880.build_index_map(index)
+                loaded[subject] = (schema, index)
+            schema, index = loaded[subject]
+            refresh_answer_sheet(subject, schema, index, record, ap)
+        return
 
     if args.rebuild:
         record = next((p for p in papers["papers"] if p["paper_id"] == args.rebuild), None)
