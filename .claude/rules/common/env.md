@@ -81,7 +81,6 @@ APP_PORT=3000
 
 # API 密钥加供应商或服务前缀
 OPENAI_API_KEY=
-MINIMAX_API_KEY=
 
 # 数据库
 DATABASE_URL=

@@ -253,9 +253,13 @@
         {
           "date": "2026-09-22",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-09-24",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/考研数学/高数-一元微分学/错题本",
@@ -264,7 +268,8 @@
           "confidence": "high",
           "note": "同为参数方程求二阶导主线：一阶导当中间变量、链式法则漏项与化简优先；本题再叠一层「已知二阶导反求 ψ(t)」的两次积分"
         }
-      ]
+      ],
+      "review_updated": "2026-09-24"
     },
     "zt-2010-数二-解答18": {
       "module": "高数-一元函数积分学",
