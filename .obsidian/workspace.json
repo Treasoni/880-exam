@@ -287,7 +287,7 @@
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
-                      "conversationId": "conv-1790252104194-956gzd4zw"
+                      "conversationId": "conv-1790254963192-idpmr7o0a"
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
@@ -302,7 +302,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -330,7 +330,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "b4b561f7809652dc",
+  "active": "9f7d7ea400c72fad",
   "lastOpenFiles": [
     "workspace/papers/paper-04/判分卡-04.md",
     "workspace/papers/paper-04/卷子-04.md",
