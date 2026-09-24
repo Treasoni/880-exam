@@ -262,7 +262,7 @@ def render_paper(subject, schema, paper_id, sections_plan, questions_by_id):
     return "\n".join(lines)
 
 
-def render_answers(subject, schema, paper_id, sections_plan):
+def render_answers(subject, schema, paper_id, sections_plan, created=None):
     num = f"{lib880.paper_number(paper_id):02d}"
     stems = lib880.paper_artifact_stems(subject, paper_id)
     overrides = lib880.load_solution_overrides()
@@ -270,7 +270,7 @@ def render_answers(subject, schema, paper_id, sections_plan):
     lines.append("---")
     lines.append("type: 答案卷")
     lines.append(f"paper_id: {paper_id}")
-    lines.append(f"date: {lib880.today_str()}")
+    lines.append(f"date: {created or lib880.today_str()}")
     lines.append(f"updated: {lib880.today_str()}")
     lines.append(f"subject: {schema['subject']}")
     lines.append(f"tags: [{schema['subject']}, 880, 答案]")
@@ -289,6 +289,10 @@ def render_answers(subject, schema, paper_id, sections_plan):
             lines.append(f"## {TYPE_ORDER[type_key]}、{TYPE_ZH[type_key]}")
         lines.append("")
         for idx, q in enumerate(sections_plan[type_key], start=1):
+            # 题级标题：答案卷动辄上千行，大纲靠 `### 第 N 题` 按题跳转。
+            # 题干行仍保留 `**N.**` 题号——split_answer_sheet 靠它切块核验。
+            lines.append(f"### 第 {idx} 题")
+            lines.append("")
             # 题目原文（与卷子保持一致），再给答案与解析
             lines.append(f"**{idx}.** {q.get('text', '').strip()}")
             lines.append("")
@@ -299,8 +303,11 @@ def render_answers(subject, schema, paper_id, sections_plan):
             solution = lib880.effective_solution(q, overrides)
             if solution:
                 # 与错题本同一渲染层归一：先解码字面量 \n，再把 \(...\) 这类
-                # Obsidian 不渲染的 LaTeX 式定界符转成 $...$（见 obsidian-content.md）。
-                lines.append(lib880.prepare_solution_text(solution))
+                # Obsidian 不渲染的 LaTeX 式定界符转成 $...$（见 obsidian-content.md）；
+                # 自定义解析常自带 `### 总体思路` 等板块标题，再降一级到题级标题之下
+                # （item_level=3 → `####`），否则大纲里会平铺出一串没有归属的条目。
+                prepared = lib880.prepare_solution_text(solution)
+                lines.append(lib880.demote_solution_headings(prepared, 3))
                 lines.append("")
             if q.get("answer_status") == "missing":
                 lines.append("> ⚠️ 解析册中未找到该题答案。")

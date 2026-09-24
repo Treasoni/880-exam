@@ -120,6 +120,9 @@ LITERAL_NEWLINE_RE = re.compile(
 # 多写、错位或丢失了一个 $$，把后续正文吞进了数学环境。
 DISPLAY_MATH_STRUCTURE_RE = re.compile(r"(?m)^\s*(?:#{1,6}\s|\*\*\d+\.\*\*)")
 
+# Markdown 标题行；供 demote_solution_headings 把解析内部标题降到嵌套层之下
+HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.*)$")
+
 
 def normalize_math_delimiters(text):
     """把 LaTeX 式行内定界符 ``\\(...\\)`` 归一为 Obsidian 的 ``$...$``。
@@ -269,6 +272,38 @@ def prepare_solution_text(value):
     残留（字面量 ``\\n``）与 LaTeX 式定界符都在同一处被吸收。
     """
     return normalize_math_delimiters(decode_literal_newlines(value)).strip()
+
+
+def demote_solution_headings(text, item_level):
+    """把解析文本内部的 Markdown 标题降到条目标题之下，保证嵌套排版。
+
+    两个渲染层共用这一份实现（原先只在 ``wrong_book.py``，答案卷改版后
+    ``make_paper.py`` 也要用）：
+
+    - 错题本条目：待复习条目 ``item_level=4``、已掌握归档条目 ``item_level=5``；
+    - 答案卷题目：题级标题 ``### 第 N 题``，故 ``item_level=3``，解析板块落到 ``####``。
+
+    解析中最浅的标题被降到 item_level+1 级，更深的标题保持相对层级，
+    最深不超过 6 级（Obsidian 支持的最大标题深度）。不含标题的解析原样返回。
+    """
+    levels = []
+    for line in text.splitlines():
+        m = HEADING_RE.match(line)
+        if m:
+            levels.append(len(m.group(1)))
+    if not levels:
+        return text
+    base = min(levels)
+    out = []
+    for line in text.splitlines():
+        m = HEADING_RE.match(line)
+        if m:
+            lvl = len(m.group(1))
+            new_lvl = min(6, item_level + 1 + (lvl - base))
+            out.append("#" * new_lvl + " " + m.group(2).strip())
+        else:
+            out.append(line)
+    return "\n".join(out)
 
 
 def markdown_math_answer(value):
