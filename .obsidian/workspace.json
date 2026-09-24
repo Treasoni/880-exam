@@ -27,6 +27,20 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "workspace/papers/paper-04/卷子-04.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "卷子-04"
+            }
+          },
+          {
+            "id": "e7562effaae5676e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "workspace/papers/paper-04/卷子-04-答案.md",
                 "mode": "source",
                 "source": false
@@ -232,7 +246,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-04/卷子-04-答案.md",
+                "file": "workspace/papers/paper-04/卷子-04.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -289,7 +303,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -317,11 +331,11 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "b4b561f7809652dc",
+  "active": "153d717f83aa6690",
   "lastOpenFiles": [
-    "workspace/papers/paper-04/卷子-04.md",
-    "workspace/papers/paper-04/判分卡-04.md",
     "workspace/papers/paper-04/卷子-04-答案.md",
+    "workspace/papers/paper-04/判分卡-04.md",
+    "workspace/papers/paper-04/卷子-04.md",
     "workspace/papers/la-paper-03/线代卷子-03-答案.md",
     "workspace/papers/la-paper-03/线代判分卡-03.md",
     "workspace/papers/la-paper-03/线代卷子-03.md",
