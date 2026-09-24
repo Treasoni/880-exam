@@ -123,6 +123,19 @@ DISPLAY_MATH_STRUCTURE_RE = re.compile(r"(?m)^\s*(?:#{1,6}\s|\*\*\d+\.\*\*)")
 # Markdown 标题行；供 demote_solution_headings 把解析内部标题降到嵌套层之下
 HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.*)$")
 
+# 判分卡勾选标记：任务清单 `- [x] 对`（阅读视图点击即写 x），历史表格里也用过 [x]。
+# 判据只此一份——grade.py 读勾选、make_paper.py 判断「卡上是否已有用户输入」都引用它，
+# 免得一处放宽标记、另一处仍把已勾选的卡当成空白卡重建掉。
+TICK_MARKS = "xX✓✔☑✅"
+CHECK_RE = re.compile(r"^-\s+\[([" + TICK_MARKS + r" ])\]\s*(\S+)\s*$")
+TICK_RE = re.compile(r"^\[[" + TICK_MARKS + r"]\]$|^[" + TICK_MARKS + r"]$")
+
+
+def card_ticked_lines(text):
+    """返回判分卡文本里已勾选的行（`- [x] 对` 这类，未勾的 `- [ ]` 不算）。"""
+    return [line for line in text.splitlines()
+            if (m := CHECK_RE.match(line)) and m.group(1) != " "]
+
 
 def normalize_math_delimiters(text):
     """把 LaTeX 式行内定界符 ``\\(...\\)`` 归一为 Obsidian 的 ``$...$``。

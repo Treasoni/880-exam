@@ -147,6 +147,87 @@ class PaperRulesTest(unittest.TestCase):
             records = json.loads(papers_path.read_text(encoding="utf-8"))["papers"]
             self.assertEqual([p["paper_id"] for p in records], ["paper-01"])
 
+    def test_rebuild_keeps_ticked_card_and_refreshes_answer_sheet_safely(self):
+        """重建不能吃掉待判勾选；答案卷按题级标题重刷且保留创建日。"""
+        with tempfile.TemporaryDirectory() as directory:
+            tmp = Path(directory)
+            schema_path = tmp / "schema.yaml"
+            index_path = tmp / "question-index.json"
+            attempts_path = tmp / "records" / "attempts.json"
+            papers_path = tmp / "records" / "papers.json"
+            papers_dir = tmp / "papers"
+            overrides_path = tmp / "records" / "solution-overrides.json"
+            schema_path.write_text((ROOT / "workspace/schema.yaml").read_text(encoding="utf-8"), encoding="utf-8")
+            index_path.write_text((ROOT / "workspace/question-index.json").read_text(encoding="utf-8"), encoding="utf-8")
+            attempts_path.parent.mkdir(parents=True)
+            attempts_path.write_text(json.dumps({"attempts": [], "wrong_book_status": {}}), encoding="utf-8")
+            papers_path.write_text(json.dumps({"papers": []}), encoding="utf-8")
+            overrides_path.write_text(json.dumps({"solutions": {}}, ensure_ascii=False), encoding="utf-8")
+
+            with patch.multiple(
+                lib880,
+                SCHEMA_PATH=schema_path,
+                INDEX_PATH=index_path,
+                ATTEMPTS_PATH=attempts_path,
+                PAPERS_PATH=papers_path,
+                PAPERS_DIR=papers_dir,
+                SOLUTION_OVERRIDES_PATH=overrides_path,
+                WRONG_BOOK_PATH=tmp / "wrong-book" / "错题本.md",
+                PROGRESS_PATH=tmp / "preview" / "进度总览.md",
+            ):
+                with patch.object(sys, "argv", ["make_paper.py", "--n", "1", "--seed", "7"]):
+                    make_paper.main()
+                card_path = papers_dir / "paper-01" / "判分卡-01.md"
+                answer_path = papers_dir / "paper-01" / "卷子-01-答案.md"
+
+                # 用户勾了一道题，随后（未判分状态下）重建
+                ticked = card_path.read_text(encoding="utf-8").replace("- [ ] 对", "- [x] 对", 1)
+                card_path.write_text(ticked, encoding="utf-8")
+                with patch.object(sys, "argv", ["make_paper.py", "--rebuild", "paper-01"]):
+                    make_paper.main()
+                self.assertEqual(card_path.read_text(encoding="utf-8"), ticked)
+                # 显式 --rebuild-card 才允许清空勾选
+                with patch.object(sys, "argv",
+                                  ["make_paper.py", "--rebuild", "paper-01", "--rebuild-card"]):
+                    make_paper.main()
+                self.assertNotIn("- [x]", card_path.read_text(encoding="utf-8"))
+
+                # 答案卷：每题一个题级标题，题干题号保留
+                answer = answer_path.read_text(encoding="utf-8")
+                self.assertIn("### 第 1 题", answer)
+                self.assertIn("**1.** ", answer)
+                self.assertIn("### 第 6 题", answer)
+
+            # 解析覆盖层改动 → --rebuild-answers 重刷：保留创建日，自定义解析降级到 ####
+                qid = json.loads(papers_path.read_text(encoding="utf-8"))["papers"][0]["questions"][0]["qid"]
+                lines = answer_path.read_text(encoding="utf-8").splitlines()
+                for i, line in enumerate(lines[:10]):
+                    if line.startswith("date: "):
+                        lines[i] = "date: 2026-01-02"
+                    elif line.startswith("updated: "):
+                        lines[i] = "updated: 2026-01-02"
+                answer_path.write_text("\n".join(lines), encoding="utf-8")
+
+                card_before = card_path.read_text(encoding="utf-8")
+                with patch.object(sys, "argv", ["make_paper.py", "--rebuild-answers", "paper-01"]):
+                    make_paper.main()
+                # 内容未变则不写盘，updated 不空转；判分卡不被碰
+                unchanged = answer_path.read_text(encoding="utf-8")
+                self.assertIn("date: 2026-01-02", unchanged)
+                self.assertIn("updated: 2026-01-02", unchanged)
+                self.assertEqual(card_path.read_text(encoding="utf-8"), card_before)
+
+                overrides_path.write_text(json.dumps(
+                    {"solutions": {qid: {"solution": "### 思路\n\n换元后用等价无穷小定阶。"}}},
+                    ensure_ascii=False), encoding="utf-8")
+                with patch.object(sys, "argv", ["make_paper.py", "--rebuild-answers", "paper-01"]):
+                    make_paper.main()
+                refreshed = answer_path.read_text(encoding="utf-8")
+                self.assertIn("date: 2026-01-02", refreshed)
+                self.assertIn(f"updated: {lib880.today_str()}", refreshed)
+                self.assertIn("#### 思路", refreshed)
+                self.assertEqual(card_path.read_text(encoding="utf-8"), card_before)
+
     def test_linear_algebra_paper_is_subject_scoped_and_uses_distinct_artifacts(self):
         with tempfile.TemporaryDirectory() as directory:
             tmp = Path(directory)

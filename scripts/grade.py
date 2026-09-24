@@ -35,10 +35,11 @@ GRADE_ALIAS = {
 
 SECTION_NO = {"choice": "一", "fill": "二", "solution": "三"}
 SECTION_ORDER = {"一": "choice", "二": "fill", "三": "solution"}
-TICK_RE = re.compile(r"^\[[xX✓✔☑✅]\]$|^[xX✓✔☑✅]$")
+# 勾选标记的判据统一放在 lib880（make_paper 判断「卡上是否已有用户输入」也引用它）
+TICK_RE = lib880.TICK_RE
 # 新判分卡（任务清单）格式：题头 **N.** 答案：… 与勾选行 - [x] 对
 QHEAD_RE = re.compile(r"^\*\*(\d+)\.\*\*\s*答案")
-CHECK_RE = re.compile(r"^-\s+\[([ xX✓✔☑✅])\]\s*(\S+)\s*$")
+CHECK_RE = lib880.CHECK_RE
 
 
 def _is_ticked(cell):

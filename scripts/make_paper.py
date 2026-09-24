@@ -432,10 +432,11 @@ def refresh_answer_sheet(subject, schema, index, record, ap):
     return answer_path
 
 
-def rebuild_paper(subject, schema, index, papers, attempts, paper_id, ap):
+def rebuild_paper(subject, schema, index, papers, attempts, paper_id, ap, force_card=False):
     """从 papers.json 记录重建已存在卷子的产物（不换题）。
 
-    判分卡总是重建（无状态，全空勾不影响已判数据）；
+    判分卡上有勾选（待判阶段的用户输入）或该卷已有判分记录时**不重建**判分卡，
+    否则会把待判的勾选清空（paper-04 被清过两次）；确需重排判分卡用 --rebuild-card。
     卷子/答案卷仅在无判分记录时重建（保护已回填的判分表与 status）。
     只想同步答案卷时用 --rebuild-answers（不动判分卡与卷子）。
     """
@@ -449,11 +450,23 @@ def rebuild_paper(subject, schema, index, papers, attempts, paper_id, ap):
     has_attempts = any(a.get("paper_id") == paper_id for a in attempts["attempts"])
 
     card_path = artefacts["card"]
-    card_path.write_text(
-        render_grading_card(subject, schema, paper_id, sections_plan,
-                            created=existing_date(card_path)),
-        encoding="utf-8")
-    print(f"已重建判分卡：{card_path}")
+    ticks = lib880.card_ticked_lines(card_path.read_text(encoding="utf-8")) if card_path.exists() else []
+    if ticks or has_attempts:
+        if force_card:
+            card_path.write_text(
+                render_grading_card(subject, schema, paper_id, sections_plan,
+                                    created=existing_date(card_path)),
+                encoding="utf-8")
+            print(f"已强制重建判分卡（原有 {len(ticks)} 处勾选被清空）：{card_path}")
+        else:
+            why = f"卡上已有 {len(ticks)} 处勾选" if ticks else "该卷已有判分记录"
+            print(f"保留判分卡不重建（{why}）：{card_path}；确需重排用 --rebuild-card")
+    else:
+        card_path.write_text(
+            render_grading_card(subject, schema, paper_id, sections_plan,
+                                created=existing_date(card_path)),
+            encoding="utf-8")
+        print(f"已重建判分卡：{card_path}")
 
     if not has_attempts:
         paper_path = artefacts["paper"]
@@ -483,7 +496,9 @@ def main():
     ap.add_argument("--replace-ungraded", action="store_true",
                     help="仅替换尚无判分记录的同编号卷子；防止意外覆盖学习记录")
     ap.add_argument("--rebuild", metavar="PAPER_ID", default=None,
-                    help="从 papers.json 记录重建已存在卷子的产物（不换题）；判分卡总是重建，卷子/答案仅在未判分时重建")
+                    help="从 papers.json 记录重建已存在卷子的产物（不换题）；判分卡有勾选/已判分时保留不重建，卷子/答案仅在未判分时重建")
+    ap.add_argument("--rebuild-card", action="store_true",
+                    help="配合 --rebuild：强制重建判分卡（会清空卡上已有勾选）")
     ap.add_argument("--rebuild-answers", metavar="PAPER_ID|all", default=None,
                     help="只重刷答案卷（不碰判分卡与卷子）；all 覆盖两个科目全部卷子")
     args = ap.parse_args()
@@ -517,7 +532,8 @@ def main():
         schema = lib880.load_schema(subject)
         index = lib880.load_index(subject)
         lib880.build_index_map(index)
-        rebuild_paper(subject, schema, index, papers, attempts, args.rebuild, ap)
+        rebuild_paper(subject, schema, index, papers, attempts, args.rebuild, ap,
+                      force_card=args.rebuild_card)
         return
 
     try:
