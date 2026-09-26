@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/paper-04/卷子-04-答案.md",
+                "file": "workspace/wrong-book/真题错题本.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "卷子-04-答案"
+              "title": "真题错题本"
             }
           },
           {
@@ -245,7 +245,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-04/卷子-04-答案.md",
+                "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -291,7 +291,7 @@
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
-                      "conversationId": "conv-1790255521686-ksgjlvvme"
+                      "conversationId": "conv-1790421725239-nrcqmzslb"
                     }
                   ],
                   "activeTabId": "tab-1790218000549-4kkqcsg"
@@ -332,9 +332,10 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题收录-2011数二选择5.workflow.md",
+    "workspace/papers/paper-04/卷子-04-答案.md",
     "workspace/papers/paper-04/判分卡-04.md",
     "workspace/papers/paper-04/卷子-04.md",
-    "workspace/papers/paper-04/卷子-04-答案.md",
     "workspace/papers/la-paper-03/线代卷子-03-答案.md",
     "workspace/papers/la-paper-03/线代判分卡-03.md",
     "workspace/papers/la-paper-03/线代卷子-03.md",
