@@ -332,6 +332,8 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/wrong-book/images/zt-2011-数二-解答20.png",
+    "workspace/workflow-runs/真题收录-2011数二解答20.workflow.md",
     "workspace/workflow-runs/真题收录-2011数二解答18.workflow.md",
     "workspace/workflow-runs/真题收录-2011数二选择8.workflow.md.eXVMTO",
     "workspace/workflow-runs/真题收录-2011数二选择8.workflow.md",
@@ -375,8 +377,6 @@
     "workspace/workflow-runs/_negtest.workflow.md",
     "workspace/workflow-runs/错题复习.workflow.md",
     "workspace/papers/la-paper-02/线代卷子-02-答案.md",
-    "workspace/papers/la-paper-02/线代判分卡-02.md",
-    "workspace/papers/la-paper-02/线代卷子-02.md",
-    "workspace/preview/线代进度总览.md"
+    "workspace/papers/la-paper-02/线代判分卡-02.md"
   ]
 }

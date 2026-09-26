@@ -505,6 +505,33 @@
       ],
       "review_state": "未复习",
       "review_updated": null
+    },
+    "zt-2011-数二-解答18": {
+      "id": "zt-2011-数二-解答18",
+      "year": 2011,
+      "paper": "数二",
+      "no": "解答18",
+      "stem": "设函数 $y(x)$ 具有二阶导数，且曲线 $l: y = y(x)$ 与直线 $y = x$ 相切于原点。记 $\\alpha$ 为曲线 $l$ 在点 $(x, y)$ 处切线的倾角，若 $\\dfrac{\\mathrm{d}\\alpha}{\\mathrm{d}x} = \\dfrac{\\mathrm{d}y}{\\mathrm{d}x}$，求 $y(x)$ 的表达式。",
+      "answer": "$y(x) = \\arcsin\\dfrac{\\mathrm{e}^{x}}{\\sqrt{2}} - \\dfrac{\\pi}{4}\\ \\left(x < \\frac{1}{2}\\ln 2\\right)$",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：导数的几何意义 $y' = \\tan\\alpha$（倾角条件）；「相切于原点」的双重含义；缺 $y$ 型二阶可降阶方程 $y'' = f(y')$。\n> **总体思路**：几何条件建方程类题固定四步——① 把「相切于原点」翻译成两个初值；② 把倾角条件翻译成含 $y''$、$y'$ 的方程；③ 令 $p = y'$ 降阶，解可分离变量方程得 $p$；④ 再积分一次得 $y$，用两个初值分别定两个常数。\n> **题眼**：见到「切线倾角 $\\alpha$」，立刻写 $\\alpha = \\arctan y'$，再两边对 $x$ 求导——把 $\\dfrac{\\mathrm{d}\\alpha}{\\mathrm{d}x}$ 换成 $\\dfrac{y''}{1 + (y')^{2}}$。\n\n**第一步：把「相切于原点」翻译成两个初值条件。**\n曲线 $l$ 与直线 $y = x$ 相切于原点，「相切」含两件事：\n- 曲线过原点：$y(0) = 0$；\n- 公共点处切线斜率相等：直线 $y = x$ 的斜率为 $1$，故 $y'(0) = 1$。\n这两个初值在后文分别用来定 $C_1$ 与 $C_2$，缺一不可。\n\n**第二步：翻译倾角条件，建立微分方程。**\n由导数的几何意义，切线斜率等于倾角的正切，即 $y' = \\tan\\alpha$，也就是 $\\alpha = \\arctan y'$。两边对 $x$ 求导（$y'$ 是 $x$ 的函数，必须用链式法则）：\n$$\\frac{\\mathrm{d}\\alpha}{\\mathrm{d}x} = \\frac{1}{1 + (y')^{2}} \\cdot y''$$\n代入题设 $\\dfrac{\\mathrm{d}\\alpha}{\\mathrm{d}x} = \\dfrac{\\mathrm{d}y}{\\mathrm{d}x} = y'$：\n$$\\frac{y''}{1 + (y')^{2}} = y' \\ \\Longrightarrow\\ y'' = y'\\left[1 + (y')^{2}\\right]$$\n到此几何条件已变成不显含 $y$、只含 $y'$ 与 $y''$ 的可降阶方程。\n\n**第三步：降阶求 $y'$。**\n令 $p = y'$，则 $y'' = \\dfrac{\\mathrm{d}p}{\\mathrm{d}x}$，方程化为可分离变量形式：\n$$\\frac{\\mathrm{d}p}{\\mathrm{d}x} = p(1 + p^{2}) \\ \\Longrightarrow\\ \\frac{\\mathrm{d}p}{p(1 + p^{2})} = \\mathrm{d}x$$\n按 $\\dfrac{1}{p(1 + p^{2})} = \\dfrac{1}{p} - \\dfrac{p}{1 + p^{2}}$ 拆项后两边积分：\n$$\\ln|p| - \\frac{1}{2}\\ln(1 + p^{2}) = x + C_1 \\ \\Longrightarrow\\ \\ln\\frac{|p|}{\\sqrt{1 + p^{2}}} = x + C_1$$\n左端有现成的几何含义：$\\dfrac{p}{\\sqrt{1 + p^{2}}} = \\dfrac{\\tan\\alpha}{\\sqrt{1 + \\tan^{2}\\alpha}} = \\sin\\alpha$。\n代入 $x = 0$ 处的 $y'(0) = 1$（即 $p = 1$）：$\\ln\\dfrac{1}{\\sqrt{2}} = C_1$，即 $C_1 = -\\dfrac{1}{2}\\ln 2$。\n又由 $y'(0) = 1 > 0$ 知 $p > 0$，去掉绝对值取正号分支：\n$$\\frac{p}{\\sqrt{1 + p^{2}}} = \\frac{\\mathrm{e}^{x}}{\\sqrt{2}} \\ \\Longrightarrow\\ \\sin\\alpha = \\frac{\\mathrm{e}^{x}}{\\sqrt{2}}$$\n\n**第四步：解出 $y'$ 再积分一次得 $y$。**\n由 $\\sin\\alpha = \\dfrac{\\mathrm{e}^{x}}{\\sqrt{2}}$ 及 $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\sqrt{1 - \\sin^{2}\\alpha}}$ 得\n$$y' = p = \\frac{\\mathrm{e}^{x}}{\\sqrt{2 - \\mathrm{e}^{2x}}}$$\n再对 $x$ 积分，令 $u = \\mathrm{e}^{x}$（$\\mathrm{d}u = \\mathrm{e}^{x}\\mathrm{d}x$）：\n$$y = \\int \\frac{\\mathrm{e}^{x}}{\\sqrt{2 - \\mathrm{e}^{2x}}}\\,\\mathrm{d}x = \\int \\frac{\\mathrm{d}u}{\\sqrt{2 - u^{2}}} = \\arcsin\\frac{u}{\\sqrt{2}} + C_2 = \\arcsin\\frac{\\mathrm{e}^{x}}{\\sqrt{2}} + C_2$$\n代入 $y(0) = 0$：$\\arcsin\\dfrac{1}{\\sqrt{2}} + C_2 = 0$，即 $\\dfrac{\\pi}{4} + C_2 = 0$，得 $C_2 = -\\dfrac{\\pi}{4}$。\n\n**结论：** $$\\boxed{\\ y(x) = \\arcsin\\frac{\\mathrm{e}^{x}}{\\sqrt{2}} - \\frac{\\pi}{4}\\ }\\qquad \\left(x < \\frac{1}{2}\\ln 2\\right)$$\n回代检验：$y(0) = \\dfrac{\\pi}{4} - \\dfrac{\\pi}{4} = 0$ ✓；$y'(0) = \\dfrac{1}{\\sqrt{2 - 1}} = 1$ ✓（确与 $y = x$ 相切于原点）。\n\n> [!tip] 归纳总结（几何条件→微分方程的翻译）\n>\n> | 条件文字 | 数学翻译 |\n> | --- | --- |\n> | 「曲线与直线相切于某点」 | ① 曲线过该点；② 该点处 $y'$ 等于直线斜率 |\n> | 「$\\alpha$ 为某点处切线倾角」 | $y' = \\tan\\alpha$，即 $\\alpha = \\arctan y'$ |\n> | 「$\\frac{\\mathrm{d}\\alpha}{\\mathrm{d}x} = \\cdots$」 | 对 $\\alpha = \\arctan y'$ 链式求导：$\\frac{\\mathrm{d}\\alpha}{\\mathrm{d}x} = \\frac{y''}{1 + (y')^{2}}$ |\n>\n> 主线固定：几何翻译 → 得缺 $y$ 型可降阶方程 → 令 $p = y'$ 分离变量 → 拆项积分 → 反三角积分。两个高频公式：$\\int\\frac{\\mathrm{d}p}{p(1+p^{2})} = \\ln\\frac{p}{\\sqrt{1+p^{2}}}$、$\\int\\frac{\\mathrm{d}u}{\\sqrt{a^{2}-u^{2}}} = \\arcsin\\frac{u}{a}$。\n\n> [!warning] 易错点提示（陷阱预警）\n> - **只提出 $y(0) = 0$，漏掉 $y'(0) = 1$**：「相切于原点」同时给出过点与斜率相等两个条件，$C_1$ 只能由 $y'(0) = 1$ 定；漏掉它解里就会挂着自由常数。\n> - **链式求导漏分母**：$\\frac{\\mathrm{d}\\alpha}{\\mathrm{d}x} = \\frac{y''}{1 + (y')^{2}}$，分母 $1 + (y')^{2}$ 是 $\\arctan$ 求导的产物，漏掉方程就建错了。\n> - **去绝对值不定号**：$\\ln\\frac{|p|}{\\sqrt{1+p^{2}}} = x + C_1$ 中 $|p|$ 的符号由 $y'(0) = 1 > 0$ 钉死，必须说明取正号分支（$\\alpha$ 为锐角）。\n> - **反三角积分写错系数**：$\\int\\frac{\\mathrm{d}u}{\\sqrt{2 - u^{2}}} = \\arcsin\\frac{u}{\\sqrt{2}} + C$，别写成 $\\arcsin u$，也别漏掉分母上的 $\\sqrt{2}$。\n> - **定义域**：$y' = \\frac{\\mathrm{e}^{x}}{\\sqrt{2 - \\mathrm{e}^{2x}}}$ 要求 $2 - \\mathrm{e}^{2x} > 0$，即 $x < \\frac{1}{2}\\ln 2$；当 $x$ 从左侧趋于 $\\frac{1}{2}\\ln 2$ 时切线趋于竖直（$\\alpha \\to \\frac{\\pi}{2}$）。",
+      "links": [
+        {
+          "path": "external-notes/考研数学/微分方程/错题本",
+          "anchor": "错题24（教材15.12）：几何条件→可降阶微分方程——倾角条件的翻译",
+          "label": "几何条件→可降阶微分方程——倾角条件的翻译",
+          "confidence": "high",
+          "note": "与本题完全同题（同题干、同答案，仅题面来源为教材 15.12）；该条只把求解归约到其错题10，本题解析给出几何翻译→降阶→两次积分→两个常数定值的完整四步。"
+        }
+      ],
+      "attempts": [
+        {
+          "date": "2026-09-26",
+          "grade": "cannot"
+        }
+      ],
+      "review_state": "未复习",
+      "review_updated": null,
+      "module": "微分方程"
     }
   },
   "coverage": {}
