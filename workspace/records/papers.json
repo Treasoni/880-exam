@@ -1093,6 +1093,327 @@
         "11": 0.1667145784883767,
         "12": 0.29128879266955976
       }
+    },
+    {
+      "paper_id": "la-paper-04",
+      "subject_key": "linear-algebra",
+      "subject_code": "la",
+      "subject": "线性代数",
+      "date": "2026-09-28",
+      "duration_minutes": 180,
+      "quota_used": {
+        "7": {
+          "choice": 0,
+          "fill": 0,
+          "solution": 0
+        },
+        "8": {
+          "choice": 1,
+          "fill": 0,
+          "solution": 0
+        },
+        "9": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        },
+        "10": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        },
+        "11": {
+          "choice": 2,
+          "fill": 2,
+          "solution": 2
+        },
+        "12": {
+          "choice": 3,
+          "fill": 2,
+          "solution": 2
+        }
+      },
+      "questions": [
+        {
+          "qid": "la-c09-basic-choice-003",
+          "section": "choice",
+          "paper_no": "一1"
+        },
+        {
+          "qid": "la-c11-basic-choice-007",
+          "section": "choice",
+          "paper_no": "一2"
+        },
+        {
+          "qid": "la-c08-comprehensive-choice-005",
+          "section": "choice",
+          "paper_no": "一3"
+        },
+        {
+          "qid": "la-c12-comprehensive-choice-010",
+          "section": "choice",
+          "paper_no": "一4"
+        },
+        {
+          "qid": "la-c12-comprehensive-choice-014",
+          "section": "choice",
+          "paper_no": "一5"
+        },
+        {
+          "qid": "la-c12-basic-choice-005",
+          "section": "choice",
+          "paper_no": "一6"
+        },
+        {
+          "qid": "la-c11-comprehensive-choice-002",
+          "section": "choice",
+          "paper_no": "一7"
+        },
+        {
+          "qid": "la-c09-comprehensive-choice-007",
+          "section": "choice",
+          "paper_no": "一8"
+        },
+        {
+          "qid": "la-c10-basic-choice-012",
+          "section": "choice",
+          "paper_no": "一9"
+        },
+        {
+          "qid": "la-c10-comprehensive-choice-004",
+          "section": "choice",
+          "paper_no": "一10"
+        },
+        {
+          "qid": "la-c11-comprehensive-fill-001",
+          "section": "fill",
+          "paper_no": "二1"
+        },
+        {
+          "qid": "la-c12-comprehensive-fill-001",
+          "section": "fill",
+          "paper_no": "二2"
+        },
+        {
+          "qid": "la-c12-basic-fill-002",
+          "section": "fill",
+          "paper_no": "二3"
+        },
+        {
+          "qid": "la-c11-basic-fill-004",
+          "section": "fill",
+          "paper_no": "二4"
+        },
+        {
+          "qid": "la-c09-comprehensive-fill-001",
+          "section": "fill",
+          "paper_no": "二5"
+        },
+        {
+          "qid": "la-c10-comprehensive-fill-001",
+          "section": "fill",
+          "paper_no": "二6"
+        },
+        {
+          "qid": "la-c12-basic-solution-005",
+          "section": "solution",
+          "paper_no": "三1"
+        },
+        {
+          "qid": "la-c12-comprehensive-solution-002",
+          "section": "solution",
+          "paper_no": "三2"
+        },
+        {
+          "qid": "la-c11-basic-solution-015",
+          "section": "solution",
+          "paper_no": "三3"
+        },
+        {
+          "qid": "la-c11-comprehensive-solution-012",
+          "section": "solution",
+          "paper_no": "三4"
+        },
+        {
+          "qid": "la-c09-comprehensive-solution-009",
+          "section": "solution",
+          "paper_no": "三5"
+        },
+        {
+          "qid": "la-c10-comprehensive-solution-006",
+          "section": "solution",
+          "paper_no": "三6"
+        }
+      ],
+      "status": "created",
+      "weakness_scores": {
+        "7": 0.07178004671879643,
+        "8": 0.11162858695537041,
+        "9": 0.1745105320339575,
+        "10": 0.22312294372433084,
+        "11": 0.25931059716682026,
+        "12": 0.2600872249312823
+      }
+    },
+    {
+      "paper_id": "paper-05",
+      "subject_key": "high-math",
+      "subject_code": "gs",
+      "subject": "高数",
+      "date": "2026-09-28",
+      "duration_minutes": 180,
+      "quota_used": {
+        "1": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        },
+        "2": {
+          "choice": 2,
+          "fill": 1,
+          "solution": 1
+        },
+        "3": {
+          "choice": 2,
+          "fill": 2,
+          "solution": 1
+        },
+        "4": {
+          "choice": 1,
+          "fill": 1,
+          "solution": 1
+        },
+        "5": {
+          "choice": 3,
+          "fill": 1,
+          "solution": 2
+        },
+        "6": {
+          "choice": 0,
+          "fill": 0,
+          "solution": 0
+        }
+      },
+      "questions": [
+        {
+          "qid": "gs-c04-comprehensive-choice-004",
+          "section": "choice",
+          "paper_no": "一1"
+        },
+        {
+          "qid": "gs-c01-basic-choice-013",
+          "section": "choice",
+          "paper_no": "一2"
+        },
+        {
+          "qid": "gs-c05-comprehensive-choice-001",
+          "section": "choice",
+          "paper_no": "一3"
+        },
+        {
+          "qid": "gs-c03-basic-choice-001",
+          "section": "choice",
+          "paper_no": "一4"
+        },
+        {
+          "qid": "gs-c02-basic-choice-008",
+          "section": "choice",
+          "paper_no": "一5"
+        },
+        {
+          "qid": "gs-c05-comprehensive-choice-003",
+          "section": "choice",
+          "paper_no": "一6"
+        },
+        {
+          "qid": "gs-c01-comprehensive-choice-004",
+          "section": "choice",
+          "paper_no": "一7"
+        },
+        {
+          "qid": "gs-c02-comprehensive-choice-001",
+          "section": "choice",
+          "paper_no": "一8"
+        },
+        {
+          "qid": "gs-c05-basic-choice-001",
+          "section": "choice",
+          "paper_no": "一9"
+        },
+        {
+          "qid": "gs-c03-comprehensive-choice-018",
+          "section": "choice",
+          "paper_no": "一10"
+        },
+        {
+          "qid": "gs-c01-comprehensive-fill-007",
+          "section": "fill",
+          "paper_no": "二1"
+        },
+        {
+          "qid": "gs-c04-comprehensive-fill-001",
+          "section": "fill",
+          "paper_no": "二2"
+        },
+        {
+          "qid": "gs-c03-comprehensive-fill-009",
+          "section": "fill",
+          "paper_no": "二3"
+        },
+        {
+          "qid": "gs-c02-comprehensive-fill-009",
+          "section": "fill",
+          "paper_no": "二4"
+        },
+        {
+          "qid": "gs-c05-comprehensive-fill-002",
+          "section": "fill",
+          "paper_no": "二5"
+        },
+        {
+          "qid": "gs-c03-basic-fill-012",
+          "section": "fill",
+          "paper_no": "二6"
+        },
+        {
+          "qid": "gs-c03-comprehensive-solution-031",
+          "section": "solution",
+          "paper_no": "三1"
+        },
+        {
+          "qid": "gs-c02-comprehensive-solution-005",
+          "section": "solution",
+          "paper_no": "三2"
+        },
+        {
+          "qid": "gs-c05-comprehensive-solution-023",
+          "section": "solution",
+          "paper_no": "三3"
+        },
+        {
+          "qid": "gs-c04-comprehensive-solution-015",
+          "section": "solution",
+          "paper_no": "三4"
+        },
+        {
+          "qid": "gs-c01-comprehensive-solution-004",
+          "section": "solution",
+          "paper_no": "三5"
+        },
+        {
+          "qid": "gs-c05-basic-solution-009",
+          "section": "solution",
+          "paper_no": "三6"
+        }
+      ],
+      "status": "created",
+      "weakness_scores": {
+        "1": 0.18628668644905047,
+        "2": 0.19142137750404842,
+        "3": 0.1940521591521302,
+        "4": 0.18635202783491567,
+        "5": 0.22120784487419842
+      }
     }
   ]
 }
