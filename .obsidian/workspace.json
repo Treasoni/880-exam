@@ -332,6 +332,8 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题错题复习-03.workflow.md.WmV3TD",
+    "workspace/workflow-runs/真题错题复习-03.workflow.md.xPYjgl",
     "workspace/workflow-runs/真题错题复习-03.workflow.md",
     "workspace/workflow-runs/真题收录-2011数二解答23.workflow.md",
     "workspace/workflow-runs/真题收录-2011数二解答21.workflow.md.7nlbNT",
@@ -372,11 +374,9 @@
     "真题/2010-2019考研数学二真题/layout.json",
     "真题/2010-2019考研数学二真题/images",
     "真题/2010-2019考研数学二真题/full.md",
-    "真题/2010-2019考研数学二真题/block_list.json",
     "真题/2010-2019考研数学二真题 .pdf-9fdbe1c7-e989-4350-9925-99fc6913d9d8/full.md",
     "docs/adr/0006-zhenti-system-independent-of-880.md",
     "workspace/workflow-runs/错题复习-02.workflow.md",
-    "workspace/papers/paper-04/_lint负样本.md",
-    "workspace/workflow-runs/_negtest.workflow.md"
+    "workspace/papers/paper-04/_lint负样本.md"
   ]
 }

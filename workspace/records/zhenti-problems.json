@@ -685,10 +685,14 @@
         {
           "date": "2026-09-26",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-09-28",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
-      "review_updated": "2026-09-26"
+      "review_state": "已重做",
+      "review_updated": "2026-09-28"
     }
   },
   "coverage": {}
