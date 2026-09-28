@@ -2055,6 +2055,14 @@
       "when": "2026-09-28",
       "recorded_at": "2026-09-28T19:54:35+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-solution-006",
+      "paper_id": "paper-04",
+      "grade": "half",
+      "when": "2026-09-28",
+      "recorded_at": "2026-09-28T20:10:41+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -2392,6 +2400,10 @@
     },
     "gs-c01-basic-fill-005": {
       "state": "已掌握",
+      "updated": "2026-09-28"
+    },
+    "gs-c01-comprehensive-solution-006": {
+      "state": "未复习",
       "updated": "2026-09-28"
     }
   }
