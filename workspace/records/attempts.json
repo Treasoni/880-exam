@@ -1959,6 +1959,22 @@
       "when": "2026-09-24",
       "recorded_at": "2026-09-24T21:03:01+08:00",
       "note": ""
+    },
+    {
+      "qid": "la-c12-basic-solution-002",
+      "paper_id": "la-paper-02",
+      "grade": "half",
+      "when": "2026-09-28",
+      "recorded_at": "2026-09-28T14:40:19+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c02-comprehensive-choice-014",
+      "paper_id": "paper-04",
+      "grade": "wrong",
+      "when": "2026-09-28",
+      "recorded_at": "2026-09-28T14:41:16+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -2280,7 +2296,11 @@
     },
     "gs-c02-comprehensive-choice-014": {
       "state": "未复习",
-      "updated": "2026-09-24"
+      "updated": "2026-09-28"
+    },
+    "la-c12-basic-solution-002": {
+      "state": "未复习",
+      "updated": "2026-09-28"
     }
   }
 }
