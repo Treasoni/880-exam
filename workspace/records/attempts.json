@@ -2007,6 +2007,14 @@
       "when": "2026-09-28",
       "recorded_at": "2026-09-28T15:27:15+08:00",
       "note": ""
+    },
+    {
+      "qid": "la-c12-basic-choice-002",
+      "paper_id": "la-paper-03",
+      "grade": "correct",
+      "when": "2026-09-28",
+      "recorded_at": "2026-09-28T15:38:12+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -2299,8 +2307,8 @@
       "updated": "2026-09-20"
     },
     "la-c12-basic-choice-002": {
-      "state": "未复习",
-      "updated": "2026-09-24"
+      "state": "已掌握",
+      "updated": "2026-09-28"
     },
     "la-c09-comprehensive-solution-002": {
       "state": "已掌握",
