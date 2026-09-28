@@ -462,10 +462,14 @@
         {
           "date": "2026-09-26",
           "grade": "careless"
+        },
+        {
+          "date": "2026-09-28",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
-      "review_updated": null
+      "review_state": "已重做",
+      "review_updated": "2026-09-28"
     },
     "zt-2011-数二-选择8": {
       "id": "zt-2011-数二-选择8",
@@ -501,10 +505,14 @@
         {
           "date": "2026-09-26",
           "grade": "half"
+        },
+        {
+          "date": "2026-09-28",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
-      "review_updated": null
+      "review_state": "已重做",
+      "review_updated": "2026-09-28"
     },
     "zt-2011-数二-解答18": {
       "id": "zt-2011-数二-解答18",
@@ -527,6 +535,10 @@
         {
           "date": "2026-09-26",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-09-28",
+          "grade": "half"
         }
       ],
       "review_state": "未复习",
