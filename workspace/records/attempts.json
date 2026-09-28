@@ -2023,6 +2023,14 @@
       "when": "2026-09-28",
       "recorded_at": "2026-09-28T19:07:52+08:00",
       "note": ""
+    },
+    {
+      "qid": "la-c12-basic-solution-003",
+      "paper_id": "la-paper-03",
+      "grade": "correct",
+      "when": "2026-09-28",
+      "recorded_at": "2026-09-28T19:13:50+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -2335,8 +2343,8 @@
       "updated": "2026-09-28"
     },
     "la-c12-basic-solution-003": {
-      "state": "未复习",
-      "updated": "2026-09-24"
+      "state": "已掌握",
+      "updated": "2026-09-28"
     },
     "gs-c04-comprehensive-choice-001": {
       "state": "已掌握",
