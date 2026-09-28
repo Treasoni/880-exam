@@ -649,6 +649,10 @@
         {
           "date": "2026-09-26",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-09-28",
+          "grade": "cannot"
         }
       ],
       "review_state": "未复习",
