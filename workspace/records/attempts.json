@@ -2015,6 +2015,14 @@
       "when": "2026-09-28",
       "recorded_at": "2026-09-28T15:38:12+08:00",
       "note": ""
+    },
+    {
+      "qid": "la-c12-comprehensive-solution-014",
+      "paper_id": "la-paper-03",
+      "grade": "half",
+      "when": "2026-09-28",
+      "recorded_at": "2026-09-28T19:07:52+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -2324,7 +2332,7 @@
     },
     "la-c12-comprehensive-solution-014": {
       "state": "未复习",
-      "updated": "2026-09-24"
+      "updated": "2026-09-28"
     },
     "la-c12-basic-solution-003": {
       "state": "未复习",
