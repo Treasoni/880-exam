@@ -1975,6 +1975,22 @@
       "when": "2026-09-28",
       "recorded_at": "2026-09-28T14:41:16+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-choice-001",
+      "paper_id": "paper-04",
+      "grade": "correct",
+      "when": "2026-09-28",
+      "recorded_at": "2026-09-28T14:51:30+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c09-comprehensive-solution-002",
+      "paper_id": "la-paper-03",
+      "grade": "correct",
+      "when": "2026-09-28",
+      "recorded_at": "2026-09-28T14:52:24+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -2271,8 +2287,8 @@
       "updated": "2026-09-24"
     },
     "la-c09-comprehensive-solution-002": {
-      "state": "未复习",
-      "updated": "2026-09-24"
+      "state": "已掌握",
+      "updated": "2026-09-28"
     },
     "la-c10-comprehensive-solution-005": {
       "state": "未复习",
@@ -2291,8 +2307,8 @@
       "updated": "2026-09-24"
     },
     "gs-c04-comprehensive-choice-001": {
-      "state": "未复习",
-      "updated": "2026-09-24"
+      "state": "已掌握",
+      "updated": "2026-09-28"
     },
     "gs-c02-comprehensive-choice-014": {
       "state": "未复习",
