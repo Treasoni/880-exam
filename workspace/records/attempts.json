@@ -1991,6 +1991,14 @@
       "when": "2026-09-28",
       "recorded_at": "2026-09-28T14:52:24+08:00",
       "note": ""
+    },
+    {
+      "qid": "la-c10-comprehensive-solution-005",
+      "paper_id": "la-paper-03",
+      "grade": "half",
+      "when": "2026-09-28",
+      "recorded_at": "2026-09-28T15:18:43+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -2292,7 +2300,7 @@
     },
     "la-c10-comprehensive-solution-005": {
       "state": "未复习",
-      "updated": "2026-09-24"
+      "updated": "2026-09-28"
     },
     "la-c11-comprehensive-solution-014": {
       "state": "未复习",
