@@ -2031,6 +2031,14 @@
       "when": "2026-09-28",
       "recorded_at": "2026-09-28T19:13:50+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c01-basic-choice-013",
+      "paper_id": "paper-04",
+      "grade": "wrong",
+      "when": "2026-09-28",
+      "recorded_at": "2026-09-28T19:38:44+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -2355,6 +2363,10 @@
       "updated": "2026-09-28"
     },
     "la-c12-basic-solution-002": {
+      "state": "未复习",
+      "updated": "2026-09-28"
+    },
+    "gs-c01-basic-choice-013": {
       "state": "未复习",
       "updated": "2026-09-28"
     }
