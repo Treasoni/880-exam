@@ -106,7 +106,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -246,7 +246,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-05/判分卡-05.md",
+                "file": "workspace/papers/paper-05/卷子-05-答案.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -303,7 +303,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -331,10 +331,10 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "8588a437b844626e",
+  "active": "b4b561f7809652dc",
   "lastOpenFiles": [
-    "workspace/papers/paper-05/卷子-05-答案.md",
     "workspace/papers/paper-05/判分卡-05.md",
+    "workspace/papers/paper-05/卷子-05-答案.md",
     "workspace/papers/paper-05/卷子-05.md",
     "workspace/wrong-book/线代错题本.md",
     "workspace/wrong-book/错题本.md",
