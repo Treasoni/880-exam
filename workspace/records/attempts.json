@@ -2087,6 +2087,22 @@
       "when": "2026-09-29",
       "recorded_at": "2026-09-29T11:01:24+08:00",
       "note": "错题复习-05 重练：第二章解答15，报不会（展开法/莱布尼茨两条路线均未走通）"
+    },
+    {
+      "qid": "la-c10-comprehensive-solution-005",
+      "paper_id": "la-paper-03",
+      "grade": "careless",
+      "when": "2026-09-29",
+      "recorded_at": "2026-09-29T11:24:32+08:00",
+      "note": "错题复习-05 重练：第十章解答5（I 全对，II 最后一行系数丢失→粗心）；第十一章解答14 报半会"
+    },
+    {
+      "qid": "la-c11-comprehensive-solution-014",
+      "paper_id": "la-paper-03",
+      "grade": "half",
+      "when": "2026-09-29",
+      "recorded_at": "2026-09-29T11:24:32+08:00",
+      "note": "错题复习-05 重练：第十章解答5（I 全对，II 最后一行系数丢失→粗心）；第十一章解答14 报半会"
     }
   ],
   "wrong_book_status": {
@@ -2388,11 +2404,11 @@
     },
     "la-c10-comprehensive-solution-005": {
       "state": "未复习",
-      "updated": "2026-09-28"
+      "updated": "2026-09-29"
     },
     "la-c11-comprehensive-solution-014": {
       "state": "未复习",
-      "updated": "2026-09-28"
+      "updated": "2026-09-29"
     },
     "la-c12-comprehensive-solution-014": {
       "state": "未复习",
