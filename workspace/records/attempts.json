@@ -2079,6 +2079,14 @@
       "when": "2026-09-29",
       "recorded_at": "2026-09-29T10:49:49+08:00",
       "note": "错题复习-05 重练：第一章解答6，独立做对"
+    },
+    {
+      "qid": "gs-c02-comprehensive-solution-015",
+      "paper_id": "paper-04",
+      "grade": "cannot",
+      "when": "2026-09-29",
+      "recorded_at": "2026-09-29T11:01:24+08:00",
+      "note": "错题复习-05 重练：第二章解答15，报不会（展开法/莱布尼茨两条路线均未走通）"
     }
   ],
   "wrong_book_status": {
@@ -2424,7 +2432,7 @@
     },
     "gs-c02-comprehensive-solution-015": {
       "state": "未复习",
-      "updated": "2026-09-28"
+      "updated": "2026-09-29"
     }
   }
 }
