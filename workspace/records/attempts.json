@@ -2071,6 +2071,14 @@
       "when": "2026-09-28",
       "recorded_at": "2026-09-28T20:14:52+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-solution-006",
+      "paper_id": "paper-04",
+      "grade": "correct",
+      "when": "2026-09-29",
+      "recorded_at": "2026-09-29T10:49:49+08:00",
+      "note": "错题复习-05 重练：第一章解答6，独立做对"
     }
   ],
   "wrong_book_status": {
@@ -2411,8 +2419,8 @@
       "updated": "2026-09-28"
     },
     "gs-c01-comprehensive-solution-006": {
-      "state": "未复习",
-      "updated": "2026-09-28"
+      "state": "已掌握",
+      "updated": "2026-09-29"
     },
     "gs-c02-comprehensive-solution-015": {
       "state": "未复习",
