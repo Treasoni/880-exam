@@ -250,7 +250,7 @@
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
-                      "conversationId": "conv-1790558108877-j7s7g4vib"
+                      "conversationId": "conv-1790648726441-3blgbcocd"
                     }
                   ],
                   "activeTabId": "tab-1790218000549-4kkqcsg"
@@ -261,7 +261,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -289,8 +289,9 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "9f7d7ea400c72fad",
+  "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/错题复习-05.workflow.md",
     "workspace/wrong-book/线代错题本.md",
     "workspace/workflow-runs/错题复习-04.workflow.md",
     "workspace/workflow-runs/错题复习-03.workflow.md.dovrgX",
@@ -326,7 +327,6 @@
     "workspace/workflow-runs/真题收录-2011数二解答20.workflow.md.1pK5HG",
     "workspace/wrong-book/images/zt-2011-数二-解答20.png",
     "workspace/workflow-runs/真题收录-2011数二解答20.workflow.md",
-    "workspace/workflow-runs/真题收录-2011数二解答18.workflow.md",
     "workspace/workflow-runs/真题收录-2011数二选择8.workflow.md.eXVMTO",
     "workspace/wrong-book/images/zt-2010-数二-解答21-区间分拆双中值示意图.png",
     "workspace/wrong-book/images/zt-2010-数二-解答20-极转直对照示意图.png",
