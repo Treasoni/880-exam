@@ -298,7 +298,7 @@
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
-                      "conversationId": "conv-1790596172192-i2i7oumj6"
+                      "conversationId": "conv-1790820313725-b7wdg9lzs"
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
@@ -317,7 +317,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -345,7 +345,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "9f7d7ea400c72fad",
+  "active": "b4b561f7809652dc",
   "lastOpenFiles": [
     "workspace/workflow-runs/真题错题复习-04.workflow.md.2Us6J6",
     "workspace/workflow-runs/真题错题复习-04.workflow.md",
