@@ -2247,6 +2247,30 @@
       "when": "2026-10-01",
       "recorded_at": "2026-10-01T10:07:09+08:00",
       "note": "卷子-05 判分（选择10+填空6，解答题未做未判）"
+    },
+    {
+      "qid": "gs-c02-comprehensive-fill-009",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-01",
+      "recorded_at": "2026-10-01T19:41:40+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-basic-fill-012",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-01",
+      "recorded_at": "2026-10-01T19:41:40+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c02-comprehensive-solution-015",
+      "paper_id": "paper-04",
+      "grade": "correct",
+      "when": "2026-10-01",
+      "recorded_at": "2026-10-01T19:41:41+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -2591,15 +2615,15 @@
       "updated": "2026-09-29"
     },
     "gs-c02-comprehensive-solution-015": {
-      "state": "未复习",
-      "updated": "2026-09-29"
+      "state": "已掌握",
+      "updated": "2026-10-01"
     },
     "gs-c04-comprehensive-choice-004": {
       "state": "未复习",
       "updated": "2026-10-01"
     },
     "gs-c02-comprehensive-fill-009": {
-      "state": "未复习",
+      "state": "已掌握",
       "updated": "2026-10-01"
     },
     "gs-c05-comprehensive-fill-002": {
@@ -2607,7 +2631,7 @@
       "updated": "2026-10-01"
     },
     "gs-c03-basic-fill-012": {
-      "state": "未复习",
+      "state": "已掌握",
       "updated": "2026-10-01"
     }
   }
