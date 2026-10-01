@@ -22,6 +22,20 @@
             }
           },
           {
+            "id": "1bbe5c96c7824ebb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/wrong-book/真题错题本.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "真题错题本"
+            }
+          },
+          {
             "id": "bde3e87ef4fd1b91",
             "type": "leaf",
             "state": {
@@ -105,7 +119,8 @@
               "title": "卷子-05-答案"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -245,7 +260,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/线代错题本.md",
+                "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -287,14 +302,14 @@
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
-                      "conversationId": "conv-1790254963192-idpmr7o0a"
+                      "conversationId": "conv-1790818022895-wvhv3zrqt"
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
                       "conversationId": "conv-1790815398217-ex9c37bkg"
                     }
                   ],
-                  "activeTabId": "tab-1790218000549-4kkqcsg"
+                  "activeTabId": "tab-1790061594608-a0amw1a"
                 }
               },
               "icon": "bot",
@@ -306,7 +321,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 373.4609375
+    "width": 408.9375
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -332,12 +347,14 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题错题复习-04.workflow.md.2Us6J6",
+    "workspace/workflow-runs/真题错题复习-04.workflow.md",
     "workspace/wrong-book/错题本.md",
+    "workspace/wrong-book/线代错题本.md",
     "workspace/wrong-book/真题错题本.md",
     "workspace/papers/paper-05/卷子-05-答案.md",
     "workspace/papers/paper-05/判分卡-05.md",
     "workspace/papers/paper-05/卷子-05.md",
-    "workspace/wrong-book/线代错题本.md",
     "workspace/workflow-runs/错题复习-05.workflow.md",
     "workspace/workflow-runs/错题复习-04.workflow.md",
     "workspace/workflow-runs/错题复习-03.workflow.md.dovrgX",
@@ -364,10 +381,8 @@
     "workspace/workflow-runs/真题收录-2011数二解答21.workflow.md.7nlbNT",
     "workspace/workflow-runs/真题收录-2011数二解答21.workflow.md.aAOOwH",
     "workspace/workflow-runs/真题收录-2011数二解答21.workflow.md",
-    "workspace/workflow-runs/真题收录-2011数二解答22.workflow.md",
     "workspace/workflow-runs/真题收录-2011数二解答20.workflow.md.1pK5HG",
     "workspace/wrong-book/images/zt-2011-数二-解答20.png",
-    "workspace/workflow-runs/真题收录-2011数二解答20.workflow.md",
     "workspace/workflow-runs/真题收录-2011数二选择8.workflow.md.eXVMTO",
     "workspace/wrong-book/images/zt-2010-数二-解答21-区间分拆双中值示意图.png",
     "workspace/wrong-book/images/zt-2010-数二-解答20-极转直对照示意图.png",

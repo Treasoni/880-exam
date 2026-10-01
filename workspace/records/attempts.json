@@ -2111,6 +2111,14 @@
       "when": "2026-10-01",
       "recorded_at": "2026-10-01T09:15:33+08:00",
       "note": "错题复习-05 重练：第十二章解答2（la-paper-02 三2），独立做对"
+    },
+    {
+      "qid": "la-c12-comprehensive-solution-014",
+      "paper_id": "la-paper-03",
+      "grade": "half",
+      "when": "2026-10-01",
+      "recorded_at": "2026-10-01T09:26:20+08:00",
+      "note": "错题复习-05 重练：第十二章解答14（la-paper-03 三5），(I) 完整，(II) 到转置关系未给出 P=P1P1^T"
     }
   ],
   "wrong_book_status": {
@@ -2420,7 +2428,7 @@
     },
     "la-c12-comprehensive-solution-014": {
       "state": "未复习",
-      "updated": "2026-09-28"
+      "updated": "2026-10-01"
     },
     "la-c12-basic-solution-003": {
       "state": "已掌握",
