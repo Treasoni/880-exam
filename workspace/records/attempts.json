@@ -2271,6 +2271,14 @@
       "when": "2026-10-01",
       "recorded_at": "2026-10-01T19:41:41+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-choice-004",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-01",
+      "recorded_at": "2026-10-01T20:03:10+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -2619,7 +2627,7 @@
       "updated": "2026-10-01"
     },
     "gs-c04-comprehensive-choice-004": {
-      "state": "未复习",
+      "state": "已掌握",
       "updated": "2026-10-01"
     },
     "gs-c02-comprehensive-fill-009": {
