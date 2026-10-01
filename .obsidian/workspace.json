@@ -133,7 +133,8 @@
               "title": "卷子-05-答案"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -273,7 +274,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/la-paper-04/线代判分卡-04.md",
+                "file": "workspace/papers/la-paper-04/线代卷子-04-答案.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -311,7 +312,7 @@
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
-                      "conversationId": "conv-1790820313725-b7wdg9lzs"
+                      "conversationId": "conv-1790837797827-yz4vyhpog"
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
@@ -322,7 +323,7 @@
                       "conversationId": "conv-1790815398217-ex9c37bkg"
                     }
                   ],
-                  "activeTabId": "tab-1790061594608-a0amw1a"
+                  "activeTabId": "tab-1789908968076-9htz0xx"
                 }
               },
               "icon": "bot",
@@ -358,10 +359,10 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e65af894ab0bc42f",
+  "active": "9f7d7ea400c72fad",
   "lastOpenFiles": [
-    "workspace/papers/la-paper-04/线代卷子-04-答案.md",
     "workspace/papers/la-paper-04/线代判分卡-04.md",
+    "workspace/papers/la-paper-04/线代卷子-04-答案.md",
     "workspace/papers/la-paper-04/线代卷子-04.md",
     "workspace/wrong-book/线代错题本.md",
     "workspace/wrong-book/真题错题本.md",
