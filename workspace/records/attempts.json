@@ -2103,6 +2103,14 @@
       "when": "2026-09-29",
       "recorded_at": "2026-09-29T11:24:32+08:00",
       "note": "错题复习-05 重练：第十章解答5（I 全对，II 最后一行系数丢失→粗心）；第十一章解答14 报半会"
+    },
+    {
+      "qid": "la-c12-basic-solution-002",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-10-01",
+      "recorded_at": "2026-10-01T09:15:33+08:00",
+      "note": "错题复习-05 重练：第十二章解答2（la-paper-02 三2），独立做对"
     }
   ],
   "wrong_book_status": {
@@ -2427,8 +2435,8 @@
       "updated": "2026-09-28"
     },
     "la-c12-basic-solution-002": {
-      "state": "未复习",
-      "updated": "2026-09-28"
+      "state": "已掌握",
+      "updated": "2026-10-01"
     },
     "gs-c01-basic-choice-013": {
       "state": "未复习",

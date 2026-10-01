@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/wrong-book/线代错题本.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "真题错题本"
+              "title": "线代错题本"
             }
           },
           {
@@ -245,7 +245,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/wrong-book/线代错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -330,13 +330,14 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e65af894ab0bc42f",
+  "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/wrong-book/错题本.md",
+    "workspace/wrong-book/真题错题本.md",
     "workspace/papers/paper-05/卷子-05-答案.md",
     "workspace/papers/paper-05/判分卡-05.md",
     "workspace/papers/paper-05/卷子-05.md",
     "workspace/wrong-book/线代错题本.md",
-    "workspace/wrong-book/错题本.md",
     "workspace/workflow-runs/错题复习-05.workflow.md",
     "workspace/workflow-runs/错题复习-04.workflow.md",
     "workspace/workflow-runs/错题复习-03.workflow.md.dovrgX",
@@ -356,7 +357,6 @@
     "workspace/papers/la-paper-04/线代卷子-04.md",
     "workspace/papers/la-paper-04",
     "workspace/workflow-runs/错题复习-03.workflow.md",
-    "workspace/wrong-book/真题错题本.md",
     "workspace/workflow-runs/真题错题复习-03.workflow.md.WmV3TD",
     "workspace/workflow-runs/真题错题复习-03.workflow.md.xPYjgl",
     "workspace/workflow-runs/真题错题复习-03.workflow.md",
