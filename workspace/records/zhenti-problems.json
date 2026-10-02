@@ -740,6 +740,38 @@
         }
       ]
     },
+    "zt-2012-数二-填空12": {
+      "id": "zt-2012-数二-填空12",
+      "module": "微分方程",
+      "year": 2012,
+      "paper": "数二",
+      "no": "填空12",
+      "stem": "(12) 微分方程 $y\\,\\mathrm{d}x + (x - 3y^{2})\\,\\mathrm{d}y = 0$ 满足条件 $y\\mid_{x=1} = 1$ 的解为 $y=$ \\_\\_\\_\\_。",
+      "answer": "$y=\\sqrt{x}$",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：一阶微分形式不变性与凑微分法、一阶线性微分方程的主元对调法（$\\frac{\\mathrm{d}x}{\\mathrm{d}y}+P(y)x=Q(y)$）、初值条件定常数并定分支。\n> **一句话本质**：方程里 $x$ 只以一次幂出现、$y$ 带高次幂（$3y^{2}$），按常规把 $y$ 当未知函数既不能分离变量也非线性；要么逆用 $\\mathrm{d}(xy)=y\\,\\mathrm{d}x+x\\,\\mathrm{d}y$ 一步凑出，要么把 $x$ 视作 $y$ 的函数降一维。\n> **破题一步**：$y\\,\\mathrm{d}x+x\\,\\mathrm{d}y-3y^{2}\\,\\mathrm{d}y=0\\Rightarrow\\mathrm{d}(xy)-\\mathrm{d}(y^{3})=0\\Rightarrow xy-y^{3}=C$。\n\n---\n\n**方法一：凑微分法（考场秒杀）**\n\n展开并重组微分项：\n$$(y\\,\\mathrm{d}x+x\\,\\mathrm{d}y)-3y^{2}\\,\\mathrm{d}y=0$$\n\n由 $y\\,\\mathrm{d}x+x\\,\\mathrm{d}y=\\mathrm{d}(xy)$、$3y^{2}\\,\\mathrm{d}y=\\mathrm{d}(y^{3})$，得\n$$\\mathrm{d}(xy)-\\mathrm{d}(y^{3})=0\\ \\Longrightarrow\\ \\mathrm{d}(xy-y^{3})=0$$\n积分得隐式通解\n$$xy-y^{3}=C\\quad(C\\ \\text{为任意常数})$$\n\n**方法二：主元对调法（数二通法）**\n\n由初值 $y\\mid_{x=1}=1\\neq0$，在 $y=1$ 邻域内 $y\\neq0$。原方程两边同除 $y\\,\\mathrm{d}y$，整理为关于 $x$ 的一阶线性方程：\n$$\\frac{\\mathrm{d}x}{\\mathrm{d}y}+\\frac{1}{y}x=3y$$\n\n此时 $P(y)=\\frac{1}{y}$，$Q(y)=3y$；由 $y\\mid_{x=1}=1>0$，在 $y>0$ 上求解，积分因子\n$$\\mathrm{e}^{\\int\\frac{1}{y}\\mathrm{d}y}=\\mathrm{e}^{\\ln y}=y$$\n两边同乘 $y$：\n$$y\\frac{\\mathrm{d}x}{\\mathrm{d}y}+x=3y^{2}\\ \\Longrightarrow\\ \\frac{\\mathrm{d}(xy)}{\\mathrm{d}y}=3y^{2}$$\n对 $y$ 积分得 $xy=y^{3}+C$，与方法一一致。\n\n**第三步：代入初值定常数，取显式解**\n\n将 $x=1,\\,y=1$ 代入 $xy-y^{3}=C$：\n$$1\\times1-1^{3}=C\\ \\Longrightarrow\\ C=0$$\n故 $xy-y^{3}=0$，即 $y(x-y^{2})=0$，给出 $y=0$ 或 $y=\\pm\\sqrt{x}$。由初值 $y\\mid_{x=1}=1$，仅 $y=\\sqrt{x}$ 在 $x=1$ 处取 $1$，其余分支舍去。\n\n$$y=\\sqrt{x}$$\n\n> [!warning] 易错点\n> **忽略初值的「定号作用」**：解出 $y^{2}=x$ 后开方得 $y=\\pm\\sqrt{x}$，必须再用 $y\\mid_{x=1}=1>0$ 选定正分支——初值条件既用来定常数 $C$，也用来唯一确定显式解的正负分支，漏定号会痛失全分。\n> **审题与书写**：题干已给出「$y=$」，横线上只填表达式 $\\sqrt{x}$；写成 $y=\\sqrt{x}$、隐式 $y^{2}-x=0$ 或 $\\pm\\sqrt{x}$ 在严格阅卷下都有判错风险。\n> **高频凑微分（考场三剑客）**：$y\\,\\mathrm{d}x+x\\,\\mathrm{d}y=\\mathrm{d}(xy)$；$\\dfrac{y\\,\\mathrm{d}x-x\\,\\mathrm{d}y}{y^{2}}=\\mathrm{d}\\!\\left(\\dfrac{x}{y}\\right)$；$\\dfrac{x\\,\\mathrm{d}y-y\\,\\mathrm{d}x}{x^{2}}=\\mathrm{d}\\!\\left(\\dfrac{y}{x}\\right)$。",
+      "cause": {
+        "label": "方法选择错误",
+        "step": "面对 $y\\,\\mathrm{d}x+(x-3y^{2})\\,\\mathrm{d}y=0$ 未及时切换主元：按常规把 $y$ 视为因变量时，方程既不能分离变量、也不是关于 $y$ 的一阶线性方程，未想到逆用 $\\mathrm{d}(xy)$ 凑微分或改求 $x=x(y)$。",
+        "advice": "看到 $y\\,\\mathrm{d}x+x\\,\\mathrm{d}y$ 立即条件反射到 $\\mathrm{d}(xy)$；若 $x$ 只以一次幂出现而 $y$ 带高次幂（如 $3y^{2}$），果断把 $\\frac{\\mathrm{d}y}{\\mathrm{d}x}$ 倒写成 $\\frac{\\mathrm{d}x}{\\mathrm{d}y}$，降为一阶线性方程再套通解公式。"
+      },
+      "attempts": [
+        {
+          "date": "2026-10-02",
+          "grade": "wrong"
+        }
+      ],
+      "review_state": "未复习",
+      "review_updated": "2026-10-02",
+      "links": [
+        {
+          "path": "external-notes/考研数学/微分方程/错题本",
+          "anchor": "错题07：一阶线性微分方程——变量互换 + 逆向思维 + 开方定号",
+          "label": "错题07：一阶线性微分方程——变量互换 + 逆向思维 + 开方定号",
+          "confidence": "high",
+          "note": "同一条考点组合：变量互换（主元对调）化为一阶线性方程 + 开方后用初值定正负号。那条同样考「倒写 $\\frac{\\mathrm{d}x}{\\mathrm{d}y}$ + 逆向凑微分 + 开方定号」三步，与本题解法一一对应。"
+        }
+      ]
+    },
     "zt-2012-数二-选择3": {
       "id": "zt-2012-数二-选择3",
       "module": "高数-数列极限",
