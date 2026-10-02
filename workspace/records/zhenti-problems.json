@@ -739,6 +739,33 @@
           "note": "同属「数列有界性」概念辨析：那道辨析「有界 ≠ 有最值」，本题辨析「有界 ⟺ 收敛（在 a_n>0 下），但 ≠ a_n 收敛」，都考对『有界』一词的精确定位。"
         }
       ]
+    },
+    "zt-2012-数二-选择8": {
+      "id": "zt-2012-数二-选择8",
+      "module": "第五章：矩阵相似理论",
+      "year": 2012,
+      "paper": "数二",
+      "no": "选择8",
+      "stem": "设 $A$ 为 3 阶矩阵，$P$ 为 3 阶可逆矩阵，且 $P^{-1}AP = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 2 \\end{pmatrix}$。若 $P = (\\alpha_{1}, \\alpha_{2}, \\alpha_{3})$，$Q = (\\alpha_{1} + \\alpha_{2}, \\alpha_{2}, \\alpha_{3})$，则 $Q^{-1}AQ = (\\quad)$\n\n(A) $\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}$　(B) $\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 2 \\end{pmatrix}$　(C) $\\begin{pmatrix} 2 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 2 \\end{pmatrix}$　(D) $\\begin{pmatrix} 2 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}$",
+      "answer": "(B) $\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 2 \\end{pmatrix}$",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：相似对角化的定义（$AP=P\\Lambda$）、特征值与特征向量的性质、向量组的线性无关性、初等矩阵与分块矩阵乘法。\n> **一句话本质**：$Q$ 的三列仍是 $A$ 的线性无关特征向量——**同一特征值下特征向量的非零线性组合仍是该特征值的特征向量**，于是直接写出 $AQ=Q\\Lambda$，一步读出 $Q^{-1}AQ$。\n> **两条路**：手快用**特征向量性质法**（写出 $AQ=Q\\Lambda$ 一步到位）；若题目换成「不同特征值的特征向量相加」，性质不再成立，就退回**初等矩阵过渡法** $Q=PE\\Rightarrow Q^{-1}AQ=E^{-1}\\Lambda E$。\n\n---\n\n**方法一：特征向量性质法（考场首选）**\n\n**第一步：还原特征向量关系。** 由 $P^{-1}AP=\\Lambda$，两边左乘可逆矩阵 $P$：\n$$AP=P\\Lambda\\ \\Longrightarrow\\ (A\\alpha_{1},A\\alpha_{2},A\\alpha_{3})=(\\alpha_{1},\\alpha_{2},2\\alpha_{3})$$\n逐列对照得\n$$A\\alpha_{1}=\\alpha_{1},\\qquad A\\alpha_{2}=\\alpha_{2},\\qquad A\\alpha_{3}=2\\alpha_{3}$$\n即 $\\alpha_{1},\\alpha_{2}$ 是 $A$ 属于 $\\lambda=1$ 的线性无关特征向量，$\\alpha_{3}$ 属于 $\\lambda=2$。\n\n**第二步：验证 $Q$ 可逆，且三列仍是特征向量。** $Q$ 由 $P$ 作「第 2 列加到第 1 列」的初等列变换得到，初等变换不改变秩，故 $r(Q)=r(P)=3$，$Q$ 可逆。又\n$$A(\\alpha_{1}+\\alpha_{2})=A\\alpha_{1}+A\\alpha_{2}=\\alpha_{1}+\\alpha_{2}=1\\cdot(\\alpha_{1}+\\alpha_{2})$$\n说明非零向量 $\\alpha_{1}+\\alpha_{2}$ 仍是 $\\lambda=1$ 的特征向量。\n\n**第三步：写出 $AQ=Q\\Lambda$。**\n$$AQ=\\big(A(\\alpha_{1}+\\alpha_{2}),A\\alpha_{2},A\\alpha_{3}\\big)=(\\alpha_{1}+\\alpha_{2},\\alpha_{2},2\\alpha_{3})=Q\\Lambda$$\n两边左乘 $Q^{-1}$，得\n$$Q^{-1}AQ=\\Lambda=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&2\\end{pmatrix}$$\n\n**方法二：初等矩阵过渡法（万金油通法）**\n\n若题目改成「不同特征值的特征向量相加」，方法一失效，此时用初等矩阵。$Q$ 是 $P$ 的第 2 列加到第 1 列的结果，即\n$$Q=PE,\\qquad E=\\begin{pmatrix}1&0&0\\\\1&1&0\\\\0&0&1\\end{pmatrix},\\qquad E^{-1}=\\begin{pmatrix}1&0&0\\\\-1&1&0\\\\0&0&1\\end{pmatrix}$$\n代入：\n$$Q^{-1}AQ=(PE)^{-1}A(PE)=E^{-1}(P^{-1}AP)E=E^{-1}\\Lambda E$$\n$$=\\begin{pmatrix}1&0&0\\\\-1&1&0\\\\0&0&1\\end{pmatrix}\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&2\\end{pmatrix}\\begin{pmatrix}1&0&0\\\\1&1&0\\\\0&0&1\\end{pmatrix}=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&2\\end{pmatrix}$$\n\n综上 $Q^{-1}AQ=\\Lambda$，选 **(B)**。\n\n> [!warning] 易错点\n> **把 $Q$ 当成新矩阵去反求 $A$**：本题不必求出 $A$，只需看 $Q$ 的三列是否为（线性无关的）特征向量。\n> **忽略「同一特征值」这个前提**：$\\alpha_{1}+\\alpha_{2}$ 是特征向量，前提是两者属于**同一**特征值；若相加的是 $\\lambda=1$ 与 $\\lambda=2$ 的特征向量，和向量一般不再是特征向量，方法一失效，必须改用方法二。\n> **忘记验证 $Q$ 可逆**：$Q^{-1}$ 存在是结论的前提，用「初等列变换 $r(Q)=r(P)=3$」一句话交代清楚。",
+      "attempts": [
+        {
+          "date": "2026-10-02",
+          "grade": "correct"
+        }
+      ],
+      "review_state": "未复习",
+      "review_updated": "2026-10-02",
+      "links": [
+        {
+          "path": "external-notes/线性代数/第五章：矩阵相似理论/错题本",
+          "anchor": "错题07：相似对角化变换矩阵的判定",
+          "label": "错题07：相似对角化变换矩阵的判定",
+          "confidence": "high",
+          "note": "同一条考点：判别「特征向量的线性组合能否仍作为对角化变换矩阵的列」。那道要求判断 P 不可以是哪个组合（含不同特征值相加的陷阱项），本题给定组合直接算 Q^{-1}AQ，互为正向/反向。"
+        }
+      ]
     }
   },
   "coverage": {}
