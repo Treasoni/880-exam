@@ -2335,6 +2335,14 @@
       "when": "2026-10-04",
       "recorded_at": "2026-10-04T11:53:21+08:00",
       "note": "错题复习第7轮重练：轻标记（高数c03综选12，paper-04一4）等价量xe^{-1}/(2x^2)，p积分收敛⇔k<1，选D，正确"
+    },
+    {
+      "qid": "gs-c03-comprehensive-choice-018",
+      "paper_id": "paper-05",
+      "grade": "wrong",
+      "when": "2026-10-04",
+      "recorded_at": "2026-10-04T12:00:01+08:00",
+      "note": "错题复习第7轮重练：轻标记（高数c03综选18，paper-05一10）用户报告做错"
     }
   ],
   "wrong_book_status": {
@@ -2708,6 +2716,10 @@
     },
     "gs-c03-comprehensive-choice-012": {
       "state": "已掌握",
+      "updated": "2026-10-04"
+    },
+    "gs-c03-comprehensive-choice-018": {
+      "state": "未复习",
       "updated": "2026-10-04"
     }
   }
