@@ -2279,6 +2279,14 @@
       "when": "2026-10-01",
       "recorded_at": "2026-10-01T20:03:10+08:00",
       "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-fill-002",
+      "paper_id": "paper-05",
+      "grade": "wrong",
+      "when": "2026-10-04",
+      "recorded_at": "2026-10-04T11:01:15+08:00",
+      "note": "错题复习第7轮重练：重点1"
     }
   ],
   "wrong_book_status": {
@@ -2636,7 +2644,7 @@
     },
     "gs-c05-comprehensive-fill-002": {
       "state": "未复习",
-      "updated": "2026-10-01"
+      "updated": "2026-10-04"
     },
     "gs-c03-basic-fill-012": {
       "state": "已掌握",
