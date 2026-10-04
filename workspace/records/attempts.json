@@ -2383,6 +2383,14 @@
       "when": "2026-10-04",
       "recorded_at": "2026-10-04T17:07:31+08:00",
       "note": "第7轮复习·轻标记10：奇偶性消部+象限4倍+sin t<t<tan t定序，答C完全正确"
+    },
+    {
+      "qid": "gs-c05-comprehensive-choice-005",
+      "paper_id": "paper-04",
+      "grade": "correct",
+      "when": "2026-10-04",
+      "recorded_at": "2026-10-04T17:21:22+08:00",
+      "note": "重练（第7轮 轻标记11）：交换积分次序题。用户先识破 √3x>x 的上下限倒置、提出负号，再化极坐标得 -∫_{π/4}^{π/3}dθ∫_0^{2secθ}f(r)r dr，判定 A 缺负号 / B 缺雅可比 r；进而极坐标换序，以 r=2√2 分块（第二块下限 arccos(2/r)），并把选项 C 写成 -[第一块+第二块] 形式比对选中 C。与解析册完全一致，判对。"
     }
   ],
   "wrong_book_status": {
@@ -2775,6 +2783,10 @@
       "updated": "2026-10-04"
     },
     "gs-c05-basic-choice-002": {
+      "state": "已掌握",
+      "updated": "2026-10-04"
+    },
+    "gs-c05-comprehensive-choice-005": {
       "state": "已掌握",
       "updated": "2026-10-04"
     }
