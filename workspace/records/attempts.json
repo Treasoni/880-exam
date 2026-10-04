@@ -2295,6 +2295,14 @@
       "when": "2026-10-04",
       "recorded_at": "2026-10-04T11:09:21+08:00",
       "note": "错题复习第7轮重练：重点2（线代c11，证AB/BA特征值与B可对角化）"
+    },
+    {
+      "qid": "la-c12-comprehensive-solution-014",
+      "paper_id": "la-paper-03",
+      "grade": "correct",
+      "when": "2026-10-04",
+      "recorded_at": "2026-10-04T11:21:46+08:00",
+      "note": "错题复习第7轮重练：重点3（线代c12，求P使P^{-1}AP=A^T），(Ⅰ)(Ⅱ)与解析册一致，P=[[2,-2,1],[-2,5,1],[1,1,2]]验算AP=PA^T成立"
     }
   ],
   "wrong_book_status": {
@@ -2603,8 +2611,8 @@
       "updated": "2026-10-04"
     },
     "la-c12-comprehensive-solution-014": {
-      "state": "未复习",
-      "updated": "2026-10-01"
+      "state": "已掌握",
+      "updated": "2026-10-04"
     },
     "la-c12-basic-solution-003": {
       "state": "已掌握",
