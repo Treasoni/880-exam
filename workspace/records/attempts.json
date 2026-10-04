@@ -2311,6 +2311,14 @@
       "when": "2026-10-04",
       "recorded_at": "2026-10-04T11:36:34+08:00",
       "note": "错题复习第7轮重练：轻标记（高数c01选4，paper-05一7）用户报告不会"
+    },
+    {
+      "qid": "gs-c02-comprehensive-choice-014",
+      "paper_id": "paper-04",
+      "grade": "correct",
+      "when": "2026-10-04",
+      "recorded_at": "2026-10-04T11:40:37+08:00",
+      "note": "错题复习第7轮重练：轻标记（高数c02选14，paper-04一8）F'=f⇒F''=f'，端点一侧导数符号均≥0，选B，正确"
     }
   ],
   "wrong_book_status": {
@@ -2631,8 +2639,8 @@
       "updated": "2026-09-28"
     },
     "gs-c02-comprehensive-choice-014": {
-      "state": "未复习",
-      "updated": "2026-09-28"
+      "state": "已掌握",
+      "updated": "2026-10-04"
     },
     "la-c12-basic-solution-002": {
       "state": "已掌握",
