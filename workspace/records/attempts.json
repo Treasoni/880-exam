@@ -2303,6 +2303,14 @@
       "when": "2026-10-04",
       "recorded_at": "2026-10-04T11:21:46+08:00",
       "note": "错题复习第7轮重练：重点3（线代c12，求P使P^{-1}AP=A^T），(Ⅰ)(Ⅱ)与解析册一致，P=[[2,-2,1],[-2,5,1],[1,1,2]]验算AP=PA^T成立"
+    },
+    {
+      "qid": "gs-c01-comprehensive-choice-004",
+      "paper_id": "paper-05",
+      "grade": "cannot",
+      "when": "2026-10-04",
+      "recorded_at": "2026-10-04T11:36:34+08:00",
+      "note": "错题复习第7轮重练：轻标记（高数c01选4，paper-05一7）用户报告不会"
     }
   ],
   "wrong_book_status": {
@@ -2665,6 +2673,10 @@
     "gs-c03-basic-fill-012": {
       "state": "已掌握",
       "updated": "2026-10-01"
+    },
+    "gs-c01-comprehensive-choice-004": {
+      "state": "未复习",
+      "updated": "2026-10-04"
     }
   }
 }
