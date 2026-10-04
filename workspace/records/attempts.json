@@ -2359,6 +2359,14 @@
       "when": "2026-10-04",
       "recorded_at": "2026-10-04T16:32:37+08:00",
       "note": "错题复习第7轮重练：轻标记7（高数 c04 综合填空4，Leibniz 变限积分求偏导后再一元最值），终答 -√2e^{-1/2} 与解析册一致，但下限求导漏负号（两偏导第二项写成 +，应 -），改对后 xf_x+yf_y=-2te^{-t^2}（负号）；且驻点取了 t=-√2/2<0 的不可达支（t=x^2+y^2≥0），正解在 t=+1/√2 取最小。答案对、方法错"
+    },
+    {
+      "qid": "gs-c04-comprehensive-solution-022",
+      "paper_id": "paper-04",
+      "grade": "cannot",
+      "when": "2026-10-04",
+      "recorded_at": "2026-10-04T16:40:40+08:00",
+      "note": "错题复习第7轮重练：轻标记8（高数 c04 综合解答22，w=xy-z 换元 u=x+y,v=x-y 化简 PDE 并反解 z），用户报不会；已讲解：(Ⅰ) 由 PDE 得 2-4w_uu=0 ⇒ w_uu=1/2；(Ⅱ) 两次积分定 φ₁=v e^{-v}, φ₂=v²/4 ⇒ z=xy-½(x²+y²)-(x²-y²)e^{-(x-y)}"
     }
   ],
   "wrong_book_status": {
@@ -2743,6 +2751,10 @@
       "updated": "2026-10-04"
     },
     "gs-c04-comprehensive-fill-004": {
+      "state": "未复习",
+      "updated": "2026-10-04"
+    },
+    "gs-c04-comprehensive-solution-022": {
       "state": "未复习",
       "updated": "2026-10-04"
     }

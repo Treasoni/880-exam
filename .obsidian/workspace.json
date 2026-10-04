@@ -289,11 +289,11 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 596.38671875
+    "width": 314.65234375
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -317,7 +317,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "b4b561f7809652dc",
+  "active": "e4a8d2dfed494836",
   "lastOpenFiles": [
     "workspace/wrong-book/线代错题本.md",
     "workspace/wrong-book/错题本.md",
