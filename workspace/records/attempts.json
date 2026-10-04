@@ -2375,6 +2375,14 @@
       "when": "2026-10-04",
       "recorded_at": "2026-10-04T17:02:55+08:00",
       "note": "第7轮复习·轻标记9：对称性+域内y<0，答C正确；多余计算中(x²-4)²展开掉平方(-8x应为-8x²)，值算错但符号不变，判对"
+    },
+    {
+      "qid": "gs-c05-comprehensive-choice-002",
+      "paper_id": "paper-03",
+      "grade": "correct",
+      "when": "2026-10-04",
+      "recorded_at": "2026-10-04T17:07:31+08:00",
+      "note": "第7轮复习·轻标记10：奇偶性消部+象限4倍+sin t<t<tan t定序，答C完全正确"
     }
   ],
   "wrong_book_status": {
@@ -2627,8 +2635,8 @@
       "updated": "2026-09-17"
     },
     "gs-c05-comprehensive-choice-002": {
-      "state": "未复习",
-      "updated": "2026-09-20"
+      "state": "已掌握",
+      "updated": "2026-10-04"
     },
     "gs-c05-comprehensive-choice-006": {
       "state": "已掌握",
