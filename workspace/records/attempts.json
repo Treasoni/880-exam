@@ -2367,6 +2367,14 @@
       "when": "2026-10-04",
       "recorded_at": "2026-10-04T16:40:40+08:00",
       "note": "错题复习第7轮重练：轻标记8（高数 c04 综合解答22，w=xy-z 换元 u=x+y,v=x-y 化简 PDE 并反解 z），用户报不会；已讲解：(Ⅰ) 由 PDE 得 2-4w_uu=0 ⇒ w_uu=1/2；(Ⅱ) 两次积分定 φ₁=v e^{-v}, φ₂=v²/4 ⇒ z=xy-½(x²+y²)-(x²-y²)e^{-(x-y)}"
+    },
+    {
+      "qid": "gs-c05-basic-choice-002",
+      "paper_id": "paper-04",
+      "grade": "correct",
+      "when": "2026-10-04",
+      "recorded_at": "2026-10-04T17:02:55+08:00",
+      "note": "第7轮复习·轻标记9：对称性+域内y<0，答C正确；多余计算中(x²-4)²展开掉平方(-8x应为-8x²)，值算错但符号不变，判对"
     }
   ],
   "wrong_book_status": {
@@ -2756,6 +2764,10 @@
     },
     "gs-c04-comprehensive-solution-022": {
       "state": "未复习",
+      "updated": "2026-10-04"
+    },
+    "gs-c05-basic-choice-002": {
+      "state": "已掌握",
       "updated": "2026-10-04"
     }
   }
