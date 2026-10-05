@@ -1164,6 +1164,38 @@
           "note": "同法：同为「递归数列求极限」大题模板——先分析迭代函数、再用单调有界定理证明极限存在，最后取极限解方程定值；本文用双侧不等式搭桥（$\\ln x_n + \\frac{1}{x_{n+1}} < 1 \\leqslant \\ln x_n + \\frac{1}{x_n}$）证单调，是同一模板的另一变体。"
         }
       ]
+    },
+    "zt-2013-数二-解答22": {
+      "id": "zt-2013-数二-解答22",
+      "module": "第二章：矩阵",
+      "year": 2013,
+      "paper": "数二",
+      "no": "解答22",
+      "stem": "设 $A = \\begin{pmatrix} 1 & a \\\\ 1 & 0 \\end{pmatrix}$，$B = \\begin{pmatrix} 0 & 1 \\\\ 1 & b \\end{pmatrix}$。当 $a, b$ 为何值时，存在矩阵 $C$ 使得 $AC - CA = B$，并求所有矩阵 $C$。",
+      "answer": "$a = -1$，$b = 0$；此时所有满足条件的矩阵为 $C = \\begin{pmatrix} k_1 + k_2 + 1 & -k_1 \\\\ k_1 & k_2 \\end{pmatrix} = k_1\\begin{pmatrix} 1 & -1 \\\\ 1 & 0 \\end{pmatrix} + k_2\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} + \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$（$k_1, k_2$ 为任意常数）。",
+      "solution": "> [!info] 考点\n> 双侧矩阵方程 $AC - CA = B$——待定元素法化为四元非齐次线性方程组、含参增广矩阵初等行变换、有解判据 $r(M) = r(\\overline{M})$ 定参数、求通解并回填矩阵 $C$；附矩阵的迹 $\\operatorname{tr}$ 性质秒杀 $a, b$ 的验算技巧。\n\n## 第一阶段：设元并转化为线性方程组\n\n设 $C = \\begin{pmatrix} x_1 & x_2 \\\\ x_3 & x_4 \\end{pmatrix}$，分别计算\n\n$$AC = \\begin{pmatrix} 1 & a \\\\ 1 & 0 \\end{pmatrix}\\begin{pmatrix} x_1 & x_2 \\\\ x_3 & x_4 \\end{pmatrix} = \\begin{pmatrix} x_1 + a x_3 & x_2 + a x_4 \\\\ x_1 & x_2 \\end{pmatrix},$$\n\n$$CA = \\begin{pmatrix} x_1 & x_2 \\\\ x_3 & x_4 \\end{pmatrix}\\begin{pmatrix} 1 & a \\\\ 1 & 0 \\end{pmatrix} = \\begin{pmatrix} x_1 + x_2 & a x_1 \\\\ x_3 + x_4 & a x_3 \\end{pmatrix}.$$\n\n代入 $AC - CA = B$：\n\n$$\\begin{pmatrix} -x_2 + a x_3 & -a x_1 + x_2 + a x_4 \\\\ x_1 - x_3 - x_4 & x_2 - a x_3 \\end{pmatrix} = \\begin{pmatrix} 0 & 1 \\\\ 1 & b \\end{pmatrix}.$$\n\n由矩阵相等逐元素对应，得关于 $x_1, x_2, x_3, x_4$ 的四元非齐次线性方程组\n\n$$\\begin{cases} -x_2 + a x_3 = 0 \\\\ -a x_1 + x_2 + a x_4 = 1 \\\\ x_1 - x_3 - x_4 = 1 \\\\ x_2 - a x_3 = b \\end{cases}$$\n\n## 第二阶段：含参增广矩阵初等行变换定参数\n\n对增广矩阵 $\\overline{M}$ 作初等行变换（先用不含参数的常数 $1$ 作主元，避免对含参行做除法）：\n\n$$\\begin{aligned}\n\\overline{M} &= \\left(\\begin{array}{cccc:c} 0 & -1 & a & 0 & 0 \\\\ -a & 1 & 0 & a & 1 \\\\ 1 & 0 & -1 & -1 & 1 \\\\ 0 & 1 & -a & 0 & b \\end{array}\\right)\n\\xrightarrow{r_1 \\leftrightarrow r_3}\n\\left(\\begin{array}{cccc:c} 1 & 0 & -1 & -1 & 1 \\\\ -a & 1 & 0 & a & 1 \\\\ 0 & -1 & a & 0 & 0 \\\\ 0 & 1 & -a & 0 & b \\end{array}\\right) \\\\\n&\\xrightarrow{r_2 + a r_1}\n\\left(\\begin{array}{cccc:c} 1 & 0 & -1 & -1 & 1 \\\\ 0 & 1 & -a & 0 & 1 + a \\\\ 0 & -1 & a & 0 & 0 \\\\ 0 & 1 & -a & 0 & b \\end{array}\\right)\n\\xrightarrow{\\substack{r_2 + r_3 \\\\ r_4 + r_3}}\n\\left(\\begin{array}{cccc:c} 1 & 0 & -1 & -1 & 1 \\\\ 0 & 0 & 0 & 0 & 1 + a \\\\ 0 & -1 & a & 0 & 0 \\\\ 0 & 0 & 0 & 0 & b \\end{array}\\right) \\\\\n&\\xrightarrow{\\substack{r_2 \\leftrightarrow r_3 \\\\ -r_2}}\n\\left(\\begin{array}{cccc:c} 1 & 0 & -1 & -1 & 1 \\\\ 0 & 1 & -a & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 1 + a \\\\ 0 & 0 & 0 & 0 & b \\end{array}\\right)\n\\end{aligned}$$\n\n由非齐次线性方程组有解的充分必要条件 $r(M) = r(\\overline{M})$，当且仅当后两行的常数项同时为零时方程组有解：\n\n$$\\begin{cases} 1 + a = 0 \\\\ b = 0 \\end{cases} \\Longrightarrow a = -1, \\quad b = 0.$$\n\n## 第三阶段：求通解并还原矩阵 $C$\n\n当 $a = -1, b = 0$ 时，增广矩阵化为行最简形：\n\n$$\\overline{M} \\to \\left(\\begin{array}{cccc:c} 1 & 0 & -1 & -1 & 1 \\\\ 0 & 1 & 1 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 \\end{array}\\right).$$\n\n此时 $r(M) = r(\\overline{M}) = 2 < 4$，方程组有无穷多解，自由未知量个数为 $4 - 2 = 2$。取 $x_3, x_4$ 为自由未知量，得同解方程组\n\n$$\\begin{cases} x_1 = x_3 + x_4 + 1 \\\\ x_2 = -x_3 \\end{cases}$$\n\n令 $x_3 = k_1, x_4 = k_2$（$k_1, k_2$ 为任意常数），回填得所有满足条件的矩阵\n\n$$C = \\begin{pmatrix} k_1 + k_2 + 1 & -k_1 \\\\ k_1 & k_2 \\end{pmatrix} = k_1\\begin{pmatrix} 1 & -1 \\\\ 1 & 0 \\end{pmatrix} + k_2\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} + \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix} \\quad (k_1, k_2 \\text{ 为任意常数}).$$\n\n## 核心提醒\n\n> [!tip] 用矩阵的迹 $\\operatorname{tr}$ 秒定 $a, b$（验算必备）\n> 由 $\\operatorname{tr}(XY) = \\operatorname{tr}(YX)$ 与 $\\operatorname{tr}(X - Y) = \\operatorname{tr}X - \\operatorname{tr}Y$：对 $AC - CA = B$ 两边取迹，得 $\\operatorname{tr}B = \\operatorname{tr}(AC) - \\operatorname{tr}(CA) = 0$，而 $\\operatorname{tr}B = b$，故 **$b = 0$**；再对 $AC - CA = B$ 两边左乘 $A$ 得 $A^2C - ACA = AB$，两边取迹得 $\\operatorname{tr}(AB) = \\operatorname{tr}(A^2C) - \\operatorname{tr}(A(CA)) = \\operatorname{tr}(A^2C) - \\operatorname{tr}(A^2C) = 0$，而 $AB = \\begin{pmatrix} a & 1 + ab \\\\ 0 & 1 \\end{pmatrix}$，$\\operatorname{tr}(AB) = a + 1 = 0 \\Rightarrow$ **$a = -1$**。选填题 10 秒秒杀，解答题用来 100% 校验行变换是否算对。\n\n> [!tip] 为什么通解里恰好含 $A$ 与 $E$？\n> 齐次矩阵方程 $AC - CA = O$ 即 $AC = CA$，求与 $A$ 可交换的全部矩阵。显然 $A$ 本身以及 $E$ 都与 $A$ 可交换，故 $k_1 A + k_2 E$ 正是齐次部分的通解，而 $\\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$ 则是 $AC - CA = B$ 的一个特解。\n\n## 易错点提示\n\n> [!warning] 陷阱一：把 $AC - CA$ 强行提公因式\n> 左乘的 $A$ 与右乘的 $A$ 位置不同，绝不能套数的乘法习惯合并成 $(A - A)C = O = B$ 之类。遇到 $AX - XB = C$ 型双侧矩阵方程，设元素列方程组是唯一通法。\n\n> [!warning] 陷阱二：算出列向量通解却忘回填矩阵 $C$\n> 题目问的是「所有矩阵 $C$」（$2 \\times 2$ 方阵），不是 $4 \\times 1$ 列向量。必须把 $x_1, x_2, x_3, x_4$ 填回 $\\begin{pmatrix} x_1 & x_2 \\\\ x_3 & x_4 \\end{pmatrix}$ 并注明 $k_1, k_2$ 为任意常数，否则被扣结果分。\n\n> [!warning] 陷阱三：对含参行做除法致漏解\n> 第 2 行含 $-a$，若用「除以 $a$」消第 1 行就要分类讨论 $a = 0$ 与 $a \\neq 0$。铁律：行变换尽量以不含参数的常数 $1$ 为主元（本题先做 $r_1 \\leftrightarrow r_3$，把左下角的 $1$ 换到左上角），全程只用加减倍法，免去讨论。",
+      "cause": {
+        "label": "方法选择错误",
+        "step": "面对双侧矩阵方程 $AC - CA = B$「没思路」——只把它当成一个普通的矩阵等式，没意识到矩阵乘法不可交换、无法提公因式，因而想不到「待定元素法」这条通法：设 $C = \\begin{pmatrix} x_1 & x_2 \\\\ x_3 & x_4 \\end{pmatrix}$ 代入、逐元素对应化为四元非齐次线性方程组，再用含参增广矩阵的行变换与有解判据 $r(M) = r(\\overline{M})$ 定出 $a, b$ 并求通解。",
+        "advice": "见到未知矩阵被夹在两侧的方程（$AX - XB = C$、$AC - CA = B$ 型），先别急着做代数变形，直接在草稿纸上设出未知矩阵的全部元素，代入按「对应元素相等」列方程组——把矩阵问题降维成线性方程组问题，再走「增广矩阵行变换 $\\to$ 秩判据 $r(M) = r(\\overline{M})$ $\\to$ 求通解 $\\to$ 回填矩阵」的固定流程。含参行变换优先选不含参数的常数 $1$ 作主元，避免分类讨论；做完用 $\\operatorname{tr}(XY) = \\operatorname{tr}(YX)$ 取迹秒验 $b = 0$、左乘 $A$ 再取迹秒验 $a = -1$。"
+      },
+      "attempts": [
+        {
+          "date": "2026-10-05",
+          "grade": "cannot"
+        }
+      ],
+      "review_state": "未复习",
+      "review_updated": "2026-10-05",
+      "links": [
+        {
+          "path": "external-notes/线性代数/第二章：矩阵/错题本",
+          "anchor": "错题14：矩阵方程 $A+B=AB$——配凑法与交换律证明",
+          "label": "错题14：矩阵方程 $A+B=AB$——配凑法与交换律证明",
+          "confidence": "high",
+          "note": "同族：同为矩阵方程求解——外部库那条用配凑法 + 交换律证明处理 $A+B=AB$，本文用待定元素法化线性方程组处理 $AC-CA=B$，同属「见矩阵方程先看能否变形、否则设元列方程组」这一处置思路。"
+        }
+      ]
     }
   },
   "coverage": {}
