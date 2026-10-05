@@ -997,6 +997,45 @@
           "note": "同法——由特征值 / 不变量反推参数。"
         }
       ]
+    },
+    "zt-2013-数二-填空14": {
+      "id": "zt-2013-数二-填空14",
+      "module": "第一章：行列式",
+      "year": 2013,
+      "paper": "数二",
+      "no": "填空14",
+      "stem": "设 $A = (a_{ij})$ 是 3 阶非零矩阵，$\\lvert A\\rvert$ 为 $A$ 的行列式，$A_{ij}$ 为 $a_{ij}$ 的代数余子式。若 $a_{ij} + A_{ij} = 0$（$i, j = 1, 2, 3$），则 $\\lvert A\\rvert =$ ____",
+      "answer": "$-1$",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：行列式按行（列）展开定理、伴随矩阵的定义与性质（$\\lvert A^*\\rvert=\\lvert A\\rvert^{n-1}$）、行列式运算性质（$\\lvert kA\\rvert=k^n\\lvert A\\rvert$，$\\lvert A^{\\mathsf T}\\rvert=\\lvert A\\rvert$）。\n> **一句话本质**：见到「元素 $a_{ij}$ 与其代数余子式 $A_{ij}$ 的关系」，立刻**升维翻译成矩阵方程**——由 $A^*=(A_{ij})^{\\mathsf T}$ 把 9 个元素等式合并为 $A^*=-A^{\\mathsf T}$，再两边取行列式解出 $\\lvert A\\rvert$。\n> **破题三步**：① 元素关系 → $A^*=-A^{\\mathsf T}$；② 用「非零矩阵」证明 $\\lvert A\\rvert<0$（排除 $\\lvert A\\rvert=0$）；③ 两边取行列式 → 关于 $\\lvert A\\rvert$ 的方程。\n\n## 第一阶段：元素关系升维为伴随矩阵方程\n\n由 $a_{ij}+A_{ij}=0$ 得 $A_{ij}=-a_{ij}$。伴随矩阵按代数余子式**转置**排列：\n$$A^*=\\begin{pmatrix}A_{11} & A_{21} & A_{31} \\\\ A_{12} & A_{22} & A_{32} \\\\ A_{13} & A_{23} & A_{33}\\end{pmatrix}=\\begin{pmatrix}-a_{11} & -a_{21} & -a_{31} \\\\ -a_{12} & -a_{22} & -a_{32} \\\\ -a_{13} & -a_{23} & -a_{33}\\end{pmatrix}=-A^{\\mathsf T}$$\n故得核心关系式\n$$A^*=-A^{\\mathsf T}$$\n\n## 第二阶段：用「非零矩阵」定 $\\lvert A\\rvert$ 的符号\n\n$A\\neq O$，故至少有一行不全为 $0$，不妨设 $a_{i1}^2+a_{i2}^2+a_{i3}^2>0$。按第 $i$ 行展开行列式并代入 $A_{ij}=-a_{ij}$：\n$$\\lvert A\\rvert=\\sum_{j=1}^{3}a_{ij}A_{ij}=-\\sum_{j=1}^{3}a_{ij}^2<0$$\n故 $\\lvert A\\rvert\\neq 0$。\n\n## 第三阶段：两边取行列式解 $\\lvert A\\rvert$\n\n对 $A^*=-A^{\\mathsf T}$ 两边取行列式：\n$$\\lvert A^*\\rvert=\\lvert -A^{\\mathsf T}\\rvert$$\n左边 $\\lvert A^*\\rvert=\\lvert A\\rvert^{3-1}=\\lvert A\\rvert^2$；右边 $\\lvert -A^{\\mathsf T}\\rvert=(-1)^3\\lvert A^{\\mathsf T}\\rvert=-\\lvert A\\rvert$。联立得\n$$\\lvert A\\rvert^2=-\\lvert A\\rvert\\Longrightarrow \\lvert A\\rvert(\\lvert A\\rvert+1)=0$$\n由第二阶段 $\\lvert A\\rvert\\neq 0$ 排除零根，故\n$$\\lvert A\\rvert=-1$$\n\n> [!tip] 等价视角：$AA^*=\\lvert A\\rvert E$\n> 由 $A^*=-A^{\\mathsf T}$ 左乘 $A$，结合 $AA^*=\\lvert A\\rvert E$ 得\n> $$AA^{\\mathsf T}=-\\lvert A\\rvert E$$\n> 这也是解答题中证明 $\\dfrac{1}{\\sqrt{-\\lvert A\\rvert}}A$（或 $A_{ij}=a_{ij}$ 时的 $A$）为正交矩阵的标准桥梁。\n\n> [!warning] 易错点\n> **陷阱一：$\\lvert -A^{\\mathsf T}\\rvert$ 漏算阶数次方。** 误以为 $\\lvert -A^{\\mathsf T}\\rvert=\\lvert A\\rvert$（漏掉负号），算出 $\\lvert A\\rvert=1$。切记 $\\lvert kA\\rvert=k^n\\lvert A\\rvert$，本题 $n=3$ 为奇数，故 $\\lvert -A^{\\mathsf T}\\rvert=(-1)^3\\lvert A\\rvert=-\\lvert A\\rvert$。\n> **陷阱二：忽略「非零矩阵」，多写增根。** 只解到 $\\lvert A\\rvert^2=-\\lvert A\\rvert$ 就填「$0$ 或 $-1$」。题干「非零矩阵」正是用来排根——由 $\\lvert A\\rvert=-\\sum a_{ij}^2<0$ 排除 $\\lvert A\\rvert=0$。这类限定词（非零矩阵、正项数列、非常数函数）都是排根的决定性条件。\n> **陷阱三：写 $A^*$ 忘记转置。** $A^*$ 的第 $i$ 行第 $j$ 列元素是 $A_{ji}$ 而非 $A_{ij}$，故 $A_{ij}=-a_{ij}$ 对应 $A^*=-A^{\\mathsf T}$ 而非 $A^*=-A$。本题只求行列式时 $\\lvert A^{\\mathsf T}\\rvert=\\lvert A\\rvert$ 恰好掩盖了遗漏，但若要求 $A^{\\mathsf T}A$ 或伴随矩阵具体元素就会全盘皆输。",
+      "cause": {
+        "label": "概念/定理错误",
+        "step": "写伴随矩阵时忘记代数余子式按转置排列：由 $A_{ij}=-a_{ij}$ 错误地直接写成 $A^*=-A$，忽略了 $A^*=(A_{ij})^{\\mathsf T}$，正确关系应为 $A^*=-A^{\\mathsf T}$。本题只求 $\\lvert A\\rvert$（$\\lvert A^{\\mathsf T}\\rvert=\\lvert A\\rvert$）恰好掩盖了这个错误，但概念已错。",
+        "advice": "背伴随矩阵定义时把「转置」刻进肌肉记忆：$A^*$ 的第 $i$ 行第 $j$ 列是 $A_{ji}$，即 $A^*=(A_{ij})^{\\mathsf T}$。凡题干给出「元素 $a_{ij}$ 与代数余子式 $A_{ij}$ 的关系」，一律先升维为矩阵方程再操作。同时注意 $\\lvert kA\\rvert=k^n\\lvert A\\rvert$ 的阶数次方，并用「非零矩阵 / 正项数列 / 非常数函数」等限定词排除增根。"
+      },
+      "attempts": [
+        {
+          "date": "2026-10-05",
+          "grade": "wrong"
+        }
+      ],
+      "review_state": "未复习",
+      "review_updated": "2026-10-05",
+      "links": [
+        {
+          "path": "external-notes/线性代数/第一章：行列式/错题本",
+          "anchor": "错题25：代数余子式矩阵等于 $-A$ 时的行列式",
+          "label": "错题25：代数余子式矩阵等于 $-A$ 时的行列式",
+          "confidence": "high",
+          "note": "同题——标注「真题：2013 数二 · 代数余子式矩阵」，题干一致。"
+        },
+        {
+          "path": "external-notes/线性代数/第二章：矩阵/错题本",
+          "anchor": "错题11：伴随矩阵 $A^* = A^T$——行列式与元素综合",
+          "label": "错题11：伴随矩阵 $A^* = A^T$——行列式与元素综合",
+          "confidence": "medium",
+          "note": "姊妹题——$A^*=A^{\\mathsf T}$ 版本，同用「两边取行列式解 $\\lvert A\\rvert$」并需排根。"
+        }
+      ]
     }
   },
   "coverage": {}
