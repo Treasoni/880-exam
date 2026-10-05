@@ -958,6 +958,45 @@
           "note": "同为「关于 $y=x$ 的对称抵消 + 剩余区域用保号性判正负」两件工具（那道被积 $\\sqrt[3]{x-y}$、本题 $y-x$，符号规律相反但方法同源）。"
         }
       ]
+    },
+    "zt-2013-数二-选择8": {
+      "id": "zt-2013-数二-选择8",
+      "module": "第五章：矩阵相似理论",
+      "year": 2013,
+      "paper": "数二",
+      "no": "选择8",
+      "stem": "矩阵 $\\begin{pmatrix}1 & a & 1 \\\\ a & b & a \\\\ 1 & a & 1\\end{pmatrix}$ 与 $\\begin{pmatrix}2 & 0 & 0 \\\\ 0 & b & 0 \\\\ 0 & 0 & 0\\end{pmatrix}$ 相似的充分必要条件为（　　）\n\n(A) $a = 0, b = 2.$　(B) $a = 0, b$ 为任意常数.　(C) $a = 2, b = 0.$　(D) $a = 2, b$ 为任意常数.",
+      "answer": "(B) $a = 0$，$b$ 为任意常数",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：实对称矩阵的性质、矩阵相似对角化、特征多项式与特征值。\n> **一句话本质**：$A^{\\mathsf T}=A$ 是实对称矩阵，**必可相似对角化**，因此与对角阵 $\\Lambda=\\mathrm{diag}(2,b,0)$ 相似的充要条件就是「特征值恰好为 $2,b,0$」，即特征多项式相等：$\\lvert\\lambda E-A\\rvert\\equiv\\lvert\\lambda E-\\Lambda\\rvert$。\n> **破题路径**：算出 $\\lvert\\lambda E-A\\rvert$ 与 $\\lvert\\lambda E-\\Lambda\\rvert$ 对比系数，一步定出 $a,b$。\n\n## 第一阶段：用实对称性把「相似」化为「特征多项式相等」\n\n记 $A=\\begin{pmatrix}1 & a & 1 \\\\ a & b & a \\\\ 1 & a & 1\\end{pmatrix}$，$\\Lambda=\\begin{pmatrix}2 & 0 & 0 \\\\ 0 & b & 0 \\\\ 0 & 0 & 0\\end{pmatrix}$。由 $A^{\\mathsf T}=A$ 知 $A$ 为实对称矩阵，必可（正交）相似对角化；$\\Lambda$ 本身即对角阵。故\n$$A\\sim\\Lambda\\iff A\\text{ 的特征值为 }2,b,0\\iff \\lvert\\lambda E-A\\rvert=\\lvert\\lambda E-\\Lambda\\rvert$$\n对角阵的特征多项式直接可得\n$$\\lvert\\lambda E-\\Lambda\\rvert=\\lambda(\\lambda-2)(\\lambda-b)$$\n\n## 第二阶段：造零降阶算 $\\lvert\\lambda E-A\\rvert$\n\n$$\\lvert\\lambda E-A\\rvert=\\begin{vmatrix}\\lambda-1 & -a & -1 \\\\ -a & \\lambda-b & -a \\\\ -1 & -a & \\lambda-1\\end{vmatrix}$$\n第一、三行结构对称，先作 $r_1-r_3$ 提公因式 $\\lambda$，再作 $c_3+c_1$ 造零：\n$$\\lvert\\lambda E-A\\rvert=\\begin{vmatrix}\\lambda & 0 & -\\lambda \\\\ -a & \\lambda-b & -a \\\\ -1 & -a & \\lambda-1\\end{vmatrix}=\\begin{vmatrix}\\lambda & 0 & 0 \\\\ -a & \\lambda-b & -2a \\\\ -1 & -a & \\lambda-2\\end{vmatrix}$$\n按第一行展开：\n$$\\lvert\\lambda E-A\\rvert=\\lambda\\begin{vmatrix}\\lambda-b & -2a \\\\ -a & \\lambda-2\\end{vmatrix}=\\lambda\\big[(\\lambda-b)(\\lambda-2)-2a^2\\big]$$\n\n## 第三阶段：对比系数定 $a$、$b$\n\n令两特征多项式相等：\n$$\\lambda\\big[(\\lambda-b)(\\lambda-2)-2a^2\\big]=\\lambda(\\lambda-b)(\\lambda-2)$$\n消去相同项得 $-2a^2\\lambda=0$ 对任意 $\\lambda$ 恒成立，故\n$$a=0,\\quad b\\text{ 为任意常数}$$\n选 **(B)**。\n\n> [!tip] 考场 10 秒提速：用 $\\mathrm{tr}(A^2)$ 秒杀\n> 相似 $\\Rightarrow$ $A^2\\sim\\Lambda^2$ $\\Rightarrow$ $\\mathrm{tr}(A^2)=\\mathrm{tr}(\\Lambda^2)$。对实对称矩阵有 $\\mathrm{tr}(A^2)=\\mathrm{tr}(A^{\\mathsf T}A)=$ 全部元素平方和：\n> $$(1^2+a^2+1^2)+(a^2+b^2+a^2)+(1^2+a^2+1^2)=2^2+b^2+0^2$$\n> $$4+4a^2+b^2=4+b^2\\Longrightarrow 4a^2=0\\Longrightarrow a=0$$\n> 直接排除 (C)、(D)。注意本题一阶不变量失效：$\\mathrm{tr}(A)=2+b=\\mathrm{tr}(\\Lambda)$、$\\lvert A\\rvert=0=\\lvert\\Lambda\\rvert$ 恒成立（出题人反套路设计）。\n\n> [!warning] 易错点\n> **陷阱一：忽视实对称属性，画蛇添足限制 $b$（误选 A）。** 算出 $a=0$ 后担心 $b=0$ 或 $b=2$ 时特征值出现重根会导致不可对角化，或被选项 (A) 的 $b=2$ 诱导。切记：只要 $A^{\\mathsf T}=A$，特征值相同就是与对角阵相似的充要条件——$k$ 重特征值必对应 $k$ 个线性无关特征向量（$n-r(\\lambda_0 E-A)=k$），自动可对角化，$b$ 无需任何限制。\n> **陷阱二：特征行列式直接对角线硬展开。** 不先 $r_1-r_3$、$c_3+c_1$ 造公因式，直接按沙路法则展开成 $\\lambda^3$ 三次多项式，带参数 $a,b$ 极易算错一次项系数。数二求特征值铁律：**先加减造公因式 $(\\lambda-\\lambda_0)$，再展开降阶**。\n> **陷阱三：只用一阶必要条件 $\\mathrm{tr}(A)=\\mathrm{tr}(\\Lambda)$、$\\lvert A\\rvert=\\lvert\\Lambda\\rvert$ 就下结论。** 本题这两个条件恒成立（无用），必须靠特征多项式或 $\\mathrm{tr}(A^2)$ 建立关于 $a$ 的方程。",
+      "cause": {
+        "label": "概念/定理错误",
+        "step": "忽视「实对称矩阵必可相似对角化」这一前提：算出 $a=0$ 后，对重特征值情形（$b=0$ 或 $b=2$）仍按普通矩阵的判据额外验证秩条件，被选项 (A) 的 $b=2$ 诱导，画蛇添足地给 $b$ 加上限制。根因是把「特征值相同 $\\Rightarrow$ 相似」的成立前提（实对称 / 二者均可对角化）理解成需要额外条件。",
+        "advice": "牢记：只要 $A$ 是实对称矩阵，特征多项式相同（特征值按重数相同）就是 $A$ 与对角阵相似的充要条件——$k$ 重特征值自动对应 $k$ 个线性无关特征向量，$n-r(\\lambda_0 E-A)=k$ 恒成立，无需再讨论重根。求特征值先造公因式 $(\\lambda-\\lambda_0)$ 再降阶展开；选择题优先用相似不变量校验：一阶条件（$\\mathrm{tr}$、$\\lvert A\\rvert$）不足时，用二阶 $\\mathrm{tr}(A^2)$ 等于元素平方和来秒杀参数。"
+      },
+      "attempts": [
+        {
+          "date": "2026-10-05",
+          "grade": "wrong"
+        }
+      ],
+      "review_state": "未复习",
+      "review_updated": "2026-10-05",
+      "links": [
+        {
+          "path": "external-notes/线性代数/第五章：矩阵相似理论/错题本",
+          "anchor": "错题48：实对称矩阵与对角矩阵相似的充要条件",
+          "label": "错题48：实对称矩阵与对角矩阵相似的充要条件",
+          "confidence": "high",
+          "note": "同题——题干矩阵、选项、答案 (B) 完全一致。"
+        },
+        {
+          "path": "external-notes/线性代数/第五章：矩阵相似理论/错题本",
+          "anchor": "错题20：对角化逆推参数 + 迹秒杀第三特征值",
+          "label": "错题20：对角化逆推参数 + 迹秒杀第三特征值",
+          "confidence": "medium",
+          "note": "同法——由特征值 / 不变量反推参数。"
+        }
+      ]
     }
   },
   "coverage": {}
