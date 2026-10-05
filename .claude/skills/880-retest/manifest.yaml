@@ -1,0 +1,22 @@
+apiVersion: agent-platform/v1
+kind: Skill
+metadata:
+  name: 880-retest
+  version: 0.1.0
+  description: "回炉（间隔复习）——定期从已掌握归档抽查题目，做错退回待复习。"
+spec:
+  entrypoint: SKILL.md
+  capabilities:
+    - exam.retest
+    - exam.spaced-review
+  permissions:
+    filesystem: write
+    network: none
+    subprocess: allow
+    git: none
+  dependsOn:
+    - Skill/880-wrongbook
+    - Skill/880-grade
+  lifecycle:
+    discoverable: true
+    deprecated: false

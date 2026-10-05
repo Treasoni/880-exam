@@ -784,6 +784,17 @@ def latest_attempt(qid_, attempts):
     return max(enumerate(hits), key=lambda item: (attempt_sort_key(item[1]), item[0]))[1]
 
 
+def redo_state(grade_key, prev_state):
+    """错题重练/回炉后的复习状态（grade.py --redo 与回炉共用同一口径）。
+
+    做对 → 已掌握；非对 → 已掌握的退回未复习，其余保持
+    （已在『已重做』的题不因再次做错而降级）。
+    """
+    if grade_key == "correct":
+        return "已掌握"
+    return "未复习" if prev_state != "已重做" else prev_state
+
+
 def paper_dir(paper_id):
     """每张卷的文件目录：workspace/papers/<paper_id>/（卷子/答案/判分卡都放这里）。"""
     return PAPERS_DIR / paper_id

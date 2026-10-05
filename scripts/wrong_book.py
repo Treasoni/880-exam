@@ -1,17 +1,25 @@
 #!/usr/bin/env python3
-"""wrong_book.py — 生成错题本（按章节），并可更新复习状态。
+"""wrong_book.py — 生成错题本（按章节），并可更新复习状态、回炉已掌握题。
 
 用法：
   python3 scripts/wrong_book.py                     # 重新生成错题本
   python3 scripts/wrong_book.py --mark qid=已掌握   # 更新某题复习状态后重新生成
   python3 scripts/wrong_book.py --list-states       # 列出全部错题及状态
   python3 scripts/wrong_book.py --check --all       # 检查盘面产物是否已陈旧（不写文件）
+
+回炉（间隔复习：到期抽查已掌握题，做错退回待复习）：
+  python3 scripts/wrong_book.py --due               # 列出到期回炉的已掌握题（默认 ≥30 天）
+  python3 scripts/wrong_book.py --due --days 0      # 列出全部已掌握题
+  python3 scripts/wrong_book.py --retest qid ...    # 回炉模式：只给题干，隐去答案与解析
+  python3 scripts/wrong_book.py --record qid=对 ... # 记录一次回炉判分并联动复习状态
   # Windows 请把 python3 换成 py -3（如 py -3 scripts/wrong_book.py）
 """
 
 import argparse
 import difflib
+import subprocess
 import sys
+from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -21,6 +29,17 @@ GRADE_ZH = {g["key"]: g["zh"] for g in lib880.load_schema()["grades"]}
 DIFF_ZH = {"basic": "基础", "comprehensive": "综合", "extension": "拓展"}
 TYPE_ZH = {"choice": "选择题", "fill": "填空题", "solution": "解答题"}
 CN = {n: lib880.chapter_number_zh(n) for n in range(1, 100)}
+
+# --record 接受中/英判分态（与 grade.py 的 GRADE_ALIAS 同口径）
+GRADE_ALIAS = {
+    "对": "correct", "correct": "correct",
+    "错": "wrong", "wrong": "wrong",
+    "不会": "cannot", "cannot": "cannot",
+    "半会": "half", "half": "half",
+    "粗心": "careless", "careless": "careless",
+}
+# 回炉默认门槛：已掌握满多少天视为到期
+DUE_DAYS_DEFAULT = 30
 
 
 def validate_solution_text(text, qid):
@@ -328,6 +347,72 @@ def check(subject=lib880.SUBJECT_HIGH_MATH, context=2):
     return path, True, diff
 
 
+def due_rows(index, attempts, days, today=None):
+    """挑出到期回炉的已掌握题（纯函数，便于测试）。
+
+    只认传入索引里的题号（index["by_id"]），跨科目/已删除的题号自然被过滤。
+    days=0 表示全部已掌握题。返回按「逾期天数降序、章节题型序」排好的行。
+    """
+    today = today or date.fromisoformat(lib880.today_str())
+    rows = []
+    for qid, st in attempts["wrong_book_status"].items():
+        if st.get("state") != "已掌握":
+            continue
+        q = index["by_id"].get(qid)
+        if q is None:
+            continue  # 属于另一科目，或题号已失效
+        try:
+            updated = date.fromisoformat(st.get("updated") or "")
+        except ValueError:
+            updated = today
+        age = (today - updated).days
+        if age < days:
+            continue
+        rows.append({"q": q, "updated": st.get("updated"), "age": age})
+    rows.sort(key=lambda r: (-r["age"], r["q"]["chapter_no"], r["q"]["type"], r["q"]["q_num"]))
+    return rows
+
+
+def due_mastered(subject, days):
+    """加载某科目的事实源并返回 (subject, 到期行)。"""
+    subject = lib880.normalize_subject(subject)
+    index = lib880.load_index(subject)
+    lib880.build_index_map(index)
+    attempts = lib880.load_attempts()
+    return subject, due_rows(index, attempts, days)
+
+
+def print_due(subject, days):
+    subject, rows = due_mastered(subject, days)
+    schema = lib880.load_schema(subject)
+    scope = "全部已掌握" if days <= 0 else f"已掌握 ≥{days} 天"
+    print(f"# 到期回炉 · {schema['subject']}（{scope}，共 {len(rows)} 题）")
+    if not rows:
+        print("  （暂无到期题）")
+        return
+    for r in rows:
+        q = r["q"]
+        print(f"  {q['id']}  第{CN[q['chapter_no']]}章 {TYPE_ZH[q['type']]} 第{q['q_num']}题  "
+              f"{DIFF_ZH[q['difficulty']]}  已掌握 {r['updated']}（{r['age']} 天）")
+    print()
+    print("回炉模式查看题干（隐去答案）：python3 scripts/wrong_book.py --retest <qid> ...")
+    print("做完回报结果：python3 scripts/wrong_book.py --record <qid>=<对|错|不会|半会|粗心> ...")
+
+
+def print_stem(subject, index, qid):
+    """回炉模式：只打印题干，隐去答案与解析。"""
+    q = index["by_id"].get(qid)
+    if q is None:
+        print(f"!! 未知题号 {qid}（不属于 {lib880.load_schema(subject)['subject']}，"
+              f"或用错 --subject）", file=sys.stderr)
+        sys.exit(2)
+    print(f"### {qid} · 第{CN[q['chapter_no']]}章 {TYPE_ZH[q['type']]} 第{q['q_num']}题 · "
+          f"{DIFF_ZH[q['difficulty']]}（回炉模式：答案与解析已隐去）")
+    print()
+    print(q["text"])
+    print()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--subject", default=lib880.SUBJECT_HIGH_MATH,
@@ -336,7 +421,16 @@ def main():
     ap.add_argument("--list-states", action="store_true")
     ap.add_argument("--check", action="store_true",
                     help="只比对盘面产物与事实源是否一致，不写文件；陈旧则退出码 1")
-    ap.add_argument("--all", action="store_true", help="配合 --check：两个科目都查")
+    ap.add_argument("--all", action="store_true",
+                    help="配合 --check / --due：两个科目都查")
+    ap.add_argument("--due", action="store_true",
+                    help="列出到期回炉的已掌握题（门槛见 --days）")
+    ap.add_argument("--days", type=int, default=DUE_DAYS_DEFAULT,
+                    help="配合 --due：已掌握满 N 天视为到期（默认 %(default)s；0 = 全部）")
+    ap.add_argument("--retest", nargs="*", default=None, metavar="QID",
+                    help="回炉模式：只打印题干，隐去答案与解析")
+    ap.add_argument("--record", action="append", default=[], metavar="QID=五态",
+                    help="记录一次回炉/重练判分并联动复习状态")
     args = ap.parse_args()
 
     try:
@@ -371,6 +465,37 @@ def main():
     attempts = lib880.load_attempts()
 
     valid_states = set(schema["wrong_book"]["review_states"])
+    today = lib880.today_str()
+    wrote = False
+
+    # --record：回炉/重练落库，状态联动语义同 grade.py --redo
+    #（对 → 保持/置为已掌握；非对 → 已掌握退回未复习，其余保持未复习）
+    for spec in args.record:
+        if "=" not in spec:
+            print(f"!! 无效 --record: {spec}（应为 qid=五态）", file=sys.stderr)
+            sys.exit(2)
+        qid, zh = spec.split("=", 1)
+        grade_key = GRADE_ALIAS.get(zh.strip())
+        if not grade_key:
+            print(f"!! 无效判分 {zh}（可选 {sorted(GRADE_ALIAS)}）", file=sys.stderr)
+            sys.exit(2)
+        if qid not in index["by_id"]:
+            print(f"!! 未知题号 {qid}", file=sys.stderr)
+            sys.exit(2)
+        # 幂等：同日同题同态不重复记录
+        dup = any(a.get("qid") == qid and a.get("grade") == grade_key and a.get("when") == today
+                  for a in attempts["attempts"])
+        if not dup:
+            attempts["attempts"].append({
+                "qid": qid, "paper_id": None, "grade": grade_key,
+                "when": today, "recorded_at": lib880.now_timestamp(), "note": "回炉",
+            })
+        prev = attempts["wrong_book_status"].get(qid, {}).get("state")
+        new_state = lib880.redo_state(grade_key, prev)
+        attempts["wrong_book_status"][qid] = {"state": new_state, "updated": today}
+        wrote = True
+        print(f"已记录回炉 {qid} → {zh}（复习状态：{new_state}）")
+
     for spec in args.mark:
         if "=" not in spec:
             print(f"!! 无效 --mark: {spec}（应为 qid=状态）", file=sys.stderr)
@@ -382,11 +507,31 @@ def main():
         if qid not in index["by_id"]:
             print(f"!! 未知题号 {qid}", file=sys.stderr)
             sys.exit(2)
-        attempts["wrong_book_status"][qid] = {
-            "state": state, "updated": lib880.today_str(),
-        }
-        lib880.save_attempts(attempts)
+        attempts["wrong_book_status"][qid] = {"state": state, "updated": today}
+        wrote = True
         print(f"已更新 {qid} → {state}")
+
+    if wrote:
+        lib880.save_attempts(attempts)
+        generate(subject)
+        if args.record:  # 回炉会改变「非对」计数，进度总览需同步
+            subprocess.run(
+                [sys.executable, str(Path(__file__).resolve().parent / "progress.py"),
+                 "--subject", subject], check=True)
+
+    if args.due:
+        subjects = ([lib880.SUBJECT_HIGH_MATH, lib880.SUBJECT_LINEAR_ALGEBRA]
+                    if args.all else [subject])
+        for subj in subjects:
+            print_due(subj, args.days)
+        return
+
+    if args.retest is not None:
+        if not args.retest:
+            ap.error("--retest 需要至少一个题号")
+        for qid in args.retest:
+            print_stem(subject, index, qid)
+        return
 
     active, mastered = build_wrong_lists(schema, index, attempts)
     if args.list_states:
@@ -394,8 +539,10 @@ def main():
             print(f"{e['q']['id']}  {e['grade_zh']:<4} {e['priority']:<3} {e['state']}")
         return
 
-    output_path, active, mastered = generate(subject)
-    print(f"已更新错题本：{output_path}（待复习 {len(active)} 道 · 已掌握归档 {len(mastered)} 道）")
+    if not wrote:
+        generate(subject)
+    print(f"已更新错题本：{lib880.wrong_book_path(subject)}（待复习 {len(active)} 道 · "
+          f"已掌握归档 {len(mastered)} 道）")
 
 
 if __name__ == "__main__":

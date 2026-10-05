@@ -1,7 +1,7 @@
 # Skill Invocation
 
 ## 技能列表
-<!-- skill-registry:managed ["880-analysis","880-build-index","880-grade","880-paper","880-progress","880-wrongbook","ask-matt","batch-grill-me","claude-handoff","code-review","codebase-design","defuddle","design-an-interface","diagnosing-bugs","digest","domain-modeling","edit-article","git-guardrails-claude-code","grill-me","grill-with-docs","grilling","handoff","implement","improve-codebase-architecture","json-canvas","loop-me","maintain-learnings","manifest-platform","migrate-to-shoehorn","obsidian-bases","obsidian-cli","obsidian-markdown","obsidian-vault","prompt-cache-optimizer","prototype","qa","request-refactor-plan","research","resolving-merge-conflicts","scaffold-exercises","setup-matt-pocock-skills","setup-pre-commit","setup-ts-deep-modules","sync-skill-registry","tdd","teach","to-questionnaire","to-spec","to-tickets","triage","ubiquitous-language","wayfinder","wizard","workflow-todo-state","writing-beats","writing-fragments","writing-great-skills","writing-shape","zhenti-wrong"] -->
+<!-- skill-registry:managed ["880-analysis","880-build-index","880-grade","880-paper","880-progress","880-retest","880-wrongbook","ask-matt","batch-grill-me","claude-handoff","code-review","codebase-design","defuddle","design-an-interface","diagnosing-bugs","digest","domain-modeling","edit-article","git-guardrails-claude-code","grill-me","grill-with-docs","grilling","handoff","implement","improve-codebase-architecture","json-canvas","loop-me","maintain-learnings","manifest-platform","migrate-to-shoehorn","obsidian-bases","obsidian-cli","obsidian-markdown","obsidian-vault","prompt-cache-optimizer","prototype","qa","request-refactor-plan","research","resolving-merge-conflicts","scaffold-exercises","setup-matt-pocock-skills","setup-pre-commit","setup-ts-deep-modules","sync-skill-registry","tdd","teach","to-questionnaire","to-spec","to-tickets","triage","ubiquitous-language","wayfinder","wizard","workflow-todo-state","writing-beats","writing-fragments","writing-great-skills","writing-shape","zhenti-wrong"] -->
 
 #### 未分类
 
@@ -12,6 +12,7 @@
 | `880-grade` | 判分记录（五态：对/错/不会/半会/粗心），更新判分记录、错题本与进度总览。 | 判分、改卷、对答案、交判分 |
 | `880-paper` | 拼一张 880 高数模拟卷（真题模式：选10×5分+填6×5分+解6题=150分/180分钟），生成卷子、答案卷与判分卡。 | 拼卷、拼张卷、出卷、生成卷子、来张卷 |
 | `880-progress` | 生成或查看进度总览——哪些题已完成/未完成/做错，章节完成率与弱点排行。 | 预览、进度、看进度、进度总览 |
+| `880-retest` | 回炉（间隔复习）——定期从已掌握归档抽查题目，做错退回待复习。 | 回炉、间隔复习、抽查、复习已掌握、已掌握重审、回炉复习 |
 | `880-wrongbook` | 查看/重生成错题本，更新复习状态（未复习/已重做/已掌握）。 | 错题本、看错题、重练、复习错题 |
 | `ask-matt` | Ask which skill or flow fits your situation. A router over the skills in this… | Ask which skill or flow fits your situat… |
 | `batch-grill-me` | A relentless interview that asks every frontier question at once | A relentless interview that asks every f… |

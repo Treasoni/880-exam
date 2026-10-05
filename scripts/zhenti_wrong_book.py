@@ -11,6 +11,8 @@
   python3 scripts/zhenti_wrong_book.py --record zt-2021-数二-解答3=不会
   python3 scripts/zhenti_wrong_book.py --mark zt-2021-数二-解答3=已掌握
   python3 scripts/zhenti_wrong_book.py --redo zt-2021-数二-解答3   # 重练：只给题干
+  python3 scripts/zhenti_wrong_book.py --due                # 回炉：列出到期（≥30 天）的已掌握真题
+  python3 scripts/zhenti_wrong_book.py --due --days 0       # 全部已掌握
   python3 scripts/zhenti_wrong_book.py --check              # 盘面产物是否陈旧（不写文件）
   # Windows 请把 python3 换成 py -3（如 py -3 scripts/zhenti_wrong_book.py）
 """
@@ -35,6 +37,34 @@ MODULE_ROOTS = (
 )
 
 COVERAGE_STATES = ("未做", "做过", "已复盘")
+
+# 回炉（间隔复习）默认门槛：距上次掌握满 30 天才拉回来抽查，与 880 侧同口径
+DUE_DAYS_DEFAULT = 30
+
+
+def due_problems(doc, days, today=None):
+    """挑出到期回炉的已掌握真题（纯函数，便于测试）。
+
+    判据与 880 侧一致：`review_state == 已掌握` 且距 `review_updated` 满 days 天；
+    days <= 0 表示全部已掌握。缺 `review_updated` 的按今天算（永不因缺字段被误判到期）。
+    """
+    from datetime import date
+    today = today or date.fromisoformat(lib880.today_str())
+    rows = []
+    for pid, p in doc["problems"].items():
+        if (p.get("review_state") or "未复习") != "已掌握":
+            continue
+        try:
+            updated = date.fromisoformat(p.get("review_updated") or "")
+        except ValueError:
+            updated = today
+        age = (today - updated).days
+        if age < days:
+            continue
+        rows.append({"id": pid, "p": p, "updated": p.get("review_updated"), "age": age})
+    rows.sort(key=lambda r: (-r["age"], r["p"].get("year", 0),
+                             r["p"].get("paper", ""), str(r["p"].get("no"))))
+    return rows
 
 
 def derive_modules():
@@ -360,6 +390,9 @@ def main():
     ap.add_argument("--record", action="append", default=[], help="zt-id=五态")
     ap.add_argument("--mark", action="append", default=[], help="zt-id=复习状态")
     ap.add_argument("--redo", metavar="ZT_ID", help="重练模式：只给题干，隐去答案与解析")
+    ap.add_argument("--due", action="store_true", help="回炉：列出到期（已掌握 ≥N 天）的真题")
+    ap.add_argument("--days", type=int, default=DUE_DAYS_DEFAULT,
+                    help=f"回炉门槛天数（默认 {DUE_DAYS_DEFAULT}；0 = 全部已掌握）")
     ap.add_argument("--check", action="store_true", help="只比对盘面产物，不写文件")
     args = ap.parse_args()
 
@@ -388,6 +421,24 @@ def main():
 
     doc = load_problems()
     problems = doc["problems"]
+
+    if args.due:
+        rows = due_problems(doc, args.days)
+        scope = "全部已掌握" if args.days <= 0 else f"已掌握 ≥{args.days} 天"
+        print(f"# 到期回炉 · 真题（{scope}，共 {len(rows)} 题）")
+        if not rows:
+            print("  （暂无到期题）")
+        for r in rows:
+            p = r["p"]
+            print(f"  {r['id']}  {p.get('module') or '（未归档）'}  "
+                  f"已掌握 {r['updated']}（{r['age']} 天）")
+        if rows:
+            print()
+            print("回炉模式查看题干（隐去答案）："
+                  "python3 scripts/zhenti_wrong_book.py --redo <zt-id>")
+            print("做完回报结果：python3 scripts/zhenti_wrong_book.py "
+                  "--record <zt-id>=<对|错|不会|半会|粗心>")
+        return
 
     if args.redo:
         p = problems.get(args.redo)
@@ -441,12 +492,18 @@ def main():
 
     if changed:
         save_problems(doc)
-        # 记录结果后顺带推进复习状态：做对 → 已重做（不自动置「已掌握」，由用户确认）
+        # 记录结果后顺带推进复习状态：
+        # - 做对但还没复习过 → 已重做（不自动置「已掌握」，由用户确认）
+        # - 回炉重审做错（非对）→ 已掌握的退回未复习，重新进待复习清单（与 880 侧同口径）
         for spec in args.record:
             pid = spec.split("=", 1)[0]
             p = problems[pid]
-            if latest_grade_key(p) == "correct" and (p.get("review_state") or "未复习") == "未复习":
+            state = p.get("review_state") or "未复习"
+            if latest_grade_key(p) == "correct" and state == "未复习":
                 p["review_state"] = "已重做"
+                p["review_updated"] = lib880.today_str()
+            elif latest_grade_key(p) != "correct" and state == "已掌握":
+                p["review_state"] = "未复习"
                 p["review_updated"] = lib880.today_str()
         save_problems(doc)
 

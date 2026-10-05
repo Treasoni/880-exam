@@ -348,7 +348,7 @@ def main():
             # 复习状态联动（重复判分也刷新状态）
             if args.redo:
                 prev = attempts["wrong_book_status"].get(qid, {}).get("state")
-                new_state = "已掌握" if grade_key == "correct" else ("未复习" if prev != "已重做" else prev)
+                new_state = lib880.redo_state(grade_key, prev)
                 attempts["wrong_book_status"][qid] = {"state": new_state, "updated": today}
             elif grade_key in set(schema["wrong_book"]["focus_grades"]):
                 if qid not in attempts["wrong_book_status"]:

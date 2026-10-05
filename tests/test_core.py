@@ -57,6 +57,16 @@ class Lib880Test(unittest.TestCase):
         }
         self.assertEqual(lib880.latest_attempt("q-1", attempts)["grade"], "correct")
 
+    def test_redo_state_demotes_mastered_on_failure(self):
+        # 回炉做对 → 保持已掌握；做错 → 已掌握退回未复习
+        self.assertEqual(lib880.redo_state("correct", "已掌握"), "已掌握")
+        self.assertEqual(lib880.redo_state("wrong", "已掌握"), "未复习")
+        self.assertEqual(lib880.redo_state("cannot", "已掌握"), "未复习")
+        # 已在『已重做』的题不因再次做错而降级；未复习保持未复习
+        self.assertEqual(lib880.redo_state("half", "已重做"), "已重做")
+        self.assertEqual(lib880.redo_state("careless", "未复习"), "未复习")
+
+
     def test_index_validation_detects_duplicate_id(self):
         index = {
             "questions": [
@@ -415,6 +425,24 @@ class WrongBookTest(unittest.TestCase):
         self.assertEqual([e["q"]["id"] for e in active], ["active"])
         self.assertEqual([e["q"]["id"] for e in mastered], ["mastered"])
 
+    def test_due_rows_filters_by_age_and_membership(self):
+        index = {"by_id": {
+            "old": {"id": "old", "chapter_no": 3, "type": "choice", "difficulty": "basic", "q_num": 1},
+            "fresh": {"id": "fresh", "chapter_no": 3, "type": "choice", "difficulty": "basic", "q_num": 2},
+        }}
+        attempts = {"wrong_book_status": {
+            "old": {"state": "已掌握", "updated": "2026-08-01"},      # 满 30 天
+            "fresh": {"state": "已掌握", "updated": "2026-10-04"},    # 未满
+            "not-mastered": {"state": "未复习", "updated": "2026-08-01"},
+            "other-subject": {"state": "已掌握", "updated": "2026-08-01"},  # 不在本索引
+        }}
+        today = date(2026, 10, 5)
+        rows = wrong_book.due_rows(index, attempts, days=30, today=today)
+        self.assertEqual([r["q"]["id"] for r in rows], ["old"])
+        # days=0 列出全部已掌握（仍只认本索引内的题）
+        all_rows = wrong_book.due_rows(index, attempts, days=0, today=today)
+        self.assertEqual(sorted(r["q"]["id"] for r in all_rows), ["fresh", "old"])
+
 
 class ZhentiWrongBookTest(unittest.TestCase):
     """真题覆盖表的状态派生（回归：整卷聚合，不是首条记录说了算）。"""
@@ -454,6 +482,23 @@ class ZhentiWrongBookTest(unittest.TestCase):
         row = self._coverage_row(doc)
         self.assertIn("| 已复盘 |", row)
         self.assertIn("整卷过完", row)
+
+    def test_due_problems_selects_mastered_by_age(self):
+        doc = {"problems": {
+            "zt-a": {"review_state": "已掌握", "review_updated": "2026-08-01",
+                     "year": 2010, "paper": "数二", "no": "解答18"},
+            "zt-b": {"review_state": "已掌握", "review_updated": "2026-10-04",
+                     "year": 2011, "paper": "数二", "no": "选择1"},
+            "zt-c": {"review_state": "未复习", "review_updated": "2026-08-01",
+                     "year": 2012, "paper": "数二", "no": "解答19"},
+            "zt-d": {"review_state": "已掌握", "year": 2013, "paper": "数二", "no": "解答20"},
+        }}
+        today = date(2026, 10, 5)
+        rows = zhenti_wrong_book.due_problems(doc, days=30, today=today)
+        self.assertEqual([r["id"] for r in rows], ["zt-a"])
+        # days=0 列出全部已掌握（缺 review_updated 的按今天算，不计为到期）
+        all_rows = zhenti_wrong_book.due_problems(doc, days=0, today=today)
+        self.assertEqual(sorted(r["id"] for r in all_rows), ["zt-a", "zt-b", "zt-d"])
 
 
 if __name__ == "__main__":
