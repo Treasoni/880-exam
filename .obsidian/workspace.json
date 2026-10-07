@@ -62,8 +62,21 @@
               "icon": "lucide-file",
               "title": "卷子-05-答案"
             }
+          },
+          {
+            "id": "403f6c82e49877f0",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.14.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.14.4"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -290,7 +303,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "b4b561f7809652dc",
+  "active": "403f6c82e49877f0",
   "lastOpenFiles": [
     "workspace/papers/paper-04/卷子-04-答案.md",
     "workspace/workflow-runs/真题错题复习-05.workflow.md",
