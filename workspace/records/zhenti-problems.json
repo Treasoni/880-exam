@@ -1135,10 +1135,14 @@
         {
           "date": "2026-10-05",
           "grade": "half"
+        },
+        {
+          "date": "2026-10-07",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
-      "review_updated": "2026-10-05",
+      "review_state": "已重做",
+      "review_updated": "2026-10-07",
       "links": [
         {
           "path": "external-notes/考研数学/高数-一元微分学/错题本",
