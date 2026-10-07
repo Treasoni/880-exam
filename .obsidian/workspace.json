@@ -249,7 +249,9 @@
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
-                      "conversationId": "conv-1791190388266-ytoq28u46"
+                      "conversationId": null,
+                      "draftModel": "haiku",
+                      "providerId": "claude"
                     }
                   ],
                   "activeTabId": "tab-1790061594608-a0amw1a"
