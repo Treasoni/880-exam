@@ -266,7 +266,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 586.15625
+    "width": 416.95703125
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -290,7 +290,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "b4b561f7809652dc",
+  "active": "02d1d7902f1826b2",
   "lastOpenFiles": [
     "workspace/papers/paper-04/卷子-04-答案.md",
     "workspace/workflow-runs/真题错题复习-05.workflow.md",
