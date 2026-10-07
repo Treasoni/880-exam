@@ -241,7 +241,7 @@
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
-                      "conversationId": "conv-1791082322840-9yaxlllkm"
+                      "conversationId": "conv-1791341599244-tizq97m98"
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
@@ -254,7 +254,7 @@
                       "providerId": "claude"
                     }
                   ],
-                  "activeTabId": "tab-1790061594608-a0amw1a"
+                  "activeTabId": "tab-1789908968076-9htz0xx"
                 }
               },
               "icon": "bot",
@@ -266,7 +266,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 508.0078125
+    "width": 586.15625
   },
   "left-ribbon": {
     "hiddenItems": {
