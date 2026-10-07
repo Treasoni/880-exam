@@ -889,10 +889,14 @@
         {
           "date": "2026-10-02",
           "grade": "correct"
+        },
+        {
+          "date": "2026-10-07",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
-      "review_updated": "2026-10-02",
+      "review_state": "已重做",
+      "review_updated": "2026-10-07",
       "links": [
         {
           "path": "external-notes/线性代数/第五章：矩阵相似理论/错题本",
