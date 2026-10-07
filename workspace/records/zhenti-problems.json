@@ -838,6 +838,10 @@
         {
           "date": "2026-10-02",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-10-07",
+          "grade": "cannot"
         }
       ],
       "review_state": "未复习",
