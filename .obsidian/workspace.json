@@ -62,21 +62,9 @@
               "icon": "lucide-file",
               "title": "卷子-05-答案"
             }
-          },
-          {
-            "id": "403f6c82e49877f0",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.14.4"
-              },
-              "icon": "lucide-book-up",
-              "title": "版本说明 1.14.4"
-            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -216,7 +204,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/papers/paper-05/卷子-05-答案.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": "2013"
@@ -258,7 +246,7 @@
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
-                      "conversationId": "conv-1791171572599-tjzozds5v"
+                      "conversationId": "conv-1791420831488-6xjj92spt"
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
@@ -303,8 +291,9 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "403f6c82e49877f0",
+  "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题错题复习-06.workflow.md",
     "workspace/papers/paper-04/卷子-04-答案.md",
     "workspace/workflow-runs/真题错题复习-05.workflow.md",
     "workspace/workflow-runs/真题收录-2013数二解答23.workflow.md",
@@ -335,7 +324,6 @@
     "workspace/workflow-runs/错题复习-06.workflow.md",
     "workspace/papers/la-paper-04/线代判分卡-04.md",
     "workspace/papers/la-paper-04/线代卷子-04.md",
-    "workspace/wrong-book/真题错题本.md",
     "workspace/workflow-runs/真题错题复习-04.workflow.md.IuWtJ6",
     "workspace/workflow-runs/真题错题复习-04.workflow.md.2Us6J6",
     "workspace/workflow-runs/错题复习-03.workflow.md.dovrgX",
