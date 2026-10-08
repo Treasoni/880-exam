@@ -238,7 +238,9 @@
                     },
                     {
                       "tabId": "tab-1789823654705-joggjse",
-                      "conversationId": "conv-1790577252187-dpdisqn0f"
+                      "conversationId": null,
+                      "draftModel": "claude-code/deepseek-flash[1M]",
+                      "providerId": "claude"
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",

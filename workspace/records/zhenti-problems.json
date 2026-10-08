@@ -1255,10 +1255,14 @@
         {
           "date": "2026-10-05",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-10-08",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
-      "review_updated": "2026-10-05",
+      "review_state": "已重做",
+      "review_updated": "2026-10-08",
       "links": [
         {
           "path": "external-notes/线性代数/第二章：矩阵/错题本",
