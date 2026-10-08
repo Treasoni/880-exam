@@ -474,10 +474,14 @@
         {
           "date": "2026-10-07",
           "grade": "half"
+        },
+        {
+          "date": "2026-10-08",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
-      "review_updated": null,
+      "review_state": "已重做",
+      "review_updated": "2026-10-08",
       "module": "微分方程"
     },
     "zt-2011-数二-解答20": {
@@ -878,10 +882,14 @@
         {
           "date": "2026-10-07",
           "grade": "half"
+        },
+        {
+          "date": "2026-10-08",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
-      "review_updated": "2026-10-02",
+      "review_state": "已重做",
+      "review_updated": "2026-10-08",
       "links": [
         {
           "path": "external-notes/考研数学/高数-数列极限/错题本",
@@ -1017,10 +1025,14 @@
         {
           "date": "2026-10-07",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-10-08",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
-      "review_updated": "2026-10-05",
+      "review_state": "已重做",
+      "review_updated": "2026-10-08",
       "links": [
         {
           "path": "external-notes/线性代数/第五章：矩阵相似理论/错题本",
@@ -1174,6 +1186,10 @@
         },
         {
           "date": "2026-10-07",
+          "grade": "wrong"
+        },
+        {
+          "date": "2026-10-08",
           "grade": "wrong"
         }
       ],
