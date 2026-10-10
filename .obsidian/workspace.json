@@ -92,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -232,7 +232,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-05/卷子-05.md",
+                "file": "workspace/papers/paper-05/卷子-05-答案.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -276,7 +276,7 @@
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
-                      "conversationId": "conv-1791420831488-6xjj92spt"
+                      "conversationId": "conv-1791634158225-8ucum8k4d"
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
@@ -293,7 +293,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -321,10 +321,10 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e62e36805155d42e",
+  "active": "9d43d070e53fe4eb",
   "lastOpenFiles": [
-    "workspace/papers/paper-05/卷子-05-答案.md",
     "workspace/papers/paper-05/判分卡-05.md",
+    "workspace/papers/paper-05/卷子-05-答案.md",
     "workspace/papers/paper-05/卷子-05.md",
     "workspace/wrong-book/真题错题本.md",
     "workspace/workflow-runs/真题错题复习-06.workflow.md",
