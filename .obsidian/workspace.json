@@ -36,6 +36,34 @@
             }
           },
           {
+            "id": "9d43d070e53fe4eb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/paper-05/卷子-05-答案.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "卷子-05-答案"
+            }
+          },
+          {
+            "id": "f83489e60350d075",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/paper-05/判分卡-05.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "判分卡-05"
+            }
+          },
+          {
             "id": "8588a437b844626e",
             "type": "leaf",
             "state": {
@@ -64,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -204,10 +232,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/papers/paper-05/卷子-05.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "2013"
+                "searchQuery": ""
               },
               "icon": "lucide-list",
               "title": "大纲"
@@ -293,9 +321,12 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "9f7d7ea400c72fad",
+  "active": "e62e36805155d42e",
   "lastOpenFiles": [
     "workspace/papers/paper-05/卷子-05-答案.md",
+    "workspace/papers/paper-05/判分卡-05.md",
+    "workspace/papers/paper-05/卷子-05.md",
+    "workspace/wrong-book/真题错题本.md",
     "workspace/workflow-runs/真题错题复习-06.workflow.md",
     "workspace/papers/paper-04/卷子-04-答案.md",
     "workspace/workflow-runs/真题错题复习-05.workflow.md",
@@ -323,9 +354,6 @@
     "workspace/workflow-runs/真题收录-2012数二选择8.workflow.md",
     "workspace/workflow-runs/真题收录-2012数二选择3.workflow.md",
     "workspace/workflow-runs/错题复习-06.workflow.md.8W7osc",
-    "workspace/papers/la-paper-04/线代卷子-04-答案.md",
-    "workspace/workflow-runs/错题复习-06.workflow.md",
-    "workspace/papers/la-paper-04/线代判分卡-04.md",
     "workspace/workflow-runs/真题错题复习-04.workflow.md.IuWtJ6",
     "workspace/workflow-runs/真题错题复习-04.workflow.md.2Us6J6",
     "workspace/workflow-runs/错题复习-03.workflow.md.dovrgX",
