@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/la-paper-04/线代卷子-04.md",
+                "file": "workspace/papers/paper-05/判分卡-05.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "线代卷子-04"
+              "title": "判分卡-05"
             }
           },
           {
@@ -75,6 +75,20 @@
               },
               "icon": "lucide-file",
               "title": "线代卷子-04-答案"
+            }
+          },
+          {
+            "id": "ada91447482d8c2f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/la-paper-04/线代卷子-04.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "线代卷子-04"
             }
           },
           {
@@ -134,7 +148,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -314,7 +328,7 @@
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
-                      "conversationId": "conv-1791341599244-tizq97m98"
+                      "conversationId": "conv-1791637470939-d85o6d1ld"
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
@@ -327,7 +341,7 @@
                       "providerId": "claude"
                     }
                   ],
-                  "activeTabId": "tab-1790061594608-a0amw1a"
+                  "activeTabId": "tab-1789908968076-9htz0xx"
                 }
               },
               "icon": "bot",
@@ -363,15 +377,16 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "33b30f3b23e5a59a",
+  "active": "9f7d7ea400c72fad",
   "lastOpenFiles": [
-    "workspace/papers/la-paper-04/线代判分卡-04.md",
     "workspace/papers/la-paper-04/线代卷子-04-答案.md",
-    "workspace/papers/la-paper-04/线代卷子-04.md",
     "workspace/papers/paper-05/判分卡-05.md",
+    "workspace/papers/paper-04/判分卡-04.md",
+    "workspace/papers/paper-05/卷子-05.md",
+    "workspace/papers/la-paper-04/线代卷子-04.md",
+    "workspace/papers/la-paper-04/线代判分卡-04.md",
     "workspace/papers/paper-05/卷子-05-答案.md",
     "workspace/wrong-book/images/取整函数二重积分区域拆分示意图.png",
-    "workspace/papers/paper-05/卷子-05.md",
     "workspace/wrong-book/真题错题本.md",
     "workspace/workflow-runs/真题错题复习-06.workflow.md",
     "workspace/papers/paper-04/卷子-04-答案.md",
@@ -394,7 +409,6 @@
     "workspace/workflow-runs/错题复习-07.workflow.md",
     "workspace/workflow-runs/真题收录-2012数二解答21.workflow.md",
     "workspace/workflow-runs/真题收录-2012数二解答17.workflow.md",
-    "workspace/workflow-runs/真题收录-2012数二填空12.workflow.md",
     "workspace/workflow-runs/真题收录-2012数二填空10.workflow.md.8LJnuu",
     "workspace/workflow-runs/错题复习-06.workflow.md.8W7osc",
     "workspace/workflow-runs/真题错题复习-04.workflow.md.IuWtJ6",

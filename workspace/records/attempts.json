@@ -2391,6 +2391,182 @@
       "when": "2026-10-04",
       "recorded_at": "2026-10-04T17:21:22+08:00",
       "note": "重练（第7轮 轻标记11）：交换积分次序题。用户先识破 √3x>x 的上下限倒置、提出负号，再化极坐标得 -∫_{π/4}^{π/3}dθ∫_0^{2secθ}f(r)r dr，判定 A 缺负号 / B 缺雅可比 r；进而极坐标换序，以 r=2√2 分块（第二块下限 arccos(2/r)），并把选项 C 写成 -[第一块+第二块] 形式比对选中 C。与解析册完全一致，判对。"
+    },
+    {
+      "qid": "gs-c04-comprehensive-choice-004",
+      "paper_id": "paper-05",
+      "grade": "half",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-basic-choice-013",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-choice-001",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-basic-choice-001",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c02-basic-choice-008",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-choice-003",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-choice-004",
+      "paper_id": "paper-05",
+      "grade": "wrong",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c02-comprehensive-choice-001",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-basic-choice-001",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-choice-018",
+      "paper_id": "paper-05",
+      "grade": "wrong",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-fill-007",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-fill-001",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-fill-009",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c02-comprehensive-fill-009",
+      "paper_id": "paper-05",
+      "grade": "half",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-fill-002",
+      "paper_id": "paper-05",
+      "grade": "cannot",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-basic-fill-012",
+      "paper_id": "paper-05",
+      "grade": "cannot",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-solution-031",
+      "paper_id": "paper-05",
+      "grade": "wrong",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c02-comprehensive-solution-005",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-solution-023",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-solution-015",
+      "paper_id": "paper-05",
+      "grade": "half",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c01-comprehensive-solution-004",
+      "paper_id": "paper-05",
+      "grade": "cannot",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-basic-solution-009",
+      "paper_id": "paper-05",
+      "grade": "cannot",
+      "when": "2026-10-10",
+      "recorded_at": "2026-10-10T21:04:42+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -2789,6 +2965,18 @@
     "gs-c05-comprehensive-choice-005": {
       "state": "已掌握",
       "updated": "2026-10-04"
+    },
+    "gs-c04-comprehensive-solution-015": {
+      "state": "未复习",
+      "updated": "2026-10-10"
+    },
+    "gs-c01-comprehensive-solution-004": {
+      "state": "未复习",
+      "updated": "2026-10-10"
+    },
+    "gs-c05-basic-solution-009": {
+      "state": "未复习",
+      "updated": "2026-10-10"
     }
   }
 }
