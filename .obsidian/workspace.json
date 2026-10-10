@@ -92,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -232,7 +232,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-05/卷子-05-答案.md",
+                "file": "workspace/papers/paper-05/卷子-05.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -321,7 +321,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "9d43d070e53fe4eb",
+  "active": "e62e36805155d42e",
   "lastOpenFiles": [
     "workspace/papers/paper-05/判分卡-05.md",
     "workspace/papers/paper-05/卷子-05-答案.md",
