@@ -18,6 +18,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import grade
 import build_linear_algebra_index
 import lib880
+import lint_content
 import make_paper
 import merge_extraction
 import wrong_book
@@ -79,6 +80,39 @@ class Lib880Test(unittest.TestCase):
         }
         errors = lib880.validate_index(self.schema, index)
         self.assertTrue(any("重复" in error for error in errors))
+
+    def test_lint_text_overrides_flags_unknown_qid_and_bad_math(self):
+        """题干覆盖层校验：题号写错不会报渲染错误、只会静默不生效，必须拦住。
+
+        覆盖层的键是 qid——拼错时 ``effective_text`` 取不到，产物照常生成但修正
+        从未落地。与真题 ``stem``/``text`` 字段名漂移同一类空转，故 lint 要显式比对
+        题库索引，而不是只把每条覆盖值过一遍公式判据。
+        """
+        with tempfile.TemporaryDirectory() as directory:
+            tmp = Path(directory)
+            overrides_path = tmp / "records" / "text-overrides.json"
+            overrides_path.parent.mkdir(parents=True)
+            overrides_path.write_text(json.dumps(
+                {"texts": {
+                    "q-known": {"text": "正常题干 $x^2$"},
+                    "q-typo": {"text": "题号写错的覆盖"},
+                    "q-bad": {"text": "坏公式 \\(x\\) 行内定界符"},
+                }}, ensure_ascii=False), encoding="utf-8")
+            index_path = tmp / "question-index.json"
+            index_path.write_text(json.dumps(
+                {"questions": [{"id": "q-known"}]}, ensure_ascii=False), encoding="utf-8")
+            with patch.multiple(
+                lib880,
+                ROOT=tmp,
+                TEXT_OVERRIDES_PATH=overrides_path,
+                INDEX_PATH=index_path,
+                LINEAR_ALGEBRA_INDEX_PATH=tmp / "missing-la-index.json",
+            ):
+                rel, errors = lint_content.lint_text_overrides()
+        self.assertTrue(any("q-typo" in e and "不会生效" in e for e in errors),
+                        f"未拦下写错的题号：{errors}")
+        self.assertTrue(any("q-bad" in e for e in errors), f"未拦下坏公式：{errors}")
+        self.assertFalse(any("q-known" in e for e in errors), f"误报正常覆盖：{errors}")
 
 
 class MergeExtractionTest(unittest.TestCase):
@@ -350,6 +384,48 @@ class PaperRulesTest(unittest.TestCase):
             self.assertEqual(attempts[0]["paper_id"], "la-paper-01")
             paper_text = (papers_dir / "la-paper-01" / "线代卷子-01.md").read_text(encoding="utf-8")
             self.assertIn("status: partially_graded", paper_text)
+
+    def test_text_override_replaces_stem_in_paper_and_answers(self):
+        """题干覆盖层：卷子与答案卷都改用修正后的题干；未启用时回退原文。
+
+        覆盖层修正的是做题本 OCR 的重复错误（如
+        ``gs-c02-comprehensive-choice-024``），索引与原文源保持不变，所以只要卷子/
+        答案卷/错题本任一处没接上覆盖层，重复题干就会漏出去。
+        """
+        plan = {
+            "choice": [{"id": "q-1", "text": "原文题干（含重复）。重复了一遍。", "answer": "A"}],
+            "fill": [],
+            "solution": [],
+        }
+        schema = lib880.load_schema()
+        with tempfile.TemporaryDirectory() as directory:
+            overrides_path = Path(directory) / "records" / "text-overrides.json"
+            with patch.object(lib880, "TEXT_OVERRIDES_PATH", overrides_path):
+                # 文件不存在：功能未启用，忠实回退索引原文
+                paper = make_paper.render_paper(
+                    lib880.SUBJECT_HIGH_MATH, schema, "paper-01", plan, {})
+                self.assertIn("原文题干", paper)
+                overrides_path.parent.mkdir(parents=True)
+                overrides_path.write_text(json.dumps(
+                    {"texts": {"q-1": {"text": "修正后的题干"}}}, ensure_ascii=False),
+                    encoding="utf-8")
+                paper = make_paper.render_paper(
+                    lib880.SUBJECT_HIGH_MATH, schema, "paper-01", plan, {})
+                answers = make_paper.render_answers(
+                    lib880.SUBJECT_HIGH_MATH, schema, "paper-01", plan)
+        for rendered in (paper, answers):
+            self.assertIn("修正后的题干", rendered)
+            self.assertNotIn("原文题干", rendered)
+
+    def test_text_override_accepts_bare_string_value(self):
+        with tempfile.TemporaryDirectory() as directory:
+            overrides_path = Path(directory) / "text-overrides.json"
+            overrides_path.write_text(json.dumps({"texts": {"q-1": "纯字符串题干"}},
+                                                 ensure_ascii=False), encoding="utf-8")
+            with patch.object(lib880, "TEXT_OVERRIDES_PATH", overrides_path):
+                self.assertEqual(lib880.effective_text({"id": "q-1", "text": "原文"}), "纯字符串题干")
+                # 未覆盖的题仍取索引原文
+                self.assertEqual(lib880.effective_text({"id": "q-2", "text": "原文"}), "原文")
 
 
 class ScoreAndAnalysisTest(unittest.TestCase):

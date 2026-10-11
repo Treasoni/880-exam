@@ -23,6 +23,7 @@ LINEAR_ALGEBRA_PROGRESS_PATH = ROOT / "workspace/preview/线代进度总览.md"
 EXTERNAL_LINKS_PATH = ROOT / "workspace/records/external-links.json"
 ANALYSIS_PATH = ROOT / "workspace/records/analysis.json"
 SOLUTION_OVERRIDES_PATH = ROOT / "workspace/records/solution-overrides.json"
+TEXT_OVERRIDES_PATH = ROOT / "workspace/records/text-overrides.json"
 # 真题系统（zhenti-exam）：独立事实源与独立产物，不进 880 进度/配额
 ZHENTI_PROBLEMS_PATH = ROOT / "workspace/records/zhenti-problems.json"
 ZHENTI_WRONG_BOOK_PATH = ROOT / "workspace/wrong-book/真题错题本.md"
@@ -697,6 +698,39 @@ def effective_solution(q, overrides=None):
     if overrides is None:
         overrides = load_solution_overrides()
     return overrides.get(q.get("id")) or q.get("solution")
+
+
+def load_text_overrides():
+    """读取题目级题干覆盖 {qid: 修正后的题干}。
+
+    做题本 OCR 偶有把题干末句裁成两块、重复一遍的错误（如
+    ``gs-c02-comprehensive-choice-024``：题干末句在 ``block_list.json`` 里出现
+    两次）。索引里的 ``text`` 是做题库原文的忠实副本，重建索引会从全库重新拷贝，
+    所以修正不能写回索引，只能走覆盖层：渲染时优先取覆盖层，回退到索引原文。
+    卷子、答案卷、错题本（回炉模式打印题干）同时生效，且重建后不丢。
+
+    文件不存在返回空 dict（功能未启用）；JSON 损坏时告警但不阻断主流程。
+    """
+    if not TEXT_OVERRIDES_PATH.exists():
+        return {}
+    try:
+        data = json.loads(TEXT_OVERRIDES_PATH.read_text(encoding="utf-8"))
+    except ValueError as exc:
+        print(f"!! text-overrides.json 解析失败，本次跳过题干覆盖: {exc}", file=sys.stderr)
+        return {}
+    overrides = {}
+    for qid, item in (data.get("texts") or {}).items():
+        text = (item or {}).get("text") if isinstance(item, dict) else item
+        if text:
+            overrides[qid] = text
+    return overrides
+
+
+def effective_text(q, overrides=None):
+    """题目的最终题干：优先取覆盖层，回退到索引内的做题本原文。"""
+    if overrides is None:
+        overrides = load_text_overrides()
+    return overrides.get(q.get("id")) or q.get("text")
 
 
 def grade_score_ratio(schema, grade_key):

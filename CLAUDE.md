@@ -27,6 +27,7 @@
 - `workspace/records/attempts.json` — 判分记录
 - `workspace/records/papers.json` — 卷子记录
 - `workspace/records/solution-overrides.json` — 题目级解析覆盖（`{qid: 自定义解析}`），渲染时替换解析册原文，答案卷与错题本都生效；索引里的 `solution` 保持解析册原文不动，重建索引不丢覆盖
+- `workspace/records/text-overrides.json` — 题目级**题干**覆盖（`{qid: 修正题干}`），渲染时替换做题本原题面，卷子、答案卷与错题本（回炉题干）都生效；索引里的 `text` 保持原文不动，重建索引不丢覆盖。用途是修正原文源 OCR 的重复/错字，改完须 `--rebuild` 重刷已落盘的卷子
 - `workspace/papers/paper-XX/` — 每卷一个文件夹：`卷子-XX.md`、`卷子-XX-答案.md`、`判分卡-XX.md`
 - `workspace/wrong-book/错题本.md` — 错题本
 - `workspace/preview/进度总览.md` — 进度总览

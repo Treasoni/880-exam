@@ -37,4 +37,5 @@ blocked_reason: ""
 | 时间 | 阶段 | 问题描述 | 处理方式 |
 |------|------|---------|---------|
 | 2026-10-01 | 判分核对 | 高数错题本待复习 13→18 只 +5（新增非对 6 题），`gs-c01-basic-choice-013` 从清单消失（状态仍为未复习） | 核为**设计行为**而非缺陷：`build_wrong_lists` 仅收录「最近判分非『对』」的题（`tests/test_core.py::test_mastered_redo_is_preserved_in_archive` 覆盖），故待复习集合 ≡ 进度总览「非『对』」计数（高数 18、线代 9 两处一致）；该题判分记录仍在 `attempts.json`，再次判错会自动回到清单。已掌握归档是该过滤的唯一例外 |
+| 2026-10-11 | 拼卷产物 | 卷子-06 第 6 题（`gs-c02-comprehensive-choice-024`）题干末句「…满足 $S_2>S_1>S_3$，则下列选项正确的是（）.」在卷子上打印两遍 | 三层定位：**非生成器缺陷**——原文源 `880/【A4紧凑版】…/block_list.json` 第 27 页 idx 3/4 各含一次该句（OCR 重复），一路流经 content_list → full.md → 索引 → 卷子/答案卷。全库 618 题仅此一例。按既有「覆盖层」模式新增 `workspace/records/text-overrides.json`（题干覆盖，渲染时替换、重建索引不丢），已 `--rebuild paper-06` 重刷卷子与答案卷；`lint_content.py` 增 `lint_text_overrides`（公式判据 + qid 必须命中题库，防题号写错静默空转）；`tests/test_core.py` 增 3 例回归 |
 

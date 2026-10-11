@@ -176,6 +176,45 @@ def lint_solution_overrides():
     return rel, errors
 
 
+def lint_text_overrides():
+    """校验题干覆盖层（``workspace/records/text-overrides.json``）。
+
+    覆盖层与索引一样是产物上游：它替换做题本原题面流进卷子/答案卷/错题本，所以用
+    同一个 ``lint_math`` 判据校验，坏公式在重建前就被拦住。额外做一次「qid 必须真实
+    存在」的防呆——覆盖层的键写错（题号拼错）不会报任何渲染错误，只会静默不生效，
+    正是本项目最该拦的一类空转。文件不存在返回 None。
+    """
+    path = lib880.TEXT_OVERRIDES_PATH
+    rel = path.relative_to(lib880.ROOT)
+    if not path.exists():
+        return rel, None
+    try:
+        doc = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError as exc:
+        return rel, [f"JSON 解析失败: {exc}"]
+    errors = []
+    overrides = lib880.load_text_overrides()
+    for qid, text in overrides.items():
+        for e in lint_math(text):
+            errors.append(f"{qid}.text: {e}")
+    if not doc.get("texts"):
+        errors.append("texts 为空；没有覆盖项时请删除该文件")
+    known = set()
+    for subject in (lib880.SUBJECT_HIGH_MATH, lib880.SUBJECT_LINEAR_ALGEBRA):
+        index_path = lib880.subject_paths(subject)["index"]
+        if not index_path.exists():
+            continue
+        try:
+            doc_idx = json.loads(index_path.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        known.update(q.get("id") for q in doc_idx.get("questions", []))
+    for qid in overrides:
+        if qid not in known:
+            errors.append(f"{qid}: 不在任何题库索引中，该覆盖不会生效（题号是否写错？）")
+    return rel, errors
+
+
 def lint_zhenti_source():
     """校验真题事实源（``workspace/records/zhenti-problems.json``）。
 
@@ -268,7 +307,7 @@ def main():
             print(f"    - {e}")
     else:
         print(f"✓ {rel}")
-    rel, errors = lint_zhenti_source()
+    rel, errors = lint_text_overrides()
     if errors is None:
         print(f"- {rel}（未启用，跳过）")
     elif errors:
@@ -278,6 +317,7 @@ def main():
             print(f"    - {e}")
     else:
         print(f"✓ {rel}")
+    rel, errors = lint_zhenti_source()
     # 2) 产物
     targets = []
     if lib880.PAPERS_DIR.exists():

@@ -214,6 +214,7 @@ def pick_cell(schema, index, attempts, chapter_no, type_key, k, ignore_extension
 def render_paper(subject, schema, paper_id, sections_plan, questions_by_id, created=None):
     num = f"{lib880.paper_number(paper_id):02d}"
     stems = lib880.paper_artifact_stems(subject, paper_id)
+    text_overrides = lib880.load_text_overrides()
     solution_score = sum(schema["paper"]["sections"]["solution"].get("score_seq", []))
     choice = schema["paper"]["sections"]["choice"]
     fill = schema["paper"]["sections"]["fill"]
@@ -253,7 +254,8 @@ def render_paper(subject, schema, paper_id, sections_plan, questions_by_id, crea
             lines.append(f"## {TYPE_ORDER[type_key]}、{TYPE_ZH[type_key]}（每小题 {spec['per_score']} 分）")
         lines.append("")
         for idx, q in enumerate(sections_plan[type_key], start=1):
-            lines.append(f"**{idx}.** {q['text']}")
+            # 题干优先取覆盖层（text-overrides.json），回退做题本原文。
+            lines.append(f"**{idx}.** {lib880.effective_text(q, text_overrides)}")
             lines.append("")
         lines.append("")
     lines.append("---")
@@ -300,6 +302,7 @@ def render_answers(subject, schema, paper_id, sections_plan, created=None):
     num = f"{lib880.paper_number(paper_id):02d}"
     stems = lib880.paper_artifact_stems(subject, paper_id)
     overrides = lib880.load_solution_overrides()
+    text_overrides = lib880.load_text_overrides()
     lines = []
     lines.append("---")
     lines.append("type: 答案卷")
@@ -327,8 +330,9 @@ def render_answers(subject, schema, paper_id, sections_plan, created=None):
             # 题干行仍保留 `**N.**` 题号——split_answer_sheet 靠它切块核验。
             lines.append(f"### 第 {idx} 题")
             lines.append("")
-            # 题目原文（与卷子保持一致），再给答案与解析
-            lines.append(f"**{idx}.** {q.get('text', '').strip()}")
+            # 题目原文（与卷子保持一致），再给答案与解析；题干同走覆盖层。
+            lines.append(
+                f"**{idx}.** {lib880.effective_text(q, text_overrides).strip()}")
             lines.append("")
             answer = lib880.markdown_math_answer(q["answer"]) if q.get("answer") else "（见解析）"
             lines.append("**答案：** " + (f"**{answer}**" if q.get("answer") else answer))

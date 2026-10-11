@@ -125,10 +125,11 @@ def build_wrong_lists(schema, index, attempts):
 
 
 def render(schema, index, attempts, active, mastered, ext_links=None, analysis=None,
-           solution_overrides=None, subject=lib880.SUBJECT_HIGH_MATH):
+           solution_overrides=None, subject=lib880.SUBJECT_HIGH_MATH, text_overrides=None):
     ext_links = ext_links or {}
     analysis = analysis or {"items": {}}
     overrides = lib880.load_solution_overrides() if solution_overrides is None else solution_overrides
+    text_overrides = lib880.load_text_overrides() if text_overrides is None else text_overrides
     total = len(active) + len(mastered)
     n_focus = sum(1 for e in active if e["priority"] == "重点")
     n_mastered = len(mastered)
@@ -240,7 +241,7 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
                 q = e["q"]
                 lines.append(f"##### 第{CN[ch]}章 {TYPE_ZH[q['type']]} 第 {q['q_num']} 题 · 最近判分：{e['grade_zh']} · {e['state']}")
                 lines.append("")
-                lines.append(f"**题干：** {q['text']}")
+                lines.append(f"**题干：** {lib880.effective_text(q, text_overrides)}")
                 lines.append("")
                 if q.get("answer"):
                     lines.append(f"**答案：** {lib880.markdown_math_answer(q['answer'])}")
@@ -294,16 +295,22 @@ def build(subject=lib880.SUBJECT_HIGH_MATH):
     lib880.build_index_map(index)
     attempts = lib880.load_attempts()
 
-    # 先校验事实源（含解析覆盖层），再生成产物，避免把坏公式写进错题本后才发现。
+    # 先校验事实源（含解析/题干覆盖层），再生成产物，避免把坏公式写进错题本后才发现。
     overrides = lib880.load_solution_overrides()
+    text_overrides = lib880.load_text_overrides()
     for q in index["questions"]:
         solution = lib880.effective_solution(q, overrides)
         if solution:
             validate_solution_text(solution, q["id"])
+        # 题干覆盖层与索引原文一样是产物上游，坏公式要在写盘前拦住。
+        stem = lib880.effective_text(q, text_overrides)
+        if stem:
+            validate_solution_text(stem, f"{q['id']}.text")
 
     active, mastered = build_wrong_lists(schema, index, attempts)
     text = render(schema, index, attempts, active, mastered,
-                  lib880.load_external_links(), lib880.load_analysis(), overrides, subject)
+                  lib880.load_external_links(), lib880.load_analysis(), overrides, subject,
+                  text_overrides=text_overrides)
     return lib880.wrong_book_path(subject), text, active, mastered
 
 
@@ -409,7 +416,7 @@ def print_stem(subject, index, qid):
     print(f"### {qid} · 第{CN[q['chapter_no']]}章 {TYPE_ZH[q['type']]} 第{q['q_num']}题 · "
           f"{DIFF_ZH[q['difficulty']]}（回炉模式：答案与解析已隐去）")
     print()
-    print(q["text"])
+    print(lib880.effective_text(q))
     print()
 
 

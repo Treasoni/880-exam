@@ -36,4 +36,5 @@ description: 拼一张 880 高数模拟卷（真题模式：选10×5分+填6×5�
 - 答案卷每题以 `### 第 N 题` 起头（大纲按题跳转），其下是**题目原文（保留 `**N.**` 题号）+ 答案 + 解析**；自定义解析自带的板块标题（如 `### 总体思路`）由渲染层 `lib880.demote_solution_headings(..., 3)` 降到 `####`，不会在题级下面平铺出一串没有归属的条目。
 - 脚本已按规范输出；若需调整格式，先改规则文件，再改 `scripts/make_paper.py`。
 - 改完解析覆盖层（`solution-overrides.json`）或答案卷格式后，用 `python3 scripts/make_paper.py --rebuild-answers all` 按事实源重刷全部答案卷：只重写答案卷，不碰判分卡（保留待判勾选）与卷子（保留已回填的判分表与 status）。答案卷是「索引 + 覆盖层」的纯投影，内容未变不写盘，`date`（创建日）保留、`updated` 只在真有改动时推进。
+- 题干覆盖层（`text-overrides.json`，修正做题本 OCR 的重复/错字）影响的**不只是答案卷**：卷子题面同样取自覆盖层，改完必须对每张含该题的卷子跑 `--rebuild PAPER_ID` 重刷卷子，否则盘面上的旧题面会一直重复。若只改了 `solution-overrides.json`，则 `--rebuild-answers all` 足够。
 - `--rebuild PAPER_ID` 重建卷子产物（不换题）时**保护用户输入**：判分卡上有勾选或该卷已有判分记录，就保留判分卡不重建（打印「保留判分卡不重建」并提示用 `--rebuild-card`）；卷子/答案卷仅在无判分记录时重刷。确需重排判分卡（会清空勾选）才加 `--rebuild-card`。
