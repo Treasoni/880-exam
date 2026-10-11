@@ -254,8 +254,9 @@ def render_paper(subject, schema, paper_id, sections_plan, questions_by_id, crea
             lines.append(f"## {TYPE_ORDER[type_key]}、{TYPE_ZH[type_key]}（每小题 {spec['per_score']} 分）")
         lines.append("")
         for idx, q in enumerate(sections_plan[type_key], start=1):
-            # 题干优先取覆盖层（text-overrides.json），回退做题本原文。
-            lines.append(f"**{idx}.** {lib880.effective_text(q, text_overrides)}")
+            # 题干优先取覆盖层（text-overrides.json），回退做题本原文；题干同走渲染层归一。
+            lines.append(
+                f"**{idx}.** {lib880.prepare_stem_text(lib880.effective_text(q, text_overrides))}")
             lines.append("")
         lines.append("")
     lines.append("---")
@@ -330,9 +331,9 @@ def render_answers(subject, schema, paper_id, sections_plan, created=None):
             # 题干行仍保留 `**N.**` 题号——split_answer_sheet 靠它切块核验。
             lines.append(f"### 第 {idx} 题")
             lines.append("")
-            # 题目原文（与卷子保持一致），再给答案与解析；题干同走覆盖层。
+            # 题目原文（与卷子保持一致），再给答案与解析；题干同走覆盖层与渲染层归一。
             lines.append(
-                f"**{idx}.** {lib880.effective_text(q, text_overrides).strip()}")
+                f"**{idx}.** {lib880.prepare_stem_text(lib880.effective_text(q, text_overrides))}")
             lines.append("")
             answer = lib880.markdown_math_answer(q["answer"]) if q.get("answer") else "（见解析）"
             lines.append("**答案：** " + (f"**{answer}**" if q.get("answer") else answer))

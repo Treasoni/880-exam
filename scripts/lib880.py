@@ -129,6 +129,29 @@ HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.*)$")
 BLOCK_IMAGE_RE = re.compile(
     r"^\s*(?:!\[[^\]]*\]\([^)\n]*\)|!\[\[[^\]\n]+\]\])\s*$")
 
+# 源题库里的图片一律写成相对路径 ``images/<hash>.jpg``——该路径只在 ``880/…``（或
+# ``真题/…``）源目录下成立。产物落在 ``workspace/papers/<id>/``，同一路径必然解析
+# 不到，阅读视图与实时预览都只显示裂图（paper-06 第 6 题的三区域示意图就是这样丢的）。
+# 渲染层统一改写成 Obsidian wikilink 嵌入 ``![[<hash>.jpg]]``：哈希文件名在全库唯一，
+# 而源图片目录本身就在 vault 内，Obsidian 按「不含扩展名的文件名」跨目录解析得到。
+# 只认 ``images/`` 前缀的相对路径；``![](https://…)`` 这类外链原样保留。
+RELATIVE_IMAGE_RE = re.compile(r"!\[[^\]]*\]\(\s*(?:\./)*images/([^)\s]+)\s*\)")
+
+# 行内 $$ 对（同一行、前后有正文，即非独立公式块）。Obsidian 只把单独占行的 ``$$``
+# 当独立公式定界符；夹在句子中间时渲染成 ``<span class="math math-block">``，其内部的
+# ``mjx-container[display="true"]`` 是 display:block，会把所在段落撑破——「设 $$公式$$，
+# 求 $$公式$$」在阅读视图里裂成「设／公式／，求／公式」四段（paper-06 解答题第 4 题）。
+# 渲染层把这类行内 ``$$…$$`` 降级为行内 ``$…$``（见 normalize_math_delimiters）。
+INLINE_DOLLAR_PAIR_RE = re.compile(r"\$\$(.+?)\$\$")
+
+# 实时预览（CM6）的 HTML 块陷阱：公式区外出现裸露的 ``<`` 且后面紧跟 ASCII 字母/``/``/
+# ``!``/``?``、同一行又没有 ``>`` 收尾时，CM6 会把它当成 HTML 标签/块的开始，从该行起
+# 到文件结尾整段退化成原始 Markdown——用户报的「渲染失败」正是这种。典型语料是选项行
+# ``A. M<N<P B. N<M<P …``（paper-06 选择题第 4 题），8 个 ``<`` 全无 ``>``。
+# 渲染层把公式区外的 ``<`` 转义成 ``&lt;``（Obsidian 渲染回 ``<``，显示不变，但不再触发
+# HTML 块解析）。``>`` 没有这个问题，不动。
+HTML_TAG_START_RE = re.compile(r"<(?=[A-Za-z/!?])")
+
 # 判分卡勾选标记：任务清单 `- [x] 对`（阅读视图点击即写 x），历史表格里也用过 [x]。
 # 判据只此一份——grade.py 读勾选、make_paper.py 判断「卡上是否已有用户输入」都引用它，
 # 免得一处放宽标记、另一处仍把已勾选的卡当成空白卡重建掉。
@@ -338,14 +361,70 @@ def ensure_block_spacing(text):
     return "\n".join(out)
 
 
+# 裸尖括号：正文里形如 ``M<N<P`` 的 ``<`` 紧跟字母时会开启一个 HTML 标签节点；
+# 整行/整段没有 ``>`` 收尾时 Live Preview 会把后续内容一并吞进该节点，独占成一段
+# 原文（公式、图片、``**答案：**`` 全裸露）——与「缺块级空行」是两种独立的渲染
+# 失败。完整 HTML 标签（``<td>`` 等）保持不动；只把「开不出真标签」的 ``<`` 转义
+# 成 ``\<``（阅读视图与实时预览都渲回字面 ``<``）。
+_BARE_LT_RE = re.compile(r"(?<!\\)<")
+_HTML_TAG_RE = re.compile(r"</?[A-Za-z][A-Za-z0-9-]*(?:\s[^<>\n]*)?>")
+_INLINE_SPAN_RE = re.compile(r"\$[^$\n]*\$|`[^`\n]*`")
+
+
+def _escape_bare_lt_in_plain(segment):
+    return _BARE_LT_RE.sub(
+        lambda m: "<" if _HTML_TAG_RE.match(segment, m.start()) else "\\<",
+        segment)
+
+
+def _escape_bare_lt_in_line(line):
+    parts = []
+    last = 0
+    for m in _INLINE_SPAN_RE.finditer(line):
+        parts.append(_escape_bare_lt_in_plain(line[last:m.start()]))
+        parts.append(m.group(0))
+        last = m.end()
+    parts.append(_escape_bare_lt_in_plain(line[last:]))
+    return "".join(parts)
+
+
+def escape_bare_angle_brackets(text):
+    """把正文里会被 Obsidian 当成「未闭合 HTML 标签」的裸 ``<`` 转义为 ``\\<``。
+
+    源文本不改，渲染层写入产物前调用（与 ``ensure_block_spacing`` 同一策略）。只处理
+    行内 ``$...$``、独立 ``$$...$$`` 块、行内代码之外、且无法构成完整 HTML 标签的
+    ``<``：``< a`` 这类后面接空白的、``<td>`` 这类完整标签一律不动。
+    """
+    out = []
+    in_display = False
+    for line in str(text or "").split("\n"):
+        if line.strip() == "$$":
+            in_display = not in_display
+            out.append(line)
+            continue
+        out.append(line if in_display else _escape_bare_lt_in_line(line))
+    return "\n".join(out)
+
+
 def prepare_solution_text(value):
-    """渲染层统一的解析文本准备：解码字面量 ``\\n`` → 归一定界符 → 补块级空行 → 去首尾空白。
+    """渲染层统一的解析文本准备：解码字面量 ``\\n`` → 归一定界符 → 补块级空行 →
+    转义裸 ``<`` → 去首尾空白。
 
     在写入产物前调用（``wrong_book.py`` / ``make_paper.py``），让事实源里的提取
-    残留（字面量 ``\\n``）、LaTeX 式定界符与丢失的块级空行都在同一处被吸收。
+    残留（字面量 ``\\n``）、LaTeX 式定界符、丢失的块级空行与裸 ``<`` 都在同一处被吸收。
     """
     text = normalize_math_delimiters(decode_literal_newlines(value)).strip()
-    return ensure_block_spacing(text)
+    return escape_bare_angle_brackets(ensure_block_spacing(text))
+
+
+def prepare_stem_text(value):
+    """渲染层统一的题干准备：解码字面量 ``\\n`` → 归一定界符 → 补块级空行 → 转义裸 ``<``。
+
+    卷子、答案卷、错题本的题干都走这一层归一，与解析（``prepare_solution_text``）
+    同一策略，避免题干里的 ``M<N<P`` 之类的裸 ``<`` 在实时预览里吞掉后续内容。
+    """
+    text = normalize_math_delimiters(decode_literal_newlines(value)).strip()
+    return escape_bare_angle_brackets(ensure_block_spacing(text))
 
 
 def demote_solution_headings(text, item_level):
@@ -387,14 +466,14 @@ def markdown_math_answer(value):
     ``\\frac{1}{2}``）。只包装明显的公式，避免把普通答案强制渲染成数学体。
     已带 ``$`` 的答案保持原样，因为其中可能混有公式和说明文字。
     答案同样先过 ``normalize_math_delimiters``，避免答案里的 ``\\(...\\)``
-    裸露进判分卡与错题本。
+    裸露进判分卡与错题本；正文里的裸 ``<`` 也一并转义，免得答案吞掉后文。
     """
     text = normalize_math_delimiters(value).strip()
     if not text or "$" in text:
-        return text
+        return escape_bare_angle_brackets(text)
     if re.search(r"\\[A-Za-z]+|[{}_^]", text):
         return f"${text}$"
-    return text
+    return escape_bare_angle_brackets(text)
 
 
 def ensure_utf8_stdio():
