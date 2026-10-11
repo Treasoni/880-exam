@@ -85,7 +85,8 @@ def _wikilink_resolves(target):
 
     - 带 `#锚点` 时先剥离锚点（Obsidian 锚点匹配不参与文件解析）；
     - 路径型目标（含 `/`）按 vault 根相对解析，补 `.md` 后 `exists()` 判定——
-      `Path.exists()` 会跟随 `external-notes/` 这类 symlink，跨库链接因此可解析；
+      `Path.exists()` 会跟随 `external-notes/` 这类 symlink，跨库链接因此可解析
+      （挂载缺失时由 `_wikilink_needs_external_mount` 先行放行，不落到这里）；
     - 裸名目标（如 `[[卷子-01]]`）按 workspace 下文件 stem 匹配。
     """
     base = target.split("#", 1)[0].strip()
@@ -97,6 +98,27 @@ def _wikilink_resolves(target):
     if p.exists():
         return True
     return Path(str(p) + ".md").exists()
+
+
+# 可选外部挂载：`external-notes/` 是指向外部 vault 的本地 symlink
+# （.gitignore 排除，仓库里不属于版本控制，CI 上更不存在）。
+# 挂载缺失时这些跨库 wikilink 无从核验，放行而不判死链——否则每次 push 都会因为
+# 「CI 上没有挂外部库」而 lint 变红（曾把整条 verify 打红，exit 2）。
+# 挂载存在时（本地开发）仍照常核验，拼错的路径照样拦得住。
+OPTIONAL_EXTERNAL_ROOTS = ("external-notes",)
+
+
+def _wikilink_needs_external_mount(target):
+    """目标落在「未挂载」的可选外部库下 → 本环境无从核验，跳过。
+
+    仅当该外部库的根目录确实不存在时才放行；根存在（本地挂了 symlink）时返回
+    False，让 `_wikilink_resolves` 照常判死链。
+    """
+    base = target.split("#", 1)[0].strip()
+    if not base or "/" not in base:
+        return False
+    root = base.split("/", 1)[0]
+    return root in OPTIONAL_EXTERNAL_ROOTS and not (lib880.ROOT / root).exists()
 
 
 def parse_fm(text):
@@ -337,8 +359,10 @@ def lint_file(path: Path):
     for k in PER_TYPE.get(fm.get("type"), []):
         if k not in fm:
             errors.append(f"缺少专属属性 {k}")
-    # wikilink 校验
+    # wikilink 校验（落在未挂载的可选外部库下的目标无从核验，跳过）
     for target in WIKI_RE.findall(text):
+        if _wikilink_needs_external_mount(target):
+            continue
         if not _wikilink_resolves(target):
             errors.append(f"wikilink 指向不存在的文件: [[{target}]]")
     errors.extend(lint_math(text))

@@ -207,6 +207,55 @@ class RenderLayerTest(unittest.TestCase):
             self.skipTest("源题库图片未入库")
         self.assertTrue(lint_content._wikilink_resolves(images[0].name))
 
+    def test_external_mount_link_skipped_only_when_mount_absent(self):
+        """跨库链接的跳过判据：仅在挂载缺失时放行，挂载在就照常核验。
+
+        `external-notes/` 是本地 symlink（.gitignore 排除，CI 上没有），错题本里的
+        `[[external-notes/…]]` 因此会因「没挂外部库」被判死链、把整条 verify 打红
+        （exit 2）。判据必须按「挂载存在与否」两向都测：只做正样本会漏掉
+        「本地拼错却不敢报」的回归。
+        """
+        target = ("external-notes/考研数学/高数-数列极限/错题本"
+                  "#错题13：幂差极限阶数匹配：等价无穷小替换")
+        with tempfile.TemporaryDirectory() as directory:
+            tmp = Path(directory)
+            with patch.object(lib880, "ROOT", tmp):
+                # 无挂载（CI）：无从核验 → 放行
+                self.assertTrue(lint_content._wikilink_needs_external_mount(target))
+                # 挂了目录（本地）：目标文件不存在 → 不放行，照常判死链
+                (tmp / "external-notes").mkdir()
+                self.assertFalse(lint_content._wikilink_needs_external_mount(target))
+        # 非外部库的路径型目标不受影响，仍走死链判定
+        self.assertFalse(
+            lint_content._wikilink_needs_external_mount("workspace/records/不存在.md"))
+
+    def test_lint_file_tolerates_unmounted_external_link(self):
+        """端到端回归：未挂 external-notes 时，错题本里的跨库链接不得让 lint 变红。"""
+        text = (
+            "---\n"
+            "type: 错题本\n"
+            "updated: 2026-10-11\n"
+            "tags: [高数, 880, 错题本]\n"
+            "total: 1\n"
+            "focus_count: 1\n"
+            "mastered_count: 0\n"
+            "---\n\n"
+            "# 880 错题本\n\n"
+            "*相关笔记：[[external-notes/考研数学/高数-数列极限/错题本#错题13]]*\n"
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            tmp = Path(directory)
+            path = tmp / "错题本.md"
+            path.write_text(text, encoding="utf-8")
+            with patch.object(lib880, "ROOT", tmp):
+                _, errors = lint_content.lint_file(path)
+            self.assertEqual(errors, [])
+            # 挂载在而目标缺失：同一份正文必须报死链（证明上一步不是把检查整体关掉）
+            (tmp / "external-notes").mkdir()
+            with patch.object(lib880, "ROOT", tmp):
+                _, errors = lint_content.lint_file(path)
+            self.assertTrue(any("external-notes" in e for e in errors), errors)
+
 
 class MergeExtractionTest(unittest.TestCase):
     def test_literal_newlines_are_decoded_without_changing_latex_commands(self):
