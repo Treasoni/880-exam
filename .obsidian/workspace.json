@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/paper-06/卷子-06-答案.md",
+                "file": "workspace/papers/la-paper-04/线代卷子-04.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "卷子-06-答案"
+              "title": "线代卷子-04"
             }
           },
           {
@@ -190,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-06/卷子-06-答案.md",
+                "file": "workspace/papers/la-paper-04/线代卷子-04.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -277,10 +277,11 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "b4b561f7809652dc",
+  "active": "427a5581429be0bf",
   "lastOpenFiles": [
-    "workspace/papers/paper-06/判分卡-06.md",
+    "workspace/papers/la-paper-04/线代卷子-04-答案.md",
     "workspace/papers/paper-06/卷子-06-答案.md",
+    "workspace/papers/paper-06/判分卡-06.md",
     "external-notes/考研数学/0-基础知识/assets/常用平面图形/astroid-20261011.png",
     "external-notes/考研数学/0-基础知识/assets/常用平面图形/plot_astroid.py",
     "workspace/papers/paper-06/卷子-06.md",
