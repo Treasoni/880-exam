@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "workspace/papers/paper-06/卷子-06.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -212,7 +212,7 @@
                       "conversationId": "conv-1791687106201-n29ozfe32"
                     }
                   ],
-                  "activeTabId": "tab-1790061594608-a0amw1a"
+                  "activeTabId": "tab-1790218000549-4kkqcsg"
                 }
               },
               "icon": "bot",
@@ -250,10 +250,14 @@
   },
   "active": "988fa5ec73581e86",
   "lastOpenFiles": [
-    "workspace/tmp-verify-lp-top.png",
+    "workspace/tmp-verify-rv-q4.png",
+    "workspace/tmp-verify-lp-q4b.png",
+    "workspace/tmp-verify-lp-q4.png",
     "workspace/papers/paper-06/卷子-06-答案.md",
-    "workspace/wrong-book/真题错题本.md",
     "workspace/papers/paper-06/卷子-06.md",
+    "workspace/tmp-verify-lp-sel.png",
+    "workspace/tmp-verify-lp-top.png",
+    "workspace/wrong-book/真题错题本.md",
     "workspace/wrong-book/错题本.md",
     "workspace/tmp-callout-math.md",
     "workspace/tmp-lp-variant.md",
@@ -291,10 +295,6 @@
     "workspace/wrong-book/images/zt-2010-数二-解答21-区间分拆双中值示意图.png",
     "workspace/wrong-book/images/zt-2010-数二-解答20-极转直对照示意图.png",
     "workspace/wrong-book/images/zt-2010-数二-解答18-三角换元换限示意图.png",
-    "workspace/wrong-book/images/zt-2010-数二-解答18-建系与阴影区域示意图.png",
-    "workspace/wrong-book/images/zt-2010-数二-解答18.png",
-    "真题/2010-2019考研数学二真题/images/d574044d5c00f7c204bdae9c5cbe8138f5f9d5e9b9972880050e612babb61cab.jpg",
-    "真题/2010-2019考研数学二真题/images/ac0d713b09848e687a8e5279f808cec2b281638f0946b0f96909fa687d9bbf11.jpg",
-    "真题/2010-2019考研数学二真题/images/c6b24f7127fd09c6911035743cd6a9384470720dce9758ff9b12d16ddef45a2a.jpg"
+    "workspace/wrong-book/images/zt-2010-数二-解答18-建系与阴影区域示意图.png"
   ]
 }

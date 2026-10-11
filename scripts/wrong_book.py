@@ -540,16 +540,30 @@ def main():
             print_stem(subject, index, qid)
         return
 
-    active, mastered = build_wrong_lists(schema, index, attempts)
+    # --all 在写入路径同样表示「两科」：写入模式下 --all 只重刷默认科目会让另一科
+    # 静默停留在旧版本（2026-10-11 线代错题本即如此陈旧），--all 的语义必须一致。
+    targets = ([lib880.SUBJECT_HIGH_MATH, lib880.SUBJECT_LINEAR_ALGEBRA]
+               if args.all else [subject])
+
     if args.list_states:
-        for e in active + mastered:
-            print(f"{e['q']['id']}  {e['grade_zh']:<4} {e['priority']:<3} {e['state']}")
+        for subj in targets:
+            s = lib880.load_schema(subj)
+            idx = lib880.load_index(subj)
+            lib880.build_index_map(idx)
+            active, mastered = build_wrong_lists(s, idx, attempts)
+            for e in active + mastered:
+                print(f"{e['q']['id']}  {e['grade_zh']:<4} {e['priority']:<3} {e['state']}")
         return
 
-    if not wrote:
-        generate(subject)
-    print(f"已更新错题本：{lib880.wrong_book_path(subject)}（待复习 {len(active)} 道 · "
-          f"已掌握归档 {len(mastered)} 道）")
+    for subj in targets:
+        if not wrote:
+            generate(subj)
+        s = lib880.load_schema(subj)
+        idx = lib880.load_index(subj)
+        lib880.build_index_map(idx)
+        active, mastered = build_wrong_lists(s, idx, attempts)
+        print(f"已更新错题本：{lib880.wrong_book_path(subj)}（待复习 {len(active)} 道 · "
+              f"已掌握归档 {len(mastered)} 道）")
 
 
 if __name__ == "__main__":
