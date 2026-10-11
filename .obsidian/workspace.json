@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/papers/paper-06/卷子-06-答案.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "真题错题本"
+              "title": "卷子-06-答案"
             }
           }
         ]
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/papers/paper-06/卷子-06-答案.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -212,7 +212,7 @@
                       "conversationId": "conv-1791687106201-n29ozfe32"
                     }
                   ],
-                  "activeTabId": "tab-1790218000549-4kkqcsg"
+                  "activeTabId": "tab-1790061594608-a0amw1a"
                 }
               },
               "icon": "bot",
@@ -250,6 +250,7 @@
   },
   "active": "988fa5ec73581e86",
   "lastOpenFiles": [
+    "workspace/wrong-book/真题错题本.md",
     "workspace/papers/paper-06/卷子-06.md",
     "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-06/卷子-06-答案.md",
@@ -275,7 +276,6 @@
     "workspace/v6.md",
     "workspace/v5.md",
     "workspace/v4.md",
-    "workspace/v3.md",
     "workspace/records/text-overrides.json",
     "workspace/papers/la-paper-05",
     "workspace/papers/paper-06",
