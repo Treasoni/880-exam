@@ -50,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -190,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-06/卷子-06-答案.md",
+                "file": "workspace/papers/paper-06/判分卡-06.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -277,11 +277,11 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "427a5581429be0bf",
+  "active": "e828d2512ae3362a",
   "lastOpenFiles": [
+    "workspace/papers/paper-06/卷子-06-答案.md",
     "workspace/papers/paper-06/判分卡-06.md",
     "workspace/papers/paper-06/卷子-06.md",
-    "workspace/papers/paper-06/卷子-06-答案.md",
     "workspace/tmp-verify-rv-sol.png",
     "workspace/tmp-verify-rv-q4.png",
     "workspace/tmp-verify-lp-q4b.png",
