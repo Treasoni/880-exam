@@ -2567,6 +2567,182 @@
       "when": "2026-10-10",
       "recorded_at": "2026-10-10T21:04:42+08:00",
       "note": ""
+    },
+    {
+      "qid": "la-c09-basic-choice-003",
+      "paper_id": "la-paper-04",
+      "grade": "correct",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c11-basic-choice-007",
+      "paper_id": "la-paper-04",
+      "grade": "correct",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c08-comprehensive-choice-005",
+      "paper_id": "la-paper-04",
+      "grade": "cannot",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-comprehensive-choice-010",
+      "paper_id": "la-paper-04",
+      "grade": "cannot",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-comprehensive-choice-014",
+      "paper_id": "la-paper-04",
+      "grade": "cannot",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-basic-choice-005",
+      "paper_id": "la-paper-04",
+      "grade": "cannot",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c11-comprehensive-choice-002",
+      "paper_id": "la-paper-04",
+      "grade": "correct",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c09-comprehensive-choice-007",
+      "paper_id": "la-paper-04",
+      "grade": "wrong",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c10-basic-choice-012",
+      "paper_id": "la-paper-04",
+      "grade": "cannot",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c10-comprehensive-choice-004",
+      "paper_id": "la-paper-04",
+      "grade": "cannot",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c11-comprehensive-fill-001",
+      "paper_id": "la-paper-04",
+      "grade": "cannot",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-comprehensive-fill-001",
+      "paper_id": "la-paper-04",
+      "grade": "correct",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-basic-fill-002",
+      "paper_id": "la-paper-04",
+      "grade": "correct",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c11-basic-fill-004",
+      "paper_id": "la-paper-04",
+      "grade": "half",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c09-comprehensive-fill-001",
+      "paper_id": "la-paper-04",
+      "grade": "correct",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c10-comprehensive-fill-001",
+      "paper_id": "la-paper-04",
+      "grade": "cannot",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-basic-solution-005",
+      "paper_id": "la-paper-04",
+      "grade": "wrong",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c12-comprehensive-solution-002",
+      "paper_id": "la-paper-04",
+      "grade": "cannot",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c11-basic-solution-015",
+      "paper_id": "la-paper-04",
+      "grade": "correct",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c11-comprehensive-solution-012",
+      "paper_id": "la-paper-04",
+      "grade": "wrong",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c09-comprehensive-solution-009",
+      "paper_id": "la-paper-04",
+      "grade": "correct",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c10-comprehensive-solution-006",
+      "paper_id": "la-paper-04",
+      "grade": "cannot",
+      "when": "2026-10-11",
+      "recorded_at": "2026-10-11T09:43:44+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -2977,6 +3153,50 @@
     "gs-c05-basic-solution-009": {
       "state": "未复习",
       "updated": "2026-10-10"
+    },
+    "la-c08-comprehensive-choice-005": {
+      "state": "未复习",
+      "updated": "2026-10-11"
+    },
+    "la-c12-comprehensive-choice-010": {
+      "state": "未复习",
+      "updated": "2026-10-11"
+    },
+    "la-c12-comprehensive-choice-014": {
+      "state": "未复习",
+      "updated": "2026-10-11"
+    },
+    "la-c12-basic-choice-005": {
+      "state": "未复习",
+      "updated": "2026-10-11"
+    },
+    "la-c10-basic-choice-012": {
+      "state": "未复习",
+      "updated": "2026-10-11"
+    },
+    "la-c10-comprehensive-choice-004": {
+      "state": "未复习",
+      "updated": "2026-10-11"
+    },
+    "la-c11-comprehensive-fill-001": {
+      "state": "未复习",
+      "updated": "2026-10-11"
+    },
+    "la-c11-basic-fill-004": {
+      "state": "未复习",
+      "updated": "2026-10-11"
+    },
+    "la-c10-comprehensive-fill-001": {
+      "state": "未复习",
+      "updated": "2026-10-11"
+    },
+    "la-c12-comprehensive-solution-002": {
+      "state": "未复习",
+      "updated": "2026-10-11"
+    },
+    "la-c10-comprehensive-solution-006": {
+      "state": "未复习",
+      "updated": "2026-10-11"
     }
   }
 }
