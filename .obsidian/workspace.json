@@ -50,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -190,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-06/判分卡-06.md",
+                "file": "workspace/papers/paper-06/卷子-06-答案.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -277,10 +277,12 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e828d2512ae3362a",
+  "active": "427a5581429be0bf",
   "lastOpenFiles": [
-    "workspace/papers/paper-06/卷子-06-答案.md",
+    "external-notes/考研数学/0-基础知识/assets/常用平面图形/astroid-20261011.png",
+    "external-notes/考研数学/0-基础知识/assets/常用平面图形/plot_astroid.py",
     "workspace/papers/paper-06/判分卡-06.md",
+    "workspace/papers/paper-06/卷子-06-答案.md",
     "workspace/papers/paper-06/卷子-06.md",
     "workspace/tmp-verify-rv-sol.png",
     "workspace/tmp-verify-rv-q4.png",
@@ -310,7 +312,6 @@
     "workspace/tt7.md",
     "workspace/tt9.md",
     "workspace/v6.md",
-    "workspace/v5.md",
     "workspace/records/text-overrides.json",
     "workspace/papers/la-paper-05",
     "workspace/papers/paper-06",
@@ -321,7 +322,6 @@
     "workspace/workflow-runs/真题收录-2012数二填空10.workflow.md.8LJnuu",
     "workspace/workflow-runs/错题复习-06.workflow.md.8W7osc",
     "workspace/workflow-runs/真题错题复习-04.workflow.md.IuWtJ6",
-    "workspace/workflow-runs/真题错题复习-04.workflow.md.2Us6J6",
     "workspace/wrong-book/images/zt-2011-数二-解答20.png",
     "workspace/wrong-book/images/zt-2010-数二-解答21-区间分拆双中值示意图.png",
     "workspace/wrong-book/images/zt-2010-数二-解答20-极转直对照示意图.png"
