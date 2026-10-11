@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -218,7 +218,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/la-paper-04/线代卷子-04.md",
+                "file": "workspace/papers/la-paper-04/线代判分卡-04.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -307,12 +307,12 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "b547697bf59210d2",
+  "active": "287178ff48ab869b",
   "lastOpenFiles": [
-    "workspace/wrong-book/真题错题本.md",
-    "workspace/papers/la-paper-04/线代卷子-04.md",
-    "workspace/papers/la-paper-04/线代判分卡-04.md",
     "workspace/papers/la-paper-04/线代卷子-04-答案.md",
+    "workspace/papers/la-paper-04/线代卷子-04.md",
+    "workspace/wrong-book/真题错题本.md",
+    "workspace/papers/la-paper-04/线代判分卡-04.md",
     "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-05/判分卡-05.md",
     "workspace/papers/paper-05/卷子-05-答案.md",
