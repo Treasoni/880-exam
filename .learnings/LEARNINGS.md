@@ -37,5 +37,24 @@ _最后更新：2026-10-11_
 
 ---
 
+## 2026-10-11
+
+### Obsidian 渲染层事实：行内 `$$` 的降级边界、裸 `<` 的转义形式
+
+**类别**：best_practice
+**优先级**：high
+**状态**：pending
+**范围**：880 渲染层（`scripts/lib880.py`）/ `.claude/rules/common/obsidian-content.md`
+
+**摘要**：两条「Obsidian 会怎么渲」的实测事实，替代了此前的原理推导：①行内 `$$…$$` **只有当同行另有正文时**才撑破段落（降级为 `$…$`），**整行** `$$x=1$$` 与**独占一行的引用块** `> $$…$$` 是合法独立公式块，不得降级；②公式区外的裸 `<` 用反斜杠转义 `\<`，**不能用 HTML 实体 `&lt;`**。
+
+**详情**：
+- **行内 `$$` 边界**：夹在句中的 `$$…$$` 渲成 `display:block` 数学块，把所在段落撑破（「设 $$f$$，求 $$g$$」裂成四段）。判据是「该行除 `$$…$$` 外是否还有别的正文」——`lib880.normalize_math_delimiters` 只降级「同行另有正文」的 `$$…$$`，整行公式保留。**误判代价**：`lint` 判据若写「含 `$$` 即残留」，会把合法整行公式（含用户手写内容）判成错，按此「修」等于改坏用户排版。
+- **裸 `<` 的转义形式**：`<` 紧跟 ASCII 字母/`/`、同行无 `>` 收尾时，Live Preview 当成 HTML 标签/块起点，从该行起到文末整段裸露成原始 Markdown。minimal-repro 实测：`A. M&lt;N&lt;P` 正文里仍是**字面 `&lt;`**（预览不解码实体），而 `A. M\<N\<P` 正常渲成 `M<N<P` 且后续不再裸露。故正确写法是 `\<`。
+
+**下次做法**：任何「Obsidian 会怎么渲 X」的结论，先写最小复现文件在**实时预览**里实测（`dev:dom` / 截图）再落进规则、生成器或判据；原理推导、别处经验、摘要转述都不算。生成器侧归一函数就用 `lib880` 的 `normalize_math_delimiters` / `escape_bare_angle_brackets`，判据与渲染共用一份。
+
+---
+
 ## 历史记录
 旧记录已归档至 `.learnings/archive/`：`LEARNINGS-2026-08-11-pre-digest.md`、`LEARNINGS-2026-08-12-pre-compress.md`、`LEARNINGS-2026-09-13-pre-compress.md`（2026-09-03 / 09-09 / 09-11 / 09-13）、`LEARNINGS-2026-09-15-pre-compress.md`、`LEARNINGS-2026-09-15-pre-digest.md`（两条 best_practice 内核已进 RULES）；`880-wrongbook` 公式渲染防线 3 条（2026-09-12 / 09-13）见 `.learnings/archive/2026-09-13-maintenance.md`；09-24 归档的两条（用户供稿先验算、公共前缀/后缀定位，内核均已进 RULES）见 `.learnings/archive/2026-09-24-maintenance.md`。

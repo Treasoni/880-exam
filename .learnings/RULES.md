@@ -4,7 +4,7 @@
 
 ---
 
-_最后更新：2026-09-24_
+_最后更新：2026-10-11_
 
 ## 880 产物格式
 
@@ -45,6 +45,16 @@ _最后更新：2026-09-24_
 - **单块改动用公共前缀/后缀定位**：证明「只改了目标块」算**公共前缀行数 + 公共后缀行数**（本次 357 / 322，改动区间 = 新 358..444 / 旧 358..358），断言改动区间 ⊆ 目标块行范围；边界由算法计算，禁止手写行号（本次手写 0-based 边界造出过一次「后段一致: False」的假警报）。行 diff 不作判据。
 - **测试补丁要覆盖全部写盘目标**：用 `patch.multiple(lib880, …)` 隔离的测试，必须把**本次流程会写到的每个路径**（`PAPERS_DIR` / `PAPERS_PATH` / `ATTEMPTS_PATH` / `WRONG_BOOK_PATH` / `PROGRESS_PATH` / `SOLUTION_OVERRIDES_PATH`…）都指向 tmp，并在跑主流程前断言一遍；只挂读路径时测试会**静默打到真实 vault**——2026-09-24 那次 `--rebuild-answers` 真在 vault 上跑，只因「内容未变不写盘」才没落笔。测试文件头的「所有写入都限制在临时目录」是待验证的断言，不是既成事实。
 - **EOF 换行与中文路径核验**：判「文件末尾是否有换行」用 `git show HEAD:<f> | tail -c 1 | xxd -p` 与 `tail -c 1 <f> | xxd -p` 比对（`0a` = 有）；`git diff --name-only` 对非 ASCII 路径会加引号转义，`for f in $(git diff --name-only)` 会拿到带引号的假路径（`tail` 报 No such file），脚本里改用 `git config core.quotePath false` 或 pathspec 直接逐个点名。
+
+## 写盘前提与并发
+
+- **动手前先体检**：写盘或跑项目命令前先 `git status --porcelain` + `ListAgents`。`git status` 里出现**不是自己做的**改动、或 `ListAgents` 有 busy 的同库 peer → 先 SendMessage 分工（按文件切），不写。
+- **「file modified on disk」是硬停信号**：Edit 报这句就停手，重读文件 + 查 peer；禁止按旧上下文继续打补丁。压缩摘要里的状态（如「尚未修改任何文件」）动手前一律重新读盘核对。
+- **渲染结论先在 vault 实测**：任何「Obsidian 会怎么渲 X」的结论，先做最小复现文件在**实时预览**里实测（`dev:dom` / 截图），再写进规则、生成器或判据；原理推导、别处经验、摘要转述都不算。
+- **产线判据以渲染层本体为 oracle**：产物侧 lint 判据写 `render(text) != text`（正则只作预筛），禁止手写近似条件——近似会把合法写法（整行 `$$x=1$$`、引用块 `> $$…$$`）判成错，并诱导去改用户手写内容。
+- **并发会话按文件切**：同一 vault 被两个会话处理同一请求时，SendMessage 约定各写各的文件（如一方 `lib880.py`/`make_paper.py`/`wrong_book.py`，另一方 `lint_content.py`/`tests`/规则文档），避免交错写；无机制强制，靠规则自觉。
+- **判分卡是用户地盘**：`--rebuild-card` 会清空勾选、且不会保留用户手工补写的章节，**只在明确要重排卡时用**；重刷已做的卷子用 `--rebuild`（保留勾选）或 `--rebuild-answers`，逐卷点名，不要对 paper-05/06 这类跑 `--rebuild-card`。
+- **全库重刷清单**：修渲染层后重刷要覆盖 `--rebuild-answers all`（只动答案卷）+ **逐卷** `--rebuild <paper_id>`（卷子不随 all 走，两个科目都要）+ `wrong_book.py --all`（**只刷高数；线代要显式 `--subject linear-algebra`**），最后 `lint_content.py` 全绿。
 
 ## 配图
 

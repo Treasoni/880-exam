@@ -175,7 +175,7 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
             q = e["q"]
             lines.append(f"#### 第{CN[ch]}章 {TYPE_ZH[q['type']]} 第 {q['q_num']} 题 · 判分：{e['grade_zh']} · {e['priority']} · {e['state']}")
             lines.append("")
-            lines.append(f"**题干：** {q['text']}")
+            lines.append(f"**题干：** {lib880.prepare_stem_text(lib880.effective_text(q, text_overrides))}")
             lines.append("")
             if q.get("answer"):
                 lines.append(f"**答案：** {lib880.markdown_math_answer(q['answer'])}")
@@ -542,7 +542,8 @@ def main():
 
     # --all 在写入路径同样表示「两科」：写入模式下 --all 只重刷默认科目会让另一科
     # 静默停留在旧版本（2026-10-11 线代错题本即如此陈旧），--all 的语义必须一致。
-    targets = [subject]  # TEMP-OLD-BEHAVIOUR
+    targets = ([lib880.SUBJECT_HIGH_MATH, lib880.SUBJECT_LINEAR_ALGEBRA]
+               if args.all else [subject])
 
     if args.list_states:
         for subj in targets:
