@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/paper-06/卷子-06-答案.md",
+                "file": "workspace/tmp-callout-math.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "卷子-06-答案"
+              "title": "tmp-callout-math"
             }
           }
         ]
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-06/卷子-06-答案.md",
+                "file": "workspace/tmp-callout-math.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -248,8 +248,10 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "b4b561f7809652dc",
+  "active": "988fa5ec73581e86",
   "lastOpenFiles": [
+    "workspace/papers/paper-06/卷子-06-答案.md",
+    "workspace/tmp-callout-math.md",
     "workspace/tmp-lp-variant.md",
     "workspace/w12.md",
     "workspace/w11.md",
@@ -274,8 +276,6 @@
     "workspace/v3.md",
     "workspace/v1.md",
     "workspace/tmp-lp-b.md",
-    "workspace/tmp-lp-a.md",
-    "workspace/tmp-lp-test.md",
     "workspace/records/text-overrides.json",
     "workspace/papers/la-paper-05",
     "workspace/papers/paper-06",

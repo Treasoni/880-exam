@@ -451,6 +451,18 @@ def prepare_stem_text(value):
     return rewrite_relative_images(text)
 
 
+def prepare_inline_text(value):
+    """渲染层统一的行内/引用块文本准备：解码字面量 ``\\n`` → 归一定界符（含行内
+    ``$$…$$`` 降级为 ``$…$``）→ 转义裸 ``<``。
+
+    用于不能插入块级空行、也不改写图片路径的短文本：错因分析 callout、真题错题本
+    正文等。与 ``prepare_solution_text`` 同一策略，只是不做 ``ensure_block_spacing``
+    （会给引用块/段落乱插空行）与图片路径改写。
+    """
+    text = normalize_math_delimiters(decode_literal_newlines(value))
+    return escape_bare_angle_brackets(text)
+
+
 def demote_solution_headings(text, item_level):
     """把解析文本内部的 Markdown 标题降到条目标题之下，保证嵌套排版。
 

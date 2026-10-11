@@ -208,11 +208,11 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
                 lines.append("")
                 lines.append("> [!info] 错因分析")
                 if an.get("cause"):
-                    lines.append(f"> **错因：** {an['cause']}")
+                    lines.append(f"> **错因：** {lib880.prepare_inline_text(an['cause'])}")
                 if an.get("step"):
-                    lines.append(f"> **出错环节：** {an['step']}")
+                    lines.append(f"> **出错环节：** {lib880.prepare_inline_text(an['step'])}")
                 if an.get("advice"):
-                    lines.append(f"> **建议：** {an['advice']}")
+                    lines.append(f"> **建议：** {lib880.prepare_inline_text(an['advice'])}")
             lines.append("")
 
     if mastered:
@@ -274,11 +274,11 @@ def render(schema, index, attempts, active, mastered, ext_links=None, analysis=N
                     lines.append("")
                     lines.append("> [!info] 错因分析")
                     if an.get("cause"):
-                        lines.append(f"> **错因：** {an['cause']}")
+                        lines.append(f"> **错因：** {lib880.prepare_inline_text(an['cause'])}")
                     if an.get("step"):
-                        lines.append(f"> **出错环节：** {an['step']}")
+                        lines.append(f"> **出错环节：** {lib880.prepare_inline_text(an['step'])}")
                     if an.get("advice"):
-                        lines.append(f"> **建议：** {an['advice']}")
+                        lines.append(f"> **建议：** {lib880.prepare_inline_text(an['advice'])}")
                 lines.append("")
     lines.append("## 关联")
     lines.append("")
