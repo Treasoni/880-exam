@@ -429,30 +429,38 @@ def rewrite_relative_images(text):
     return RELATIVE_IMAGE_RE.sub(lambda m: f"![[{m.group(1)}]]", str(text or ""))
 
 
+def _prepare_block_text(value):
+    """块级正文的统一准备链：解码字面量 ``\\n`` → 归一定界符 → 补块级空行 →
+    转义裸 ``<`` → 图片路径改写 → 去首尾空白。
+
+    题干（``prepare_stem_text``）与解析（``prepare_solution_text``）**今天走同一条链**，
+    只留两个意图不同的入口名。链体只此一份：以前两个函数各写一份逐字相同的实现，
+    改一处忘另一处就是同源缺陷（2026-10-11 待复习题干没归一正是这类分叉）。
+    哪天题干需要独立于解析的规则，加在 ``prepare_stem_text`` 入口上，别复制链体。
+    """
+    text = normalize_math_delimiters(decode_literal_newlines(value)).strip()
+    text = escape_bare_angle_brackets(ensure_block_spacing(text))
+    return rewrite_relative_images(text)
+
+
 def prepare_solution_text(value):
     """渲染层统一的解析文本准备：解码字面量 ``\\n`` → 归一定界符 → 补块级空行 →
     转义裸 ``<`` → 图片路径改写 → 去首尾空白。
 
     在写入产物前调用（``wrong_book.py`` / ``make_paper.py``），让事实源里的提取
     残留（字面量 ``\\n``）、LaTeX 式定界符、行内 ``$$…$$``、丢失的块级空行、裸 ``<``
-    与不可解析的图片相对路径都在同一处被吸收。
+    与不可解析的图片相对路径都在同一处被吸收。链体见 ``_prepare_block_text``。
     """
-    text = normalize_math_delimiters(decode_literal_newlines(value)).strip()
-    text = escape_bare_angle_brackets(ensure_block_spacing(text))
-    return rewrite_relative_images(text)
+    return _prepare_block_text(value)
 
 
 def prepare_stem_text(value):
-    """渲染层统一的题干准备：解码字面量 ``\\n`` → 归一定界符 → 补块级空行 → 转义裸 ``<``
-    → 图片路径改写。
+    """渲染层统一的题干准备，与 ``prepare_solution_text`` 共用 ``_prepare_block_text``。
 
-    卷子、答案卷、错题本的题干都走这一层归一，与解析（``prepare_solution_text``）
-    同一策略，避免题干里的 ``M<N<P`` 之类的裸 ``<`` 在实时预览里吞掉后续内容、
-    以及题干内嵌示意图变成裂图。
+    卷子、答案卷、错题本的题干都走这一层归一，避免题干里的 ``M<N<P`` 之类的裸 ``<``
+    在实时预览里吞掉后续内容、以及题干内嵌示意图变成裂图。
     """
-    text = normalize_math_delimiters(decode_literal_newlines(value)).strip()
-    text = escape_bare_angle_brackets(ensure_block_spacing(text))
-    return rewrite_relative_images(text)
+    return _prepare_block_text(value)
 
 
 def prepare_inline_text(value):

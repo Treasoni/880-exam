@@ -227,7 +227,7 @@ def render(schema, doc, modules):
                      f"判分：{e['grade_zh']} · {e['tally']} · {e['state']}")
             L.append("")
             if p.get("stem"):
-                L.append(f"**题干：** {lib880.prepare_solution_text(p['stem'])}")
+                L.append(f"**题干：** {lib880.prepare_stem_text(p['stem'])}")
                 L.append("")
             if p.get("stem_image"):
                 L.append(f"![[{Path(p['stem_image']).name}]]")
@@ -325,7 +325,7 @@ def render(schema, doc, modules):
             L.append(f"### {e['year']} {e['paper']} {e['p'].get('no','')} · {e['module']}")
             L.append("")
             if e["p"].get("stem"):
-                L.append(f"**题干：** {lib880.prepare_solution_text(e['p']['stem'])}")
+                L.append(f"**题干：** {lib880.prepare_stem_text(e['p']['stem'])}")
                 L.append("")
             if e["p"].get("answer"):
                 L.append(f"**答案：** {lib880.markdown_math_answer(e['p']['answer'])}")

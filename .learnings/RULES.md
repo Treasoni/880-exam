@@ -30,6 +30,8 @@ _最后更新：2026-10-11_
 - **复用文本标题降级**：把带标题的源文本（解析等）拼进嵌套型产物（错题本条目 `####`/`#####`）时，渲染层自动把最浅标题降到条目标题之下（待复习→内容 `#####`、已掌握→内容 `######`，更深保持相对层级、封顶 `######`）；源文本保留原层级，禁止把 `###` 原样嵌进 `####` 条目破坏大纲。
 - **陈旧产物要重刷**：生成器的写入前校验只管**新写入**，不会重写已落盘的旧产物——盘面上的坏渲染会一直躺在用户打开的文件里。用 `python3 scripts/wrong_book.py --check --all` 检测盘面是否已跟上事实源（陈旧则退出码 1 并给 diff）；修完事实源后对**整个**事实源重跑生成器并 `python3 scripts/lint_content.py` 到全绿，禁止只重建被点名的那几条；用户报渲染问题时按「`git show HEAD:<产物>` 看盘面 → 查事实源 → 查生成器」三层一起查。
 - **补公式定界符必须回对源**：`$$` 计数是否成对**不能**决定补头还是补尾（两种都只把计数变偶）；补哪一侧、补什么前缀（如被剥掉的 `\begin{array}{r l} & {`）一律回对只读源 `880/` 定夺。解码字面 `\n` 只用 `lib880.decode_literal_newlines`，禁止 `str.replace("\\n", "\n")`（会砍断 `\neq` / `\nearrow` / `\nRightarrow`）。
+- **归一化要覆盖同族全部输出点**：加/改渲染层准备函数（`prepare_stem_text` / `prepare_solution_text` / `prepare_inline_text`）前，先 `grep` 该字段（`q['text']` / `q["solution"]` / `cause` 等）的**全部拼接位置**，一次改全。同一产物常有多条渲染路径（错题本「待复习」与「已掌握归档」就是两条），只改被点名那一处会留下同源缺陷 + 口径分叉——本次待复习题干仍是 `{q['text']}` 原文，连带静默忽略了 `text-overrides`，而 lint 全绿（潜在缺陷，未被现有题目触发）。**入口名可多个、链体只能一份**：题干与解析今天走同一条链，实现只在 `lib880._prepare_block_text`，`prepare_stem_text` / `prepare_solution_text` 都是薄入口；入口名按调用处意图选（题干别调 `prepare_solution_text`），要加分支就加在对应入口上，别复制链体。
+- **callout 内的独立公式也算独立块**：引用块里独占一行的 `> $$…$$`（引用符后整行只有一条公式）Obsidian 当独立公式块渲染，**不得**降级为行内 `$…$`；判据同「整行公式」——该行除公式外没有别的正文。
 
 ## 改动核验
 
@@ -45,6 +47,10 @@ _最后更新：2026-10-11_
 - **单块改动用公共前缀/后缀定位**：证明「只改了目标块」算**公共前缀行数 + 公共后缀行数**（本次 357 / 322，改动区间 = 新 358..444 / 旧 358..358），断言改动区间 ⊆ 目标块行范围；边界由算法计算，禁止手写行号（本次手写 0-based 边界造出过一次「后段一致: False」的假警报）。行 diff 不作判据。
 - **测试补丁要覆盖全部写盘目标**：用 `patch.multiple(lib880, …)` 隔离的测试，必须把**本次流程会写到的每个路径**（`PAPERS_DIR` / `PAPERS_PATH` / `ATTEMPTS_PATH` / `WRONG_BOOK_PATH` / `PROGRESS_PATH` / `SOLUTION_OVERRIDES_PATH`…）都指向 tmp，并在跑主流程前断言一遍；只挂读路径时测试会**静默打到真实 vault**——2026-09-24 那次 `--rebuild-answers` 真在 vault 上跑，只因「内容未变不写盘」才没落笔。测试文件头的「所有写入都限制在临时目录」是待验证的断言，不是既成事实。
 - **EOF 换行与中文路径核验**：判「文件末尾是否有换行」用 `git show HEAD:<f> | tail -c 1 | xxd -p` 与 `tail -c 1 <f> | xxd -p` 比对（`0a` = 有）；`git diff --name-only` 对非 ASCII 路径会加引号转义，`for f in $(git diff --name-only)` 会拿到带引号的假路径（`tail` 报 No such file），脚本里改用 `git config core.quotePath false` 或 pathspec 直接逐个点名。
+- **收尾三件套**：改生成器/渲染层后收尾固定跑 `python3 scripts/lint_content.py` + `python3 scripts/wrong_book.py --check --all` + `python3 -m unittest tests.test_core`（真题侧加 `python3 scripts/zhenti_wrong_book.py --check`），三者全绿才算完成；只看 lint 会漏「测试碎了」，只看测试会漏「盘面陈旧」。
+- **CLI 子命令各自是独立契约**：同一标记名在不同子命令下含义可能相反——`obsidian open path=` 是**输入**文件，`obsidian dev:screenshot path=` 是**输出**文件（写错会**覆盖**源文件）。用写盘/投影类命令前先确认「哪个参数是产物、写到哪」；作用域开关（`--all` / `--subject` / `--days`）要 `grep` 出它在代码里的**每一处**分支，确认语义一致，别只看一个分支就推广。
+- **细粒度问题用细粒度字段**：判断界面状态用**显式设定**（`view.setState({mode:"source", source:false})` 才是实时预览），不用更粗的 `getMode()==="source"` 反推——它把「源码模式」和「实时预览」都归成 `source`，据此得出的「渲染失败」结论是假的。
+- **渲染判定用 oracle，不用截图反推**：`obsidian eval` 里 `require("obsidian").MarkdownRenderer.render(app, md, el, "", null)` 可把一段 markdown 渲成 HTML，读 `el.innerHTML` 直接断言结构（`mjx-container[display=true]` = 独立公式块）；`return` 必须包在 IIFE 内。要人眼看实时预览才截图，输出一律写 `/tmp`。
 
 ## 写盘前提与并发
 
@@ -53,8 +59,9 @@ _最后更新：2026-10-11_
 - **渲染结论先在 vault 实测**：任何「Obsidian 会怎么渲 X」的结论，先做最小复现文件在**实时预览**里实测（`dev:dom` / 截图），再写进规则、生成器或判据；原理推导、别处经验、摘要转述都不算。
 - **产线判据以渲染层本体为 oracle**：产物侧 lint 判据写 `render(text) != text`（正则只作预筛），禁止手写近似条件——近似会把合法写法（整行 `$$x=1$$`、引用块 `> $$…$$`）判成错，并诱导去改用户手写内容。
 - **并发会话按文件切**：同一 vault 被两个会话处理同一请求时，SendMessage 约定各写各的文件（如一方 `lib880.py`/`make_paper.py`/`wrong_book.py`，另一方 `lint_content.py`/`tests`/规则文档），避免交错写；无机制强制，靠规则自觉。
+- **自动提交的仓库别留破坏态**：本 vault 有秒级自动备份（`vault backup:` 提交）。凡「故意改坏 → 验证 → 改回」的手法（如验证回归测试会红），改坏对象要换成**工作区外副本**或 `gitignore` 路径；留在会被提交的源码上，中途快照会把半成品写进 HEAD（本次 `# TEMP-OLD-BEHAVIOUR` 就被提交过）。
 - **判分卡是用户地盘**：`--rebuild-card` 会清空勾选、且不会保留用户手工补写的章节，**只在明确要重排卡时用**；重刷已做的卷子用 `--rebuild`（保留勾选）或 `--rebuild-answers`，逐卷点名，不要对 paper-05/06 这类跑 `--rebuild-card`。
-- **全库重刷清单**：修渲染层后重刷要覆盖 `--rebuild-answers all`（只动答案卷）+ **逐卷** `--rebuild <paper_id>`（卷子不随 all 走，两个科目都要）+ `wrong_book.py --all`（**只刷高数；线代要显式 `--subject linear-algebra`**），最后 `lint_content.py` 全绿。
+- **全库重刷清单**：修渲染层后重刷要覆盖 `--rebuild-answers all`（只动答案卷）+ **逐卷** `--rebuild <paper_id>`（卷子不随 all 走，两个科目都要）+ `wrong_book.py --all`（2026-10-11 起写入路径同样覆盖两科，此前只刷高数、线代要显式 `--subject`；回归测试 `test_all_regenerates_both_subjects_but_subject_stays_scoped` 锁死），最后 `lint_content.py` 全绿 + `wrong_book.py --check --all` + `python3 -m unittest tests.test_core`。
 
 ## 配图
 
