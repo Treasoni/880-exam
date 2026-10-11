@@ -5620,6 +5620,8 @@
     },
     "workspace/papers": {
       "children": [
+        "workspace/papers/la-paper-05",
+        "workspace/papers/paper-06",
         "workspace/papers/la-paper-04",
         "workspace/papers/paper-05",
         "workspace/papers/la-paper-03",
@@ -5664,6 +5666,14 @@
       ],
       "sortOrder": "custom"
     },
+    "workspace/papers/la-paper-05": {
+      "children": [
+        "workspace/papers/la-paper-05/线代卷子-05.md",
+        "workspace/papers/la-paper-05/线代卷子-05-答案.md",
+        "workspace/papers/la-paper-05/线代判分卡-05.md"
+      ],
+      "sortOrder": "custom"
+    },
     "workspace/papers/paper-01": {
       "children": [
         "workspace/papers/paper-01/卷子-01.md",
@@ -5704,6 +5714,14 @@
       ],
       "sortOrder": "custom"
     },
+    "workspace/papers/paper-06": {
+      "children": [
+        "workspace/papers/paper-06/卷子-06.md",
+        "workspace/papers/paper-06/卷子-06-答案.md",
+        "workspace/papers/paper-06/判分卡-06.md"
+      ],
+      "sortOrder": "custom"
+    },
     "workspace/preview": {
       "children": [
         "workspace/preview/线代进度总览.md",
@@ -5713,6 +5731,7 @@
     },
     "workspace/records": {
       "children": [
+        "workspace/records/text-overrides.json",
         "workspace/records/solution-overrides.json",
         "workspace/records/zhenti-problems.json",
         "workspace/records/analysis.json",
@@ -5724,6 +5743,7 @@
     },
     "workspace/workflow-runs": {
       "children": [
+        "workspace/workflow-runs/真题错题复习-06.workflow.md",
         "workspace/workflow-runs/错题复习-03.workflow.md",
         "workspace/workflow-runs/错题复习-04.workflow.md",
         "workspace/workflow-runs/错题复习-05.workflow.md",
@@ -5774,6 +5794,7 @@
     },
     "workspace/wrong-book/images": {
       "children": [
+        "workspace/wrong-book/images/取整函数二重积分区域拆分示意图.png",
         "workspace/wrong-book/images/zt-2011-数二-解答20.png",
         "workspace/wrong-book/images/二重积分-极坐标交换次序分块示意图.png",
         "workspace/wrong-book/images/zt-2010-数二-解答18.png",
