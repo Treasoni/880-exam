@@ -37,6 +37,33 @@ _最后更新：2026-09-24_
 
 ---
 
+## 2026-10-11
+
+### 写盘前提未体检族（3 次）：并发会话竞写 / 渲染结论未实测 / lint 判据近似
+
+**错误**：修 paper-06「渲染失败了」时，三处输出「动作完成、看着自洽、其实错」：
+1. **并发会话竞写**：本会话压缩重启后带着「未修改任何项目文件」的旧摘要，直接开改 `scripts/lib880.py`；同库另一个会话（`880-exam-b9`，11 分钟前启动、正在做同一件事）已在改同一批文件。Edit 工具报「file modified on disk since you last read it」才暴露。我加进去的 `RELATIVE_IMAGE_RE` / `INLINE_DOLLAR_PAIR_RE` / `HTML_TAG_START_RE` 与 peer 实现重叠，其中 `HTML_TAG_START_RE` 落地即死代码。**证据一直摆在手边没用**：动手前 `git status` 就会显示 `M scripts/lib880.py`，而那个改动根本不是我做的；`ListAgents` 也一直列着 busy 的 peer。此后两个会话在同一批文件上重叠写了一段，靠 SendMessage 按文件切才止住。
+2. **渲染结论未在 vault 实测**：我在 `lib880.py` 注释里把「公式区外的裸 `<` 转义成 HTML 实体 `&lt;`」当成正解。peer 在 vault 里做最小复现实测：Live Preview **不解码实体**——`A. M&lt;N&lt;P` 的正文里仍是字面 `&lt;`，而 `A. M\<N\<P` 正常渲成 `M<N<P` 且后续内容不再裸露。我的方案是从原理推的，没做最小复现就写进了共享文件。
+3. **lint 判据用近似条件代替渲染层本体**：`inline_dollar_lines` 我写成「非独立块的行只要含 `$$` 即残留」，把**合法的整行公式** `$$x=1$$` 判成错误——命中的不只有 paper-04 答案卷，还有**用户在判分卡-05 尾部手写的「解答题第 6 题详解」里的三行整行公式**。渲染层实际只降级「同行另有正文」的 `$$…$$`。按这条误报去「修」，等于改坏用户手写的排版。
+
+**触发场景**：①同一 vault 被两个会话同时处理同一请求（用户开两个窗口 / 压缩后旧会话仍在跑）；②把「Obsidian 会怎么渲染」写成规则、生成器或判据之前；③为渲染层归一写产物侧 lint 判据时。
+
+**根因**：三次失效点都不在被改内容，而在**动手前的前提**：谁在写（1）、渲染真实行为是什么（2）、判据是不是渲染层本体（3）。与 09-15「核验前提未核实族」同源——那条是**读**数据前不核实前提，这条是**写**文件前不核实前提。共同点：前提错了，动作照样完成、输出照样自洽，错误只在另一个会话 / 另一个视图 / 另一条判据里现形。
+
+**修复**：
+- 判据改对：`inline_dollar_lines` 改为**以渲染层本体为 oracle**（逐行 `lib880.normalize_math_delimiters(line) != line` 才算残留，正则只作预筛）；判据本体仍在 `lib880`（`INLINE_DOLLAR_PAIR_RE` / `RELATIVE_IMAGE_RE`）单一出处之内。`bare_angle_lines` 一开始就用 oracle 写法，无此问题。
+- 实测落地：`\<` 生效、`&lt;` 不生效，规则文档 `obsidian-content.md` 与 `lib880` 注释统一为 `\<` 并写明「不能改用 HTML 实体」及原因。
+- 分工止血：与 peer 约定按文件切（它 `lib880.py`/`make_paper.py`/`wrong_book.py` + 全库重刷，我 `lint_content.py`/`tests`/规则文档/工作流记录/复核），此后无竞写。
+- **未落实**：没有机制能阻止两个会话同时开工——工作流状态文件只有一个 `current_phase`，表达不了「谁在写哪些文件」。当前靠规则自觉执行。
+
+**预防措施**：
+- **动手前先体检**：写盘或跑命令前先 `git status --porcelain` + `ListAgents`。`git status` 里出现**不是自己做的**改动、或 `ListAgents` 有 busy 的同库 peer → 先 SendMessage 分工，不写。
+- **「file modified on disk」是硬停信号**：Edit 报这句就停手，重读文件 + 查 peer，禁止按旧上下文继续打补丁。压缩摘要里的任何状态（「尚未修改任何文件」）动手前一律重新读盘核对。
+- **渲染行为先在 vault 实测**：任何「Obsidian 会怎么渲 X」的结论，先做最小复现文件在实时预览里实测（`dev:dom` 读正文 / 截图），再写进规则、生成器或判据。原理推导、别处经验、摘要转述都不算。
+- **产线判据以渲染层为 oracle**：产物侧 lint 判据写 `render(text) != text`，正则只作预筛；禁止手写近似条件——近似会把合法写法判成错，还会诱导去改用户手写内容。
+
+---
+
 ## 历史记录
 
 旧记录已归档至 `.learnings/archive/ERRORS-2026-09-13-pre-compress.md`（2026-09-02 / 09-09 / 09-11）与 `.learnings/archive/ERRORS-2026-08-12-pre-compress.md`；`880-wrongbook` 公式渲染防线 3 条（2026-09-12 / 09-13）已修机制后归档至 `.learnings/archive/2026-09-13-maintenance.md`；09-15 两条机制已修的（工作流状态模板契约、`json.dumps` 末尾换行）归档至 `.learnings/archive/ERRORS-2026-09-15-pre-compress.md`（后者的要点已折叠进「核验判据失真族」第 4 例）；「核验判据失真族」四条（判据共用字符集 / 未断言解析规模）机制修好后归档至 `.learnings/archive/2026-09-24-maintenance.md`（判据已进 `lib880` + `lint_content.py`，要点留在 RULES）。
