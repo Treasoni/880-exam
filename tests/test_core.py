@@ -115,6 +115,64 @@ class Lib880Test(unittest.TestCase):
         self.assertFalse(any("q-known" in e for e in errors), f"误报正常覆盖：{errors}")
 
 
+class RenderLayerTest(unittest.TestCase):
+    """渲染层归一（lib880）与产物侧 lint 判据的回归。
+
+    三个缺陷来自 paper-06（用户报「渲染失败了」）：选项行的裸 ``<`` 让 Live Preview
+    把整段当 HTML 块（选择题 4）、行内 ``$$…$$`` 撑破段落（解答题 4）、相对图片路径
+    解析不到（选择题 6 的示意图）。事实源只读、原貌保留，修在渲染层，lint 只在产物侧
+    拦残留——所以下面既测渲染层吸收，也测 lint 判据本身。
+    """
+
+    def test_escape_bare_angle_brackets_only_outside_math(self):
+        # 裸 `<` 且同行无 `>` 收尾：Live Preview 会当 HTML 块起始，必须转义
+        self.assertEqual(lib880.escape_bare_angle_brackets("A. M<N<P"),
+                         r"A. M\<N\<P")
+        # 行内公式、独立公式块、行内代码里的 `<` 是数学/代码内容，一律不动
+        self.assertEqual(lib880.escape_bare_angle_brackets("设 $x<0$ 时"), "设 $x<0$ 时")
+        self.assertEqual(lib880.escape_bare_angle_brackets("$$\nr(A)<n-1\n$$"),
+                         "$$\nr(A)<n-1\n$$")
+        self.assertEqual(lib880.escape_bare_angle_brackets("用 `a<b` 表示"), "用 `a<b` 表示")
+        # 完整 HTML 标签不算「开不出的标签」；`&lt;` 不是本项目的正解（实时预览不解码实体）
+        self.assertEqual(lib880.escape_bare_angle_brackets("<td>x</td>"), "<td>x</td>")
+
+    def test_prepare_stem_text_escapes_bare_lt(self):
+        stem = "**4.** 设 $f(x)$ 连续, 记 $M=\\int_{0}^{1}f\\mathrm{d}x$, 则 ( ).\n" \
+               "A. M<N<P B. N<M<P C. P<M<N D. P<N<M"
+        out = lib880.prepare_stem_text(stem)
+        self.assertNotIn("<", out.replace(r"\<", ""))
+        self.assertIn(r"M\<N\<P", out)
+
+    def test_prepare_stem_text_demotes_inline_display_math(self):
+        stem = ("**4.** 设 $$x _ {1} = \\frac {1}{2}$$ ，求 "
+                "$$\\lim _ {n \\rightarrow \\infty} \\left(\\right).$$")
+        out = lib880.prepare_stem_text(stem)
+        self.assertNotIn("$$", out)
+        self.assertIn("$x _ {1} = \\frac {1}{2}$", out)
+
+    def test_prepare_stem_text_rewrites_relative_image_embed(self):
+        out = lib880.prepare_stem_text("如图 ![](images/abc123.jpg) 所示")
+        self.assertIn("![[abc123.jpg]]", out)
+        self.assertNotIn("images/", out)
+
+    def test_lint_predicates_flag_product_residue(self):
+        self.assertEqual(lint_content.inline_dollar_lines("设 $$a$$ 求"), [1])
+        self.assertEqual(lint_content.inline_dollar_lines("$$\nx\n$$"), [])
+        # 整行公式 `$$x=1$$` 渲染正常，渲染层不降级，lint 也不得误报
+        self.assertEqual(lint_content.inline_dollar_lines("$$x=1$$"), [])
+        self.assertEqual(lint_content.bare_angle_lines("A. M<N<P"), [1])
+        self.assertEqual(lint_content.bare_angle_lines(r"A. M\<N"), [])
+        self.assertEqual(lint_content.relative_image_lines("![](images/a.jpg)"), [1])
+
+    def test_source_image_wikilink_resolves(self):
+        # 渲染层把图片改成 `![[<hash>.jpg]]`，解析根必须覆盖只读源里的图片，
+        # 否则正确的写法会被 lint 误判成死链
+        images = list((lib880.ROOT / "880").rglob("*.jpg"))
+        if not images:
+            self.skipTest("源题库图片未入库")
+        self.assertTrue(lint_content._wikilink_resolves(images[0].name))
+
+
 class MergeExtractionTest(unittest.TestCase):
     def test_literal_newlines_are_decoded_without_changing_latex_commands(self):
         extracted = r"前文\n$$\n\begin{array}{r l} x \neq 0 \n故\n$$"

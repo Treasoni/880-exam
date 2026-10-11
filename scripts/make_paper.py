@@ -211,6 +211,28 @@ def pick_cell(schema, index, attempts, chapter_no, type_key, k, ignore_extension
     return picked
 
 
+def render_question_body(schema, sections_plan, text_overrides, solution_score):
+    """卷子题目正文（一/二/三大题，含题干），供 render_paper 与题干刷新共用。
+
+    题干优先取覆盖层（text-overrides.json），回退做题本原文，并统一走渲染层归一
+    （``prepare_stem_text``：裸 ``<`` 转义、行内 ``$$`` 降级、图片相对路径改写）。
+    """
+    lines = []
+    for type_key in ("choice", "fill", "solution"):
+        spec = schema["paper"]["sections"][type_key]
+        if type_key == "solution":
+            lines.append(f"## 三、解答题（共 {solution_score} 分）")
+        else:
+            lines.append(f"## {TYPE_ORDER[type_key]}、{TYPE_ZH[type_key]}（每小题 {spec['per_score']} 分）")
+        lines.append("")
+        for idx, q in enumerate(sections_plan[type_key], start=1):
+            lines.append(
+                f"**{idx}.** {lib880.prepare_stem_text(lib880.effective_text(q, text_overrides))}")
+            lines.append("")
+        lines.append("")
+    return lines
+
+
 def render_paper(subject, schema, paper_id, sections_plan, questions_by_id, created=None):
     num = f"{lib880.paper_number(paper_id):02d}"
     stems = lib880.paper_artifact_stems(subject, paper_id)
@@ -246,19 +268,7 @@ def render_paper(subject, schema, paper_id, sections_plan, questions_by_id, crea
     )
     lines.append("")
 
-    for type_key in ("choice", "fill", "solution"):
-        spec = schema["paper"]["sections"][type_key]
-        if type_key == "solution":
-            lines.append(f"## 三、解答题（共 {solution_score} 分）")
-        else:
-            lines.append(f"## {TYPE_ORDER[type_key]}、{TYPE_ZH[type_key]}（每小题 {spec['per_score']} 分）")
-        lines.append("")
-        for idx, q in enumerate(sections_plan[type_key], start=1):
-            # 题干优先取覆盖层（text-overrides.json），回退做题本原文；题干同走渲染层归一。
-            lines.append(
-                f"**{idx}.** {lib880.prepare_stem_text(lib880.effective_text(q, text_overrides))}")
-            lines.append("")
-        lines.append("")
+    lines.extend(render_question_body(schema, sections_plan, text_overrides, solution_score))
     lines.append("---")
     lines.append("")
     lines.append("## 答题卡")
@@ -437,6 +447,35 @@ def refresh_answer_sheet(subject, schema, index, record, ap):
     return answer_path
 
 
+def refresh_paper_stems(subject, schema, paper_id, sections_plan):
+    """只重刷卷子题目正文（一/二/三大题），保留判分表、得分与弱点分析、status。
+
+    已判分卷子不能整卷重建（会丢判分表与 status），但题干同样受渲染层归一影响
+    （裸 ``<`` 会让实时预览从该行起整段退化为原文）。这里只替换「卷头之后、``---``
+    之前」的题目正文，其余原样保留，故已判分卷子也能安全重刷。
+    返回 (路径, 是否变更)。
+    """
+    path = lib880.paper_artifact_paths(subject, paper_id)["paper"]
+    if not path.exists():
+        print(f"未找到卷子：{path}")
+        return path, False
+    lines = path.read_text(encoding="utf-8").split("\n")
+    try:
+        start = next(i for i, l in enumerate(lines) if re.match(r"^##[ \t]+[一二三]、", l))
+        card = next(i for i, l in enumerate(lines) if l.strip() == "## 答题卡")
+    except StopIteration:
+        print(f"卷子结构异常，跳过：{path}")
+        return path, False
+    end = max(i for i in range(start, card) if lines[i].strip() == "---")
+    solution_score = sum(
+        schema["paper"]["sections"]["solution"].get("score_seq", []))
+    body = render_question_body(
+        schema, sections_plan, lib880.load_text_overrides(), solution_score)
+    new = lines[:start] + body + lines[end:]
+    write_if_changed(path, "\n".join(new), "卷子题干")
+    return path, new != lines
+
+
 def rebuild_paper(subject, schema, index, papers, attempts, paper_id, ap, force_card=False):
     """从 papers.json 记录重建已存在卷子的产物（不换题）。
 
@@ -506,10 +545,31 @@ def main():
                     help="配合 --rebuild：强制重建判分卡（会清空卡上已有勾选）")
     ap.add_argument("--rebuild-answers", metavar="PAPER_ID|all", default=None,
                     help="只重刷答案卷（不碰判分卡与卷子）；all 覆盖两个科目全部卷子")
+    ap.add_argument("--refresh-stems", metavar="PAPER_ID|all", default=None,
+                    help="只重刷卷子题目正文（保留判分表/得分/status，可安全用于已判分卷子）；all 覆盖两个科目全部卷子")
     args = ap.parse_args()
 
     attempts = lib880.load_attempts()
     papers = lib880.load_papers()
+
+    if args.refresh_stems:
+        records = papers["papers"]
+        if args.refresh_stems != "all":
+            records = [p for p in records if p["paper_id"] == args.refresh_stems]
+            if not records:
+                ap.error(f"找不到卷子记录 {args.refresh_stems}（workspace/records/papers.json）")
+        loaded = {}
+        for record in records:
+            subject = lib880.subject_from_paper(record)
+            if subject not in loaded:
+                schema = lib880.load_schema(subject)
+                index = lib880.load_index(subject)
+                lib880.build_index_map(index)
+                loaded[subject] = (schema, index)
+            schema, index = loaded[subject]
+            sections_plan = sections_plan_of(record, index, record["paper_id"], ap)
+            refresh_paper_stems(subject, schema, record["paper_id"], sections_plan)
+        return
 
     if args.rebuild_answers:
         records = papers["papers"]

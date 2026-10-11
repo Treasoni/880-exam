@@ -144,14 +144,6 @@ RELATIVE_IMAGE_RE = re.compile(r"!\[[^\]]*\]\(\s*(?:\./)*images/([^)\s]+)\s*\)")
 # 渲染层把这类行内 ``$$…$$`` 降级为行内 ``$…$``（见 normalize_math_delimiters）。
 INLINE_DOLLAR_PAIR_RE = re.compile(r"\$\$(.+?)\$\$")
 
-# 实时预览（CM6）的 HTML 块陷阱：公式区外出现裸露的 ``<`` 且后面紧跟 ASCII 字母/``/``/
-# ``!``/``?``、同一行又没有 ``>`` 收尾时，CM6 会把它当成 HTML 标签/块的开始，从该行起
-# 到文件结尾整段退化成原始 Markdown——用户报的「渲染失败」正是这种。典型语料是选项行
-# ``A. M<N<P B. N<M<P …``（paper-06 选择题第 4 题），8 个 ``<`` 全无 ``>``。
-# 渲染层把公式区外的 ``<`` 转义成 ``&lt;``（Obsidian 渲染回 ``<``，显示不变，但不再触发
-# HTML 块解析）。``>`` 没有这个问题，不动。
-HTML_TAG_START_RE = re.compile(r"<(?=[A-Za-z/!?])")
-
 # 判分卡勾选标记：任务清单 `- [x] 对`（阅读视图点击即写 x），历史表格里也用过 [x]。
 # 判据只此一份——grade.py 读勾选、make_paper.py 判断「卡上是否已有用户输入」都引用它，
 # 免得一处放宽标记、另一处仍把已勾选的卡当成空白卡重建掉。
@@ -166,8 +158,25 @@ def card_ticked_lines(text):
             if (m := CHECK_RE.match(line)) and m.group(1) != " "]
 
 
+def _downgrade_inline_dollar_pairs(text):
+    """把夹在正文里的行内 ``$$…$$`` 降级为 ``$…$``，整行独立 ``$$…$$`` 保留不动。
+
+    Obsidian 只把单独占行的 ``$$`` 当独立公式定界符；夹在句子中间渲染成
+    ``<span class="math math-block">``，其内部 display:block 的容器会撑破段落。
+    """
+    out = []
+    standalone = re.compile(r"\s*\$\$.+?\$\$\s*$")
+    for line in str(text or "").split("\n"):
+        if INLINE_DOLLAR_PAIR_RE.search(line) and not standalone.match(line):
+            out.append(INLINE_DOLLAR_PAIR_RE.sub(r"$\1$", line))
+        else:
+            out.append(line)
+    return "\n".join(out)
+
+
 def normalize_math_delimiters(text):
-    """把 LaTeX 式行内定界符 ``\\(...\\)`` 归一为 Obsidian 的 ``$...$``。
+    """把 LaTeX 式行内定界符 ``\\(...\\)`` 归一为 Obsidian 的 ``$...$``，并把行内
+    ``$$…$$`` 降级为 ``$…$``。
 
     源文本不改，本函数在渲染层调用（与 ``demote_solution_headings`` 同一策略：
     复用文本进产物时由渲染层适配，事实源保持原貌）。
@@ -186,17 +195,17 @@ def normalize_math_delimiters(text):
     if _ESCAPED_BACKSLASH_PAREN_RE.search(text):
         raise ValueError(
             "含 \\\\( 或 \\\\) 转义形式，无法安全自动归一；请人工确认后再写入")
-    if not LEGACY_INLINE_RE.search(text):
-        return text
-    converted = LEGACY_INLINE_RE.sub("$", text)
-    if converted.count("$$") > text.count("$$"):
-        raise ValueError(
-            "归一行内定界符会产生相邻 $$，无法安全自动转换；请人工修正")
-    for line_no, line in enumerate(converted.splitlines(), start=1):
-        if line.count("$") % 2:
+    if LEGACY_INLINE_RE.search(text):
+        converted = LEGACY_INLINE_RE.sub("$", text)
+        if converted.count("$$") > text.count("$$"):
             raise ValueError(
-                f"归一行内定界符后第 {line_no} 行 $ 定界符不配对；请人工修正")
-    return converted
+                "归一行内定界符会产生相邻 $$，无法安全自动转换；请人工修正")
+        for line_no, line in enumerate(converted.splitlines(), start=1):
+            if line.count("$") % 2:
+                raise ValueError(
+                    f"归一行内定界符后第 {line_no} 行 $ 定界符不配对；请人工修正")
+        text = converted
+    return _downgrade_inline_dollar_pairs(text)
 
 
 def decode_literal_newlines(value):
@@ -366,7 +375,7 @@ def ensure_block_spacing(text):
 # 原文（公式、图片、``**答案：**`` 全裸露）——与「缺块级空行」是两种独立的渲染
 # 失败。完整 HTML 标签（``<td>`` 等）保持不动；只把「开不出真标签」的 ``<`` 转义
 # 成 ``\<``（阅读视图与实时预览都渲回字面 ``<``）。
-_BARE_LT_RE = re.compile(r"(?<!\\)<")
+_BARE_LT_RE = re.compile(r"(?<!\\)<(?=[A-Za-z/!?])")
 _HTML_TAG_RE = re.compile(r"</?[A-Za-z][A-Za-z0-9-]*(?:\s[^<>\n]*)?>")
 _INLINE_SPAN_RE = re.compile(r"\$[^$\n]*\$|`[^`\n]*`")
 
@@ -406,25 +415,40 @@ def escape_bare_angle_brackets(text):
     return "\n".join(out)
 
 
+def rewrite_relative_images(text):
+    """把 ``![](images/<hash>.jpg)`` 改写成 Obsidian wikilink 嵌入 ``![[<hash>.jpg]]``。
+
+    源题库的图片路径 ``images/<hash>.jpg`` 只在 ``880/…`` 源目录下成立；产物落在
+    ``workspace/papers/<id>/``，相对路径解析不稳，阅读视图与实时预览都可能显示裂图。
+    改成 ``![[<hash>.jpg]]`` 后由 Obsidian 跨目录按文件名解析。
+    """
+    return RELATIVE_IMAGE_RE.sub(lambda m: f"![[{m.group(1)}]]", str(text or ""))
+
+
 def prepare_solution_text(value):
     """渲染层统一的解析文本准备：解码字面量 ``\\n`` → 归一定界符 → 补块级空行 →
-    转义裸 ``<`` → 去首尾空白。
+    转义裸 ``<`` → 图片路径改写 → 去首尾空白。
 
     在写入产物前调用（``wrong_book.py`` / ``make_paper.py``），让事实源里的提取
-    残留（字面量 ``\\n``）、LaTeX 式定界符、丢失的块级空行与裸 ``<`` 都在同一处被吸收。
+    残留（字面量 ``\\n``）、LaTeX 式定界符、行内 ``$$…$$``、丢失的块级空行、裸 ``<``
+    与不可解析的图片相对路径都在同一处被吸收。
     """
     text = normalize_math_delimiters(decode_literal_newlines(value)).strip()
-    return escape_bare_angle_brackets(ensure_block_spacing(text))
+    text = escape_bare_angle_brackets(ensure_block_spacing(text))
+    return rewrite_relative_images(text)
 
 
 def prepare_stem_text(value):
-    """渲染层统一的题干准备：解码字面量 ``\\n`` → 归一定界符 → 补块级空行 → 转义裸 ``<``。
+    """渲染层统一的题干准备：解码字面量 ``\\n`` → 归一定界符 → 补块级空行 → 转义裸 ``<``
+    → 图片路径改写。
 
     卷子、答案卷、错题本的题干都走这一层归一，与解析（``prepare_solution_text``）
-    同一策略，避免题干里的 ``M<N<P`` 之类的裸 ``<`` 在实时预览里吞掉后续内容。
+    同一策略，避免题干里的 ``M<N<P`` 之类的裸 ``<`` 在实时预览里吞掉后续内容、
+    以及题干内嵌示意图变成裂图。
     """
     text = normalize_math_delimiters(decode_literal_newlines(value)).strip()
-    return escape_bare_angle_brackets(ensure_block_spacing(text))
+    text = escape_bare_angle_brackets(ensure_block_spacing(text))
+    return rewrite_relative_images(text)
 
 
 def demote_solution_headings(text, item_level):

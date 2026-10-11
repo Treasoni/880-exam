@@ -15,7 +15,11 @@
    solution 字段，注意题干键名与 880 索引不同）；
 7. 答案卷的题块集合与 papers.json 记录的 `paper_no` 一一对应（缺块 / 多块 /
    题号错位都能抓出）。判据锚定事实源期望，而不是「两版切块有无差异」——切块
-   本身出错时后者会伪装成「无改动」。
+   本身出错时后者会伪装成「无改动」；
+8. **仅产物**不得残留渲染层本该归一的三种行内格式（第 5 项是结构缺陷，这里是
+   行内格式缺陷，两者独立）：行内 `$$...$$`、公式区外未转义的 `<`、相对图片
+   路径 `images/...`。这三类在只读事实源里按设计原貌保留，由渲染层写入前吸收
+   （见 obsidian-content.md），所以在源头侧不判——否则不可改的原文会被判成错误。
 
 用法：
   python3 scripts/lint_content.py            # 校验事实源 + 全部生成产物
@@ -59,6 +63,21 @@ for p in (lib880.ROOT / "workspace").rglob("*"):
         continue
     WORKSPACE_FILES.add(p.stem)  # [[卷子-01]]、[[zt-2021-数二-解答3.png]]
     WORKSPACE_FILES.add(p.name)  # 显式带扩展名时按完整名匹配
+
+# 源题库图片也要能解析：渲染层把题干/解析里的 `images/<hash>.jpg` 改写成
+# `![[<hash>.jpg]]`（lib880.RELATIVE_IMAGE_RE），图片本体在只读源 `880/**/images/`
+# （真题同理在 `真题/`）下，Obsidian 按「不含扩展名的文件名」跨目录解析得到。这里若
+# 不收进来，渲染层刚修好的嵌入会被本检查误判成死链，反过来逼人删掉正确的写法。
+# 只收图片后缀：把整个源目录收进解析根会顺带让 full.md 之类的文件名也"可解析"，
+# 反而掩盖真正的死链。
+_SOURCE_IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
+for _root in (lib880.ROOT / "880", lib880.ROOT / "真题"):
+    if not _root.exists():
+        continue
+    for p in _root.rglob("*"):
+        if p.is_file() and p.suffix.lower() in _SOURCE_IMAGE_SUFFIXES:
+            WORKSPACE_FILES.add(p.stem)
+            WORKSPACE_FILES.add(p.name)
 
 
 def _wikilink_resolves(target):
@@ -128,6 +147,55 @@ def lint_math(text):
 
 
 SOURCE_FIELDS = ("text", "answer", "solution")
+
+
+# ---------------------------------------------------------------- 产物侧行内格式
+# 下面三个判据查的是「渲染层本该归一、产物里却还有残留」的行内格式缺陷。判据本体
+# 一律取自 lib880（同一份正则/函数），本文件只做「取行号 + 组错误文案」的管线，避免
+# 与渲染层口径分叉——口径一分叉，渲染层放过的写法这里会误报、渲染层改掉的写法这里
+# 又漏报。只在产物侧调用：事实源（只读的 880/ 与 真题/）按设计保留原貌，由渲染层在
+# 写入前吸收（见 obsidian-content.md）。
+def inline_dollar_lines(text):
+    """返回「行内 ``$$...$$`` 未被降级」的行号。
+
+    判据以渲染层为准：逐行跑 ``lib880.normalize_math_delimiters``，输出与输入不同即残留。
+    不能按「该行含 ``$$``」粗判——渲染层只降级**同行另有正文**的 ``$$…$$``（``设 $$a$$ 求``），
+    单独占行的整行公式 ``$$x=1$$`` 保留为独立公式（阅读视图正常），粗判会把合法写法误报。
+    独立 ``$$`` 块内的行跳过（块内混入结构标记另有 ``display_math_errors`` 负责）。
+    """
+    hits, in_block = [], False
+    for no, line in enumerate(str(text or "").splitlines(), start=1):
+        if line.strip() == "$$":
+            in_block = not in_block
+            continue
+        if in_block or not lib880.INLINE_DOLLAR_PAIR_RE.search(line):
+            continue
+        try:
+            if lib880.normalize_math_delimiters(line) != line:
+                hits.append(no)
+        except ValueError:
+            # 定界符结构本身有问题（\\(...\\) 残留、奇偶不配对等）由 lint_math 报，不在此重复
+            continue
+    return hits
+
+
+def bare_angle_lines(text):
+    """返回「渲染层本应转义、却仍裸露」的 ``<`` 所在行号。
+
+    判据直接以渲染层为准（``lib880.escape_bare_angle_brackets`` 的输出与输入比对），
+    不在这里另存一份正则：转义怎么改、查就怎么查，``\\<`` 已转义的行自然不再命中。
+    """
+    before = str(text or "").splitlines()
+    after = lib880.escape_bare_angle_brackets(text).splitlines()
+    if len(before) != len(after):
+        return list(range(1, len(before) + 1))
+    return [n for n, (a, b) in enumerate(zip(before, after), start=1) if a != b]
+
+
+def relative_image_lines(text):
+    """返回含相对图片路径（``images/...``）的行号——产物里这类路径必然解析不到。"""
+    return [no for no, line in enumerate(str(text or "").splitlines(), start=1)
+            if lib880.RELATIVE_IMAGE_RE.search(line)]
 
 
 def lint_source(subject):
@@ -274,6 +342,19 @@ def lint_file(path: Path):
         if not _wikilink_resolves(target):
             errors.append(f"wikilink 指向不存在的文件: [[{target}]]")
     errors.extend(lint_math(text))
+    # 产物侧行内格式：渲染层本该归一，残留即缺陷（判据见本文件顶部三个 helper）
+    for no in inline_dollar_lines(text):
+        errors.append(
+            f"第 {no} 行含行内 $$...$$（非独立公式块）；会撑破所在段落，"
+            "请改用行内 $...$ 或把它单独占行成独立公式块")
+    for no in bare_angle_lines(text):
+        errors.append(
+            f"第 {no} 行公式区外有未转义的 <；实时预览会当成 HTML 标签、从该行起"
+            "整段退化为原文（渲染失败），请转义为 \\<")
+    for no in relative_image_lines(text):
+        errors.append(
+            f"第 {no} 行含相对图片路径 images/...；在产物目录必然解析不到（裂图），"
+            "请改写成 ![[文件名]]")
     # 答案卷结构：题块集合须与 papers.json 期望一一对应
     if fm.get("type") == "答案卷" and fm.get("paper_id"):
         errors.extend(lib880.answer_sheet_key_errors(fm["paper_id"], text))
