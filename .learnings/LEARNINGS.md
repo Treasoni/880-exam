@@ -56,5 +56,42 @@ _最后更新：2026-10-11_
 
 ---
 
+### 验证「Obsidian 会怎么渲染」的三件套
+
+**类别**：best_practice
+**优先级**：high
+**状态**：pending
+**范围**：Obsidian 操作 / 880 渲染层验证
+
+**摘要**：不用截图也能**精确**判定渲染结果——`require("obsidian").MarkdownRenderer.render(app, md, el, "", component)` 把一段 markdown 渲成 HTML，读 `el.innerHTML` 即可断言（`mjx-container[display=true]` = 独立公式块、`math-inline` = 行内）。要验**实时预览**则必须**先显式**把 leaf 设成实时预览：`view.setState({mode:"source", source:false})`。
+
+**详情**：
+- `obsidian vault="880-exam" eval code='(async () => { const {MarkdownRenderer} = require("obsidian"); const el = document.createElement("div"); await MarkdownRenderer.render(app, "> [!info] A\n> $$x=1$$", el, "", null); return el.innerHTML; })()'` —— `require("obsidian")` 在 eval 里可用（`MarkdownRenderer` / `renderMath` 等都在），`return` 必须包在 IIFE 里（裸 `return` 报 `Illegal return statement`）。
+- 这条 oracle 直接判定「`> $$…$$` 在 callout 里是不是独立公式块」，比截图快、比原理推导可信；本次就是靠它确认了保留 `> $$…$$` 的决定，再用实时预览截图复核。
+- **陷阱**：`view.getMode()` 返回 `"source"` 对「源码模式」和「实时预览」**都成立**（实时预览也是 source，只是 `source:false`）。拿它当「我截的是实时预览」的凭据会得出错误结论（本次差点把源码模式的截图当成「渲染失败」）。截图前一律 `setState({mode:"source", source:false})`。
+- 截图还有个坑：`dev:screenshot path=` 是**输出**文件路径（不是要截的笔记），写错会覆盖源文件。
+
+**下次做法**：判定渲染优先用 `MarkdownRenderer` oracle（可断言 HTML 结构）；要人眼看实时预览时，先 `setState({mode:"source", source:false})` 再 `dev:screenshot path=<输出.png>`，输出路径一律指到 `workspace/` 之外的 `/tmp`。
+
+---
+
+### 渲染层归一化：覆盖同族全部输出点，别只改被点名那一处
+
+**类别**：best_practice
+**优先级**：high
+**状态**：pending
+**范围**：880 渲染层（`scripts/wrong_book.py` 等）
+
+**摘要**：给一类文本（题干 / 答案 / 解析）加写入前归一时，必须 `grep` 出**该字段的全部拼接位置**一次改全。同一产物常有多条渲染路径（错题本的「待复习」与「已掌握归档」就是两条），只改一条会留下同源缺陷和口径分叉。
+
+**详情**：
+- 本次实例：`wrong_book.py` 的**已掌握归档**条目题干走 `prepare_stem_text(effective_text(q, text_overrides))`（裸 `<` 转义、行内 `$$` 降级、字面 `\n` 解码、图片 wikilink 改写、题干覆盖生效），而**待复习**条目仍拼 `{q['text']}` 原文。后果有两层：①同一问在不同状态下渲染口径不同；②待复习条目的 `text-overrides` 覆盖被静默忽略（而规则文档说覆盖对错题本生效）。
+- **当时 lint 全绿**，因为这个漏洞是**潜在**的——要等某道待复习题的题干真的含 `<` / `$$` / 字面 `\n` 才显形。量过：全库 929 题里 36 题题干会被归一改动，其中在错题本内的 4 题**全在已掌握归档**（那条路径本就归了），所以待复习路径暂时没暴露。
+- 判据：`grep -n "q\['text'\]\|q\[\"text\"\]" scripts/*.py` 列出全部输出点，逐个确认走的是同一层准备函数。
+
+**下次做法**：加/改渲染层准备函数（`prepare_stem_text` / `prepare_solution_text` / `prepare_inline_text`）时，先 `grep` 字段名找齐所有拼接点；两条同类路径必须共用同一调用，禁止一处归一、一处原文。
+
+---
+
 ## 历史记录
 旧记录已归档至 `.learnings/archive/`：`LEARNINGS-2026-08-11-pre-digest.md`、`LEARNINGS-2026-08-12-pre-compress.md`、`LEARNINGS-2026-09-13-pre-compress.md`（2026-09-03 / 09-09 / 09-11 / 09-13）、`LEARNINGS-2026-09-15-pre-compress.md`、`LEARNINGS-2026-09-15-pre-digest.md`（两条 best_practice 内核已进 RULES）；`880-wrongbook` 公式渲染防线 3 条（2026-09-12 / 09-13）见 `.learnings/archive/2026-09-13-maintenance.md`；09-24 归档的两条（用户供稿先验算、公共前缀/后缀定位，内核均已进 RULES）见 `.learnings/archive/2026-09-24-maintenance.md`。
