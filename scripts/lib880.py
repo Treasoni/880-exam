@@ -124,6 +124,11 @@ DISPLAY_MATH_STRUCTURE_RE = re.compile(r"(?m)^\s*(?:#{1,6}\s|\*\*\d+\.\*\*)")
 # Markdown 标题行；供 demote_solution_headings 把解析内部标题降到嵌套层之下
 HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.*)$")
 
+# 独立成行的图片（Markdown 语法或 wikilink 嵌入）。与 `$$`、ATX 标题一样是块级
+# 元素，必须与相邻正文之间留空行，否则整段挤在一起（见 ensure_block_spacing）。
+BLOCK_IMAGE_RE = re.compile(
+    r"^\s*(?:!\[[^\]]*\]\([^)\n]*\)|!\[\[[^\]\n]+\]\])\s*$")
+
 # 判分卡勾选标记：任务清单 `- [x] 对`（阅读视图点击即写 x），历史表格里也用过 [x]。
 # 判据只此一份——grade.py 读勾选、make_paper.py 判断「卡上是否已有用户输入」都引用它，
 # 免得一处放宽标记、另一处仍把已勾选的卡当成空白卡重建掉。
@@ -279,13 +284,68 @@ def display_math_errors(text):
     return errors
 
 
+def ensure_block_spacing(text):
+    """在独立公式块（``$$``）、独立图片行、标题行与相邻正文之间补齐空行。
+
+    事实源（索引 ``solution`` 等）把解析里的空行抽掉后，这些块级元素会挤进同一段。
+    Obsidian 阅读视图靠容错仍能渲染，但 **Live Preview（实时预览）** 会把整个无空行
+    的长块当成一段原文显示——公式、图片、``### 第 N 题`` 标题全部裸露成 Markdown，
+    即用户报的「渲染失败」。补上空行后块级元素各自成块，问题消失。
+
+    源文本不改，由渲染层在写入产物前补齐（与 ``normalize_math_delimiters``、
+    ``demote_solution_headings`` 同一策略）。只处理单独占行的 ``$$`` 与独立图片行；
+    行内 ``$...$`` / 行内 ``$$...$$`` / 行内图片一律不动。
+    """
+    out = []
+    in_math = False
+    pad_next = False
+
+    def blank():
+        if out and out[-1] != "":
+            out.append("")
+
+    for line in str(text or "").split("\n"):
+        stripped = line.strip()
+        if stripped == "":
+            blank()
+            continue
+        if stripped == "$$":
+            if not in_math:
+                blank()
+                out.append(line)
+                in_math = True
+            else:
+                out.append(line)
+                in_math = False
+                pad_next = True
+            continue
+        if in_math:
+            out.append(line)
+            continue
+        if pad_next:
+            blank()
+            pad_next = False
+        if HEADING_RE.match(line) or BLOCK_IMAGE_RE.match(line):
+            blank()
+            out.append(line)
+            pad_next = True
+            continue
+        out.append(line)
+    while out and out[0] == "":
+        out.pop(0)
+    while out and out[-1] == "":
+        out.pop()
+    return "\n".join(out)
+
+
 def prepare_solution_text(value):
-    """渲染层统一的解析文本准备：解码字面量 ``\\n`` → 归一定界符 → 去首尾空白。
+    """渲染层统一的解析文本准备：解码字面量 ``\\n`` → 归一定界符 → 补块级空行 → 去首尾空白。
 
     在写入产物前调用（``wrong_book.py`` / ``make_paper.py``），让事实源里的提取
-    残留（字面量 ``\\n``）与 LaTeX 式定界符都在同一处被吸收。
+    残留（字面量 ``\\n``）、LaTeX 式定界符与丢失的块级空行都在同一处被吸收。
     """
-    return normalize_math_delimiters(decode_literal_newlines(value)).strip()
+    text = normalize_math_delimiters(decode_literal_newlines(value)).strip()
+    return ensure_block_spacing(text)
 
 
 def demote_solution_headings(text, item_level):

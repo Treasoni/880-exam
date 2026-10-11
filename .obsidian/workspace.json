@@ -13,6 +13,48 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "workspace/papers/paper-06/卷子-06.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "卷子-06"
+            }
+          },
+          {
+            "id": "ab89417766487d88",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/paper-06/卷子-06.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "卷子-06"
+            }
+          },
+          {
+            "id": "39cf30857facc581",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/paper-06/卷子-06.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "卷子-06"
+            }
+          },
+          {
+            "id": "d0044280d3eb67b0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "workspace/papers/paper-06/卷子-06-答案.md",
                 "mode": "preview",
                 "source": false
@@ -22,21 +64,21 @@
             }
           },
           {
-            "id": "ab89417766487d88",
+            "id": "db6e84b4368978e7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/paper-06/判分卡-06.md",
+                "file": "workspace/papers/paper-06/卷子-06.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "判分卡-06"
+              "title": "卷子-06"
             }
           },
           {
-            "id": "32249962727a0970",
+            "id": "95a3bb64cf438178",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -48,8 +90,75 @@
               "icon": "lucide-file",
               "title": "卷子-06-答案"
             }
+          },
+          {
+            "id": "7b6e89f3f8f05b21",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/paper-06/卷子-06-答案.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "卷子-06-答案"
+            }
+          },
+          {
+            "id": "cc65250a93c7e234",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/paper-06/卷子-06.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "卷子-06"
+            }
+          },
+          {
+            "id": "6f4411a3e29a0640",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/paper-06/卷子-06-答案.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "卷子-06-答案"
+            }
+          },
+          {
+            "id": "58c7a1d6807a8a30",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/paper-06/卷子-06.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "卷子-06"
+            }
+          },
+          {
+            "id": "163e7c63a54f9d6d",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -189,7 +298,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/paper-06/卷子-06-答案.md",
+                "file": "workspace/papers/paper-06/卷子-06.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -237,12 +346,10 @@
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
-                      "conversationId": null,
-                      "draftModel": "haiku",
-                      "providerId": "claude"
+                      "conversationId": "conv-1791687106201-n29ozfe32"
                     }
                   ],
-                  "activeTabId": "tab-1790061594608-a0amw1a"
+                  "activeTabId": "tab-1790218000549-4kkqcsg"
                 }
               },
               "icon": "bot",
@@ -250,7 +357,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -278,10 +385,11 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "10ca1a7dc09f3efc",
+  "active": "39cf30857facc581",
   "lastOpenFiles": [
-    "workspace/papers/paper-06/卷子-06.md",
     "workspace/papers/paper-06/卷子-06-答案.md",
+    "workspace/papers/paper-06/卷子-06.md",
+    "880/第一章到第五章解析/full.md",
     "workspace/papers/paper-06/判分卡-06.md",
     "workspace/records/text-overrides.json",
     "workspace/wrong-book/错题本.md",
