@@ -25,6 +25,41 @@ import wrong_book
 import zhenti_wrong_book
 
 
+# --- 隔离守卫 ---------------------------------------------------------------
+# 文件头那句「所有写入都限制在临时目录」以前只是人工维护的清单：
+# `patch.multiple` 若漏挂某个写盘路径，测试会静默打到真实 vault
+# （2026-09-24 `--rebuild-answers` 真在 vault 上跑过，只因「内容未变不写盘」才没落笔）。
+# 这里用真实产物目录的指纹做 oracle：模块级测试跑完，真实 vault 必须逐字节未变。
+VAULT_ROOT = ROOT / "workspace"
+_BEFORE_FINGERPRINT = None
+
+
+def _vault_fingerprint():
+    if not VAULT_ROOT.exists():
+        return {}
+    return {
+        str(path.relative_to(VAULT_ROOT)): (path.stat().st_size, path.stat().st_mtime_ns)
+        for path in VAULT_ROOT.rglob("*")
+        if path.is_file()
+    }
+
+
+def setUpModule():
+    global _BEFORE_FINGERPRINT
+    _BEFORE_FINGERPRINT = _vault_fingerprint()
+
+
+def tearDownModule():
+    after = _vault_fingerprint()
+    if after != _BEFORE_FINGERPRINT:
+        changed = {k for k in set(after) | set(_BEFORE_FINGERPRINT)
+                   if _BEFORE_FINGERPRINT.get(k) != after.get(k)}
+        raise AssertionError(
+            "隔离守卫：测试改动了真实 vault（写入应全部指向临时目录）：\n"
+            + "\n".join(f"  - {p}" for p in sorted(changed))
+        )
+
+
 class Lib880Test(unittest.TestCase):
     def setUp(self):
         self.schema = lib880.load_schema()
