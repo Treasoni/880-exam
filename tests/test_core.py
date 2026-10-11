@@ -577,6 +577,60 @@ class WrongBookTest(unittest.TestCase):
         all_rows = wrong_book.due_rows(index, attempts, days=0, today=today)
         self.assertEqual(sorted(r["q"]["id"] for r in all_rows), ["fresh", "old"])
 
+    def test_all_regenerates_both_subjects_but_subject_stays_scoped(self):
+        """写入模式下 --all 必须重刷两科，--subject 只重刷该科。
+
+        2026-10-11：`--all` 曾只作用于 --check/--due，写入路径仍是单科，导致线代
+        错题本静默停在旧版本（生成器换了、盘面没跟上）。这里锁死两条语义。
+        """
+        with tempfile.TemporaryDirectory() as directory:
+            tmp = Path(directory)
+            gm_wrong = tmp / "wrong-book" / "错题本.md"
+            la_wrong = tmp / "wrong-book" / "线代错题本.md"
+            attempts_path = tmp / "records" / "attempts.json"
+            attempts_path.parent.mkdir(parents=True)
+            attempts_path.write_text(
+                json.dumps({"attempts": [], "wrong_book_status": {}}), encoding="utf-8")
+            (tmp / "schema.yaml").write_text(
+                (ROOT / "workspace/schema.yaml").read_text(encoding="utf-8"), encoding="utf-8")
+            (tmp / "question-index.json").write_text(
+                (ROOT / "workspace/question-index.json").read_text(encoding="utf-8"),
+                encoding="utf-8")
+            (tmp / "la-schema.yaml").write_text(
+                (ROOT / "workspace/linear-algebra-schema.yaml").read_text(encoding="utf-8"),
+                encoding="utf-8")
+            (tmp / "la-question-index.json").write_text(
+                (ROOT / "workspace/linear-algebra-question-index.json").read_text(encoding="utf-8"),
+                encoding="utf-8")
+
+            with patch.multiple(
+                lib880,
+                SCHEMA_PATH=tmp / "schema.yaml",
+                INDEX_PATH=tmp / "question-index.json",
+                LINEAR_ALGEBRA_SCHEMA_PATH=tmp / "la-schema.yaml",
+                LINEAR_ALGEBRA_INDEX_PATH=tmp / "la-question-index.json",
+                ATTEMPTS_PATH=attempts_path,
+                WRONG_BOOK_PATH=gm_wrong,
+                LINEAR_ALGEBRA_WRONG_BOOK_PATH=la_wrong,
+                EXTERNAL_LINKS_PATH=tmp / "records" / "external-links.json",
+                ANALYSIS_PATH=tmp / "records" / "analysis.json",
+                SOLUTION_OVERRIDES_PATH=tmp / "records" / "solution-overrides.json",
+                TEXT_OVERRIDES_PATH=tmp / "records" / "text-overrides.json",
+            ):
+                # 全量：--all 一口气重刷两科（旧实现只刷默认科目，这条会红）
+                with patch.object(sys, "argv", ["wrong_book.py", "--all"]):
+                    wrong_book.main()
+                self.assertTrue(gm_wrong.exists())
+                self.assertTrue(la_wrong.exists(), "--all 必须覆盖两科")
+
+                # 单科：--subject 只重刷该科，不碰其它
+                gm_wrong.unlink()
+                with patch.object(sys, "argv",
+                                  ["wrong_book.py", "--subject", "linear-algebra"]):
+                    wrong_book.main()
+                self.assertTrue(la_wrong.exists())
+                self.assertFalse(gm_wrong.exists(), "--subject 不应动其它科目")
+
 
 class ZhentiWrongBookTest(unittest.TestCase):
     """真题覆盖表的状态派生（回归：整卷聚合，不是首条记录说了算）。"""

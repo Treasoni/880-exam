@@ -542,8 +542,7 @@ def main():
 
     # --all 在写入路径同样表示「两科」：写入模式下 --all 只重刷默认科目会让另一科
     # 静默停留在旧版本（2026-10-11 线代错题本即如此陈旧），--all 的语义必须一致。
-    targets = ([lib880.SUBJECT_HIGH_MATH, lib880.SUBJECT_LINEAR_ALGEBRA]
-               if args.all else [subject])
+    targets = [subject]  # TEMP-OLD-BEHAVIOUR
 
     if args.list_states:
         for subj in targets:
