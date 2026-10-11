@@ -234,14 +234,14 @@
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
-                      "conversationId": "conv-1791686670954-t29kae7o2"
+                      "conversationId": "conv-1791706324814-ks4fn4kl6"
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
                       "conversationId": "conv-1791700560708-9dk8x39ak"
                     }
                   ],
-                  "activeTabId": "tab-1790218000549-4kkqcsg"
+                  "activeTabId": "tab-1790061594608-a0amw1a"
                 }
               },
               "icon": "bot",
@@ -280,8 +280,8 @@
   "active": "427a5581429be0bf",
   "lastOpenFiles": [
     "workspace/papers/paper-06/判分卡-06.md",
-    "workspace/papers/paper-06/卷子-06-答案.md",
     "workspace/papers/paper-06/卷子-06.md",
+    "workspace/papers/paper-06/卷子-06-答案.md",
     "workspace/tmp-verify-rv-sol.png",
     "workspace/tmp-verify-rv-q4.png",
     "workspace/tmp-verify-lp-q4b.png",
