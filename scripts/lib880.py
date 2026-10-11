@@ -163,9 +163,13 @@ def _downgrade_inline_dollar_pairs(text):
 
     Obsidian 只把单独占行的 ``$$`` 当独立公式定界符；夹在句子中间渲染成
     ``<span class="math math-block">``，其内部 display:block 的容器会撑破段落。
+
+    callout 内的 ``> $$…$$`` 也算「独占一行」——引用符之后整行只有一条公式，
+    Obsidian 仍渲染成 display math（实测 ``MarkdownRenderer`` 输出
+    ``mjx-container[display=true]``），故连同 ``>`` 前缀一起视为独立公式块、不降级。
     """
     out = []
-    standalone = re.compile(r"\s*\$\$.+?\$\$\s*$")
+    standalone = re.compile(r"\s*(?:>\s*)*\$\$.+?\$\$\s*$")
     for line in str(text or "").split("\n"):
         if INLINE_DOLLAR_PAIR_RE.search(line) and not standalone.match(line):
             out.append(INLINE_DOLLAR_PAIR_RE.sub(r"$\1$", line))
@@ -377,7 +381,7 @@ def ensure_block_spacing(text):
 # 成 ``\<``（阅读视图与实时预览都渲回字面 ``<``）。
 _BARE_LT_RE = re.compile(r"(?<!\\)<(?=[A-Za-z/!?])")
 _HTML_TAG_RE = re.compile(r"</?[A-Za-z][A-Za-z0-9-]*(?:\s[^<>\n]*)?>")
-_INLINE_SPAN_RE = re.compile(r"\$[^$\n]*\$|`[^`\n]*`")
+_INLINE_SPAN_RE = re.compile(r"\$\$[^$\n]*\$\$|\$[^$\n]*\$|`[^`\n]*`")
 
 
 def _escape_bare_lt_in_plain(segment):

@@ -255,9 +255,9 @@ def render(schema, doc, modules):
                 L.append("> [!info] 错因分析")
                 L.append(f"> **错因：** {cause['label']}")
                 if cause.get("step"):
-                    L.append(f"> **出错环节：** {cause['step']}")
+                    L.append(f"> **出错环节：** {lib880.prepare_inline_text(cause['step'])}")
                 if cause.get("advice"):
-                    L.append(f"> **建议：** {cause['advice']}")
+                    L.append(f"> **建议：** {lib880.prepare_inline_text(cause['advice'])}")
                 L.append("")
             links = p.get("links") or []
             parts = []
