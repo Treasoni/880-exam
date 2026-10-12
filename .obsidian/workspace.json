@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/la-paper-04/线代卷子-04.md",
+                "file": "workspace/wrong-book/真题错题本.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "线代卷子-04"
+              "title": "真题错题本"
             }
           },
           {
@@ -190,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/papers/la-paper-04/线代卷子-04.md",
+                "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -234,7 +234,7 @@
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
-                      "conversationId": "conv-1791712433984-loer8rq7e"
+                      "conversationId": "conv-1791765830602-sfn5hcq6a"
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
@@ -279,6 +279,8 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题错题复习-07.workflow.md",
+    "workspace/papers/la-paper-04/线代卷子-04.md",
     "workspace/papers/la-paper-04/线代卷子-04-答案.md",
     "workspace/papers/paper-06/卷子-06-答案.md",
     "workspace/papers/paper-06/判分卡-06.md",
@@ -311,8 +313,6 @@
     "workspace/v2.md",
     "workspace/tt10.md",
     "workspace/tt7.md",
-    "workspace/tt9.md",
-    "workspace/v6.md",
     "workspace/records/text-overrides.json",
     "workspace/papers/la-paper-05",
     "workspace/papers/paper-06",
