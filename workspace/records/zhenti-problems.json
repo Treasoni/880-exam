@@ -846,6 +846,10 @@
         {
           "date": "2026-10-07",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-10-12",
+          "grade": "wrong"
         }
       ],
       "review_state": "未复习",
@@ -1191,6 +1195,10 @@
         {
           "date": "2026-10-08",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-10-12",
+          "grade": "wrong"
         }
       ],
       "review_state": "未复习",
@@ -1223,6 +1231,10 @@
         {
           "date": "2026-10-05",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-10-12",
+          "grade": "wrong"
         }
       ],
       "review_state": "未复习",
@@ -1294,6 +1306,10 @@
         },
         {
           "date": "2026-10-08",
+          "grade": "wrong"
+        },
+        {
+          "date": "2026-10-12",
           "grade": "wrong"
         }
       ],
