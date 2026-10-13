@@ -20,8 +20,37 @@
               "icon": "lucide-file",
               "title": "错题本"
             }
+          },
+          {
+            "id": "10aff1eb38d6f434",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/la-paper-01/线代卷子-01.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "线代卷子-01"
+            }
+          },
+          {
+            "id": "91f563b1c02e6777",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/wrong-book/线代错题本.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "线代错题本"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -161,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/wrong-book/线代错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -220,7 +249,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -248,8 +277,9 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "b4b561f7809652dc",
+  "active": "91f563b1c02e6777",
   "lastOpenFiles": [
+    "workspace/papers/la-paper-01/线代卷子-01.md",
     "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-05/卷子-05-答案.md",
     "workspace/workflow-runs/错题复习-08.workflow.md",
@@ -283,7 +313,6 @@
     "workspace/w2.md",
     "workspace/w1.md",
     "workspace/tt1.md",
-    "workspace/v2.md",
     "workspace/records/text-overrides.json",
     "workspace/papers/la-paper-05",
     "workspace/papers/paper-06",
