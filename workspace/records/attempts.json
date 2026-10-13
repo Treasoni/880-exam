@@ -2823,6 +2823,14 @@
       "when": "2026-10-13",
       "recorded_at": "2026-10-13T12:40:09+08:00",
       "note": ""
+    },
+    {
+      "qid": "la-c12-basic-choice-005",
+      "paper_id": "la-paper-04",
+      "grade": "correct",
+      "when": "2026-10-13",
+      "recorded_at": "2026-10-13T12:50:01+08:00",
+      "note": "第8轮复习 Q21 la-c12-basic-choice-005 重练判对"
     }
   ],
   "wrong_book_status": {
@@ -3247,8 +3255,8 @@
       "updated": "2026-10-11"
     },
     "la-c12-basic-choice-005": {
-      "state": "未复习",
-      "updated": "2026-10-11"
+      "state": "已掌握",
+      "updated": "2026-10-13"
     },
     "la-c10-basic-choice-012": {
       "state": "未复习",
