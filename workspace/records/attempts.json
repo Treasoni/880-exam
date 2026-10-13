@@ -3119,12 +3119,12 @@
       "updated": "2026-10-04"
     },
     "gs-c03-comprehensive-choice-018": {
-      "state": "未复习",
-      "updated": "2026-10-04"
+      "state": "已掌握",
+      "updated": "2026-10-13"
     },
     "gs-c03-basic-fill-021": {
-      "state": "未复习",
-      "updated": "2026-10-04"
+      "state": "已掌握",
+      "updated": "2026-10-13"
     },
     "gs-c04-comprehensive-fill-004": {
       "state": "已掌握",
@@ -3197,6 +3197,14 @@
     "la-c10-comprehensive-solution-006": {
       "state": "未复习",
       "updated": "2026-10-11"
+    },
+    "gs-c03-comprehensive-solution-031": {
+      "state": "已掌握",
+      "updated": "2026-10-13"
+    },
+    "gs-c05-comprehensive-fill-003": {
+      "state": "已掌握",
+      "updated": "2026-10-13"
     }
   }
 }
