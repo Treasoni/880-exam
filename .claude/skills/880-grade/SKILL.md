@@ -13,10 +13,12 @@ description: 判分记录（五态：对/错/不会/半会/粗心），更新判
 2. **确认判分卡已勾选**：打开判分卡文件，确认各题勾选了状态（`- [x] 对` 形式）；未勾选的题跳过即可。
 3. 运行：
    ```
-   python3 scripts/grade.py --sheet workspace/papers/paper-01/判分卡-01.md [--redo] [--note "备注"]
+   python3 scripts/grade.py --sheet workspace/papers/paper-01/判分卡-01.md [--redo] [--no-paper-write] [--note "备注"]
    ```
    - `--sheet` 会从判分卡 frontmatter 自动读 `paper_id`，无需再传 `--paper`。
    - `--redo`：错题重练模式——判为"对"则该题复习状态→已掌握，否则保持未复习。
+   - `--no-paper-write`（配合 `--redo`，复习轮用）：只记判分与复习状态，**不回填**卷子判分表/「得分与弱点分析」/frontmatter 与 `status`——既让重练做对的题进「已掌握归档」，又不重算当年那张卷子的得分。
+     - 归档门槛是「`state=已掌握` **且** 最近一次判分=对」，所以「判对→进归档」必须真写一条 `correct` 判分；光用 `wrong_book.py --mark` 只改状态、**不会**进归档（错题本计数与进度不动）。
    - Windows 把 `python3` 换成 `py -3`。
    - 判分卡里某题勾了多个状态会报错，先让用户修正再跑。
 4. 报告：记录条数、卷子状态（`status` 已置 `graded`、判分表已回填）、**卷子已写入「得分与弱点分析」小节**（总分/各题型得分/本卷弱点）、错题本与进度已刷新。
@@ -36,7 +38,7 @@ description: 判分记录（五态：对/错/不会/半会/粗心），更新判
    - 判分可用中文或英文（对/correct、错/wrong、不会/cannot、半会/half、粗心/careless）。
 2. 运行：
    ```
-   python3 scripts/grade.py --paper paper-01 --grading '<JSON>' [--redo] [--note "备注"]
+   python3 scripts/grade.py --paper paper-01 --grading '<JSON>' [--redo] [--no-paper-write] [--note "备注"]
    ```
    - JSON 含引号不好传时改用 `--grading-file <UTF-8 文件>`；`--grading` 可带外层单/双引号（已容错）。
 

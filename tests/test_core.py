@@ -527,6 +527,91 @@ class PaperRulesTest(unittest.TestCase):
             paper_text = (papers_dir / "la-paper-01" / "线代卷子-01.md").read_text(encoding="utf-8")
             self.assertIn("status: partially_graded", paper_text)
 
+    def test_redo_no_paper_write_keeps_exam_score_but_archives(self):
+        """复习轮重练：--no-paper-write 只记判分与复习状态，旧卷判分表/得分分析/status 纹丝不动。
+
+        「已掌握归档」的门槛是『state=已掌握 且 最近一次判分=对』，所以重练做对必须真写一条
+        correct 判分记录；但复习轮不能因此重算当年那张卷子的得分——两件事靠本开关分开。
+        """
+        with tempfile.TemporaryDirectory() as directory:
+            tmp = Path(directory)
+            schema_path = tmp / "schema.yaml"
+            index_path = tmp / "question-index.json"
+            la_schema_path = tmp / "linear-algebra-schema.yaml"
+            la_index_path = tmp / "linear-algebra-question-index.json"
+            attempts_path = tmp / "records" / "attempts.json"
+            papers_path = tmp / "records" / "papers.json"
+            papers_dir = tmp / "papers"
+            schema_path.write_text((ROOT / "workspace/schema.yaml").read_text(encoding="utf-8"), encoding="utf-8")
+            index_path.write_text((ROOT / "workspace/question-index.json").read_text(encoding="utf-8"), encoding="utf-8")
+            la_schema_path.write_text((ROOT / "workspace/linear-algebra-schema.yaml").read_text(encoding="utf-8"), encoding="utf-8")
+            la_index_path.write_text((ROOT / "workspace/linear-algebra-question-index.json").read_text(encoding="utf-8"), encoding="utf-8")
+            attempts_path.parent.mkdir(parents=True)
+            attempts_path.write_text(json.dumps({"attempts": [], "wrong_book_status": {}}), encoding="utf-8")
+            papers_path.write_text(json.dumps({"papers": []}), encoding="utf-8")
+
+            patches = dict(
+                SCHEMA_PATH=schema_path,
+                INDEX_PATH=index_path,
+                LINEAR_ALGEBRA_SCHEMA_PATH=la_schema_path,
+                LINEAR_ALGEBRA_INDEX_PATH=la_index_path,
+                ATTEMPTS_PATH=attempts_path,
+                PAPERS_PATH=papers_path,
+                PAPERS_DIR=papers_dir,
+                WRONG_BOOK_PATH=tmp / "wrong-book" / "错题本.md",
+                PROGRESS_PATH=tmp / "preview" / "进度总览.md",
+                LINEAR_ALGEBRA_WRONG_BOOK_PATH=tmp / "wrong-book" / "线代错题本.md",
+                LINEAR_ALGEBRA_PROGRESS_PATH=tmp / "preview" / "线代进度总览.md",
+            )
+
+            def grading_file(name, grade):
+                path = tmp / name
+                path.write_text(json.dumps({"choice": {"1": grade}, "fill": {}, "solution": {}}), encoding="utf-8")
+                return str(path)
+
+            with patch.multiple(lib880, **patches):
+                with patch.object(sys, "argv", [
+                    "make_paper.py", "--subject", "linear-algebra", "--n", "1", "--seed", "7",
+                ]):
+                    make_paper.main()
+                paper_path = papers_dir / "la-paper-01" / "线代卷子-01.md"
+
+                # 首次判分：一1 判『错』——默认路径照常回填卷面（得分与弱点分析小节被写入）
+                with patch("subprocess.run"):
+                    with patch.object(sys, "argv", [
+                        "grade.py", "--paper", "la-paper-01", "--grading-file", grading_file("g1.json", "错"),
+                    ]):
+                        grade.main()
+                paper_before = paper_path.read_text(encoding="utf-8")
+                papers_before = papers_path.read_text(encoding="utf-8")
+                self.assertIn("## 得分与弱点分析", paper_before)
+                qid1 = next(q["qid"] for q in json.loads(papers_before)["papers"][0]["questions"]
+                            if q["paper_no"] == "一1")
+
+                # 复习轮重练做对：--redo --no-paper-write → 卷子文件与 papers.json 逐字节不变
+                with patch("subprocess.run"):
+                    with patch.object(sys, "argv", [
+                        "grade.py", "--paper", "la-paper-01", "--grading-file", grading_file("g2.json", "对"),
+                        "--redo", "--no-paper-write",
+                    ]):
+                        grade.main()
+
+                self.assertEqual(paper_path.read_text(encoding="utf-8"), paper_before)
+                self.assertEqual(papers_path.read_text(encoding="utf-8"), papers_before)
+
+                attempts = json.loads(attempts_path.read_text(encoding="utf-8"))
+                self.assertTrue(any(a["qid"] == qid1 and a["grade"] == "correct" for a in attempts["attempts"]))
+                self.assertEqual(attempts["wrong_book_status"][qid1]["state"], "已掌握")
+
+                # 反证：同样一次重练、去掉本开关时会改写卷面——证明上面「逐字节不变」不是假绿
+                with patch("subprocess.run"):
+                    with patch.object(sys, "argv", [
+                        "grade.py", "--paper", "la-paper-01", "--grading-file", grading_file("g3.json", "半会"),
+                        "--redo",
+                    ]):
+                        grade.main()
+                self.assertNotEqual(paper_path.read_text(encoding="utf-8"), paper_before)
+
     def test_text_override_replaces_stem_in_paper_and_answers(self):
         """题干覆盖层：卷子与答案卷都改用修正后的题干；未启用时回退原文。
 

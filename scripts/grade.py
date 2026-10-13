@@ -14,6 +14,8 @@
 grading 中 key 为题型内题号（1 起），value 为中文或英文判分态。
 --grading 可接受带外层单/双引号的字符串；也可用 --grading-file <UTF-8 文件> 读取 JSON。
 可加 --redo：表示这是错题重练（若判为『对』则复习状态置为已掌握，否则保持未复习）。
+可加 --no-paper-write：只记录判分与复习状态，**不回填**卷子判分表/『得分与弱点分析』/frontmatter，
+也不改卷子 status。复习轮配合 --redo 用：既让重练做对的题进「已掌握归档」，又不重算当年那张卷子的得分。
 判分后会回填卷子文件判分表、把 frontmatter status 更新为 partially_graded / graded，并刷新错题本与进度总览。
 """
 
@@ -260,6 +262,8 @@ def main():
                     help="从 UTF-8 文件读取判分 JSON（避免 shell 引号问题）")
     ap.add_argument("--note", default="")
     ap.add_argument("--redo", action="store_true", help="错题重练模式")
+    ap.add_argument("--no-paper-write", action="store_true",
+                    help="只记判分与复习状态，不回填卷子判分表/得分分析/frontmatter 与 status（复习轮用）")
     args = ap.parse_args()
 
     import json
@@ -363,24 +367,29 @@ def main():
         print("判分卡勾选与已有记录重复，无新增记录（复习状态/判分表已刷新）")
 
     lib880.save_attempts(attempts)
-    paper["status"] = paper_grade_status(paper, attempts)
-    lib880.save_papers(papers)
 
-    # 更新卷子文件：frontmatter status → graded、updated → 当日；判分表回填判分态
-    paper_path = lib880.paper_artifact_paths(subject, args.paper)["paper"]
-    if paper_path.exists():
-        text = paper_path.read_text(encoding="utf-8")
-        text = re.sub(r"^status: .*$", f"status: {paper['status']}", text, count=1, flags=re.MULTILINE)
-        text = re.sub(r"^updated: .*$", f"updated: {today}", text, count=1, flags=re.MULTILINE)
-        text = _backfill_grade_table(text, graded_rows)
-        # 判分后写『得分与弱点分析』（幂等：已存在则整段替换）
-        score_section = render_score_weakness(schema, paper, attempts, index)
-        if score_section:
-            text = _upsert_section(text, "得分与弱点分析", score_section)
-        paper_path.write_text(text, encoding="utf-8")
+    if args.no_paper_write:
+        # 复习轮：判分记录与复习状态已写入，但当年那张卷子的判分表/得分分析/status 一律不动
+        print("--no-paper-write：跳过卷子判分表/得分与弱点分析/frontmatter 回填（卷面分保持不变）")
     else:
-        print(f"!! 警告：找不到卷子文件 {paper_path}，无法更新判分表与 status（判分记录已写入）",
-              file=sys.stderr)
+        paper["status"] = paper_grade_status(paper, attempts)
+        lib880.save_papers(papers)
+
+        # 更新卷子文件：frontmatter status → graded、updated → 当日；判分表回填判分态
+        paper_path = lib880.paper_artifact_paths(subject, args.paper)["paper"]
+        if paper_path.exists():
+            text = paper_path.read_text(encoding="utf-8")
+            text = re.sub(r"^status: .*$", f"status: {paper['status']}", text, count=1, flags=re.MULTILINE)
+            text = re.sub(r"^updated: .*$", f"updated: {today}", text, count=1, flags=re.MULTILINE)
+            text = _backfill_grade_table(text, graded_rows)
+            # 判分后写『得分与弱点分析』（幂等：已存在则整段替换）
+            score_section = render_score_weakness(schema, paper, attempts, index)
+            if score_section:
+                text = _upsert_section(text, "得分与弱点分析", score_section)
+            paper_path.write_text(text, encoding="utf-8")
+        else:
+            print(f"!! 警告：找不到卷子文件 {paper_path}，无法更新判分表与 status（判分记录已写入）",
+                  file=sys.stderr)
 
     # 重生成报告
     import subprocess
@@ -389,8 +398,11 @@ def main():
     subprocess.run([py, str(scripts / "wrong_book.py"), "--subject", subject], check=True)
     subprocess.run([py, str(scripts / "progress.py"), "--subject", subject], check=True)
 
-    status_zh = "已判完" if paper["status"] == "graded" else "部分判分"
-    print(f"已记录 {added} 条判分 → 卷子 {args.paper} 标记为{status_zh}")
+    if args.no_paper_write:
+        print(f"已记录 {added} 条判分 → 卷子 {args.paper} 卷面分未回填")
+    else:
+        status_zh = "已判完" if paper["status"] == "graded" else "部分判分"
+        print(f"已记录 {added} 条判分 → 卷子 {args.paper} 标记为{status_zh}")
     print(f"已重生成错题本与进度总览")
 
 

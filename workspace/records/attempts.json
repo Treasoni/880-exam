@@ -2743,6 +2743,86 @@
       "when": "2026-10-11",
       "recorded_at": "2026-10-11T09:43:44+08:00",
       "note": ""
+    },
+    {
+      "qid": "la-c11-basic-fill-004",
+      "paper_id": "la-paper-04",
+      "grade": "correct",
+      "when": "2026-10-13",
+      "recorded_at": "2026-10-13T12:39:58+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-fill-004",
+      "paper_id": "paper-04",
+      "grade": "correct",
+      "when": "2026-10-13",
+      "recorded_at": "2026-10-13T12:40:08+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c04-comprehensive-solution-015",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-13",
+      "recorded_at": "2026-10-13T12:40:08+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-fill-002",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-13",
+      "recorded_at": "2026-10-13T12:40:08+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-basic-solution-009",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-13",
+      "recorded_at": "2026-10-13T12:40:09+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-choice-018",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-13",
+      "recorded_at": "2026-10-13T12:40:09+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-basic-fill-021",
+      "paper_id": "paper-04",
+      "grade": "correct",
+      "when": "2026-10-13",
+      "recorded_at": "2026-10-13T12:40:09+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c03-comprehensive-solution-031",
+      "paper_id": "paper-05",
+      "grade": "correct",
+      "when": "2026-10-13",
+      "recorded_at": "2026-10-13T12:40:09+08:00",
+      "note": ""
+    },
+    {
+      "qid": "gs-c05-comprehensive-fill-003",
+      "paper_id": "paper-04",
+      "grade": "correct",
+      "when": "2026-10-13",
+      "recorded_at": "2026-10-13T12:40:09+08:00",
+      "note": ""
+    },
+    {
+      "qid": "la-c10-comprehensive-choice-004",
+      "paper_id": "la-paper-02",
+      "grade": "correct",
+      "when": "2026-10-13",
+      "recorded_at": "2026-10-13T12:40:09+08:00",
+      "note": ""
     }
   ],
   "wrong_book_status": {
@@ -3128,7 +3208,7 @@
     },
     "gs-c04-comprehensive-fill-004": {
       "state": "已掌握",
-      "updated": "2026-10-12"
+      "updated": "2026-10-13"
     },
     "gs-c04-comprehensive-solution-022": {
       "state": "未复习",
