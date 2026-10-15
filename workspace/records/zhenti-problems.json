@@ -1486,6 +1486,37 @@
           "note": "同为「行满秩矩阵的右逆 / 矩阵方程」：该题练行满秩矩阵的右消去律与右逆矩阵（Sylvester 秩不等式），本题第Ⅱ问正是求 $AB = E$ 的所有右逆矩阵 $B$（特解 $+$ 基础解系给出全部解）"
         }
       ]
+    },
+    "zt-2014-数二-解答19": {
+      "id": "zt-2014-数二-解答19",
+      "module": "高数-一元函数积分学",
+      "year": 2014,
+      "paper": "数二",
+      "no": "解答19",
+      "stem": "设函数 $f(x)$，$g(x)$ 在区间 $[a, b]$ 上连续，且 $f(x)$ 单调增加，$0 \\leqslant g(x) \\leqslant 1$。证明：\n\n（Ⅰ）$0 \\leqslant \\int_{a}^{x} g(t)\\,\\mathrm{d}t \\leqslant x - a$，$x \\in [a, b]$；\n\n（Ⅱ）$\\int_{a}^{a + \\int_{a}^{b} g(t)\\mathrm{d}t} f(x)\\mathrm{d}x \\leqslant \\int_{a}^{b} f(x)g(x)\\mathrm{d}x$。",
+      "answer": "（Ⅰ）由定积分保序性，$0 \\leqslant \\int_{a}^{x} g(t)\\,\\mathrm{d}t \\leqslant x - a$（$x \\in [a, b]$）；\n\n（Ⅱ）构造变上限辅助函数 $F(x) = \\int_{a}^{x} f(t)g(t)\\,\\mathrm{d}t - \\int_{a}^{a + \\int_{a}^{x} g(t)\\mathrm{d}t} f(t)\\,\\mathrm{d}t$，证 $F(a) = 0$ 且 $F'(x) \\geqslant 0$，取 $x = b$ 得 $F(b) \\geqslant 0$，即证。",
+      "solution": "> [!info] 考点与破题思路\n> **所属知识点**：高等数学（数学二高频压轴证明题）——定积分的不等式性质（保号性）、变上限积分求导法则、利用单调性证明定积分不等式（变上限化法）。\n> **总体思路与切入点**：第（Ⅰ）问直接利用定积分的保序性（不等式性质），对被积函数的不等式 $0 \\leqslant g(t) \\leqslant 1$ 在区间 $[a, x]$ 上两端同时积分即可得证。第（Ⅱ）问是考研数学中极其经典的「积分上限含定积分」的不等式证明，考场最主流、最高效的通法是「变上限构造辅助函数法」——将不等式中的常数上限 $b$ 替换为变量 $x$，作差构造辅助函数 $F(x)$，求导后利用复合函数求导法则、题设 $f(x)$ 的单调性以及第（Ⅰ）问的结论判定 $F'(x)$ 的符号，从而一举攻克！\n\n**第一阶段：利用定积分保序性证明第（Ⅰ）问**\n\n明确积分区间与被积函数范围：已知 $x \\in [a, b]$，当积分变量 $t \\in [a, x]$ 时，由题设条件有：\n\n$$0 \\leqslant g(t) \\leqslant 1$$\n\n两边同时在 $[a, x]$ 上积分。**核心提醒**：根据定积分的不等式性质（保序性），当积分上限大于等于下限（即 $x \\geqslant a$）时，在 $[a, x]$ 上对不等式各项取定积分，不等号方向保持不变：\n\n$$\\int_{a}^{x} 0\\,\\mathrm{d}t \\leqslant \\int_{a}^{x} g(t)\\,\\mathrm{d}t \\leqslant \\int_{a}^{x} 1\\,\\mathrm{d}t$$\n\n计算左右两端的定积分，即得：\n\n$$0 \\leqslant \\int_{a}^{x} g(t)\\,\\mathrm{d}t \\leqslant x - a, \\quad x \\in [a, b]$$\n\n第（Ⅰ）问得证。\n\n**第二阶段：变上限构造辅助函数证明第（Ⅱ）问（考场主流满分法）**\n\n**第一步：将常数 $b$ 换为变量 $x$，作差构造辅助函数 $F(x)$**\n\n**核心提醒**：观察所证不等式 $\\int_{a}^{a + \\int_{a}^{b} g(t)\\,\\mathrm{d}t} f(x)\\,\\mathrm{d}x \\leqslant \\int_{a}^{b} f(x)g(x)\\,\\mathrm{d}x$，直接处理含积分的上限非常困难。我们将右端减去左端，并把常数 $b$ 替换为自变量 $x \\in [a, b]$，令辅助函数为：\n\n$$F(x) = \\int_{a}^{x} f(t)g(t)\\,\\mathrm{d}t - \\int_{a}^{a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t} f(t)\\,\\mathrm{d}t, \\quad x \\in [a, b]$$\n\n（注：为了避免积分变量与上限自变量 $x$ 混淆，将定积分内部的哑变量统一改写为 $t$。）\n\n**第二步：计算端点值 $F(a)$**\n\n当 $x = a$ 时，由于 $\\int_{a}^{a} g(t)\\,\\mathrm{d}t = 0$，代入得：\n\n$$F(a) = \\int_{a}^{a} f(t)g(t)\\,\\mathrm{d}t - \\int_{a}^{a} f(t)\\,\\mathrm{d}t = 0 - 0 = 0$$\n\n**第三步：利用变上限积分求导法则计算 $F'(x)$**\n\n**核心提醒**：对 $F(x)$ 的第二项求导时，必须使用复合函数的变上限积分求导公式 $\\left(\\int_{a}^{\\varphi(x)} f(t)\\,\\mathrm{d}t\\right)' = f[\\varphi(x)] \\cdot \\varphi'(x)$，其中上限函数为 $\\varphi(x) = a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t$，其导数为 $\\varphi'(x) = g(x)$：\n\n$$\\begin{aligned} F'(x) &= f(x)g(x) - f\\left(a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t\\right) \\cdot \\left(a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t\\right)' \\\\ &= f(x)g(x) - f\\left(a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t\\right) \\cdot g(x) \\\\ &= g(x) \\left[ f(x) - f\\left(a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t\\right) \\right] \\end{aligned}$$\n\n**第四步：结合第（Ⅰ）问结论与 $f(x)$ 的单调性判定 $F'(x)$ 的符号**\n\n由第（Ⅰ）问已证结论可知，对任意 $x \\in [a, b]$，有：\n\n$$0 \\leqslant \\int_{a}^{x} g(t)\\,\\mathrm{d}t \\leqslant x - a \\implies a \\leqslant a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t \\leqslant x \\leqslant b$$\n\n这不仅保证了 $a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t$ 落在函数 $f$ 的定义域 $[a, b]$ 内，而且给出了自变量的大小关系：$a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t \\leqslant x$。由题设知 $f(x)$ 在 $[a, b]$ 上单调增加，故有：\n\n$$f\\left(a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t\\right) \\leqslant f(x) \\implies f(x) - f\\left(a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t\\right) \\geqslant 0$$\n\n又已知 $g(x) \\geqslant 0$，两个非负因式相乘，故在 $[a, b]$ 上恒有：\n\n$$F'(x) = g(x) \\left[ f(x) - f\\left(a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t\\right) \\right] \\geqslant 0$$\n\n**第五步：由单调性得出最终不等式**\n\n因为 $F(x)$ 在 $[a, b]$ 上连续，且 $F'(x) \\geqslant 0$，故 $F(x)$ 在 $[a, b]$ 上单调增加。特别地，取 $x = b$，必有：\n\n$$F(b) \\geqslant F(a) = 0$$\n\n即：\n\n$$\\int_{a}^{b} f(t)g(t)\\,\\mathrm{d}t - \\int_{a}^{a + \\int_{a}^{b} g(t)\\,\\mathrm{d}t} f(t)\\,\\mathrm{d}t \\geqslant 0$$\n\n移项并将积分哑变量换回 $x$，即证得：\n\n$$\\int_{a}^{a + \\int_{a}^{b} g(t)\\,\\mathrm{d}t} f(x)\\,\\mathrm{d}x \\leqslant \\int_{a}^{b} f(x)g(x)\\,\\mathrm{d}x$$\n\n> [!info] 考研高频考点与易错点提示\n> **考研压轴题黄金思维——「第（Ⅰ）问永远是第（Ⅱ）问的阶梯」**：在考研数学二的解答题中，如果一道证明题分为（Ⅰ）、（Ⅱ）两问，第（Ⅱ）问几乎 100% 要直接用到第（Ⅰ）问的结论！本题中，第（Ⅰ）问证明了 $\\int_{a}^{x} g(t)\\,\\mathrm{d}t \\leqslant x - a$，移项后就是 $a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t \\leqslant x$，恰好就是第（Ⅱ）问求导后比较 $f\\left(a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t\\right)$ 与 $f(x)$ 大小的核心桥梁！\n> **易错陷阱 1——复合变上限积分求导漏乘上限的导数 $g(x)$**：对 $\\int_{a}^{a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t} f(t)\\,\\mathrm{d}t$ 关于 $x$ 求导时，很多同学只把上限代进 $f(\\cdot)$ 里，写成了 $f\\left(a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t\\right)$，漏乘了内层上限对 $x$ 的导数 $\\left(a + \\int_{a}^{x} g(t)\\,\\mathrm{d}t\\right)' = g(x)$，导致无法提出公因式 $g(x)$！\n> **易错陷阱 2——未假设 $f(x)$ 可导而直接对 $f(x)$ 求导**：注意审题！题干只说「$f(x)$ 连续且单调增加」，并没有说 $f(x)$ 可导！因此千万不能在证明过程中出现 $f'(x) \\geqslant 0$ 的写法，必须直接利用单调性的定义（由 $u \\leqslant v \\implies f(u) \\leqslant f(v)$）来判断符号，否则会被扣掉严谨性步骤分。",
+      "cause": {
+        "label": "方法选择错误",
+        "step": "第（Ⅱ）问没有用「把常数上限 $b$ 换成变量 $x$、作差构造变上限辅助函数 $F(x)$」这条通法，而是直接对原不等式硬做，卡在「积分上限里还含积分」这一层。",
+        "advice": "见到「积分上限里还含积分」的不等式证明，固定动作是变上限化：把常数上限 $b$ 替换为 $x$，令 $F(x) = $ 右端 $-$ 左端，先算 $F(a)$，再用变上限积分求导（第二项用复合公式 $\\left(\\int_{a}^{\\varphi(x)} f\\right)' = f(\\varphi(x))\\varphi'(x)$，务必乘上 $\\varphi'(x) = g(x)$）判定 $F'(x)$ 的符号，最后取 $x = b$；第（Ⅰ）问的结论正是判号要用的桥梁。"
+      },
+      "attempts": [
+        {
+          "date": "2026-10-15",
+          "grade": "wrong"
+        }
+      ],
+      "review_state": "未复习",
+      "links": [
+        {
+          "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
+          "anchor": "错题86：单调函数加权积分——Steffensen 不等式与复杂变上限辅助函数",
+          "label": "错题86：单调函数加权积分——Steffensen 不等式与复杂变上限辅助函数",
+          "confidence": "high",
+          "note": "同一道题（2014 数二 解答19）：外部笔记该条已完整收录本题的题面与解析，可直接对照"
+        }
+      ]
     }
   },
   "coverage": {}
