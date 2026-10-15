@@ -1397,6 +1397,33 @@
           "note": "同为抽象向量组线性相关性的充要判定：该题用「系数矩阵行列式 / 秩」判别线性无关，本题用「定义证必要性 + α₃=0 反例破充分性」判条件类型"
         }
       ]
+    },
+    "zt-2014-数二-填空12": {
+      "id": "zt-2014-数二-填空12",
+      "module": "高数-一元微分学",
+      "year": 2014,
+      "paper": "数二",
+      "no": "填空12",
+      "stem": "曲线 $L$ 的极坐标方程是 $r = \\theta$，则 $L$ 在点 $(r, \\theta) = \\left(\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$ 处的切线的直角坐标方程是 \\_\\_\\_\\_。",
+      "answer": "$y = -\\frac{2}{\\pi}x + \\frac{\\pi}{2}$（或 $2x + \\pi y - \\frac{\\pi^{2}}{2} = 0$）",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：极坐标方程转化为参数方程、参数方程确定函数的导数、导数的几何意义（切线方程）。\n> **总体思路与切入点**：题给极坐标方程 $r = \\theta$（阿基米德螺线），要求直角坐标系下的切线方程。考场上最主流、最高效的切入点是**极坐标参数化**——直接利用直角坐标与极坐标的转换公式 $x = r\\cos\\theta,\\ y = r\\sin\\theta$，把 $r = \\theta$ 代入，将曲线化为以极角 $\\theta$ 为参数的直角坐标参数方程；随后把极坐标点 $(r, \\theta)$ 转成直角坐标切点 $(x_{0}, y_{0})$，用参数方程求导公式 $\\left.\\frac{\\mathrm{d}y}{\\mathrm{d}x}\\right|_{\\theta = \\frac{\\pi}{2}} = \\frac{y'(\\theta)}{x'(\\theta)}$ 求切线斜率 $k$，最后用点斜式写出切线方程。\n\n**第一阶段：把极坐标方程转化为直角坐标参数方程，并求切点坐标**\n\n**核心提醒**：考研数学二遇到极坐标曲线 $r = r(\\theta)$ 求切线或法线，一律不要死记硬背极坐标斜率公式，而是直接代入直角坐标与极坐标的变换关系：\n\n$$\\begin{cases} x = r(\\theta)\\cos\\theta \\\\ y = r(\\theta)\\sin\\theta \\end{cases}$$\n\n把已知曲线方程 $r = \\theta$ 代入，得到曲线 $L$ 的直角坐标参数方程（以 $\\theta$ 为参数）：\n\n$$\\begin{cases} x(\\theta) = \\theta\\cos\\theta \\\\ y(\\theta) = \\theta\\sin\\theta \\end{cases}$$\n\n求 $\\theta = \\frac{\\pi}{2}$ 对应的直角坐标切点 $(x_{0}, y_{0})$：\n\n$$x_{0} = x\\left(\\frac{\\pi}{2}\\right) = \\frac{\\pi}{2}\\cos\\frac{\\pi}{2} = 0,$$\n\n$$y_{0} = y\\left(\\frac{\\pi}{2}\\right) = \\frac{\\pi}{2}\\sin\\frac{\\pi}{2} = \\frac{\\pi}{2},$$\n\n即切点的直角坐标为 $\\left(0, \\frac{\\pi}{2}\\right)$。\n\n**第二阶段：利用参数方程求导法则计算切线斜率 $k$**\n\n分别对参数方程中的 $x(\\theta)$ 与 $y(\\theta)$ 关于参数 $\\theta$ 求导（用乘积求导法则）：\n\n$$x'(\\theta) = \\frac{\\mathrm{d}x}{\\mathrm{d}\\theta} = (\\theta)'\\cos\\theta + \\theta(\\cos\\theta)' = \\cos\\theta - \\theta\\sin\\theta,$$\n\n$$y'(\\theta) = \\frac{\\mathrm{d}y}{\\mathrm{d}\\theta} = (\\theta)'\\sin\\theta + \\theta(\\sin\\theta)' = \\sin\\theta + \\theta\\cos\\theta.$$\n\n**核心提醒**：根据参数方程的一阶导数公式 $\\frac{\\mathrm{d}y}{\\mathrm{d}x} = \\frac{y'(\\theta)}{x'(\\theta)}$，考场上无需先化简通式，直接把 $\\theta = \\frac{\\pi}{2}$ 代入分子分母计算，效率最高、最不易出错：\n\n$$x'\\left(\\frac{\\pi}{2}\\right) = \\cos\\frac{\\pi}{2} - \\frac{\\pi}{2}\\sin\\frac{\\pi}{2} = 0 - \\frac{\\pi}{2}\\cdot 1 = -\\frac{\\pi}{2},$$\n\n$$y'\\left(\\frac{\\pi}{2}\\right) = \\sin\\frac{\\pi}{2} + \\frac{\\pi}{2}\\cos\\frac{\\pi}{2} = 1 + 0 = 1.$$\n\n因此曲线在 $\\theta = \\frac{\\pi}{2}$ 处的切线斜率为\n\n$$k = \\left.\\frac{\\mathrm{d}y}{\\mathrm{d}x}\\right|_{\\theta = \\frac{\\pi}{2}} = \\frac{y'\\left(\\frac{\\pi}{2}\\right)}{x'\\left(\\frac{\\pi}{2}\\right)} = \\frac{1}{-\\frac{\\pi}{2}} = -\\frac{2}{\\pi}.$$\n\n**第三阶段：利用点斜式写出切线的直角坐标方程**\n\n已知切点 $(x_{0}, y_{0}) = \\left(0, \\frac{\\pi}{2}\\right)$、切线斜率 $k = -\\frac{2}{\\pi}$，代入直线点斜式 $y - y_{0} = k(x - x_{0})$：\n\n$$y - \\frac{\\pi}{2} = -\\frac{2}{\\pi}(x - 0).$$\n\n整理得斜截式\n\n$$y = -\\frac{2}{\\pi}x + \\frac{\\pi}{2},$$\n\n或写成一般式\n\n$$2x + \\pi y - \\frac{\\pi^{2}}{2} = 0.$$\n\n**结论**：切线方程为 $y = -\\frac{2}{\\pi}x + \\frac{\\pi}{2}$（或 $2x + \\pi y - \\frac{\\pi^{2}}{2} = 0$）。本题展示了考研数学二处理「极坐标几何应用」的标准三步曲——**化参数 → 转切点 → 算导数**。\n\n> [!warning] 易错点提示（三个陷阱）\n> **陷阱 1 —— 把极坐标点当成直角坐标点代入（致命失误）**：题干给的是 $(r, \\theta) = \\left(\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$，两个数值长得一样，紧张时容易在算出 $k = -\\frac{2}{\\pi}$ 后直接把 $\\left(\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$ 当作 $(x_{0}, y_{0})$ 写成 $y - \\frac{\\pi}{2} = -\\frac{2}{\\pi}\\left(x - \\frac{\\pi}{2}\\right)$，满盘皆输。审题见到 $(r, \\theta)$ 务必先画圈标注，第一步先算出 $(x_{0}, y_{0}) = (r\\cos\\theta, r\\sin\\theta)$。\n> **陷阱 2 —— 误把 $\\frac{\\mathrm{d}r}{\\mathrm{d}\\theta}$ 当作切线斜率**：极坐标下 $\\frac{\\mathrm{d}r}{\\mathrm{d}\\theta} = 1$ 只是极径对极角的变化率，绝不是直角坐标系下的切线斜率 $\\frac{\\mathrm{d}y}{\\mathrm{d}x}$；切线斜率必须通过 $\\frac{\\mathrm{d}y}{\\mathrm{d}x} = \\frac{\\mathrm{d}(r\\sin\\theta)/\\mathrm{d}\\theta}{\\mathrm{d}(r\\cos\\theta)/\\mathrm{d}\\theta}$ 计算。\n> **陷阱 3 —— 参数方程求导分子分母颠倒**：记住 $\\frac{\\mathrm{d}y}{\\mathrm{d}x} = \\frac{\\mathrm{d}y/\\mathrm{d}\\theta}{\\mathrm{d}x/\\mathrm{d}\\theta}$（上 $y$ 下 $x$）。参数方程习惯先写 $x(\\theta)$ 再写 $y(\\theta)$，顺手写成 $\\frac{x'(\\theta)}{y'(\\theta)}$ 会把斜率算成倒数。\n",
+      "attempts": [
+        {
+          "date": "2026-10-15",
+          "grade": "correct"
+        }
+      ],
+      "review_state": "已重做",
+      "links": [
+        {
+          "path": "external-notes/考研数学/高数-一元微分学/错题本",
+          "anchor": "错题17：参数方程求导与答题规范",
+          "label": "错题17：参数方程求导与答题规范",
+          "confidence": "high",
+          "note": "同为参数方程求导：该题练 dy/dx=(dy/dt)/(dx/dt) 的公式与规范，本题用同一公式在极坐标参数化后求切线斜率"
+        }
+      ],
+      "review_updated": "2026-10-15"
     }
   },
   "coverage": {}
