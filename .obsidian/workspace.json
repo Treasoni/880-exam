@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/线代错题本.md",
+                "file": "workspace/wrong-book/真题错题本.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "线代错题本"
+              "title": "真题错题本"
             }
           }
         ],
@@ -190,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/线代错题本.md",
+                "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -238,10 +238,10 @@
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
-                      "conversationId": "conv-1791861486972-xthlkg5vp"
+                      "conversationId": "conv-1792049763518-p668x5reg"
                     }
                   ],
-                  "activeTabId": "tab-1790061594608-a0amw1a"
+                  "activeTabId": "tab-1790218000549-4kkqcsg"
                 }
               },
               "icon": "bot",
@@ -279,6 +279,9 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题收录-2014数二选择3.workflow.md.zXk9Bu",
+    "workspace/workflow-runs/真题收录-2014数二选择3.workflow.md",
+    "workspace/wrong-book/线代错题本.md",
     "workspace/papers/la-paper-01/线代卷子-01.md",
     "workspace/wrong-book/错题本.md",
     "workspace/papers/paper-05/卷子-05-答案.md",
@@ -310,9 +313,6 @@
     "workspace/w5.md",
     "workspace/w4.md",
     "workspace/w3.md",
-    "workspace/w2.md",
-    "workspace/w1.md",
-    "workspace/tt1.md",
     "workspace/records/text-overrides.json",
     "workspace/papers/la-paper-05",
     "workspace/papers/paper-06",
