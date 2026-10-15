@@ -1424,6 +1424,37 @@
         }
       ],
       "review_updated": "2026-10-15"
+    },
+    "zt-2014-数二-解答18": {
+      "id": "zt-2014-数二-解答18",
+      "module": "微分方程",
+      "year": 2014,
+      "paper": "数二",
+      "no": "解答18",
+      "stem": "设函数 $f(u)$ 具有 2 阶连续导数，$z = f(\\mathrm{e}^{x}\\cos y)$ 满足\n\n$$\\frac{\\partial^{2} z}{\\partial x^{2}} + \\frac{\\partial^{2} z}{\\partial y^{2}} = (4z + \\mathrm{e}^{x}\\cos y)\\mathrm{e}^{2x}.$$\n\n若 $f(0) = 0, f'(0) = 0$，求 $f(u)$ 的表达式。",
+      "answer": "$f(u) = \\frac{1}{16}\\mathrm{e}^{2u} - \\frac{1}{16}\\mathrm{e}^{-2u} - \\frac{1}{4}u$",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：多元复合函数求偏导（二阶偏导数计算）、二阶常系数非齐次线性微分方程求解（待定系数法）。\n> **总体思路与切入点**：令中间变量 $u = \\mathrm{e}^{x}\\cos y$，则 $z = f(u)$。先用复合函数链式法则算 $\\frac{\\partial^{2} z}{\\partial x^{2}}$ 与 $\\frac{\\partial^{2} z}{\\partial y^{2}}$，相加后利用 $\\cos^{2} y + \\sin^{2} y = 1$ 消去含 $y$ 的项，把偏微分方程约化为关于 $f(u)$ 的二阶常系数非齐次线性微分方程；再用特征方程求齐次通解、待定系数法求非齐次特解，最后代入初值 $f(0) = 0, f'(0) = 0$ 定常数。\n\n**第一阶段：计算一阶与二阶偏导数，化简偏微分方程**\n\n令中间变量 $u = \\mathrm{e}^{x}\\cos y$，则 $z = f(u)$。因 $f(u)$ 具有二阶连续导数，由复合函数链式求导法则，对 $x$ 求一阶、二阶偏导：\n\n$$\\frac{\\partial z}{\\partial x} = f'(u)\\cdot\\frac{\\partial u}{\\partial x} = \\mathrm{e}^{x}\\cos y\\, f'(u),$$\n\n$$\\frac{\\partial^{2} z}{\\partial x^{2}} = \\mathrm{e}^{x}\\cos y\\, f'(u) + \\mathrm{e}^{x}\\cos y\\cdot f''(u)\\cdot \\mathrm{e}^{x}\\cos y = \\mathrm{e}^{x}\\cos y\\, f'(u) + \\mathrm{e}^{2x}\\cos^{2} y\\, f''(u).$$\n\n对 $y$ 求一阶、二阶偏导：\n\n$$\\frac{\\partial z}{\\partial y} = f'(u)\\cdot\\frac{\\partial u}{\\partial y} = -\\mathrm{e}^{x}\\sin y\\, f'(u),$$\n\n$$\\frac{\\partial^{2} z}{\\partial y^{2}} = -\\mathrm{e}^{x}\\cos y\\, f'(u) - \\mathrm{e}^{x}\\sin y\\cdot f''(u)\\cdot(-\\mathrm{e}^{x}\\sin y) = -\\mathrm{e}^{x}\\cos y\\, f'(u) + \\mathrm{e}^{2x}\\sin^{2} y\\, f''(u).$$\n\n两式相加并代入已知方程。**核心提醒**：利用三角恒等式 $\\cos^{2} y + \\sin^{2} y = 1$ 消去含 $y$ 的项，并把 $z = f(u)$、$u = \\mathrm{e}^{x}\\cos y$ 整体代回：\n\n$$\\frac{\\partial^{2} z}{\\partial x^{2}} + \\frac{\\partial^{2} z}{\\partial y^{2}} = \\mathrm{e}^{2x}(\\cos^{2} y + \\sin^{2} y)f''(u) = \\mathrm{e}^{2x}f''(u).$$\n\n代入题设方程 $\\mathrm{e}^{2x}f''(u) = (4f(u) + u)\\mathrm{e}^{2x}$，因 $\\mathrm{e}^{2x} \\neq 0$，两边同除以 $\\mathrm{e}^{2x}$，得二阶常系数非齐次线性微分方程：\n\n$$f''(u) - 4f(u) = u.$$\n\n**第二阶段：求解二阶常系数非齐次线性微分方程**\n\n求对应齐次方程 $f''(u) - 4f(u) = 0$ 的通解：特征方程为 $r^{2} - 4 = 0$，解得特征根 $r_{1} = 2,\\ r_{2} = -2$，故齐次通解为\n\n$$Y = C_{1}\\mathrm{e}^{2u} + C_{2}\\mathrm{e}^{-2u}$$\n\n（其中 $C_{1}, C_{2}$ 为任意常数）。\n\n求非齐次方程 $f''(u) - 4f(u) = u$ 的特解 $f^{*}(u)$。**核心提醒**：右端自由项为 $P_{1}(u)\\mathrm{e}^{0u} = u$，其中 $\\lambda = 0$ 不是特征方程的根（$k = 0$），且 $P_{1}(u) = u$ 为一次多项式（$m = 1$），故应设特解为一次多项式：\n\n$$f^{*}(u) = Au + B.$$\n\n求导得 $(f^{*}(u))' = A$、$(f^{*}(u))'' = 0$，代回原方程 $f''(u) - 4f(u) = u$：\n\n$$0 - 4(Au + B) = u \\Longrightarrow -4Au - 4B = u.$$\n\n比较两边 $u$ 的同次幂系数：\n\n$$\\begin{cases} -4A = 1 \\\\ -4B = 0 \\end{cases} \\Longrightarrow A = -\\frac{1}{4}, \\quad B = 0.$$\n\n故非齐次特解为 $f^{*}(u) = -\\frac{1}{4}u$，非齐次方程的通解为\n\n$$f(u) = C_{1}\\mathrm{e}^{2u} + C_{2}\\mathrm{e}^{-2u} - \\frac{1}{4}u.$$\n\n**第三阶段：代入初值条件确定常数 $C_{1}, C_{2}$**\n\n对通解求一阶导数：\n\n$$f'(u) = 2C_{1}\\mathrm{e}^{2u} - 2C_{2}\\mathrm{e}^{-2u} - \\frac{1}{4}.$$\n\n代入题设初始条件 $f(0) = 0, f'(0) = 0$：\n\n$$\\begin{cases} f(0) = C_{1} + C_{2} = 0 \\\\ f'(0) = 2C_{1} - 2C_{2} - \\frac{1}{4} = 0 \\end{cases}$$\n\n由第一式得 $C_{2} = -C_{1}$，代入第二式得 $4C_{1} = \\frac{1}{4}$，解得\n\n$$C_{1} = \\frac{1}{16}, \\quad C_{2} = -\\frac{1}{16}.$$\n\n将 $C_{1}, C_{2}$ 代回通解，得最终表达式\n\n$$f(u) = \\frac{1}{16}\\mathrm{e}^{2u} - \\frac{1}{16}\\mathrm{e}^{-2u} - \\frac{1}{4}u.$$\n\n**结论**：$f(u) = \\frac{1}{16}\\mathrm{e}^{2u} - \\frac{1}{16}\\mathrm{e}^{-2u} - \\frac{1}{4}u$。\n\n> [!warning] 易错点提示\n> **待定系数法中 $u^{k}$ 与 $Q_{m}(u)$ 混淆（本题失分点）**：对 $y'' + py' + qy = P_{m}(u)\\mathrm{e}^{\\lambda u}$，特解标准形式为 $y^{*} = u^{k}Q_{m}(u)\\mathrm{e}^{\\lambda u}$。其中 $u^{k}$ 的 $k$ 看 $\\lambda$ 是特征方程的几重根（不是根则 $k = 0$）；$Q_{m}(u)$ 的次数 $m$ 看右端多项式 $P_{m}(u)$ 是几次——右端为常数则 $m = 0$ 设 $Q_{0}(u) = A$，为一次式（如本题的 $u$）则 $m = 1$ 必须设 $Q_{1}(u) = Au + B$，为二次式则 $m = 2$ 设 $Q_{2}(u) = Au^{2} + Bu + C$。\n> **考场秒杀（缺 $y'$ 项且右端简单时用观察法）**：遇到 $f''(u) - 4f(u) = u$ 这种极简右端项，不必套待定系数公式——一次函数求两次导就为 $0$，想让 $-4f(u)$ 凑出 $u$，直接取 $f^{*}(u) = -\\frac{1}{4}u$ 即可：$\\left(-\\frac{1}{4}u\\right)'' - 4\\left(-\\frac{1}{4}u\\right) = 0 + u = u$，一秒出特解，且不会出错。",
+      "cause": {
+        "label": "概念/定理错误",
+        "step": "最后一步设非齐次特解：方程 $f''(u) - 4f(u) = u$ 的右端自由项是一次式 $u$，特解应设 $f^{*}(u) = Au + B$，却只设了常数 $A$——把公式 $y^{*} = u^{k}Q_{m}(u)\\mathrm{e}^{\\lambda u}$ 中 $u^{k}$ 的 $k$ 与多项式 $Q_{m}$ 的次数 $m$ 混淆了。",
+        "advice": "设特解先分解右端 $P_{m}(u)\\mathrm{e}^{\\lambda u}$：次数 $m$ 看多项式（本题 $u$ 为一次，$m = 1$），重数 $k$ 看 $\\lambda$ 是否为特征根（本题 $\\lambda = 0$ 非根，$k = 0$）；设完代回原方程检验一次，即可识破常数特解不成立。"
+      },
+      "attempts": [
+        {
+          "date": "2026-10-15",
+          "grade": "half"
+        }
+      ],
+      "review_state": "未复习",
+      "links": [
+        {
+          "path": "external-notes/考研数学/微分方程/错题本",
+          "anchor": "错题16：非齐次特解形式设定——叠加原理 + 特征根重数判断",
+          "label": "错题16：非齐次特解形式设定——叠加原理 + 特征根重数判断",
+          "confidence": "high",
+          "note": "同为「非齐次特解形式设定」：该题练特解形式的设定（叠加原理 + 特征根重数），本题失分点正是把一次式自由项 $u$ 的特解误设成常数"
+        }
+      ]
     }
   },
   "coverage": {}
