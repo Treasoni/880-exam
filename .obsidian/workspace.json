@@ -238,7 +238,7 @@
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
-                      "conversationId": "conv-1792049763518-p668x5reg"
+                      "conversationId": "conv-1792117400778-16tbbq35p"
                     }
                   ],
                   "activeTabId": "tab-1790218000549-4kkqcsg"
@@ -279,6 +279,7 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题错题复习-08.workflow.md",
     "workspace/workflow-runs/真题收录-2014数二解答19.workflow.md",
     "workspace/workflow-runs/真题收录-2014数二解答22.workflow.md",
     "workspace/workflow-runs/真题收录-2014数二解答18.workflow.md.veFvpn",
@@ -315,7 +316,6 @@
     "workspace/w12.md",
     "workspace/w11.md",
     "workspace/w10.md",
-    "workspace/w9.md",
     "workspace/records/text-overrides.json",
     "workspace/papers/la-paper-05",
     "workspace/papers/paper-06",
