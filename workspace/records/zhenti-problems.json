@@ -1203,10 +1203,14 @@
         {
           "date": "2026-10-12",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-10-16",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
-      "review_updated": "2026-10-05",
+      "review_state": "已重做",
+      "review_updated": "2026-10-16",
       "links": [
         {
           "path": "external-notes/考研数学/高数-多元函数微分学/错题本",
