@@ -1354,9 +1354,13 @@
         {
           "date": "2026-10-15",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-10-16",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/考研数学/高数-一元微分学/错题本",
@@ -1365,7 +1369,8 @@
           "confidence": "high",
           "note": "同为「构造函数 + 凹凸性几何意义」比较曲线与割线（弦）高低：该错题用割线 y=f(1)x 判 f(x)<f(1)x，本题用割线 g(x) 判 f(x)≤g(x)"
         }
-      ]
+      ],
+      "review_updated": "2026-10-16"
     },
     "zt-2014-数二-选择6": {
       "id": "zt-2014-数二-选择6",
