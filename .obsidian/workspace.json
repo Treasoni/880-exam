@@ -4,53 +4,95 @@
     "type": "split",
     "children": [
       {
-        "id": "bc90eec6094905fe",
+        "id": "f711445c4b5d7e3c",
         "type": "tabs",
         "children": [
           {
-            "id": "2094f8e2fba758e2",
+            "id": "0388b9817a82f60a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/错题本.md",
+                "file": "workspace/papers/paper-05/卷子-05-答案.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "错题本"
+              "title": "卷子-05-答案"
             }
           },
           {
-            "id": "10aff1eb38d6f434",
+            "id": "5098788d723dc5a1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/papers/la-paper-01/线代卷子-01.md",
+                "file": "workspace/papers/paper-06/判分卡-06.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "线代卷子-01"
+              "title": "判分卡-06"
             }
           },
           {
-            "id": "91f563b1c02e6777",
+            "id": "45c61081b4347081",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/papers/paper-06/卷子-06.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "真题错题本"
+              "title": "卷子-06"
+            }
+          },
+          {
+            "id": "e1c8603158a5d6db",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/la-paper-05/线代判分卡-05.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "线代判分卡-05"
+            }
+          },
+          {
+            "id": "4055c6357f3a2f05",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/la-paper-05/线代卷子-05-答案.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "线代卷子-05-答案"
+            }
+          },
+          {
+            "id": "79bd7ac45599493f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/la-paper-05/线代卷子-05.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "线代卷子-05"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -190,10 +232,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/papers/la-paper-05/线代卷子-05-答案.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "2014"
+                "searchQuery": ""
               },
               "icon": "lucide-list",
               "title": "大纲"
@@ -238,7 +280,9 @@
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
-                      "conversationId": "conv-1792117400778-16tbbq35p"
+                      "conversationId": null,
+                      "draftModel": "sonnet",
+                      "providerId": "claude"
                     }
                   ],
                   "activeTabId": "tab-1790218000549-4kkqcsg"
@@ -249,7 +293,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -277,8 +321,18 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "b4b561f7809652dc",
+  "active": "4055c6357f3a2f05",
   "lastOpenFiles": [
+    "workspace/papers/la-paper-05/线代判分卡-05.md",
+    "workspace/papers/la-paper-05/线代卷子-05.md",
+    "workspace/papers/la-paper-05/线代卷子-05-答案.md",
+    "workspace/papers/paper-06/卷子-06.md",
+    "workspace/papers/paper-06/判分卡-06.md",
+    "workspace/papers/paper-05/卷子-05.md",
+    "workspace/papers/paper-06/卷子-06-答案.md",
+    "workspace/papers/paper-05/判分卡-05.md",
+    "workspace/papers/paper-05/卷子-05-答案.md",
+    "workspace/wrong-book/真题错题本.md",
     "workspace/workflow-runs/真题错题复习-08.workflow.md",
     "workspace/workflow-runs/真题收录-2014数二解答19.workflow.md",
     "workspace/workflow-runs/真题收录-2014数二解答22.workflow.md",
@@ -294,28 +348,18 @@
     "workspace/wrong-book/线代错题本.md",
     "workspace/papers/la-paper-01/线代卷子-01.md",
     "workspace/wrong-book/错题本.md",
-    "workspace/papers/paper-05/卷子-05-答案.md",
     "workspace/workflow-runs/错题复习-08.workflow.md",
-    "workspace/wrong-book/真题错题本.md",
     "workspace/workflow-runs/真题错题复习-07.workflow.md",
     "workspace/papers/la-paper-04/线代卷子-04.md",
     "workspace/papers/la-paper-04/线代卷子-04-答案.md",
-    "workspace/papers/paper-06/卷子-06-答案.md",
-    "workspace/papers/paper-06/判分卡-06.md",
     "external-notes/考研数学/0-基础知识/assets/常用平面图形/astroid-20261011.png",
     "external-notes/考研数学/0-基础知识/assets/常用平面图形/plot_astroid.py",
-    "workspace/papers/paper-06/卷子-06.md",
     "workspace/tmp-verify-rv-sol.png",
     "workspace/tmp-verify-rv-q4.png",
     "workspace/tmp-verify-lp-q4b.png",
     "workspace/tmp-verify-lp-q4.png",
     "workspace/tmp-verify-lp-sel.png",
     "workspace/tmp-verify-lp-top.png",
-    "workspace/tmp-callout-math.md",
-    "workspace/tmp-lp-variant.md",
-    "workspace/w12.md",
-    "workspace/w11.md",
-    "workspace/w10.md",
     "workspace/records/text-overrides.json",
     "workspace/papers/la-paper-05",
     "workspace/papers/paper-06",
