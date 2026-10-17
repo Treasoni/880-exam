@@ -64,6 +64,7 @@ _最后更新：2026-10-17_
 - **自动提交的仓库别留破坏态**：本 vault 有秒级自动备份（`vault backup:` 提交）。凡「故意改坏 → 验证 → 改回」的手法（如验证回归测试会红），改坏对象要换成**工作区外副本**或 `gitignore` 路径；留在会被提交的源码上，中途快照会把半成品写进 HEAD（本次 `# TEMP-OLD-BEHAVIOUR` 就被提交过）。
 - **判分卡是用户地盘**：`--rebuild-card` 会清空勾选、且不会保留用户手工补写的章节，**只在明确要重排卡时用**；重刷已做的卷子用 `--rebuild`（保留勾选）或 `--rebuild-answers`，逐卷点名，不要对 paper-05/06 这类跑 `--rebuild-card`。
 - **全库重刷清单**：修渲染层后重刷要覆盖 `--rebuild-answers all`（只动答案卷）+ **逐卷** `--rebuild <paper_id>`（卷子不随 all 走，两个科目都要）+ `wrong_book.py --all`（2026-10-11 起写入路径同样覆盖两科，此前只刷高数、线代要显式 `--subject`；回归测试 `test_all_regenerates_both_subjects_but_subject_stays_scoped` 锁死），最后 `lint_content.py` 全绿 + `wrong_book.py --check --all` + `python3 -m unittest tests.test_core`。
+- **改覆盖层要重刷所有含该题的卷子**：一道题可能被多张卷子抽中（同一 qid 出现在多个 `paper_id`）。给某题写解析/题干覆盖后，先用 `papers.json` 反查该 qid 的全部 `paper_id`，逐张 `--rebuild-answers <paper_id>`（或直接 `--rebuild-answers all`）——只刷手头那张会漏掉其余卷子，它们的答案卷仍是旧解析。
 
 ## 配图
 

@@ -291,7 +291,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -319,7 +319,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "4055c6357f3a2f05",
+  "active": "b4b561f7809652dc",
   "lastOpenFiles": [
     "workspace/papers/la-paper-05/线代判分卡-05.md",
     "workspace/papers/la-paper-05/线代卷子-05-答案.md",
