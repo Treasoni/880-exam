@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-17",
   "note": "题目级解析覆盖：渲染时替换解析册原文（答案卷/错题本），索引保持解析册原文不动。",
   "solutions": {
     "la-c09-basic-choice-005": {
@@ -181,6 +181,12 @@
       "date": "2026-10-13",
       "note": "换用「通解拆解 → 证明三特征向量线性无关 → 特征向量线性表出法」讲解，替换解析册原文的简写版。",
       "solution": "解 (Ⅰ) 把 $Ax=\\beta$ 的通解按「非齐次通解 = 齐次基础解系 + 非齐次特解」拆开，取\n\n$$\\xi_1=(1,2,-2)^{\\mathrm T},\\quad \\xi_2=(2,1,2)^{\\mathrm T},\\quad \\eta^*=(1,1,1)^{\\mathrm T}.$$\n\n- $\\xi_1,\\xi_2$：$A\\xi_1=0\\cdot\\xi_1,\\ A\\xi_2=0\\cdot\\xi_2$，是 $A$ 对应特征值 $\\lambda_1=\\lambda_2=0$ 的特征向量；\n- $\\eta^*$：$A\\eta^*=\\beta$，而 $\\beta=(3,3,3)^{\\mathrm T}=3\\eta^*$，故 $A\\eta^*=3\\eta^*$，是 $A$ 对应特征值 $\\lambda_3=3$ 的特征向量。\n\n于是 $\\xi_1,\\xi_2,\\eta^*$ 是 $A$ 的三个特征向量。要证任意 3 维向量都可由它们线性表示，只需证三者线性无关。令 $P=(\\xi_1,\\xi_2,\\eta^*)$，把第 2、3 行分别减去第 1 行的相应倍数：\n\n$$|P|=\\begin{vmatrix}1&2&1\\\\2&1&1\\\\-2&2&1\\end{vmatrix}=\\begin{vmatrix}1&2&1\\\\1&-1&0\\\\-3&0&0\\end{vmatrix}=1\\times\\begin{vmatrix}1&-1\\\\-3&0\\end{vmatrix}=1\\times(0-3)=-3\\neq 0,$$\n\n故 $\\xi_1,\\xi_2,\\eta^*$ 线性无关，构成 $\\mathbb R^3$ 的一组基，任意 3 维列向量 $\\alpha$ 均可由其线性表示，(Ⅰ) 得证。\n\n(Ⅱ) **方法一（特征向量线性表出法）：** 由 (Ⅰ) 设 $\\alpha=(1,2,-1)^{\\mathrm T}=x_1\\xi_1+x_2\\xi_2+x_3\\eta^*$，即解 $Px=\\alpha$：\n\n$$x_1\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}+x_2\\begin{pmatrix}2\\\\1\\\\2\\end{pmatrix}+x_3\\begin{pmatrix}1\\\\1\\\\1\\end{pmatrix}=\\begin{pmatrix}1\\\\2\\\\-1\\end{pmatrix}$$\n\n解得 $x_1=\\frac23,\\ x_2=-\\frac13,\\ x_3=1$，即 $\\alpha=\\frac23\\xi_1-\\frac13\\xi_2+\\eta^*$。两边左乘 $A$：\n\n$$A\\alpha=\\frac23A\\xi_1-\\frac13A\\xi_2+A\\eta^*=0-0+(3,3,3)^{\\mathrm T}=(3,3,3)^{\\mathrm T}.$$"
+    },
+    "la-c11-comprehensive-choice-009": {
+      "paper_id": "la-paper-05",
+      "date": "2026-10-17",
+      "note": "换用「整体换元 C=A-B → Sylvester 秩不等式夹逼定 r(C)=1 → 特征值过渡到齐次方程组」的秩路线讲解，替换解析册原文（用户手写稿规范化）。",
+      "solution": "解 令 $C = A - B$，把问题整体转化到矩阵 $C$ 上。\n\n**第一步：确定 $r(C)$ 的下界。**\n\n因为 $A \\neq B$，所以 $C = A - B \\neq O$。非零矩阵至少含有一个非零元素，即至少存在一个非零的一阶子式，由矩阵秩的定义得\n\n$$\nr(C) \\geqslant 1.\n$$\n\n**第二步：用秩不等式定出上界，锁定 $r(C)$。**\n\n由 $(A-B)^{2} = O$ 得 $C^{2} = O$，故 $r(C^{2}) = 0$。对乘积的秩用 Sylvester 不等式：若 $A$ 为 $m \\times n$ 矩阵、$B$ 为 $n \\times s$ 矩阵，则\n\n$$\nr(A) + r(B) - n \\leqslant r(AB).\n$$\n\n取 $A = B = C$、$n = 3$，得\n\n$$\nr(C) + r(C) - 3 \\leqslant r(C^{2}) = 0,\n$$\n\n即 $2r(C) \\leqslant 3$，故 $r(C) \\leqslant \\frac{3}{2}$。结合下界 $1 \\leqslant r(C) \\leqslant \\frac{3}{2}$，而矩阵的秩是非负整数，唯一确定\n\n$$\nr(C) = 1,\n$$\n\n即 $r(A - B) = 1$。\n\n**第三步：求特征值，把特征向量的个数化为齐次方程组基础解系的个数。**\n\n设 $\\lambda$ 是 $C$ 的任一特征值，$\\alpha \\neq 0$ 为相应的特征向量，则 $C\\alpha = \\lambda\\alpha$，$C^{2}\\alpha = \\lambda^{2}\\alpha$。由 $C^{2} = O$ 得 $\\lambda^{2}\\alpha = 0$，而 $\\alpha \\neq 0$，故 $\\lambda^{2} = 0$，$\\lambda = 0$。于是 $C$ 的三个特征值全为 $0$：\n\n$$\n\\lambda_{1} = \\lambda_{2} = \\lambda_{3} = 0.\n$$\n\n$C$ 只有唯一特征值 $\\lambda = 0$，所以 $C$ 的全部特征向量都是齐次线性方程组 $(0E - C)x = 0$ 即 $Cx = 0$ 的非零解。基础解系所含线性无关解向量的个数为\n\n$$\nn - r(0E - C) = 3 - r(C) = 3 - 1 = 2.\n$$\n\n所以 $A - B$ 只有两个线性无关的特征向量，选项 C 正确。\n\n> [!warning] 易错点：别跳过「特征值全为 0」这一步\n> 求属于特征值 $\\lambda$ 的线性无关特征向量的个数，严格公式是 $n - r(\\lambda E - C)$，而不是 $n - r(C)$。本题之所以能直接用 $3 - r(C)$，完全是因为先算出了 $\\lambda = 0$，代入后恰好有 $r(0E - C) = r(-C) = r(C)$。若在解答题里漏写「三个特征值全为 $0$」而直接套用 $3 - r(C)$，会被判为概念混淆而扣步骤分。\n\n> [!tip] 其余选项\n> - 选项 B、D 与上面的计数直接矛盾：$A - B$ 恰有 $2$ 个线性无关的特征向量，既不是 $1$ 个也不是 $3$ 个。\n> - 选项 A：若 $A - B$ 是对角矩阵，设主对角元为 $a_{1}, a_{2}, a_{3}$，由 $(A-B)^{2} = O$ 得 $a_{1}^{2} = a_{2}^{2} = a_{3}^{2} = 0$，即 $a_{1} = a_{2} = a_{3} = 0$，从而 $A - B = O$，与 $A \\neq B$ 矛盾，排除。"
     }
   }
 }
