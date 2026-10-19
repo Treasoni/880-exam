@@ -249,7 +249,7 @@
                 "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "2014"
+                "searchQuery": "2015"
               },
               "icon": "lucide-list",
               "title": "大纲"
@@ -335,6 +335,7 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题收录-2015数二解答18.workflow.md",
     "workspace/workflow-runs/真题收录-2015数二解答15.workflow.md",
     "workspace/workflow-runs/真题收录-2015数二选择8.workflow.md",
     "workspace/workflow-runs/真题收录-2015数二选择2.workflow.md",
@@ -363,7 +364,6 @@
     "workspace/workflow-runs/真题收录-2014数二选择8-补解析.workflow.md.oZm7PY",
     "workspace/workflow-runs/真题收录-2014数二选择8-补解析.workflow.md",
     "workspace/workflow-runs/真题收录-2014数二选择8.workflow.md",
-    "workspace/workflow-runs/真题收录-2014数二选择6.workflow.md",
     "workspace/workflow-runs/真题收录-2014数二选择3.workflow.md.zXk9Bu",
     "external-notes/考研数学/0-基础知识/assets/常用平面图形/astroid-20261011.png",
     "external-notes/考研数学/0-基础知识/assets/常用平面图形/plot_astroid.py",
