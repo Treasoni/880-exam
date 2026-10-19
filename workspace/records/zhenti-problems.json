@@ -1731,8 +1731,21 @@
         "step": "写出 $T' = k(T - T_0)$ 后直接积成 $T = \\int k(T - T_0)\\,\\mathrm{d}t = k(T - T_0)t$——把未知函数 $T(t)$ 当成常数提出了积分号（$\\int y\\,\\mathrm{d}x \\neq yx$）。",
         "advice": "解 $\\frac{\\mathrm{d}T}{\\mathrm{d}t} = k(T - 20)$ 必须用分离变量法：把含 $T$ 的项与 $\\mathrm{d}T$ 移到一边、含 $t$ 的项与 $\\mathrm{d}t$ 移到另一边，再两边分别积分（$\\int \\frac{\\mathrm{d}T}{T - 20} = \\ln|T - 20|$）。"
       },
-      "links": [],
-      "attempts": [],
+      "links": [
+        {
+          "path": "external-notes/考研数学/微分方程/错题本",
+          "anchor": "错题15：牛顿冷却定律——物理建模 + 可分离变量 + 双参数定解",
+          "label": "错题15：牛顿冷却定律——物理建模 + 可分离变量 + 双参数定解",
+          "confidence": "high",
+          "note": "同题：同为「120℃ 物体在 20℃ 恒温介质中冷却、30 min 降至 30℃」的牛顿冷却定律建模，走分离变量法 + 双参数定解"
+        }
+      ],
+      "attempts": [
+        {
+          "date": "2026-10-19",
+          "grade": "wrong"
+        }
+      ],
       "review_state": "未复习"
     }
   },
