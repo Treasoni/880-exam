@@ -1558,9 +1558,13 @@
         {
           "date": "2026-10-16",
           "grade": "half"
+        },
+        {
+          "date": "2026-10-19",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
@@ -1569,7 +1573,8 @@
           "confidence": "high",
           "note": "同一道题（2014 数二 解答19）：外部笔记该条已完整收录本题的题面与解析，可直接对照"
         }
-      ]
+      ],
+      "review_updated": "2026-10-19"
     }
   },
   "coverage": {}
