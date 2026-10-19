@@ -4,7 +4,7 @@
 
 ---
 
-_最后更新：2026-10-17_
+_最后更新：2026-10-19_
 
 ## 880 产物格式
 
@@ -43,7 +43,7 @@ _最后更新：2026-10-17_
 - **新校验判据要喂负样本**：新增/修改校验判据后，构造一个必然违规的样本确认它真会报错（本次：截掉第 6 题的答案卷），只跑正样本绿不算验证。
 - **用户供稿先验算再写入**：用户贴来的解析里，**反例、构造、特例、推导链**当草稿逐条对题设验算（反例要与全部已知条件对表），只有格式与措辞照排；发现数学错误就换合法构造，并在回复里说明改了哪里、为什么——不静默照抄，也不静默改掉。
 - **取事实源条目从卷面反查**：拿某道题的 qid / answer 一律由 `workspace/records/papers.json` 的 `paper_no → qid` 映射反查得到，禁止凭对同卷其他题的印象硬编码题号。查错对象会产出一个「格式正确、结论错误」的信号，并伪装成「事实源与产物不一致」——本次硬编码 `…choice-003` 取回一道多元函数题，答案对不上，差点按不一致立案。
-- **索引主键字段按科目分**：高数索引 `workspace/question-index.json` 的题目主键字段是 `qid`，线代索引 `workspace/linear-algebra-question-index.json` 的同一字段叫 `id`；只有 `papers.json` 记录层统一用 `qid`。按错字段名查会**静默返回 0 条**，禁止据此判定「题库里没有这道题」——先按科目选索引、用 `papers.json` 的 `paper_no → qid` 反查确认字段名（渲染层 `lib880.effective_solution`/`effective_text` 取的是 `q.get("id")`，佐证题目对象来自线代那种 `id` 形态）。
+- **事实源主键字段按层分**：两个题目索引 `workspace/question-index.json` 与 `workspace/linear-algebra-question-index.json` 的题目主键字段**都是 `id`**（不是 `qid`）；`workspace/records/papers.json` 的 `questions[].qid` 才叫 `qid`，它的值就是索引里的 `id`（`make_paper.py` 写入时 `{"qid": q["id"]}`）。真题事实源 `workspace/records/zhenti-problems.json` 的 `problems` 是以 `zt-…` 为键的对象，记录内题干字段叫 `stem`（不是 `text`）。按错字段名查会**静默返回 0 条**，禁止据此判定「题库里没有这道题」——先读一条实际记录确认字段名，不要按记忆或旧笔记猜（渲染层 `lib880.effective_solution`/`effective_text` 取 `q.get("id")`，`validate_index` 也把 `id` 列为必需字段；回归测试 `test_fact_source_key_fields` 锁死这层契约）。
 - **用库函数前先读它的契约**：调 `lib880` 的解析函数时按函数**真实契约**写探针——`split_answer_sheet` 的题块**不含** `**N.** …` 题干行（块从题干下一行开始）。探针报异常先怀疑探针、回读函数源码，不要直接立案查文件缺陷。
 - **断言冲突前先读对方盘面值**：报「A 与 B 不一致」之前必须读 B 的实际字段（如 `attempts.json` 里该 `paper_id` 的记录条数、卷子的 `status`）。转述、上下文摘要、上一轮结论都**不算**事实——本次那个「`attempts.json` 记为对」来自摘录转述，实查 paper-04 记录 0 条、`status: created`，冲突根本不存在。
 - **单块改动用公共前缀/后缀定位**：证明「只改了目标块」算**公共前缀行数 + 公共后缀行数**（本次 357 / 322，改动区间 = 新 358..444 / 旧 358..358），断言改动区间 ⊆ 目标块行范围；边界由算法计算，禁止手写行号（本次手写 0-based 边界造出过一次「后段一致: False」的假警报）。行 diff 不作判据。

@@ -150,6 +150,46 @@ class Lib880Test(unittest.TestCase):
         self.assertFalse(any("q-known" in e for e in errors), f"误报正常覆盖：{errors}")
 
 
+class FactSourceKeyFieldTest(unittest.TestCase):
+    """事实源字段名按层分的契约（见 `.learnings/RULES.md`「事实源主键字段按层分」）。
+
+    按错误的字段名查事实源会**静默返回 0 条**，容易被误判成「题库里没有这道题」。
+    2026-10-17 的旧笔记曾把高数索引主键记成 `qid`，实际两科索引都是 `id`；这条测试
+    把「哪一层用哪个字段」钉死，防止旧笔记再次误导查询。
+    """
+
+    def test_fact_source_key_fields(self):
+        for name in ("question-index.json", "linear-algebra-question-index.json"):
+            doc = json.loads((ROOT / "workspace" / name).read_text(encoding="utf-8"))
+            questions = doc["questions"]
+            self.assertTrue(questions, f"{name} 为空")
+            self.assertTrue(all("id" in q for q in questions),
+                            f"{name} 的题目主键应为 id")
+            self.assertFalse(any("qid" in q for q in questions),
+                             f"{name} 不应出现 qid 字段")
+
+        papers = json.loads(
+            (ROOT / "workspace/records/papers.json").read_text(encoding="utf-8")
+        )["papers"]
+        self.assertTrue(papers)
+        self.assertTrue(
+            all("qid" in q for paper in papers for q in paper["questions"]),
+            "papers.json 的 questions[] 应以 qid 引用索引题目",
+        )
+
+    def test_zhenti_problems_use_stem_not_text(self):
+        doc = json.loads(
+            (ROOT / "workspace/records/zhenti-problems.json").read_text(encoding="utf-8")
+        )
+        problems = doc["problems"]
+        self.assertTrue(problems)
+        for pid, problem in problems.items():
+            self.assertIn("stem", problem, f"{pid} 缺少 stem 字段")
+            self.assertNotIn("text", problem, f"{pid} 不应使用 text 字段")
+            # 记录内 id 可省略，省略时以 problems 的字典键为准。
+            self.assertEqual(problem.get("id", pid), pid)
+
+
 class RenderLayerTest(unittest.TestCase):
     """渲染层归一（lib880）与产物侧 lint 判据的回归。
 

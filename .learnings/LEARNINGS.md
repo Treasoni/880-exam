@@ -2,7 +2,7 @@
 
 ---
 
-_最后更新：2026-10-17_
+_最后更新：2026-10-19_
 
 ## 当前可复用学习
 
@@ -37,55 +37,10 @@ _最后更新：2026-10-17_
 
 ---
 
-## 2026-10-17
-
-### 两个索引的题目主键字段名不同：高数用 `qid`、线代用 `id`
-
-**类别**：knowledge_gap
-**优先级**：medium
-**状态**：pending
-**范围**：数据模型 / `workspace/question-index.json`、`workspace/linear-algebra-question-index.json`、`workspace/records/papers.json`
-
-**摘要**：高数索引 `question-index.json` 的题目主键字段是 `qid`，线代索引 `linear-algebra-question-index.json` 的同一字段叫 `id`；`papers.json` 的 `questions[].qid` 两科同名。按 `qid` 去线代索引里查题会**静默返回 0 条**（每条都没有 `qid` 字段），容易被误判成「题库里没有这道题」。
-
-**详情**：
-- 事实：`question-index.json` 每条 = `{qid, subject, chapter, ..., text, answer, solution}`（`subject: 高数`，618 条）；`linear-algebra-question-index.json` 每条 = `{id, subject, chapter_no, chapter_title, difficulty, type, q_num, text, answer, solution, ...}`（`subject: 线性代数`，311 条）。
-- 根因：两科索引由不同构建脚本产出，字段命名未统一；只有 `papers.json` 的记录层用了统一的 `qid` 键，遮蔽了下游索引层的分叉。
-- 连带事实：渲染层 `lib880.effective_solution` / `effective_text` 取的是 `q.get("id")`——说明流进生成器的题目对象来自**线代索引**那种 `id` 形态；查高数题时若也按 `id` 取则会取空。
-- 下次做法：查题目条目先按科目选索引——高数 `question-index.json` 匹配 `qid`，线代 `linear-algebra-question-index.json` 匹配 `id`；拿不准就用 `papers.json` 的 `paper_no → qid` 反查（见 RULES「取事实源条目从卷面反查」）确认字段名，再回索引取 `text`/`answer`/`solution`。
-
-### 列表项里的公式用行内 `$...$`，别用独立 `$$...$$`
-
-**类别**：best_practice
-**优先级**：medium
-**状态**：pending
-**范围**：880 产物渲染 / `lib880` 准备函数 / 答案卷·错题本·解析
-
-**摘要**：在 Markdown 列表项（`- …`）里写公式要用行内 `$...$`；一旦在列表项之后顶格写独立公式 `$$...$$`，**列表会被终止**——该 `$$` 块与后续段落从列表里“掉出来”，后面的条目重新开一个新 `<ul>`。
-
-**详情**：
-- 事实（vault 实测，`MarkdownRenderer` oracle）：输入 `- A：… \n\n$$\n…\n$$\n\n又 …\n\n- B：…`，渲染结果的顶层子节点是 `UL` → `DIV`（公式块）→ `P` → `UL`：列表被切成两段，`li` 里 `display=true` 的容器数为 0。
-- 根因：块级元素（顶格 `$$`）会关闭当前列表上下文；即便前后都有空行（满足「块级元素要留空行」的既有规则）也照样断列表——空行规则解决的是“渲染失败”，这条解决的是“结构被切碎”。
-- 下次做法：列表项内需要公式时一律用行内 `$...$`；确需独立公式块，就把该点从列表里拿出来、写成独立段落（或整段改成纯正文 + 加粗标签，不用列表）。
-
-### 一道题可能出现在多张卷子上，改覆盖层要重刷所有含该题的卷子
-
-**类别**：workflow
-**优先级**：medium
-**状态**：pending
-**范围**：880 解析覆盖 / `solution-overrides.json` / `papers.json` / 答案卷重刷
-
-**摘要**：同一个 qid 可能被多张卷子抽中（本次 `la-c10-comprehensive-fill-004` 同时命中 `la-paper-01`/二4 与 `la-paper-05`/二3）。给某题写解析覆盖后，只重刷「手头这张卷子」会漏掉其余卷子——它们的答案卷仍是旧解析。
-
-**详情**：
-- 事实：在 `papers.json` 里按 qid 反查，该题命中两个 `paper_id` 各一次；`--rebuild-answers la-paper-05` 只刷了 `la-paper-05`，`la-paper-01` 需要再单独刷一遍。
-- 根因：抽题时同一题可进不同卷；`--rebuild-answers <paper_id>` 是逐卷点名，天然只刷被点名的那张。
-- 下次做法：写/改覆盖层后，先用 `papers.json` 反查该 qid 的全部 `paper_id`，逐张 `--rebuild-answers <paper_id>`（或直接 `--rebuild-answers all`）；改完 `grep` 确认每张含该题的答案卷都已带上新解析。
-
----
-
 ## 历史记录
 
 旧记录已归档至 `.learnings/archive/`：`LEARNINGS-2026-08-11-pre-digest.md`、`LEARNINGS-2026-08-12-pre-compress.md`、`LEARNINGS-2026-09-13-pre-compress.md`（2026-09-03 / 09-09 / 09-11 / 09-13）、`LEARNINGS-2026-09-15-pre-compress.md`、`LEARNINGS-2026-09-15-pre-digest.md`（两条 best_practice 内核已进 RULES）；`880-wrongbook` 公式渲染防线 3 条（2026-09-12 / 09-13）见 `.learnings/archive/2026-09-13-maintenance.md`；09-24 归档的两条（用户供稿先验算、公共前缀/后缀定位，内核均已进 RULES）见 `.learnings/archive/2026-09-24-maintenance.md`。
 
 2026-10-11 的三条 best_practice（**Obsidian 渲染层事实**、**渲染验证三件套**、**归一化覆盖同族输出点**）内核均已进 `RULES.md`（「公式定界符只认 Obsidian 原生两种」「callout 内的独立公式也算独立块」「渲染判定用 oracle，不用截图反推」「归一化要覆盖同族全部输出点」），归档至 `.learnings/archive/2026-10-11-maintenance.md`。
+
+2026-10-19 归档 2026-10-17 的三条流程类记录（索引主键字段、列表项公式、覆盖层重刷），见 `.learnings/archive/2026-10-19-maintenance.md`。其中「索引主键字段」原记录把高数索引写成 `qid`，核实后**两科索引实际都用 `id`**，已纠正 `RULES.md` 并新增 `tests/test_core.py::FactSourceKeyFieldTest` 锁死契约。保留两条数学知识缺口（数列极限根式差、二次型正交变换）。
