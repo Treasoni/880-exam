@@ -8,7 +8,7 @@
   python3 scripts/wrong_book.py --check --all       # 检查盘面产物是否已陈旧（不写文件）
 
 回炉（间隔复习：到期抽查已掌握题，做错退回待复习）：
-  python3 scripts/wrong_book.py --due               # 列出到期回炉的已掌握题（默认 ≥30 天）
+  python3 scripts/wrong_book.py --due               # 列出到期回炉的已掌握题（默认 ≥7 天）
   python3 scripts/wrong_book.py --due --days 0      # 列出全部已掌握题
   python3 scripts/wrong_book.py --retest qid ...    # 回炉模式：只给题干，隐去答案与解析
   python3 scripts/wrong_book.py --record qid=对 ... # 记录一次回炉判分并联动复习状态
@@ -38,8 +38,8 @@ GRADE_ALIAS = {
     "半会": "half", "half": "half",
     "粗心": "careless", "careless": "careless",
 }
-# 回炉默认门槛：已掌握满多少天视为到期
-DUE_DAYS_DEFAULT = 30
+# 回炉默认门槛：已掌握满多少天视为到期（考试冲刺期收紧到 7 天，让整个已掌握池可挑）
+DUE_DAYS_DEFAULT = 7
 
 
 def validate_solution_text(text, qid):

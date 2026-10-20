@@ -1619,9 +1619,14 @@
         {
           "date": "2026-10-19",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-10-20",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习"
+      "review_state": "已重做",
+      "review_updated": "2026-10-20"
     },
     "zt-2015-数二-选择3": {
       "id": "zt-2015-数二-选择3",

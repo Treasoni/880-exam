@@ -15,14 +15,14 @@ description: 回炉（间隔复习）——定期从已掌握归档抽查题目�
 ## 什么时候回炉
 
 - 用户说"回炉""间隔复习""抽查一下已掌握的题""复习已掌握"。
-- 距上次掌握已有段时间（默认门槛 **30 天**，可用 `--days N` 调整；`--days 0` = 全部已掌握）。
+- 距上次掌握已有段时间（默认门槛 **7 天**，可用 `--days N` 调整；`--days 0` = 全部已掌握）。
 - 一轮错题复习（`错题复习-XX`）收尾后，顺手抽几道归档题复查。
 
 ## 步骤
 
 1. **列出到期题**：
    ```
-   python3 scripts/wrong_book.py --due                 # 高数，≥30 天
+   python3 scripts/wrong_book.py --due                 # 高数，≥7 天
    python3 scripts/wrong_book.py --due --all           # 高数 + 线代
    python3 scripts/wrong_book.py --due --days 0        # 全部已掌握
    ```

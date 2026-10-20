@@ -11,7 +11,7 @@
   python3 scripts/zhenti_wrong_book.py --record zt-2021-数二-解答3=不会
   python3 scripts/zhenti_wrong_book.py --mark zt-2021-数二-解答3=已掌握
   python3 scripts/zhenti_wrong_book.py --redo zt-2021-数二-解答3   # 重练：只给题干
-  python3 scripts/zhenti_wrong_book.py --due                # 回炉：列出到期（≥30 天）的已掌握真题
+  python3 scripts/zhenti_wrong_book.py --due                # 回炉：列出到期（≥7 天）的已掌握真题
   python3 scripts/zhenti_wrong_book.py --due --days 0       # 全部已掌握
   python3 scripts/zhenti_wrong_book.py --check              # 盘面产物是否陈旧（不写文件）
   # Windows 请把 python3 换成 py -3（如 py -3 scripts/zhenti_wrong_book.py）
@@ -38,8 +38,8 @@ MODULE_ROOTS = (
 
 COVERAGE_STATES = ("未做", "做过", "已复盘")
 
-# 回炉（间隔复习）默认门槛：距上次掌握满 30 天才拉回来抽查，与 880 侧同口径
-DUE_DAYS_DEFAULT = 30
+# 回炉（间隔复习）默认门槛：距上次掌握满 7 天才拉回来抽查，与 880 侧同口径
+DUE_DAYS_DEFAULT = 7
 
 
 def due_problems(doc, days, today=None):
