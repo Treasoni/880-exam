@@ -22,6 +22,20 @@
             }
           },
           {
+            "id": "fca6e58d23a6763c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/papers/paper-06/卷子-06-答案.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "卷子-06-答案"
+            }
+          },
+          {
             "id": "4856a8db92f466bb",
             "type": "leaf",
             "state": {
@@ -35,7 +49,8 @@
               "title": "卷子-06"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -219,14 +234,14 @@
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
-                      "conversationId": "conv-1792460038738-3ur0f7283"
+                      "conversationId": "conv-1792481846981-tp9c5ruch"
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
                       "conversationId": "conv-1792459385165-fytd832fb"
                     }
                   ],
-                  "activeTabId": "tab-1789908968076-9htz0xx"
+                  "activeTabId": "tab-1790061594608-a0amw1a"
                 }
               },
               "icon": "bot",
@@ -234,7 +249,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -262,10 +277,12 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "9f7d7ea400c72fad",
+  "active": "b4b561f7809652dc",
   "lastOpenFiles": [
-    "workspace/papers/paper-06/卷子-06.md",
     "workspace/papers/paper-06/判分卡-06.md",
+    "workspace/wrong-book/错题本.md",
+    "workspace/papers/paper-06/卷子-06-答案.md",
+    "workspace/papers/paper-06/卷子-06.md",
     "workspace/papers/la-paper-05/线代卷子-05.md",
     "workspace/papers/la-paper-05/线代卷子-05-答案.md",
     "workspace/wrong-book/真题错题本.md",
@@ -286,11 +303,9 @@
     "workspace/workflow-runs/错题复习-02.workflow.md",
     "workspace/workflow-runs/真题错题复习-09.workflow.md",
     "workspace/workflow-runs/真题错题复习-08.workflow.md.rSyGtu",
-    "workspace/papers/paper-06/卷子-06-答案.md",
     "workspace/papers/paper-05/卷子-05-答案.md",
     "workspace/papers/paper-05/卷子-05.md",
     "workspace/papers/paper-05/判分卡-05.md",
-    "workspace/workflow-runs/真题错题复习-08.workflow.md",
     "workspace/workflow-runs/真题收录-2014数二解答18.workflow.md.veFvpn",
     "workspace/workflow-runs/真题收录-2014数二选择8-补解析.workflow.md.oZm7PY",
     "workspace/workflow-runs/真题收录-2014数二选择3.workflow.md.zXk9Bu",
