@@ -858,10 +858,14 @@
         {
           "date": "2026-10-19",
           "grade": "half"
+        },
+        {
+          "date": "2026-10-20",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
-      "review_updated": "2026-10-02",
+      "review_state": "已重做",
+      "review_updated": "2026-10-20",
       "links": [
         {
           "path": "external-notes/考研数学/高数-数列极限/错题本",
