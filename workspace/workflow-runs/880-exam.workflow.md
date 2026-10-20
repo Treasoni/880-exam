@@ -2,8 +2,8 @@
 workflow_id: 880-exam
 task: 880 习题系统做题流程
 created: 2026-08-11
-updated: 2026-10-11
-last_updated: "2026-10-11"
+updated: 2026-10-20
+last_updated: "2026-10-20"
 current_phase: done
 current_status: complete
 blocked_reason: ""
@@ -19,7 +19,7 @@ blocked_reason: ""
 
 ## 当前上下文
 
-- 最近卷子：[[workspace/papers/paper-06/卷子-06.md|paper-06]]（2026-10-11 拼好，待做；选10 · 填6 · 解6）
+- 最近卷子：[[workspace/papers/paper-06/卷子-06.md|paper-06]]（2026-10-20 判完 22/22 → 54.5/150 · 36.3%，选32.5/50 · 填10/30 · 解12/70）；本卷最弱：第一章 函数、极限、连续（失分22/27）、第五章 二重积分（20/25）、第三章 一元函数积分学（19.5/32）
 - 最近线代卷：[[workspace/papers/la-paper-05/线代卷子-05.md|la-paper-05]]（2026-10-11 拼好，待做；选10 · 填6 · 解6）
 - 上一张已判高数卷：[[workspace/papers/paper-05/卷子-05.md|paper-05]]（2026-10-10 判完 22/22 → 85/150 · 56.7%，选37.5/50 · 填17.5/30 · 解30/70）；本卷最弱：第五章 二重积分（失分29/44）、第三章 一元函数积分学（20/30）、第一章（17/27）
 - 上一张已判线代卷：[[workspace/papers/la-paper-04/线代卷子-04.md|la-paper-04]]（2026-10-11 判完 22/22 → 56.5/150 · 37.7%，选15/50 · 填17.5/30 · 解24/70）；本卷最弱：第十二章 二次型（失分37/47）、第十章 线性方程组（27/27）、第十一章 相似矩阵（19.5/44）
@@ -29,7 +29,7 @@ blocked_reason: ""
 - 累计：高数 已判 106 · 未做 512；线代 已判 82 · 未做 229
 - 错题本待复习：高数 15 道（重点 9 · 轻标记 6；已掌握 55）· 线代 22 道（重点 12 · 轻标记 10；已掌握 31）
 - 最近一轮复习见 [[错题复习-06.workflow.md]]（2026-10-01 提前结束：实练 4/7 题全对，转已掌握 4 题）；上一轮见 [[错题复习-05.workflow.md]]（6 题 对 2 · 半会 2 · 不会 1 · 粗心 1）
-- 待办方向：paper-06 与 la-paper-05 已拼好待做；做完后勾判分卡判分。下一轮复习重点题——高数 `gs-c05-comprehensive-fill-002`，线代 `la-c11-comprehensive-solution-014`、`la-c12-comprehensive-solution-014`
+- 待办方向：la-paper-05 已拼好待做；做完后勾判分卡判分。下一轮复习重点题——高数 `gs-c05-comprehensive-fill-002`，线代 `la-c11-comprehensive-solution-014`、`la-c12-comprehensive-solution-014`
 - 备注：得分与弱点分析、错因分析（对话式归因→analysis.json→错题本渲染）已落地；外部错题关联 46 条（一对多）。
 
 ## 异常记录
