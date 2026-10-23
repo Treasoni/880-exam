@@ -1948,6 +1948,28 @@
         }
       ],
       "review_state": "未复习"
+    },
+    "zt-2016-数二-解答20": {
+      "id": "zt-2016-数二-解答20",
+      "module": "高数-一元函数积分学",
+      "year": 2016,
+      "paper": "数二",
+      "no": "解答20",
+      "stem": "设 $D$ 是由曲线 $y=\\sqrt{1-x^{2}}\\ (0\\leqslant x\\leqslant1)$ 与 $\\begin{cases}x=\\cos^{3}t,\\\\ y=\\sin^{3}t\\end{cases}\\ \\left(0\\leqslant t\\leqslant\\frac{\\pi}{2}\\right)$ 围成的平面区域，求 $D$ 绕 $x$ 轴旋转一周所得旋转体的体积和表面积。",
+      "answer": "体积 $V=\\frac{18\\pi}{35}$，表面积 $S=\\frac{16\\pi}{5}$",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：定积分的几何应用（旋转体体积、旋转曲面面积）；参数方程换元；华里士（点火）公式。\n> **总体思路与切入点**：区域 $D$ 夹在四分之一圆弧 $y=\\sqrt{1-x^2}$（外边界）与星形线 $x=\\cos^3t,y=\\sin^3t$（内边界）之间，两曲线在 $(1,0)$、$(0,1)$ 处闭合。体积用「大减小」$V=V_1-V_2$；表面积用「外加内」$S=S_1+S_2$。参数方程换元时，变量、微分、上下限必须三同步。\n\n---\n\n**第一阶段：旋转体体积 $V=V_1-V_2$**\n\n**1. 外边界圆弧旋转体积 $V_1$**\n\n$$V_1=\\pi\\int_0^1(1-x^2)\\,\\mathrm{d}x=\\pi\\left[x-\\frac{x^3}{3}\\right]_0^1=\\frac{2}{3}\\pi$$\n\n即半径为 $1$ 的半球体积。\n\n**2. 内边界星形线旋转体积 $V_2$**\n\n$$V_2=\\pi\\int_0^1 y_2^2\\,\\mathrm{d}x$$\n\n代入 $x=\\cos^3t$、$y=\\sin^3t$。注意换元三同步：\n\n- $x=0\\Rightarrow t=\\frac{\\pi}{2}$，$x=1\\Rightarrow t=0$；\n- $\\mathrm{d}x=-3\\cos^2t\\sin t\\,\\mathrm{d}t$。\n\n$$V_2=\\pi\\int_{\\pi/2}^{0}\\sin^6t\\,(-3\\cos^2t\\sin t)\\,\\mathrm{d}t=3\\pi\\int_0^{\\pi/2}\\sin^7t\\cos^2t\\,\\mathrm{d}t$$\n\n化为\n\n$$V_2=3\\pi\\int_0^{\\pi/2}(\\sin^7t-\\sin^9t)\\,\\mathrm{d}t$$\n\n用华里士公式（奇数幂末尾乘 $1$，不带 $\\frac{\\pi}{2}$）：\n\n$$\\int_0^{\\pi/2}\\sin^7t\\,\\mathrm{d}t=\\frac{6}{7}\\cdot\\frac{4}{5}\\cdot\\frac{2}{3}=\\frac{16}{35},\\qquad \\int_0^{\\pi/2}\\sin^9t\\,\\mathrm{d}t=\\frac{8}{9}\\cdot\\frac{16}{35}=\\frac{128}{315}$$\n\n故\n\n$$V_2=3\\pi\\left(\\frac{16}{35}-\\frac{128}{315}\\right)=3\\pi\\cdot\\frac{16}{315}=\\frac{16\\pi}{105}$$\n\n**3. 总体积**\n\n$$V=V_1-V_2=\\frac{2\\pi}{3}-\\frac{16\\pi}{105}=\\frac{70\\pi-16\\pi}{105}=\\frac{18\\pi}{35}$$\n\n**第二阶段：旋转体表面积 $S=S_1+S_2$**\n\n**1. 外侧半球面 $S_1$**\n\n圆弧 $y=\\sqrt{1-x^2}$ 是半径 $1$ 的四分之一圆，绕 $x$ 轴旋转得半球面：\n\n$$S_1=\\frac{1}{2}\\cdot4\\pi\\cdot1^2=2\\pi$$\n\n积分验证：$y'=-\\frac{x}{\\sqrt{1-x^2}}$，$\\sqrt{1+(y')^2}=\\frac{1}{\\sqrt{1-x^2}}$，故 $S_1=2\\pi\\int_0^1\\sqrt{1-x^2}\\cdot\\frac{1}{\\sqrt{1-x^2}}\\,\\mathrm{d}x=2\\pi$。\n\n**2. 内侧星形线旋转面 $S_2$**\n\n先算弧微分：\n\n$$x'(t)=-3\\cos^2t\\sin t,\\qquad y'(t)=3\\sin^2t\\cos t$$\n\n$$[x'(t)]^2+[y'(t)]^2=9\\cos^4t\\sin^2t+9\\sin^4t\\cos^2t=9\\sin^2t\\cos^2t$$\n\n在 $t\\in[0,\\frac{\\pi}{2}]$ 上 $\\sin t,\\cos t\\geqslant0$，故\n\n$$\\mathrm{d}s=3\\sin t\\cos t\\,\\mathrm{d}t$$\n\n侧面积公式中的 $y(t)$ 必须留在积分号内：\n\n$$S_2=2\\pi\\int_0^{\\pi/2}y(t)\\,\\mathrm{d}s=2\\pi\\int_0^{\\pi/2}\\sin^3t\\cdot3\\sin t\\cos t\\,\\mathrm{d}t=6\\pi\\int_0^{\\pi/2}\\sin^4t\\cos t\\,\\mathrm{d}t$$\n\n凑微分 $\\cos t\\,\\mathrm{d}t=\\mathrm{d}(\\sin t)$：\n\n$$S_2=6\\pi\\left[\\frac{\\sin^5t}{5}\\right]_0^{\\pi/2}=\\frac{6\\pi}{5}$$\n\n**3. 总表面积**\n\n$$S=S_1+S_2=2\\pi+\\frac{6\\pi}{5}=\\frac{16\\pi}{5}$$\n\n**结论**：体积 $V=\\dfrac{18\\pi}{35}$，表面积 $S=\\dfrac{16\\pi}{5}$。\n\n> [!warning] 易错点\n> - **体积相减、表面积相加**：两条曲线围成的区域绕轴旋转，体积是「大减小」，表面积是「外加内」；本题两曲线在 $(1,0)$、$(0,1)$ 闭合，无额外底环。\n> - **换元三同步**：写成 $\\mathrm{d}t$ 后，上下限必须同步换成 $t$ 的范围；$x=\\cos^3t$ 单调递减，$x=0\\to t=\\frac{\\pi}{2}$、$x=1\\to t=0$，且 $\\mathrm{d}x$ 带负号。\n> - **弧微分幂次**：$[x']^2=9\\cos^4t\\sin^2t$、$[y']^2=9\\sin^4t\\cos^2t$，提取公因式后才是 $3\\sin t\\cos t$，不要写成 $9\\sin^2t\\cos^2t$。\n> - **华里士公式的奇偶**：奇数幂末尾乘 $1$；只有偶次幂才带 $\\frac{\\pi}{2}$。",
+      "attempts": [
+        {
+          "date": "2026-10-23",
+          "grade": "wrong"
+        }
+      ],
+      "review_state": "未复习",
+      "cause": {
+        "label": "概念/定理错误",
+        "step": "体积换元时未同步调整上下限且漏掉 $\\mathrm{d}x$ 的负号；表面积漏算外侧半球面 $S_1=2\\pi$，参数方程侧面积把 $y(t)$ 提到积分号外、积分限仍用 $x$ 的范围 $[0,1]$，弧微分中 $[x'(t)]^2+[y'(t)]^2$ 的幂次写错。",
+        "advice": "换元三同步：变量、微分、上下限。体积「大减小」，表面积「外加内」，两曲线端点闭合时 $S=S_1+S_2$。参数方程先算 $x'^2+y'^2$ 再开方；星形线 $x=a\\cos^3t,y=a\\sin^3t$ 的 $\\mathrm{d}s=3a|\\sin t\\cos t|\\mathrm{d}t$。"
+      }
     }
   },
   "coverage": {}
