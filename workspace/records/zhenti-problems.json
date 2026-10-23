@@ -1931,6 +1931,23 @@
         "step": "极坐标转换时把水平边界 $y=1$ 的极径上限误写成 $\\sec\\theta$，应为 $\\csc\\theta$；同时把奇函数项「奇零」与偶函数项「偶倍」的因果表述糅在一起。",
         "advice": "竖直线 $x=a\\Rightarrow r=a\\sec\\theta$，水平线 $y=b\\Rightarrow r=b\\csc\\theta$。若积分区间含 $\\theta=\\frac{\\pi}{2}$，结果中不应出现 $\\sec\\theta$ 或 $\\tan\\theta$；代入上限无意义就是限写反的信号。"
       }
+    },
+    "zt-2016-数二-解答19": {
+      "id": "zt-2016-数二-解答19",
+      "module": "微分方程",
+      "year": 2016,
+      "paper": "数二",
+      "no": "解答19",
+      "stem": "已知 $y_{1}(x)=\\mathrm{e}^{x}$，$y_{2}(x)=u(x)\\mathrm{e}^{x}$ 是二阶微分方程 $(2x-1)y''-(2x+1)y'+2y=0$ 的两个解。若 $u(-1)=\\mathrm{e}$，$u(0)=-1$，求 $u(x)$，并写出该微分方程的通解。",
+      "answer": "$u(x)=-(2x+1)\\mathrm{e}^{-x}$；通解 $y=k_{1}\\mathrm{e}^{x}+k_{2}(2x+1)$（$k_{1},k_{2}$ 为任意常数）",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：二阶变系数齐次线性微分方程；已知一解用变量代换降阶；分离变量；分部积分。\n> **总体思路与切入点**：题目已给出 $y_2=u(x)\\mathrm{e}^{x}$。直接求 $y_2'$、$y_2''$ 代入原方程：由于 $\\mathrm{e}^{x}$ 本身是解，$u(x)$ 的系数必然抵消，只剩 $u''$ 与 $u'$ 的方程。令 $p=u'$ 降为一阶可分离变量方程，积分两次，再用 $u(-1)=\\mathrm{e}$、$u(0)=-1$ 定常数。\n\n---\n\n**第一阶段：求导代入，消去 $u(x)$ 本身**\n\n由乘积求导：\n\n$$y_2'=(u'+u)\\mathrm{e}^{x},\\qquad y_2''=(u''+2u'+u)\\mathrm{e}^{x}$$\n\n代入 $(2x-1)y''-(2x+1)y'+2y=0$，约去 $\\mathrm{e}^{x}$：\n\n$$(2x-1)(u''+2u'+u)-(2x+1)(u'+u)+2u=0$$\n\n按阶数合并：\n\n- $u''$ 系数：$2x-1$；\n- $u'$ 系数：$2(2x-1)-(2x+1)=2x-3$；\n- $u$ 系数：$(2x-1)-(2x+1)+2=0$（因 $\\mathrm{e}^{x}$ 是解，必抵消）。\n\n故\n\n$$(2x-1)u''+(2x-3)u'=0$$\n\n**第二阶段：降阶求 $u'(x)$**\n\n令 $p=u'$：\n\n$$(2x-1)\\frac{\\mathrm{d}p}{\\mathrm{d}x}+(2x-3)p=0$$\n\n分离变量：\n\n$$\\frac{\\mathrm{d}p}{p}=-\\frac{2x-3}{2x-1}\\,\\mathrm{d}x=-\\frac{(2x-1)-2}{2x-1}\\,\\mathrm{d}x=\\left(-1+\\frac{2}{2x-1}\\right)\\mathrm{d}x$$\n\n积分：\n\n$$\\ln|p|=-x+\\ln|2x-1|+\\tilde C_1$$\n\n故\n\n$$u'(x)=p=C_1(2x-1)\\mathrm{e}^{-x}$$\n\n**第三阶段：分部积分求 $u(x)$，定常数**\n\n$$\\int(2x-1)\\mathrm{e}^{-x}\\,\\mathrm{d}x=-(2x-1)\\mathrm{e}^{-x}+\\int2\\mathrm{e}^{-x}\\,\\mathrm{d}x=-(2x+1)\\mathrm{e}^{-x}$$\n\n因此\n\n$$u(x)=-C_1(2x+1)\\mathrm{e}^{-x}+C_2$$\n\n代入边界条件：\n\n$$u(-1)=C_1\\mathrm{e}+C_2=\\mathrm{e},\\qquad u(0)=-C_1+C_2=-1$$\n\n两式相减：$C_1(\\mathrm{e}+1)=\\mathrm{e}+1\\Rightarrow C_1=1$，再得 $C_2=0$。故\n\n$$u(x)=-(2x+1)\\mathrm{e}^{-x}$$\n\n**第四阶段：写出通解**\n\n回代 $y_2=u(x)\\mathrm{e}^{x}=-(2x+1)$。由于\n\n$$\\frac{y_2}{y_1}=-(2x+1)\\mathrm{e}^{-x}\\neq\\text{常数}$$\n\n$y_1=\\mathrm{e}^{x}$ 与 $y_2=-(2x+1)$ 线性无关。由二阶齐次线性方程解的结构定理：\n\n$$y=k_1\\mathrm{e}^{x}+k_2(2x+1)\\qquad(k_1,k_2\\text{ 为任意常数})$$\n\n**结论**：$u(x)=-(2x+1)\\mathrm{e}^{-x}$；通解 $y=k_1\\mathrm{e}^{x}+k_2(2x+1)$（$k_1,k_2$ 为任意常数）。\n\n> [!warning] 易错点\n> - **分离变量积分漏系数**：$\\int\\frac{2}{2x-1}\\mathrm{d}x=\\ln|2x-1|$，因为 $\\mathrm{d}(2x-1)=2\\mathrm{d}x$，不要再乘 $2$，也不要漏掉 $\\frac{1}{2}$。\n> - **硬套刘维尔公式**：首项系数含 $2x-1$，需先化为标准形，$P(x)$ 的符号极易搞反；直接代 $y_2=uy_1$ 降阶更稳。\n> - **通解漏写任意常数**：最后必须注明「$k_1,k_2$ 为任意常数」。",
+      "attempts": [
+        {
+          "date": "2026-10-23",
+          "grade": "cannot"
+        }
+      ],
+      "review_state": "未复习"
     }
   },
   "coverage": {}
