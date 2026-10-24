@@ -1923,14 +1923,19 @@
         {
           "date": "2026-10-23",
           "grade": "half"
+        },
+        {
+          "date": "2026-10-24",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "cause": {
         "label": "概念/定理错误",
         "step": "极坐标转换时把水平边界 $y=1$ 的极径上限误写成 $\\sec\\theta$，应为 $\\csc\\theta$；同时把奇函数项「奇零」与偶函数项「偶倍」的因果表述糅在一起。",
         "advice": "竖直线 $x=a\\Rightarrow r=a\\sec\\theta$，水平线 $y=b\\Rightarrow r=b\\csc\\theta$。若积分区间含 $\\theta=\\frac{\\pi}{2}$，结果中不应出现 $\\sec\\theta$ 或 $\\tan\\theta$；代入上限无意义就是限写反的信号。"
-      }
+      },
+      "review_updated": "2026-10-24"
     },
     "zt-2016-数二-解答19": {
       "id": "zt-2016-数二-解答19",
@@ -1945,6 +1950,10 @@
         {
           "date": "2026-10-23",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-10-24",
+          "grade": "half"
         }
       ],
       "review_state": "未复习"
@@ -1984,6 +1993,10 @@
         {
           "date": "2026-10-23",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-10-24",
+          "grade": "half"
         }
       ],
       "review_state": "未复习"
