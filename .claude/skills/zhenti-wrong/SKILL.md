@@ -68,6 +68,7 @@ sed -n '949,990p' 真题/2010-2019考研数学二真题/full.md      # 再按特
    - 用户给**截图 / 手写照片**时，转写文本必须**逐字回读给用户确认**后再落库：视觉转写会认错符号（`\alpha`/`a`、下标、根号范围、上下限），转录错等于题干错。宁可让用户纠正，也不要「看起来对」就写进去。
    - 定 `module`：先跑 `--modules` 看合法值，模块清单**从外部笔记体系推导**，不要凭印象写。
    - 提**外部链接候选**给用户确认（链到 `external-notes/` 里的相关笔记/错题），确认后才写入 `links`。
+   - **配图判据**：题干或解法依赖几何直观时（平面区域、旋转体、相关变化率、单调性与零点分布、曲线围成面积），**主动**画示意图写进解析，不等用户开口：存 `workspace/wrong-book/images/zt-{坐标}-{主题}示意图.png`，以 `![[workspace/wrong-book/images/…]]` 嵌在 `solution` 开头（写事实源，不手改产物）。矩阵、行列式、线性方程组、纯代数题不强行画图。
 2. **记一次结果**（P2 结果）：
    ```
    python3 scripts/zhenti_wrong_book.py --record zt-2021-数二-解答3=半会
@@ -117,4 +118,5 @@ python3 scripts/zhenti_wrong_book.py --list      # 列出全部真题及状态
 - 产物 frontmatter 与结构遵循 `.claude/rules/common/obsidian-content.md`；`type: 错题本`，`tags` 含 `考研数学`/`真题`/`错题本`。
 - 公式定界符：Obsidian 只渲染 `$...$`（行内）与 `$$...$$`（独立）；`\(...\)` / `\[...\]` 会以原文裸露。渲染层用 `lib880.normalize_math_delimiters` 归一，写入前 `validate_text` 拒绝坏内容；补写题干/解析时直接用 `$...$`。
 - 题目原图以**裸名**嵌入：`![[zt-2021-数二-解答3.png]]`，图片放 `workspace/wrong-book/images/`；题内插图可从 `真题/.../images/<sha>.jpg` **复制**过来并按 `zt-{坐标}.png` 改名（只读源不改动）。
+- 配图出图后先整图看布局，再逐处检查标注是否压字/压线/压坐标轴；重叠就重画，确认后重跑生成器，不手改产物。
 - 改格式时：先改规则文件，再改 `scripts/zhenti_wrong_book.py`，重建后 `python3 scripts/lint_content.py` 到全绿。

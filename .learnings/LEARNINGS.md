@@ -37,27 +37,6 @@ _最后更新：2026-10-23_
 
 ---
 
-## 2026-10-23
-
-### 真题/错题：需要图形理解就主动画图，并写进解析
-
-**类别**：best_practice
-**优先级**：high
-**状态**：pending
-**范围**：`zhenti-wrong` / `880-wrongbook` / 配图
-
-**摘要**：用户明确要求「这些错题需要画图理解的就给我画图」——凡题干/解法依赖空间或几何直观的题，收录时**主动**出示意图嵌进解析，不等用户再提；纯代数/矩阵/方程题不强行画图。
-
-**详情**：
-- 事实：2026-10-23 收录 2016 数二一批题时，为「相关变化率（填空13）」「极坐标区域（解答18）」「旋转体区域（解答20）」各画了一张示意图。用户随后说「自我学习，记住这个习惯」。
-- 根因：区域形状、旋转体的内外边界、动点几何关系这类信息，纯文字解析要在脑子里重建，错题本的价值打折；图能一眼锁定「哪个是外边界、积分限从哪到哪」。
-- 下次做法：
-  - **判据**：题目涉及平面区域 / 旋转体 / 相关变化率 / 单调性与零点分布 / 曲线围成的面积时出图；矩阵、行列式、线性方程组、纯代数恒等变形不出图。
-  - **落点**：PNG 存 `workspace/wrong-book/images/zt-{坐标}-{主题}示意图.png`，以 `![[workspace/wrong-book/images/...]]` 写进事实源 `solution` 的开头（真题在 `zhenti-problems.json`，880 在 `question-index.json`），再重跑生成器；不手改产物。
-  - **验收**：出图后先读回整图看布局，再检查标注是否压字/压线/压坐标轴；发现重叠就调位置重画，别把「缩略图看着还行」当通过。
-
----
-
 ## 历史记录
 
 旧记录已归档至 `.learnings/archive/`：`LEARNINGS-2026-08-11-pre-digest.md`、`LEARNINGS-2026-08-12-pre-compress.md`、`LEARNINGS-2026-09-13-pre-compress.md`（2026-09-03 / 09-09 / 09-11 / 09-13）、`LEARNINGS-2026-09-15-pre-compress.md`、`LEARNINGS-2026-09-15-pre-digest.md`（两条 best_practice 内核已进 RULES）；`880-wrongbook` 公式渲染防线 3 条（2026-09-12 / 09-13）见 `.learnings/archive/2026-09-13-maintenance.md`；09-24 归档的两条（用户供稿先验算、公共前缀/后缀定位，内核均已进 RULES）见 `.learnings/archive/2026-09-24-maintenance.md`。
@@ -65,3 +44,5 @@ _最后更新：2026-10-23_
 2026-10-11 的三条 best_practice（**Obsidian 渲染层事实**、**渲染验证三件套**、**归一化覆盖同族输出点**）内核均已进 `RULES.md`（「公式定界符只认 Obsidian 原生两种」「callout 内的独立公式也算独立块」「渲染判定用 oracle，不用截图反推」「归一化要覆盖同族全部输出点」），归档至 `.learnings/archive/2026-10-11-maintenance.md`。
 
 2026-10-19 归档 2026-10-17 的三条流程类记录（索引主键字段、列表项公式、覆盖层重刷），见 `.learnings/archive/2026-10-19-maintenance.md`。其中「索引主键字段」原记录把高数索引写成 `qid`，核实后**两科索引实际都用 `id`**，已纠正 `RULES.md` 并新增 `tests/test_core.py::FactSourceKeyFieldTest` 锁死契约。保留两条数学知识缺口（数列极限根式差、二次型正交变换）。
+
+2026-10-23 的「需要图形理解就主动画图」已落到 `.claude/skills/zhenti-wrong/SKILL.md` 的收录步骤与内容规范，并在 `RULES.md` 保留铁律，归档至 `.learnings/archive/2026-10-23-maintenance.md`。
