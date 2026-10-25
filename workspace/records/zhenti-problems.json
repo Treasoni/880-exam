@@ -131,6 +131,10 @@
         {
           "date": "2026-09-24",
           "grade": "correct"
+        },
+        {
+          "date": "2026-10-25",
+          "grade": "half"
         }
       ],
       "review_state": "已重做",
@@ -178,6 +182,10 @@
         },
         {
           "date": "2026-09-24",
+          "grade": "correct"
+        },
+        {
+          "date": "2026-10-25",
           "grade": "correct"
         }
       ],
@@ -1707,9 +1715,14 @@
         {
           "date": "2026-10-20",
           "grade": "careless"
+        },
+        {
+          "date": "2026-10-25",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习"
+      "review_state": "已重做",
+      "review_updated": "2026-10-25"
     },
     "zt-2015-数二-解答18": {
       "id": "zt-2015-数二-解答18",
@@ -1899,6 +1912,10 @@
         {
           "date": "2026-10-23",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-10-25",
+          "grade": "wrong"
         }
       ],
       "review_state": "未复习"
@@ -1916,9 +1933,14 @@
         {
           "date": "2026-10-23",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-10-25",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习"
+      "review_state": "已重做",
+      "review_updated": "2026-10-25"
     },
     "zt-2016-数二-解答18": {
       "id": "zt-2016-数二-解答18",
@@ -1981,14 +2003,19 @@
         {
           "date": "2026-10-23",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-10-25",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "cause": {
         "label": "概念/定理错误",
         "step": "体积换元时未同步调整上下限且漏掉 $\\mathrm{d}x$ 的负号；表面积漏算外侧半球面 $S_1=2\\pi$，参数方程侧面积把 $y(t)$ 提到积分号外、积分限仍用 $x$ 的范围 $[0,1]$，弧微分中 $[x'(t)]^2+[y'(t)]^2$ 的幂次写错。",
         "advice": "换元三同步：变量、微分、上下限。体积「大减小」，表面积「外加内」，两曲线端点闭合时 $S=S_1+S_2$。参数方程先算 $x'^2+y'^2$ 再开方；星形线 $x=a\\cos^3t,y=a\\sin^3t$ 的 $\\mathrm{d}s=3a|\\sin t\\cos t|\\mathrm{d}t$。"
-      }
+      },
+      "review_updated": "2026-10-25"
     },
     "zt-2016-数二-解答21": {
       "id": "zt-2016-数二-解答21",
