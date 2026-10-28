@@ -2136,6 +2136,40 @@
           "note": "同一条判据：特征值全相同时靠 $r(\\lambda_{0}E-X)$ 区分相似与否。该条是四选一的「找相似者」，本题是「逐个判是否与对角阵相似」，本质都是算重根处的秩；两题都不能只看特征多项式。"
         }
       ]
+    },
+    "zt-2017-数二-填空14": {
+      "id": "zt-2017-数二-填空14",
+      "module": "第五章：矩阵相似理论",
+      "year": 2017,
+      "paper": "数二",
+      "no": "填空14",
+      "stem": "设矩阵 $A=\\begin{pmatrix}4&1&-2\\\\1&2&a\\\\3&1&-1\\end{pmatrix}$ 的一个特征向量为 $\\begin{pmatrix}1\\\\1\\\\2\\end{pmatrix}$，则 $a=$ ______。",
+      "answer": "$a=-1$",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：特征值与特征向量的定义、矩阵左乘列向量的「按行取内积」算法。\n> **总体思路与切入点**：题干已给出**具体的**特征向量 $\\alpha$，直接回归定义式 $A\\alpha=\\lambda\\alpha$，**绝不展开** $|\\lambda E-A|=0$。$a$ 只出现在第 $2$ 行，先用不含参数的第 $1$（和第 $3$）行口算出 $\\lambda$，再回代第 $2$ 行解出 $a$。全程两次内积，15 秒内可完成。\n\n---\n\n**第一阶段：写出定义式**\n\n设 $\\alpha=\\begin{pmatrix}1\\\\1\\\\2\\end{pmatrix}$ 对应的特征值为 $\\lambda$，由定义必有\n\n$$A\\alpha=\\lambda\\alpha=\\begin{pmatrix}\\lambda\\\\\\lambda\\\\2\\lambda\\end{pmatrix}$$\n\n注意右端第 $3$ 个分量是 $2\\lambda$——$\\alpha$ 的第 $3$ 个分量是 $2$，不是 $1$。\n\n**第二阶段：用不含参数的行锁定 $\\lambda$**\n\n矩阵左乘列向量时，乘积的第 $i$ 个分量就是 $A$ 的第 $i$ 行与 $\\alpha$ 的内积。第 $1$ 行不含 $a$：\n\n$$4\\times1+1\\times1+(-2)\\times2=4+1-4=1\\ \\Longrightarrow\\ \\lambda=1$$\n\n用第 $3$ 行独立验算（同样不含 $a$）：\n\n$$3\\times1+1\\times1+(-1)\\times2=3+1-2=2=2\\lambda\\ \\Longrightarrow\\ \\lambda=1$$\n\n两处吻合，确认 $\\lambda=1$。\n\n**第三阶段：回代含参数的第 $2$ 行求 $a$**\n\n右端第 $2$ 个分量是 $\\lambda\\cdot1=\\lambda$：\n\n$$1\\times1+2\\times1+a\\times2=\\lambda$$\n\n代入 $\\lambda=1$：\n\n$$3+2a=1\\ \\Longrightarrow\\ 2a=-2\\ \\Longrightarrow\\ a=-1$$\n\n> [!success] 回代验算\n> $a=-1$ 时\n> $$A\\alpha=\\begin{pmatrix}4&1&-2\\\\1&2&-1\\\\3&1&-1\\end{pmatrix}\\begin{pmatrix}1\\\\1\\\\2\\end{pmatrix}=\\begin{pmatrix}4+1-4\\\\1+2-2\\\\3+1-2\\end{pmatrix}=\\begin{pmatrix}1\\\\1\\\\2\\end{pmatrix}=\\alpha$$\n> 确实满足 $A\\alpha=1\\cdot\\alpha$，答案 $a=-1$ 自洽。\n\n> [!warning] 易错点\n> - **盲目展开特征多项式 $|\\lambda E-A|=0$**：这是考场时间杀手。含参的三阶行列式展开后是一个含 $a$ 的三次方程，根本无法直接解出 $a$。**凡是题干给出了具体的特征向量，几乎都该直接用定义式 $A\\alpha=\\lambda\\alpha$ 转成线性方程组。**\n> - **右端漏乘分量系数**：列第 $3$ 行方程时，右端是 $\\lambda\\alpha$ 的第 $3$ 个分量，即 $2\\lambda$。若只看第 $3$ 行却把右端写成 $\\lambda$，就会算出 $\\lambda=2$，进而把 $a$ 算错。**列方程前先把 $\\lambda\\alpha$ 的完整向量写出来。**\n> - **只用一行就下结论**：第 $1$、$3$ 行是两条独立信息，两行都算一遍是近乎零成本的验算，能当场发现内积算错。",
+      "attempts": [
+        {
+          "date": "2026-10-28",
+          "grade": "correct"
+        }
+      ],
+      "review_state": "未复习",
+      "review_updated": "2026-10-28",
+      "links": [
+        {
+          "path": "external-notes/线性代数/第五章：矩阵相似理论/错题本",
+          "anchor": "错题06：伴随矩阵特征值与参数求解",
+          "label": "错题06：伴随矩阵特征值与参数求解",
+          "confidence": "high",
+          "note": "同一条套路：**已知具体特征向量 → 直接写 $A\\alpha=\\lambda\\alpha$ 转成线性方程组 → 消元求参数**。该条把 $A^{*}$ 的问题先转成 $A$ 的问题再走同一套定义式，本题是同一套的直接版；两题都明确反对硬算行列式。"
+        },
+        {
+          "path": "external-notes/线性代数/第五章：矩阵相似理论/错题本",
+          "anchor": "错题50：实对称矩阵正交对角化与给定第1列反求参数",
+          "label": "错题50：实对称矩阵正交对角化与给定第1列反求参数",
+          "confidence": "medium",
+          "note": "同为「给定一个特征向量反求矩阵里的参数」：该条是正交矩阵的第 $1$ 列 $q_{1}$（含单位化因子），要先去掉 $\\frac{1}{\\sqrt6}$ 再代 $Aq_{1}=\\lambda_{1}q_{1}$；本题给的是未单位化的 $\\alpha$，可直接代。差别只在是否先剥掉标量倍，核心都是定义式。"
+        }
+      ]
     }
   },
   "coverage": {}
