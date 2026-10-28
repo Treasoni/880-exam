@@ -201,7 +201,7 @@
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
-                      "conversationId": "conv-1792480958321-y5qm1x3zp"
+                      "conversationId": "conv-1793155437358-ak72y5t51"
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
@@ -212,7 +212,7 @@
                       "conversationId": "conv-1793149466192-m084d8zll"
                     }
                   ],
-                  "activeTabId": "tab-1790061594608-a0amw1a"
+                  "activeTabId": "tab-1789908968076-9htz0xx"
                 }
               },
               "icon": "bot",
@@ -250,6 +250,7 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/错题复习-09.workflow.md",
     "workspace/papers/paper-06/判分卡-06.md",
     "workspace/wrong-book/真题错题本.md",
     "workspace/workflow-runs/真题收录-2017数二解答19.workflow.md",
@@ -280,7 +281,6 @@
     "workspace/workflow-runs/真题收录-2015数二选择8.workflow.md",
     "workspace/workflow-runs/真题收录-2015数二选择2.workflow.md",
     "workspace/workflow-runs/错题复习-05.workflow.md",
-    "workspace/workflow-runs/错题复习-04.workflow.md",
     "workspace/workflow-runs/真题错题复习-08.workflow.md.rSyGtu",
     "workspace/workflow-runs/真题收录-2014数二解答18.workflow.md.veFvpn",
     "workspace/workflow-runs/真题收录-2014数二选择8-补解析.workflow.md.oZm7PY",
