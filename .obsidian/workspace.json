@@ -235,7 +235,7 @@
                 "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "2010"
+                "searchQuery": "2011"
               },
               "icon": "lucide-list",
               "title": "大纲"
@@ -280,7 +280,7 @@
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
-                      "conversationId": "conv-1792808670991-ox41ayjoq"
+                      "conversationId": "conv-1793149466192-m084d8zll"
                     }
                   ],
                   "activeTabId": "tab-1790218000549-4kkqcsg"
@@ -321,6 +321,7 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题收录-2017数二选择2.workflow.md",
     "workspace/wrong-book/images/zt-2016-数二-解答21-单调性与零点示意图.png",
     "workspace/wrong-book/images/zt-2016-数二-解答20-旋转体区域示意图.png",
     "workspace/wrong-book/images/zt-2016-数二-解答18-区域与极坐标示意图.png",
@@ -361,7 +362,6 @@
     "workspace/tmp-verify-lp-q4b.png",
     "workspace/tmp-verify-lp-q4.png",
     "workspace/tmp-verify-lp-sel.png",
-    "workspace/tmp-verify-lp-top.png",
     "workspace/records/text-overrides.json",
     "workspace/papers/la-paper-05",
     "workspace/papers/paper-06",
