@@ -4,9 +4,12 @@
 
 ---
 
-_最后更新：2026-10-23_
+_最后更新：2026-10-28_
 
 ## 880 产物格式
+
+- **真题弱点可作拼卷的只读投影，但不进 880 事实源**：`make_paper.py --weakness-source zhenti` 读 `zhenti-problems.json` 现算弱点分（`lib880.zhenti_chapter_weakness`），**禁止**把真题 attempt 写进 `attempts.json`（会污染 `grade_boost` 与进度分母，ADR 0006）。真题模块名 → 880 章节号必须走 `lib880.ZHENTI_MODULE_CHAPTERS` 白名单显式映射，**不能按名字里的数字猜**（「第四章：向量与方程组」对应 880 第 9 章）；未映射模块直接报错，另一科目的模块按分科过滤跳过。回归测试 `test_zhenti_weakness_maps_modules_to_880_chapters` / `test_zhenti_weakness_rejects_unmapped_module`。
+- **配额下限防饥饿**：`effective_quota` 给基础配额非零的章节保底 1 题。0 题意味着拿不到新判分记录 → `min_attempts` 永远达不到 → 弱点分算不出来 → 一路饿死（paper-06 的第 6 章 0/0/0，题池实有 76 题）。新校验判据要喂负样本：关掉下限时第 4、5 章确实被压到 0 题。
 
 - **答案卷补充同步错题本源**：对已在错题本中的题目补充解析时，不能只改答案卷；同步更新错题本事实源（如 `workspace/question-index.json` 或 `workspace/records/*.json`）并重跑 `python3 scripts/wrong_book.py`，最后核验错题本对应条目。
 

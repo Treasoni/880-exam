@@ -84,6 +84,58 @@ class Lib880Test(unittest.TestCase):
         attempts["attempts"].append({"qid": "q-2", "grade": "correct", "when": "2026-08-04"})
         self.assertEqual(lib880.chapter_weakness(schema, index, attempts, date(2026, 8, 4)), {1: 0.5})
 
+    def test_zhenti_weakness_maps_modules_to_880_chapters(self):
+        """真题弱点按显式映射折算到 880 章节号，并在本科目内过滤另一科目的模块。
+
+        真题模块名与 880 章节号是两套编号（「第四章：向量与方程组」对应 880 第 9 章），
+        按名字猜序号会静默算到别的章节上——这里锁死映射，同时验证高数卷不会把线代
+        模块当成「映射错章」而报错。
+        """
+        schema = copy.deepcopy(self.schema)
+        # min_attempts=2：每章至少两条判分记录才参与（与 880 侧同口径）
+        problems = {
+            "problems": {
+                "zt-a": {"module": "微分方程",
+                         "attempts": [{"date": "2026-08-04", "grade": "cannot"},
+                                      {"date": "2026-08-04", "grade": "cannot"}]},
+                "zt-b": {"module": "二重积分",
+                         "attempts": [{"date": "2026-08-04", "grade": "correct"},
+                                      {"date": "2026-08-04", "grade": "correct"}]},
+                "zt-la": {"module": "第六章：二次型",
+                          "attempts": [{"date": "2026-08-04", "grade": "cannot"},
+                                       {"date": "2026-08-04", "grade": "cannot"}]},
+            }
+        }
+        scores = lib880.zhenti_chapter_weakness(
+            schema, problems, lib880.SUBJECT_HIGH_MATH, date(2026, 8, 4))
+        # 微分方程 → 第 6 章（不会=1.0）；二重积分 → 第 5 章（对=0.0）；线代模块被滤掉
+        self.assertEqual(scores, {5: 0.0, 6: 1.0})
+
+    def test_zhenti_weakness_rejects_unmapped_module(self):
+        """未映射的模块必须报错，不能静默归零——否则弱点分看着正常却漏掉整块章节。"""
+        problems = {"problems": {"zt-x": {"module": "不存在的模块", "attempts": []}}}
+        with self.assertRaises(ValueError) as raised:
+            lib880.zhenti_chapter_weakness(
+                copy.deepcopy(self.schema), problems, lib880.SUBJECT_HIGH_MATH, date(2026, 8, 4))
+        self.assertIn("未映射", str(raised.exception))
+
+    def test_quota_floor_keeps_a_chapter_from_starving(self):
+        """最弱章不能被压到 0 题：0 题拿不到判分记录，弱点分会永远算不出来。"""
+        base = self.schema["paper"]["quota"]
+        # 构造极端弱点：第 6 章弱到顶点、其余持平，且 1/6 章都给了基础配额
+        weakness = {ch: 0.1 for ch in base}
+        weakness[6] = 1.0
+        quota = make_paper.effective_quota(self.schema, weakness)
+        self.assertEqual(sum(q["choice"] for q in quota.values()), 10)
+        self.assertEqual(sum(q["fill"] for q in quota.values()), 6)
+        self.assertEqual(sum(q["solution"] for q in quota.values()), 6)
+        for ch, counts in base.items():
+            for type_key, count in counts.items():
+                if count > 0:
+                    self.assertGreaterEqual(
+                        quota[ch][type_key], 1,
+                        f"第{ch}章 {type_key} 基础配额 {count} 却被压到 0 题（会饿死）")
+
     def test_latest_attempt_uses_recorded_time_not_file_order(self):
         attempts = {
             "attempts": [

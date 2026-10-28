@@ -7,6 +7,7 @@
   python3 scripts/make_paper.py --subject linear-algebra  # 拼线代独立卷
   python3 scripts/make_paper.py --ignore-extension  # 不使用拓展题
   python3 scripts/make_paper.py --no-weakness       # 忽略弱点浮动
+  python3 scripts/make_paper.py --weakness-source zhenti   # 按真题错题弱点拼卷（只读投影）
   python3 scripts/make_paper.py --rebuild-answers all   # 只按事实源重刷答案卷（不动判分卡/卷子）
   # Windows 请把 python3 换成 py -3（如 py -3 scripts/make_paper.py）
 """
@@ -73,10 +74,15 @@ def allocate(weights, target):
     return alloc
 
 
-def effective_quota(schema, weakness):
+def effective_quota(schema, weakness, keep_floor=True):
     """补弱配额浮动：返回 {chapter_no: {type: count}}，合计保持 10/6/6。
 
     弱点高于均值的章节上浮、低于的让题，最大偏差幅度=cap（默认 2 题）。
+
+    ``keep_floor``：基础配额里给了题的章节，浮动后至少保留 1 题。没有这条下限，
+    最弱的一章可能被连续几卷压到 0 题——而「0 题」意味着永远拿不到新的判分记录，
+    弱点分也就永远算不出来（``min_attempts`` 达不到），于是一路饿死、再也回不到
+    卷面上。第六道微分方程的题池明明有 76 题，paper-06 的配额却是 0/0/0。
     """
     base = schema["paper"]["quota"]
     strength = schema["sampling"]["quota_float_strength"]
@@ -90,15 +96,39 @@ def effective_quota(schema, weakness):
     m = max(abs(v) for v in raw_dev.values()) or 0.0
     dev = {ch: raw_dev[ch] * (cap / m) if m else 0.0 for ch in chapters}
 
+    def lower_bound(base_count):
+        floored = 1 if (keep_floor and base_count > 0) else 0
+        return max(floored, base_count - cap)
+
     for type_key, spec in schema["paper"]["sections"].items():
         target = spec["count"]
         frac = {ch: base[ch].get(type_key, 0) + dev[ch] for ch in chapters}
-        lo = {ch: max(0, base[ch].get(type_key, 0) - cap) for ch in chapters}
+        lo = {ch: lower_bound(base[ch].get(type_key, 0)) for ch in chapters}
         hi = {ch: base[ch].get(type_key, 0) + cap for ch in chapters}
         alloc = _round_to_target(frac, target, lo, hi)
+        # 下限之和超过题量时（题量少于章节数）保总量优先，下限不强制
+        if sum(alloc.values()) != target:
+            lo = {ch: max(0, base[ch].get(type_key, 0) - cap) for ch in chapters}
+            alloc = _round_to_target(frac, target, lo, hi)
         for ch in chapters:
             out[ch][type_key] = alloc[ch]
     return out
+
+
+def weakness_scores(schema, index, attempts, subject, source="880", zhenti_doc=None, now=None):
+    """按来源取章节弱点分：``880`` 读判分记录，``zhenti`` 读真题错题事实源。
+
+    真题模式的只读旁路投影，不是把真题并进 ``attempts.json``——后者会污染
+    ``grade_boost`` / 进度总览分母，ADR 0006 已否掉。这里每次拼卷现算，事实源
+    仍然只有 ``zhenti-problems.json`` 一份。``subject`` 决定取哪一组真题模块映射
+    （高数只看高数模块），不要从 ``schema["subject_code"]`` 反查——那只是卷面代码。
+    """
+    if source == "880":
+        return lib880.chapter_weakness(schema, index, attempts, now)
+    if source == "zhenti":
+        doc = zhenti_doc if zhenti_doc is not None else lib880.load_zhenti_problems()
+        return lib880.zhenti_chapter_weakness(schema, doc, subject, now)
+    raise ValueError(f"未知弱点来源 {source!r}（可选：880 / zhenti）")
 
 
 def _round_to_target(frac, target, lo, hi):
@@ -537,6 +567,8 @@ def main():
     ap.add_argument("--seed", type=int, default=None)
     ap.add_argument("--ignore-extension", action="store_true")
     ap.add_argument("--no-weakness", action="store_true")
+    ap.add_argument("--weakness-source", choices=("880", "zhenti"), default="880",
+                    help="弱点来源：880（默认，读判分记录）或 zhenti（读真题错题，按模块→章节映射折算）")
     ap.add_argument("--replace-ungraded", action="store_true",
                     help="仅替换尚无判分记录的同编号卷子；防止意外覆盖学习记录")
     ap.add_argument("--rebuild", metavar="PAPER_ID", default=None,
@@ -631,7 +663,8 @@ def main():
         if len(existing_papers) != 1 or has_attempts:
             ap.error(f"卷子 {paper_id} 已有判分记录或记录异常，拒绝覆盖以保护学习数据")
 
-    weakness = {} if args.no_weakness else lib880.chapter_weakness(schema, index, attempts)
+    weakness = {} if args.no_weakness else weakness_scores(
+        schema, index, attempts, subject, args.weakness_source)
     quota = effective_quota(schema, weakness)
 
     # 上一张卷的题目，用于避免立即重复
@@ -693,6 +726,7 @@ def main():
             for i, q in enumerate(qs, start=1)
         ],
         "status": "created",
+        "weakness_source": args.weakness_source,
         "weakness_scores": weakness,
     }
     if existing_papers:

@@ -1735,6 +1735,168 @@
         "11": 0.3365033134406668,
         "12": 0.3599222960481437
       }
+    },
+    {
+      "paper_id": "paper-07",
+      "subject_key": "high-math",
+      "subject_code": "gs",
+      "subject": "高数",
+      "date": "2026-10-28",
+      "duration_minutes": 180,
+      "quota_used": {
+        "1": {
+          "choice": 3,
+          "fill": 1,
+          "solution": 1
+        },
+        "2": {
+          "choice": 1,
+          "fill": 1,
+          "solution": 1
+        },
+        "3": {
+          "choice": 1,
+          "fill": 1,
+          "solution": 1
+        },
+        "4": {
+          "choice": 1,
+          "fill": 1,
+          "solution": 1
+        },
+        "5": {
+          "choice": 1,
+          "fill": 1,
+          "solution": 1
+        },
+        "6": {
+          "choice": 3,
+          "fill": 1,
+          "solution": 1
+        }
+      },
+      "questions": [
+        {
+          "qid": "gs-c02-comprehensive-choice-020",
+          "section": "choice",
+          "paper_no": "一1"
+        },
+        {
+          "qid": "gs-c06-comprehensive-choice-002",
+          "section": "choice",
+          "paper_no": "一2"
+        },
+        {
+          "qid": "gs-c01-comprehensive-choice-005",
+          "section": "choice",
+          "paper_no": "一3"
+        },
+        {
+          "qid": "gs-c01-basic-choice-009",
+          "section": "choice",
+          "paper_no": "一4"
+        },
+        {
+          "qid": "gs-c03-comprehensive-choice-015",
+          "section": "choice",
+          "paper_no": "一5"
+        },
+        {
+          "qid": "gs-c06-basic-choice-005",
+          "section": "choice",
+          "paper_no": "一6"
+        },
+        {
+          "qid": "gs-c04-comprehensive-choice-008",
+          "section": "choice",
+          "paper_no": "一7"
+        },
+        {
+          "qid": "gs-c06-comprehensive-choice-007",
+          "section": "choice",
+          "paper_no": "一8"
+        },
+        {
+          "qid": "gs-c05-comprehensive-choice-001",
+          "section": "choice",
+          "paper_no": "一9"
+        },
+        {
+          "qid": "gs-c01-comprehensive-choice-015",
+          "section": "choice",
+          "paper_no": "一10"
+        },
+        {
+          "qid": "gs-c01-comprehensive-fill-001",
+          "section": "fill",
+          "paper_no": "二1"
+        },
+        {
+          "qid": "gs-c06-comprehensive-fill-008",
+          "section": "fill",
+          "paper_no": "二2"
+        },
+        {
+          "qid": "gs-c05-comprehensive-fill-005",
+          "section": "fill",
+          "paper_no": "二3"
+        },
+        {
+          "qid": "gs-c02-comprehensive-fill-012",
+          "section": "fill",
+          "paper_no": "二4"
+        },
+        {
+          "qid": "gs-c03-comprehensive-fill-003",
+          "section": "fill",
+          "paper_no": "二5"
+        },
+        {
+          "qid": "gs-c04-comprehensive-fill-003",
+          "section": "fill",
+          "paper_no": "二6"
+        },
+        {
+          "qid": "gs-c06-comprehensive-solution-024",
+          "section": "solution",
+          "paper_no": "三1"
+        },
+        {
+          "qid": "gs-c05-comprehensive-solution-015",
+          "section": "solution",
+          "paper_no": "三2"
+        },
+        {
+          "qid": "gs-c03-comprehensive-solution-040",
+          "section": "solution",
+          "paper_no": "三3"
+        },
+        {
+          "qid": "gs-c02-comprehensive-solution-001",
+          "section": "solution",
+          "paper_no": "三4"
+        },
+        {
+          "qid": "gs-c04-comprehensive-solution-013",
+          "section": "solution",
+          "paper_no": "三5"
+        },
+        {
+          "qid": "gs-c01-comprehensive-solution-007",
+          "section": "solution",
+          "paper_no": "三6"
+        }
+      ],
+      "status": "created",
+      "weakness_source": "zhenti",
+      "weakness_scores": {
+        "1": 0.3383872403274368,
+        "2": 0.2315162480297727,
+        "3": 0.2934397297453523,
+        "4": 0.28193017541964865,
+        "5": 0.2566095767975629,
+        "6": 0.3814652154292991
+      }
     }
   ]
 }

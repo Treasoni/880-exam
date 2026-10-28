@@ -11,14 +11,15 @@ description: 拼一张 880 高数模拟卷（真题模式：选10×5分+填6×5�
 
 1. 运行：
    ```
-   python3 scripts/make_paper.py [--seed N] [--ignore-extension] [--no-weakness]
+   python3 scripts/make_paper.py [--seed N] [--ignore-extension] [--no-weakness] [--weakness-source 880|zhenti]
    ```
    - 默认自动取下一卷号；`--seed` 可复现同一张卷；`--ignore-extension` 不用拓展题；`--no-weakness` 忽略弱点浮动。
    - Windows 把 `python3` 换成 `py -3`（或 `make paper PYTHON='py -3'`）。
+   - `--weakness-source zhenti`：按**真题错题**的弱点拼卷（用户说「根据真题薄弱点出卷」时用）。只读 `workspace/records/zhenti-problems.json`，按 `lib880.ZHENTI_MODULE_CHAPTERS` 映射到 880 章节号，公式与 880 侧同口径；不写 `attempts.json`、不进进度总览（ADR 0006 修订）。默认 `880`。
 2. 向用户报告：
    - 卷子目录（`workspace/papers/paper-XX/`）与三个文件：`卷子-XX.md`、`卷子-XX-答案.md`、`判分卡-XX.md`；
    - 卷子规格（选择/填空/解答数量）；
-   - 当前弱点章节排行（脚本会打印）。
+   - 当前弱点章节排行（脚本会打印），并说明弱点来源（880 判分记录 / 真题错题）。
 
 ## 提示用户
 

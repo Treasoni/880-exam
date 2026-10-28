@@ -32,12 +32,39 @@ ZHENTI_WRONG_BOOK_PATH = ROOT / "workspace/wrong-book/真题错题本.md"
 # None，全表零错误，检查静默空转。此处单一出处，渲染层与 lint 都引用它。
 ZHENTI_SOURCE_FIELDS = ("stem", "answer", "solution")
 
-
 # ``high-math`` is the historical/default workflow.  Keep its identifiers and
 # paths unchanged so adding the linear-algebra pool never moves or overwrites
 # an existing paper.  The aliases accept both CLI-friendly and Chinese input.
 SUBJECT_HIGH_MATH = "high-math"
 SUBJECT_LINEAR_ALGEBRA = "linear-algebra"
+
+# 真题模块 → 880 章节号，按科目分组。真题按外部笔记体系分模块（7 高数 + 6 线代），
+# 880 按章节配额拼卷，两套编号不同，必须显式映射：按模块名猜（如「微分方程」→第 6
+# 章）在个别名字上能蒙对，但「第四章：向量与方程组」这类模块连序号都对不上 880 的
+# 章节号，猜错会**静默**把弱点算到别的章节上，产出一张「格式正确、方向错误」的卷子。
+# 分组是必须的：高数卷只能看高数模块，否则线代模块（章号 7–12）会被当成「映射错章」。
+# 未映射的模块一律报错（见 ``zhenti_chapter_weakness``），不静默归类。
+ZHENTI_MODULE_CHAPTERS = {
+    SUBJECT_HIGH_MATH: {
+        "高数-函数极限与连续": 1,
+        "高数-数列极限": 1,
+        "高数-一元微分学": 2,
+        "高数-一元函数积分学": 3,
+        "高数-多元函数微分学": 4,
+        "二重积分": 5,
+        "微分方程": 6,
+    },
+    SUBJECT_LINEAR_ALGEBRA: {
+        # 线代：模块序号 ≠ 880 章节号，逐条对照
+        "第一章：行列式": 7,
+        "第二章：矩阵": 8,
+        "第四章：向量与方程组": 9,   # 向量为主；方程组归第 10 章
+        "第三章：线性方程组": 10,
+        "第五章：矩阵相似理论": 11,
+        "第六章：二次型": 12,
+    },
+}
+
 _SUBJECT_ALIASES = {
     SUBJECT_HIGH_MATH: SUBJECT_HIGH_MATH,
     "high_math": SUBJECT_HIGH_MATH,
@@ -809,6 +836,15 @@ def save_attempts(data):
         json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def load_zhenti_problems():
+    """读真题错题事实源（只读）。文件缺失时返回空表，不抛错。"""
+    if not ZHENTI_PROBLEMS_PATH.exists():
+        return {"version": 1, "problems": {}, "coverage": {}}
+    doc = json.loads(ZHENTI_PROBLEMS_PATH.read_text(encoding="utf-8"))
+    doc.setdefault("problems", {})
+    return doc
+
+
 def load_papers():
     if not PAPERS_PATH.exists():
         return {"papers": []}
@@ -1061,6 +1097,77 @@ def chapter_weakness(schema, index, attempts, now=None):
         ch_accum[ch] = ch_accum.get(ch, 0.0) + gw * decay
         ch_count[ch] = ch_count.get(ch, 0) + decay
         ch_attempts[ch] = ch_attempts.get(ch, 0) + 1
+    scores = {}
+    min_attempts = schema["weakness"].get("min_attempts", 1)
+    for ch in sorted(ch_accum):
+        if ch_count[ch] <= 0 or ch_attempts[ch] < min_attempts:
+            continue
+        scores[ch] = ch_accum[ch] / ch_count[ch]
+    return scores
+
+
+def zhenti_chapter_weakness(schema, problems, subject=None, now=None):
+    """从真题错题事实源折算 {chapter_no: 弱点分}，与 ``chapter_weakness`` 同口径。
+
+    只读 ``workspace/records/zhenti-problems.json``：真题仍不进 ``attempts.json``
+    （ADR 0006）。本函数是拼卷时的**只读旁路投影**——把真题的 attempt 判分按
+    ``ZHENTI_MODULE_CHAPTERS`` 落到 880 章节号上，再用与 880 完全相同的
+    加权错误率公式（同一 ``grades[].weight``、同一 ``weakness.decay_half_life_days``）。
+    两边的判分态与衰减参数因此天然可比，不需要第二套口径。
+
+    取舍说明：
+    - 只计有 ``attempts`` 的题（真题的「未复习」不代表错，计进去会把没做过真题的
+      章节凭空抬高）。
+    - ``min_attempts`` 与 880 侧同口径：判分次数太少的章不参与，避免一条记录就把
+      整章配额拉偏。
+    - 只取本科目的模块：高数卷看到线代模块属于正常的分科过滤，直接跳过。
+    - 未映射的模块直接报错：沉默归零会让弱点分看起来正常、实际漏掉一整块章节。
+    - 返回的章节号只保留 ``schema`` 里真实存在的章，避免映射表写错时把配额分配到
+      一个不存在的章节上（``effective_quota`` 只遍历 schema 章节，多出来的会被忽略，
+      等于静默丢题）。
+    """
+    now = now or date.today()
+    key = normalize_subject(subject)
+    chapter_map = ZHENTI_MODULE_CHAPTERS.get(key)
+    if chapter_map is None:
+        raise ValueError(
+            f"科目 {key!r} 没有真题模块映射（lib880.ZHENTI_MODULE_CHAPTERS）；"
+            "没有真题数据源的科目不能按真题弱点拼卷"
+        )
+    grade_weight = {g["key"]: g["weight"] for g in schema["grades"]}
+    valid_chapters = {c["no"] for c in schema["chapters"]}
+    half_life = schema["weakness"]["decay_half_life_days"]
+    ch_accum = {}
+    ch_count = {}
+    ch_attempts = {}
+    for pid, problem in (problems.get("problems") or {}).items():
+        module = problem.get("module")
+        if module not in chapter_map:
+            # 另一科目的模块（高数卷看到线代模块）不是错误，直接跳过——
+            # 同「映射错章」不同：前者是正常的分科过滤，后者才是映射表缺陷。
+            if any(module in m for m in ZHENTI_MODULE_CHAPTERS.values()):
+                continue
+            raise ValueError(
+                f"真题 {pid} 的模块 {module!r} 未映射到 880 章节号；"
+                "请在 lib880.ZHENTI_MODULE_CHAPTERS 补一条，禁止静默归零"
+            )
+        chapter = chapter_map[module]
+        if chapter not in valid_chapters:
+            raise ValueError(
+                f"真题模块 {module!r} 映射到第 {chapter} 章，但该科目没有这一章"
+                f"（现有：{sorted(valid_chapters)}）；映射表与 schema 脱节"
+            )
+        for a in problem.get("attempts") or []:
+            try:
+                when = date.fromisoformat(a["date"])
+            except Exception:
+                continue
+            days = max(0.0, (now - when).days)
+            decay = _decay_factor(days, half_life)
+            gw = grade_weight.get(a.get("grade"), 0.5)
+            ch_accum[chapter] = ch_accum.get(chapter, 0.0) + gw * decay
+            ch_count[chapter] = ch_count.get(chapter, 0) + decay
+            ch_attempts[chapter] = ch_attempts.get(chapter, 0) + 1
     scores = {}
     min_attempts = schema["weakness"].get("min_attempts", 1)
     for ch in sorted(ch_accum):

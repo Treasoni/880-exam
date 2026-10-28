@@ -1,6 +1,9 @@
 # 真题体系独立于 880：独立事实源、独立产物、独立进度
 
-考研数学**真题**（数一/数二/数三）错题使用一套与 880 平行的系统：独立事实源 `workspace/records/zhenti-problems.json`，独立产物 `workspace/wrong-book/真题错题本.md`，由 `zhenti-exam` 工作流与 `zhenti-wrong` 技能承载。真题**不**并入 `workspace/preview/进度总览.md`，**不**参与 `make_paper.py` 的抽题配额与弱点分，**不**写 `attempts.json` / `papers.json`。两侧的路由触发词互斥：凡真题请求一律带「真题」限定（真题错题、真题重练、真题覆盖），裸词「错题本 / 看错题 / 重练 / 复习错题」仍归 `880-wrongbook`。
+考研数学**真题**（数一/数二/数三）错题使用一套与 880 平行的系统：独立事实源 `workspace/records/zhenti-problems.json`，独立产物 `workspace/wrong-book/真题错题本.md`，由 `zhenti-exam` 工作流与 `zhenti-wrong` 技能承载。真题**不**并入 `workspace/preview/进度总览.md`，**不**写 `attempts.json` / `papers.json`。两侧的路由触发词互斥：凡真题请求一律带「真题」限定（真题错题、真题重练、真题覆盖），裸词「错题本 / 看错题 / 重练 / 复习错题」仍归 `880-wrongbook`。
+
+> [!note] 2026-10-28 修订
+> 「真题不参与拼卷配额」在**事实源层**保持不变，但允许拼卷时**只读**真题事实源现算弱点分（`--weakness-source zhenti`，opt-in）。详见文末「修订」。默认行为不变。
 
 **Why**：880 与真题是两种**不同的题源**，混池会毁掉两边的判断。880 有解析册（ADR-0001）、有 618 题的索引、有按章节的配额与弱点分；真题没有解析册、没有索引、按年份与卷种组织，其「进度」的自然单位是**年份覆盖**（哪几年做过、哪几年复盘完），不是章节完成率。把真题塞进 `attempts.json` 有两个具体恶果：一是污染 `schema.yaml` 的 `grade_boost` / `quota_float_strength`，让拼卷抽题按真题的失分倾斜——而真题根本不在抽题池里，配额被一个不可抽的题源拖动；二是 `进度总览.md` 的章节完成率分母被外部题目撑大，失真且无法解释。反过来，真题错题按用户**已有的外部笔记体系**（`external-notes/考研数学`、`external-notes/线性代数`）归档才有用——用户复习时打开的是自己的笔记库，错题必须落在同一套模块名下，否则链接不起来。
 
@@ -10,3 +13,26 @@
 - **`external-notes/` 全库只读引用**。真题错题本只写 wikilink 指向外部库，不写入、不修改（ADR-0002 的延伸：外部库是用户手工精修的笔记，系统产物不回流）。跨库链接经 `external-notes/考研数学` symlink 接入 vault 才能解析。
 - **`SOURCE_FIELDS` 有两套，不能混用**。880 索引的题目正文字段叫 `text`，真题事实源叫 `stem`。字段表因此**单一出处**在 `lib880.py`（`ZHENTI_SOURCE_FIELDS`），渲染层与 `lint_content.py` 共用；`lint_zhenti_source()` 另带一道防空转护栏——某字段在全部记录里都不存在即判为字段表与 schema 脱节并报错，因为「拿 `text` 去取 `stem` 记录」会得到 None，全表零错误、检查静默空转而**看起来全绿**。
 - **两边都有硬约束**：真题侧不收 880/660/1000 题/课本例题；不做真题拼卷与套卷得分分析（那是 `880-paper` 的领域）；答案仍受 ADR-0001 约束——只存用户提供的真题解析，缺失标「（待补）」，禁止 AI 生成或推断。
+
+---
+
+## 修订（2026-10-28）：真题弱点可作为拼卷的**只读投影**，仍不进 880 事实源
+
+用户提出「根据真题薄弱点拼一张高数卷」。原判据「真题不参与 `make_paper.py` 的配额与弱点分」在**事实源层**依然成立，但需要区分两种做法：
+
+| 做法 | 判定 |
+| --- | --- |
+| 把真题 attempt 写进 `attempts.json` | **禁止**——污染 `grade_boost`、进度分母，ADR 原文的两个恶果都会重现 |
+| 拼卷时只读真题事实源、现算弱点分 | **允许**（opt-in） |
+
+落地为 `make_paper.py --weakness-source zhenti`：`lib880.zhenti_chapter_weakness()` 读 `zhenti-problems.json`，按 `lib880.ZHENTI_MODULE_CHAPTERS`（模块 → 880 章节号，**按科目分组**）折算成 `{chapter_no: 弱点分}`，公式与 880 侧完全一致（同一 `grades[].weight`、同一 `weakness.decay_half_life_days`、同一 `min_attempts`）。默认仍是 `--weakness-source 880`，不传参数时行为与之前逐字节相同。
+
+**为什么这是投影而不是合并**：
+
+- `zhenti-problems.json` 仍是唯一事实源，`attempts.json` / `papers.json` 的题目字段一个字节没变；真题卷子仍然不存在（真题不做拼卷）。
+- 弱点分只活在单次拼卷的内存里，落盘只在 `papers.json` 的 `weakness_scores` / `weakness_source` 两个快照字段——它们是**该卷的拼装参数记录**，不是新的学习事实。
+- 反向不成立：真题错题本、年份覆盖表**不读** 880 的任何数据，这个参数是单向的。
+
+**必须显式映射，不能猜**：真题模块名（`高数-一元微分学`、`第四章：向量与方程组`）与 880 章节号是两套编号，`第四章：向量与方程组` 实际对应 880 第 9 章。按名字里的数字猜会静默算到错误章节上，产出一张「格式正确、方向错误」的卷子。因此 `ZHENTI_MODULE_CHAPTERS` 是白名单，未映射模块**直接报错**；另一科目的模块（高数卷看到线代模块）视为正常分科过滤跳过。回归测试 `test_zhenti_weakness_maps_modules_to_880_chapters` / `test_zhenti_weakness_rejects_unmapped_module` 锁死这两条。
+
+**顺带修掉一个饥饿缺陷**：`effective_quota()` 加了配额下限——基础配额给了题的章节，浮动后至少保留 1 题。此前最弱的一章可能被连续几卷压到 0 题（paper-06 的第 6 章就是 0/0/0），而 0 题意味着永远拿不到新判分记录，`min_attempts` 达不到，弱点分永远算不出来，于是一路饿死。这道下限默认开启，`--no-weakness` 完全绕过浮动，不受影响。回归测试 `test_quota_floor_keeps_a_chapter_from_starving`（负样本：关掉下限时第 4、5 章确实被压到 0 题）。

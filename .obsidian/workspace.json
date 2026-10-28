@@ -250,6 +250,10 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/papers/paper-07/卷子-07.md",
+    "workspace/papers/paper-07/卷子-07-答案.md",
+    "workspace/papers/paper-07/判分卡-07.md",
+    "workspace/papers/paper-07",
     "workspace/workflow-runs/错题复习-09.workflow.md",
     "workspace/papers/paper-06/判分卡-06.md",
     "workspace/wrong-book/真题错题本.md",
@@ -278,9 +282,6 @@
     "workspace/workflow-runs/真题收录-2015数二解答20.workflow.md",
     "workspace/workflow-runs/真题收录-2015数二解答18.workflow.md",
     "workspace/workflow-runs/真题收录-2015数二解答15.workflow.md",
-    "workspace/workflow-runs/真题收录-2015数二选择8.workflow.md",
-    "workspace/workflow-runs/真题收录-2015数二选择2.workflow.md",
-    "workspace/workflow-runs/错题复习-05.workflow.md",
     "workspace/workflow-runs/真题错题复习-08.workflow.md.rSyGtu",
     "workspace/workflow-runs/真题收录-2014数二解答18.workflow.md.veFvpn",
     "workspace/workflow-runs/真题收录-2014数二选择8-补解析.workflow.md.oZm7PY",
@@ -294,7 +295,6 @@
     "workspace/records/text-overrides.json",
     "workspace/papers/la-paper-05",
     "workspace/papers/paper-06",
-    "workspace/workflow-runs/真题收录-2013数二解答20.workflow.md.2nz9VM",
-    "workspace/workflow-runs/真题收录-2013数二选择8.workflow.md.1H7owr"
+    "workspace/workflow-runs/真题收录-2013数二解答20.workflow.md.2nz9VM"
   ]
 }
