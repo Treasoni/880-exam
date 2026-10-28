@@ -2170,6 +2170,33 @@
           "note": "同为「给定一个特征向量反求矩阵里的参数」：该条是正交矩阵的第 $1$ 列 $q_{1}$（含单位化因子），要先去掉 $\\frac{1}{\\sqrt6}$ 再代 $Aq_{1}=\\lambda_{1}q_{1}$；本题给的是未单位化的 $\\alpha$，可直接代。差别只在是否先剥掉标量倍，核心都是定义式。"
         }
       ]
+    },
+    "zt-2017-数二-解答15": {
+      "id": "zt-2017-数二-解答15",
+      "module": "高数-函数极限与连续",
+      "year": 2017,
+      "paper": "数二",
+      "no": "解答15",
+      "stem": "求 $\\lim_{x\\to0^{+}}\\frac{\\int_{0}^{x}\\sqrt{x-t}\\,\\mathrm{e}^{t}\\,\\mathrm{d}t}{\\sqrt{x^{3}}}$。",
+      "answer": "$\\dfrac23$",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：含变限积分的 $\\frac00$ 型极限；被积函数中混入求导变量时的换元剥离；非零极限因子先行分离；洛必达法则 + 变限积分求导公式。\n> **总体思路与切入点**：分子 $\\int_{0}^{x}\\sqrt{x-t}\\,\\mathrm{e}^{t}\\,\\mathrm{d}t$ 里，$x$ 既出现在上限、又出现在被积函数内部（与 $t$ 耦合），**绝不能直接对 $x$ 用洛必达**——那样会把 $t=x$ 代进去得到 $\\sqrt{x-x}\\mathrm{e}^{x}=0$，得出荒谬的极限 $0$。必须先用换元 $u=x-t$ 把 $x$ 从被积函数的核心结构中剥离，剩下的 $\\mathrm{e}^{x}$ 作为因子提出，再做一次洛必达即可。\n\n---\n\n**第一阶段：换元剥离被积函数中的 $x$**\n\n令 $u=x-t$（此时 $x$ 视为常数，$t$ 为积分变量），则 $t=x-u$，$\\mathrm{d}t=-\\mathrm{d}u$。当 $t=0$ 时 $u=x$；当 $t=x$ 时 $u=0$。于是\n\n$$\\int_{0}^{x}\\sqrt{x-t}\\,\\mathrm{e}^{t}\\,\\mathrm{d}t=\\int_{x}^{0}\\sqrt{u}\\,\\mathrm{e}^{x-u}\\,(-\\mathrm{d}u)$$\n\n下限 $0\\to x$、上限 $x\\to 0$ 同时颠倒与 $\\mathrm{d}t=-\\mathrm{d}u$ 的负号抵消，得到\n\n$$=\\int_{0}^{x}\\sqrt{u}\\,\\mathrm{e}^{x}\\mathrm{e}^{-u}\\,\\mathrm{d}u=\\mathrm{e}^{x}\\int_{0}^{x}\\sqrt{u}\\,\\mathrm{e}^{-u}\\,\\mathrm{d}u$$\n\n这里 $\\mathrm{e}^{x}$ 与积分变量 $u$ 无关，可以提出积分号外——这一步是整个解法的分水岭。\n\n**第二阶段：非零因子先行分离**\n\n$$\\text{原式}=\\lim_{x\\to0^{+}}\\frac{\\mathrm{e}^{x}\\int_{0}^{x}\\sqrt{u}\\,\\mathrm{e}^{-u}\\,\\mathrm{d}u}{x^{\\frac32}}=\\left(\\lim_{x\\to0^{+}}\\mathrm{e}^{x}\\right)\\cdot\\lim_{x\\to0^{+}}\\frac{\\int_{0}^{x}\\sqrt{u}\\,\\mathrm{e}^{-u}\\,\\mathrm{d}u}{x^{\\frac32}}$$\n\n因 $\\lim_{x\\to0^{+}}\\mathrm{e}^{x}=1\\neq0$，乘积的极限可拆：\n\n$$=\\lim_{x\\to0^{+}}\\frac{\\int_{0}^{x}\\sqrt{u}\\,\\mathrm{e}^{-u}\\,\\mathrm{d}u}{x^{\\frac32}}$$\n\n> [!tip] 为什么必须先把 $\\mathrm{e}^{x}$ 拿掉\n> 非零因子先代入是求极限的铁律。若带着 $\\mathrm{e}^{x}$ 做乘积求导，分子会变成两项相加，零点附近还要额外判定每一项的阶，计算量与出错概率都会翻倍。\n\n**第三阶段：洛必达 + 变限积分求导**\n\n当 $x\\to0^{+}$ 时，分子 $\\int_{0}^{x}\\sqrt{u}\\mathrm{e}^{-u}\\mathrm{d}u\\to0$，分母 $x^{3/2}\\to0$，是标准 $\\frac00$ 型。分子分母分别求导：\n\n$$\\text{原式}=\\lim_{x\\to0^{+}}\\frac{\\left(\\int_{0}^{x}\\sqrt{u}\\,\\mathrm{e}^{-u}\\,\\mathrm{d}u\\right)'}{\\left(x^{\\frac32}\\right)'}=\\lim_{x\\to0^{+}}\\frac{\\sqrt{x}\\,\\mathrm{e}^{-x}}{\\frac32 x^{\\frac12}}$$\n\n分子 $\\sqrt{x}=x^{1/2}$ 与分母的 $x^{1/2}$ 约去：\n\n$$=\\lim_{x\\to0^{+}}\\frac{\\mathrm{e}^{-x}}{\\frac32}=\\frac{1}{\\frac32}=\\frac23$$\n\n> [!warning] 易错点\n> - **不换元直接对上限求导**：把 $\\left(\\int_{0}^{x}\\sqrt{x-t}\\mathrm{e}^{t}\\mathrm{d}t\\right)'$ 当成 $\\sqrt{x-x}\\mathrm{e}^{x}=0$，直接把极限算成 $0$。变限积分求导公式 $\\left(\\int_a^x f(t)\\mathrm{d}t\\right)'=f(x)$ 的**前提是被积函数只含 $t$**；一旦被积函数里混进 $x$，必须先换元剥离。\n> - **换元时漏符号**：$\\mathrm{d}t=-\\mathrm{d}u$ 带来一个负号，上下限颠倒再带来一个负号，两者抵消。只记一个就会得到 $-\\frac23$。\n> - **带着 $\\mathrm{e}^{x}$ 硬用乘积求导**：能算对，但会多出「$\\frac{\\mathrm{e}^{x}\\int_{0}^{x}\\sqrt{u}\\mathrm{e}^{-u}\\mathrm{d}u}{\\frac32\\sqrt{x}}$ 这一项趋于 $0$」这种需要额外说明的步骤；漏写说明就是跳步，步骤分直接丢。**先提非零因子，是既快又不出错的标准动作。**\n> - **跳步不写依据**：把某一项直接写 $=0$ 而不交代它是 $\\frac00$ 型、比值 $\\sim\\frac49x$，阅卷组会按「跳步不够严谨」扣分。结果对但过程不闭环，仍是失分点。",
+      "attempts": [
+        {
+          "date": "2026-10-28",
+          "grade": "half"
+        }
+      ],
+      "review_state": "未复习",
+      "review_updated": "2026-10-28",
+      "links": [
+        {
+          "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
+          "anchor": "错题43：变限积分方程——换元剥离参变量与 $x=0$ 处的连续\"缝合\"",
+          "label": "错题43：变限积分方程——换元剥离参变量与 $x=0$ 处的连续\"缝合\"",
+          "confidence": "high",
+          "note": "同一条灵魂操作：**被积函数里 $t$ 与参变量 $x$ 混杂时，先换元把 $x$ 剥离出来**。该条是被积函数 $f(tx)$、本题是被积函数 $\\sqrt{x-t}\\,\\mathrm{e}^{t}$；两题的破局点都不在求导公式，而在「求导之前先做变量分离」。"
+        }
+      ]
     }
   },
   "coverage": {}
