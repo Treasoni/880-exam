@@ -2302,6 +2302,37 @@
           "note": "同为「列关系 $\\Rightarrow$ $AP=PB$ $\\Rightarrow$ 相似」的链条：该条由 $AP=PB$、$CQ=QB$ 证三个矩阵相似，本题由 $A\\alpha_i$ 的系数拼出 $B$ 得 $P^{-1}AP=B$，再改求 $B$ 的实特征值；关键都在 $P$ 可逆。"
         }
       ]
+    },
+    "zt-2018-数二-解答16": {
+      "id": "zt-2018-数二-解答16",
+      "module": "高数-一元函数积分学",
+      "year": 2018,
+      "paper": "数二",
+      "no": "解答16",
+      "stem": "已知连续函数 $f(x)$ 满足 $\\int_{0}^{x} f(t)\\,\\mathrm{d}t + \\int_{0}^{x} t f(x - t)\\,\\mathrm{d}t = a x^{2}$。\n\n（Ⅰ）求 $f(x)$；\n\n（Ⅱ）若 $f(x)$ 在区间 $[0,1]$ 上的平均值为 $1$，求 $a$ 的值。",
+      "answer": "$f(x)=2a\\left(1-\\mathrm{e}^{-x}\\right)$，$a=\\dfrac{\\mathrm{e}}{2}$",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：变限积分求导、换元把 $f(x-t)$ 中的 $x$ 脱出、一阶线性微分方程、函数平均值。\n> **总体思路与切入点**：第二个积分 $\\int_0^x t f(x-t)\\,\\mathrm{d}t$ 的括号里含求导变量 $x$，先换元 $u=x-t$，把 $x$ 赶到积分限与系数上，拆成 $x\\int_0^x f-\\int_0^x t f$；再对 $x$ 求导，得到 $f(x)+\\int_0^x f(t)\\,\\mathrm{d}t=2ax$。\n> 到这里**不要设「常数 $A$」**——上限含 $x$，它是函数。正确动作是令 $F(x)=\\int_0^x f(t)\\,\\mathrm{d}t$，化为 $F'+F=2ax$。\n\n---\n\n**第一步：换元，脱去括号里的 $x$**\n\n令 $u=x-t$，则 $t=x-u$、$\\mathrm{d}t=-\\mathrm{d}u$；$t=0$ 时 $u=x$，$t=x$ 时 $u=0$：\n\n$$\\int_0^x t f(x-t)\\,\\mathrm{d}t=\\int_x^0 (x-u)f(u)(-\\mathrm{d}u)=\\int_0^x (x-u)f(u)\\,\\mathrm{d}u=x\\int_0^x f(u)\\,\\mathrm{d}u-\\int_0^x u f(u)\\,\\mathrm{d}u.$$\n\n代回原式：\n\n$$\\int_0^x f(t)\\,\\mathrm{d}t+x\\int_0^x f(t)\\,\\mathrm{d}t-\\int_0^x t f(t)\\,\\mathrm{d}t=ax^{2}.$$\n\n**第二步：两边对 $x$ 求导**\n\n$f$ 连续，故上式两端对 $x$ 可导。用乘积求导与变限积分求导公式：\n\n$$f(x)+\\left(\\int_0^x f(t)\\,\\mathrm{d}t+x f(x)\\right)-x f(x)=2ax,$$\n\n化简消去 $x f(x)$，得核心积分方程\n\n$$f(x)+\\int_0^x f(t)\\,\\mathrm{d}t=2ax.$$\n\n**第三步：设 $F(x)=\\int_0^x f$，化为一阶线性方程**\n\n令 $F(x)=\\int_0^x f(t)\\,\\mathrm{d}t$，则 $F'(x)=f(x)$，且 $F(0)=0$。核心方程即\n\n$$F'(x)+F(x)=2ax.$$\n\n两边乘积分因子 $\\mathrm{e}^{x}$：\n\n$$\\left(F(x)\\mathrm{e}^{x}\\right)'=2ax\\mathrm{e}^{x}.$$\n\n由 $\\int x\\mathrm{e}^{x}\\,\\mathrm{d}x=(x-1)\\mathrm{e}^{x}$ 得\n\n$$F(x)\\mathrm{e}^{x}=2a(x-1)\\mathrm{e}^{x}+C.$$\n\n代入 $F(0)=0$：$0=-2a+C$，故 $C=2a$，于是\n\n$$F(x)=2a(x-1)+2a\\mathrm{e}^{-x},\\qquad f(x)=F'(x)=2a\\left(1-\\mathrm{e}^{-x}\\right).$$\n\n> [!tip] 等价写法：第二次求导\n> 在核心方程中令 $x=0$ 得 $f(0)=0$；又 $f(x)=2ax-\\int_0^x f(t)\\,\\mathrm{d}t$ 右端可导，故 $f$ 可导。两边再对 $x$ 求导得 $f'(x)+f(x)=2a$，解出 $f(x)=2a+C\\mathrm{e}^{-x}$，由 $f(0)=0$ 得 $C=-2a$，同样得到 $f(x)=2a\\left(1-\\mathrm{e}^{-x}\\right)$。考场用这条更快，但要先补一句可导性说明。\n\n**第四步：用平均值求 $a$**\n\n$f$ 在 $[0,1]$ 上的平均值为 $1$，即\n\n$$\\int_0^1 f(x)\\,\\mathrm{d}x=1.$$\n\n代入 $f(x)=2a\\left(1-\\mathrm{e}^{-x}\\right)$：\n\n$$\\int_0^1 2a\\left(1-\\mathrm{e}^{-x}\\right)\\mathrm{d}x=2a\\left[x+\\mathrm{e}^{-x}\\right]_0^1=2a\\left(1+\\mathrm{e}^{-1}-1\\right)=\\frac{2a}{\\mathrm{e}}=1,$$\n\n故\n\n$$a=\\frac{\\mathrm{e}}{2}.$$\n\n> [!tip] 借用核心方程秒算\n> 在 $f(x)+\\int_0^x f(t)\\,\\mathrm{d}t=2ax$ 中令 $x=1$：\n>\n> $$\\int_0^1 f(t)\\,\\mathrm{d}t=2a-f(1)=2a-2a\\left(1-\\mathrm{e}^{-1}\\right)=\\frac{2a}{\\mathrm{e}}.$$\n>\n> 由 $\\frac{2a}{\\mathrm{e}}=1$ 立刻得 $a=\\frac{\\mathrm{e}}{2}$，不必重新积分。\n\n> [!warning] 易错点：定积分设 $A$ vs 变限积分设 $F(x)$\n> - 上下限都是常数：$f(x)=2ax-\\int_0^1 f(t)\\,\\mathrm{d}t$，积分结果是一个实数，可以设 $A=\\int_0^1 f$，再两边在 $[0,1]$ 上积分求 $A$。\n> - 上限含 $x$：$\\int_0^x f(t)\\,\\mathrm{d}t=F(x)$ 是函数，不是常数；必须设 $F(x)$ 求导化微分方程，并用 $F(0)=0$（或 $f(0)=0$）定常数。\n> - 代换时 $f(t)=2at-\\int_0^t f(u)\\,\\mathrm{d}u$，不能把上限 $x$ 写进积分号内，也不能把 $2ax-A$ 当常数乘区间长度 $x$。",
+      "attempts": [
+        {
+          "date": "2026-10-30",
+          "grade": "wrong"
+        }
+      ],
+      "review_state": "未复习",
+      "links": [
+        {
+          "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
+          "anchor": "错题62：积分方程——积分号下的常数可提取，双侧积分秒杀",
+          "label": "错题62：积分方程——积分号下的常数可提取，双侧积分秒杀",
+          "confidence": "high",
+          "note": "同为「积分号里的常数能不能提取」这条分界线：该条上下限为常数 $[0,1]$，$A=\\int_0^1 f$ 是数，可整体提成系数；本题上限含 $x$，$\\int_0^x f$ 是函数，不能设常数 $A$，只能设 $F(x)$ 求导化微分方程。两题对照，正好锁住「定积分常数」与「变限积分函数」的边界。"
+        }
+      ],
+      "cause": {
+        "label": "概念/定理错误",
+        "step": "把变限积分 $\\int_0^x f(t)\\,\\mathrm{d}t$ 当成常数 $A$，又在 $\\int_0^x$ 内把 $f(t)$ 写成 $2ax-A$，并把 $2ax-A$ 当常数乘区间长度 $x$",
+        "advice": "只有上下限都是常数时才能设 $A$；上限含 $x$ 时设 $F(x)=\\int_0^x f$，用 $F'=f$、$F(0)=0$ 求导化一阶线性方程，代换时写 $f(t)=2at-\\int_0^t f(u)\\,\\mathrm{d}u$"
+      }
     }
   },
   "coverage": {}
