@@ -2224,6 +2224,32 @@
           "note": "**同题**：题干、条件、结论与本题完全一致，连卡点都一样——辅助函数 $F=ff'$ 已构造正确，却在「第三个零点去哪找」卡住。该条给出的核心洞察是「乘积型辅助函数找零点要双管齐下：既找 $f$ 的零点，也找 $f'$ 的零点」，并用 $[0,b]$ 上对 $f$ 的罗尔定理补出 $f'(c)=0$。"
         }
       ]
+    },
+    "zt-2018-数二-选择4": {
+      "id": "zt-2018-数二-选择4",
+      "module": "高数-一元函数积分学",
+      "year": 2018,
+      "paper": "数二",
+      "no": "选择4",
+      "stem": "设函数 $f(x)$ 在 $[0,1]$ 上二阶可导，且 $\\int_0^1 f(x)\\,\\mathrm{d}x = 0$，则（　　）\n\n(A) 当 $f'(x) < 0$ 时，$f\\left(\\frac{1}{2}\\right) < 0$．　(B) 当 $f''(x) < 0$ 时，$f\\left(\\frac{1}{2}\\right) < 0$．　(C) 当 $f'(x) > 0$ 时，$f\\left(\\frac{1}{2}\\right) < 0$．　(D) 当 $f''(x) > 0$ 时，$f\\left(\\frac{1}{2}\\right) < 0$．",
+      "answer": "(D) 当 $f''(x)>0$ 时，$f\\left(\\frac{1}{2}\\right)<0$",
+      "solution": "![[zt-2018-数二-选择4-中点与面积抵消示意图.png]]\n\n> [!info] 考点与破题思路\n> **核心考点**：二阶导数判凹凸（$f''>0$ 时曲线在切线上方）、定积分保号性、区间中点处的泰勒展开。\n> **总体思路与切入点**：题设同时给出「区间 $[0,1]$ 上的定积分」「二阶导数符号」「区间中点 $f\\left(\\frac{1}{2}\\right)$」三条线索，标准动作是**在中点** $x_0=\\frac{1}{2}$ 处作泰勒展开，再在 $[0,1]$ 上积分：一次项 $\\left(x-\\frac{1}{2}\\right)$ 在对称区间上积分为 $0$，未知的 $f'\\left(\\frac{1}{2}\\right)$ 被自动消去，只剩 $f\\left(\\frac{1}{2}\\right)$ 与二阶余项比符号。\n> 考场上还有 30 秒特值法：$f''>0$ 时取 $f(x)=x^{2}-\\frac{1}{3}$ 一验即知 (D)。\n\n---\n\n**第一步：在区间中点 $x_0=\\frac{1}{2}$ 处展开**\n\n$f(x)$ 在 $[0,1]$ 上二阶可导，对任意 $x\\in[0,1]$，在 $x_0=\\frac{1}{2}$ 处作带拉格朗日余项的泰勒展开：\n\n$$f(x)=f\\left(\\frac{1}{2}\\right)+f'\\left(\\frac{1}{2}\\right)\\left(x-\\frac{1}{2}\\right)+\\frac{f''(\\xi_x)}{2}\\left(x-\\frac{1}{2}\\right)^{2}$$\n\n其中 $\\xi_x$ 介于 $\\frac{1}{2}$ 与 $x$ 之间，故 $\\xi_x\\in(0,1)$。\n\n> [!tip] 为什么偏偏选 $x_0=\\frac{1}{2}$？\n> 一是选项问的就是 $f\\left(\\frac{1}{2}\\right)$；二是 $\\frac{1}{2}$ 是 $[0,1]$ 的中点，一次项 $\\left(x-\\frac{1}{2}\\right)$ 在 $[0,1]$ 上的积分恰为 $0$，未知的 $f'\\left(\\frac{1}{2}\\right)$ 被积掉——这是「中点泰勒 + 对称区间积分」的固定配合。\n\n**第二步：两边在 $[0,1]$ 上积分**\n\n$$\\int_0^1 f(x)\\,\\mathrm{d}x=\\int_0^1 f\\left(\\frac{1}{2}\\right)\\mathrm{d}x+f'\\left(\\frac{1}{2}\\right)\\int_0^1\\left(x-\\frac{1}{2}\\right)\\mathrm{d}x+\\frac{1}{2}\\int_0^1 f''(\\xi_x)\\left(x-\\frac{1}{2}\\right)^{2}\\mathrm{d}x$$\n\n逐项算：\n\n- 常数项：$\\int_0^1 f\\left(\\frac{1}{2}\\right)\\mathrm{d}x=f\\left(\\frac{1}{2}\\right)$；\n- 一次项：$\\int_0^1\\left(x-\\frac{1}{2}\\right)\\mathrm{d}x=\\frac{1}{2}\\left(x-\\frac{1}{2}\\right)^{2}\\Big|_0^1=\\frac{1}{8}-\\frac{1}{8}=0$；\n- 余项：记 $R=\\frac{1}{2}\\int_0^1 f''(\\xi_x)\\left(x-\\frac{1}{2}\\right)^{2}\\mathrm{d}x$。\n\n代入已知 $\\int_0^1 f(x)\\,\\mathrm{d}x=0$，得\n\n$$0=f\\left(\\frac{1}{2}\\right)+R\\quad\\Longrightarrow\\quad f\\left(\\frac{1}{2}\\right)=-R.$$\n\n**第三步：判断余项符号，锁定 (D)**\n\n当 $f''(x)>0$ 时，对每个 $x$ 都有 $f''(\\xi_x)>0$；又 $\\left(x-\\frac{1}{2}\\right)^{2}\\geqslant 0$，且只在 $x=\\frac{1}{2}$ 处为 $0$，故被积函数非负且不恒为零。由定积分保号性，\n\n$$R=\\frac{1}{2}\\int_0^1 f''(\\xi_x)\\left(x-\\frac{1}{2}\\right)^{2}\\mathrm{d}x>0,$$\n\n于是 $f\\left(\\frac{1}{2}\\right)=-R<0$，**(D) 正确**。\n\n> [!abstract] 严谨版：用切线差函数，避开 $f''(\\xi_x)$ 的积分\n> 上式在考研答卷里通用，但严格说 $\\xi_x$ 随 $x$ 变化，直接写进积分号需要交代。更干净的证法是构造\n>\n> $$\\varphi(x)=f(x)-f\\left(\\frac{1}{2}\\right)-f'\\left(\\frac{1}{2}\\right)\\left(x-\\frac{1}{2}\\right).$$\n>\n> $f''>0$ 蕴含 $f$ 严格凸，切线恒在曲线下方且除切点外严格：$x\\neq\\frac{1}{2}$ 时 $\\varphi(x)>0$。又\n>\n> $$\\int_0^1\\varphi(x)\\,\\mathrm{d}x=\\int_0^1 f(x)\\,\\mathrm{d}x-f\\left(\\frac{1}{2}\\right)-f'\\left(\\frac{1}{2}\\right)\\int_0^1\\left(x-\\frac{1}{2}\\right)\\mathrm{d}x=-f\\left(\\frac{1}{2}\\right)>0,$$\n>\n> 直接得到 $f\\left(\\frac{1}{2}\\right)<0$。这一步不需要 $f''$ 连续，也不需要把 $\\xi_x$ 提出积分号。\n\n---\n\n**考场秒杀法：一个反例家族排掉三个选项**\n\n| 选项 | 断言 | 反例 | 检验 |\n| --- | --- | --- | --- |\n| (A) | $f'(x)<0\\Rightarrow f\\left(\\frac{1}{2}\\right)<0$ | $f(x)=\\frac{1}{3}-x^{2}$ | $f'(x)=-2x<0\\ (0<x<1)$，$\\int_0^1 f=0$，但 $f\\left(\\frac{1}{2}\\right)=\\frac{1}{12}>0$，假 |\n| (B) | $f''(x)<0\\Rightarrow f\\left(\\frac{1}{2}\\right)<0$ | 同上 | $f''(x)=-2<0$，但 $f\\left(\\frac{1}{2}\\right)>0$，假 |\n| (C) | $f'(x)>0\\Rightarrow f\\left(\\frac{1}{2}\\right)<0$ | $f(x)=x-\\frac{1}{2}$ | $f'(x)=1>0$，$\\int_0^1 f=0$，但 $f\\left(\\frac{1}{2}\\right)=0$，假 |\n| (D) | $f''(x)>0\\Rightarrow f\\left(\\frac{1}{2}\\right)<0$ | — | 已由第三步证明，真 |\n\n**30 秒版本**：取 $f(x)=x^{2}-\\frac{1}{3}$，$f''(x)=2>0$，$\\int_0^1\\left(x^{2}-\\frac{1}{3}\\right)\\mathrm{d}x=\\frac{1}{3}-\\frac{1}{3}=0$，而\n\n$$f\\left(\\frac{1}{2}\\right)=\\frac{1}{4}-\\frac{1}{3}=-\\frac{1}{12}<0,$$\n\n直接锁定 **(D)**。\n\n> [!warning] 易错点 1：把 $f''(\\xi_x)$ 当成常数提出积分号\n> 直接写 $\\frac{f''(\\xi)}{2}\\int_0^1\\left(x-\\frac{1}{2}\\right)^{2}\\mathrm{d}x$ 结论虽然对，但 $\\xi$ 依赖 $x$（应写 $\\xi_x$），不能当常数。要么按上面的切线差函数避开，要么在 $f''$ 连续时用推广的积分第一中值定理：$\\left(x-\\frac{1}{2}\\right)^{2}\\geqslant 0$ 不变号，可提出 $f''(\\eta)$，于是\n>\n> $$R=\\frac{1}{2}f''(\\eta)\\int_0^1\\left(x-\\frac{1}{2}\\right)^{2}\\mathrm{d}x=\\frac{1}{24}f''(\\eta)>0,\\qquad \\eta\\in(0,1).$$\n\n> [!warning] 易错点 2：凹凸方向记反\n> 本书约定 $f''>0$ 为**凹**（下凸、开口向上），曲线在切线上方、在弦下方，故中点值低于「平均高度」，即 $\\int_0^1 f(x)\\,\\mathrm{d}x>f\\left(\\frac{1}{2}\\right)$（Hermite–Hadamard 不等式 / 中点矩形公式的误差方向）。若把方向记反，就会误选 (B)。拿不准时用 $f(x)=x^{2}-\\frac{1}{3}$ 验算：$f\\left(\\frac{1}{2}\\right)=-\\frac{1}{12}<0$，一秒定方向。",
+      "attempts": [
+        {
+          "date": "2026-10-30",
+          "grade": "wrong"
+        }
+      ],
+      "review_state": "未复习",
+      "links": [
+        {
+          "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
+          "anchor": "错题88：二阶导数最大值控制积分——中心泰勒展开与奇函数项消失",
+          "label": "错题88：二阶导数最大值控制积分——中心泰勒展开与奇函数项消失",
+          "confidence": "high",
+          "note": "同为「区间中点泰勒展开」主线：该条用 $M=\\max|f''|$ 把余项放缩成积分上界，本题用 $f''>0$ 判余项符号；两题都要在中点展开、靠一次项在对称区间上积分为零消去 $f'(x_0)$，也都要把 $\\xi_x$ 当成随 $x$ 变化的量，不能提成常数。"
+        }
+      ]
     }
   },
   "coverage": {}
