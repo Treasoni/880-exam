@@ -2364,6 +2364,37 @@
         "step": "没理顺 $y(x)=1-\\cos t$ 与参数 $t$ 的一一对应，把「横坐标 $x$」与「参数 $t$」混为一谈：换元时被积函数写错（$x+2y$ 里的 $x$ 被当成常数 / 写成 $\\pi$），或 $y(x)$、$\\mathrm{d}x$ 未同步替换",
         "advice": "先把区域写成 $x$ 型：$0\\leqslant x\\leqslant 2\\pi$、$0\\leqslant y\\leqslant y(x)$，化累次积分得 $\\int_0^{2\\pi}[x\\,y(x)+y^2(x)]\\mathrm{d}x$；再做参数换元三同步——$x=t-\\sin t$、$\\mathrm{d}x=(1-\\cos t)\\mathrm{d}t$、$y(x)=1-\\cos t$。用 $x'(t)=1-\\cos t\\geqslant0$ 说明 $t$ 与 $x$ 一一对应，上下限才能平移不变"
       }
+    },
+    "zt-2018-数二-解答18": {
+      "id": "zt-2018-数二-解答18",
+      "module": "高数-多元函数微分学",
+      "year": 2018,
+      "paper": "数二",
+      "no": "解答18",
+      "stem": "将长为 $2\\mathrm{m}$ 的铁丝分成三段，依次围成圆、正方形与正三角形.三个图形的面积之和是否存在最小值?若存在，求出最小值",
+      "answer": "存在最小值 $S_{\\min}=\\dfrac{1}{\\pi+4+3\\sqrt{3}}\\ \\mathrm{m^{2}}\\approx0.0811\\ \\mathrm{m^{2}}$，此时圆半径 $a=\\dfrac{1}{D}$、正方形边长 $b=\\dfrac{2}{D}$、正三角形边长 $c=\\dfrac{2\\sqrt{3}}{D}$（$D=\\pi+4+3\\sqrt{3}$）",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：条件极值、拉格朗日乘数法、二次齐次目标函数 + 一次线性约束的「降次」技巧。\n> **总体思路与切入点**：先选几何量设元——圆半径 $a$、正方形边长 $b$、正三角形边长 $c$，这样目标函数直接是平方项，约束是线性式；再用拉格朗日乘数法求唯一驻点；最后**必须**回答「是否存在最小值」并算出 $S_{\\min}$。\n> **关键技巧**：解方程组时不要解出 $a,b,c$ 再回代平方，而要全部用 $\\lambda$ 表示，一步得出 $S_{\\min}$，既快又不会在带根号的分母上出错。\n\n---\n\n**第一步：建模**\n\n三段铁丝分别围成圆、正方形、正三角形，周长依次为 $2\\pi a$、$4b$、$3c$，总长 $2\\,\\mathrm{m}$：\n\n$$2\\pi a+4b+3c=2\\quad(a>0,\\ b>0,\\ c>0).$$\n\n三个图形面积之和：\n\n$$S(a,b,c)=\\pi a^{2}+b^{2}+\\frac{\\sqrt{3}}{4}c^{2}.$$\n\n（正三角形高为 $\\frac{\\sqrt{3}}{2}c$，面积 $\\frac{1}{2}c\\cdot\\frac{\\sqrt{3}}{2}c=\\frac{\\sqrt{3}}{4}c^{2}$。）\n\n**第二步：拉格朗日函数与方程组**\n\n$$F(a,b,c,\\lambda)=\\pi a^{2}+b^{2}+\\frac{\\sqrt{3}}{4}c^{2}+\\lambda(2\\pi a+4b+3c-2),$$\n\n$$\\begin{cases}F'_a=2\\pi a+2\\pi\\lambda=0,\\\\ F'_b=2b+4\\lambda=0,\\\\ F'_c=\\frac{\\sqrt{3}}{2}c+3\\lambda=0,\\\\ F'_\\lambda=2\\pi a+4b+3c-2=0.\\end{cases}$$\n\n**第三步：全部用 $\\lambda$ 表示，一步解出**\n\n$$\\lambda=-a=-\\frac{b}{2}=-\\frac{\\sqrt{3}}{6}c\\ \\Longrightarrow\\ a=-\\lambda,\\quad b=-2\\lambda,\\quad c=-2\\sqrt{3}\\lambda.$$\n\n代入约束：\n\n$$2\\pi(-\\lambda)+4(-2\\lambda)+3(-2\\sqrt{3}\\lambda)=2\\ \\Longrightarrow\\ -\\lambda\\left(2\\pi+8+6\\sqrt{3}\\right)=2,$$\n\n记 $D=\\pi+4+3\\sqrt{3}$，则\n\n$$-\\lambda=\\frac{1}{D},\\qquad a=\\frac{1}{D},\\quad b=\\frac{2}{D},\\quad c=\\frac{2\\sqrt{3}}{D}.$$\n\n代回周长验算：$\\dfrac{2\\pi+8+6\\sqrt{3}}{D}=\\dfrac{2D}{D}=2$ ✓。\n\n**第四步：求 $S_{\\min}$——不要展开 $a^2,b^2,c^2$**\n\n把 $a=-\\lambda$、$b=-2\\lambda$、$c=-2\\sqrt{3}\\lambda$ 代入面积：\n\n$$S=\\pi\\lambda^{2}+4\\lambda^{2}+\\frac{\\sqrt{3}}{4}\\cdot12\\lambda^{2}=\\lambda^{2}\\left(\\pi+4+3\\sqrt{3}\\right)=\\lambda^{2}D.$$\n\n再由 $-\\lambda=\\frac{1}{D}$ 得 $\\lambda^{2}=\\frac{1}{D^{2}}$，于是\n\n$$S_{\\min}=\\frac{1}{D^{2}}\\cdot D=\\frac{1}{D}=\\frac{1}{\\pi+4+3\\sqrt{3}}.$$\n\n> [!tip] 更快的「降次公式」：$S=-\\lambda$\n> 目标函数是二次齐次式、约束是一次式。把三个偏导方程分别乘 $a$、$b$、$c$ 再相加：\n>\n> $$2\\pi a^{2}+2b^{2}+\\frac{\\sqrt{3}}{2}c^{2}+\\lambda(2\\pi a+4b+3c)=0,$$\n>\n> 即 $2S+\\lambda\\cdot2=0$，故 $S=-\\lambda=\\dfrac{1}{D}$。一般式为 $2S+\\lambda L=0\\Rightarrow S=-\\dfrac{L}{2}\\lambda$（本题 $L=2$ 才退化成 $S=-\\lambda$）。**前提**：目标无一次项、无交叉项；有交叉项时这条不成立，要重新验证。\n\n**第五步：说明最小值确实存在（采分点）**\n\n题目问「是否存在最小值」，只给驻点不够。两种写法任选：\n\n（1）严格凸论证：$S$ 的 Hessian 为 $\\operatorname{diag}\\left(2\\pi,2,\\frac{\\sqrt{3}}{2}\\right)$ 正定，故 $S$ 在 $\\mathbb{R}^{3}$ 上严格凸；约束集 $2\\pi a+4b+3c=2$ 是平面（凸集）。严格凸函数在凸集上的驻点即唯一全局最小点，故最小值存在且等于驻点值。\n\n（2）边界比较：三段趋于极端时\n\n$$\\text{全给圆：}\\frac{1}{\\pi}\\approx0.318,\\qquad \\text{全给正方形：}\\frac{1}{4}=0.25,\\qquad \\text{全给正三角形：}\\frac{\\sqrt{3}}{9}\\approx0.192,$$\n\n均大于 $0.0811$，而 $S$ 在可行域上连续，故最小值在内部取到，即驻点值。\n\n最终：\n\n$$S_{\\min}=\\frac{1}{\\pi+4+3\\sqrt{3}}\\ \\mathrm{m^{2}}\\approx0.0811\\ \\mathrm{m^{2}}.$$\n\n> [!warning] 易错点一：解出 $a,b,c$ 再平方，容易在根号分母上翻车\n> 由 $c=\\dfrac{2\\sqrt{3}}{D}$ 反推：$a=\\dfrac{\\sqrt{3}}{6}c=\\dfrac{1}{D}$、$b=\\dfrac{\\sqrt{3}}{3}c=\\dfrac{2}{D}$。若把 $c$ 写成 $\\dfrac{6}{D}$（忘了 $\\dfrac{6}{\\sqrt{3}D}$ 还要约掉 $\\sqrt{3}$），推出的 $a,b$ 会带 $\\sqrt{3}$，后面 $S$ 全错。**自检**：用 $-\\lambda=a=\\dfrac{1}{D}$ 对一下，两秒就能发现。\n\n> [!warning] 易错点二：$S=-\\lambda$ 的适用前提\n> 只在「目标二次齐次无交叉项 + 约束一次」时成立。若目标里出现 $ab$、$a$ 之类的项，$2S+\\lambda L=0$ 这条式子不再等于 $2S$，必须老老实实代回。\n\n> [!warning] 易错点三：只算驻点，不答存在性\n> 题干明问「是否存在最小值」，必须给一句判据。丢这一步通常扣 1–2 分。",
+      "attempts": [
+        {
+          "date": "2026-10-30",
+          "grade": "half"
+        }
+      ],
+      "review_state": "未复习",
+      "links": [
+        {
+          "path": "external-notes/考研数学/高数-多元函数微分学/错题本",
+          "anchor": "错题31：曲线条件极值中的距离最值——拉格朗日乘数法与端点检查",
+          "label": "错题31：曲线条件极值中的距离最值——拉格朗日乘数法与端点检查",
+          "confidence": "high",
+          "note": "同属条件极值主线，都用拉格朗日乘数法并把变量用 $\\lambda$ 表示。该条约束是曲线，驻点之外还要做端点检查；本题约束是一次平面 $2\\pi a+4b+3c=2$（无边界问题，但 $a,b,c>0$ 的可行域非闭），所以「存在性」不能省——用 $S$ 严格凸 + 驻点唯一，或比较三种极端分割的边界值。该条练的是端点意识，本题正好补上它的互补面：可行域无边界时靠凸性断言全局最小。"
+        }
+      ],
+      "cause": {
+        "label": "步骤/逻辑遗漏",
+        "step": "解出 $a=\\frac{1}{D}$、$b=\\frac{2}{D}$、$c=\\frac{2\\sqrt{3}}{D}$（$D=\\pi+4+3\\sqrt{3}$）后停下，只写了 $S_{\\min}=\\pi a^{2}+b^{2}+\\frac{\\sqrt{3}}{4}c^{2}$ 未代入求值；且未回答「是否存在最小值」的存在性判据",
+        "advice": "解出驻点后必做两步收尾：① 用 $S=-\\lambda$（二次齐次目标 + 一次约束）或直接代入 $a=-\\lambda$ 等关系，一步得 $S_{\\min}=\\frac{1}{D}$，避免展开带根号的分母；② 补一句存在性——$S$ 严格凸（Hessian 正定）、约束是平面、驻点唯一，或比较三种极端分割的边界值均更大"
+      }
     }
   },
   "coverage": {}
