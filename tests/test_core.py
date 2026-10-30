@@ -949,6 +949,25 @@ class ZhentiWrongBookTest(unittest.TestCase):
         all_rows = zhenti_wrong_book.due_problems(doc, days=0, today=today)
         self.assertEqual(sorted(r["id"] for r in all_rows), ["zt-a", "zt-b", "zt-d"])
 
+    def test_link_anchor_with_pipe_degrades_to_file_link(self):
+        # 标题里含 `$|A|$` 这类竖线时，wikilink 会被 Obsidian 从 "|" 处截断：
+        # 渲染层必须退化为整篇链接，而不是产出半截目标。
+        def doc_with(anchor, label):
+            return {"problems": {"zt-x": {
+                "module": "微分方程", "year": 2018, "paper": "数二", "no": "解答23",
+                "stem": "题", "answer": "A", "solution": "解",
+                "links": [{"path": "external-notes/线性代数/第二章：矩阵/错题本",
+                           "anchor": anchor, "label": label}],
+            }}}
+
+        text = zhenti_wrong_book.render(lib880.load_schema(), doc_with(
+            '错题24："行变换左乘+列变换右乘+行列式求 $|A|$"', "错题24：左右乘"), self.MODULES)
+        self.assertIn("[[external-notes/线性代数/第二章：矩阵/错题本|错题24：左右乘]]", text)
+        self.assertNotIn("#错题24", text)
+
+        text = zhenti_wrong_book.render(lib880.load_schema(), doc_with("错题21：初等变换", "错题21"), self.MODULES)
+        self.assertIn("[[external-notes/线性代数/第二章：矩阵/错题本#错题21：初等变换|错题21]]", text)
+
 
 if __name__ == "__main__":
     unittest.main()

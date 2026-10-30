@@ -262,9 +262,19 @@ def render(schema, doc, modules):
             links = p.get("links") or []
             parts = []
             for link in links:
-                if link.get("path") and link.get("anchor"):
-                    label = link.get("label") or link["anchor"]
-                    parts.append(f"[[{link['path']}#{link['anchor']}|{label}]]")
+                if not link.get("path"):
+                    continue
+                label = link.get("label") or link.get("anchor") or link["path"]
+                anchor = link.get("anchor") or ""
+                # "|" 会被 Obsidian 当作「目标|别名」分隔符，整条链接被截断：
+                # 锚点含 "|" 时退化为整篇链接；显示名里的 "|" 换全角以免破坏语法
+                label = label.replace("|", "｜")
+                if "|" in anchor:
+                    parts.append(f"[[{link['path']}|{label}]]")
+                elif anchor:
+                    parts.append(f"[[{link['path']}#{anchor}|{label}]]")
+                else:
+                    parts.append(f"[[{link['path']}|{label}]]")
             if parts:
                 L.append("*相关笔记：" + " · ".join(parts) + "*")
                 L.append("")

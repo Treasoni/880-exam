@@ -277,6 +277,10 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "scripts/__pycache__/zhenti_wrong_book.cpython-313.pyc",
+    "tests/__pycache__/test_core.cpython-313-pytest-9.1.1.pyc",
+    "workspace/workflow-runs/真题收录-2018数二解答23.workflow.md.RFloFO",
+    "workspace/workflow-runs/真题收录-2018数二解答23.workflow.md",
     "workspace/workflow-runs/真题收录-2018数二解答22.workflow.md",
     "workspace/workflow-runs/真题收录-2018数二解答20.workflow.md",
     "workspace/workflow-runs/真题收录-2018数二解答18.workflow.md",
@@ -309,8 +313,6 @@
     "workspace/preview/进度总览.md",
     "workspace/papers/la-paper-05/线代卷子-05-答案.md",
     "workspace/papers/la-paper-05/线代卷子-05.md",
-    "workspace/papers/paper-06/卷子-06-答案.md",
-    "workspace/papers/paper-06/卷子-06.md",
     "workspace/workflow-runs/真题错题复习-08.workflow.md.rSyGtu",
     "workspace/workflow-runs/真题收录-2014数二解答18.workflow.md.veFvpn",
     "workspace/workflow-runs/真题收录-2014数二选择8-补解析.workflow.md.oZm7PY",
@@ -320,8 +322,6 @@
     "workspace/tmp-verify-rv-sol.png",
     "workspace/tmp-verify-rv-q4.png",
     "workspace/tmp-verify-lp-q4b.png",
-    "workspace/records/text-overrides.json",
-    "workspace/papers/la-paper-05",
-    "workspace/papers/paper-06"
+    "workspace/records/text-overrides.json"
   ]
 }
