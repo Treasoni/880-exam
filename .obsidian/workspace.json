@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workspace/wrong-book/线代错题本.md",
+                "file": "workspace/wrong-book/真题错题本.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "线代错题本"
+              "title": "真题错题本"
             }
           }
         ],
@@ -190,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/线代错题本.md",
+                "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -224,9 +224,7 @@
                     },
                     {
                       "tabId": "tab-1789823654705-joggjse",
-                      "conversationId": null,
-                      "draftModel": "claude-code/deepseek-flash[1M]",
-                      "providerId": "claude"
+                      "conversationId": "conv-1793351257653-r40dk1wam"
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
@@ -279,6 +277,7 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/wrong-book/线代错题本.md",
     "workspace/wrong-book/错题本.md",
     "workspace/papers/la-paper-05/线代判分卡-05.md",
     "workspace/papers/paper-07/卷子-07.md",
@@ -310,7 +309,6 @@
     "workspace/workflow-runs/真题收录-2015数二解答21-22.workflow.md",
     "workspace/workflow-runs/真题收录-2015数二解答20.workflow.md",
     "workspace/workflow-runs/真题收录-2015数二解答18.workflow.md",
-    "workspace/workflow-runs/真题收录-2015数二解答15.workflow.md",
     "workspace/workflow-runs/真题错题复习-08.workflow.md.rSyGtu",
     "workspace/workflow-runs/真题收录-2014数二解答18.workflow.md.veFvpn",
     "workspace/workflow-runs/真题收录-2014数二选择8-补解析.workflow.md.oZm7PY",

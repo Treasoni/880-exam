@@ -1498,6 +1498,123 @@ button.nn-icon-button.nn-icon-button-active svg:not(.nn-vault-icon-svg) {
     stroke-width: 2;
     fill: none;
 }
+/* Source: src/styles/sections/ui-tooltip.css */
+
+/* ========================================================================
+   Custom Item Tooltip
+   ======================================================================== */
+
+/*
+ * Custom hover tooltip for file, folder, and shortcut rows. Mirrors the built-in
+ * Obsidian `.tooltip` element (background, typography, radius, shadow, arrow, and
+ * pop animation) while allowing structured content such as tag pills. The element
+ * is positioned by TooltipContext with `top` at the anchor's vertical center; the
+ * base translateY(-50%) centers instant handoffs, while the animation keyframes
+ * preserve the same centering during the built-in-style pop animation.
+ */
+.nn-tooltip {
+    position: fixed;
+    z-index: var(--layer-tooltip);
+    background-color: var(--background-modifier-message);
+    color: #fafafa;
+    font-size: var(--font-ui-smaller);
+    font-weight: var(--font-medium);
+    line-height: var(--line-height-tight);
+    border-radius: var(--radius-s);
+    padding: var(--size-4-1) var(--size-4-2);
+    max-width: 300px;
+    box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
+    pointer-events: none;
+    text-align: center;
+    white-space: pre-wrap;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    transform: translateY(-50%);
+    animation: nn-tooltip-pop 200ms forwards ease-in-out;
+}
+
+/* Row-to-row handoffs already passed the initial delay, so replaying the opacity ramp
+   on every dense list row would keep the tooltip in a perpetual fade-in state. */
+.nn-tooltip[data-instant='true'] {
+    animation: none;
+}
+
+@keyframes nn-tooltip-pop {
+    0% {
+        opacity: 0;
+        transform: translateY(-50%) scale(1);
+    }
+    20% {
+        opacity: 0.7;
+        transform: translateY(-50%) scale(1.02);
+    }
+    40% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+/* Triangle pointing at the anchor, matching the built-in tooltip arrow */
+.nn-tooltip-arrow {
+    position: absolute;
+    top: calc(50% - 5px);
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+.nn-tooltip[data-placement='right'] .nn-tooltip-arrow {
+    left: -5px;
+    border-right: 5px solid var(--background-modifier-message);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+/* The arrow box starts at the tooltip's right edge so the triangle base touches it; the
+   built-in offset of calc(100% + 5px) relies on a margin-left the built-in base rule adds */
+.nn-tooltip[data-placement='left'] .nn-tooltip-arrow {
+    left: 100%;
+    border-left: 5px solid var(--background-modifier-message);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+/* Secondary lines (folder path, dates) sit back so the title and pills read first */
+.nn-tooltip-muted {
+    color: color-mix(in srgb, #fafafa 75%, transparent);
+}
+
+/* Date block separated from the lines above like the blank line in built-in tooltips */
+.nn-tooltip-dates {
+    margin-top: var(--size-4-2);
+}
+
+/* Tag pills wrap to the tooltip width; the tooltip grows in height to fit all tags */
+.nn-tooltip-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--size-4-1);
+    margin-top: var(--size-4-1);
+    margin-bottom: var(--size-4-1);
+}
+
+/* Compact pill sizing inside the tooltip; custom tag colors come from the shared tag
+   pill rules, while uncustomized pills switch to light text and border because the
+   list-pane defaults are unreadable on the dark tooltip background in light themes */
+.nn-tooltip .nn-file-tag {
+    height: 18px;
+    font-size: 11px;
+    padding: 0 6px;
+    --nn-theme-file-tag-color: color-mix(in srgb, #fafafa 85%, transparent);
+    --nn-theme-file-tag-border-color: color-mix(in srgb, #fafafa 40%, transparent);
+    --nn-theme-file-tag-bg: transparent;
+}
 /* Source: src/styles/sections/layout-spacers.css */
 
 /* ========================================================================
@@ -2116,6 +2233,20 @@ button.nn-icon-button.nn-icon-button-active svg:not(.nn-vault-icon-svg) {
 }
 
 /* Folder file count - shows number of files in folder */
+/* Marks folders that have their own folder template. Placed before the note count. */
+.nn-navitem-template-indicator {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-inline-end: 4px;
+    color: var(--nn-theme-navitem-count-color);
+}
+
+.nn-navitem-template-indicator svg {
+    width: 12px;
+    height: 12px;
+}
+
 .nn-navitem-count {
     font-size: var(--nn-navitem-count-font-size);
     font-weight: var(--nn-theme-navitem-count-font-weight);
@@ -2343,6 +2474,8 @@ button.nn-icon-button.nn-navitem-hover-action-button {
 .nn-root-reorder-list {
     display: flex;
     flex-direction: column;
+    /* Same space as the list spacer between sections in the navigation tree */
+    gap: 8px;
     margin: 0;
     padding: 0;
 }
@@ -2351,6 +2484,14 @@ button.nn-icon-button.nn-navitem-hover-action-button {
     display: flex;
     flex-direction: column;
     position: relative;
+}
+
+/* A dragged folder carries its expanded subfolders; it stays opaque and on top so siblings
+   sliding into place pass beneath it */
+.nn-root-reorder-branch--dragging {
+    position: relative;
+    z-index: 1;
+    background-color: var(--nn-theme-nav-bg);
 }
 
 .nn-root-reorder-item {
@@ -2365,13 +2506,29 @@ button.nn-icon-button.nn-navitem-hover-action-button {
     font-weight: var(--nn-theme-navitem-custom-color-name-font-weight);
 }
 
+/* A sort indicator box as wide as a section arrow button, so it centers under the down arrow */
+.nn-root-reorder-item .nn-navitem-count {
+    min-width: 28px;
+    margin-inline-end: 0;
+}
+
+/* The manual order icon sits in the count badge at the badge's text size */
+.nn-root-reorder-manual-badge > span {
+    display: flex;
+}
+
+.nn-root-reorder-manual-badge svg {
+    width: var(--nn-navitem-count-font-size);
+    height: var(--nn-navitem-count-font-size);
+}
+
 .nn-root-reorder-item--missing .nn-shortcut-label {
     text-decoration: line-through;
     color: var(--nn-theme-foreground-muted);
 }
 
 .nn-root-reorder-actions {
-    margin-top: 0.75rem;
+    margin-block: 0.75rem;
     display: flex;
     justify-content: center;
 }
@@ -2412,7 +2569,6 @@ button.nn-icon-button.nn-navitem-hover-action-button {
 
 .nn-root-reorder-section-controls {
     display: flex;
-    gap: 0.25rem;
 }
 
 .nn-root-reorder-section-button {
@@ -3556,7 +3712,16 @@ button.nn-navigation-calendar-day {
 
 .nn-calendar-right-sidebar {
     --nn-calendar-right-sidebar-bg: var(--background-secondary);
-    overflow: auto;
+    /* The sidebar never scrolls. The calendar height follows its width (square day cells and
+       container-unit font sizes), so with overflow: auto the layout-consuming scrollbar on Windows
+       and Linux shrinks the calendar until it fits, disappears, and reappears on the next hover
+       relayout, which makes the calendar shake. clip rather than hidden because hidden still accepts
+       programmatic scrolling, such as focus() on a partly clipped button, which would shift the
+       content permanently with no way to scroll back. min-height: 0 because clip is not a scroll
+       container, so without it the flex item's automatic minimum size grows to the content height
+       and the surrounding view content starts scrolling instead. */
+    overflow: clip;
+    min-height: 0;
     background-color: var(--nn-calendar-right-sidebar-bg);
 }
 
@@ -4775,6 +4940,116 @@ button.nn-navigation-calendar-day {
     height: min(24px, 42%);
     color: var(--nn-theme-foreground-muted);
 }
+/* Source: src/styles/sections/list-presentations.css */
+/* ========================================================================
+   Presentation Rows
+   ======================================================================== */
+
+/* MarkdownPoint presentations in the list pane: the slides.md row shows a cover slide below its file name and
+   the presentation.mdpoint row shows the theme, slide count and slide size. Both rows have fixed heights that
+   getPresentationRowHeight in src/utils/listPaneMeasurements.ts mirrors, so a change here must change it too. */
+
+/* The cover background, text and muted colors come from the presentation's theme as inline custom properties;
+   Obsidian's colors apply until the theme files are readable. */
+.nn-presentation-cover {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    height: 144px;
+    margin-top: 6px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: var(--nn-presentation-cover-bg, var(--background-secondary));
+    color: var(--nn-presentation-cover-text, var(--text-normal));
+    /* A hairline in the cover's own text color separates light covers from a light list background */
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--nn-presentation-cover-text, var(--text-normal)) 10%, transparent);
+}
+
+.nn-presentation-cover-eyebrow,
+.nn-presentation-cover-date {
+    flex-shrink: 0;
+    overflow: hidden;
+    font-size: var(--nn-file-small-size-mobile, var(--nn-file-small-size));
+    line-height: var(--nn-file-single-text-line-height);
+    color: var(--nn-presentation-cover-muted, var(--text-muted));
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* The eyebrow takes the free space below it, so the title and date sit at the bottom and long titles grow upward */
+.nn-presentation-cover-eyebrow {
+    margin-bottom: auto;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Three title lines fill the cover between the eyebrow and the date at the desktop font size */
+.nn-presentation-cover-title {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: calc(var(--nn-file-name-size-mobile, var(--nn-file-name-size)) * 1.5);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+/* The larger mobile title fits two lines, otherwise the date is cut off at the bottom of the cover */
+.nn-mobile .nn-presentation-cover-title {
+    -webkit-line-clamp: 2;
+}
+
+/* Centered Title layouts stack the eyebrow, title and date above the lower part of the cover */
+.nn-presentation-cover[data-align='center'] {
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 24px;
+    text-align: center;
+}
+
+.nn-presentation-cover[data-align='center'] .nn-presentation-cover-eyebrow {
+    margin-bottom: 0;
+}
+
+.nn-presentation-cover[data-align='center'] .nn-presentation-cover-title {
+    -webkit-line-clamp: 2;
+}
+
+/* Three single-line rows of label and value, matching the list's metadata lines */
+.nn-presentation-details {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 0 12px;
+    margin: 0;
+    font-size: var(--nn-file-small-size-mobile, var(--nn-file-small-size));
+    line-height: var(--nn-file-single-text-line-height);
+}
+
+.nn-presentation-details dt {
+    color: var(--nn-theme-file-date-color);
+}
+
+.nn-presentation-details dd {
+    overflow: hidden;
+    margin: 0;
+    color: var(--nn-theme-file-preview-color);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.nn-file.nn-selected .nn-presentation-details dt {
+    color: var(--nn-selected-file-date-color);
+}
+
+.nn-file.nn-selected .nn-presentation-details dd {
+    color: var(--nn-selected-file-preview-color);
+}
 /* Source: src/styles/sections/list-group-headers.css */
 
 /* ========================================================================
@@ -5160,6 +5435,30 @@ button.nn-list-group-header-collapse-button .nn-list-group-header-icon {
 .nn-split-container.nn-orientation-vertical:not(.nn-single-pane) .nn-skeleton-navigation-pane .nn-skeleton-content {
     border-right: none;
     border-bottom: 1px solid var(--nn-theme-divider-border-color);
+}
+
+/* Language loading precedes the view providers, so this shell also works before the storage skeleton mounts. */
+.nn-language-loading {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.nn-language-loading-skeleton {
+    height: 100%;
+}
+
+.nn-language-loading-status {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--size-4-3);
+    padding: var(--size-4-4);
+    color: var(--text-muted);
+    text-align: center;
 }
 /* Source: src/styles/sections/inline-rename.css */
 
@@ -7134,21 +7433,6 @@ body.nn-resizing {
     margin-top: 0;
 }
 
-.nn-settings-legacy-titlebar {
-    padding-inline: 0;
-}
-
-.nn-settings-legacy-titlebar .setting-item-name {
-    display: flex;
-    align-items: center;
-    gap: var(--size-2-2);
-}
-
-.nn-settings-legacy-page-link:focus-visible {
-    outline: 2px solid var(--background-modifier-border-focus);
-    outline-offset: -2px;
-}
-
 /* Utility class for conditionally hidden settings */
 .nn-setting-hidden {
     display: none;
@@ -7157,6 +7441,32 @@ body.nn-resizing {
 .nn-setting-warning {
     color: var(--text-error);
     font-weight: 600;
+}
+
+/* Separates warnings when several apply to one setting */
+.nn-setting-warning-message + .nn-setting-warning-message {
+    margin-top: var(--size-4-1);
+}
+
+.nn-setting-template-tokens,
+.nn-setting-template-status:not(:first-child) {
+    margin-top: 1em;
+}
+
+.nn-setting-template-status-header {
+    display: flex;
+    align-items: center;
+    gap: var(--size-2-2);
+}
+
+.nn-setting-template-status-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+}
+
+.nn-setting-template-status-icon svg {
+    width: 16px;
+    height: 16px;
 }
 
 .nn-setting-calendar-pattern-example-text {
@@ -7197,6 +7507,127 @@ body.nn-resizing {
 
 .nn-setting-info-list li + li {
     margin-top: 4px;
+}
+
+/* Folder template rows in File operations & templates > Templates: path text, then the scope dropdown and remove button on the right */
+.nn-setting-folder-template-list {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+}
+
+.nn-setting-folder-template-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nn-setting-folder-template-row + .nn-setting-folder-template-row {
+    margin-top: 6px;
+}
+
+.nn-setting-folder-template-text {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.nn-setting-folder-template-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.nn-setting-folder-template-remove {
+    padding: 2px;
+}
+
+/* Template command rows in File operations & templates: name and summary on the left, edit and remove on the right */
+.nn-setting-template-commands {
+    flex-wrap: wrap;
+}
+
+/* Only the list wraps: the description shrinks so the add button stays on the first line */
+.nn-setting-template-commands > .setting-item-info {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.nn-setting-template-commands > .setting-item-control {
+    flex: 0 0 auto;
+}
+
+.nn-setting-template-command-list {
+    flex-basis: 100%;
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+}
+
+.nn-setting-template-command-list:empty {
+    display: none;
+}
+
+.nn-setting-template-command-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nn-setting-template-command-row + .nn-setting-template-command-row {
+    margin-top: 6px;
+}
+
+.nn-setting-template-command-text {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.nn-setting-template-command-name {
+    color: var(--text-normal);
+}
+
+.nn-setting-template-command-summary {
+    font-size: var(--font-ui-smaller);
+}
+
+.nn-setting-template-command-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+/* Icon button next to the placement dropdown in the template command modal, and the icon shown in the command list */
+.nn-template-command-icon-button {
+    margin-inline-end: 8px;
+}
+
+.nn-setting-template-command-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-inline-end: 4px;
+    color: var(--text-muted);
+}
+
+.nn-setting-text-count-warning-header {
+    display: flex;
+    align-items: center;
+    gap: var(--size-2-2);
+    margin-bottom: var(--size-2-2);
+}
+
+.nn-setting-text-count-warning-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    color: var(--text-warning);
+}
+
+.nn-setting-text-count-warning-icon svg {
+    width: 16px;
+    height: 16px;
 }
 
 /* Wider text inputs for settings that benefit from more space */
@@ -7445,106 +7876,335 @@ button.nn-youtube-button svg {
 .nn-slider-control input[type='range'] {
     flex: 0 0 100px;
 }
+/* Source: src/styles/sections/settings-markdownpoint-banner.css */
 
-.nn-slider-value {
-    flex: 0 0 48px;
-    font-size: var(--font-ui-smaller);
-    color: var(--nn-theme-foreground-muted);
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-}
+/* ========================================================================
+   MarkdownPoint banner at the top of the settings start page
+   ======================================================================== */
 
-/* Cards linking to the author's other plugins on the settings start page */
-.setting-item.nn-plugin-cards {
-    display: block;
-}
-
-/* One column when the settings pane is narrow, because the description needs the width */
-.nn-plugin-card-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
-    gap: var(--size-4-2);
-    margin-top: var(--size-4-2);
-}
-
-/* A button so the whole card can be reached from the keyboard. The declarations before the
-   layout undo the button styling a theme applies. */
-.nn-plugin-card {
-    height: auto;
-    padding: var(--size-4-3);
-    background-color: var(--background-secondary);
+/* Both settings pages render the banner as the only row of its own group, without the group's frame */
+.setting-group.nn-markdownpoint-group > .setting-items {
+    padding: 0;
+    border: none;
+    background: none;
     box-shadow: none;
-    text-align: start;
-    white-space: normal;
-    display: flex;
-    align-items: flex-start;
-    gap: var(--size-4-3);
-    width: 100%;
-    border: 1px solid var(--background-modifier-border);
-    border-radius: var(--radius-m);
-    cursor: pointer;
 }
 
-.nn-plugin-card:hover {
-    border-color: var(--background-modifier-border-hover);
-    background-color: var(--background-modifier-hover);
+/* Matches Obsidian's `.setting-group .setting-item:not(.setting-item-heading)` row rule, which it must outrank */
+.setting-group.nn-markdownpoint-group .setting-item.nn-markdownpoint-setting {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
 }
 
-.nn-plugin-card-icon {
+.nn-markdownpoint-setting > .setting-item-info,
+.nn-markdownpoint-setting > .setting-item-control {
+    display: none;
+}
+
+/* The design's own colors are set inline (canvas, surface, text, muted, accent), so the banner
+   looks the same in light and dark themes. Mandarin is MarkdownPoint's brand color. */
+.nn-markdownpoint-banner {
+    --nn-markdownpoint-mandarin-500: #fa7b26;
+    --nn-markdownpoint-mandarin-600: #f2641f;
+    --nn-markdownpoint-point: var(--nn-markdownpoint-mandarin-600);
+    --nn-markdownpoint-edge: rgba(0, 0, 0, 0.08);
+    --nn-markdownpoint-drop: rgba(40, 30, 20, 0.28);
+    container-type: inline-size;
+}
+
+/* The row holds a light and a dark banner with the same message; only the one for Obsidian's current
+   theme shows, so switching between light and dark swaps the design while settings are open.
+   display: none also takes the other banner out of the tab order and the accessibility tree. */
+.theme-dark .nn-markdownpoint-banner:not(.nn-markdownpoint-banner-dark),
+.theme-light .nn-markdownpoint-banner-dark {
+    display: none;
+}
+
+.nn-markdownpoint-banner-dark {
+    --nn-markdownpoint-point: var(--nn-markdownpoint-mandarin-500);
+    --nn-markdownpoint-edge: rgba(255, 255, 255, 0.1);
+    --nn-markdownpoint-drop: rgba(0, 0, 0, 0.55);
+}
+
+/* A shade off the slide's canvas, so the slide reads as an object lying on it. The corners follow
+   Obsidian's settings cards, which are rounder on mobile and drawn as a superellipse on macOS. The file,
+   the slide and the text sit together as one group, centered with equal space on both sides. */
+.nn-markdownpoint-strip {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 auto;
-    width: var(--size-4-8);
-    height: var(--size-4-8);
-    border-radius: var(--radius-m);
-    background-color: var(--background-primary);
-    color: var(--text-accent);
-}
-
-/* min-width lets a long word wrap instead of stretching the card past its column */
-.nn-plugin-card-details {
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-2-1);
-    min-width: 0;
-}
-
-.nn-plugin-card-name {
-    color: var(--text-normal);
-    font-size: var(--font-ui-small);
-    font-weight: var(--font-semibold);
-    line-height: 1.3;
-}
-
-/* One line whatever the language, cut with an ellipsis, so every card is the same height */
-.nn-plugin-card-description {
-    color: var(--text-muted);
-    font-size: var(--font-ui-smaller);
-    line-height: 1.4;
-    white-space: nowrap;
+    gap: 28px;
+    min-height: 80px;
+    padding-inline: 16px;
     overflow: hidden;
+    border-radius: var(--setting-items-radius);
+    corner-shape: var(--corner-shape);
+    background: color-mix(in srgb, var(--nn-markdownpoint-canvas) 93%, var(--nn-markdownpoint-text));
+    box-shadow: inset 0 0 0 1px var(--nn-markdownpoint-edge);
+    color: var(--nn-markdownpoint-text);
+    font-family: var(--font-interface);
+    cursor: pointer;
+}
+
+/* Tinted under a mouse pointer only, so a tap on a touch screen leaves no tint behind */
+@media (hover: hover) {
+    .nn-markdownpoint-strip:hover {
+        background: color-mix(in srgb, var(--nn-markdownpoint-canvas) 89%, var(--nn-markdownpoint-text));
+    }
+}
+
+.nn-markdownpoint-strip:focus-visible {
+    outline: 2px solid var(--interactive-accent);
+    outline-offset: 2px;
+}
+
+/* The Markdown file, tucked behind the slide it makes */
+.nn-markdownpoint-visual {
+    position: relative;
+    flex: none;
+    align-self: stretch;
+    width: 226px;
+}
+
+.nn-markdownpoint-file {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 9px;
+    width: 150px;
+    height: 66px;
+    padding: 6px 8px 0;
+    overflow: hidden;
+    border-radius: 5px;
+    background: var(--nn-markdownpoint-surface);
+    box-shadow:
+        0 0 0 1px var(--nn-markdownpoint-edge),
+        0 4px 12px -6px var(--nn-markdownpoint-drop);
+    color: var(--nn-markdownpoint-muted);
+    transform: rotate(-2deg);
+}
+
+.nn-markdownpoint-file-name {
+    margin-bottom: 3px;
+    font-size: 8px;
+    font-weight: var(--font-semibold);
+    letter-spacing: 0.02em;
+    opacity: 0.7;
+}
+
+/* Lines wrap where the slide starts to cover the card */
+.nn-markdownpoint-file-text {
+    width: 90px;
+    font-family: var(--font-monospace);
+    font-size: 8px;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* Markdown marks at reduced strength, as MarkdownPoint draws them */
+.nn-markdownpoint-mark {
+    color: var(--nn-markdownpoint-mandarin-500);
+    opacity: 0.45;
+}
+
+.nn-markdownpoint-highlight {
+    color: var(--nn-markdownpoint-accent);
+    font-weight: var(--font-bold);
+}
+
+.nn-markdownpoint-slide {
+    position: absolute;
+    inset-inline-end: 0;
+    top: 50%;
+    display: block;
+    width: 128px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    box-shadow:
+        0 0 0 1px var(--nn-markdownpoint-edge),
+        0 8px 18px -6px var(--nn-markdownpoint-drop);
+    transform: translateY(-50%);
+}
+
+/* Dark designs dim the file and the slide, which would otherwise stand out brighter than the
+   banner's own text */
+.nn-markdownpoint-banner-dark .nn-markdownpoint-file,
+.nn-markdownpoint-banner-dark .nn-markdownpoint-slide {
+    filter: brightness(0.65);
+}
+
+/* The three lines are centered on each other, and the column is only as wide as its widest line, so the
+   group centers as a whole. Their spacing is set per line rather than
+   with a gap, so the space from each line's baseline to the next line's capitals comes out equal (the
+   wordmark line is read by its text, not by the tile that hangs below it), and the padding puts as much
+   space above the wordmark as below the subtext's baseline. */
+.nn-markdownpoint-copy {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    padding-block: 14px 10px;
+    text-align: center;
+}
+
+/* The wordmark, the credit and the link icon, always on one line so the banner keeps its height. The
+   credit in every language fits from a banner about 330px wide on phones; below that it ends in an
+   ellipsis and the icon stays. The spacing is set per item because the icon sits closer to the credit
+   than the credit to the wordmark. */
+.nn-markdownpoint-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    max-width: 100%;
+    margin-bottom: 3px;
+}
+
+/* The wordmark keeps its own width instead of stretching across the column */
+.nn-markdownpoint-wordmark {
+    display: block;
+    flex: none;
+    width: auto;
+    height: 17px;
+}
+
+.nn-markdownpoint-credit {
+    min-width: 0;
+    margin-inline-start: 7px;
+    overflow: hidden;
+    color: var(--nn-markdownpoint-muted);
+    font-size: 12px;
+    line-height: 17px;
+    white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-/* Sits at the far edge, the way Obsidian marks a row that opens somewhere else. It keeps to
-   the middle of the card while the icon and the name line up at the top. */
-.nn-plugin-card-arrow {
+/* Obsidian sizes the icon's SVG from --icon-size and mirrors it in right-to-left languages. The size
+   matches the height of the credit's capitals. */
+.nn-markdownpoint-link-icon {
+    --icon-size: 11px;
+    --icon-stroke: 2px;
     display: flex;
-    align-items: center;
-    align-self: center;
-    flex: 0 0 auto;
-    margin-inline-start: auto;
-    color: var(--text-faint);
+    flex: none;
+    margin-inline-start: 3px;
+    color: var(--nn-markdownpoint-muted);
 }
 
-.nn-plugin-card-arrow .svg-icon {
-    width: var(--icon-s);
-    height: var(--icon-s);
+.nn-markdownpoint-headline {
+    font-size: 15px;
+    font-weight: var(--font-bold);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
 }
 
-.nn-plugin-card:hover .nn-plugin-card-arrow {
-    color: var(--text-muted);
+/* The point at the end of a headline is MarkdownPoint's signature mandarin */
+.nn-markdownpoint-point {
+    color: var(--nn-markdownpoint-point);
+}
+
+.nn-markdownpoint-subtext {
+    margin-top: 5px;
+    color: var(--nn-markdownpoint-muted);
+    font-size: 12px;
+    line-height: 1.35;
+    text-wrap: balance;
+}
+
+/* Obsidian's mobile apps set larger text throughout, so the banner's text grows with it. The spacing
+   below keeps the three lines evenly spaced at these sizes. */
+.is-mobile .nn-markdownpoint-brand {
+    margin-bottom: 4px;
+}
+
+.is-mobile .nn-markdownpoint-wordmark {
+    height: 20px;
+}
+
+.is-mobile .nn-markdownpoint-credit {
+    margin-inline-start: 8px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.is-mobile .nn-markdownpoint-link-icon {
+    --icon-size: 13px;
+}
+
+.is-mobile .nn-markdownpoint-headline {
+    font-size: 18px;
+}
+
+.is-mobile .nn-markdownpoint-subtext {
+    margin-top: 4.5px;
+    font-size: 14px;
+}
+
+/* Every line of every language fits on one line beside the file and slide from about 560px; medium
+   panes drop the file and keep the slide, so the lines still fit without wrapping */
+@container (max-width: 580px) {
+    .nn-markdownpoint-visual {
+        width: 128px;
+    }
+
+    .nn-markdownpoint-file {
+        display: none;
+    }
+}
+
+/* Mobile text is larger, so tablets drop the file sooner */
+@container (max-width: 640px) {
+    .is-mobile .nn-markdownpoint-visual {
+        width: 128px;
+    }
+
+    .is-mobile .nn-markdownpoint-file {
+        display: none;
+    }
+}
+
+/* Narrow panes, such as phones, drop the slide too and show only the three lines, each kept on one line,
+   so the banner has the same height as beside the slide at every width */
+@container (max-width: 480px) {
+    .nn-markdownpoint-visual {
+        display: none;
+    }
+
+    /* Where the banner is too narrow for the longest headline or subtext of any language, the text
+       shrinks with the banner instead of wrapping. The divisors are the widest translation of each line
+       in em (19.6em and 23.5em) plus 5% for other interface fonts, and 32px is the strip's inline
+       padding. The line heights stay those of the full-size text, which keeps the height fixed. */
+    .nn-markdownpoint-headline,
+    .nn-markdownpoint-subtext {
+        white-space: nowrap;
+    }
+
+    .nn-markdownpoint-headline {
+        font-size: min(15px, (100cqi - 32px) / 20.5);
+        line-height: calc(15px * 1.2);
+    }
+
+    .nn-markdownpoint-subtext {
+        font-size: min(12px, (100cqi - 32px) / 24.7);
+        line-height: calc(12px * 1.35);
+    }
+
+    .is-mobile .nn-markdownpoint-headline {
+        font-size: min(18px, (100cqi - 32px) / 20.5);
+        line-height: calc(18px * 1.2);
+    }
+
+    .is-mobile .nn-markdownpoint-subtext {
+        font-size: min(14px, (100cqi - 32px) / 24.7);
+        line-height: calc(14px * 1.35);
+    }
 }
 /* Source: src/styles/sections/settings-sponsor-button.css */
 
@@ -7592,6 +8252,30 @@ button.nn-youtube-button svg {
     border: none;
     padding: 0;
     margin-top: 0;
+}
+/* Source: src/styles/sections/settings-third-party-licenses.css */
+
+/* ========================================================================
+   Third-Party Licenses Section
+   ======================================================================== */
+
+/* The license text replaces the setting row, so the row drops its own chrome */
+.nn-third-party-licenses.setting-item {
+    border: none;
+    padding: 0;
+}
+
+/* License notices keep their line breaks and wrap on narrow screens; the settings page scrolls them */
+.nn-third-party-licenses-text {
+    padding: var(--size-4-3);
+    border-radius: var(--radius-s);
+    background-color: var(--background-secondary);
+    color: var(--text-muted);
+    font-size: var(--font-ui-smaller);
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    user-select: text;
 }
 /* Source: src/styles/sections/modal-color-picker.css */
 
