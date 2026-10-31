@@ -2088,6 +2088,10 @@
         {
           "date": "2026-10-24",
           "grade": "half"
+        },
+        {
+          "date": "2026-10-31",
+          "grade": "wrong"
         }
       ],
       "review_state": "未复习"
