@@ -2010,9 +2010,14 @@
         {
           "date": "2026-10-24",
           "grade": "half"
+        },
+        {
+          "date": "2026-10-31",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习"
+      "review_state": "已重做",
+      "review_updated": "2026-10-31"
     },
     "zt-2016-数二-解答20": {
       "id": "zt-2016-数二-解答20",
@@ -2058,6 +2063,10 @@
         {
           "date": "2026-10-24",
           "grade": "half"
+        },
+        {
+          "date": "2026-10-31",
+          "grade": "cannot"
         }
       ],
       "review_state": "未复习"
