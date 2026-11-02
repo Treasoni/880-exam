@@ -63,6 +63,10 @@
         {
           "date": "2026-10-25",
           "grade": "half"
+        },
+        {
+          "date": "2026-11-02",
+          "grade": "correct"
         }
       ],
       "review_state": "已重做",
@@ -139,6 +143,10 @@
         {
           "date": "2026-10-25",
           "grade": "half"
+        },
+        {
+          "date": "2026-11-02",
+          "grade": "correct"
         }
       ],
       "review_state": "已重做",
@@ -190,6 +198,10 @@
         },
         {
           "date": "2026-10-25",
+          "grade": "correct"
+        },
+        {
+          "date": "2026-11-02",
           "grade": "correct"
         }
       ],
@@ -385,6 +397,10 @@
         },
         {
           "date": "2026-10-01",
+          "grade": "correct"
+        },
+        {
+          "date": "2026-11-02",
           "grade": "correct"
         }
       ],
@@ -696,6 +712,10 @@
         {
           "date": "2026-10-25",
           "grade": "correct"
+        },
+        {
+          "date": "2026-11-02",
+          "grade": "correct"
         }
       ],
       "review_state": "已重做",
@@ -742,6 +762,10 @@
         },
         {
           "date": "2026-10-25",
+          "grade": "correct"
+        },
+        {
+          "date": "2026-11-02",
           "grade": "correct"
         }
       ],
