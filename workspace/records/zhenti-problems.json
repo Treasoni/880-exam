@@ -2700,6 +2700,39 @@
           "note": "几乎是同一道题：被积函数同为 $\\mathrm{e}^{-x}|\\sin x|$，都按半周期 $\\pi$ 分段、每段算单拱积分、再识别公比 $\\mathrm{e}^{-\\pi}$ 的等比数列；该条求的是 $[0,+\\infty)$ 的无穷级数，本题求 $[0,n\\pi]$ 的前 $n$ 项和再取极限，框架完全一致。"
         }
       ]
+    },
+    "zt-2019-数二-解答22": {
+      "id": "zt-2019-数二-解答22",
+      "module": "第四章：向量与方程组",
+      "year": 2019,
+      "paper": "数二",
+      "no": "解答22",
+      "stem": "已知向量组 $\\mathbf{I}:\\boldsymbol{\\alpha}_{1}=(1,1,4)^{\\mathrm{T}},\\ \\boldsymbol{\\alpha}_{2}=(1,0,4)^{\\mathrm{T}},\\ \\boldsymbol{\\alpha}_{3}=(1,2,a^{2}+3)^{\\mathrm{T}}$ 与 $\\mathbf{II}:\\boldsymbol{\\beta}_{1}=(1,1,a+3)^{\\mathrm{T}},\\ \\boldsymbol{\\beta}_{2}=(0,2,1-a)^{\\mathrm{T}},\\ \\boldsymbol{\\beta}_{3}=(1,3,a^{2}+3)^{\\mathrm{T}}$。若向量组 $\\mathbf{I}$ 与 $\\mathbf{II}$ 等价，求 $a$ 的取值，并将 $\\boldsymbol{\\beta}_{3}$ 用 $\\boldsymbol{\\alpha}_{1},\\boldsymbol{\\alpha}_{2},\\boldsymbol{\\alpha}_{3}$ 线性表示。",
+      "answer": "$a\\neq-1$；当 $a\\neq\\pm1$ 时 $\\boldsymbol{\\beta}_{3}=\\boldsymbol{\\alpha}_{1}-\\boldsymbol{\\alpha}_{2}+\\boldsymbol{\\alpha}_{3}$；当 $a=1$ 时 $\\boldsymbol{\\beta}_{3}=(3-2k)\\boldsymbol{\\alpha}_{1}+(k-2)\\boldsymbol{\\alpha}_{2}+k\\boldsymbol{\\alpha}_{3}$（$k$ 为任意常数）",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：向量组等价的充要条件（三秩相等）、含参分块矩阵的初等行变换、非齐次线性方程组的通解与线性表出。\n> **总体思路与切入点**：把两组向量拼成 $3\\times6$ 的分块矩阵 $(A\\mid B)$，只做初等行变换——它同时保留 $A$、$B$、联合组三者的秩，也保留列向量之间的线性关系。一次化简既能把三个秩的结构看清，又能顺手读出 $\\boldsymbol{\\beta}_{3}$ 的表示系数。\n> **核心判据**：$\\mathbf{I}$ 与 $\\mathbf{II}$ 等价 $\\iff r(A)=r(B)=r(A\\mid B)$。注意这不是「矩阵等价」，后者只要求 $r(A)=r(B)$。\n> **结论**：$a\\neq-1$；当 $a\\neq\\pm1$ 时表示唯一，当 $a=1$ 时表示不唯一。\n\n---\n\n**第一阶段：构造联合矩阵并化简**\n\n记 $A=(\\boldsymbol{\\alpha}_{1},\\boldsymbol{\\alpha}_{2},\\boldsymbol{\\alpha}_{3})$，$B=(\\boldsymbol{\\beta}_{1},\\boldsymbol{\\beta}_{2},\\boldsymbol{\\beta}_{3})$，则\n\n$$(A\\mid B)=\\left(\\begin{array}{ccc|ccc}\n1&1&1&1&0&1\\\\\n1&0&2&1&2&3\\\\\n4&4&a^{2}+3&a+3&1-a&a^{2}+3\n\\end{array}\\right).$$\n\n先做 $r_{2}-r_{1}$、$r_{3}-4r_{1}$：\n\n$$\\xrightarrow[r_{3}-4r_{1}]{r_{2}-r_{1}}\\left(\\begin{array}{ccc|ccc}\n1&1&1&1&0&1\\\\\n0&-1&1&0&2&2\\\\\n0&0&a^{2}-1&a-1&1-a&a^{2}-1\n\\end{array}\\right),$$\n\n再做 $r_{1}+r_{2}$、$-r_{2}$：\n\n$$\\xrightarrow[-r_{2}]{r_{1}+r_{2}}\\left(\\begin{array}{ccc|ccc}\n1&0&2&1&2&3\\\\\n0&1&-1&0&-2&-2\\\\\n0&0&(a-1)(a+1)&a-1&-(a-1)&(a-1)(a+1)\n\\end{array}\\right).$$\n\n第三行的所有分界点都集中在 $a=1$ 与 $a=-1$。\n\n**第二阶段：分类讨论求 $a$**\n\n等价要求 $r(A)=r(B)=r(A\\mid B)$。\n\n**① $a=-1$**：第三行变为 $(0,0,0\\mid-2,2,0)$。\n\n$$r(A)=2,\\qquad r(A\\mid B)=3,$$\n\n二者不等，向量组 $\\mathbf{II}$ 不能由 $\\mathbf{I}$ 表出，故**不等价**，舍去。\n\n**② $a=1$**：第三行全为 $0$，矩阵化为\n\n$$\\left(\\begin{array}{ccc|ccc}\n1&0&2&1&2&3\\\\\n0&1&-1&0&-2&-2\\\\\n0&0&0&0&0&0\n\\end{array}\\right).$$\n\n于是 $r(A)=r(A\\mid B)=2$。对 $B$ 作同样的行变换后看后三列：\n\n$$B\\longrightarrow\\left(\\begin{array}{ccc}\n1&0&1\\\\\n0&2&2\\\\\n0&0&0\n\\end{array}\\right),$$\n\n前两列线性无关，故 $r(B)=2$。三秩相等，**等价成立**。\n\n**③ $a\\neq\\pm1$**：此时 $(a-1)(a+1)\\neq0$，故 $r(A)=3$，$r(A\\mid B)=3$。只需再验 $r(B)$。对 $B$ 作同样的行变换：\n\n$$B\\longrightarrow\\left(\\begin{array}{ccc}\n1&0&1\\\\\n0&2&2\\\\\na-1&-(a-1)&(a-1)(a+1)\n\\end{array}\\right),$$\n\n执行 $r_{3}-(a-1)r_{1}+\\dfrac{a-1}{2}r_{2}$：\n\n$$\\longrightarrow\\left(\\begin{array}{ccc}\n1&0&1\\\\\n0&2&2\\\\\n0&0&(a-1)(a+1)\n\\end{array}\\right).$$\n\n因为 $a\\neq\\pm1$，右下角非零，故 $r(B)=3$。三秩相等，**等价成立**。\n\n综上，$a$ 的取值为\n\n$$a\\neq-1.$$\n\n> [!warning] 别把「矩阵等价」当成「向量组等价」\n> 矩阵等价只要求 $r(A)=r(B)$；向量组等价要求三秩相等 $r(A)=r(B)=r(A\\mid B)$。只比较两个行列式就下结论，即使答案碰巧对，也会因缺少联合秩的验证而丢步骤分。\n\n**第三阶段：将 $\\boldsymbol{\\beta}_{3}$ 用 $\\boldsymbol{\\alpha}_{1},\\boldsymbol{\\alpha}_{2},\\boldsymbol{\\alpha}_{3}$ 表示**\n\n这等价于解非齐次方程组 $A\\boldsymbol{x}=\\boldsymbol{\\beta}_{3}$。取第一阶段化简后矩阵的第 $1,2,3,6$ 列：\n\n$$(A\\mid\\boldsymbol{\\beta}_{3})\\longrightarrow\\left(\\begin{array}{ccc|c}\n1&0&2&3\\\\\n0&1&-1&-2\\\\\n0&0&a^{2}-1&a^{2}-1\n\\end{array}\\right).$$\n\n> [!warning] 不能直接约掉 $a^{2}-1$\n> 在 $a\\neq-1$ 的前提下仍有 $a=1$ 的可能。必须按 $a^{2}-1$ 是否为零分情况：$a\\neq\\pm1$ 有唯一解，$a=1$ 有无穷多解。\n\n**（1）$a\\neq\\pm1$**：$a^{2}-1\\neq0$，第 3 行除以 $a^{2}-1$ 得 $x_{3}=1$，再回代：\n\n$$\\left(\\begin{array}{ccc|c}\n1&0&2&3\\\\\n0&1&-1&-2\\\\\n0&0&1&1\n\\end{array}\\right)\n\\xrightarrow[r_{2}+r_{3}]{r_{1}-2r_{3}}\\left(\\begin{array}{ccc|c}\n1&0&0&1\\\\\n0&1&0&-1\\\\\n0&0&1&1\n\\end{array}\\right).$$\n\n故 $x_{1}=1,\\ x_{2}=-1,\\ x_{3}=1$，即\n\n$$\\boldsymbol{\\beta}_{3}=\\boldsymbol{\\alpha}_{1}-\\boldsymbol{\\alpha}_{2}+\\boldsymbol{\\alpha}_{3}.$$\n\n**（2）$a=1$**：$a^{2}-1=0$，矩阵化为\n\n$$\\left(\\begin{array}{ccc|c}\n1&0&2&3\\\\\n0&1&-1&-2\\\\\n0&0&0&0\n\\end{array}\\right),$$\n\n同解方程组为\n\n$$\\begin{cases}\nx_{1}=3-2x_{3},\\\\\nx_{2}=-2+x_{3}.\n\\end{cases}$$\n\n令自由未知量 $x_{3}=k$，得通解 $\\boldsymbol{x}=(3-2k,\\,-2+k,\\,k)^{\\mathrm{T}}$，所以\n\n$$\\boldsymbol{\\beta}_{3}=(3-2k)\\boldsymbol{\\alpha}_{1}+(k-2)\\boldsymbol{\\alpha}_{2}+k\\boldsymbol{\\alpha}_{3}\\qquad(k\\ \\text{为任意常数}).$$\n\n> [!tip] 两情况自洽\n> 在 $a=1$ 时 $\\boldsymbol{\\alpha}_{1},\\boldsymbol{\\alpha}_{2},\\boldsymbol{\\alpha}_{3}$ 线性相关，表示法不唯一；取 $k=1$ 恰好得到 $a\\neq\\pm1$ 时的 $\\boldsymbol{\\alpha}_{1}-\\boldsymbol{\\alpha}_{2}+\\boldsymbol{\\alpha}_{3}$。事实上直接验算\n> $$\\boldsymbol{\\alpha}_{1}-\\boldsymbol{\\alpha}_{2}+\\boldsymbol{\\alpha}_{3}=(1,3,a^{2}+3)^{\\mathrm{T}}=\\boldsymbol{\\beta}_{3}$$\n> 对任意 $a$ 都成立——这正是 $a=1$ 时的特解。\n\n> [!warning] 考场易错点\n> 1. **混淆两种等价**：只验证 $r(A)=r(B)$ 不够，必须补 $r(A\\mid B)$。\n> 2. **直接约掉 $a^{2}-1$**：会漏掉 $a=1$ 的降秩情况，导致等价性判断与表示式都少一种。\n> 3. **只写一个表示式**：$a=1$ 时 $\\boldsymbol{\\beta}_{3}=\\boldsymbol{\\alpha}_{1}-\\boldsymbol{\\alpha}_{2}+\\boldsymbol{\\alpha}_{3}$ 只是一个特解，题目问「线性表示」应给含自由参数 $k$ 的通解。\n> 4. **只做行变换**：求表示系数时若用了列变换，系数关系会被破坏；$(A\\mid B)$ 的化简全程只允许行变换。",
+      "attempts": [
+        {
+          "date": "2026-11-04",
+          "grade": "careless"
+        }
+      ],
+      "review_state": "未复习",
+      "links": [
+        {
+          "path": "external-notes/线性代数/第四章：向量与方程组/错题本",
+          "anchor": "好题39：含参向量组等价的完整讨论与线性表示系数求解",
+          "label": "好题39：2019 数二同题完整解答",
+          "confidence": "high",
+          "note": "同一道题：题干、参数与两问完全相同，答案同为 $a\\neq-1$；可直接对照它的分情况讨论与表示系数。"
+        },
+        {
+          "path": "external-notes/线性代数/第四章：向量与方程组/错题本",
+          "anchor": "好题08：线性表示的判断与求解",
+          "label": "好题08：线性表示的判断与求解",
+          "confidence": "high",
+          "note": "本题第三阶段的通用模板：构造统一增广矩阵 $(A\\mid\\beta)$ 一次行变换，看 $r(A)=r(A\\mid\\beta)$ 定有解，再回代求系数；该条还强调把多个待表示向量并排放，避免重复化简。"
+        }
+      ]
     }
   },
   "coverage": {}
