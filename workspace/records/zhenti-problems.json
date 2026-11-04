@@ -2629,6 +2629,46 @@
           "note": "同一个工具：都用 $\\sin x<x$ 这类基础三角不等式在指定区间上比较被积函数，再借积分保号性传递大小关系；该条的核心提醒「外层单调性决定不等号方向」与本题 $\\sin t$、$1-\\cos t$ 的比较同源。"
         }
       ]
+    },
+    "zt-2019-数二-解答18": {
+      "id": "zt-2019-数二-解答18",
+      "module": "二重积分",
+      "year": 2019,
+      "paper": "数二",
+      "no": "解答18",
+      "stem": "已知平面区域 $D=\\left\\{(x,y)\\mid |x|\\leqslant y,\\ (x^{2}+y^{2})^{3}\\leqslant y^{4}\\right\\}$，计算二重积分 $\\displaystyle\\iint_D \\frac{x+y}{\\sqrt{x^{2}+y^{2}}}\\,\\mathrm{d}x\\mathrm{d}y$．",
+      "answer": "$\\frac{43\\sqrt{2}}{120}$",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：二重积分的奇偶对称性、极坐标变换与面积元素、极径上限由区域边界动态确定、奇次幂三角函数的凑微分。\n> **总体思路与切入点**：拿到二重积分计算题，固定三步走——**先看对称性，再选坐标系，最后定上下限**，不要上来就换元硬算。\n> 1. **对称性**：把 $x$ 换成 $-x$，两条边界不等式都不变，所以 $D$ 关于 $y$ 轴对称；被积函数拆开后，$\\frac{x}{\\sqrt{x^{2}+y^{2}}}$ 是关于 $x$ 的奇函数，积分直接归零。\n> 2. **坐标系**：边界与被积函数里密集出现 $x^{2}+y^{2}$，是极坐标信号；$(x^{2}+y^{2})^{3}\\leqslant y^{4}$ 会在极坐标下退化成关于 $r$ 的简单上界。\n> 3. **定限**：折半到第一象限后角度是干净的 $\\left[\\frac{\\pi}{4},\\frac{\\pi}{2}\\right]$，再解出 $0\\leqslant r\\leqslant\\sin^{2}\\theta$。\n> **结论**：$I=\\frac{43\\sqrt{2}}{120}$。\n\n---\n\n**第一步：用对称性砍掉奇函数项**\n\n区域\n\n$$D=\\left\\{(x,y)\\mid |x|\\leqslant y,\\ (x^{2}+y^{2})^{3}\\leqslant y^{4}\\right\\}$$\n\n对 $x\\mapsto -x$ 不变，故 $D$ 关于 $y$ 轴对称。把被积函数拆成两项：\n\n$$\\iint_D \\frac{x+y}{\\sqrt{x^{2}+y^{2}}}\\,\\mathrm{d}x\\mathrm{d}y\n=\\iint_D \\frac{x}{\\sqrt{x^{2}+y^{2}}}\\,\\mathrm{d}x\\mathrm{d}y\n+\\iint_D \\frac{y}{\\sqrt{x^{2}+y^{2}}}\\,\\mathrm{d}x\\mathrm{d}y.$$\n\n其中 $f_1(x,y)=\\frac{x}{\\sqrt{x^{2}+y^{2}}}$ 满足 $f_1(-x,y)=-f_1(x,y)$，是关于 $x$ 的奇函数，在对称区域 $D$ 上的积分为 $0$；$f_2(x,y)=\\frac{y}{\\sqrt{x^{2}+y^{2}}}$ 关于 $x$ 为偶函数，在 $D$ 上的积分等于右半区域 $D_1$ 上积分的 $2$ 倍：\n\n$$I=2\\iint_{D_1}\\frac{y}{\\sqrt{x^{2}+y^{2}}}\\,\\mathrm{d}x\\mathrm{d}y,\\qquad\nD_1=\\left\\{(x,y)\\mid 0\\leqslant x\\leqslant y,\\ (x^{2}+y^{2})^{3}\\leqslant y^{4}\\right\\}.$$\n\n> [!warning] 为什么先折半再转极坐标\n> 若不利用对称性、直接在原区域上转极坐标，由 $|x|\\leqslant y$ 得 $\\theta\\in\\left[\\frac{\\pi}{4},\\frac{3\\pi}{4}\\right]$，上下限不对称，还要处理绝对值；折半到 $D_1$ 后 $x\\geqslant0,\\ y\\geqslant0$，角度立刻收成 $\\left[\\frac{\\pi}{4},\\frac{\\pi}{2}\\right]$，少一层符号干扰。\n\n**第二步：极坐标定限**\n\n令 $x=r\\cos\\theta$，$y=r\\sin\\theta$，$r\\geqslant0$，面积元素 $\\mathrm{d}x\\mathrm{d}y=r\\,\\mathrm{d}r\\mathrm{d}\\theta$。\n\n**角度范围**：在 $D_1$ 中 $0\\leqslant x\\leqslant y$，即 $0\\leqslant\\cos\\theta\\leqslant\\sin\\theta$，故\n\n$$\\frac{\\pi}{4}\\leqslant\\theta\\leqslant\\frac{\\pi}{2}.$$\n\n**极径范围**：把极坐标代入边界 $(x^{2}+y^{2})^{3}\\leqslant y^{4}$：\n\n$$(r^{2})^{3}\\leqslant(r\\sin\\theta)^{4}\\quad\\Longrightarrow\\quad r^{6}\\leqslant r^{4}\\sin^{4}\\theta.$$\n\n当 $r>0$ 时两边除以 $r^{4}$，得 $r^{2}\\leqslant\\sin^{4}\\theta$；在 $\\left[\\frac{\\pi}{4},\\frac{\\pi}{2}\\right]$ 上 $\\sin\\theta>0$，开方得\n\n$$0\\leqslant r\\leqslant\\sin^{2}\\theta.$$\n\n于是\n\n$$D_1=\\left\\{(r,\\theta)\\ \\middle|\\ \\frac{\\pi}{4}\\leqslant\\theta\\leqslant\\frac{\\pi}{2},\\ 0\\leqslant r\\leqslant\\sin^{2}\\theta\\right\\}.$$\n\n> [!tip] 极径上限是「动态」的\n> 这里的 $r$ 上限不是常数，而是随 $\\theta$ 变化的 $\\sin^{2}\\theta$；定限时先解边界方程，再对 $r$ 积分，不能把上限写成某个定值。\n\n**第三步：化为累次积分**\n\n被积函数与面积元素一起换：\n\n$$\\frac{y}{\\sqrt{x^{2}+y^{2}}}\\,\\mathrm{d}x\\mathrm{d}y\n=\\frac{r\\sin\\theta}{r}\\cdot r\\,\\mathrm{d}r\\mathrm{d}\\theta\n=r\\sin\\theta\\,\\mathrm{d}r\\mathrm{d}\\theta.$$\n\n所以\n\n$$I=2\\int_{\\frac{\\pi}{4}}^{\\frac{\\pi}{2}}\\sin\\theta\\,\\mathrm{d}\\theta\\int_{0}^{\\sin^{2}\\theta}r\\,\\mathrm{d}r.$$\n\n内层积分\n\n$$\\int_{0}^{\\sin^{2}\\theta}r\\,\\mathrm{d}r=\\left[\\frac{r^{2}}{2}\\right]_{0}^{\\sin^{2}\\theta}=\\frac{1}{2}\\sin^{4}\\theta.$$\n\n代回外层，系数 $2$ 与 $\\frac{1}{2}$ 恰好抵消：\n\n$$I=2\\int_{\\frac{\\pi}{4}}^{\\frac{\\pi}{2}}\\sin\\theta\\cdot\\frac{1}{2}\\sin^{4}\\theta\\,\\mathrm{d}\\theta\n=\\int_{\\frac{\\pi}{4}}^{\\frac{\\pi}{2}}\\sin^{5}\\theta\\,\\mathrm{d}\\theta.$$\n\n**第四步：凑微分计算 $\\displaystyle\\int_{\\frac{\\pi}{4}}^{\\frac{\\pi}{2}}\\sin^{5}\\theta\\,\\mathrm{d}\\theta$**\n\n奇次幂的处理办法：拆出一个 $\\sin\\theta$ 去凑 $-\\mathrm{d}(\\cos\\theta)$，剩下的用 $\\sin^{2}\\theta=1-\\cos^{2}\\theta$ 转化。\n\n$$\\int_{\\frac{\\pi}{4}}^{\\frac{\\pi}{2}}\\sin^{5}\\theta\\,\\mathrm{d}\\theta\n=\\int_{\\frac{\\pi}{4}}^{\\frac{\\pi}{2}}(1-\\cos^{2}\\theta)^{2}\\sin\\theta\\,\\mathrm{d}\\theta.$$\n\n令 $u=\\cos\\theta$，则 $\\mathrm{d}u=-\\sin\\theta\\,\\mathrm{d}\\theta$；$\\theta=\\frac{\\pi}{4}$ 时 $u=\\frac{\\sqrt{2}}{2}$，$\\theta=\\frac{\\pi}{2}$ 时 $u=0$。于是\n\n$$I=\\int_{0}^{\\frac{\\sqrt{2}}{2}}(1-u^{2})^{2}\\,\\mathrm{d}u\n=\\int_{0}^{\\frac{\\sqrt{2}}{2}}(1-2u^{2}+u^{4})\\,\\mathrm{d}u\n=\\left[u-\\frac{2}{3}u^{3}+\\frac{1}{5}u^{5}\\right]_{0}^{\\frac{\\sqrt{2}}{2}}.$$\n\n代入上限：\n\n$$I=\\frac{\\sqrt{2}}{2}-\\frac{2}{3}\\cdot\\frac{\\sqrt{2}}{4}+\\frac{1}{5}\\cdot\\frac{\\sqrt{2}}{8}\n=\\sqrt{2}\\left(\\frac{1}{2}-\\frac{1}{6}+\\frac{1}{40}\\right)\n=\\sqrt{2}\\cdot\\frac{60-20+3}{120}\n=\\frac{43\\sqrt{2}}{120}.$$\n\n> [!warning] 考场易错点\n> 1. **乱套点火公式**：Wallis 公式 $\\int_{0}^{\\frac{\\pi}{2}}\\sin^{n}\\theta\\,\\mathrm{d}\\theta=\\frac{n-1}{n}\\cdot\\frac{n-3}{n-2}\\cdots$ 只对 $\\left[0,\\frac{\\pi}{2}\\right]$ 成立。本题下限是 $\\frac{\\pi}{4}$，直接套 $\\frac{4}{5}\\cdot\\frac{2}{3}=\\frac{8}{15}$ 是错的（$\\frac{8}{15}\\approx0.533$ 与正确值 $\\frac{43\\sqrt{2}}{120}\\approx0.507$ 很接近，尤其容易蒙混过关），必须老老实实凑微分。\n> 2. **漏乘面积元素的 $r$**：$\\frac{y}{\\sqrt{x^{2}+y^{2}}}$ 约掉一个 $r$ 后只剩 $\\sin\\theta$，但 $\\mathrm{d}x\\mathrm{d}y=r\\,\\mathrm{d}r\\mathrm{d}\\theta$ 还提供一个 $r$，内层积分是 $\\int r\\,\\mathrm{d}r$ 而不是 $\\int\\mathrm{d}r$。\n> 3. **高次根式算错**：$\\left(\\frac{\\sqrt{2}}{2}\\right)^{n}$ 不要按 $(\\sqrt{2})^{n}/2^{n}$ 硬展开，直接看成 $\\left(\\frac{1}{\\sqrt{2}}\\right)^{n}$：每两个因子贡献一个 $\\frac{1}{2}$，口算即可。",
+      "attempts": [
+        {
+          "date": "2026-11-04",
+          "grade": "careless"
+        }
+      ],
+      "review_state": "未复习",
+      "links": [
+        {
+          "path": "external-notes/考研数学/二重积分/错题本",
+          "anchor": "错题15：玫瑰线一瓣区域：极坐标积分的极径上限动态确定",
+          "label": "错题15：极坐标极径上限动态确定",
+          "confidence": "high",
+          "note": "同一条主线：极坐标下 $r$ 的上限由边界方程随 $\theta$ 动态确定（该条是 $r=\\sin3\\theta$，本题是 $r=\\sin^{2}\\theta$），且都用 $\\sqrt{x^{2}+y^{2}}=r$ 与面积元素 $r\\,\\mathrm{d}r\\mathrm{d}\\theta$；该条的「上限不是常数」正是本题第二步的关键。"
+        },
+        {
+          "path": "external-notes/考研数学/二重积分/错题本",
+          "anchor": "错题11：辅助线构造对称性：奇函数积分归零后只剩面积",
+          "label": "错题11：奇函数对称积分归零",
+          "confidence": "high",
+          "note": "同一个动作：先用区域对称性把奇函数部分的积分判为零，只留下偶函数/面积部分再算。本题 $\\frac{x}{\\sqrt{x^{2}+y^{2}}}$ 关于 $x$ 为奇函数、区域关于 $y$ 轴对称，积分直接归零，与该条思路一致。"
+        },
+        {
+          "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
+          "anchor": "错题26：区间再现公式消去 $x$ + 点火公式秒杀",
+          "label": "错题26：点火公式前提条件",
+          "confidence": "medium",
+          "note": "该条明确踩过「忽略点火公式前提」的坑：必须先由对称性把区间化成 $\\left[0,\\frac{\\pi}{2}\\right]$ 才能用 Wallis 公式。本题下限为 $\\frac{\\pi}{4}$，不能直接套，正好用这条作为边界提醒。"
+        }
+      ]
     }
   },
   "coverage": {}
