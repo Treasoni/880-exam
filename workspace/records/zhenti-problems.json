@@ -2596,6 +2596,39 @@
           "note": "同为「分母阶数决定展开阶数」：本题分母是 $(x-a)^{2}$，必须展到二阶才能读出 $h''(a)$；展少了就会漏掉最后一个条件。"
         }
       ]
+    },
+    "zt-2019-数二-选择5": {
+      "id": "zt-2019-数二-选择5",
+      "module": "二重积分",
+      "year": 2019,
+      "paper": "数二",
+      "no": "选择5",
+      "stem": "已知平面区域 $D=\\left\\{(x,y)\\mid |x|+|y|\\leqslant\\frac{\\pi}{2}\\right\\}$，$I_1=\\iint_D \\sqrt{x^2+y^2}\\,\\mathrm{d}x\\mathrm{d}y$，$I_2=\\iint_D \\sin\\sqrt{x^2+y^2}\\,\\mathrm{d}x\\mathrm{d}y$，$I_3=\\iint_D (1-\\cos\\sqrt{x^2+y^2})\\,\\mathrm{d}x\\mathrm{d}y$，则（　　）\n\n(A) $I_3<I_2<I_1$．　(B) $I_2<I_1<I_3$．　(C) $I_1<I_2<I_3$．　(D) $I_2<I_3<I_1$．",
+      "answer": "(A) $I_3<I_2<I_1$",
+      "solution": "> [!info] 考点与破题思路\n> **核心考点**：二重积分的比较定理（保号性）；区域 $|x|+|y|\\leqslant\\frac{\\pi}{2}$ 上 $t=\\sqrt{x^{2}+y^{2}}$ 的取值范围；三角不等式 $\\sin t<t$ 与 $\\sin t+\\cos t>1$。\n> **总体思路与切入点**：三个积分的区域完全相同，被积函数又都只依赖 $t=\\sqrt{x^{2}+y^{2}}$，所以**一分钱都不用算**——先把 $t$ 卡在同一个区间里，再比较三个一元函数，最后用保号性收口。\n> 1. 由 $|x|+|y|\\leqslant\\frac{\\pi}{2}$ 推出 $0\\leqslant t\\leqslant\\frac{\\pi}{2}$；\n> 2. 在 $\\left(0,\\frac{\\pi}{2}\\right)$ 上证明 $1-\\cos t<\\sin t<t$；\n> 3. 二重积分保号性 $\\Rightarrow I_3<I_2<I_1$。\n> **结论**：选 (A)。\n\n---\n\n**第一步：确定 $t=\\sqrt{x^{2}+y^{2}}$ 的取值范围**\n\n区域 $D$ 是以原点为中心、四个顶点为 $\\left(\\pm\\frac{\\pi}{2},0\\right)$、$\\left(0,\\pm\\frac{\\pi}{2}\\right)$ 的菱形。\n\n代数法：由 $|x|+|y|\\leqslant\\frac{\\pi}{2}$ 且两边非负，平方得\n\n$$x^{2}+y^{2}+2|x||y|\\leqslant\\left(\\frac{\\pi}{2}\\right)^{2}.$$\n\n因为 $2|x||y|\\geqslant0$，所以\n\n$$x^{2}+y^{2}\\leqslant\\left(|x|+|y|\\right)^{2}\\leqslant\\left(\\frac{\\pi}{2}\\right)^{2},$$\n\n开方得\n\n$$0\\leqslant t=\\sqrt{x^{2}+y^{2}}\\leqslant\\frac{\\pi}{2}.$$\n\n几何意义：菱形到原点最远的点就是四个顶点，距离恰好为 $\\frac{\\pi}{2}$。\n\n> [!warning] 最容易错的范围\n> 别把 $D$ 当成正方形 $|x|\\leqslant\\frac{\\pi}{2},\\ |y|\\leqslant\\frac{\\pi}{2}$。菱形的顶点在坐标轴上，不在四个角上，所以 $t_{\\max}=\\frac{\\pi}{2}$，而不是 $\\sqrt{\\left(\\frac{\\pi}{2}\\right)^{2}+\\left(\\frac{\\pi}{2}\\right)^{2}}=\\frac{\\sqrt{2}}{2}\\pi$。\n\n**第二步：比较三个一元函数**\n\n在 $t\\in\\left(0,\\frac{\\pi}{2}\\right)$ 上：\n\n**（1）$\\sin t<t$**：这是经典三角不等式。可令 $g(t)=t-\\sin t$，则 $g'(t)=1-\\cos t>0$，$g(0)=0$，故 $g(t)>0$。\n\n**（2）$1-\\cos t<\\sin t$**：作差并用辅助角公式，\n\n$$\\sin t-(1-\\cos t)=\\sin t+\\cos t-1=\\sqrt{2}\\sin\\left(t+\\frac{\\pi}{4}\\right)-1.$$\n\n当 $t\\in\\left(0,\\frac{\\pi}{2}\\right)$ 时，$t+\\frac{\\pi}{4}\\in\\left(\\frac{\\pi}{4},\\frac{3\\pi}{4}\\right)$，于是 $\\sin\\left(t+\\frac{\\pi}{4}\\right)>\\frac{\\sqrt{2}}{2}$，从而\n\n$$\\sqrt{2}\\sin\\left(t+\\frac{\\pi}{4}\\right)-1>0.$$\n\n也可用单位圆秒杀：$\\sin t$、$\\cos t$ 是单位圆中直角三角形两条直角边，斜边为 $1$，由「两边之和大于第三边」得 $\\sin t+\\cos t>1$，移项即 $1-\\cos t<\\sin t$。\n\n综上，在 $0<t<\\frac{\\pi}{2}$ 上\n\n$$1-\\cos t<\\sin t<t.$$\n\n> [!note] 边界点\n> $t=\\frac{\\pi}{2}$ 时 $1-\\cos t=\\sin t=1$，前两个函数相等；但这只发生在菱形的四个顶点上，是零测集，不影响积分之间的严格不等号。\n\n**第三步：用二重积分的保号性**\n\n在 $D$ 内除原点与四个顶点（测度为零）外，恒有\n\n$$1-\\cos\\sqrt{x^{2}+y^{2}}<\\sin\\sqrt{x^{2}+y^{2}}<\\sqrt{x^{2}+y^{2}}.$$\n\n由二重积分的比较定理（被积函数连续、逐点不等且不恒等），三个积分严格保持同一大小顺序：\n\n$$I_3<I_2<I_1.$$\n\n选 **(A)**。\n\n> [!warning] 考场易错点\n> 1. **把菱形当正方形**：误以为 $t$ 能取到 $\\frac{\\sqrt{2}}{2}\\pi$，一超过 $\\frac{\\pi}{2}$，$1-\\cos t$ 与 $\\sin t$ 的大小关系就会在 $\\left(\\frac{\\pi}{2},\\pi\\right)$ 内翻转，结论直接失效。先把区域画成菱形、卡准 $t\\in\\left[0,\\frac{\\pi}{2}\\right]$ 再动笔。\n> 2. **只用等价无穷小比大小**：$t\\to0^{+}$ 时 $1-\\cos t\\sim\\frac{t^{2}}{2}$ 比 $\\sin t\\sim t$ 高阶，这只是**局部**结论。若区间放大到含 $t\\in\\left(\\frac{\\pi}{2},\\pi\\right)$ 的点，例如 $t=\\pi$ 时 $1-\\cos\\pi=2>\\sin\\pi=0$，顺序立刻反转。必须先在全局区间上证明不等式，再用保号性。\n> 3. **在边界点上纠结等号**：$t=\\frac{\\pi}{2}$ 处前两个被积函数相等，但那是零测集；积分比较看的是「几乎处处」的严格不等，不影响结论。",
+      "attempts": [
+        {
+          "date": "2026-11-04",
+          "grade": "cannot"
+        }
+      ],
+      "review_state": "未复习",
+      "links": [
+        {
+          "path": "external-notes/考研数学/二重积分/错题本",
+          "anchor": "错题03：二重积分区域比较：对称性抵消与保号性判断",
+          "label": "错题03：二重积分区域比较与保号性",
+          "confidence": "high",
+          "note": "同一条主线：二重积分比大小不靠硬算，先分析被积函数在区域上的符号/大小，再用保号性；该条的 SOP「先找对称抵消、再对剩余区域用保号性」正是本题第三步的直接依据。"
+        },
+        {
+          "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
+          "anchor": "错题12：复合三角函数积分比较——外层单调性决定符号",
+          "label": "错题12：复合三角函数积分比较",
+          "confidence": "high",
+          "note": "同一个工具：都用 $\\sin x<x$ 这类基础三角不等式在指定区间上比较被积函数，再借积分保号性传递大小关系；该条的核心提醒「外层单调性决定不等号方向」与本题 $\\sin t$、$1-\\cos t$ 的比较同源。"
+        }
+      ]
     }
   },
   "coverage": {}
