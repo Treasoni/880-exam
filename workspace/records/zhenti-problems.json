@@ -1109,6 +1109,10 @@
         {
           "date": "2026-10-07",
           "grade": "correct"
+        },
+        {
+          "date": "2026-11-06",
+          "grade": "correct"
         }
       ],
       "review_state": "已重做",
@@ -1148,6 +1152,10 @@
         },
         {
           "date": "2026-10-08",
+          "grade": "correct"
+        },
+        {
+          "date": "2026-11-06",
           "grade": "correct"
         }
       ],
@@ -1191,6 +1199,10 @@
         },
         {
           "date": "2026-10-07",
+          "grade": "correct"
+        },
+        {
+          "date": "2026-11-06",
           "grade": "correct"
         }
       ],
