@@ -250,10 +250,10 @@
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
-                      "conversationId": "conv-1793149466192-m084d8zll"
+                      "conversationId": "conv-1794140657424-oua7iwjuu"
                     }
                   ],
-                  "activeTabId": "tab-1789908968076-9htz0xx"
+                  "activeTabId": "tab-1790218000549-4kkqcsg"
                 }
               },
               "icon": "bot",
@@ -291,10 +291,10 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/习题集/数二知识点习题集-答案.md",
+    "workspace/习题集/数二知识点习题集.md",
     "workspace/wrong-book/真题错题本.md",
     "scripts/__pycache__/make_exercise_book.cpython-313.pyc",
-    "workspace/习题集/数二知识点习题集.md",
-    "workspace/习题集/数二知识点习题集-答案.md",
     "workspace/习题集",
     "scripts/make_exercise_book.py",
     "workspace/records/exercise-book-plan.json",
