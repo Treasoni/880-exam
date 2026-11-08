@@ -408,21 +408,42 @@ def clean_external_solution(text, rel_file):
 
 
 def extract_external_answer(solution):
+    """从外部解析里提取答案；优先取 \\boxed{}，避免把 $$ 定界符当答案。"""
+    marker = r"\boxed{"
+    start = solution.find(marker)
+    if start != -1:
+        start += len(marker)
+        depth = 1
+        i = start
+        while i < len(solution) and depth:
+            if solution[i] == "{":
+                depth += 1
+            elif solution[i] == "}":
+                depth -= 1
+            i += 1
+        if depth == 0:
+            boxed = solution[start : i - 1].strip()
+            if boxed:
+                return boxed
+    block = re.search(
+        r"\*\*(?:正确)?答案\*\*[：:]\s*\n?\$\$\s*\n(.+?)\n\$\$", solution, flags=re.S
+    )
+    if block:
+        answer = block.group(1).strip()
+        if answer and len(answer) <= 200:
+            return answer
     patterns = [
-        r"\*\*正确答案\*\*[：:]\s*([^\n]+)",
-        r"\*\*答案\*\*[：:]\s*([^\n]+)",
-        r"^答案[：:]\s*([^\n]+)",
-        r"答案速览[^\n]*[：:]\s*([^\n]+)",
+        r"\*\*正确答案\*\*[：:][ \t]*([^\n]+)",
+        r"\*\*答案\*\*[：:][ \t]*([^\n]+)",
+        r"^答案[：:][ \t]*([^\n]+)",
+        r"答案速览[^\n]*[：:][ \t]*([^\n]+)",
     ]
     for pattern in patterns:
         match = re.search(pattern, solution, flags=re.M)
         if match:
-            answer = match.group(1).strip().strip("*")
-            if answer and len(answer) <= 200:
+            answer = match.group(1).strip().strip("*").strip()
+            if answer and answer not in ("$$", "$") and len(answer) <= 200:
                 return answer
-    boxed = re.search(r"\\boxed\{([^{}\n]{1,160})\}", solution)
-    if boxed:
-        return boxed.group(1).strip()
     choice = re.search(r"(?:选|答案[是为：:])\s*\**\(?([A-D])\)?\**", solution)
     if choice:
         return choice.group(1)
