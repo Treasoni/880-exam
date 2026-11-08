@@ -773,6 +773,18 @@ def render_book(plan, groups, stats, entries, analysis, questions):
         1 for qid in attempt_qids if _ATTEMPT_CACHE[qid][-1][3] in ("cannot", "half")
     )
     focuszt = sum(1 for qid in zt_qids if _ATTEMPT_CACHE[qid][-1][3] in ("cannot", "half"))
+    source_totals = Counter(e["source"] for e in entries)
+    source_actives = Counter(
+        e["source"]
+        for e in entries
+        if _ATTEMPT_CACHE.get(e["qid"]) and _ATTEMPT_CACHE[e["qid"]][-1][3] != "correct"
+    )
+    duplicate_of = plan.get("duplicate_of", {})
+    skipped_active = [
+        qid
+        for qid in duplicate_of
+        if _ATTEMPT_CACHE.get(qid) and _ATTEMPT_CACHE[qid][-1][3] != "correct"
+    ]
 
     lines = [
         "---",
@@ -823,6 +835,27 @@ def render_book(plan, groups, stats, entries, analysis, questions):
         "> [!note] 为什么不用 external-notes 判薄弱",
         "> 外部错题本没有 880/真题的判分记录，混进来会把“看过解析”误当成“会做”。"
         "它在这里只负责补题目角度；掌握度仍以 880 和真题的首做结果为准。",
+        "",
+        "### 选题来源",
+        "",
+        md_table(
+            ["题源", "本册题数", "其中活跃错题"],
+            [
+                ["880 错题本（高数 + 线代）", source_totals["880"], source_actives["880"]],
+                ["真题错题本", source_totals["zhenti"], source_actives["zhenti"]],
+                ["external-notes 错题本", source_totals["external"], "—（无判分记录）"],
+                ["合计", len(entries), sum(source_actives.values())],
+            ],
+        ),
+        "",
+        f"> [!note] 活跃错题 {active880 + activezt} 道，表内按 {sum(source_actives.values())} 道计",
+        (
+            "> 被去重的活跃错题："
+            + "、".join(f"`{qid}`（同 `{duplicate_of[qid]}`）" for qid in skipped_active)
+            + "，只保留后者。"
+            if skipped_active
+            else "> 本册选题与活跃错题一一对应，没有去重。"
+        ),
         "",
         "### 掌握度分布",
         "",
@@ -1119,9 +1152,9 @@ def render_supplement(plan, groups, stats, ranked, active_total):
             "",
             "### 五、比刷题更该先修的",
             "",
-            "1. **概念/定理的条件**：已做过程归因的 10 道题里，5 道是概念/定理错误。"
-            "每做一个知识点，先用一句话说清“定理成立需要什么条件”，再动笔。",
-            "2. **最后 30 秒回代**：1 道计算/代数错误、2 道步骤/逻辑遗漏。"
+            "1. **概念/定理的条件**：已做过程归因的 10 道题里，5 道是概念/定理错误、"
+            "2 道是方法选择错误。每做一个知识点，先用一句话说清“定理成立需要什么条件”，再动笔。",
+            "2. **最后 30 秒回代**：2 道步骤/逻辑遗漏、1 道计算/代数错误。"
             "解完方程、定完积分、写完通解，都把结果代回原条件检查一遍。",
             "3. **真题限时**：2018 年真题当前还有 10 道活跃错题，2019 年有 5 道。"
             "不要按知识点拆着做，按 180 分钟整卷做一次，暴露时间分配问题。",
