@@ -277,6 +277,7 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "scripts/__pycache__/make_exercise_book.cpython-313.pyc",
     "workspace/习题集/数二知识点习题集.md",
     "workspace/习题集/数二知识点习题集-答案.md",
     "workspace/习题集",
@@ -321,7 +322,6 @@
     "workspace/workflow-runs/真题收录-2018数二选择4.workflow.md",
     "workspace/wrong-book/线代错题本.md",
     "workspace/wrong-book/错题本.md",
-    "workspace/papers/la-paper-05/线代判分卡-05.md",
-    "workspace/papers/paper-07/卷子-07.md"
+    "workspace/papers/la-paper-05/线代判分卡-05.md"
   ]
 }

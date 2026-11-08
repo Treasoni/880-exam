@@ -98,6 +98,94 @@ def block(value):
     return lib880.prepare_solution_text(str(value or ""))
 
 
+_OPTION_PAREN_RE = re.compile(r"(?<![\w$])[（(]\s*([A-D])\s*[)）]")
+_OPTION_DOT_RE = re.compile(r"(?<![\w$])([A-D])\s*[.．、]")
+
+
+def _protected_spans(line):
+    """返回行内公式与行内代码占据的区间，供选项切分跳过。"""
+    spans = []
+    i = 0
+    n = len(line)
+    while i < n:
+        ch = line[i]
+        if ch == "`":
+            j = line.find("`", i + 1)
+            if j == -1:
+                break
+            spans.append((i, j + 1))
+            i = j + 1
+            continue
+        if ch == "$" and (i == 0 or line[i - 1] != "\\"):
+            delim = "$$" if line.startswith("$$", i) else "$"
+            j = i + len(delim)
+            while j < n:
+                if line[j] == "$" and line[j - 1] != "\\":
+                    if delim == "$$" and line.startswith("$$", j):
+                        j += 2
+                        break
+                    if delim == "$":
+                        j += 1
+                        break
+                j += 1
+            spans.append((i, min(j, n)))
+            i = max(j, i + len(delim))
+            continue
+        i += 1
+    return spans
+
+
+def _option_markers(line):
+    spans = _protected_spans(line)
+
+    def inside(pos):
+        return any(a <= pos < b for a, b in spans)
+
+    for pattern in (_OPTION_PAREN_RE, _OPTION_DOT_RE):
+        markers = []
+        for match in pattern.finditer(line):
+            if inside(match.start()) or inside(match.start() + 1):
+                continue
+            markers.append((match.start(), match.group(1)))
+        if len(markers) < 2:
+            continue
+        # 只接受 A→B→C→D 的连续序列；断链处不切，避免把正文里的字母当选项。
+        runs = []
+        run = [markers[0]]
+        for prev, cur in zip(markers, markers[1:]):
+            if ord(cur[1]) == ord(prev[1]) + 1:
+                run.append(cur)
+            else:
+                if len(run) >= 2:
+                    runs.append(run)
+                run = [cur]
+        if len(run) >= 2:
+            runs.append(run)
+        positions = sorted({pos for run in runs for pos, _ in run})
+        if len(positions) >= 2:
+            return positions
+    return []
+
+
+def format_stem(value):
+    """把挤在同一行的选择题选项拆成独立行，便于阅读与核对。"""
+    out = []
+    for line in str(value or "").split("\n"):
+        positions = _option_markers(line)
+        if not positions:
+            out.append(line)
+            continue
+        cuts = [0] + positions + [len(line)]
+        prefix = line[: positions[0]].strip()
+        if prefix:
+            out.append(prefix)
+        for start, end in zip(cuts[1:-1], cuts[2:]):
+            piece = line[start:end].strip()
+            if piece:
+                out.append(piece)
+    return "\n".join(out)
+
+
 def dequote(lines):
     out = []
     for line in lines:
@@ -612,7 +700,7 @@ def chapter_summary(plan, chapter, stats):
     return (
         f"本章 {len(kps)} 个知识点，{weak} 个薄弱、{untested} 个未测；"
         f"本册选 {count} 道（880 {sources['880']} · 真题 {sources['zhenti']} · 外部 {sources['external']}）；"
-        f"已判 {n} 道，首做正确率 {acc}；活跃错题 {active} 道（重点 {focus} 道）。"
+        f"本章累计已判 {n} 道，首做正确率 {acc}；活跃错题 {active} 道（重点 {focus} 道）。"
     )
 
 
@@ -789,7 +877,7 @@ def render_book(plan, groups, stats, entries, analysis, questions):
             f"{item['n']} 道已判，首对率 {item['acc']:.0%}，活跃 {item['active']} 道（重点 {item['focus']} 道），本组 {count} 道。"
         )
 
-    lines.extend(["", "## 分章习题", ""])
+    lines.append("")
     for group in groups:
         lines.extend([f"## {group['title']}", "", chapter_summary(plan, group, stats), ""])
         for kp in group["kps"]:
@@ -802,6 +890,7 @@ def render_book(plan, groups, stats, entries, analysis, questions):
                     f"### {kp_anchor(kp['no'], meta['name'])}",
                     "",
                     f"**掌握度：** {level_text(item)}",
+                    "",
                     f"**本组题量：** {len(entries_kp)} 道（880 {sources['880']} · 真题 {sources['zhenti']} · 外部 {sources['external']}）",
                     "",
                     kp_callout(item, len(entries_kp)),
@@ -825,7 +914,7 @@ def render_book(plan, groups, stats, entries, analysis, questions):
                     [
                         f"**Q{entry['number']}**　{source_label(entry)}",
                         "",
-                        block(entry["stem"]),
+                        block(format_stem(entry["stem"])),
                         "",
                     ]
                 )
