@@ -890,10 +890,6 @@
    [
     "gs-c02-comprehensive-choice-014",
     "mastered"
-   ],
-   [
-    "ext-高数-一元微分学-14",
-    "external"
    ]
   ],
   "gs2-6": [
@@ -936,14 +932,6 @@
    [
     "gs-c03-comprehensive-solution-020",
     "mastered"
-   ],
-   [
-    "gs-c03-comprehensive-choice-007",
-    "mastered"
-   ],
-   [
-    "ext-高数-一元函数积分学-55",
-    "external"
    ],
    [
     "ext-高数-一元函数积分学-08",
@@ -1006,10 +994,6 @@
    [
     "ext-高数-一元函数积分学-97",
     "external"
-   ],
-   [
-    "ext-高数-一元函数积分学-98",
-    "external"
    ]
   ],
   "gs3-6": [
@@ -1062,15 +1046,15 @@
     "active_focus"
    ],
    [
-    "zt-2018-数二-选择4",
-    "zhenti"
-   ],
-   [
-    "zt-2016-数二-解答21",
-    "zhenti"
-   ],
-   [
     "ext-高数-一元函数积分学-92",
+    "external"
+   ],
+   [
+    "ext-高数-一元函数积分学-94",
+    "external"
+   ],
+   [
+    "ext-高数-一元函数积分学-82",
     "external"
    ]
   ],
@@ -1138,15 +1122,15 @@
     "mastered"
    ],
    [
-    "zt-2013-数二-解答19",
-    "zhenti"
-   ],
-   [
     "ext-高数-多元函数微分学-16",
     "external"
    ],
    [
     "ext-高数-多元函数微分学-27",
+    "external"
+   ],
+   [
+    "ext-高数-多元函数微分学-31",
     "external"
    ]
   ],
@@ -1198,10 +1182,6 @@
     "mastered"
    ],
    [
-    "zt-2019-数二-选择5",
-    "zhenti"
-   ],
-   [
     "ext-二重积分-15",
     "external"
    ]
@@ -1216,15 +1196,15 @@
     "active_light"
    ],
    [
-    "zt-2019-数二-解答18",
-    "zhenti"
-   ],
-   [
     "ext-二重积分-03",
     "external"
    ],
    [
     "ext-二重积分-17",
+    "external"
+   ],
+   [
+    "ext-二重积分-05",
     "external"
    ]
   ],
@@ -1258,14 +1238,6 @@
    [
     "zt-2011-数二-解答18",
     "zhenti"
-   ],
-   [
-    "ext-微分方程-04",
-    "external"
-   ],
-   [
-    "ext-微分方程-09",
-    "external"
    ]
   ],
   "gs6-2": [
@@ -1357,10 +1329,6 @@
    ],
    [
     "ext-第二章：矩阵-03",
-    "external"
-   ],
-   [
-    "ext-第二章：矩阵-06",
     "external"
    ]
   ],
@@ -1578,15 +1546,15 @@
     "zhenti"
    ],
    [
-    "zt-2016-数二-解答23",
-    "zhenti"
-   ],
-   [
     "ext-第五章：矩阵相似理论-19",
     "external"
    ],
    [
     "ext-第五章：矩阵相似理论-56",
+    "external"
+   ],
+   [
+    "ext-第五章：矩阵相似理论-07",
     "external"
    ]
   ],
@@ -1601,10 +1569,6 @@
    ],
    [
     "ext-第五章：矩阵相似理论-31",
-    "external"
-   ],
-   [
-    "ext-第五章：矩阵相似理论-50",
     "external"
    ]
   ],
@@ -1669,10 +1633,6 @@
   "la12-3": [
    [
     "la-c12-basic-choice-005",
-    "mastered"
-   ],
-   [
-    "la-c12-comprehensive-fill-002",
     "mastered"
    ],
    [
