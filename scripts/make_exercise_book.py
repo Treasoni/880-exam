@@ -452,6 +452,7 @@ EXTERNAL_ANSWER_OVERRIDES = {
         r"$\frac{\mathrm{d}^2y}{\mathrm{d}x^2}="
         r"-\frac{(1+t^2)(2t+1)}{2t}$"
     ),
+    "ext-高数-一元函数积分学-57": r"(B) $a+b<1$ 且 $b>-2$",
     "ext-第一章：行列式-03": (
         r"$\sum_{j=1}^{n}A_{kj}=\frac{(-1)^{n+1}n!}{k}$"
     ),
@@ -1121,7 +1122,7 @@ def render_supplement(plan, groups, stats, ranked, active_total):
         lines.extend(
             [
                 "> [!success] 题量已全部达到目标",
-                "> 原先题量不足的知识点，已经用 external-notes 错题本里的同考点题补齐；"
+                "> 原先题量不足的知识点，已经用 external-notes 错题本里的同考点或同方法题补齐；"
                 "本册不再保留“题量不够”的条目。",
                 "> 补题只解决“有没有题做”，不改变掌握度判定；做完仍要按判分记录更新。",
             ]
