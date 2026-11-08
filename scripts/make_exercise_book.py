@@ -441,8 +441,36 @@ def clean_external_solution(text, rel_file):
     return text.strip()
 
 
-def extract_external_answer(solution):
-    """从外部解析里提取答案；优先取 \\boxed{}，避免把 $$ 定界符当答案。"""
+EXTERNAL_ANSWER_OVERRIDES = {
+    "ext-高数-函数极限与连续-03": r"$-\frac{1}{2}x(x+2)(x+4)$",
+    "ext-高数-函数极限与连续-04": (
+        r"$f(x)=\begin{cases}x-\pi+\sin x, & x\in[\pi,2\pi)\\"
+        r"x-2\pi, & x\in[2\pi,3\pi)\end{cases}$"
+    ),
+    "ext-高数-一元微分学-05": "(C)",
+    "ext-高数-一元微分学-18": (
+        r"$\frac{\mathrm{d}^2y}{\mathrm{d}x^2}="
+        r"-\frac{(1+t^2)(2t+1)}{2t}$"
+    ),
+    "ext-第一章：行列式-03": (
+        r"$\sum_{j=1}^{n}A_{kj}=\frac{(-1)^{n+1}n!}{k}$"
+    ),
+    "ext-第四章：向量与方程组-01": "$9$",
+    "ext-微分方程-22": (
+        r"(1) $y=C_1+C_2\mathrm{e}^x+C_3\cos x+C_4\sin x$；"
+        r"(2) $y=C(2-\mathrm{e}^x-\cos x+\sin x)$"
+    ),
+    "ext-微分方程-29": (
+        r"$\arctan\frac{y}{x}+\frac{3}{2}\ln(x^2+y^2)=C$"
+    ),
+    "ext-第六章：二次型-19": "D",
+}
+
+
+def extract_external_answer(solution, qid=""):
+    """从外部解析里提取答案；优先使用人工核对过的覆盖值。"""
+    if qid in EXTERNAL_ANSWER_OVERRIDES:
+        return EXTERNAL_ANSWER_OVERRIDES[qid]
     marker = r"\boxed{"
     start = solution.find(marker)
     if start != -1:
@@ -596,7 +624,7 @@ def build_entries(plan, questions, zhenti, by_qid, external):
                     solution=clean_external_solution(
                         external_block["solution"], external_block["file"]
                     ),
-                    answer=extract_external_answer(external_block["solution"]),
+                    answer=extract_external_answer(external_block["solution"], qid),
                     module=external_block["module"],
                     num=external_block["num"],
                     heading=external_block["heading"],
@@ -1067,11 +1095,11 @@ def render_supplement(plan, groups, stats, ranked, active_total):
         under, key=lambda x: (LEVEL_ORDER.index(x[3]["level"]), -x[0])
     ):
         if gap <= 1:
-            hint = "从 880 同章补 1 道同题型"
+            hint = "external-notes 同模块补 1 道；没有再找 880 同章"
         elif gap == 2:
-            hint = "从 880 同章补 2 道，或外部同模块再筛 1 道"
+            hint = "external-notes 同模块补 2 道；没有再找 880/真题"
         else:
-            hint = "从 880 同章补 2–3 道基础题，先把概念打牢"
+            hint = "external-notes 同模块补 3 道；不够再用 880 同章基础题"
         under_rows.append(
             [
                 kp_table_link(kp_no[kp], meta["name"]),
@@ -1081,14 +1109,24 @@ def render_supplement(plan, groups, stats, ranked, active_total):
                 hint,
             ]
         )
-    lines.append(md_table(["知识点", "掌握度", "现有/目标", "缺口", "建议"], under_rows))
+    if under_rows:
+        lines.append(md_table(["知识点", "掌握度", "现有/目标", "缺口", "建议"], under_rows))
+    else:
+        lines.extend(
+            [
+                "> [!success] 题量已全部达到目标",
+                "> 原先题量不足的知识点，已经用 external-notes 错题本里的同考点题补齐；"
+                "本册不再保留“题量不够”的条目。",
+                "> 补题只解决“有没有题做”，不改变掌握度判定；做完仍要按判分记录更新。",
+            ]
+        )
     lines.extend(
         [
             "",
-            "> [!warning] 有 6 个知识点在外部错题本里没有独立模块",
-            "> 函数性质与函数方程、偏导数与全微分计算、交换积分次序、二阶常系数齐次线性方程、"
-            "行列式与伴随矩阵综合、二次型与特征值综合。这些只能从 880 同章新题或真题同考点补，"
-            "不要硬等外部错题本更新。",
+            "> [!tip] 补题来源",
+            "> 题量缺口优先从 external-notes 错题本里选同考点题；"
+            "外部错题本没有独立模块的角度，才用 880 同章或真题同考点补。"
+            "补进来的题没有 880/真题判分记录，只作为方法练习，不计入掌握度统计。",
             "",
             "### 二、880/真题还没验证过的知识点",
             "",

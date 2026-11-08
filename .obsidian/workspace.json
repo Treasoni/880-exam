@@ -48,9 +48,23 @@
               "icon": "lucide-file",
               "title": "真题错题本"
             }
+          },
+          {
+            "id": "e21da1267699b606",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "workspace/习题集/数二知识点习题集.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "数二知识点习题集"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -190,10 +204,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workspace/wrong-book/真题错题本.md",
+                "file": "workspace/习题集/数二知识点习题集.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "2014"
+                "searchQuery": ""
               },
               "icon": "lucide-list",
               "title": "大纲"
@@ -277,6 +291,7 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/wrong-book/真题错题本.md",
     "scripts/__pycache__/make_exercise_book.cpython-313.pyc",
     "workspace/习题集/数二知识点习题集.md",
     "workspace/习题集/数二知识点习题集-答案.md",
@@ -301,7 +316,6 @@
     "真题/【合集】1987-2023年考研数学二/184f6371-1ad8-4229-8bc1-0aa196f09c61_origin.pdf",
     "真题/【合集】1987-2023年考研数学二/184f6371-1ad8-4229-8bc1-0aa196f09c61_model.json",
     "真题/【合集】1987-2023年考研数学二/184f6371-1ad8-4229-8bc1-0aa196f09c61_content_list_v2.json",
-    "真题/【合集】1987-2023年考研数学二/184f6371-1ad8-4229-8bc1-0aa196f09c61_content_list.json",
     "真题/【合集】1987-2023年考研数学二纯真题版.pdf-c10a0735-b4d7-48dd-a586-72ff98a684f9/full.md",
     "workspace/workflow-runs/真题错题复习-14.workflow.md",
     "workspace/workflow-runs/真题收录-2019数二解答22.workflow.md",

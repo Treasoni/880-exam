@@ -742,6 +742,14 @@
    [
     "gs-c01-basic-solution-001",
     "mastered"
+   ],
+   [
+    "ext-高数-函数极限与连续-03",
+    "external"
+   ],
+   [
+    "ext-高数-函数极限与连续-04",
+    "external"
    ]
   ],
   "gs1-2": [
@@ -800,6 +808,14 @@
    [
     "ext-高数-函数极限与连续-13",
     "external"
+   ],
+   [
+    "ext-高数-函数极限与连续-01",
+    "external"
+   ],
+   [
+    "ext-高数-函数极限与连续-11",
+    "external"
    ]
   ],
   "gs2-1": [
@@ -818,6 +834,10 @@
    [
     "ext-高数-一元微分学-25",
     "external"
+   ],
+   [
+    "ext-高数-一元微分学-05",
+    "external"
    ]
   ],
   "gs2-2": [
@@ -835,6 +855,10 @@
    ],
    [
     "ext-高数-一元微分学-17",
+    "external"
+   ],
+   [
+    "ext-高数-一元微分学-18",
     "external"
    ]
   ],
@@ -1012,6 +1036,10 @@
    [
     "ext-高数-一元函数积分学-17",
     "external"
+   ],
+   [
+    "ext-高数-一元函数积分学-57",
+    "external"
    ]
   ],
   "gs3-7": [
@@ -1186,6 +1214,18 @@
    [
     "gs-c05-comprehensive-fill-003",
     "mastered"
+   ],
+   [
+    "ext-二重积分-04",
+    "external"
+   ],
+   [
+    "ext-二重积分-12",
+    "external"
+   ],
+   [
+    "ext-二重积分-13",
+    "external"
    ]
   ],
   "gs5-3": [
@@ -1278,6 +1318,10 @@
    [
     "gs-c06-comprehensive-choice-001",
     "mastered"
+   ],
+   [
+    "ext-微分方程-22",
+    "external"
    ]
   ],
   "gs6-4": [
@@ -1301,6 +1345,10 @@
    ],
    [
     "ext-微分方程-30",
+    "external"
+   ],
+   [
+    "ext-微分方程-29",
     "external"
    ]
   ],
@@ -1330,12 +1378,24 @@
    [
     "ext-第一章：行列式-22",
     "external"
+   ],
+   [
+    "ext-第一章：行列式-03",
+    "external"
    ]
   ],
   "la7-3": [
    [
     "la-c07-comprehensive-fill-004",
     "mastered"
+   ],
+   [
+    "ext-第二章：矩阵-17",
+    "external"
+   ],
+   [
+    "ext-第二章：矩阵-31",
+    "external"
    ]
   ],
   "la8-1": [
@@ -1426,6 +1486,10 @@
    [
     "ext-第四章：向量与方程组-03",
     "external"
+   ],
+   [
+    "ext-第四章：向量与方程组-04",
+    "external"
    ]
   ],
   "la9-2": [
@@ -1467,6 +1531,10 @@
    ],
    [
     "ext-第四章：向量与方程组-32",
+    "external"
+   ],
+   [
+    "ext-第四章：向量与方程组-01",
     "external"
    ]
   ],
@@ -1702,6 +1770,18 @@
    [
     "la-c12-comprehensive-solution-014",
     "mastered"
+   ],
+   [
+    "ext-第六章：二次型-05",
+    "external"
+   ],
+   [
+    "ext-第六章：二次型-13",
+    "external"
+   ],
+   [
+    "ext-第六章：二次型-19",
+    "external"
    ]
   ]
  },
