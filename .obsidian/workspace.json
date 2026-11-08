@@ -277,6 +277,10 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/习题集/数二知识点习题集.md",
+    "workspace/习题集/数二知识点习题集-答案.md",
+    "workspace/习题集",
+    "scripts/make_exercise_book.py",
     "workspace/records/exercise-book-plan.json",
     "workspace/workflow-runs/真题收录-2020数二选择3.workflow.md",
     "真题/【合集】1987-2023年考研数学二/images/e600691480b2e3759f3ec541f204a877867eabb381ada955e44fda8b228bc4ba.jpg",
@@ -297,9 +301,6 @@
     "真题/【合集】1987-2023年考研数学二/184f6371-1ad8-4229-8bc1-0aa196f09c61_model.json",
     "真题/【合集】1987-2023年考研数学二/184f6371-1ad8-4229-8bc1-0aa196f09c61_content_list_v2.json",
     "真题/【合集】1987-2023年考研数学二/184f6371-1ad8-4229-8bc1-0aa196f09c61_content_list.json",
-    "真题/【合集】1987-2023年考研数学二",
-    "真题/【合集】1987-2023年考研数学二纯真题版.pdf-c10a0735-b4d7-48dd-a586-72ff98a684f9.zip",
-    "真题/【合集】1987-2023年考研数学二纯真题版.pdf-c10a0735-b4d7-48dd-a586-72ff98a684f9/layout.json",
     "真题/【合集】1987-2023年考研数学二纯真题版.pdf-c10a0735-b4d7-48dd-a586-72ff98a684f9/full.md",
     "workspace/workflow-runs/真题错题复习-14.workflow.md",
     "workspace/workflow-runs/真题收录-2019数二解答22.workflow.md",
@@ -321,7 +322,6 @@
     "workspace/wrong-book/线代错题本.md",
     "workspace/wrong-book/错题本.md",
     "workspace/papers/la-paper-05/线代判分卡-05.md",
-    "workspace/papers/paper-07/卷子-07.md",
-    "workspace/papers/paper-07/卷子-07-答案.md"
+    "workspace/papers/paper-07/卷子-07.md"
   ]
 }
