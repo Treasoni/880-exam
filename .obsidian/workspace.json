@@ -277,6 +277,7 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/records/exercise-book-plan.json",
     "workspace/workflow-runs/真题收录-2020数二选择3.workflow.md",
     "真题/【合集】1987-2023年考研数学二/images/e600691480b2e3759f3ec541f204a877867eabb381ada955e44fda8b228bc4ba.jpg",
     "真题/【合集】1987-2023年考研数学二/images/e568d8a7ef00f77922665b2bc40da7acb13b11d51d8782485a8965350d921233.jpg",
@@ -321,7 +322,6 @@
     "workspace/wrong-book/错题本.md",
     "workspace/papers/la-paper-05/线代判分卡-05.md",
     "workspace/papers/paper-07/卷子-07.md",
-    "workspace/papers/paper-07/卷子-07-答案.md",
-    "workspace/papers/paper-07/判分卡-07.md"
+    "workspace/papers/paper-07/卷子-07-答案.md"
   ]
 }

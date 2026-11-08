@@ -1,0 +1,3005 @@
+{
+  "version": 1,
+  "date": "2026-11-08",
+  "kps": {
+    "gs1-1": {
+      "core": "奇偶性、周期性、有界性、单调性是函数四大性质。函数方程题先用赋值法（$x=0$、$x=-x$、$x\\to 1/x$）探结构，再判断奇偶/周期。",
+      "methods": [
+        "赋值法：令 $x=0,-x,1/x$，消去 $f$ 的自变量。",
+        "奇偶性：$f(-x)=\\pm f(x)$；周期性：$f(x+T)=f(x)$。",
+        "有界性：用定义域、极限或闭区间连续函数最值定理。"
+      ],
+      "traps": [
+        "忽略定义域（如 $1/x$ 在 $x=0$ 无定义）。",
+        "把 $f(x+T)=f(x)$ 与 $f(x+T)=-f(x)$（半周期）混淆。"
+      ]
+    },
+    "gs1-2": {
+      "core": "递推数列的固定套路：先证有界，再证单调，最后用单调有界定理；$n$ 项和极限优先夹逼或定积分定义。",
+      "methods": [
+        "归纳法证有界；作差/作商证单调。",
+        "压缩映像：若 $|f'(x)|\\le q<1$，则迭代收敛。",
+        "$n$ 项和：提 $1/n$ 凑 $\\int_0^1 f(x)dx$，或夹逼放缩。"
+      ],
+      "traps": [
+        "只求极限不证存在（循环论证）。",
+        "归纳法漏起点或递推步；放缩过头。"
+      ]
+    },
+    "gs1-3": {
+      "core": "极限计算的核心是定阶：先判未定式类型，再选等价无穷小、泰勒、洛必达；加减法不能随意等价替换。",
+      "methods": [
+        "泰勒展开到分母同阶；分子分母同阶再约。",
+        "等价无穷小只用于乘除；加减先通分/提公因式。",
+        "幂指函数取对数；左右极限分开算。"
+      ],
+      "traps": [
+        "加减法滥用等价无穷小（如 $\\sin x-x$）。",
+        "泰勒阶数不足，丢掉关键低阶项。",
+        "忽略 $x\\to\\infty$ 与 $x\\to0$ 的替换不同。"
+      ]
+    },
+    "gs1-4": {
+      "core": "连续 $\\iff$ 左极限 $=$ 右极限 $=$ 函数值；间断点按左右极限是否存在分类；闭区间连续函数有有界性、最值、介值、零点定理。",
+      "methods": [
+        "分段点用左右极限；间断点分类。",
+        "零点定理证根：端点异号 + 连续。",
+        "介值定理证中间值。"
+      ],
+      "traps": [
+        "只算极限不验证函数值。",
+        "把可去间断与跳跃间断混淆。",
+        "忘记闭区间/连续条件。"
+      ]
+    },
+    "gs2-1": {
+      "core": "可导 $\\iff$ 增量比的极限存在；分段点用定义，左右导数相等才可导；可导必连续，连续不一定可导。",
+      "methods": [
+        "凑导数定义：$f'(x_0)=\\lim_{h\\to0}\\frac{f(x_0+h)-f(x_0)}{h}$。",
+        "分段点分别求左右导数。",
+        "绝对值/根式在零点用定义。"
+      ],
+      "traps": [
+        "增量方向/符号写错。",
+        "把连续当可导；分段点直接套求导公式。"
+      ]
+    },
+    "gs2-2": {
+      "core": "复合函数用链式法则；隐函数两边对 $x$ 求导；参数方程 $\\frac{dy}{dx}=\\frac{y'(t)}{x'(t)}$，二阶导再对 $t$ 求导除以 $x'(t)$。",
+      "methods": [
+        "画变量树，逐层求导。",
+        "隐函数：$F(x,y)=0$，$y'=-F_x/F_y$。",
+        "参数方程二阶导：$\\frac{d^2y}{dx^2}=\\frac{d(y')/dt}{dx/dt}$。"
+      ],
+      "traps": [
+        "漏内层导数。",
+        "参数方程二阶导忘记再除以 $x'(t)$。",
+        "隐函数求导把 $y$ 当常数。"
+      ]
+    },
+    "gs2-3": {
+      "core": "高阶导数用莱布尼茨公式、泰勒展开或奇偶性；泰勒公式是局部逼近与系数比对的核心工具。",
+      "methods": [
+        "莱布尼茨：$(uv)^{(n)}=\\sum C_n^k u^{(k)}v^{(n-k)}$。",
+        "泰勒系数 $a_n=f^{(n)}(x_0)/n!$。",
+        "奇偶函数的高阶导零点规律。"
+      ],
+      "traps": [
+        "莱布尼茨组合数/符号错。",
+        "泰勒系数漏 $1/n!$；展开阶数不足。"
+      ]
+    },
+    "gs2-4": {
+      "core": "罗尔/拉格朗日/柯西中值定理；不等式证明常把结论变形为 $f'(\\xi)$ 的形式，再构造辅助函数。",
+      "methods": [
+        "原函数法：要证 $f'(\\xi)+g(\\xi)f(\\xi)=0$，构造 $F=e^{\\int g}f$。",
+        "双中值：分区间用不同中值定理。",
+        "常数变量化：把常数 $a$ 写成变量 $x$ 构造函数。"
+      ],
+      "traps": [
+        "辅助函数构造错。",
+        "忽略开闭区间/端点条件。",
+        "双中值用同一个 $\\xi$。"
+      ]
+    },
+    "gs2-5": {
+      "core": "单调性看 $f'$ 符号；极值先找驻点和不可导点，再用第一/第二充分条件；最值比较所有候选点。",
+      "methods": [
+        "求导列表，分区间判号。",
+        "参数分离求极值/最值。",
+        "端点、不可导点、驻点三类候选。"
+      ],
+      "traps": [
+        "驻点不一定是极值。",
+        "忽略不可导点；只比较驻点忘记端点。"
+      ]
+    },
+    "gs2-6": {
+      "core": "凹凸看 $f''$ 符号；拐点是凹凸性改变点；渐近线分水平、垂直、斜三类。",
+      "methods": [
+        "$f''$ 列表判凹凸/拐点。",
+        "水平：$\\lim_{x\\to\\infty}f(x)=b$；垂直：$\\lim_{x\\to a}f(x)=\\infty$；斜：$k=\\lim f(x)/x,b=\\lim(f(x)-kx)$。",
+        "切线/法线方程。"
+      ],
+      "traps": [
+        "$f''=0$ 不一定是拐点，要看两侧符号。",
+        "斜渐近线漏求 $b$。",
+        "垂直渐近线只看分母零点。"
+      ]
+    },
+    "gs3-1": {
+      "core": "不定积分是求原函数，结果必须 $+C$；基本方法：凑微分、换元、分部积分、有理函数拆分。",
+      "methods": [
+        "第一类换元（凑微分）。",
+        "第二类换元（根式/三角）。",
+        "分部积分：$\\int u dv=uv-\\int v du$；有理分式部分分式。"
+      ],
+      "traps": [
+        "忘记 $+C$。",
+        "换元不回代。",
+        "分部积分符号错。"
+      ]
+    },
+    "gs3-2": {
+      "core": "定积分是数，具有线性、区间可加、保号、估值、中值定理等性质；计算用牛顿-莱布尼茨公式。",
+      "methods": [
+        "换元/分部，换元要改上下限。",
+        "对称区间奇偶性；周期函数平移。",
+        "比较定理/估值定理。"
+      ],
+      "traps": [
+        "换元忘改上下限。",
+        "对称性用错区间。",
+        "定积分与不定积分混淆。"
+      ]
+    },
+    "gs3-3": {
+      "core": "$\\Phi(x)=\\int_a^x f(t)dt$，若 $f$ 连续则 $\\Phi'(x)=f(x)$；被积函数含 $x$ 要先换元/拆分再求导。",
+      "methods": [
+        "变上限求导；换元把 $x$ 清出被积函数。",
+        "积分方程两边求导，注意初始条件。",
+        "分段点用定义判可导。"
+      ],
+      "traps": [
+        "被积函数含 $x$ 直接求导。",
+        "忽略 $f$ 不连续时 $\\Phi$ 的可导性。",
+        "积分方程忘记初始条件。"
+      ]
+    },
+    "gs3-4": {
+      "core": "面积 $\\int|f-g|$；旋转体体积 $\\pi\\int f^2$ 或 $2\\pi\\int x f$；弧长 $\\int\\sqrt{1+y'^2}$；侧面积 $2\\pi\\int|y|ds$。",
+      "methods": [
+        "画图定上下限，选 $x$ 或 $y$ 为积分变量。",
+        "柱壳法/圆盘法。",
+        "参数方程弧长/侧面积公式。"
+      ],
+      "traps": [
+        "面积不加绝对值。",
+        "旋转轴与公式不匹配。",
+        "弧长/侧面积漏根号。"
+      ]
+    },
+    "gs3-5": {
+      "core": "功 $=\\int F dx$；静水压力 $=\\int\\rho g h\\,dA$；质心/形心；抽水做功。",
+      "methods": [
+        "微元法：取一小段，写 $dW$/$dP$ 再积分。",
+        "建立坐标系，确定深度/位移。",
+        "形心公式简化。"
+      ],
+      "traps": [
+        "压力深度取错。",
+        "功的位移区间错。",
+        "单位不统一。"
+      ]
+    },
+    "gs3-6": {
+      "core": "反常积分分无穷限与无界函数两类；先找瑕点，多点必拆；用 $p$-积分判据/比较判别法。",
+      "methods": [
+        "拆区间，每个区间只留一个奇点。",
+        "等价无穷小定阶，判断 $p$ 值。",
+        "$\\Gamma$ 函数/分部积分递推。"
+      ],
+      "traps": [
+        "多点不拆。",
+        "加减法滥用等价无穷小。",
+        "忽略瑕点。"
+      ]
+    },
+    "gs3-7": {
+      "core": "黎曼和极限 $=\\int_0^1 f(x)dx$，需三匹配：区间、$\\Delta x$、取点。",
+      "methods": [
+        "提 $1/n$，凑 $k/n$。",
+        "夹逼处理捣乱项。",
+        "定积分定义与夹逼准则二选一。"
+      ],
+      "traps": [
+        "生搬定积分定义。",
+        "$\\Delta x$ 与项数不匹配。",
+        "忽略可积条件。"
+      ]
+    },
+    "gs3-8": {
+      "core": "积分不等式常用构造变上限函数、积分中值定理、柯西-施瓦茨、单调性放缩。",
+      "methods": [
+        "构造 $F(x)=\\int_a^x\\cdots$，求导判单调。",
+        "积分中值定理脱积分号。",
+        "对称拆半/分部积分。"
+      ],
+      "traps": [
+        "中值点 $\\xi$ 依赖 $n$，不能当常数。",
+        "放缩方向错。",
+        "忽略等号条件。"
+      ]
+    },
+    "gs4-1": {
+      "core": "二重极限要求任意路径；连续 $\\iff$ 极限 $=$ 函数值；偏导存在不一定连续/可微；可微 $\\iff$ 全增量减线性主部为 $o(\\rho)$。",
+      "methods": [
+        "路径/极坐标判极限不存在。",
+        "定义判偏导/可微。",
+        "全微分定义：$\\Delta z=A\\Delta x+B\\Delta y+o(\\rho)$。"
+      ],
+      "traps": [
+        "一条路径代替任意路径。",
+        "偏导存在误判可微。",
+        "忽略 $\\rho\\to0$ 的阶。"
+      ]
+    },
+    "gs4-2": {
+      "core": "偏导是固定其他变量求导；全微分 $dz=f_x dx+f_y dy$；高阶偏导连续时相等。",
+      "methods": [
+        "先代后算。",
+        "链式法则/全微分形式不变性。",
+        "高阶偏导逐次求。"
+      ],
+      "traps": [
+        "偏导与全导混淆。",
+        "高阶偏导次序。",
+        "隐函数全微分漏项。"
+      ]
+    },
+    "gs4-3": {
+      "core": "复合函数用链式法则；隐函数 $F(x,y,z)=0$ 用隐函数求导/公式；抽象函数先理清变量结构。",
+      "methods": [
+        "画变量树。",
+        "$z_x=-F_x/F_z$，$z_y=-F_y/F_z$。",
+        "全微分法/先代后算。"
+      ],
+      "traps": [
+        "漏中间变量。",
+        "隐函数存在定理条件。",
+        "抽象函数二阶导。"
+      ]
+    },
+    "gs4-4": {
+      "core": "无条件极值：驻点 + $AC-B^2$ 判别；条件极值：拉格朗日乘数法 + 边界端点检查。",
+      "methods": [
+        "求驻点，算 $A=f_{xx},B=f_{xy},C=f_{yy}$。",
+        "拉格朗日 $L=f+\\lambda\\varphi$。",
+        "边界参数化/端点检查。"
+      ],
+      "traps": [
+        "只求驻点忘边界。",
+        "$AC-B^2=0$ 无法判定。",
+        "约束曲线端点漏检。"
+      ]
+    },
+    "gs4-5": {
+      "core": "闭区域最值 $=$ 内部驻点 $+$ 边界最值；实际问题建模后求最值。",
+      "methods": [
+        "边界分类讨论。",
+        "拉格朗日/参数化。",
+        "几何转化。"
+      ],
+      "traps": [
+        "边界分段漏点。",
+        "实际意义舍解。",
+        "最值与极值混淆。"
+      ]
+    },
+    "gs5-1": {
+      "core": "二重积分直角坐标：画区域、定次序、写上下限；X型/Y型区域，必要时分块。",
+      "methods": [
+        "画图，穿线法定上下限。",
+        "分块积分。",
+        "利用对称性简化。"
+      ],
+      "traps": [
+        "上下限写反。",
+        "分块漏区域。",
+        "被积函数与区域不匹配。"
+      ]
+    },
+    "gs5-2": {
+      "core": "交换积分次序的关键是重新画区域并改写上下限，不能只交换积分号。",
+      "methods": [
+        "画区域，重新穿线。",
+        "分块处理。",
+        "结合极坐标/对称性。"
+      ],
+      "traps": [
+        "直接交换上下限。",
+        "忽略区域分块。",
+        "上下限含变量。"
+      ]
+    },
+    "gs5-3": {
+      "core": "极坐标：$x=r\\cos\\theta,y=r\\sin\\theta,dxdy=r\\,dr\\,d\\theta$；先定 $\\theta$ 范围，再定 $r$ 上下限。",
+      "methods": [
+        "圆/圆环/扇形区域。",
+        "广义极坐标（椭圆）。",
+        "先画图定角域。"
+      ],
+      "traps": [
+        "忘记 $r$。",
+        "$\\theta$ 范围错。",
+        "$r$ 上限随 $\\theta$ 变。"
+      ]
+    },
+    "gs5-4": {
+      "core": "普通对称性看区域关于坐标轴/原点；轮换对称性看 $x,y$ 互换区域不变；奇函数积分为零。",
+      "methods": [
+        "对称拆半。",
+        "轮换对称。",
+        "奇偶性/补区域。"
+      ],
+      "traps": [
+        "伪对称。",
+        "忽略区域不对称。",
+        "奇偶性用错。"
+      ]
+    },
+    "gs5-5": {
+      "core": "二重积分可表示体积、平均值、概率；综合题常与变限、极限、微分方程结合。",
+      "methods": [
+        "定义求和转积分。",
+        "交换次序/极坐标。",
+        "几何意义。"
+      ],
+      "traps": [
+        "积分区域/定义域。",
+        "极限与积分交换条件。",
+        "计算复杂度。"
+      ]
+    },
+    "gs6-1": {
+      "core": "一阶方程识别类型：可分离、齐次、一阶线性、伯努利；套对应通解公式。",
+      "methods": [
+        "分离变量。",
+        "齐次代换 $u=y/x$。",
+        "一阶线性积分因子；伯努利代换。"
+      ],
+      "traps": [
+        "类型识别错。",
+        "通解公式符号。",
+        "丢特解/定号。"
+      ]
+    },
+    "gs6-2": {
+      "core": "可降阶：缺 $y$ 型 $y''=f(x,y')$ 令 $p=y'$；缺 $x$ 型 $y''=f(y,y')$ 令 $p(y)=y'$，$y''=p\\,dp/dy$。",
+      "methods": [
+        "代换降阶。",
+        "分离变量。",
+        "初始条件定常数。"
+      ],
+      "traps": [
+        "缺 $x$/缺 $y$ 混淆。",
+        "二阶导代换错。",
+        "常数确定。"
+      ]
+    },
+    "gs6-3": {
+      "core": "二阶常系数齐次：特征方程 $r^2+pr+q=0$；两实根/重根/共轭复根三种通解。",
+      "methods": [
+        "特征方程。",
+        "重根 $xe^{rx}$。",
+        "复根 $e^{\\alpha x}(C_1\\cos\\beta x+C_2\\sin\\beta x)$。"
+      ],
+      "traps": [
+        "重根漏 $x$。",
+        "复根符号。",
+        "初始条件。"
+      ]
+    },
+    "gs6-4": {
+      "core": "非齐次通解 $=$ 齐次通解 $+$ 特解；特解形式由自由项和特征根重数决定。",
+      "methods": [
+        "待定系数法。",
+        "叠加原理。",
+        "解的结构反推。"
+      ],
+      "traps": [
+        "特解形式设错。",
+        "重根多乘 $x$。",
+        "共振情形。"
+      ]
+    },
+    "gs6-5": {
+      "core": "应用建模：先建方程，再定初始条件，最后解方程。",
+      "methods": [
+        "几何条件翻译。",
+        "变化率/牛顿冷却/注水。",
+        "相关变化率。"
+      ],
+      "traps": [
+        "单位。",
+        "初始条件。",
+        "实际意义取舍。"
+      ]
+    },
+    "la7-1": {
+      "core": "行列式性质：换行变号、倍加不变、按行展开；特殊结构用递推/加边/范德蒙。",
+      "methods": [
+        "行变换化三角。",
+        "按行列展开。",
+        "递推/加边法。"
+      ],
+      "traps": [
+        "行变换与行列式值的关系。",
+        "展开符号。",
+        "范德蒙符号。"
+      ]
+    },
+    "la7-2": {
+      "core": "代数余子式 $A_{ij}=(-1)^{i+j}M_{ij}$；$\\sum_j a_{ij}A_{kj}=|A|$（$i=k$）或 $0$（$i\\ne k$）；可用全1替换法求和。",
+      "methods": [
+        "按行列展开。",
+        "代数余子式求和。",
+        "构造行列式。"
+      ],
+      "traps": [
+        "符号。",
+        "余子式与代数余子式。",
+        "替换行/列。"
+      ]
+    },
+    "la7-3": {
+      "core": "$AA^*=|A|E$；$|A^*|=|A|^{n-1}$；$A^*$ 的元素是代数余子式转置。",
+      "methods": [
+        "取行列式。",
+        "伴随矩阵公式。",
+        "秩关系。"
+      ],
+      "traps": [
+        "伴随转置。",
+        "$|A^*|$ 的指数。",
+        "$A$ 不可逆时。"
+      ]
+    },
+    "la8-1": {
+      "core": "矩阵乘法不交换、有零因子；方阵幂用拆分/二项式/周期/秩1公式。",
+      "methods": [
+        "$A=\\lambda E+N$。",
+        "$A=\\alpha\\beta^T$。",
+        "找周期/归纳法。"
+      ],
+      "traps": [
+        "交换律。",
+        "零因子。",
+        "二项式条件（$N$ 幂零且交换）。"
+      ]
+    },
+    "la8-2": {
+      "core": "$A$ 可逆 $\\iff|A|\\ne0$；$A^{-1}=A^*/|A|$；初等行变换求逆。",
+      "methods": [
+        "伴随公式。",
+        "增广矩阵 $(A|E)\\to(E|A^{-1})$。",
+        "分块求逆。"
+      ],
+      "traps": [
+        "$|A|\\ne0$ 条件。",
+        "伴随公式。",
+        "初等变换左/右乘。"
+      ]
+    },
+    "la8-3": {
+      "core": "初等行变换 $=$ 左乘初等矩阵；初等列变换 $=$ 右乘；初等矩阵可逆。",
+      "methods": [
+        "化标准形。",
+        "求逆。",
+        "求秩。"
+      ],
+      "traps": [
+        "左行右列。",
+        "变换顺序。",
+        "行列式变化。"
+      ]
+    },
+    "la8-4": {
+      "core": "秩 $=$ 极大线性无关行/列数；分块矩阵秩用消去/列空间；$r(AB)\\le\\min(r(A),r(B))$。",
+      "methods": [
+        "初等变换。",
+        "分块消去。",
+        "秩不等式/幂等矩阵。"
+      ],
+      "traps": [
+        "分块消去条件。",
+        "秩不等式方向。",
+        "$r(A+B)$。"
+      ]
+    },
+    "la9-1": {
+      "core": "向量组线性相关 $\\iff$ 存在非零系数线性组合为 $0$；方阵看行列式，一般看秩。",
+      "methods": [
+        "定义。",
+        "行列式。",
+        "秩/含参讨论。"
+      ],
+      "traps": [
+        "相关与无关。",
+        "含参行列式。",
+        "部分与整体。"
+      ]
+    },
+    "la9-2": {
+      "core": "极大无关组 $=$ 线性无关且可表示其余向量；向量组秩 $=$ 极大无关组个数。",
+      "methods": [
+        "初等行变换化阶梯。",
+        "找主元列。",
+        "秩与增减量不等式。"
+      ],
+      "traps": [
+        "极大无关组不唯一。",
+        "主元列对应原向量。",
+        "秩的增减。"
+      ]
+    },
+    "la9-3": {
+      "core": "向量组等价 $\\iff$ 可互相线性表示 $\\iff r(A)=r(B)=r(A,B)$；线性表示看增广矩阵。",
+      "methods": [
+        "秩判定。",
+        "解方程。",
+        "含参讨论。"
+      ],
+      "traps": [
+        "向量组等价与矩阵等价。",
+        "秩相等不够。",
+        "方向性。"
+      ]
+    },
+    "la9-4": {
+      "core": "内积、范数、正交、施密特正交化；正交补维数 $=n-r$。",
+      "methods": [
+        "施密特正交化。",
+        "单位化。",
+        "正交补。"
+      ],
+      "traps": [
+        "正交与线性无关。",
+        "零向量。",
+        "维数。"
+      ]
+    },
+    "la10-1": {
+      "core": "$Ax=b$ 有解 $\\iff r(A)=r(A,b)$；唯一解 $r=n$；无穷多解 $r<n$；含参先找临界参数。",
+      "methods": [
+        "增广矩阵行变换。",
+        "行列式判临界。",
+        "分情况讨论。"
+      ],
+      "traps": [
+        "参数讨论遗漏。",
+        "$r(A)=r(A,b)$ 条件。",
+        "$m/n$ 混淆。"
+      ]
+    },
+    "la10-2": {
+      "core": "$Ax=0$ 有非零解 $\\iff r(A)<n$；基础解系含 $n-r$ 个线性无关解；通解 $=$ 基础解系线性组合。",
+      "methods": [
+        "行变换化阶梯。",
+        "主变量/自由变量。",
+        "基础解系。"
+      ],
+      "traps": [
+        "基础解系个数。",
+        "自由变量选取。",
+        "解向量线性无关。"
+      ]
+    },
+    "la10-3": {
+      "core": "非齐次通解 $=$ 特解 $+$ 齐次通解；解集不是向量空间；两解之差是齐次解。",
+      "methods": [
+        "求特解。",
+        "求齐次基础解系。",
+        "组合。"
+      ],
+      "traps": [
+        "忘记特解。",
+        "解的结构。",
+        "参数。"
+      ]
+    },
+    "la10-4": {
+      "core": "解空间维数 $=n-r(A)$；行空间/列空间/零空间关系；伴随矩阵秩。",
+      "methods": [
+        "秩-零化度。",
+        "正交补。",
+        "伴随秩公式。"
+      ],
+      "traps": [
+        "维数公式。",
+        "伴随秩。",
+        "$A^2x=0$ 与 $Ax=0$。"
+      ]
+    },
+    "la11-1": {
+      "core": "$|\\lambda E-A|=0$ 求特征值；$(\\lambda E-A)x=0$ 求特征向量；迹 $=$ 特征值和，行列式 $=$ 特征值积。",
+      "methods": [
+        "特征方程。",
+        "特殊矩阵秒杀（三角/秩1）。",
+        "伴随特征值。"
+      ],
+      "traps": [
+        "特征向量非零。",
+        "重根特征向量。",
+        "伴随特征值。"
+      ]
+    },
+    "la11-2": {
+      "core": "$A$ 可对角化 $\\iff$ 有 $n$ 个线性无关特征向量 $\\iff$ 每个特征值几何重数 $=$ 代数重数。",
+      "methods": [
+        "求特征值/特征向量。",
+        "重根检查。",
+        "$P^{-1}AP=\\Lambda$。"
+      ],
+      "traps": [
+        "有 $n$ 个特征值不一定可对角化。",
+        "重根几何重数。",
+        "$P$ 列对应。"
+      ]
+    },
+    "la11-3": {
+      "core": "实对称矩阵必可正交对角化；不同特征值特征向量正交；重根用施密特正交化。",
+      "methods": [
+        "求特征值/特征向量。",
+        "正交化。",
+        "单位化；$Q^TAQ=\\Lambda$。"
+      ],
+      "traps": [
+        "忘记单位化。",
+        "重根正交化。",
+        "$Q$ 正交。"
+      ]
+    },
+    "la11-4": {
+      "core": "特征值性质：$f(A)$ 的特征值 $f(\\lambda)$；$A^{-1},A^*,A^T$ 的特征值；$AB$ 与 $BA$ 特征值关系。",
+      "methods": [
+        "定义法。",
+        "多项式。",
+        "相似/秩1矩阵。"
+      ],
+      "traps": [
+        "特征向量方向。",
+        "$AB$ 与 $BA$。",
+        "不可逆。"
+      ]
+    },
+    "la12-1": {
+      "core": "二次型矩阵 $A$ 对称；正交变换化标准形 $=$ 求 $A$ 的特征值；标准形系数是特征值。",
+      "methods": [
+        "写矩阵（交叉项平分）。",
+        "求特征值/特征向量。",
+        "正交变换。"
+      ],
+      "traps": [
+        "交叉项系数平分。",
+        "特征值顺序。",
+        "正交矩阵。"
+      ]
+    },
+    "la12-2": {
+      "core": "配方法化标准形；合同变换 $C^TAC$；惯性指数不变。",
+      "methods": [
+        "配方法。",
+        "可逆变换。",
+        "合同。"
+      ],
+      "traps": [
+        "配方法变量顺序。",
+        "合同与相似。",
+        "可逆条件。"
+      ]
+    },
+    "la12-3": {
+      "core": "惯性定理：正/负惯性指数在合同变换下不变；规范形由正负惯性指数决定。",
+      "methods": [
+        "配方法/特征值求惯性指数。",
+        "规范形。"
+      ],
+      "traps": [
+        "惯性指数与特征值符号。",
+        "合同标准形不唯一。"
+      ]
+    },
+    "la12-4": {
+      "core": "正定 $\\iff$ 所有特征值 $>0$ $\\iff$ 所有顺序主子式 $>0$ $\\iff$ 合同于 $E$。",
+      "methods": [
+        "顺序主子式。",
+        "特征值。",
+        "配方/定义。"
+      ],
+      "traps": [
+        "半正定与正定。",
+        "顺序主子式。",
+        "必要条件。"
+      ]
+    },
+    "la12-5": {
+      "core": "二次型最值/几何意义与特征值；$f(x)=x^TAx$ 在 $\\|x\\|=1$ 上的最值是特征值。",
+      "methods": [
+        "特征值。",
+        "正交变换。",
+        "秩1矩阵。"
+      ],
+      "traps": [
+        "特征值顺序。",
+        "约束条件。",
+        "正负惯性。"
+      ]
+    }
+  },
+  "selection": {
+    "gs1-1": [
+      [
+        "gs-c01-basic-solution-001",
+        "mastered"
+      ]
+    ],
+    "gs1-2": [
+      [
+        "gs-c01-comprehensive-choice-013",
+        "active_focus"
+      ],
+      [
+        "gs-c01-comprehensive-solution-016",
+        "active_focus"
+      ],
+      [
+        "gs-c01-comprehensive-choice-012",
+        "mastered"
+      ],
+      [
+        "zt-2018-数二-解答21",
+        "zhenti"
+      ],
+      [
+        "zt-2012-数二-解答21",
+        "zhenti"
+      ]
+    ],
+    "gs1-3": [
+      [
+        "gs-c01-comprehensive-choice-004",
+        "active_light"
+      ],
+      [
+        "gs-c01-comprehensive-fill-002",
+        "active_light"
+      ],
+      [
+        "gs-c01-comprehensive-choice-002",
+        "mastered"
+      ],
+      [
+        "gs-c01-comprehensive-fill-009",
+        "mastered"
+      ],
+      [
+        "zt-2017-数二-解答15",
+        "zhenti"
+      ]
+    ],
+    "gs1-4": [
+      [
+        "gs-c01-comprehensive-solution-004",
+        "active_focus"
+      ],
+      [
+        "gs-c01-comprehensive-choice-019",
+        "mastered"
+      ],
+      [
+        "ext-高数-函数极限与连续-13",
+        "external"
+      ]
+    ],
+    "gs2-1": [
+      [
+        "gs-c02-basic-choice-018",
+        "mastered"
+      ],
+      [
+        "zt-2019-数二-选择6",
+        "zhenti"
+      ],
+      [
+        "ext-高数-一元微分学-01",
+        "external"
+      ],
+      [
+        "ext-高数-一元微分学-25",
+        "external"
+      ]
+    ],
+    "gs2-2": [
+      [
+        "gs-c02-comprehensive-fill-011",
+        "active_light"
+      ],
+      [
+        "zt-2010-数二-解答17",
+        "zhenti"
+      ],
+      [
+        "ext-高数-一元微分学-16",
+        "external"
+      ],
+      [
+        "ext-高数-一元微分学-17",
+        "external"
+      ]
+    ],
+    "gs2-3": [
+      [
+        "gs-c02-comprehensive-fill-009",
+        "active_focus"
+      ],
+      [
+        "gs-c02-comprehensive-solution-015",
+        "mastered"
+      ],
+      [
+        "gs-c02-comprehensive-choice-030",
+        "mastered"
+      ],
+      [
+        "ext-高数-一元微分学-19",
+        "external"
+      ],
+      [
+        "ext-高数-一元微分学-51",
+        "external"
+      ]
+    ],
+    "gs2-4": [
+      [
+        "gs-c02-comprehensive-solution-020",
+        "active_focus"
+      ],
+      [
+        "gs-c02-comprehensive-solution-011",
+        "mastered"
+      ],
+      [
+        "zt-2013-数二-解答18",
+        "zhenti"
+      ],
+      [
+        "zt-2017-数二-解答19",
+        "zhenti"
+      ],
+      [
+        "ext-高数-一元微分学-74",
+        "external"
+      ]
+    ],
+    "gs2-5": [
+      [
+        "gs-c02-comprehensive-fill-002",
+        "mastered"
+      ],
+      [
+        "gs-c02-comprehensive-choice-014",
+        "mastered"
+      ],
+      [
+        "ext-高数-一元微分学-14",
+        "external"
+      ]
+    ],
+    "gs2-6": [
+      [
+        "gs-c02-comprehensive-solution-005",
+        "mastered"
+      ],
+      [
+        "zt-2014-数二-填空12",
+        "zhenti"
+      ]
+    ],
+    "gs3-1": [
+      [
+        "gs-c03-basic-solution-004",
+        "mastered"
+      ],
+      [
+        "gs-c03-comprehensive-fill-010",
+        "mastered"
+      ],
+      [
+        "ext-高数-一元函数积分学-37",
+        "external"
+      ],
+      [
+        "ext-高数-一元函数积分学-58",
+        "external"
+      ]
+    ],
+    "gs3-2": [
+      [
+        "gs-c03-basic-choice-010",
+        "mastered"
+      ],
+      [
+        "gs-c03-comprehensive-solution-020",
+        "mastered"
+      ],
+      [
+        "gs-c03-comprehensive-choice-007",
+        "mastered"
+      ],
+      [
+        "ext-高数-一元函数积分学-55",
+        "external"
+      ],
+      [
+        "ext-高数-一元函数积分学-08",
+        "external"
+      ]
+    ],
+    "gs3-3": [
+      [
+        "zt-2016-数二-填空12",
+        "zhenti"
+      ],
+      [
+        "zt-2018-数二-解答16",
+        "zhenti"
+      ],
+      [
+        "gs-c03-comprehensive-choice-002",
+        "mastered"
+      ],
+      [
+        "ext-高数-一元函数积分学-13",
+        "external"
+      ],
+      [
+        "ext-高数-一元函数积分学-68",
+        "external"
+      ]
+    ],
+    "gs3-4": [
+      [
+        "gs-c03-comprehensive-fill-006",
+        "mastered"
+      ],
+      [
+        "zt-2018-数二-解答20",
+        "zhenti"
+      ],
+      [
+        "zt-2019-数二-解答19",
+        "zhenti"
+      ],
+      [
+        "ext-高数-一元函数积分学-48",
+        "external"
+      ],
+      [
+        "ext-高数-一元函数积分学-103",
+        "external"
+      ]
+    ],
+    "gs3-5": [
+      [
+        "gs-c03-basic-fill-021",
+        "mastered"
+      ],
+      [
+        "zt-2011-数二-解答20",
+        "zhenti"
+      ],
+      [
+        "ext-高数-一元函数积分学-97",
+        "external"
+      ],
+      [
+        "ext-高数-一元函数积分学-98",
+        "external"
+      ]
+    ],
+    "gs3-6": [
+      [
+        "gs-c03-basic-fill-012",
+        "active_focus"
+      ],
+      [
+        "zt-2016-数二-选择3",
+        "zhenti"
+      ],
+      [
+        "ext-高数-一元函数积分学-01",
+        "external"
+      ],
+      [
+        "ext-高数-一元函数积分学-17",
+        "external"
+      ]
+    ],
+    "gs3-7": [
+      [
+        "gs-c03-basic-fill-022",
+        "active_light"
+      ],
+      [
+        "gs-c03-comprehensive-fill-022",
+        "active_light"
+      ],
+      [
+        "gs-c03-basic-choice-007",
+        "mastered"
+      ],
+      [
+        "ext-高数-一元函数积分学-54",
+        "external"
+      ],
+      [
+        "ext-高数-一元函数积分学-15",
+        "external"
+      ]
+    ],
+    "gs3-8": [
+      [
+        "gs-c03-basic-choice-008",
+        "active_focus"
+      ],
+      [
+        "gs-c03-comprehensive-solution-027",
+        "active_focus"
+      ],
+      [
+        "zt-2018-数二-选择4",
+        "zhenti"
+      ],
+      [
+        "zt-2016-数二-解答21",
+        "zhenti"
+      ],
+      [
+        "ext-高数-一元函数积分学-92",
+        "external"
+      ]
+    ],
+    "gs4-1": [
+      [
+        "gs-c04-basic-choice-003",
+        "active_focus"
+      ],
+      [
+        "gs-c04-comprehensive-choice-004",
+        "active_focus"
+      ],
+      [
+        "gs-c04-comprehensive-choice-003",
+        "mastered"
+      ],
+      [
+        "ext-高数-多元函数微分学-21",
+        "external"
+      ],
+      [
+        "ext-高数-多元函数微分学-19",
+        "external"
+      ]
+    ],
+    "gs4-2": [
+      [
+        "gs-c04-comprehensive-fill-003",
+        "mastered"
+      ],
+      [
+        "gs-c04-comprehensive-fill-002",
+        "mastered"
+      ]
+    ],
+    "gs4-3": [
+      [
+        "gs-c04-comprehensive-solution-022",
+        "active_focus"
+      ],
+      [
+        "gs-c04-comprehensive-solution-003",
+        "mastered"
+      ],
+      [
+        "gs-c04-comprehensive-solution-019",
+        "mastered"
+      ],
+      [
+        "ext-高数-多元函数微分学-26",
+        "external"
+      ],
+      [
+        "ext-高数-多元函数微分学-01",
+        "external"
+      ]
+    ],
+    "gs4-4": [
+      [
+        "gs-c04-basic-solution-009",
+        "active_focus"
+      ],
+      [
+        "gs-c04-basic-fill-017",
+        "mastered"
+      ],
+      [
+        "zt-2013-数二-解答19",
+        "zhenti"
+      ],
+      [
+        "ext-高数-多元函数微分学-16",
+        "external"
+      ],
+      [
+        "ext-高数-多元函数微分学-27",
+        "external"
+      ]
+    ],
+    "gs4-5": [
+      [
+        "zt-2018-数二-解答18",
+        "zhenti"
+      ],
+      [
+        "ext-高数-多元函数微分学-17",
+        "external"
+      ]
+    ],
+    "gs5-1": [
+      [
+        "gs-c05-comprehensive-fill-001",
+        "mastered"
+      ],
+      [
+        "gs-c05-comprehensive-fill-002",
+        "mastered"
+      ],
+      [
+        "gs-c05-basic-solution-009",
+        "mastered"
+      ],
+      [
+        "zt-2018-数二-解答17",
+        "zhenti"
+      ],
+      [
+        "ext-二重积分-13",
+        "external"
+      ]
+    ],
+    "gs5-2": [
+      [
+        "gs-c05-comprehensive-fill-004",
+        "active_focus"
+      ],
+      [
+        "gs-c05-comprehensive-fill-003",
+        "mastered"
+      ]
+    ],
+    "gs5-3": [
+      [
+        "gs-c05-comprehensive-choice-005",
+        "mastered"
+      ],
+      [
+        "zt-2019-数二-选择5",
+        "zhenti"
+      ],
+      [
+        "ext-二重积分-15",
+        "external"
+      ]
+    ],
+    "gs5-4": [
+      [
+        "gs-c05-comprehensive-choice-007",
+        "active_focus"
+      ],
+      [
+        "gs-c05-comprehensive-solution-003",
+        "active_light"
+      ],
+      [
+        "zt-2019-数二-解答18",
+        "zhenti"
+      ],
+      [
+        "ext-二重积分-03",
+        "external"
+      ],
+      [
+        "ext-二重积分-17",
+        "external"
+      ]
+    ],
+    "gs5-5": [
+      [
+        "gs-c05-comprehensive-solution-012",
+        "active_light"
+      ],
+      [
+        "gs-c05-comprehensive-solution-020",
+        "mastered"
+      ],
+      [
+        "zt-2010-数二-选择6",
+        "zhenti"
+      ],
+      [
+        "ext-二重积分-09",
+        "external"
+      ]
+    ],
+    "gs6-1": [
+      [
+        "zt-2010-数二-选择2",
+        "zhenti"
+      ],
+      [
+        "zt-2012-数二-填空12",
+        "zhenti"
+      ],
+      [
+        "zt-2011-数二-解答18",
+        "zhenti"
+      ],
+      [
+        "ext-微分方程-04",
+        "external"
+      ],
+      [
+        "ext-微分方程-09",
+        "external"
+      ]
+    ],
+    "gs6-2": [
+      [
+        "ext-微分方程-10",
+        "external"
+      ],
+      [
+        "ext-微分方程-11",
+        "external"
+      ],
+      [
+        "ext-微分方程-25",
+        "external"
+      ]
+    ],
+    "gs6-3": [
+      [
+        "gs-c06-comprehensive-choice-001",
+        "mastered"
+      ]
+    ],
+    "gs6-4": [
+      [
+        "ext-微分方程-16",
+        "external"
+      ],
+      [
+        "ext-微分方程-31",
+        "external"
+      ],
+      [
+        "ext-微分方程-02",
+        "external"
+      ]
+    ],
+    "gs6-5": [
+      [
+        "zt-2015-数二-解答20",
+        "zhenti"
+      ],
+      [
+        "ext-微分方程-30",
+        "external"
+      ]
+    ],
+    "la7-1": [
+      [
+        "la-c07-comprehensive-solution-002",
+        "mastered"
+      ],
+      [
+        "ext-第一章：行列式-05",
+        "external"
+      ]
+    ],
+    "la7-2": [
+      [
+        "la-c10-comprehensive-fill-002",
+        "mastered"
+      ],
+      [
+        "zt-2013-数二-填空14",
+        "zhenti"
+      ],
+      [
+        "ext-第一章：行列式-02",
+        "external"
+      ],
+      [
+        "ext-第一章：行列式-22",
+        "external"
+      ]
+    ],
+    "la7-3": [
+      [
+        "la-c07-comprehensive-fill-004",
+        "mastered"
+      ]
+    ],
+    "la8-1": [
+      [
+        "la-c08-comprehensive-fill-003",
+        "mastered"
+      ],
+      [
+        "zt-2013-数二-解答22",
+        "zhenti"
+      ],
+      [
+        "ext-第二章：矩阵-03",
+        "external"
+      ],
+      [
+        "ext-第二章：矩阵-06",
+        "external"
+      ]
+    ],
+    "la8-2": [
+      [
+        "la-c08-comprehensive-fill-006",
+        "active_focus"
+      ],
+      [
+        "zt-2018-数二-解答23",
+        "zhenti"
+      ],
+      [
+        "ext-第二章：矩阵-35",
+        "external"
+      ],
+      [
+        "ext-第二章：矩阵-25",
+        "external"
+      ]
+    ],
+    "la8-3": [
+      [
+        "la-c08-comprehensive-choice-003",
+        "mastered"
+      ],
+      [
+        "ext-第二章：矩阵-21",
+        "external"
+      ]
+    ],
+    "la8-4": [
+      [
+        "la-c08-comprehensive-choice-005",
+        "active_focus"
+      ],
+      [
+        "zt-2018-数二-选择8",
+        "zhenti"
+      ],
+      [
+        "ext-第二章：矩阵-47",
+        "external"
+      ],
+      [
+        "ext-第二章：矩阵-34",
+        "external"
+      ]
+    ],
+    "la9-1": [
+      [
+        "la-c09-basic-choice-005",
+        "active_light"
+      ],
+      [
+        "la-c09-comprehensive-fill-001",
+        "mastered"
+      ],
+      [
+        "ext-第四章：向量与方程组-10",
+        "external"
+      ],
+      [
+        "ext-第四章：向量与方程组-03",
+        "external"
+      ]
+    ],
+    "la9-2": [
+      [
+        "la-c10-comprehensive-choice-004",
+        "mastered"
+      ],
+      [
+        "ext-第四章：向量与方程组-14",
+        "external"
+      ],
+      [
+        "ext-第四章：向量与方程组-36",
+        "external"
+      ]
+    ],
+    "la9-3": [
+      [
+        "la-c09-comprehensive-choice-007",
+        "active_light"
+      ],
+      [
+        "la-c11-comprehensive-solution-012",
+        "active_light"
+      ],
+      [
+        "zt-2019-数二-解答22",
+        "zhenti"
+      ],
+      [
+        "ext-第四章：向量与方程组-39",
+        "external"
+      ],
+      [
+        "ext-第四章：向量与方程组-19",
+        "external"
+      ]
+    ],
+    "la9-4": [
+      [
+        "la-c11-comprehensive-fill-004",
+        "mastered"
+      ],
+      [
+        "ext-第四章：向量与方程组-32",
+        "external"
+      ]
+    ],
+    "la10-1": [
+      [
+        "la-c10-basic-fill-001",
+        "active_focus"
+      ],
+      [
+        "la-c10-basic-solution-002",
+        "active_light"
+      ],
+      [
+        "la-c10-comprehensive-choice-011",
+        "active_light"
+      ],
+      [
+        "la-c10-comprehensive-solution-005",
+        "active_light"
+      ],
+      [
+        "la-c10-comprehensive-solution-008",
+        "active_light"
+      ],
+      [
+        "la-c10-comprehensive-solution-010",
+        "active_light"
+      ]
+    ],
+    "la10-2": [
+      [
+        "la-c10-basic-choice-004",
+        "mastered"
+      ],
+      [
+        "ext-第三章：线性方程组-02",
+        "external"
+      ],
+      [
+        "ext-第四章：向量与方程组-46",
+        "external"
+      ]
+    ],
+    "la10-3": [
+      [
+        "la-c10-basic-choice-012",
+        "active_focus"
+      ],
+      [
+        "la-c10-comprehensive-fill-001",
+        "active_focus"
+      ],
+      [
+        "la-c10-comprehensive-fill-003",
+        "active_light"
+      ],
+      [
+        "la-c10-comprehensive-solution-001",
+        "active_light"
+      ],
+      [
+        "la-c10-comprehensive-solution-006",
+        "active_focus"
+      ]
+    ],
+    "la10-4": [
+      [
+        "la-c10-comprehensive-choice-003",
+        "active_focus"
+      ],
+      [
+        "la-c10-comprehensive-choice-007",
+        "active_focus"
+      ],
+      [
+        "la-c10-basic-choice-010",
+        "active_light"
+      ],
+      [
+        "ext-第四章：向量与方程组-48",
+        "external"
+      ],
+      [
+        "ext-第四章：向量与方程组-57",
+        "external"
+      ]
+    ],
+    "la11-1": [
+      [
+        "la-c09-comprehensive-solution-005",
+        "mastered"
+      ],
+      [
+        "ext-第五章：矩阵相似理论-29",
+        "external"
+      ]
+    ],
+    "la11-2": [
+      [
+        "la-c11-comprehensive-choice-004",
+        "active_light"
+      ],
+      [
+        "zt-2017-数二-选择8",
+        "zhenti"
+      ],
+      [
+        "zt-2016-数二-解答23",
+        "zhenti"
+      ],
+      [
+        "ext-第五章：矩阵相似理论-19",
+        "external"
+      ],
+      [
+        "ext-第五章：矩阵相似理论-56",
+        "external"
+      ]
+    ],
+    "la11-3": [
+      [
+        "la-c11-basic-fill-004",
+        "mastered"
+      ],
+      [
+        "la-c12-comprehensive-choice-006",
+        "mastered"
+      ],
+      [
+        "ext-第五章：矩阵相似理论-31",
+        "external"
+      ],
+      [
+        "ext-第五章：矩阵相似理论-50",
+        "external"
+      ]
+    ],
+    "la11-4": [
+      [
+        "la-c10-comprehensive-fill-004",
+        "active_focus"
+      ],
+      [
+        "la-c11-comprehensive-choice-009",
+        "active_focus"
+      ],
+      [
+        "la-c11-comprehensive-fill-001",
+        "active_focus"
+      ],
+      [
+        "la-c11-comprehensive-solution-003",
+        "active_light"
+      ],
+      [
+        "la-c11-comprehensive-solution-014",
+        "active_focus"
+      ]
+    ],
+    "la12-1": [
+      [
+        "la-c12-basic-solution-005",
+        "active_light"
+      ],
+      [
+        "la-c12-comprehensive-solution-008",
+        "active_light"
+      ],
+      [
+        "zt-2018-数二-解答22",
+        "zhenti"
+      ],
+      [
+        "ext-第六章：二次型-08",
+        "external"
+      ],
+      [
+        "ext-第六章：二次型-01",
+        "external"
+      ]
+    ],
+    "la12-2": [
+      [
+        "la-c12-basic-choice-008",
+        "mastered"
+      ],
+      [
+        "ext-第六章：二次型-06",
+        "external"
+      ]
+    ],
+    "la12-3": [
+      [
+        "la-c12-basic-choice-005",
+        "mastered"
+      ],
+      [
+        "la-c12-comprehensive-fill-002",
+        "mastered"
+      ],
+      [
+        "ext-第六章：二次型-09",
+        "external"
+      ]
+    ],
+    "la12-4": [
+      [
+        "la-c12-basic-fill-001",
+        "active_light"
+      ],
+      [
+        "la-c12-comprehensive-choice-010",
+        "active_focus"
+      ],
+      [
+        "la-c12-comprehensive-choice-014",
+        "active_focus"
+      ],
+      [
+        "ext-第六章：二次型-15",
+        "external"
+      ],
+      [
+        "ext-第六章：二次型-16",
+        "external"
+      ]
+    ],
+    "la12-5": [
+      [
+        "la-c12-comprehensive-solution-002",
+        "active_focus"
+      ],
+      [
+        "la-c12-comprehensive-solution-014",
+        "mastered"
+      ]
+    ]
+  },
+  "qid_kp": {
+    "gs-c01-basic-choice-001": "gs1-1",
+    "gs-c01-comprehensive-choice-001": "gs1-3",
+    "gs-c01-basic-choice-002": "gs1-1",
+    "gs-c01-comprehensive-choice-002": "gs1-3",
+    "gs-c01-basic-choice-003": "gs1-1",
+    "gs-c01-comprehensive-choice-003": "gs1-3",
+    "gs-c01-basic-choice-004": "gs1-3",
+    "gs-c01-comprehensive-choice-004": "gs1-3",
+    "gs-c01-basic-choice-005": "gs1-1",
+    "gs-c01-comprehensive-choice-005": "gs1-3",
+    "gs-c01-basic-choice-006": "gs1-3",
+    "gs-c01-comprehensive-choice-006": "gs1-4",
+    "gs-c01-basic-choice-007": "gs1-3",
+    "gs-c01-comprehensive-choice-007": "gs1-1",
+    "gs-c01-basic-choice-008": "gs1-3",
+    "gs-c01-comprehensive-choice-008": "gs1-3",
+    "gs-c01-basic-choice-009": "gs1-3",
+    "gs-c01-comprehensive-choice-009": "gs1-2",
+    "gs-c01-basic-choice-010": "gs1-2",
+    "gs-c01-comprehensive-choice-010": "gs1-2",
+    "gs-c01-basic-choice-011": "gs1-2",
+    "gs-c01-comprehensive-choice-011": "gs1-2",
+    "gs-c01-basic-choice-012": "gs1-3",
+    "gs-c01-comprehensive-choice-012": "gs1-2",
+    "gs-c01-basic-choice-013": "gs1-3",
+    "gs-c01-comprehensive-choice-013": "gs1-2",
+    "gs-c01-comprehensive-choice-014": "gs1-2",
+    "gs-c01-comprehensive-choice-015": "gs1-2",
+    "gs-c01-comprehensive-choice-016": "gs1-2",
+    "gs-c01-comprehensive-choice-017": "gs1-1",
+    "gs-c01-comprehensive-choice-018": "gs1-4",
+    "gs-c01-comprehensive-choice-019": "gs1-3",
+    "gs-c01-basic-fill-001": "gs1-3",
+    "gs-c01-comprehensive-fill-001": "gs1-3",
+    "gs-c01-basic-fill-002": "gs1-3",
+    "gs-c01-comprehensive-fill-002": "gs1-3",
+    "gs-c01-basic-fill-003": "gs1-3",
+    "gs-c01-comprehensive-fill-003": "gs1-3",
+    "gs-c01-basic-fill-004": "gs1-3",
+    "gs-c01-comprehensive-fill-004": "gs1-3",
+    "gs-c01-basic-fill-005": "gs1-3",
+    "gs-c01-comprehensive-fill-005": "gs1-2",
+    "gs-c01-basic-fill-006": "gs1-3",
+    "gs-c01-comprehensive-fill-006": "gs1-2",
+    "gs-c01-comprehensive-fill-007": "gs1-2",
+    "gs-c01-comprehensive-fill-008": "gs1-3",
+    "gs-c01-comprehensive-fill-009": "gs1-3",
+    "gs-c01-comprehensive-fill-010": "gs1-3",
+    "gs-c01-comprehensive-fill-011": "gs1-1",
+    "gs-c01-comprehensive-fill-012": "gs1-3",
+    "gs-c01-comprehensive-fill-013": "gs1-3",
+    "gs-c01-basic-solution-001": "gs1-1",
+    "gs-c01-extension-solution-001": "gs1-2",
+    "gs-c01-comprehensive-solution-001": "gs1-2",
+    "gs-c01-basic-solution-002": "gs1-3",
+    "gs-c01-extension-solution-002": "gs1-2",
+    "gs-c01-comprehensive-solution-002": "gs1-2",
+    "gs-c01-basic-solution-003": "gs1-2",
+    "gs-c01-extension-solution-003": "gs1-2",
+    "gs-c01-comprehensive-solution-003": "gs1-2",
+    "gs-c01-basic-solution-004": "gs1-3",
+    "gs-c01-extension-solution-004": "gs1-2",
+    "gs-c01-comprehensive-solution-004": "gs1-4",
+    "gs-c01-basic-solution-005": "gs1-3",
+    "gs-c01-comprehensive-solution-005": "gs1-3",
+    "gs-c01-comprehensive-solution-006": "gs1-3",
+    "gs-c01-comprehensive-solution-007": "gs1-3",
+    "gs-c01-comprehensive-solution-008": "gs1-3",
+    "gs-c01-comprehensive-solution-009": "gs1-3",
+    "gs-c01-comprehensive-solution-010": "gs1-3",
+    "gs-c01-comprehensive-solution-011": "gs1-3",
+    "gs-c01-comprehensive-solution-012": "gs1-2",
+    "gs-c01-comprehensive-solution-013": "gs1-2",
+    "gs-c01-comprehensive-solution-014": "gs1-3",
+    "gs-c01-comprehensive-solution-015": "gs1-3",
+    "gs-c01-comprehensive-solution-016": "gs1-2",
+    "gs-c01-comprehensive-solution-017": "gs1-2",
+    "gs-c02-basic-choice-001": "gs2-1",
+    "gs-c02-comprehensive-choice-001": "gs2-4",
+    "gs-c02-basic-choice-002": "gs2-4",
+    "gs-c02-comprehensive-choice-002": "gs2-1",
+    "gs-c02-basic-choice-003": "gs2-1",
+    "gs-c02-comprehensive-choice-003": "gs2-5",
+    "gs-c02-basic-choice-004": "gs2-1",
+    "gs-c02-comprehensive-choice-004": "gs2-4",
+    "gs-c02-basic-choice-005": "gs2-1",
+    "gs-c02-comprehensive-choice-005": "gs2-1",
+    "gs-c02-basic-choice-006": "gs2-1",
+    "gs-c02-comprehensive-choice-006": "gs2-1",
+    "gs-c02-basic-choice-007": "gs2-1",
+    "gs-c02-comprehensive-choice-007": "gs2-1",
+    "gs-c02-basic-choice-008": "gs2-5",
+    "gs-c02-comprehensive-choice-008": "gs2-1",
+    "gs-c02-basic-choice-009": "gs2-1",
+    "gs-c02-comprehensive-choice-009": "gs2-1",
+    "gs-c02-basic-choice-010": "gs2-1",
+    "gs-c02-comprehensive-choice-010": "gs2-1",
+    "gs-c02-basic-choice-011": "gs2-4",
+    "gs-c02-comprehensive-choice-011": "gs2-1",
+    "gs-c02-basic-choice-012": "gs2-5",
+    "gs-c02-comprehensive-choice-012": "gs2-4",
+    "gs-c02-basic-choice-013": "gs2-1",
+    "gs-c02-comprehensive-choice-013": "gs2-1",
+    "gs-c02-basic-choice-014": "gs2-1",
+    "gs-c02-comprehensive-choice-014": "gs2-5",
+    "gs-c02-basic-choice-015": "gs2-3",
+    "gs-c02-comprehensive-choice-015": "gs2-5",
+    "gs-c02-basic-choice-016": "gs2-5",
+    "gs-c02-comprehensive-choice-016": "gs2-1",
+    "gs-c02-basic-choice-017": "gs2-1",
+    "gs-c02-comprehensive-choice-017": "gs2-1",
+    "gs-c02-basic-choice-018": "gs2-1",
+    "gs-c02-comprehensive-choice-018": "gs2-4",
+    "gs-c02-basic-choice-019": "gs2-5",
+    "gs-c02-comprehensive-choice-019": "gs2-5",
+    "gs-c02-basic-choice-020": "gs2-5",
+    "gs-c02-comprehensive-choice-020": "gs2-5",
+    "gs-c02-basic-choice-021": "gs2-1",
+    "gs-c02-comprehensive-choice-021": "gs2-5",
+    "gs-c02-basic-choice-022": "gs2-6",
+    "gs-c02-comprehensive-choice-022": "gs2-4",
+    "gs-c02-basic-choice-023": "gs2-4",
+    "gs-c02-comprehensive-choice-023": "gs2-6",
+    "gs-c02-basic-choice-024": "gs2-4",
+    "gs-c02-comprehensive-choice-024": "gs3-3",
+    "gs-c02-comprehensive-choice-025": "gs2-4",
+    "gs-c02-comprehensive-choice-026": "gs2-4",
+    "gs-c02-comprehensive-choice-027": "gs2-1",
+    "gs-c02-comprehensive-choice-028": "gs2-1",
+    "gs-c02-comprehensive-choice-029": "gs2-4",
+    "gs-c02-comprehensive-choice-030": "gs2-3",
+    "gs-c02-basic-fill-001": "gs2-1",
+    "gs-c02-comprehensive-fill-001": "gs2-5",
+    "gs-c02-basic-fill-002": "gs2-1",
+    "gs-c02-comprehensive-fill-002": "gs2-5",
+    "gs-c02-basic-fill-003": "gs2-5",
+    "gs-c02-comprehensive-fill-003": "gs2-5",
+    "gs-c02-basic-fill-004": "gs2-2",
+    "gs-c02-comprehensive-fill-004": "gs2-5",
+    "gs-c02-basic-fill-005": "gs2-5",
+    "gs-c02-comprehensive-fill-005": "gs2-4",
+    "gs-c02-basic-fill-006": "gs2-4",
+    "gs-c02-comprehensive-fill-006": "gs2-6",
+    "gs-c02-basic-fill-007": "gs2-4",
+    "gs-c02-comprehensive-fill-007": "gs2-2",
+    "gs-c02-basic-fill-008": "gs2-5",
+    "gs-c02-comprehensive-fill-008": "gs2-2",
+    "gs-c02-basic-fill-009": "gs2-5",
+    "gs-c02-comprehensive-fill-009": "gs2-3",
+    "gs-c02-basic-fill-010": "gs2-5",
+    "gs-c02-comprehensive-fill-010": "gs2-1",
+    "gs-c02-basic-fill-011": "gs2-2",
+    "gs-c02-comprehensive-fill-011": "gs2-2",
+    "gs-c02-basic-fill-012": "gs2-6",
+    "gs-c02-comprehensive-fill-012": "gs2-3",
+    "gs-c02-basic-fill-013": "gs2-5",
+    "gs-c02-basic-fill-014": "gs2-1",
+    "gs-c02-basic-fill-015": "gs2-5",
+    "gs-c02-basic-fill-016": "gs2-5",
+    "gs-c02-basic-fill-017": "gs2-1",
+    "gs-c02-basic-fill-018": "gs2-6",
+    "gs-c02-basic-fill-019": "gs2-1",
+    "gs-c02-basic-fill-020": "gs2-3",
+    "gs-c02-basic-fill-021": "gs2-3",
+    "gs-c02-basic-fill-022": "gs2-3",
+    "gs-c02-basic-fill-023": "gs2-1",
+    "gs-c02-basic-fill-024": "gs2-5",
+    "gs-c02-basic-fill-025": "gs2-3",
+    "gs-c02-basic-fill-026": "gs2-2",
+    "gs-c02-basic-fill-027": "gs2-2",
+    "gs-c02-basic-solution-001": "gs2-4",
+    "gs-c02-extension-solution-001": "gs2-6",
+    "gs-c02-comprehensive-solution-001": "gs2-4",
+    "gs-c02-basic-solution-002": "gs2-2",
+    "gs-c02-extension-solution-002": "gs2-4",
+    "gs-c02-comprehensive-solution-002": "gs2-1",
+    "gs-c02-basic-solution-003": "gs2-1",
+    "gs-c02-extension-solution-003": "gs2-4",
+    "gs-c02-comprehensive-solution-003": "gs2-2",
+    "gs-c02-basic-solution-004": "gs2-2",
+    "gs-c02-comprehensive-solution-004": "gs2-1",
+    "gs-c02-basic-solution-005": "gs2-2",
+    "gs-c02-comprehensive-solution-005": "gs2-6",
+    "gs-c02-basic-solution-006": "gs2-2",
+    "gs-c02-comprehensive-solution-006": "gs2-4",
+    "gs-c02-basic-solution-007": "gs2-1",
+    "gs-c02-comprehensive-solution-007": "gs2-4",
+    "gs-c02-basic-solution-008": "gs2-3",
+    "gs-c02-comprehensive-solution-008": "gs2-5",
+    "gs-c02-basic-solution-009": "gs2-2",
+    "gs-c02-comprehensive-solution-009": "gs2-4",
+    "gs-c02-basic-solution-010": "gs2-2",
+    "gs-c02-comprehensive-solution-010": "gs2-4",
+    "gs-c02-basic-solution-011": "gs2-1",
+    "gs-c02-comprehensive-solution-011": "gs2-4",
+    "gs-c02-basic-solution-012": "gs2-1",
+    "gs-c02-comprehensive-solution-012": "gs2-4",
+    "gs-c02-basic-solution-013": "gs2-4",
+    "gs-c02-comprehensive-solution-013": "gs2-1",
+    "gs-c02-basic-solution-014": "gs2-4",
+    "gs-c02-comprehensive-solution-014": "gs2-5",
+    "gs-c02-basic-solution-015": "gs2-4",
+    "gs-c02-comprehensive-solution-015": "gs2-3",
+    "gs-c02-basic-solution-016": "gs2-4",
+    "gs-c02-comprehensive-solution-016": "gs2-4",
+    "gs-c02-basic-solution-017": "gs2-4",
+    "gs-c02-comprehensive-solution-017": "gs2-1",
+    "gs-c02-basic-solution-018": "gs2-4",
+    "gs-c02-comprehensive-solution-018": "gs2-3",
+    "gs-c02-basic-solution-019": "gs2-4",
+    "gs-c02-comprehensive-solution-019": "gs2-6",
+    "gs-c02-basic-solution-020": "gs2-5",
+    "gs-c02-comprehensive-solution-020": "gs2-4",
+    "gs-c02-basic-solution-021": "gs2-4",
+    "gs-c02-comprehensive-solution-021": "gs2-4",
+    "gs-c02-basic-solution-022": "gs2-5",
+    "gs-c02-comprehensive-solution-022": "gs2-4",
+    "gs-c02-basic-solution-023": "gs2-5",
+    "gs-c02-basic-solution-024": "gs2-5",
+    "gs-c02-basic-solution-025": "gs2-2",
+    "gs-c02-basic-solution-026": "gs2-3",
+    "gs-c02-basic-solution-027": "gs2-5",
+    "gs-c03-basic-choice-001": "gs3-1",
+    "gs-c03-comprehensive-choice-001": "gs3-1",
+    "gs-c03-basic-choice-002": "gs3-1",
+    "gs-c03-comprehensive-choice-002": "gs3-3",
+    "gs-c03-basic-choice-003": "gs3-6",
+    "gs-c03-comprehensive-choice-003": "gs3-2",
+    "gs-c03-basic-choice-004": "gs3-1",
+    "gs-c03-comprehensive-choice-004": "gs3-2",
+    "gs-c03-basic-choice-005": "gs3-3",
+    "gs-c03-comprehensive-choice-005": "gs3-2",
+    "gs-c03-basic-choice-006": "gs3-1",
+    "gs-c03-comprehensive-choice-006": "gs3-2",
+    "gs-c03-basic-choice-007": "gs3-6",
+    "gs-c03-comprehensive-choice-007": "gs3-2",
+    "gs-c03-basic-choice-008": "gs3-8",
+    "gs-c03-comprehensive-choice-008": "gs3-3",
+    "gs-c03-basic-choice-009": "gs3-3",
+    "gs-c03-comprehensive-choice-009": "gs3-3",
+    "gs-c03-basic-choice-010": "gs3-2",
+    "gs-c03-comprehensive-choice-010": "gs3-2",
+    "gs-c03-basic-choice-011": "gs3-2",
+    "gs-c03-comprehensive-choice-011": "gs3-3",
+    "gs-c03-basic-choice-012": "gs3-3",
+    "gs-c03-comprehensive-choice-012": "gs3-6",
+    "gs-c03-basic-choice-013": "gs3-2",
+    "gs-c03-comprehensive-choice-013": "gs3-2",
+    "gs-c03-basic-choice-014": "gs3-2",
+    "gs-c03-comprehensive-choice-014": "gs3-7",
+    "gs-c03-basic-choice-015": "gs3-3",
+    "gs-c03-comprehensive-choice-015": "gs3-3",
+    "gs-c03-basic-choice-016": "gs3-6",
+    "gs-c03-comprehensive-choice-016": "gs3-2",
+    "gs-c03-basic-choice-017": "gs3-6",
+    "gs-c03-comprehensive-choice-017": "gs3-6",
+    "gs-c03-basic-choice-018": "gs3-6",
+    "gs-c03-comprehensive-choice-018": "gs3-6",
+    "gs-c03-comprehensive-choice-019": "gs3-6",
+    "gs-c03-comprehensive-choice-020": "gs3-6",
+    "gs-c03-comprehensive-choice-021": "gs3-6",
+    "gs-c03-comprehensive-choice-022": "gs3-6",
+    "gs-c03-basic-fill-001": "gs3-1",
+    "gs-c03-comprehensive-fill-001": "gs3-7",
+    "gs-c03-basic-fill-002": "gs3-3",
+    "gs-c03-comprehensive-fill-002": "gs3-1",
+    "gs-c03-basic-fill-003": "gs3-3",
+    "gs-c03-comprehensive-fill-003": "gs3-3",
+    "gs-c03-basic-fill-004": "gs3-3",
+    "gs-c03-comprehensive-fill-004": "gs3-4",
+    "gs-c03-basic-fill-005": "gs3-3",
+    "gs-c03-comprehensive-fill-005": "gs3-2",
+    "gs-c03-basic-fill-006": "gs3-3",
+    "gs-c03-comprehensive-fill-006": "gs3-2",
+    "gs-c03-basic-fill-007": "gs3-1",
+    "gs-c03-comprehensive-fill-007": "gs3-4",
+    "gs-c03-basic-fill-008": "gs3-2",
+    "gs-c03-comprehensive-fill-008": "gs3-2",
+    "gs-c03-basic-fill-009": "gs3-2",
+    "gs-c03-comprehensive-fill-009": "gs3-1",
+    "gs-c03-basic-fill-010": "gs3-3",
+    "gs-c03-comprehensive-fill-010": "gs3-1",
+    "gs-c03-basic-fill-011": "gs3-2",
+    "gs-c03-comprehensive-fill-011": "gs3-3",
+    "gs-c03-basic-fill-012": "gs3-6",
+    "gs-c03-comprehensive-fill-012": "gs3-3",
+    "gs-c03-basic-fill-013": "gs3-4",
+    "gs-c03-comprehensive-fill-013": "gs3-1",
+    "gs-c03-basic-fill-014": "gs3-4",
+    "gs-c03-comprehensive-fill-014": "gs3-3",
+    "gs-c03-basic-fill-015": "gs3-4",
+    "gs-c03-comprehensive-fill-015": "gs3-1",
+    "gs-c03-basic-fill-016": "gs3-4",
+    "gs-c03-comprehensive-fill-016": "gs3-6",
+    "gs-c03-basic-fill-017": "gs3-2",
+    "gs-c03-comprehensive-fill-017": "gs3-1",
+    "gs-c03-basic-fill-018": "gs3-4",
+    "gs-c03-comprehensive-fill-018": "gs3-6",
+    "gs-c03-basic-fill-019": "gs3-4",
+    "gs-c03-comprehensive-fill-019": "gs3-6",
+    "gs-c03-basic-fill-020": "gs3-6",
+    "gs-c03-comprehensive-fill-020": "gs3-2",
+    "gs-c03-basic-fill-021": "gs3-5",
+    "gs-c03-comprehensive-fill-021": "gs3-3",
+    "gs-c03-basic-fill-022": "gs3-7",
+    "gs-c03-comprehensive-fill-022": "gs3-7",
+    "gs-c03-basic-fill-023": "gs3-5",
+    "gs-c03-basic-solution-001": "gs3-1",
+    "gs-c03-extension-solution-001": "gs3-4",
+    "gs-c03-comprehensive-solution-001": "gs3-1",
+    "gs-c03-basic-solution-002": "gs3-1",
+    "gs-c03-extension-solution-002": "gs3-5",
+    "gs-c03-comprehensive-solution-002": "gs3-1",
+    "gs-c03-basic-solution-003": "gs3-1",
+    "gs-c03-extension-solution-003": "gs3-8",
+    "gs-c03-comprehensive-solution-003": "gs3-1",
+    "gs-c03-basic-solution-004": "gs3-1",
+    "gs-c03-extension-solution-004": "gs3-4",
+    "gs-c03-comprehensive-solution-004": "gs3-1",
+    "gs-c03-basic-solution-005": "gs3-1",
+    "gs-c03-extension-solution-005": "gs3-8",
+    "gs-c03-comprehensive-solution-005": "gs3-2",
+    "gs-c03-basic-solution-006": "gs3-1",
+    "gs-c03-extension-solution-006": "gs3-6",
+    "gs-c03-comprehensive-solution-006": "gs3-2",
+    "gs-c03-basic-solution-007": "gs3-1",
+    "gs-c03-comprehensive-solution-007": "gs3-2",
+    "gs-c03-basic-solution-008": "gs3-1",
+    "gs-c03-comprehensive-solution-008": "gs3-3",
+    "gs-c03-basic-solution-009": "gs3-1",
+    "gs-c03-comprehensive-solution-009": "gs3-3",
+    "gs-c03-basic-solution-010": "gs3-6",
+    "gs-c03-comprehensive-solution-010": "gs3-3",
+    "gs-c03-basic-solution-011": "gs3-2",
+    "gs-c03-comprehensive-solution-011": "gs3-2",
+    "gs-c03-basic-solution-012": "gs3-3",
+    "gs-c03-comprehensive-solution-012": "gs3-3",
+    "gs-c03-basic-solution-013": "gs3-8",
+    "gs-c03-comprehensive-solution-013": "gs3-3",
+    "gs-c03-basic-solution-014": "gs3-8",
+    "gs-c03-comprehensive-solution-014": "gs3-3",
+    "gs-c03-basic-solution-015": "gs3-3",
+    "gs-c03-comprehensive-solution-015": "gs3-2",
+    "gs-c03-basic-solution-016": "gs3-4",
+    "gs-c03-comprehensive-solution-016": "gs3-8",
+    "gs-c03-basic-solution-017": "gs3-4",
+    "gs-c03-comprehensive-solution-017": "gs3-7",
+    "gs-c03-basic-solution-018": "gs3-4",
+    "gs-c03-comprehensive-solution-018": "gs3-7",
+    "gs-c03-basic-solution-019": "gs3-4",
+    "gs-c03-comprehensive-solution-019": "gs3-7",
+    "gs-c03-basic-solution-020": "gs3-4",
+    "gs-c03-comprehensive-solution-020": "gs3-2",
+    "gs-c03-basic-solution-021": "gs3-4",
+    "gs-c03-comprehensive-solution-021": "gs3-6",
+    "gs-c03-comprehensive-solution-022": "gs3-8",
+    "gs-c03-comprehensive-solution-023": "gs3-7",
+    "gs-c03-comprehensive-solution-024": "gs3-2",
+    "gs-c03-comprehensive-solution-025": "gs3-1",
+    "gs-c03-comprehensive-solution-026": "gs3-8",
+    "gs-c03-comprehensive-solution-027": "gs3-8",
+    "gs-c03-comprehensive-solution-028": "gs3-8",
+    "gs-c03-comprehensive-solution-029": "gs3-8",
+    "gs-c03-comprehensive-solution-030": "gs3-3",
+    "gs-c03-comprehensive-solution-031": "gs3-4",
+    "gs-c03-comprehensive-solution-032": "gs3-2",
+    "gs-c03-comprehensive-solution-033": "gs3-8",
+    "gs-c03-comprehensive-solution-034": "gs3-4",
+    "gs-c03-comprehensive-solution-035": "gs3-2",
+    "gs-c03-comprehensive-solution-036": "gs3-4",
+    "gs-c03-comprehensive-solution-037": "gs3-4",
+    "gs-c03-comprehensive-solution-038": "gs3-4",
+    "gs-c03-comprehensive-solution-039": "gs3-4",
+    "gs-c03-comprehensive-solution-040": "gs3-2",
+    "gs-c03-comprehensive-solution-041": "gs3-4",
+    "gs-c03-comprehensive-solution-042": "gs3-4",
+    "gs-c03-comprehensive-solution-043": "gs3-4",
+    "gs-c03-comprehensive-solution-044": "gs3-4",
+    "gs-c03-comprehensive-solution-045": "gs3-5",
+    "gs-c03-comprehensive-solution-046": "gs3-5",
+    "gs-c03-comprehensive-solution-047": "gs3-4",
+    "gs-c03-comprehensive-solution-048": "gs3-4",
+    "gs-c03-comprehensive-solution-049": "gs3-4",
+    "gs-c03-comprehensive-solution-050": "gs3-4",
+    "gs-c03-comprehensive-solution-051": "gs3-3",
+    "gs-c03-comprehensive-solution-052": "gs3-4",
+    "gs-c03-comprehensive-solution-053": "gs3-4",
+    "gs-c03-comprehensive-solution-054": "gs3-2",
+    "gs-c03-comprehensive-solution-055": "gs3-8",
+    "gs-c04-basic-choice-001": "gs4-1",
+    "gs-c04-extension-choice-001": "gs4-1",
+    "gs-c04-comprehensive-choice-001": "gs4-1",
+    "gs-c04-basic-choice-002": "gs4-1",
+    "gs-c04-comprehensive-choice-002": "gs4-1",
+    "gs-c04-basic-choice-003": "gs4-1",
+    "gs-c04-comprehensive-choice-003": "gs4-1",
+    "gs-c04-basic-choice-004": "gs4-1",
+    "gs-c04-comprehensive-choice-004": "gs4-1",
+    "gs-c04-basic-choice-005": "gs4-1",
+    "gs-c04-comprehensive-choice-005": "gs4-1",
+    "gs-c04-basic-choice-006": "gs4-1",
+    "gs-c04-comprehensive-choice-006": "gs4-1",
+    "gs-c04-basic-choice-007": "gs4-1",
+    "gs-c04-comprehensive-choice-007": "gs4-3",
+    "gs-c04-basic-choice-008": "gs4-1",
+    "gs-c04-comprehensive-choice-008": "gs4-1",
+    "gs-c04-basic-choice-009": "gs4-1",
+    "gs-c04-basic-fill-001": "gs4-1",
+    "gs-c04-comprehensive-fill-001": "gs4-2",
+    "gs-c04-basic-fill-002": "gs4-1",
+    "gs-c04-comprehensive-fill-002": "gs4-1",
+    "gs-c04-basic-fill-003": "gs4-1",
+    "gs-c04-comprehensive-fill-003": "gs4-2",
+    "gs-c04-basic-fill-004": "gs4-1",
+    "gs-c04-comprehensive-fill-004": "gs4-3",
+    "gs-c04-basic-fill-005": "gs4-1",
+    "gs-c04-basic-fill-006": "gs4-2",
+    "gs-c04-basic-fill-007": "gs4-1",
+    "gs-c04-basic-fill-008": "gs4-1",
+    "gs-c04-basic-fill-009": "gs4-1",
+    "gs-c04-basic-fill-010": "gs4-1",
+    "gs-c04-basic-fill-011": "gs4-1",
+    "gs-c04-basic-fill-012": "gs4-2",
+    "gs-c04-basic-fill-013": "gs4-2",
+    "gs-c04-basic-fill-014": "gs4-1",
+    "gs-c04-basic-fill-015": "gs4-1",
+    "gs-c04-basic-fill-016": "gs4-2",
+    "gs-c04-basic-fill-017": "gs4-4",
+    "gs-c04-basic-solution-001": "gs4-1",
+    "gs-c04-extension-solution-001": "gs4-1",
+    "gs-c04-comprehensive-solution-001": "gs4-3",
+    "gs-c04-basic-solution-002": "gs4-3",
+    "gs-c04-comprehensive-solution-002": "gs4-1",
+    "gs-c04-basic-solution-003": "gs4-4",
+    "gs-c04-comprehensive-solution-003": "gs4-1",
+    "gs-c04-basic-solution-004": "gs4-4",
+    "gs-c04-comprehensive-solution-004": "gs4-4",
+    "gs-c04-basic-solution-005": "gs4-1",
+    "gs-c04-comprehensive-solution-005": "gs4-4",
+    "gs-c04-basic-solution-006": "gs4-4",
+    "gs-c04-comprehensive-solution-006": "gs4-4",
+    "gs-c04-basic-solution-007": "gs4-4",
+    "gs-c04-comprehensive-solution-007": "gs4-4",
+    "gs-c04-basic-solution-008": "gs4-4",
+    "gs-c04-comprehensive-solution-008": "gs4-4",
+    "gs-c04-basic-solution-009": "gs4-4",
+    "gs-c04-comprehensive-solution-009": "gs4-4",
+    "gs-c04-basic-solution-010": "gs4-1",
+    "gs-c04-comprehensive-solution-010": "gs4-4",
+    "gs-c04-basic-solution-011": "gs4-1",
+    "gs-c04-comprehensive-solution-011": "gs4-1",
+    "gs-c04-basic-solution-012": "gs4-1",
+    "gs-c04-comprehensive-solution-012": "gs4-1",
+    "gs-c04-comprehensive-solution-013": "gs4-2",
+    "gs-c04-comprehensive-solution-014": "gs4-1",
+    "gs-c04-comprehensive-solution-015": "gs4-1",
+    "gs-c04-comprehensive-solution-016": "gs4-1",
+    "gs-c04-comprehensive-solution-017": "gs4-1",
+    "gs-c04-comprehensive-solution-018": "gs4-4",
+    "gs-c04-comprehensive-solution-019": "gs4-3",
+    "gs-c04-comprehensive-solution-020": "gs4-4",
+    "gs-c04-comprehensive-solution-021": "gs4-1",
+    "gs-c04-comprehensive-solution-022": "gs4-3",
+    "gs-c04-comprehensive-solution-023": "gs4-1",
+    "gs-c05-basic-choice-001": "gs5-1",
+    "gs-c05-comprehensive-choice-001": "gs5-1",
+    "gs-c05-basic-choice-002": "gs5-1",
+    "gs-c05-comprehensive-choice-002": "gs5-4",
+    "gs-c05-basic-choice-003": "gs5-1",
+    "gs-c05-comprehensive-choice-003": "gs5-5",
+    "gs-c05-basic-choice-004": "gs5-1",
+    "gs-c05-comprehensive-choice-004": "gs5-3",
+    "gs-c05-basic-choice-005": "gs5-3",
+    "gs-c05-comprehensive-choice-005": "gs5-3",
+    "gs-c05-basic-choice-006": "gs5-3",
+    "gs-c05-comprehensive-choice-006": "gs5-1",
+    "gs-c05-comprehensive-choice-007": "gs5-4",
+    "gs-c05-basic-fill-001": "gs5-1",
+    "gs-c05-comprehensive-fill-001": "gs5-1",
+    "gs-c05-basic-fill-002": "gs5-2",
+    "gs-c05-comprehensive-fill-002": "gs5-1",
+    "gs-c05-basic-fill-003": "gs5-2",
+    "gs-c05-comprehensive-fill-003": "gs5-2",
+    "gs-c05-basic-fill-004": "gs5-2",
+    "gs-c05-comprehensive-fill-004": "gs5-2",
+    "gs-c05-basic-fill-005": "gs5-1",
+    "gs-c05-comprehensive-fill-005": "gs5-3",
+    "gs-c05-basic-fill-006": "gs5-2",
+    "gs-c05-comprehensive-fill-006": "gs5-1",
+    "gs-c05-basic-fill-007": "gs5-1",
+    "gs-c05-basic-fill-008": "gs5-1",
+    "gs-c05-basic-fill-009": "gs5-1",
+    "gs-c05-basic-fill-010": "gs5-3",
+    "gs-c05-basic-fill-011": "gs5-1",
+    "gs-c05-basic-fill-012": "gs5-1",
+    "gs-c05-basic-fill-013": "gs5-1",
+    "gs-c05-basic-fill-014": "gs5-1",
+    "gs-c05-basic-solution-001": "gs5-1",
+    "gs-c05-extension-solution-001": "gs5-1",
+    "gs-c05-comprehensive-solution-001": "gs5-1",
+    "gs-c05-basic-solution-002": "gs5-1",
+    "gs-c05-extension-solution-002": "gs5-1",
+    "gs-c05-comprehensive-solution-002": "gs5-1",
+    "gs-c05-basic-solution-003": "gs5-1",
+    "gs-c05-extension-solution-003": "gs5-1",
+    "gs-c05-comprehensive-solution-003": "gs5-4",
+    "gs-c05-basic-solution-004": "gs5-1",
+    "gs-c05-extension-solution-004": "gs5-1",
+    "gs-c05-comprehensive-solution-004": "gs5-1",
+    "gs-c05-basic-solution-005": "gs5-1",
+    "gs-c05-extension-solution-005": "gs5-5",
+    "gs-c05-comprehensive-solution-005": "gs5-1",
+    "gs-c05-basic-solution-006": "gs5-1",
+    "gs-c05-comprehensive-solution-006": "gs5-1",
+    "gs-c05-basic-solution-007": "gs5-1",
+    "gs-c05-comprehensive-solution-007": "gs5-1",
+    "gs-c05-basic-solution-008": "gs5-1",
+    "gs-c05-comprehensive-solution-008": "gs5-1",
+    "gs-c05-basic-solution-009": "gs5-1",
+    "gs-c05-comprehensive-solution-009": "gs5-1",
+    "gs-c05-basic-solution-010": "gs5-1",
+    "gs-c05-comprehensive-solution-010": "gs5-1",
+    "gs-c05-basic-solution-011": "gs5-1",
+    "gs-c05-comprehensive-solution-011": "gs5-2",
+    "gs-c05-basic-solution-012": "gs5-1",
+    "gs-c05-comprehensive-solution-012": "gs5-5",
+    "gs-c05-basic-solution-013": "gs5-1",
+    "gs-c05-comprehensive-solution-013": "gs5-1",
+    "gs-c05-basic-solution-014": "gs5-1",
+    "gs-c05-comprehensive-solution-014": "gs5-1",
+    "gs-c05-basic-solution-015": "gs5-1",
+    "gs-c05-comprehensive-solution-015": "gs5-1",
+    "gs-c05-comprehensive-solution-016": "gs5-5",
+    "gs-c05-comprehensive-solution-017": "gs5-3",
+    "gs-c05-comprehensive-solution-018": "gs5-1",
+    "gs-c05-comprehensive-solution-019": "gs5-2",
+    "gs-c05-comprehensive-solution-020": "gs5-5",
+    "gs-c05-comprehensive-solution-021": "gs5-1",
+    "gs-c05-comprehensive-solution-022": "gs5-1",
+    "gs-c05-comprehensive-solution-023": "gs5-1",
+    "gs-c05-comprehensive-solution-024": "gs5-1",
+    "gs-c05-comprehensive-solution-025": "gs5-1",
+    "gs-c06-basic-choice-001": "gs6-1",
+    "gs-c06-comprehensive-choice-001": "gs6-3",
+    "gs-c06-basic-choice-002": "gs6-1",
+    "gs-c06-comprehensive-choice-002": "gs6-4",
+    "gs-c06-basic-choice-003": "gs6-1",
+    "gs-c06-comprehensive-choice-003": "gs6-1",
+    "gs-c06-basic-choice-004": "gs6-4",
+    "gs-c06-comprehensive-choice-004": "gs6-1",
+    "gs-c06-basic-choice-005": "gs6-1",
+    "gs-c06-comprehensive-choice-005": "gs6-1",
+    "gs-c06-basic-choice-006": "gs6-1",
+    "gs-c06-comprehensive-choice-006": "gs6-3",
+    "gs-c06-basic-choice-007": "gs6-1",
+    "gs-c06-comprehensive-choice-007": "gs6-1",
+    "gs-c06-basic-fill-001": "gs6-1",
+    "gs-c06-comprehensive-fill-001": "gs6-1",
+    "gs-c06-basic-fill-002": "gs6-1",
+    "gs-c06-comprehensive-fill-002": "gs6-3",
+    "gs-c06-basic-fill-003": "gs6-1",
+    "gs-c06-comprehensive-fill-003": "gs6-1",
+    "gs-c06-basic-fill-004": "gs6-1",
+    "gs-c06-comprehensive-fill-004": "gs6-1",
+    "gs-c06-basic-fill-005": "gs6-4",
+    "gs-c06-comprehensive-fill-005": "gs6-1",
+    "gs-c06-basic-fill-006": "gs6-4",
+    "gs-c06-comprehensive-fill-006": "gs6-1",
+    "gs-c06-basic-fill-007": "gs6-1",
+    "gs-c06-comprehensive-fill-007": "gs6-4",
+    "gs-c06-basic-fill-008": "gs6-4",
+    "gs-c06-comprehensive-fill-008": "gs6-1",
+    "gs-c06-basic-fill-009": "gs6-1",
+    "gs-c06-comprehensive-fill-009": "gs6-3",
+    "gs-c06-comprehensive-fill-010": "gs6-3",
+    "gs-c06-basic-solution-001": "gs6-1",
+    "gs-c06-extension-solution-001": "gs6-1",
+    "gs-c06-comprehensive-solution-001": "gs6-1",
+    "gs-c06-basic-solution-002": "gs6-4",
+    "gs-c06-extension-solution-002": "gs6-1",
+    "gs-c06-comprehensive-solution-002": "gs6-1",
+    "gs-c06-basic-solution-003": "gs6-1",
+    "gs-c06-extension-solution-003": "gs6-2",
+    "gs-c06-comprehensive-solution-003": "gs6-3",
+    "gs-c06-basic-solution-004": "gs6-3",
+    "gs-c06-comprehensive-solution-004": "gs6-4",
+    "gs-c06-basic-solution-005": "gs6-1",
+    "gs-c06-comprehensive-solution-005": "gs6-4",
+    "gs-c06-basic-solution-006": "gs6-2",
+    "gs-c06-comprehensive-solution-006": "gs6-4",
+    "gs-c06-basic-solution-007": "gs6-1",
+    "gs-c06-comprehensive-solution-007": "gs6-1",
+    "gs-c06-basic-solution-008": "gs6-1",
+    "gs-c06-comprehensive-solution-008": "gs6-1",
+    "gs-c06-basic-solution-009": "gs6-1",
+    "gs-c06-comprehensive-solution-009": "gs6-3",
+    "gs-c06-basic-solution-010": "gs6-1",
+    "gs-c06-comprehensive-solution-010": "gs6-3",
+    "gs-c06-basic-solution-011": "gs6-1",
+    "gs-c06-comprehensive-solution-011": "gs6-1",
+    "gs-c06-comprehensive-solution-012": "gs6-1",
+    "gs-c06-comprehensive-solution-013": "gs6-1",
+    "gs-c06-comprehensive-solution-014": "gs6-1",
+    "gs-c06-comprehensive-solution-015": "gs6-2",
+    "gs-c06-comprehensive-solution-016": "gs6-1",
+    "gs-c06-comprehensive-solution-017": "gs6-1",
+    "gs-c06-comprehensive-solution-018": "gs6-1",
+    "gs-c06-comprehensive-solution-019": "gs6-1",
+    "gs-c06-comprehensive-solution-020": "gs6-1",
+    "gs-c06-comprehensive-solution-021": "gs6-1",
+    "gs-c06-comprehensive-solution-022": "gs6-2",
+    "gs-c06-comprehensive-solution-023": "gs6-1",
+    "gs-c06-comprehensive-solution-024": "gs6-2",
+    "gs-c06-comprehensive-solution-025": "gs6-1",
+    "gs-c06-comprehensive-solution-026": "gs6-2",
+    "gs-c06-comprehensive-solution-027": "gs6-2",
+    "gs-c06-comprehensive-solution-028": "gs6-1",
+    "gs-c06-comprehensive-solution-029": "gs6-1",
+    "la-c07-basic-choice-001": "la7-2",
+    "la-c07-basic-choice-002": "la7-1",
+    "la-c07-basic-choice-003": "la7-3",
+    "la-c07-basic-choice-004": "la7-1",
+    "la-c07-basic-fill-001": "la7-1",
+    "la-c07-basic-fill-002": "la7-1",
+    "la-c07-basic-fill-003": "la7-1",
+    "la-c07-basic-fill-004": "la7-1",
+    "la-c07-basic-fill-005": "la7-1",
+    "la-c07-basic-fill-006": "la7-2",
+    "la-c07-basic-fill-007": "la7-3",
+    "la-c07-basic-fill-008": "la7-3",
+    "la-c07-basic-fill-009": "la7-1",
+    "la-c07-basic-fill-010": "la7-3",
+    "la-c07-basic-fill-011": "la7-3",
+    "la-c07-basic-fill-012": "la7-2",
+    "la-c07-basic-solution-001": "la7-1",
+    "la-c07-basic-solution-002": "la7-1",
+    "la-c07-basic-solution-003": "la7-1",
+    "la-c07-basic-solution-004": "la7-1",
+    "la-c07-comprehensive-choice-001": "la7-3",
+    "la-c07-comprehensive-choice-002": "la7-2",
+    "la-c07-comprehensive-choice-003": "la7-3",
+    "la-c07-comprehensive-choice-004": "la7-1",
+    "la-c07-comprehensive-fill-001": "la7-3",
+    "la-c07-comprehensive-fill-002": "la7-1",
+    "la-c07-comprehensive-fill-003": "la7-1",
+    "la-c07-comprehensive-fill-004": "la7-3",
+    "la-c07-comprehensive-fill-005": "la7-1",
+    "la-c07-comprehensive-fill-006": "la7-1",
+    "la-c07-comprehensive-fill-007": "la7-2",
+    "la-c07-comprehensive-solution-001": "la7-1",
+    "la-c07-comprehensive-solution-002": "la7-1",
+    "la-c07-comprehensive-solution-003": "la7-1",
+    "la-c07-comprehensive-solution-004": "la7-1",
+    "la-c07-extension-solution-001": "la7-1",
+    "la-c07-extension-solution-002": "la7-1",
+    "la-c07-extension-solution-003": "la7-1",
+    "la-c07-extension-solution-004": "la7-2",
+    "la-c08-basic-choice-001": "la8-3",
+    "la-c08-basic-choice-002": "la8-2",
+    "la-c08-basic-choice-003": "la8-4",
+    "la-c08-basic-choice-004": "la8-3",
+    "la-c08-basic-choice-005": "la8-4",
+    "la-c08-basic-choice-006": "la8-4",
+    "la-c08-basic-choice-007": "la8-4",
+    "la-c08-basic-fill-001": "la8-1",
+    "la-c08-basic-fill-002": "la8-4",
+    "la-c08-basic-fill-003": "la8-1",
+    "la-c08-basic-fill-004": "la8-4",
+    "la-c08-basic-fill-005": "la8-4",
+    "la-c08-basic-fill-006": "la8-1",
+    "la-c08-basic-fill-007": "la8-4",
+    "la-c08-basic-fill-008": "la8-1",
+    "la-c08-basic-fill-009": "la8-2",
+    "la-c08-basic-fill-010": "la8-2",
+    "la-c08-basic-fill-011": "la8-1",
+    "la-c08-basic-fill-012": "la8-2",
+    "la-c08-basic-fill-013": "la8-2",
+    "la-c08-basic-fill-014": "la8-2",
+    "la-c08-basic-solution-001": "la8-1",
+    "la-c08-basic-solution-002": "la8-2",
+    "la-c08-basic-solution-003": "la8-2",
+    "la-c08-basic-solution-004": "la8-2",
+    "la-c08-basic-solution-005": "la8-1",
+    "la-c08-basic-solution-006": "la8-4",
+    "la-c08-basic-solution-007": "la8-1",
+    "la-c08-basic-solution-008": "la8-4",
+    "la-c08-basic-solution-009": "la8-1",
+    "la-c08-basic-solution-010": "la8-2",
+    "la-c08-basic-solution-011": "la8-4",
+    "la-c08-basic-solution-012": "la8-2",
+    "la-c08-basic-solution-013": "la8-2",
+    "la-c08-basic-solution-014": "la8-1",
+    "la-c08-comprehensive-choice-001": "la8-4",
+    "la-c08-comprehensive-choice-002": "la8-1",
+    "la-c08-comprehensive-choice-003": "la8-3",
+    "la-c08-comprehensive-choice-004": "la8-4",
+    "la-c08-comprehensive-choice-005": "la8-4",
+    "la-c08-comprehensive-choice-006": "la8-2",
+    "la-c08-comprehensive-choice-007": "la8-2",
+    "la-c08-comprehensive-fill-001": "la8-2",
+    "la-c08-comprehensive-fill-002": "la8-2",
+    "la-c08-comprehensive-fill-003": "la8-1",
+    "la-c08-comprehensive-fill-004": "la8-1",
+    "la-c08-comprehensive-fill-005": "la8-2",
+    "la-c08-comprehensive-fill-006": "la8-2",
+    "la-c08-comprehensive-solution-001": "la8-4",
+    "la-c08-comprehensive-solution-002": "la8-4",
+    "la-c08-comprehensive-solution-003": "la8-4",
+    "la-c08-comprehensive-solution-004": "la8-2",
+    "la-c08-comprehensive-solution-005": "la8-4",
+    "la-c08-comprehensive-solution-006": "la8-1",
+    "la-c08-extension-solution-001": "la8-4",
+    "la-c08-extension-solution-002": "la8-4",
+    "la-c09-basic-choice-001": "la9-1",
+    "la-c09-basic-choice-002": "la9-1",
+    "la-c09-basic-choice-003": "la9-1",
+    "la-c09-basic-choice-004": "la9-1",
+    "la-c09-basic-choice-005": "la9-1",
+    "la-c09-basic-choice-006": "la9-1",
+    "la-c09-basic-choice-007": "la9-1",
+    "la-c09-basic-choice-008": "la9-1",
+    "la-c09-basic-fill-001": "la9-1",
+    "la-c09-basic-fill-002": "la9-3",
+    "la-c09-basic-solution-001": "la9-1",
+    "la-c09-basic-solution-002": "la9-3",
+    "la-c09-basic-solution-003": "la9-1",
+    "la-c09-basic-solution-004": "la9-3",
+    "la-c09-basic-solution-005": "la9-1",
+    "la-c09-basic-solution-006": "la9-1",
+    "la-c09-basic-solution-007": "la9-4",
+    "la-c09-comprehensive-choice-001": "la9-1",
+    "la-c09-comprehensive-choice-002": "la9-1",
+    "la-c09-comprehensive-choice-003": "la9-3",
+    "la-c09-comprehensive-choice-004": "la9-3",
+    "la-c09-comprehensive-choice-005": "la9-1",
+    "la-c09-comprehensive-choice-006": "la9-3",
+    "la-c09-comprehensive-choice-007": "la9-3",
+    "la-c09-comprehensive-choice-008": "la9-3",
+    "la-c09-comprehensive-fill-001": "la9-1",
+    "la-c09-comprehensive-solution-001": "la9-1",
+    "la-c09-comprehensive-solution-002": "la9-1",
+    "la-c09-comprehensive-solution-003": "la9-3",
+    "la-c09-comprehensive-solution-004": "la9-1",
+    "la-c09-comprehensive-solution-005": "la11-1",
+    "la-c09-comprehensive-solution-006": "la9-1",
+    "la-c09-comprehensive-solution-007": "la9-1",
+    "la-c09-comprehensive-solution-008": "la11-4",
+    "la-c09-comprehensive-solution-009": "la9-1",
+    "la-c09-comprehensive-solution-010": "la9-4",
+    "la-c09-extension-solution-001": "la9-3",
+    "la-c10-basic-choice-001": "la10-2",
+    "la-c10-basic-choice-002": "la10-4",
+    "la-c10-basic-choice-003": "la10-1",
+    "la-c10-basic-choice-004": "la10-2",
+    "la-c10-basic-choice-005": "la10-1",
+    "la-c10-basic-choice-006": "la10-1",
+    "la-c10-basic-choice-007": "la10-1",
+    "la-c10-basic-choice-008": "la10-1",
+    "la-c10-basic-choice-009": "la10-1",
+    "la-c10-basic-choice-010": "la10-4",
+    "la-c10-basic-choice-011": "la10-1",
+    "la-c10-basic-choice-012": "la10-3",
+    "la-c10-basic-choice-013": "la10-1",
+    "la-c10-basic-fill-001": "la10-1",
+    "la-c10-basic-fill-002": "la10-1",
+    "la-c10-basic-fill-003": "la10-2",
+    "la-c10-basic-solution-001": "la10-2",
+    "la-c10-basic-solution-002": "la10-1",
+    "la-c10-basic-solution-003": "la10-1",
+    "la-c10-basic-solution-004": "la10-2",
+    "la-c10-basic-solution-005": "la10-1",
+    "la-c10-basic-solution-006": "la10-2",
+    "la-c10-basic-solution-007": "la10-2",
+    "la-c10-basic-solution-008": "la10-2",
+    "la-c10-basic-solution-009": "la10-1",
+    "la-c10-comprehensive-choice-001": "la10-1",
+    "la-c10-comprehensive-choice-002": "la10-1",
+    "la-c10-comprehensive-choice-003": "la10-4",
+    "la-c10-comprehensive-choice-004": "la10-1",
+    "la-c10-comprehensive-choice-005": "la10-1",
+    "la-c10-comprehensive-choice-006": "la10-4",
+    "la-c10-comprehensive-choice-007": "la10-4",
+    "la-c10-comprehensive-choice-008": "la10-1",
+    "la-c10-comprehensive-choice-009": "la10-1",
+    "la-c10-comprehensive-choice-010": "la10-1",
+    "la-c10-comprehensive-choice-011": "la10-1",
+    "la-c10-comprehensive-fill-001": "la10-3",
+    "la-c10-comprehensive-fill-002": "la7-2",
+    "la-c10-comprehensive-fill-003": "la10-3",
+    "la-c10-comprehensive-fill-004": "la11-4",
+    "la-c10-comprehensive-solution-001": "la10-3",
+    "la-c10-comprehensive-solution-002": "la10-2",
+    "la-c10-comprehensive-solution-003": "la10-2",
+    "la-c10-comprehensive-solution-004": "la10-1",
+    "la-c10-comprehensive-solution-005": "la10-1",
+    "la-c10-comprehensive-solution-006": "la10-3",
+    "la-c10-comprehensive-solution-007": "la10-2",
+    "la-c10-comprehensive-solution-008": "la10-1",
+    "la-c10-comprehensive-solution-009": "la10-1",
+    "la-c10-comprehensive-solution-010": "la10-1",
+    "la-c10-comprehensive-solution-011": "la10-1",
+    "la-c10-extension-solution-001": "la10-1",
+    "la-c10-extension-solution-002": "la10-1",
+    "la-c10-extension-solution-003": "la10-4",
+    "la-c11-basic-choice-001": "la11-1",
+    "la-c11-basic-choice-002": "la11-1",
+    "la-c11-basic-choice-003": "la11-1",
+    "la-c11-basic-choice-004": "la11-1",
+    "la-c11-basic-choice-005": "la11-1",
+    "la-c11-basic-choice-006": "la11-1",
+    "la-c11-basic-choice-007": "la11-1",
+    "la-c11-basic-fill-001": "la11-1",
+    "la-c11-basic-fill-002": "la11-1",
+    "la-c11-basic-fill-003": "la11-2",
+    "la-c11-basic-fill-004": "la11-3",
+    "la-c11-basic-fill-005": "la11-4",
+    "la-c11-basic-solution-001": "la11-1",
+    "la-c11-basic-solution-002": "la11-1",
+    "la-c11-basic-solution-003": "la11-1",
+    "la-c11-basic-solution-004": "la11-1",
+    "la-c11-basic-solution-005": "la11-1",
+    "la-c11-basic-solution-006": "la11-1",
+    "la-c11-basic-solution-007": "la11-1",
+    "la-c11-basic-solution-008": "la11-1",
+    "la-c11-basic-solution-009": "la11-4",
+    "la-c11-basic-solution-010": "la11-1",
+    "la-c11-basic-solution-011": "la11-1",
+    "la-c11-basic-solution-012": "la11-3",
+    "la-c11-basic-solution-013": "la11-4",
+    "la-c11-basic-solution-014": "la11-1",
+    "la-c11-basic-solution-015": "la11-1",
+    "la-c11-comprehensive-choice-001": "la11-2",
+    "la-c11-comprehensive-choice-002": "la11-1",
+    "la-c11-comprehensive-choice-003": "la11-1",
+    "la-c11-comprehensive-choice-004": "la11-2",
+    "la-c11-comprehensive-choice-005": "la11-4",
+    "la-c11-comprehensive-choice-006": "la11-1",
+    "la-c11-comprehensive-choice-007": "la11-1",
+    "la-c11-comprehensive-choice-008": "la11-1",
+    "la-c11-comprehensive-choice-009": "la11-4",
+    "la-c11-comprehensive-fill-001": "la11-4",
+    "la-c11-comprehensive-fill-002": "la11-1",
+    "la-c11-comprehensive-fill-003": "la11-1",
+    "la-c11-comprehensive-fill-004": "la9-4",
+    "la-c11-comprehensive-solution-001": "la11-1",
+    "la-c11-comprehensive-solution-002": "la11-4",
+    "la-c11-comprehensive-solution-003": "la11-4",
+    "la-c11-comprehensive-solution-004": "la11-4",
+    "la-c11-comprehensive-solution-005": "la11-4",
+    "la-c11-comprehensive-solution-006": "la11-2",
+    "la-c11-comprehensive-solution-007": "la11-1",
+    "la-c11-comprehensive-solution-008": "la11-1",
+    "la-c11-comprehensive-solution-009": "la11-3",
+    "la-c11-comprehensive-solution-010": "la11-4",
+    "la-c11-comprehensive-solution-011": "la11-3",
+    "la-c11-comprehensive-solution-012": "la9-3",
+    "la-c11-comprehensive-solution-013": "la11-3",
+    "la-c11-comprehensive-solution-014": "la11-4",
+    "la-c11-comprehensive-solution-015": "la11-4",
+    "la-c11-comprehensive-solution-016": "la11-4",
+    "la-c11-comprehensive-solution-017": "la11-4",
+    "la-c11-comprehensive-solution-018": "la11-1",
+    "la-c11-comprehensive-solution-019": "la11-2",
+    "la-c11-comprehensive-solution-020": "la11-4",
+    "la-c11-extension-solution-001": "la11-1",
+    "la-c11-extension-solution-002": "la11-1",
+    "la-c12-basic-choice-001": "la12-1",
+    "la-c12-basic-choice-002": "la12-1",
+    "la-c12-basic-choice-003": "la12-3",
+    "la-c12-basic-choice-004": "la12-2",
+    "la-c12-basic-choice-005": "la12-3",
+    "la-c12-basic-choice-006": "la12-3",
+    "la-c12-basic-choice-007": "la12-2",
+    "la-c12-basic-choice-008": "la12-2",
+    "la-c12-basic-choice-009": "la12-3",
+    "la-c12-basic-choice-010": "la11-3",
+    "la-c12-basic-fill-001": "la12-4",
+    "la-c12-basic-fill-002": "la12-1",
+    "la-c12-basic-solution-001": "la12-1",
+    "la-c12-basic-solution-002": "la12-1",
+    "la-c12-basic-solution-003": "la12-4",
+    "la-c12-basic-solution-004": "la12-1",
+    "la-c12-basic-solution-005": "la12-1",
+    "la-c12-basic-solution-006": "la12-1",
+    "la-c12-basic-solution-007": "la12-5",
+    "la-c12-basic-solution-008": "la12-3",
+    "la-c12-basic-solution-009": "la12-2",
+    "la-c12-comprehensive-choice-001": "la12-3",
+    "la-c12-comprehensive-choice-002": "la12-3",
+    "la-c12-comprehensive-choice-003": "la12-2",
+    "la-c12-comprehensive-choice-004": "la12-3",
+    "la-c12-comprehensive-choice-005": "la12-3",
+    "la-c12-comprehensive-choice-006": "la11-3",
+    "la-c12-comprehensive-choice-007": "la12-4",
+    "la-c12-comprehensive-choice-008": "la12-3",
+    "la-c12-comprehensive-choice-009": "la12-1",
+    "la-c12-comprehensive-choice-010": "la12-4",
+    "la-c12-comprehensive-choice-011": "la12-1",
+    "la-c12-comprehensive-choice-012": "la12-3",
+    "la-c12-comprehensive-choice-013": "la12-5",
+    "la-c12-comprehensive-choice-014": "la12-4",
+    "la-c12-comprehensive-fill-001": "la12-3",
+    "la-c12-comprehensive-fill-002": "la12-3",
+    "la-c12-comprehensive-fill-003": "la12-1",
+    "la-c12-comprehensive-fill-004": "la12-5",
+    "la-c12-comprehensive-solution-001": "la12-1",
+    "la-c12-comprehensive-solution-002": "la12-5",
+    "la-c12-comprehensive-solution-003": "la12-3",
+    "la-c12-comprehensive-solution-004": "la12-1",
+    "la-c12-comprehensive-solution-005": "la12-4",
+    "la-c12-comprehensive-solution-006": "la12-4",
+    "la-c12-comprehensive-solution-007": "la12-2",
+    "la-c12-comprehensive-solution-008": "la12-1",
+    "la-c12-comprehensive-solution-009": "la12-1",
+    "la-c12-comprehensive-solution-010": "la12-1",
+    "la-c12-comprehensive-solution-011": "la12-1",
+    "la-c12-comprehensive-solution-012": "la12-2",
+    "la-c12-comprehensive-solution-013": "la12-1",
+    "la-c12-comprehensive-solution-014": "la12-5",
+    "la-c12-comprehensive-solution-015": "la12-1",
+    "la-c12-comprehensive-solution-016": "la12-1",
+    "la-c12-comprehensive-solution-017": "la12-1",
+    "la-c12-extension-solution-001": "la12-1",
+    "la-c12-extension-solution-002": "la12-1",
+    "la-c12-extension-solution-003": "la12-1",
+    "la-c12-extension-solution-004": "la12-1",
+    "la-c12-extension-solution-005": "la12-2",
+    "la-c12-extension-solution-006": "la12-2",
+    "la-c12-extension-solution-007": "la12-1",
+    "zt-2010-数二-填空13": "gs2-1",
+    "zt-2010-数二-解答17": "gs2-2",
+    "zt-2010-数二-解答18": "gs3-1",
+    "zt-2010-数二-解答19": "gs4-1",
+    "zt-2010-数二-解答20": "gs5-1",
+    "zt-2010-数二-解答21": "gs2-4",
+    "zt-2010-数二-选择2": "gs6-1",
+    "zt-2010-数二-选择3": "gs2-1",
+    "zt-2010-数二-选择4": "gs3-6",
+    "zt-2010-数二-选择6": "gs5-5",
+    "zt-2010-数二-选择7": "la9-1",
+    "zt-2011-数二-解答18": "gs6-1",
+    "zt-2011-数二-解答20": "gs3-5",
+    "zt-2011-数二-解答21": "gs5-1",
+    "zt-2011-数二-解答22": "la9-3",
+    "zt-2011-数二-解答23": "la11-1",
+    "zt-2011-数二-选择5": "gs4-1",
+    "zt-2011-数二-选择8": "la8-2",
+    "zt-2012-数二-填空10": "gs1-2",
+    "zt-2012-数二-填空12": "gs6-1",
+    "zt-2012-数二-解答17": "gs3-4",
+    "zt-2012-数二-解答21": "gs1-2",
+    "zt-2012-数二-选择3": "gs1-2",
+    "zt-2012-数二-选择8": "la11-1",
+    "zt-2013-数二-选择2": "gs2-1",
+    "zt-2013-数二-选择6": "gs5-1",
+    "zt-2013-数二-选择8": "la11-2",
+    "zt-2013-数二-填空14": "la7-2",
+    "zt-2013-数二-解答15": "gs1-3",
+    "zt-2013-数二-解答18": "gs2-4",
+    "zt-2013-数二-解答19": "gs4-1",
+    "zt-2013-数二-解答20": "gs1-2",
+    "zt-2013-数二-解答22": "la8-1",
+    "zt-2013-数二-解答23": "la12-1",
+    "zt-2014-数二-选择3": "gs2-1",
+    "zt-2014-数二-选择6": "gs4-1",
+    "zt-2014-数二-选择8": "la9-1",
+    "zt-2014-数二-填空12": "gs2-6",
+    "zt-2014-数二-解答18": "gs6-1",
+    "zt-2014-数二-解答22": "la10-1",
+    "zt-2014-数二-解答19": "gs3-8",
+    "zt-2015-数二-选择2": "gs1-4",
+    "zt-2015-数二-选择3": "gs2-1",
+    "zt-2015-数二-选择8": "la12-1",
+    "zt-2015-数二-解答15": "gs1-3",
+    "zt-2015-数二-解答18": "gs5-1",
+    "zt-2015-数二-解答20": "gs6-5",
+    "zt-2015-数二-解答21": "gs2-4",
+    "zt-2015-数二-解答22": "la8-1",
+    "zt-2016-数二-选择3": "gs3-6",
+    "zt-2016-数二-选择7": "la11-2",
+    "zt-2016-数二-填空12": "gs3-3",
+    "zt-2016-数二-填空13": "gs2-1",
+    "zt-2016-数二-解答18": "gs5-1",
+    "zt-2016-数二-解答19": "gs6-1",
+    "zt-2016-数二-解答20": "gs3-4",
+    "zt-2016-数二-解答21": "gs3-1",
+    "zt-2016-数二-解答23": "la11-4",
+    "zt-2017-数二-选择2": "gs3-3",
+    "zt-2017-数二-选择8": "la11-2",
+    "zt-2017-数二-填空14": "la11-1",
+    "zt-2017-数二-解答15": "gs1-3",
+    "zt-2017-数二-解答19": "gs2-4",
+    "zt-2018-数二-选择4": "gs3-3",
+    "zt-2018-数二-选择8": "la8-4",
+    "zt-2018-数二-填空14": "la11-1",
+    "zt-2018-数二-解答16": "gs3-3",
+    "zt-2018-数二-解答17": "gs5-1",
+    "zt-2018-数二-解答18": "gs4-5",
+    "zt-2018-数二-解答20": "gs3-4",
+    "zt-2018-数二-解答22": "la12-1",
+    "zt-2018-数二-解答23": "la8-2",
+    "zt-2018-数二-解答21": "gs1-2",
+    "zt-2019-数二-选择6": "gs2-1",
+    "zt-2019-数二-选择5": "gs5-1",
+    "zt-2019-数二-解答18": "gs5-1",
+    "zt-2019-数二-解答19": "gs3-4",
+    "zt-2019-数二-解答22": "la9-3",
+    "zt-2020-数二-选择3": "gs3-1"
+  },
+  "kp_meta": {
+    "gs1-1": {
+      "subject": "高数",
+      "chapter": "第一章 函数、极限、连续",
+      "name": "函数性质与函数方程"
+    },
+    "gs1-2": {
+      "subject": "高数",
+      "chapter": "第一章 函数、极限、连续",
+      "name": "数列极限与递推数列"
+    },
+    "gs1-3": {
+      "subject": "高数",
+      "chapter": "第一章 函数、极限、连续",
+      "name": "函数极限与无穷小比较"
+    },
+    "gs1-4": {
+      "subject": "高数",
+      "chapter": "第一章 函数、极限、连续",
+      "name": "连续性与间断点"
+    },
+    "gs2-1": {
+      "subject": "高数",
+      "chapter": "第二章 一元函数微分学及其应用",
+      "name": "导数定义与可导性"
+    },
+    "gs2-2": {
+      "subject": "高数",
+      "chapter": "第二章 一元函数微分学及其应用",
+      "name": "复合、隐函数与参数方程求导"
+    },
+    "gs2-3": {
+      "subject": "高数",
+      "chapter": "第二章 一元函数微分学及其应用",
+      "name": "高阶导数与泰勒公式"
+    },
+    "gs2-4": {
+      "subject": "高数",
+      "chapter": "第二章 一元函数微分学及其应用",
+      "name": "微分中值定理与不等式证明"
+    },
+    "gs2-5": {
+      "subject": "高数",
+      "chapter": "第二章 一元函数微分学及其应用",
+      "name": "单调性、极值与最值"
+    },
+    "gs2-6": {
+      "subject": "高数",
+      "chapter": "第二章 一元函数微分学及其应用",
+      "name": "凹凸性、拐点、渐近线与几何应用"
+    },
+    "gs3-1": {
+      "subject": "高数",
+      "chapter": "第三章 一元函数积分学及其应用",
+      "name": "不定积分计算"
+    },
+    "gs3-2": {
+      "subject": "高数",
+      "chapter": "第三章 一元函数积分学及其应用",
+      "name": "定积分计算与性质"
+    },
+    "gs3-3": {
+      "subject": "高数",
+      "chapter": "第三章 一元函数积分学及其应用",
+      "name": "变上限积分与积分方程"
+    },
+    "gs3-4": {
+      "subject": "高数",
+      "chapter": "第三章 一元函数积分学及其应用",
+      "name": "定积分几何应用"
+    },
+    "gs3-5": {
+      "subject": "高数",
+      "chapter": "第三章 一元函数积分学及其应用",
+      "name": "定积分物理应用"
+    },
+    "gs3-6": {
+      "subject": "高数",
+      "chapter": "第三章 一元函数积分学及其应用",
+      "name": "反常积分敛散性"
+    },
+    "gs3-7": {
+      "subject": "高数",
+      "chapter": "第三章 一元函数积分学及其应用",
+      "name": "定积分定义求极限"
+    },
+    "gs3-8": {
+      "subject": "高数",
+      "chapter": "第三章 一元函数积分学及其应用",
+      "name": "积分不等式与积分中值定理"
+    },
+    "gs4-1": {
+      "subject": "高数",
+      "chapter": "第四章 多元函数微分学及其应用",
+      "name": "二元函数极限、连续、偏导与可微"
+    },
+    "gs4-2": {
+      "subject": "高数",
+      "chapter": "第四章 多元函数微分学及其应用",
+      "name": "偏导数与全微分计算"
+    },
+    "gs4-3": {
+      "subject": "高数",
+      "chapter": "第四章 多元函数微分学及其应用",
+      "name": "复合函数与隐函数求导"
+    },
+    "gs4-4": {
+      "subject": "高数",
+      "chapter": "第四章 多元函数微分学及其应用",
+      "name": "多元函数极值与条件极值"
+    },
+    "gs4-5": {
+      "subject": "高数",
+      "chapter": "第四章 多元函数微分学及其应用",
+      "name": "多元函数最值与应用"
+    },
+    "gs5-1": {
+      "subject": "高数",
+      "chapter": "第五章 二重积分",
+      "name": "二重积分直角坐标计算"
+    },
+    "gs5-2": {
+      "subject": "高数",
+      "chapter": "第五章 二重积分",
+      "name": "交换积分次序"
+    },
+    "gs5-3": {
+      "subject": "高数",
+      "chapter": "第五章 二重积分",
+      "name": "二重积分极坐标计算"
+    },
+    "gs5-4": {
+      "subject": "高数",
+      "chapter": "第五章 二重积分",
+      "name": "二重积分对称性与奇偶性"
+    },
+    "gs5-5": {
+      "subject": "高数",
+      "chapter": "第五章 二重积分",
+      "name": "二重积分综合与应用"
+    },
+    "gs6-1": {
+      "subject": "高数",
+      "chapter": "第六章 微分方程及其应用",
+      "name": "一阶微分方程"
+    },
+    "gs6-2": {
+      "subject": "高数",
+      "chapter": "第六章 微分方程及其应用",
+      "name": "可降阶高阶方程"
+    },
+    "gs6-3": {
+      "subject": "高数",
+      "chapter": "第六章 微分方程及其应用",
+      "name": "二阶常系数齐次线性方程"
+    },
+    "gs6-4": {
+      "subject": "高数",
+      "chapter": "第六章 微分方程及其应用",
+      "name": "二阶常系数非齐次线性方程"
+    },
+    "gs6-5": {
+      "subject": "高数",
+      "chapter": "第六章 微分方程及其应用",
+      "name": "微分方程应用"
+    },
+    "la7-1": {
+      "subject": "线代",
+      "chapter": "第七章 行列式",
+      "name": "行列式性质与计算"
+    },
+    "la7-2": {
+      "subject": "线代",
+      "chapter": "第七章 行列式",
+      "name": "余子式、代数余子式与展开"
+    },
+    "la7-3": {
+      "subject": "线代",
+      "chapter": "第七章 行列式",
+      "name": "行列式与伴随矩阵综合"
+    },
+    "la8-1": {
+      "subject": "线代",
+      "chapter": "第八章 矩阵",
+      "name": "矩阵运算与方阵幂"
+    },
+    "la8-2": {
+      "subject": "线代",
+      "chapter": "第八章 矩阵",
+      "name": "逆矩阵与伴随矩阵"
+    },
+    "la8-3": {
+      "subject": "线代",
+      "chapter": "第八章 矩阵",
+      "name": "初等变换与初等矩阵"
+    },
+    "la8-4": {
+      "subject": "线代",
+      "chapter": "第八章 矩阵",
+      "name": "矩阵的秩与分块矩阵"
+    },
+    "la9-1": {
+      "subject": "线代",
+      "chapter": "第九章 向量",
+      "name": "线性相关与线性无关"
+    },
+    "la9-2": {
+      "subject": "线代",
+      "chapter": "第九章 向量",
+      "name": "极大线性无关组与向量组秩"
+    },
+    "la9-3": {
+      "subject": "线代",
+      "chapter": "第九章 向量",
+      "name": "向量组等价与线性表示"
+    },
+    "la9-4": {
+      "subject": "线代",
+      "chapter": "第九章 向量",
+      "name": "内积与正交规范化"
+    },
+    "la10-1": {
+      "subject": "线代",
+      "chapter": "第十章 线性方程组",
+      "name": "解的判定与含参讨论"
+    },
+    "la10-2": {
+      "subject": "线代",
+      "chapter": "第十章 线性方程组",
+      "name": "齐次方程组与基础解系"
+    },
+    "la10-3": {
+      "subject": "线代",
+      "chapter": "第十章 线性方程组",
+      "name": "非齐次方程组解的结构"
+    },
+    "la10-4": {
+      "subject": "线代",
+      "chapter": "第十章 线性方程组",
+      "name": "解空间与矩阵秩综合"
+    },
+    "la11-1": {
+      "subject": "线代",
+      "chapter": "第十一章 相似矩阵",
+      "name": "特征值与特征向量计算"
+    },
+    "la11-2": {
+      "subject": "线代",
+      "chapter": "第十一章 相似矩阵",
+      "name": "相似对角化判定"
+    },
+    "la11-3": {
+      "subject": "线代",
+      "chapter": "第十一章 相似矩阵",
+      "name": "实对称矩阵正交对角化"
+    },
+    "la11-4": {
+      "subject": "线代",
+      "chapter": "第十一章 相似矩阵",
+      "name": "特征值/特征向量性质与证明"
+    },
+    "la12-1": {
+      "subject": "线代",
+      "chapter": "第十二章 二次型",
+      "name": "二次型标准形与正交变换"
+    },
+    "la12-2": {
+      "subject": "线代",
+      "chapter": "第十二章 二次型",
+      "name": "配方法与合同变换"
+    },
+    "la12-3": {
+      "subject": "线代",
+      "chapter": "第十二章 二次型",
+      "name": "惯性定理与规范形"
+    },
+    "la12-4": {
+      "subject": "线代",
+      "chapter": "第十二章 二次型",
+      "name": "正定性判定"
+    },
+    "la12-5": {
+      "subject": "线代",
+      "chapter": "第十二章 二次型",
+      "name": "二次型与特征值综合"
+    }
+  }
+}
