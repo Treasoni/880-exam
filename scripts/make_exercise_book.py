@@ -96,8 +96,41 @@ def inline(value):
     return lib880.prepare_inline_text(str(value or ""))
 
 
+def fix_table_math_pipes(text):
+    """表格单元格里的 $|x|$ / $|A|$ 会把 Markdown 表格切断，改成 \\lvert/\\rvert。"""
+    lines = []
+    for line in str(text or "").splitlines():
+        if line.lstrip().startswith("|"):
+            out = []
+            in_math = False
+            open_abs = False
+            i = 0
+            while i < len(line):
+                ch = line[i]
+                if ch == "\\" and i + 1 < len(line):
+                    out.append(line[i : i + 2])
+                    i += 2
+                    continue
+                if ch == "$":
+                    in_math = not in_math
+                    open_abs = False
+                    out.append(ch)
+                    i += 1
+                    continue
+                if ch == "|" and in_math:
+                    out.append(r"\lvert" if not open_abs else r"\rvert")
+                    open_abs = not open_abs
+                    i += 1
+                    continue
+                out.append(ch)
+                i += 1
+            line = "".join(out)
+        lines.append(line)
+    return "\n".join(lines)
+
+
 def block(value):
-    return lib880.prepare_solution_text(str(value or ""))
+    return fix_table_math_pipes(lib880.prepare_solution_text(str(value or "")))
 
 
 _OPTION_PAREN_RE = re.compile(r"(?<![\w$])[（(]\s*([A-D])\s*[)）]")
@@ -392,6 +425,7 @@ def normalize_external_embeds(text, rel_file):
 
 def clean_external_solution(text, rel_file):
     text = normalize_external_embeds(str(text or ""), rel_file)
+    text = fix_table_math_pipes(text)
     # 外部错题本里有些 callout 标记没有 `>` 前缀，直接渲染会裸露成 `[!tip]`。
     text = re.sub(
         r"^[ \t]*\[!(\w+)\][-+]?[ \t]*(.*)$",
@@ -744,6 +778,11 @@ def kp_link(no, name):
     return f"[[数二知识点习题集#{kp_anchor(no, name)}|{name}]]"
 
 
+def kp_table_link(no, name):
+    """表格里的 wikilink 别名必须转义竖线，否则会把 Markdown 表格切断。"""
+    return f"[[数二知识点习题集#{kp_anchor(no, name)}\\|{name}]]"
+
+
 def answer_link(no, name):
     return f"[[数二知识点习题集-答案#{kp_anchor(no, name)}|本组答案与解析]]"
 
@@ -911,7 +950,7 @@ def render_book(plan, groups, stats, entries, analysis, questions):
         rank_rows.append(
             [
                 rank,
-                kp_link(next(k["no"] for g in groups for k in g["kps"] if k["kp"] == kp), meta["name"]),
+                kp_table_link(next(k["no"] for g in groups for k in g["kps"] if k["kp"] == kp), meta["name"]),
                 meta["chapter"],
                 item["n"],
                 f"{item['acc']:.0%}",
@@ -1035,7 +1074,7 @@ def render_supplement(plan, groups, stats, ranked, active_total):
             hint = "从 880 同章补 2–3 道基础题，先把概念打牢"
         under_rows.append(
             [
-                kp_link(kp_no[kp], meta["name"]),
+                kp_table_link(kp_no[kp], meta["name"]),
                 LEVEL_BADGE[item["level"]],
                 f"{count}/{target}",
                 gap,
@@ -1061,7 +1100,7 @@ def render_supplement(plan, groups, stats, ranked, active_total):
         entries_kp = kp_entries[kp]
         untested_rows.append(
             [
-                kp_link(kp_no[kp], meta["name"]),
+                kp_table_link(kp_no[kp], meta["name"]),
                 len(entries_kp),
                 "全部外部",
                 "没有 880/真题判分记录，可能“看懂但不会做”",
@@ -1085,7 +1124,7 @@ def render_supplement(plan, groups, stats, ranked, active_total):
         if 0 < item["n"] < 3:
             thin_rows.append(
                 [
-                    kp_link(kp_no[kp], meta["name"]),
+                    kp_table_link(kp_no[kp], meta["name"]),
                     LEVEL_BADGE[item["level"]],
                     item["n"],
                     f"{item['acc']:.0%}",
