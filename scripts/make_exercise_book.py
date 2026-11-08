@@ -463,7 +463,13 @@ EXTERNAL_ANSWER_OVERRIDES = {
     "ext-微分方程-29": (
         r"$\arctan\frac{y}{x}+\frac{3}{2}\ln(x^2+y^2)=C$"
     ),
-    "ext-第六章：二次型-19": "D",
+    "ext-第六章：二次型-18": (
+        r"$Q=\begin{pmatrix}\frac1{\sqrt2}&\frac1{\sqrt6}&-\frac1{\sqrt3}\\"
+        r"\frac1{\sqrt2}&-\frac1{\sqrt6}&\frac1{\sqrt3}\\"
+        r"0&\frac2{\sqrt6}&\frac1{\sqrt3}\end{pmatrix}$，"
+        r"$f=(a+1)y_1^2+(a+1)y_2^2+(a-2)y_3^2$，"
+        r"$P=Q\operatorname{diag}(1,1,\frac12)$"
+    ),
 }
 
 
