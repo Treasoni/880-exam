@@ -65,6 +65,7 @@ ROLE_NOTE = {
     "mastered": "已做对过，用来复现方法；做对一次不等于永久掌握。",
     "zhenti": "真题原题，代表这一考点在综合卷里的命题方式。",
     "external": "880/真题里这个角度的题不够，用外部错题补方法覆盖面。",
+    "new": "880 同章新题，用来补齐题量并检验方法迁移；没有历史判分，做完按首次成绩记录。",
 }
 TRAP_PREFIX = {
     "active_focus": "你上次错在这类题上：",
@@ -72,6 +73,7 @@ TRAP_PREFIX = {
     "mastered": "重做时注意：",
     "zhenti": "真题常见陷阱：",
     "external": "原错题本提醒：",
+    "new": "新题注意：",
 }
 
 FIELD_STOP = re.compile(
@@ -506,10 +508,11 @@ def weakness_score(item):
 def build_entries(plan, questions, zhenti, by_qid, external):
     """按计划顺序组装题目；新出现的活跃错题自动补入，避免漏掉当前错题。"""
     selected = {qid for items in plan["selection"].values() for qid, _ in items}
+    duplicate_of = plan.get("duplicate_of", {})
     additions = defaultdict(list)
     for qid, records in by_qid.items():
         kp = plan["qid_kp"].get(qid)
-        if not kp or kp not in plan["kp_meta"] or qid in selected:
+        if not kp or kp not in plan["kp_meta"] or qid in selected or qid in duplicate_of:
             continue
         if records[-1][3] != "correct":
             role = "active_focus" if records[-1][3] in ("cannot", "half") else "active_light"
@@ -523,6 +526,8 @@ def build_entries(plan, questions, zhenti, by_qid, external):
         items.extend(additions.get(kp, []))
         kp_entries = []
         for qid, role in items:
+            if qid in duplicate_of:
+                continue
             qnum += 1
             entry = {"number": qnum, "qid": qid, "role": role, "kp": kp}
             if qid.startswith("ext-"):
@@ -1226,6 +1231,10 @@ def validate(plan, entries, groups, stats):
     dup = [qid for qid, count in Counter(qids).items() if count > 1]
     if dup:
         errors.append(f"题目重复：{dup[:5]}")
+    selected = {qid for items in plan["selection"].values() for qid, _ in items}
+    for qid, target in plan.get("duplicate_of", {}).items():
+        if target not in selected:
+            errors.append(f"重复题替代目标未入选：{qid} → {target}")
     if not entries:
         errors.append("没有可渲染题目")
     for group in groups:

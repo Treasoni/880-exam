@@ -1068,16 +1068,16 @@
     "active_focus"
    ],
    [
-    "zt-2013-数二-解答19",
-    "zhenti"
-   ],
-   [
     "gs-c04-comprehensive-choice-003",
     "mastered"
    ],
    [
     "ext-高数-多元函数微分学-21",
     "external"
+   ],
+   [
+    "gs-c04-comprehensive-solution-017",
+    "new"
    ]
   ],
   "gs4-2": [
@@ -1130,8 +1130,8 @@
     "external"
    ],
    [
-    "ext-高数-多元函数微分学-31",
-    "external"
+    "gs-c04-basic-solution-004",
+    "new"
    ]
   ],
   "gs4-5": [
@@ -1142,6 +1142,18 @@
    [
     "ext-高数-多元函数微分学-17",
     "external"
+   ],
+   [
+    "zt-2013-数二-解答19",
+    "zhenti"
+   ],
+   [
+    "gs-c04-basic-solution-006",
+    "new"
+   ],
+   [
+    "gs-c04-basic-solution-007",
+    "new"
    ]
   ],
   "gs5-1": [
@@ -1158,12 +1170,12 @@
     "zhenti"
    ],
    [
-    "zt-2019-数二-解答18",
-    "zhenti"
+    "gs-c05-basic-solution-001",
+    "new"
    ],
    [
-    "ext-二重积分-13",
-    "external"
+    "gs-c05-comprehensive-solution-001",
+    "new"
    ]
   ],
   "gs5-2": [
@@ -1182,8 +1194,8 @@
     "mastered"
    ],
    [
-    "ext-二重积分-15",
-    "external"
+    "zt-2019-数二-解答18",
+    "zhenti"
    ]
   ],
   "gs5-4": [
@@ -1222,8 +1234,12 @@
     "zhenti"
    ],
    [
-    "ext-二重积分-09",
-    "external"
+    "gs-c05-comprehensive-solution-016",
+    "new"
+   ],
+   [
+    "gs-c05-extension-solution-005",
+    "new"
    ]
   ],
   "gs6-1": [
@@ -1338,10 +1354,6 @@
     "active_focus"
    ],
    [
-    "zt-2018-数二-解答23",
-    "zhenti"
-   ],
-   [
     "ext-第二章：矩阵-35",
     "external"
    ],
@@ -1358,6 +1370,18 @@
    [
     "ext-第二章：矩阵-21",
     "external"
+   ],
+   [
+    "zt-2018-数二-解答23",
+    "zhenti"
+   ],
+   [
+    "la-c08-basic-choice-001",
+    "mastered"
+   ],
+   [
+    "la-c08-basic-choice-004",
+    "new"
    ]
   ],
   "la8-4": [
@@ -1370,12 +1394,16 @@
     "zhenti"
    ],
    [
-    "ext-第二章：矩阵-47",
+    "ext-第二章：矩阵-34",
     "external"
    ],
    [
-    "ext-第二章：矩阵-34",
-    "external"
+    "la-c08-basic-choice-006",
+    "new"
+   ],
+   [
+    "la-c08-basic-choice-007",
+    "mastered"
    ]
   ],
   "la9-1": [
@@ -1420,12 +1448,12 @@
     "zhenti"
    ],
    [
-    "ext-第四章：向量与方程组-39",
+    "ext-第四章：向量与方程组-19",
     "external"
    ],
    [
-    "ext-第四章：向量与方程组-19",
-    "external"
+    "la-c09-basic-solution-002",
+    "new"
    ]
   ],
   "la9-4": [
@@ -1510,16 +1538,16 @@
     "active_focus"
    ],
    [
-    "la-c10-basic-choice-010",
-    "active_light"
-   ],
-   [
     "ext-第四章：向量与方程组-48",
     "external"
    ],
    [
     "ext-第四章：向量与方程组-57",
     "external"
+   ],
+   [
+    "la-c10-basic-choice-002",
+    "new"
    ]
   ],
   "la11-1": [
@@ -2113,9 +2141,9 @@
   "gs-c04-comprehensive-solution-004": "gs4-4",
   "gs-c04-basic-solution-005": "gs4-1",
   "gs-c04-comprehensive-solution-005": "gs4-4",
-  "gs-c04-basic-solution-006": "gs4-4",
+  "gs-c04-basic-solution-006": "gs4-5",
   "gs-c04-comprehensive-solution-006": "gs4-4",
-  "gs-c04-basic-solution-007": "gs4-4",
+  "gs-c04-basic-solution-007": "gs4-5",
   "gs-c04-comprehensive-solution-007": "gs4-4",
   "gs-c04-basic-solution-008": "gs4-4",
   "gs-c04-comprehensive-solution-008": "gs4-4",
@@ -2433,7 +2461,6 @@
   "la-c10-basic-choice-007": "la10-1",
   "la-c10-basic-choice-008": "la10-1",
   "la-c10-basic-choice-009": "la10-1",
-  "la-c10-basic-choice-010": "la10-4",
   "la-c10-basic-choice-011": "la10-1",
   "la-c10-basic-choice-012": "la10-3",
   "la-c10-basic-choice-013": "la10-1",
@@ -2633,7 +2660,7 @@
   "zt-2013-数二-填空14": "la7-2",
   "zt-2013-数二-解答15": "gs1-3",
   "zt-2013-数二-解答18": "gs2-4",
-  "zt-2013-数二-解答19": "gs4-1",
+  "zt-2013-数二-解答19": "gs4-5",
   "zt-2013-数二-解答20": "gs1-2",
   "zt-2013-数二-解答22": "la8-1",
   "zt-2013-数二-解答23": "la12-1",
@@ -2674,7 +2701,7 @@
   "zt-2018-数二-解答18": "gs4-5",
   "zt-2018-数二-解答20": "gs3-4",
   "zt-2018-数二-解答22": "la12-1",
-  "zt-2018-数二-解答23": "la8-2",
+  "zt-2018-数二-解答23": "la8-3",
   "zt-2018-数二-解答21": "gs1-2",
   "zt-2019-数二-选择6": "gs2-1",
   "zt-2019-数二-选择5": "gs5-1",
@@ -2969,5 +2996,12 @@
    "chapter": "第十二章 二次型",
    "name": "二次型与特征值综合"
   }
+ },
+ "duplicate_of": {
+  "la-c10-basic-choice-010": "la-c10-comprehensive-choice-003",
+  "ext-高数-多元函数微分学-31": "zt-2013-数二-解答19",
+  "ext-二重积分-09": "zt-2010-数二-选择6",
+  "ext-第二章：矩阵-47": "zt-2018-数二-选择8",
+  "ext-第四章：向量与方程组-39": "zt-2019-数二-解答22"
  }
 }
