@@ -2971,6 +2971,28 @@
         "step": "手写稿把含 $x_{1}$ 的交叉项拆成两个括号分别配成 $\\left(x_{1}-\\frac{1}{2}x_{2}\\right)^{2}$ 与 $\\left(x_{1}-\\frac{1}{2}x_{3}\\right)^{2}$，中括号里凭空写了两个 $x_{1}^{2}$，再在括号外补一个 $-x_{1}^{2}$。结果 $x_{1}$ 同时留在两个括号里和括号外的 $-x_{1}^{2}$ 中，一项也没消掉，既化不成标准形，也凑不出上三角可逆变换；而且 $x_{1}$ 的补偿项还没处理完就转去配 $x_{2}$，消元顺序错乱。",
         "advice": "拉格朗日配方法是死算法：逮住一个变量，一次吃干抹净，绝不回头。把 $-(x_{2}+x_{3})$ 当成 $x_{1}$ 的整体一次项系数，只配一个 $\\left(x_{1}-\\frac{1}{2}x_{2}-\\frac{1}{2}x_{3}\\right)^{2}$，立刻减去 $\\left(\\frac{1}{2}x_{2}+\\frac{1}{2}x_{3}\\right)^{2}$；此后式子里再不许出现 $x_{1}$。再清 $x_{2}$，最后只剩 $x_{3}^{2}$。这样每个括号比上一个少一个主变量，变换矩阵天然呈上三角阶梯形，可逆性自动保证。"
       },
+      "review_state": "未复习",
+      "attempts": [
+        {
+          "date": "2026-11-10",
+          "grade": "half"
+        }
+      ]
+    },
+    "zt-2020-数二-解答23": {
+      "id": "zt-2020-数二-解答23",
+      "module": "第五章：矩阵相似理论",
+      "year": 2020,
+      "paper": "数二",
+      "no": "解答23",
+      "stem": "设 $A$ 为 $2$ 阶矩阵，$P=(\\alpha,A\\alpha)$，其中 $\\alpha$ 是非零向量且不是 $A$ 的特征向量。\n\n（Ⅰ）证明：$P$ 为可逆矩阵；\n\n（Ⅱ）若 $A^{2}\\alpha+A\\alpha-6\\alpha=0$，求 $P^{-1}AP$，并判断 $A$ 是否相似于对角矩阵。",
+      "answer": "$P^{-1}AP=\\begin{pmatrix}0&6\\\\1&-1\\end{pmatrix}$；$A$ 相似于对角矩阵 $\\begin{pmatrix}-3&0\\\\0&2\\end{pmatrix}$",
+      "solution": "> [!info] 考点与破题思路\n> **考查知识点**：向量组的线性相关性（线性无关的定义与反证法）、特征值与特征向量的定义、矩阵的相似及相似对角化。\n> **总体思路与切入点**：\n> - **第（Ⅰ）问**：证明由抽象向量拼成的方阵 $P=(\\alpha,A\\alpha)$ 可逆，标准路径是“定义法证两列线性无关 ⇒ $r(P)=n$ ⇒ $P$ 可逆”。“$\\alpha$ 不是特征向量”正是线性无关的反面条件，用反证法最干净。\n> - **第（Ⅱ）问**：求 $P^{-1}AP$ 的通法是**脱帽法**（还原为矩阵乘法）：设 $B=P^{-1}AP$，则 $AP=PB$。利用分块矩阵按列相乘，把 $A(\\alpha,A\\alpha)$ 用 $(\\alpha,A\\alpha)$ 线性表出，表出系数按列排好就是 $B$。求出具体矩阵 $B$ 后，用“相似矩阵特征值相同”判断 $A$ 能否对角化。\n\n**第一阶段：第（Ⅰ）问——证明 $P$ 为可逆矩阵**\n\n**第一步：按定义设线性组合。** 设数 $k_{1},k_{2}$ 使\n\n$$k_{1}\\alpha+k_{2}A\\alpha=0.$$\n\n**第二步：反证法证线性无关。** 假设 $k_{2}\\ne0$，两边除以 $k_{2}$ 并移项得\n\n$$A\\alpha=-\\frac{k_{1}}{k_{2}}\\alpha.$$\n\n因 $\\alpha\\ne0$，按特征值与特征向量的定义，这说明 $\\alpha$ 是 $A$ 对应于特征值 $\\lambda=-\\frac{k_{1}}{k_{2}}$ 的特征向量，与题设“$\\alpha$ 不是 $A$ 的特征向量”矛盾。故假设不成立，必有 $k_{2}=0$。\n\n将 $k_{2}=0$ 代回原式得 $k_{1}\\alpha=0$；又 $\\alpha\\ne0$，故 $k_{1}=0$。\n\n**第三步：得出结论。** 由 $k_{1}=k_{2}=0$ 知向量组 $\\alpha,\\ A\\alpha$ 线性无关。$P=(\\alpha,A\\alpha)$ 由两个 $2$ 维线性无关的列向量构成，故 $r(P)=2$（即 $\\lvert P\\rvert\\ne0$），所以 $P$ 可逆。\n\n> [!tip] 规范性提醒\n> $2$ 阶情形下写“$\\alpha$ 与 $A\\alpha$ 不成比例 ⇒ 线性无关”也等价，但大题中按上面的反证法完整写出“线性组合为零 ⇒ 系数全为零”，阅卷人挑不出毛病。\n\n**第二阶段：第（Ⅱ）问——脱帽法求 $P^{-1}AP$**\n\n**第一步：把已知等式化为线性表出关系。** 由 $A^{2}\\alpha+A\\alpha-6\\alpha=0$ 得\n\n$$A(A\\alpha)=A^{2}\\alpha=6\\alpha-A\\alpha,$$\n\n而对第一列 $\\alpha$，显然有 $A(\\alpha)=0\\cdot\\alpha+1\\cdot A\\alpha$。\n\n**第二步：分块矩阵按列相乘。** 于是\n\n$$\\begin{aligned}AP&=A(\\alpha,A\\alpha)=(A\\alpha,A^{2}\\alpha)\\\\&=(\\alpha,A\\alpha)\\begin{pmatrix}0&6\\\\1&-1\\end{pmatrix}=P\\begin{pmatrix}0&6\\\\1&-1\\end{pmatrix}.\\end{aligned}$$\n\n由（Ⅰ）知 $P$ 可逆，两边左乘 $P^{-1}$ 得\n\n$$P^{-1}AP=\\begin{pmatrix}0&6\\\\1&-1\\end{pmatrix}.$$\n\n**第三步：用特征值判定相似对角化。** 记 $B=P^{-1}AP=\\begin{pmatrix}0&6\\\\1&-1\\end{pmatrix}$，则 $A\\sim B$。而\n\n$$\\lvert\\lambda E-B\\rvert=\\begin{vmatrix}\\lambda&-6\\\\-1&\\lambda+1\\end{vmatrix}=\\lambda(\\lambda+1)-6=\\lambda^{2}+\\lambda-6=(\\lambda+3)(\\lambda-2),$$\n\n故 $B$ 的特征值为 $\\lambda_{1}=-3,\\ \\lambda_{2}=2$。相似矩阵特征值相同，故 $A$ 也有两个互不相同的特征值 $-3$ 与 $2$。\n\n$2$ 阶矩阵有两个互异特征值，故 $A$ 可相似对角化，且\n\n$$A\\sim\\begin{pmatrix}-3&0\\\\0&2\\end{pmatrix}.$$\n\n**【最终结论】**\n\n$$P^{-1}AP=\\begin{pmatrix}0&6\\\\1&-1\\end{pmatrix},$$\n\n$A$ 相似于对角矩阵 $\\begin{pmatrix}-3&0\\\\0&2\\end{pmatrix}$。\n\n> [!warning] 易错点提示与高频考点总结\n> **陷阱一：右乘矩阵的行列写反**。写 $(A\\alpha,A^{2}\\alpha)=(\\alpha,A\\alpha)\\begin{pmatrix}a&c\\\\b&d\\end{pmatrix}$ 时，第一列 $\\begin{pmatrix}a\\\\b\\end{pmatrix}$ 是 $A\\alpha$ 用 $\\alpha,A\\alpha$ 表出的系数，即 $A\\alpha=0\\cdot\\alpha+1\\cdot A\\alpha\\Rightarrow\\begin{pmatrix}0\\\\1\\end{pmatrix}$；第二列是 $A^{2}\\alpha$ 的系数，即 $A^{2}\\alpha=6\\alpha-A\\alpha\\Rightarrow\\begin{pmatrix}6\\\\-1\\end{pmatrix}$。按列填，不要转置。\n> **陷阱二：把 $P^{-1}AP$ 误当成对角矩阵**。$P=(\\alpha,A\\alpha)$ 的列向量**不是** $A$ 的特征向量；只有 $Q$ 的列由 $A$ 的线性无关特征向量组成时，$Q^{-1}AQ$ 才是对角阵。本题 $P$ 的作用是把抽象矩阵 $A$ 相似转化为具体矩阵 $B$，再借 $B$ 研究 $A$。\n> **陷阱三：由 $B\\alpha=0$ 推出 $B=O$，或由零化多项式直接断定特征值**。$(A^{2}+A-6E)\\alpha=0$ 且 $\\alpha\\ne0$ 只说明 $(A^{2}+A-6E)x=0$ 有非零解、$\\lvert A^{2}+A-6E\\rvert=0$，推不出 $A^{2}+A-6E=O$（非零矩阵乘非零向量完全可以为零）；即便得到 $\\lambda^{2}+\\lambda-6=0$，也只说明特征值取值落在 $\\{2,-3\\}$ 内（两个特征值都等于 $2$ 也满足），不能断定 $-3$ 与 $2$ 同时是特征值。正确做法是先求出 $B$，再由 $B$ 的具体特征值判断。",
+      "cause": {
+        "label": "概念/定理错误",
+        "step": "三处概念错误叠加：①把 $P=(\\alpha,A\\alpha)$ 当成由特征向量拼成的矩阵，直接写 $P^{-1}AP=\\mathrm{diag}(2,-3)$——$P$ 的两列并不是 $A$ 的特征向量，只有特征向量矩阵才能把 $A$ 对角化；②由 $(A^{2}+A-6E)\\alpha=0$ 且 $\\alpha\\ne0$ 推出 $A^{2}+A-6E=O$，把“有非零解”当成了“矩阵为零”；③由零化多项式 $\\lambda^{2}+\\lambda-6=0$ 直接断定 $2$ 与 $-3$ 都是 $A$ 的特征值，其实它只限定特征值的取值范围。",
+        "advice": "求 $P^{-1}AP$ 用脱帽法：设 $B=P^{-1}AP$ 即 $AP=PB$，把 $A(\\alpha,A\\alpha)=(A\\alpha,A^{2}\\alpha)$ 按列用 $\\alpha,A\\alpha$ 表出，系数按列排成 $B$，绕开一切“特征向量”的联想。记住两条铁律：$B\\alpha=0$ 且 $\\alpha\\ne0$ 只能推出 $\\lvert B\\rvert=0$，推不出 $B=O$；零化多项式只约束特征值的取值集合，要确定每个特征值必须解出具体矩阵再算特征多项式。"
+      },
       "review_state": "未复习"
     }
   },
