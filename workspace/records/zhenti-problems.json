@@ -2932,7 +2932,13 @@
         "step": "极坐标穿线定限时把竖直线 $x=1$、$x=2$ 当成常数半径，写成 $1\\leqslant r\\leqslant2$；正确应为 $x=1\\Rightarrow r=\\sec\\theta$、$x=2\\Rightarrow r=2\\sec\\theta$。这样一来内层积分变成 $\\int_{1}^{2}r\\,\\mathrm{d}r=\\frac{3}{2}$（不含 $\\theta$），丢掉了 $\\sec^{2}\\theta$ 因子，外层只剩 $\\int\\sec\\theta\\,\\mathrm{d}\\theta$，结果与正确答案不符。",
         "advice": "极坐标定限先画射线：圆 $x^{2}+y^{2}=R^{2}\\Rightarrow r=R$；竖直线 $x=a\\Rightarrow r=a\\sec\\theta$；水平线 $y=b\\Rightarrow r=b\\csc\\theta$。定限后用特殊角检验——若内层 $\\int r\\,\\mathrm{d}r$ 的结果不含 $\\theta$（如 $\\int_{1}^{2}r\\,\\mathrm{d}r=\\frac{3}{2}$），几乎一定把直线当成了圆。本题正确内层为 $\\frac{3}{2}\\sec^{2}\\theta$，外层才会出现 $\\sec^{3}\\theta$。"
       },
-      "review_state": "未复习"
+      "review_state": "未复习",
+      "attempts": [
+        {
+          "date": "2026-11-10",
+          "grade": "half"
+        }
+      ]
     }
   },
   "coverage": {}
