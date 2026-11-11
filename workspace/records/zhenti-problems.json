@@ -858,6 +858,10 @@
         {
           "date": "2026-11-06",
           "grade": "correct"
+        },
+        {
+          "date": "2026-11-11",
+          "grade": "wrong"
         }
       ],
       "review_state": "已重做",
@@ -2305,6 +2309,10 @@
         {
           "date": "2026-10-28",
           "grade": "half"
+        },
+        {
+          "date": "2026-11-11",
+          "grade": "wrong"
         }
       ],
       "review_state": "未复习",
@@ -2358,6 +2366,10 @@
       "attempts": [
         {
           "date": "2026-10-30",
+          "grade": "wrong"
+        },
+        {
+          "date": "2026-11-11",
           "grade": "wrong"
         }
       ],
@@ -2654,9 +2666,13 @@
         {
           "date": "2026-11-03",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-11-11",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/考研数学/高数-一元微分学/错题本",
@@ -2679,7 +2695,8 @@
           "confidence": "high",
           "note": "同为「分母阶数决定展开阶数」：本题分母是 $(x-a)^{2}$，必须展到二阶才能读出 $h''(a)$；展少了就会漏掉最后一个条件。"
         }
-      ]
+      ],
+      "review_updated": "2026-11-11"
     },
     "zt-2019-数二-选择5": {
       "id": "zt-2019-数二-选择5",

@@ -207,7 +207,7 @@
                 "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "2014"
+                "searchQuery": "2019"
               },
               "icon": "lucide-list",
               "title": "大纲"
@@ -261,7 +261,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -289,7 +289,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "9f7d7ea400c72fad",
+  "active": "b4b561f7809652dc",
   "lastOpenFiles": [
     "workspace/习题集/数二知识点习题集.md",
     "workspace/wrong-book/真题错题本.md",
