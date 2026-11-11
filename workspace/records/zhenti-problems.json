@@ -1583,6 +1583,10 @@
         {
           "date": "2026-10-15",
           "grade": "correct"
+        },
+        {
+          "date": "2026-11-11",
+          "grade": "wrong"
         }
       ],
       "review_state": "已重做",
@@ -1992,6 +1996,10 @@
         {
           "date": "2026-10-24",
           "grade": "correct"
+        },
+        {
+          "date": "2026-11-11",
+          "grade": "correct"
         }
       ],
       "review_state": "已重做",
@@ -2036,6 +2044,10 @@
         {
           "date": "2026-10-25",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-11-11",
+          "grade": "half"
         }
       ],
       "review_state": "未复习"
@@ -2682,9 +2694,13 @@
         {
           "date": "2026-11-04",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-11-11",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/考研数学/二重积分/错题本",
@@ -2700,7 +2716,8 @@
           "confidence": "high",
           "note": "同一个工具：都用 $\\sin x<x$ 这类基础三角不等式在指定区间上比较被积函数，再借积分保号性传递大小关系；该条的核心提醒「外层单调性决定不等号方向」与本题 $\\sin t$、$1-\\cos t$ 的比较同源。"
         }
-      ]
+      ],
+      "review_updated": "2026-11-11"
     },
     "zt-2019-数二-解答18": {
       "id": "zt-2019-数二-解答18",
@@ -2815,13 +2832,18 @@
       "stem": "计算 $\\int_{0}^{1}\\frac{\\arcsin\\sqrt{x}}{\\sqrt{x(1-x)}}\\,\\mathrm{d}x=$（　　）．\n\n(A) $\\frac{\\pi^{2}}{4}$　(B) $\\frac{\\pi^{2}}{8}$　(C) $\\frac{\\pi}{4}$　(D) $\\frac{\\pi}{8}$",
       "answer": "(A) $\\frac{\\pi^{2}}{4}$",
       "solution": "> [!info] 考点与破题思路\n> **核心考点**：本题属于高等数学（微积分）中的反常积分（瑕积分）计算，核心考查第一类换元法（凑微分法）或第二类换元法（三角代换）。\n> **总体思路与切入点**：观察被积函数 $\\frac{\\arcsin\\sqrt{x}}{\\sqrt{x(1-x)}}$。**定性判断**：积分区间为 $[0,1]$，在端点 $x=0$ 和 $x=1$ 处分母为 $0$，因此这是一个无界函数的反常积分（瑕积分）。但在考场上，对于选择题，我们通常直接按定积分的换元法则进行极限意义下的计算。**核心切入点**：被积函数中含有复杂的复合结构 $\\arcsin\\sqrt{x}$。我们在考研微积分中有一个高频敏感度——「看见复杂复合函数，先求导看看它的导数在不在旁边」。\n> 尝试对 $\\arcsin\\sqrt{x}$ 求导：\n> $$(\\arcsin\\sqrt{x})'=\\frac{1}{\\sqrt{1-(\\sqrt{x})^{2}}}\\cdot(\\sqrt{x})'=\\frac{1}{\\sqrt{1-x}}\\cdot\\frac{1}{2\\sqrt{x}}=\\frac{1}{2\\sqrt{x(1-x)}}$$\n> 你会发现，被积函数中恰好有 $\\frac{1}{\\sqrt{x(1-x)}}\\mathrm{d}x$！因此，本题考场上最主流、最高效的方法就是直接凑微分（第一类换元法），三步即可秒杀；此外，利用 $\\sqrt{x}$ 与 $\\arcsin$ 的天然联系，采用三角换元也是非常稳健的考场常规做法。下面重点展示这两种考场实战法。\n\n**方法一：凑微分法（考场最速秒杀法，强烈推荐）**\n\n**第一步：拆解分母，凑出 $\\mathrm{d}(\\sqrt{x})$。**\n\n在区间 $(0,1)$ 内，$\\sqrt{x(1-x)}=\\sqrt{x}\\cdot\\sqrt{1-x}$。\n\n我们知道 $(\\sqrt{x})'=\\frac{1}{2\\sqrt{x}}$，即 $\\frac{1}{\\sqrt{x}}\\mathrm{d}x=2\\mathrm{d}(\\sqrt{x})$。将其代入原积分：\n\n$$I=\\int_{0}^{1}\\frac{\\arcsin\\sqrt{x}}{\\sqrt{x}\\sqrt{1-x}}\\mathrm{d}x=2\\int_{0}^{1}\\frac{\\arcsin\\sqrt{x}}{\\sqrt{1-(\\sqrt{x})^{2}}}\\mathrm{d}(\\sqrt{x})$$\n\n**第二步：继续凑出 $\\mathrm{d}(\\arcsin\\sqrt{x})$。**\n\n利用基本积分公式 $\\frac{1}{\\sqrt{1-u^{2}}}\\mathrm{d}u=\\mathrm{d}(\\arcsin u)$（这里将 $\\sqrt{x}$ 视为整体 $u$），上式可进一步凑微分为：\n\n$$I=2\\int_{0}^{1}\\arcsin\\sqrt{x}\\,\\mathrm{d}(\\arcsin\\sqrt{x})$$\n\n> [!tip] 核心提醒\n> 这一步的本质是把 $\\arcsin\\sqrt{x}$ 看作一个整体变量 $t$。此时积分结构直接简化为了最基础的幂函数积分 $2\\int t\\,\\mathrm{d}t$，极大地降低了计算量，避免了分部积分的繁琐。\n\n**第三步：利用牛顿-莱布尼茨公式计算结果。**\n\n将 $\\arcsin\\sqrt{x}$ 视为整体直接积分：\n\n$$I=2\\cdot\\left[\\frac{1}{2}(\\arcsin\\sqrt{x})^{2}\\right]_{0}^{1}=\\left[(\\arcsin\\sqrt{x})^{2}\\right]_{0}^{1}$$\n\n代入上下限（严格来说是取 $x\\to1^{-}$ 和 $x\\to0^{+}$ 的极限）：当 $x=1$ 时，$\\arcsin\\sqrt{1}=\\arcsin1=\\frac{\\pi}{2}$；当 $x=0$ 时，$\\arcsin\\sqrt{0}=\\arcsin0=0$。因此：\n\n$$I=\\left(\\frac{\\pi}{2}\\right)^{2}-0^{2}=\\frac{\\pi^{2}}{4}$$\n\n**方法二：三角换元法（思维最自然的保底通法）**\n\n如果你在考场上紧张，没有一眼看出 $\\arcsin\\sqrt{x}$ 的导数结构，看到 $\\arcsin\\sqrt{x}$ 和 $\\sqrt{1-x}$ 时，直接令 $\\sqrt{x}=\\sin t$ 是最稳妥的破题方式。\n\n**第一步：设定换元变量并确定新上下限。**\n\n令 $\\sqrt{x}=\\sin t$，其中 $t\\in\\left[0,\\frac{\\pi}{2}\\right]$。当 $x=0$ 时，$t=0$；当 $x=1$ 时，$t=\\frac{\\pi}{2}$。\n\n**第二步：计算微分 $\\mathrm{d}x$ 与化简被积表达式。**\n\n由 $\\sqrt{x}=\\sin t$ 得 $x=\\sin^{2}t$，两边取微分：\n\n$$\\mathrm{d}x=2\\sin t\\cos t\\,\\mathrm{d}t$$\n\n同时，在 $t\\in\\left(0,\\frac{\\pi}{2}\\right)$ 内：\n\n$$\\arcsin\\sqrt{x}=\\arcsin(\\sin t)=t,\\qquad \\sqrt{x(1-x)}=\\sqrt{\\sin^{2}t(1-\\sin^{2}t)}=\\sin t\\cos t$$\n\n**第三步：代入原积分求解。**\n\n$$I=\\int_{0}^{\\frac{\\pi}{2}}\\frac{t}{\\sin t\\cos t}\\cdot2\\sin t\\cos t\\,\\mathrm{d}t=2\\int_{0}^{\\frac{\\pi}{2}}t\\,\\mathrm{d}t=\\left[t^{2}\\right]_{0}^{\\frac{\\pi}{2}}=\\frac{\\pi^{2}}{4}$$\n\n**最终结论：** 正确答案为 **(A)**。\n\n> [!warning] 易错点提示与高频考点总结\n> **漏掉常数系数 $2$（头号杀手）**：在凑微分 $\\frac{\\mathrm{d}x}{\\sqrt{x}}=2\\mathrm{d}(\\sqrt{x})$ 或求导 $(\\sqrt{x})'=\\frac{1}{2\\sqrt{x}}$ 时，极易漏掉系数 $2$（或者把 $2$ 写成分母 $\\frac{1}{2}$）。如果漏掉 $2$，算出来的结果就会直接变成 $\\frac{\\pi^{2}}{8}$，从而误选强干扰项 (B)！命题人设置 (A) 和 (B) 两个选项，专门就是为了筛查这个计算细节。\n> **盲目使用分部积分法**：很多同学看到被积函数含有 $\\arcsin\\dots$，条件反射就想用分部积分法。但如果没先把 $\\frac{1}{\\sqrt{x(1-x)}}\\mathrm{d}x$ 的凑微分关系理顺，直接对 $\\frac{1}{\\sqrt{x(1-x)}}$ 原函数下手会非常痛苦。考研铁律：能先换元/凑微分简化的，绝不直接硬上分部积分！\n\n> [!tip] 考研高频变式积累\n> 在数二高数中，$\\frac{1}{\\sqrt{x(1-x)}}\\mathrm{d}x=2\\mathrm{d}(\\arcsin\\sqrt{x})$ 是一个极高频的黄金组合。如果题目问的是纯反常积分 $\\int_{0}^{1}\\frac{1}{\\sqrt{x(1-x)}}\\mathrm{d}x$，利用这个结论可以直接口算得出 $2[\\arcsin\\sqrt{x}]_{0}^{1}=2\\times\\frac{\\pi}{2}=\\pi$。",
-      "review_state": "未复习",
+      "review_state": "已重做",
       "attempts": [
         {
           "date": "2026-11-08",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-11-11",
+          "grade": "correct"
         }
-      ]
+      ],
+      "review_updated": "2026-11-11"
     },
     "zt-2020-数二-选择5": {
       "id": "zt-2020-数二-选择5",
