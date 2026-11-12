@@ -2423,9 +2423,13 @@
         {
           "date": "2026-10-30",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-11-12",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/线性代数/第五章：矩阵相似理论/错题本",
@@ -2434,7 +2438,8 @@
           "confidence": "high",
           "note": "同为「列关系 $\\Rightarrow$ $AP=PB$ $\\Rightarrow$ 相似」的链条：该条由 $AP=PB$、$CQ=QB$ 证三个矩阵相似，本题由 $A\\alpha_i$ 的系数拼出 $B$ 得 $P^{-1}AP=B$，再改求 $B$ 的实特征值；关键都在 $P$ 可逆。"
         }
-      ]
+      ],
+      "review_updated": "2026-11-12"
     },
     "zt-2018-数二-解答16": {
       "id": "zt-2018-数二-解答16",
@@ -2479,6 +2484,10 @@
       "attempts": [
         {
           "date": "2026-10-30",
+          "grade": "wrong"
+        },
+        {
+          "date": "2026-11-12",
           "grade": "wrong"
         }
       ],
@@ -2541,6 +2550,10 @@
       "attempts": [
         {
           "date": "2026-10-30",
+          "grade": "wrong"
+        },
+        {
+          "date": "2026-11-12",
           "grade": "wrong"
         }
       ],
@@ -2749,6 +2762,10 @@
         {
           "date": "2026-11-04",
           "grade": "careless"
+        },
+        {
+          "date": "2026-11-12",
+          "grade": "wrong"
         }
       ],
       "review_state": "未复习",
@@ -2789,9 +2806,13 @@
         {
           "date": "2026-11-04",
           "grade": "careless"
+        },
+        {
+          "date": "2026-11-12",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "cause": {
         "label": "计算/代数错误",
         "step": "代入上下限时把 $\\cos(k\\pi)$ 与 $\\cos((k-1)\\pi)$ 都当成 $1$，既漏掉积分自带的 $(-1)^{k-1}$，又把括号内本应为 $(1+e^{\\pi})$ 的加号算成减号，最终令总面积出现负值。",
@@ -2805,7 +2826,8 @@
           "confidence": "high",
           "note": "几乎是同一道题：被积函数同为 $\\mathrm{e}^{-x}|\\sin x|$，都按半周期 $\\pi$ 分段、每段算单拱积分、再识别公比 $\\mathrm{e}^{-\\pi}$ 的等比数列；该条求的是 $[0,+\\infty)$ 的无穷级数，本题求 $[0,n\\pi]$ 的前 $n$ 项和再取极限，框架完全一致。"
         }
-      ]
+      ],
+      "review_updated": "2026-11-12"
     },
     "zt-2019-数二-解答22": {
       "id": "zt-2019-数二-解答22",
