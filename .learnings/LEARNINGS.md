@@ -37,6 +37,25 @@ _最后更新：2026-10-23_
 
 ---
 
+## 2026-11-16
+
+### 收录真题前盘点并搜索全部原文源
+
+**类别**：correction
+**优先级**：high
+**状态**：pending
+**范围**：`zhenti-wrong` / `zhenti-exam` / 真题原文定位
+
+**摘要**：不能因旧文档只列出 2010–2019 单独目录，就认定真题原文仅覆盖那些年份；每次收录应先盘点 `真题/` 下当前全部 `full.md` 并跨文件搜索，再决定是否需要询问用户补充年份。
+
+**详情**：
+- 事实：用户给出一条真题选择题后，我先只搜了 `2010-2019考研数学二真题/full.md`，得到空结果，就问用户提供年份；用户指出应检查 vault 的 `真题/`。全面列出原文后，在 `【合集】1987-2023年考研数学二/full.md` 找到 2021 数二选择题第（7）题，题干和选项与供稿吻合。之后已回读题干等待用户确认，尚未写入事实源。
+- 根因：把 CLAUDE.md、skill 和 workflow 中陈旧的覆盖范围描述当成当前文件清单，没有先检查实际目录。
+- 下次做法：先 `rg --files 真题/ | rg '(^|/)full\\.md$'` 列出所有原文，再对每个来源用题干特征跨文件搜索；找到候选后核实年份/卷种/原题号和完整选项，确认无唯一匹配后才向用户追问；题干回读确认后方可落库。
+- 源头修复：已更新 CLAUDE.md、`zhenti-wrong` skill 与 `zhenti-exam` workflow，将当前文件系统盘点和全源搜索设为固定步骤，并记录此次漏检案例。
+
+---
+
 ## 历史记录
 
 旧记录已归档至 `.learnings/archive/`：`LEARNINGS-2026-08-11-pre-digest.md`、`LEARNINGS-2026-08-12-pre-compress.md`、`LEARNINGS-2026-09-13-pre-compress.md`（2026-09-03 / 09-09 / 09-11 / 09-13）、`LEARNINGS-2026-09-15-pre-compress.md`、`LEARNINGS-2026-09-15-pre-digest.md`（两条 best_practice 内核已进 RULES）；`880-wrongbook` 公式渲染防线 3 条（2026-09-12 / 09-13）见 `.learnings/archive/2026-09-13-maintenance.md`；09-24 归档的两条（用户供稿先验算、公共前缀/后缀定位，内核均已进 RULES）见 `.learnings/archive/2026-09-24-maintenance.md`。

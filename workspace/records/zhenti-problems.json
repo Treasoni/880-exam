@@ -3061,6 +3061,30 @@
           "grade": "half"
         }
       ]
+    },
+    "zt-2021-数二-选择9": {
+      "id": "zt-2021-数二-选择9",
+      "module": "第四章：向量与方程组",
+      "year": 2021,
+      "paper": "数二",
+      "no": "选择9",
+      "stem": "设 $3$ 阶矩阵 $A=(\\alpha_{1},\\alpha_{2},\\alpha_{3})$，$B=(\\beta_{1},\\beta_{2},\\beta_{3})$，若向量组 $\\alpha_{1},\\alpha_{2},\\alpha_{3}$ 可以由向量组 $\\beta_{1},\\beta_{2},\\beta_{3}$ 线性表出，则（　　）。\n\n(A) $AX=0$ 的解均为 $BX=0$ 的解\n\n(B) $A^{\\mathrm{T}}X=0$ 的解均为 $B^{\\mathrm{T}}X=0$ 的解\n\n(C) $BX=0$ 的解均为 $AX=0$ 的解\n\n(D) $B^{\\mathrm{T}}X=0$ 的解均为 $A^{\\mathrm{T}}X=0$ 的解",
+      "answer": "(D)",
+      "solution": "> [!info] 考点与思路\n> **核心考点**：向量组线性表出的矩阵表示、齐次方程组解集包含与系数矩阵秩。\n>\n> **第一步：把线性表出写成矩阵方程。** 每个 $\\alpha_i$ 都可由 $B$ 的列向量线性表出，因此矩阵方程 $BY=A$ 有解（$Y$ 为 $3\\times3$ 系数矩阵），等价于\n> $$r(B)=r(B,A).$$\n>\n> **第二步：判断转置方程组的解包含。** 由矩阵方程有解，可写 $A=BC$。于是\n> $$A^{\\mathrm T}=C^{\\mathrm T}B^{\\mathrm T}.$$\n> 若 $B^{\\mathrm T}x=0$，则 $A^{\\mathrm T}x=C^{\\mathrm T}B^{\\mathrm T}x=0$，故 $B^{\\mathrm T}x=0$ 的解都是 $A^{\\mathrm T}x=0$ 的解，选项 (D) 成立。\n>\n> 也可用秩判据表达：该解包含关系等价于 $B^{\\mathrm T}x=0$ 与联立方程组 $\\begin{pmatrix}B^{\\mathrm T}\\\\ A^{\\mathrm T}\\end{pmatrix}x=0$ 同解，因此\n> $$r(B^{\\mathrm T})=r\\begin{pmatrix}B^{\\mathrm T}\\\\ A^{\\mathrm T}\\end{pmatrix}.$$\n> 转置不改变秩，且 $\\begin{pmatrix}B^{\\mathrm T}\\\\ A^{\\mathrm T}\\end{pmatrix}^{\\mathrm T}=(B,A)$，上式正是 $r(B)=r(B,A)$。\n>\n> **结论：** 正确选项为 **(D)**。\n>\n> [!warning] 易错点\n> - $A$ 的列向量组可由 $B$ 的列向量组表出，应写成 $A=BC$，系数矩阵乘在右侧；不要把方向写反。\n> - 单向解集包含只要求包含方向正确，不要误套双向同解的三秩相等条件。\n> - 矩阵方程 $BY=A$ 中的 $Y$ 是 $3\\times3$ 矩阵；齐次方程中的 $x$ 是列向量，区分记号更清楚。",
+      "attempts": [],
+      "review_state": "未复习"
+    },
+    "zt-2021-数二-选择10": {
+      "id": "zt-2021-数二-选择10",
+      "module": "第二章：矩阵",
+      "year": 2021,
+      "paper": "数二",
+      "no": "选择10",
+      "stem": "已知矩阵 $A=\\begin{pmatrix}1&0&-1\\\\2&-1&1\\\\-1&2&-5\\end{pmatrix}$，若存在下三角可逆矩阵 $P$ 和上三角可逆矩阵 $Q$，使得 $PAQ$ 为对角矩阵，则 $P,Q$ 分别可以取（　　）。\n\n(A) $P=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&1\\end{pmatrix}$，$Q=\\begin{pmatrix}1&0&1\\\\0&1&3\\\\0&0&1\\end{pmatrix}$\n\n(B) $P=\\begin{pmatrix}1&0&0\\\\2&-1&0\\\\-3&2&1\\end{pmatrix}$，$Q=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&1\\end{pmatrix}$\n\n(C) $P=\\begin{pmatrix}1&0&0\\\\2&-1&0\\\\-3&2&1\\end{pmatrix}$，$Q=\\begin{pmatrix}1&0&1\\\\0&1&3\\\\0&0&1\\end{pmatrix}$\n\n(D) $P=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\1&3&1\\end{pmatrix}$，$Q=\\begin{pmatrix}1&2&-3\\\\0&-1&2\\\\0&0&1\\end{pmatrix}$",
+      "answer": "(C)",
+      "solution": "> [!info] 考点与思路\n> **核心考点**：初等行、列变换与矩阵等价；同步记录变换矩阵。\n>\n> **第一步：用下三角矩阵记录行变换。** 对 $(A\\mid E)$ 作自上而下的消元：$r_2\\leftarrow r_2-2r_1$、$r_3\\leftarrow r_3+r_1$、$r_3\\leftarrow r_3+2r_2$，再将第二行乘以 $-1$。得到\n> $$P=\\begin{pmatrix}1&0&0\\\\2&-1&0\\\\-3&2&1\\end{pmatrix},\\qquad PA=\\begin{pmatrix}1&0&-1\\\\0&1&-3\\\\0&0&0\\end{pmatrix}.$$\n>\n> **第二步：用上三角矩阵记录列变换。** 对 $\\begin{pmatrix}PA\\\\E\\end{pmatrix}$ 作 $c_3\\leftarrow c_3+c_1$、$c_3\\leftarrow c_3+3c_2$，得到\n> $$Q=\\begin{pmatrix}1&0&1\\\\0&1&3\\\\0&0&1\\end{pmatrix},\\qquad PAQ=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&0\\end{pmatrix}.$$\n>\n> $P$、$Q$ 分别为下三角、上三角矩阵，且对角线元素均非零，故均可逆。与选项对照，正确答案为 **(C)**。",
+      "attempts": [],
+      "review_state": "未复习"
     }
   },
   "coverage": {}
