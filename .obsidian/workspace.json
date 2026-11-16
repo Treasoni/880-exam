@@ -207,7 +207,7 @@
                 "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "2019"
+                "searchQuery": "2020"
               },
               "icon": "lucide-list",
               "title": "大纲"
@@ -242,7 +242,7 @@
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
-                      "conversationId": "conv-1794110148300-zazwdcc0c"
+                      "conversationId": "conv-1794806565429-ya88navva"
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
@@ -253,7 +253,7 @@
                       "conversationId": "conv-1794359897787-8kvmtzx15"
                     }
                   ],
-                  "activeTabId": "tab-1790218000549-4kkqcsg"
+                  "activeTabId": "tab-1789908968076-9htz0xx"
                 }
               },
               "icon": "bot",
@@ -291,6 +291,7 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/习题集/数二知识点习题集-答案.md",
     "workspace/习题集/数二知识点习题集.md",
     "workspace/wrong-book/真题错题本.md",
     "workspace/workflow-runs/真题收录-2020数二解答23.workflow.md",
@@ -312,7 +313,6 @@
     "scripts/__pycache__/merge_extraction.cpython-312.pyc",
     "scripts/__pycache__/make_paper.cpython-312.pyc",
     "scripts/__pycache__/lint_content.cpython-312.pyc",
-    "workspace/习题集/数二知识点习题集-答案.md",
     "workspace/workflow-runs/真题收录-2020数二选择3.workflow.md",
     "真题/【合集】1987-2023年考研数学二/images/e600691480b2e3759f3ec541f204a877867eabb381ada955e44fda8b228bc4ba.jpg",
     "真题/【合集】1987-2023年考研数学二/images/e568d8a7ef00f77922665b2bc40da7acb13b11d51d8782485a8965350d921233.jpg",
