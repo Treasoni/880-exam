@@ -207,7 +207,7 @@
                 "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "2017"
+                "searchQuery": "2020"
               },
               "icon": "lucide-list",
               "title": "大纲"
@@ -242,7 +242,7 @@
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
-                      "conversationId": "conv-1794816041607-945j97898"
+                      "conversationId": "conv-1794879122049-2na4z67xv"
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
@@ -261,7 +261,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -289,7 +289,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "b4b561f7809652dc",
+  "active": "9f7d7ea400c72fad",
   "lastOpenFiles": [
     "workspace/习题集/数二知识点习题集-答案.md",
     "workspace/习题集/数二知识点习题集.md",

@@ -2497,6 +2497,10 @@
         {
           "date": "2026-11-12",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-11-17",
+          "grade": "wrong"
         }
       ],
       "review_state": "未复习",
@@ -2568,6 +2572,10 @@
         {
           "date": "2026-11-12",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-11-17",
+          "grade": "wrong"
         }
       ],
       "review_state": "未复习",
@@ -2598,6 +2606,10 @@
       "attempts": [
         {
           "date": "2026-10-30",
+          "grade": "wrong"
+        },
+        {
+          "date": "2026-11-17",
           "grade": "wrong"
         }
       ],
@@ -2779,6 +2791,10 @@
         {
           "date": "2026-11-12",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-11-17",
+          "grade": "wrong"
         }
       ],
       "review_state": "未复习",
@@ -2911,6 +2927,10 @@
         {
           "date": "2026-11-10",
           "grade": "half"
+        },
+        {
+          "date": "2026-11-17",
+          "grade": "wrong"
         }
       ]
     },
@@ -3035,6 +3055,10 @@
         },
         {
           "date": "2026-11-16",
+          "grade": "wrong"
+        },
+        {
+          "date": "2026-11-17",
           "grade": "wrong"
         }
       ]
