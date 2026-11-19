@@ -3247,6 +3247,27 @@
           "note": "同为只给点可导条件、用导数定义处理含抽象函数极限并避免误用洛必达的题目。"
         }
       ]
+    },
+    "zt-2021-数二-解答20": {
+      "id": "zt-2021-数二-解答20",
+      "module": "高数-多元函数微分学",
+      "year": 2021,
+      "paper": "数二",
+      "no": "解答20",
+      "stem": "已知可微函数 $f(u,v)$ 满足\n\n$$\n\\frac{\\partial f(u,v)}{\\partial u}-\\frac{\\partial f(u,v)}{\\partial v}=2(u-v)e^{-(u+v)},\\qquad f(u,0)=u^2e^{-u}。\n$$\n\n（Ⅰ）记 $g(x,y)=f(x,y-x)$，求 $\\frac{\\partial g(x,y)}{\\partial x}$；\n\n（Ⅱ）求 $f(u,v)$ 的表达式和极值。",
+      "answer": "$f(u,v)=(u^2+v^2)e^{-(u+v)}$；极小值为 $0$（在 $(0,0)$ 处取得），$(1,1)$ 为鞍点；函数无最大值。",
+      "solution": "> [!info] 考点与思路\n> 考查多元复合函数求偏导、偏微分方程换元与偏积分，以及二元函数无条件极值。令 $g(x,y)=f(x,y-x)$，链式法则使 $g_x=f_u-f_v$；对 $x$ 偏积分时，积分“常数”是关于 $y$ 的函数，再利用边界条件确定它。\n\n## （Ⅰ）求 $g_x(x,y)$\n\n令 $u=x$、$v=y-x$。由链式法则，\n\n$$\n\\frac{\\partial g}{\\partial x}\n=\\frac{\\partial f}{\\partial u}\\frac{\\partial u}{\\partial x}\n+\\frac{\\partial f}{\\partial v}\\frac{\\partial v}{\\partial x}\n=\\frac{\\partial f}{\\partial u}-\\frac{\\partial f}{\\partial v}。\n$$\n\n代入题设，并用 $u=x$、$v=y-x$，有 $u-v=2x-y$、$u+v=y$，故\n\n$$\n\\boxed{\\frac{\\partial g(x,y)}{\\partial x}=2(2x-y)e^{-y}=(4x-2y)e^{-y}}。\n$$\n\n## （Ⅱ）求 $f(u,v)$ 及极值\n\n### 1. 还原函数表达式\n\n将 $y$ 视为常数，对 $x$ 积分：\n\n$$\ng(x,y)=(2x^2-2xy)e^{-y}+\\varphi(y)，\n$$\n\n其中 $\\varphi(y)$ 为待定函数。取 $x=y$，则 $g(y,y)=f(y,0)=y^2e^{-y}$。另一方面，积分表达式给出 $g(y,y)=\\varphi(y)$，所以 $\\varphi(y)=y^2e^{-y}$。因此\n\n$$\ng(x,y)=(2x^2-2xy+y^2)e^{-y}。\n$$\n\n由 $x=u$、$y=u+v$，得到\n\n$$\n\\boxed{f(u,v)=(u^2+v^2)e^{-(u+v)}}。\n$$\n\n### 2. 求驻点并判别\n\n一阶偏导为\n\n$$\nf_u=(2u-u^2-v^2)e^{-(u+v)},\\qquad f_v=(2v-u^2-v^2)e^{-(u+v)}。\n$$\n\n由于指数因子恒正，驻点满足\n\n$$\n2u-u^2-v^2=0,\\qquad 2v-u^2-v^2=0。\n$$\n\n两式相减得 $u=v$，代回可得 $u=v=0$ 或 $u=v=1$，所以驻点为 $(0,0)$ 和 $(1,1)$。\n\n二阶偏导为\n\n$$\nf_{uu}=(2-4u+u^2+v^2)e^{-(u+v)},\n$$\n\n$$\nf_{uv}=(-2u-2v+u^2+v^2)e^{-(u+v)},\\qquad\nf_{vv}=(2-4v+u^2+v^2)e^{-(u+v)}。\n$$\n\n在 $(0,0)$ 处，$A=f_{uu}=2$、$B=f_{uv}=0$、$C=f_{vv}=2$，因此 $AC-B^2=4>0$ 且 $A>0$，该点为极小值点，极小值为 $f(0,0)=0$。又因 $f(u,v)=(u^2+v^2)e^{-(u+v)}\\geqslant0$，这是全局最小值。\n\n在 $(1,1)$ 处，$A=0$、$B=-2e^{-2}$、$C=0$，所以 $AC-B^2=-4e^{-4}<0$，该点为鞍点，不是极值点。函数无最大值（例如令 $u=v=-t$，则 $f(-t,-t)=2t^2e^{2t}\\to+\\infty$）。\n\n> [!warning] 易错点\n> 对 $x$ 偏积分时，积分常数应写成关于另一个变量 $y$ 的函数 $\\varphi(y)$；确定函数后，要按 $x=u$、$y=u+v$ 回代。求极值时，$AC-B^2<0$ 判为鞍点。",
+      "attempts": [],
+      "review_state": "未复习",
+      "links": [
+        {
+          "path": "external-notes/考研数学/高数-多元函数微分学/错题本",
+          "anchor": "错题28：偏积分反求原函数 + 极值联考——二步降阶法",
+          "label": "偏积分反求原函数与极值联考",
+          "confidence": "high",
+          "note": "本题同样由偏导方程与边界条件还原二元函数，再求其极值。"
+        }
+      ]
     }
   },
   "coverage": {}
