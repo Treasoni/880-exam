@@ -3268,6 +3268,34 @@
           "note": "本题同样由偏导方程与边界条件还原二元函数，再求其极值。"
         }
       ]
+    },
+    "zt-2021-数二-解答22": {
+      "id": "zt-2021-数二-解答22",
+      "module": "第六章：二次型",
+      "year": 2021,
+      "paper": "数二",
+      "no": "解答22",
+      "stem": "已知二次型\n\n$$\nf(x_1,x_2,x_3)=3x_1^2+4x_2^2+3x_3^2+2x_1x_3。\n$$\n\n（Ⅰ）求正交变换 $x=Qy$ 将 $f(x_1,x_2,x_3)$ 化为标准形；\n\n（Ⅱ）证明 $\\displaystyle\\min_{x\\ne0}\\frac{f(x)}{x^Tx}=2$。",
+      "answer": "$Q=\\begin{pmatrix}-\\frac1{\\sqrt2}&0&\\frac1{\\sqrt2}\\\\0&1&0\\\\\\frac1{\\sqrt2}&0&\\frac1{\\sqrt2}\\end{pmatrix}$，标准形为 $2y_1^2+4y_2^2+4y_3^2$；$\\min_{x\\ne0}\\frac{f(x)}{x^Tx}=2$。",
+      "solution": "> [!info] 考点与思路\n> 考查实对称矩阵正交对角化及 Rayleigh 商最小值。先写出二次型矩阵，求特征值和单位正交特征向量构造 $Q$；再利用正交变换保持向量长度，将商化成特征值的加权平均，并验证最小特征值对应方向可取到等号。\n\n## （Ⅰ）正交变换化标准形\n\n二次型对应的实对称矩阵为\n\n$$\nA=\\begin{pmatrix}3&0&1\\\\0&4&0\\\\1&0&3\\end{pmatrix}。\n$$\n\n特征多项式为\n\n$$\n|\\lambda E-A|=(\\lambda-4)\\bigl[(\\lambda-3)^2-1\\bigr]=(\\lambda-4)^2(\\lambda-2)，\n$$\n\n故特征值为 $2,4,4$。\n\n当 $\\lambda=2$ 时，解 $(2E-A)x=0$ 得 $x_1=-x_3$、$x_2=0$，可取特征向量 $(-1,0,1)^T$。当 $\\lambda=4$ 时，解 $(4E-A)x=0$ 得 $x_1=x_3$，可取两个相互正交的特征向量 $(0,1,0)^T$ 与 $(1,0,1)^T$。单位化后取\n\n$$\n\\gamma_1=\\frac1{\\sqrt2}(-1,0,1)^T,\\qquad\n\\gamma_2=(0,1,0)^T,\\qquad\n\\gamma_3=\\frac1{\\sqrt2}(1,0,1)^T。\n$$\n\n以它们为列向量构造正交矩阵\n\n$$\nQ=\\begin{pmatrix}\n-\\frac1{\\sqrt2}&0&\\frac1{\\sqrt2}\\\\\n0&1&0\\\\\n\\frac1{\\sqrt2}&0&\\frac1{\\sqrt2}\n\\end{pmatrix}，\\qquad Q^TQ=E。\n$$\n\n于是 $Q^TAQ=\\operatorname{diag}(2,4,4)$。作正交变换 $x=Qy$，得标准形\n\n$$\nf(x)=y^TQ^TAQy=2y_1^2+4y_2^2+4y_3^2。\n$$\n\n## （Ⅱ）证明 Rayleigh 商的最小值为 $2$\n\n仍取 $x=Qy$。由于 $Q^TQ=E$，有 $x^Tx=y^Ty$，且 $x\\ne0$ 当且仅当 $y\\ne0$。因此\n\n$$\n\\frac{f(x)}{x^Tx}\n=\\frac{2y_1^2+4y_2^2+4y_3^2}{y_1^2+y_2^2+y_3^2}\n=2+\\frac{2y_2^2+2y_3^2}{y_1^2+y_2^2+y_3^2}\\geqslant2。\n$$\n\n当 $y=(1,0,0)^T$ 时，$x=Qy=\\frac1{\\sqrt2}(-1,0,1)^T\\ne0$，商取到 $2$。故\n\n$$\n\\boxed{\\min_{x\\ne0}\\frac{f(x)}{x^Tx}=2}。\n$$\n\n> [!warning] 易错点\n> 交叉项 $2x_1x_3$ 对应矩阵的非对角元 $a_{13}=a_{31}=1$。构造 $Q$ 时，列向量顺序必须与标准形中对应的特征值顺序一致；证明最小值时既要给出下界，也要验证等号可达。",
+      "attempts": [],
+      "review_state": "未复习",
+      "links": [
+        {
+          "path": "external-notes/线性代数/第六章：二次型/6.3-二次型的标准形和规范形/6.3.2-正交变换法化标准形",
+          "anchor": "",
+          "label": "正交变换法化标准形",
+          "confidence": "high",
+          "note": "本题第（Ⅰ）问使用正交变换将二次型化为标准形。"
+        },
+        {
+          "path": "external-notes/线性代数/第六章：二次型/错题本",
+          "anchor": "错题11：正交变换与 Rayleigh 商最小值",
+          "label": "正交变换与 Rayleigh 商最小值",
+          "confidence": "high",
+          "note": "错题本该条包含相同二次型及 Rayleigh 商最小值证明；原条标注2022数二、三，作为相关题型参考，不作为本题题源。"
+        }
+      ]
     }
   },
   "coverage": {}
