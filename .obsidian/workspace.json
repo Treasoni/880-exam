@@ -207,7 +207,7 @@
                 "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "2020"
+                "searchQuery": "2014"
               },
               "icon": "lucide-list",
               "title": "大纲"
@@ -242,7 +242,7 @@
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
-                      "conversationId": "conv-1794879122049-2na4z67xv"
+                      "conversationId": "conv-1795052342944-69g094ia0"
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
@@ -261,7 +261,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -289,8 +289,9 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "9f7d7ea400c72fad",
+  "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题收录-2021数二选择1.workflow.md",
     "workspace/习题集/数二知识点习题集-答案.md",
     "workspace/习题集/数二知识点习题集.md",
     "workspace/wrong-book/真题错题本.md",
@@ -335,7 +336,6 @@
     "workspace/workflow-runs/真题错题复习-13.workflow.md",
     "workspace/workflow-runs/真题错题复习-12.workflow.md",
     "workspace/workflow-runs/真题收录-2018数二解答21.workflow.md",
-    "workspace/workflow-runs/真题收录-2018数二解答23.workflow.md",
-    "workspace/workflow-runs/真题收录-2018数二解答22.workflow.md"
+    "workspace/workflow-runs/真题收录-2018数二解答23.workflow.md"
   ]
 }

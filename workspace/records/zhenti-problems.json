@@ -3142,6 +3142,27 @@
       ],
       "review_state": "已重做",
       "review_updated": "2026-11-16"
+    },
+    "zt-2021-数二-选择1": {
+      "id": "zt-2021-数二-选择1",
+      "module": "高数-函数极限与连续",
+      "year": 2021,
+      "paper": "数二",
+      "no": "选择1",
+      "stem": "当 $x \\to 0$ 时，$\\alpha(x),\\beta(x)$ 是非零无穷小量，给出以下四个命题：\n\n① 若 $\\alpha(x) \\sim \\beta(x)$，则 $\\alpha^2(x) \\sim \\beta^2(x)$。\n\n② 若 $\\alpha^2(x) \\sim \\beta^2(x)$，则 $\\alpha(x) \\sim \\beta(x)$。\n\n③ 若 $\\alpha(x) \\sim \\beta(x)$，则 $\\alpha(x)-\\beta(x)=o(\\alpha(x))$。\n\n④ 若 $\\alpha(x)-\\beta(x)=o(\\alpha(x))$，则 $\\alpha(x) \\sim \\beta(x)$。\n\n其中所有真命题的序号是（　　）\n\n（A）①②　（B）①④　（C）①③④　（D）②③④",
+      "answer": "（C）①③④",
+      "solution": "> [!info] 考点与思路\n> 考查等价无穷小与高阶无穷小的定义。将 $\\sim$、$o(\\cdot)$ 翻译成商的极限，逐项判断；对平方命题的逆向推理，用符号相反的无穷小构造反例。\n\n当 $x\\to0$ 时，\n\n$$\n\\alpha\\sim\\beta\\iff\\lim_{x\\to0}\\frac{\\alpha}{\\beta}=1,\n\\qquad\n\\gamma=o(\\alpha)\\iff\\lim_{x\\to0}\\frac{\\gamma}{\\alpha}=0.\n$$\n\n**① 正确。** 若 $\\alpha\\sim\\beta$，则\n\n$$\n\\lim_{x\\to0}\\frac{\\alpha^2}{\\beta^2}\n=\\left(\\lim_{x\\to0}\\frac{\\alpha}{\\beta}\\right)^2=1,\n$$\n故 $\\alpha^2\\sim\\beta^2$。\n\n**② 错误。** $\\alpha^2\\sim\\beta^2$ 只能推出 $\\left|\\alpha/\\beta\\right|\\to1$，不能确定 $\\alpha/\\beta\\to1$。取 $\\alpha(x)=x$、$\\beta(x)=-x$，两者都是非零无穷小，且 $\\alpha^2=\\beta^2$，但\n\n$$\n\\lim_{x\\to0}\\frac{\\alpha(x)}{\\beta(x)}=-1\\ne1.\n$$\n所以平方等价不能反推原函数等价。\n\n**③、④均正确。** 由定义，\n\n$$\n\\frac{\\alpha-\\beta}{\\alpha}=1-\\frac{\\beta}{\\alpha}.\n$$\n当 $\\alpha\\sim\\beta$ 时，$\\beta/\\alpha\\to1$，故 $(\\alpha-\\beta)/\\alpha\\to0$，即 $\\alpha-\\beta=o(\\alpha)$。反过来，若 $\\alpha-\\beta=o(\\alpha)$，则\n\n$$\n\\frac{\\beta}{\\alpha}=1-\\frac{\\alpha-\\beta}{\\alpha}\\longrightarrow1,\n$$\n从而 $\\beta/\\alpha\\to1$，等价地 $\\alpha/\\beta\\to1$，即 $\\alpha\\sim\\beta$。\n\n因此，③与④构成等价关系：\n\n$$\n\\alpha\\sim\\beta\\iff\\alpha-\\beta=o(\\alpha).\n$$\n\n**答案：** **（C）①③④**\n\n> [!warning] 易错点\n> 偶次幂会抹去符号，因此从 $\\alpha^2\\sim\\beta^2$ 不能确定 $\\alpha$ 与 $\\beta$ 同号；遇到此类逆推，优先尝试 $\\alpha=x$、$\\beta=-x$。③、④则是同一充要关系的两个方向，关键是把差商改写为 $1-\\beta/\\alpha$。",
+      "attempts": [],
+      "review_state": "未复习",
+      "links": [
+        {
+          "path": "external-notes/考研数学/高数-函数极限与连续/错题本",
+          "anchor": "错题10：高阶无穷小的运算与反例思维",
+          "label": "高阶无穷小的运算与反例思维",
+          "confidence": "high",
+          "note": "均用小 o 定义判定无穷小关系，并以反例识别错误推论。"
+        }
+      ]
     }
   },
   "coverage": {}
