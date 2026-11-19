@@ -3205,6 +3205,27 @@
           "note": "同为在0与1两端分别比较主部并取交集判定参数范围的反常积分。"
         }
       ]
+    },
+    "zt-2021-数二-选择6": {
+      "id": "zt-2021-数二-选择6",
+      "module": "高数-数列极限",
+      "year": 2021,
+      "paper": "数二",
+      "no": "选择6",
+      "stem": "已知数列 $\\{x_n\\}$ 满足 $-\\frac{\\pi}{2}\\leqslant x_n\\leqslant\\frac{\\pi}{2}$，则（　　）\n\n（A）若 $\\lim_{n\\to\\infty}\\cos(\\sin x_n)$ 存在，则 $\\lim_{n\\to\\infty}x_n$ 存在。\n\n（B）若 $\\lim_{n\\to\\infty}\\sin(\\cos x_n)$ 存在，则 $\\lim_{n\\to\\infty}x_n$ 存在。\n\n（C）若 $\\lim_{n\\to\\infty}\\cos(\\sin x_n)$ 存在，则 $\\lim_{n\\to\\infty}\\sin x_n$ 存在，但 $\\lim_{n\\to\\infty}x_n$ 不一定存在。\n\n（D）若 $\\lim_{n\\to\\infty}\\sin(\\cos x_n)$ 存在，则 $\\lim_{n\\to\\infty}\\cos x_n$ 存在，但 $\\lim_{n\\to\\infty}x_n$ 不一定存在。",
+      "answer": "（D）",
+      "solution": "> [!info] 考点与思路\n> 考查复合数列的极限及通过反函数连续性反推内层极限。逐层检查内层数列的值域：如果外层函数在该值域上连续且严格单调，就能用连续反函数往内推；若遇到偶函数的对称性，则可构造正负振荡数列作反例。\n\n由题设 $x_n\\in[-\\frac{\\pi}{2},\\frac{\\pi}{2}]$，故 $\\cos x_n\\in[0,1]$。\n\n**（A）、（C）错误。** 取 $x_n=(-1)^n\\frac{\\pi}{2}$，则\n\n$$\n\\cos(\\sin x_n)=\\cos((-1)^n)=\\cos1\n$$\n\n恒定，因而外层极限存在；但 $\\sin x_n=(-1)^n$ 与 $x_n$ 都不收敛。因此（A）不成立，且（C）声称 $\\sin x_n$ 必收敛也不成立。\n\n**（B）错误。** 同一个数列满足 $\\cos x_n=0$，所以 $\\sin(\\cos x_n)=0$ 恒定，但 $x_n$ 不收敛，故不能由外层极限推出 $x_n$ 收敛。\n\n**（D）正确。** 设 $y_n=\\sin(\\cos x_n)$。由于 $\\cos x_n\\in[0,1]$，而 $\\sin v$ 在 $[0,1]$ 上连续且严格递增，其反函数 $\\arcsin y$ 在 $[0,\\sin1]$ 上连续。若 $y_n$ 收敛到 $A$，则 $A\\in[0,\\sin1]$，并且\n\n$$\n\\cos x_n=\\arcsin(y_n)\\longrightarrow\\arcsin A,\n$$\n所以 $\\cos x_n$ 必收敛。然而偶函数 $\\cos x$ 在 $[-\\frac{\\pi}{2},\\frac{\\pi}{2}]$ 上不是一一对应，不能反推出 $x_n$ 收敛。仍取 $x_n=(-1)^n\\frac{\\pi}{2}$，便有 $\\cos x_n=0$ 且 $x_n$ 不收敛。\n\n**答案：** **（D）**\n\n> [!warning] 易错点\n> 反推极限不能只用外层函数连续；要先限制内层取值范围，再检查外层函数在这个范围上是否单调、是否可逆。此题中 $\\sin v$ 在 $[0,1]$ 上单调，因此第一层能反推；$\\cos x$ 在对称区间上为偶函数，因此第二层不能反推。",
+      "attempts": [],
+      "review_state": "未复习",
+      "links": [
+        {
+          "path": "external-notes/考研数学/高数-函数极限与连续/1-函数的概念与特性/函数的概念与特性",
+          "anchor": "",
+          "label": "函数的概念与特性：严格单调函数与反函数性质",
+          "confidence": "medium",
+          "note": "本题用严格单调函数在值域上可逆的思想，将复合数列极限反推到内层。"
+        }
+      ]
     }
   },
   "coverage": {}
