@@ -3022,7 +3022,85 @@
     },
     "真题": {
       "children": [
+        "真题/【合集】1987-2023年考研数学二",
         "真题/2010-2019考研数学二真题"
+      ],
+      "sortOrder": "custom"
+    },
+    "真题/【合集】1987-2023年考研数学二": {
+      "children": [
+        "真题/【合集】1987-2023年考研数学二/images",
+        "真题/【合集】1987-2023年考研数学二/184f6371-1ad8-4229-8bc1-0aa196f09c61_content_list.json",
+        "真题/【合集】1987-2023年考研数学二/184f6371-1ad8-4229-8bc1-0aa196f09c61_content_list_v2.json",
+        "真题/【合集】1987-2023年考研数学二/184f6371-1ad8-4229-8bc1-0aa196f09c61_model.json",
+        "真题/【合集】1987-2023年考研数学二/184f6371-1ad8-4229-8bc1-0aa196f09c61_origin.pdf",
+        "真题/【合集】1987-2023年考研数学二/block_list.json",
+        "真题/【合集】1987-2023年考研数学二/full.md",
+        "真题/【合集】1987-2023年考研数学二/layout.json"
+      ],
+      "sortOrder": "custom"
+    },
+    "真题/【合集】1987-2023年考研数学二/images": {
+      "children": [
+        "真题/【合集】1987-2023年考研数学二/images/0c6c656a908ce9913709d8a8834d70a69a5b42ad6b266bb0fb9ae5803b312bd3.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/0fb6883351347475859bd9d133099ab7edfbe1681519e761ce25f1b67a4a8328.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/01a9ec92f2139fda0f2d07586f81765d48dc036ab71668917ab04165876b3223.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/1b159a6c90f0c0e8ee960dded2d792655165fabaeb66152626a7793d24f2da8c.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/1d512c0609ad8b57ebbe9097c73e8bc3258d5930443c5979d9143c7fabc670b9.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/2c80a74a97e191c034349fb9a7c80d5b4c3b98f759096fc39b105b81f30b0189.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/2d6c539c53703afb9095432ab225c82132d5d4d9b840e2738fe3d4415a0fc369.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/3dc6666198a882335bfb0b103645c36a0335d5953104468064c55cd546534673.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/3ea32f6e9feff4f4f6cc851e3c715cdd0273b2e8a3c66a697616f6eeeb8ee073.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/5a4ae04bf5d1dfd4311aef00bdb98ad6f9c396fbd28c104ceb2331ef4bbf8744.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/5dcec6724a68a83c10650d4f49e60345b1c2f32b58eacbf398b30217981882c6.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/6bf83bd73d7c7dea3f9420e2debfc8425282b7c27c892e2246b78fd661940396.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/7aa864c2d97e0454ba61990f3ae1874d3b2fd3203d97d1645cf77f0fcf77ce0c.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/7b278e3c545ff0a31e142284ffeae2e7e01ea56f6aaf3a1f3c69d42367532787.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/7e37539b7cdccc669b4a0b7e9fe863512277c4a511c5bbe197b3690adebd6fff.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/8d2a409bbdeeed7f831e106bd247521e64f71557952e74f2562753cd7ebfe4ee.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/8d4f4f6ea8c8971b22d23635f16653c72b9e37a1215888328ddd02be33387e4c.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/8d7548eadc55debb6a9c547a48b2393dc3cb664d1cb58869ff1ed4459d4251ed.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/8e90b3cbbf26b8b41e6774a35ca194901f7eff73f346af2241a530957bc6dd9d.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/9a652dbe1487404ba6c9da84a692b38137a1140ac9535c2d305e26d26db4c02d.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/9be7d8e84c5fdd3dcbe42da121cad1fe25fe5c2ca96166985bfdb4df089cd0b0.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/9d8cf9dc13cdf0684833fa5fcd3ada0372a70f337915b2283bd813e928c5d51a.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/21c6c74192bdcc8f545016273e6a1d2083afca25dda2d8a3c43c14e6a66e2470.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/26b48bf433d9350f9388746d367badf4659f93f13afeaf97b0866110ffc63afe.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/41bdf67f0b19fbe32ed72e90d1262f442fe4db4703727fd064e3b0e08c66a203.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/47f431de31fd3f9fe9117c01da55398f7f4348cdb79dc5a1e4e1bf84aabe9412.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/61f73dd5aa07c1ec8fafd92482500e3a27353f380f5acf762378db45f0fe15d7.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/73c53e3117cd48877bf543ee0cfb022f8a8bfd71a6a85c4490c373f02338805d.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/079f8bca42b1d92563dc487de1b80e24db39311edc391fa5544b5dc95f521365.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/88c9d604356d1ec5017d1e5e8eed2ff352509e4525300614c176f1d29d78748a.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/93e10ed059c9bc961b3d828126cab0750c8074274cadafeb4ed32e07aeb1514c.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/286aa20061e69d2c2e957176d2cf15a84d8553ae9f07103a2615b08c61cbff5b.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/432d5e0e09a3afbdb34f3fbf007c7bbbc14dc76a8eccda3a9f9dc656249fe159.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/900c1ec9afeaf8490efb7916c8b6df7e0c04405f2e02aa5a598236c3ea09c731.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/910d499702242016fbe062090d7bc15024202d27ac66409256d1d53b0c160a5c.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/3311cefc299255e8369367fa9e28836c3cba0f93d24a9e043e3231ada04acbfe.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/5228df997f362c4f4051c7660e65aa6351b2be47582e9daa7e5ade5c69e46a21.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/6711f6c9958294176488f0f56c122773a75ed9c51460742e4bee601f98fc368c.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/6813c19a6b6a222ad5e75a127b962f0d854b1c61e131d3391714ab2e8d69c3c0.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/8282a0527a095472d81a102e57659d76f99e771f30797f45b20f239168b7f546.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/11026b7af427d2e18882f50de81a2277893e4701d3f4e23b3bc51f4d67d0cf84.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/91801a92081de4c0b6f76e347d06d7b87749856b0469f93fdbcf9bc69e1b82b4.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/98704da094ea9686411f9f4a4bc0a3cb3734aec223096b20022ebc0b7615f184.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/a70a401f97534d1295c296b595c8e2a4836df4bfed3b95f70278d4473b50f3f2.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/aa55ce9d3966c4045f84477a432abeef86d03091bd1133d6535a4219d8ab752b.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/aac3b31d70e10793b033a9b92173077b03615c0f7f652e239388164433b219fc.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/b2aa59627285404043630af7c2d536287bf433ad8b0dfa1ce418a478fd778e0d.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/bb50945195579a7432493317961c0d8a199f548e10254855474c721f7c47488f.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/c01cb95f1face6a8e5a44d81094433971f2e183559b7ea0c95eaf4faededc759.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/c59e68ce8e8db675d2e5b3f587f679798d26be52ebae250ec7a289d4c1779ce3.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/c29678de3312c9aba50d2ec074c9e4903cd6c96995239bf2016da78d7f33d870.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/c272373413440c99b7b0c5bfb141d9d1bd5eb9fb33ca4ef833a149774eb5d046.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/cbc812f9dedf96ab5c3249ca0d13ba78699d0c37d740cf334bc6a9c62b24207d.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/d0d2464b39afd2f46992178dae208ced4e3a9c5e81a2179e6cf04a319e51cbfb.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/d8b7f3d3f741dbe77b7042ae3f55f16672f889430da58f42796155355a6beacf.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/d7673dbcb14f88d1ccbd77c359621e32405a6e012ca0daabe16841b6af7a7dcb.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/d35282d38d4a127044932689d307048997942d74fa47729e5902e06e0cd7d925.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/e568d8a7ef00f77922665b2bc40da7acb13b11d51d8782485a8965350d921233.jpg",
+        "真题/【合集】1987-2023年考研数学二/images/e600691480b2e3759f3ec541f204a877867eabb381ada955e44fda8b228bc4ba.jpg"
       ],
       "sortOrder": "custom"
     },
@@ -3129,6 +3207,8 @@
     },
     "external-notes/考研数学/0-基础知识/assets/常用平面图形": {
       "children": [
+        "external-notes/考研数学/0-基础知识/assets/常用平面图形/astroid-20261011.png",
+        "external-notes/考研数学/0-基础知识/assets/常用平面图形/plot_astroid.py",
         "external-notes/考研数学/0-基础知识/assets/常用平面图形/circle-drawing-20260728.png",
         "external-notes/考研数学/0-基础知识/assets/常用平面图形/ellipse-hyperbola-drawing-20260728.png",
         "external-notes/考研数学/0-基础知识/assets/常用平面图形/file-20260424162136500.png",
@@ -5011,6 +5091,7 @@
     },
     "scripts": {
       "children": [
+        "scripts/make_exercise_book.py",
         "scripts/zhenti_wrong_book.py",
         "scripts/build_linear_algebra_index.py",
         "scripts/__pycache__",
@@ -5028,6 +5109,17 @@
     },
     "scripts/__pycache__": {
       "children": [
+        "scripts/__pycache__/build_linear_algebra_index.cpython-312.pyc",
+        "scripts/__pycache__/grade.cpython-312.pyc",
+        "scripts/__pycache__/lib880.cpython-312.pyc",
+        "scripts/__pycache__/lint_content.cpython-312.pyc",
+        "scripts/__pycache__/make_exercise_book.cpython-313.pyc",
+        "scripts/__pycache__/make_paper.cpython-312.pyc",
+        "scripts/__pycache__/merge_extraction.cpython-312.pyc",
+        "scripts/__pycache__/progress.cpython-312.pyc",
+        "scripts/__pycache__/wrong_book.cpython-312.pyc",
+        "scripts/__pycache__/zhenti_wrong_book.cpython-312.pyc",
+        "scripts/__pycache__/zhenti_wrong_book.cpython-313.pyc",
         "scripts/__pycache__/build_linear_algebra_index.cpython-313.pyc",
         "scripts/__pycache__/build-question-index.cpython-313.pyc",
         "scripts/__pycache__/lint_content.cpython-313.pyc",
@@ -5599,12 +5691,15 @@
     },
     "tests/__pycache__": {
       "children": [
+        "tests/__pycache__/test_core.cpython-312.pyc",
+        "tests/__pycache__/test_core.cpython-313-pytest-9.1.1.pyc",
         "tests/__pycache__/test_core.cpython-313.pyc"
       ],
       "sortOrder": "custom"
     },
     "workspace": {
       "children": [
+        "workspace/习题集",
         "workspace/linear-algebra-question-index.json",
         "workspace/linear-algebra-schema.yaml",
         "workspace/papers",
@@ -5618,8 +5713,16 @@
       ],
       "sortOrder": "custom"
     },
+    "workspace/习题集": {
+      "children": [
+        "workspace/习题集/数二知识点习题集.md",
+        "workspace/习题集/数二知识点习题集-答案.md"
+      ],
+      "sortOrder": "custom"
+    },
     "workspace/papers": {
       "children": [
+        "workspace/papers/paper-07",
         "workspace/papers/la-paper-05",
         "workspace/papers/paper-06",
         "workspace/papers/la-paper-04",
@@ -5722,6 +5825,14 @@
       ],
       "sortOrder": "custom"
     },
+    "workspace/papers/paper-07": {
+      "children": [
+        "workspace/papers/paper-07/卷子-07.md",
+        "workspace/papers/paper-07/卷子-07-答案.md",
+        "workspace/papers/paper-07/判分卡-07.md"
+      ],
+      "sortOrder": "custom"
+    },
     "workspace/preview": {
       "children": [
         "workspace/preview/线代进度总览.md",
@@ -5731,6 +5842,7 @@
     },
     "workspace/records": {
       "children": [
+        "workspace/records/exercise-book-plan.json",
         "workspace/records/text-overrides.json",
         "workspace/records/solution-overrides.json",
         "workspace/records/zhenti-problems.json",
@@ -5743,6 +5855,69 @@
     },
     "workspace/workflow-runs": {
       "children": [
+        "workspace/workflow-runs/错题复习-08.workflow.md",
+        "workspace/workflow-runs/错题复习-09.workflow.md",
+        "workspace/workflow-runs/回炉-01.workflow.md",
+        "workspace/workflow-runs/真题错题复习-07.workflow.md",
+        "workspace/workflow-runs/真题错题复习-08.workflow.md",
+        "workspace/workflow-runs/真题错题复习-09.workflow.md",
+        "workspace/workflow-runs/真题错题复习-10.workflow.md",
+        "workspace/workflow-runs/真题错题复习-11.workflow.md",
+        "workspace/workflow-runs/真题错题复习-12.workflow.md",
+        "workspace/workflow-runs/真题错题复习-13.workflow.md",
+        "workspace/workflow-runs/真题错题复习-14.workflow.md",
+        "workspace/workflow-runs/真题回炉-01.workflow.md",
+        "workspace/workflow-runs/真题收录-2014数二解答18.workflow.md",
+        "workspace/workflow-runs/真题收录-2014数二解答19.workflow.md",
+        "workspace/workflow-runs/真题收录-2014数二解答22.workflow.md",
+        "workspace/workflow-runs/真题收录-2014数二填空12.workflow.md",
+        "workspace/workflow-runs/真题收录-2014数二选择3.workflow.md",
+        "workspace/workflow-runs/真题收录-2014数二选择6.workflow.md",
+        "workspace/workflow-runs/真题收录-2014数二选择8-补解析.workflow.md",
+        "workspace/workflow-runs/真题收录-2014数二选择8.workflow.md",
+        "workspace/workflow-runs/真题收录-2015数二解答15.workflow.md",
+        "workspace/workflow-runs/真题收录-2015数二解答18.workflow.md",
+        "workspace/workflow-runs/真题收录-2015数二解答20.workflow.md",
+        "workspace/workflow-runs/真题收录-2015数二解答21-22.workflow.md",
+        "workspace/workflow-runs/真题收录-2015数二选择2.workflow.md",
+        "workspace/workflow-runs/真题收录-2015数二选择8.workflow.md",
+        "workspace/workflow-runs/真题收录-2017数二解答15.workflow.md",
+        "workspace/workflow-runs/真题收录-2017数二解答19.workflow.md",
+        "workspace/workflow-runs/真题收录-2017数二填空14.workflow.md",
+        "workspace/workflow-runs/真题收录-2017数二选择2.workflow.md",
+        "workspace/workflow-runs/真题收录-2017数二选择8.workflow.md",
+        "workspace/workflow-runs/真题收录-2018数二解答16.workflow.md",
+        "workspace/workflow-runs/真题收录-2018数二解答17.workflow.md",
+        "workspace/workflow-runs/真题收录-2018数二解答18.workflow.md",
+        "workspace/workflow-runs/真题收录-2018数二解答20.workflow.md",
+        "workspace/workflow-runs/真题收录-2018数二解答21.workflow.md",
+        "workspace/workflow-runs/真题收录-2018数二解答22.workflow.md",
+        "workspace/workflow-runs/真题收录-2018数二解答23.workflow.md",
+        "workspace/workflow-runs/真题收录-2018数二选择4.workflow.md",
+        "workspace/workflow-runs/真题收录-2018数二选择8-填空14.workflow.md",
+        "workspace/workflow-runs/真题收录-2019数二解答18.workflow.md",
+        "workspace/workflow-runs/真题收录-2019数二解答19.workflow.md",
+        "workspace/workflow-runs/真题收录-2019数二解答22.workflow.md",
+        "workspace/workflow-runs/真题收录-2019数二选择5.workflow.md",
+        "workspace/workflow-runs/真题收录-2019数二选择6.workflow.md",
+        "workspace/workflow-runs/真题收录-2020数二解答15.workflow.md",
+        "workspace/workflow-runs/真题收录-2020数二解答18.workflow.md",
+        "workspace/workflow-runs/真题收录-2020数二解答19.workflow.md",
+        "workspace/workflow-runs/真题收录-2020数二解答21.workflow.md",
+        "workspace/workflow-runs/真题收录-2020数二解答22.workflow.md",
+        "workspace/workflow-runs/真题收录-2020数二解答23.workflow.md",
+        "workspace/workflow-runs/真题收录-2020数二填空12.workflow.md",
+        "workspace/workflow-runs/真题收录-2020数二选择3.workflow.md",
+        "workspace/workflow-runs/真题收录-2020数二选择5.workflow.md",
+        "workspace/workflow-runs/真题收录-2020数二选择7.workflow.md",
+        "workspace/workflow-runs/真题收录-2021数二解答17.workflow.md",
+        "workspace/workflow-runs/真题收录-2021数二解答20.workflow.md",
+        "workspace/workflow-runs/真题收录-2021数二解答22.workflow.md",
+        "workspace/workflow-runs/真题收录-2021数二填空16.workflow.md",
+        "workspace/workflow-runs/真题收录-2021数二选择1.workflow.md",
+        "workspace/workflow-runs/真题收录-2021数二选择3.workflow.md",
+        "workspace/workflow-runs/真题收录-2021数二选择5.workflow.md",
+        "workspace/workflow-runs/真题收录-2021数二选择6.workflow.md",
         "workspace/workflow-runs/真题错题复习-06.workflow.md",
         "workspace/workflow-runs/错题复习-03.workflow.md",
         "workspace/workflow-runs/错题复习-04.workflow.md",
@@ -5794,6 +5969,12 @@
     },
     "workspace/wrong-book/images": {
       "children": [
+        "workspace/wrong-book/images/zt-2016-数二-解答18-区域与极坐标示意图.png",
+        "workspace/wrong-book/images/zt-2016-数二-解答20-旋转体区域示意图.png",
+        "workspace/wrong-book/images/zt-2016-数二-解答21-单调性与零点示意图.png",
+        "workspace/wrong-book/images/zt-2016-数二-填空13-相关变化率示意图.png",
+        "workspace/wrong-book/images/zt-2017-数二-选择2-割线与面积示意图.png",
+        "workspace/wrong-book/images/zt-2018-数二-选择4-中点与面积抵消示意图.png",
         "workspace/wrong-book/images/取整函数二重积分区域拆分示意图.png",
         "workspace/wrong-book/images/zt-2011-数二-解答20.png",
         "workspace/wrong-book/images/二重积分-极坐标交换次序分块示意图.png",
