@@ -1208,6 +1208,10 @@
         {
           "date": "2026-11-06",
           "grade": "cannot"
+        },
+        {
+          "date": "2026-11-20",
+          "grade": "correct"
         }
       ],
       "review_state": "已重做",
@@ -2052,9 +2056,14 @@
         {
           "date": "2026-11-11",
           "grade": "half"
+        },
+        {
+          "date": "2026-11-20",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习"
+      "review_state": "已重做",
+      "review_updated": "2026-11-20"
     },
     "zt-2016-数二-填空13": {
       "id": "zt-2016-数二-填空13",
@@ -3008,13 +3017,18 @@
         "step": "求交点时把 $y=\\frac{x}{\\sqrt{1+x^{2}}}$ 与 $y=\\frac{1}{2}$、$y=\\frac{\\sqrt{3}}{2}$ 的横坐标误算成 $x=1$、$x=\\sqrt{3}$（正确应为 $x=\\frac{1}{\\sqrt{3}}$、$x=\\sqrt{3}$），导致小圆柱 $V_{2}$ 的高、定积分 $V_{1}$ 的积分下限全部跟着错掉。最后合并 $V=V_{3}-V_{2}-V_{1}$ 时又出现算术错误，把 $-\\frac{\\sqrt{3}}{4}\\pi$ 的系数算错、抄写时还漏看了分母关系，写成 $\\frac{3\\pi-\\sqrt{3}\\pi}{4}+\\frac{\\pi^{2}}{12}$。",
         "advice": "含根号的分式求交点，先两边平方并交叉相乘（如 $4x^{2}=1+x^{2}$），不要凭 $\\frac{1}{2}$、$\\frac{\\sqrt{3}}{2}$ 联想到 $\\tan\\frac{\\pi}{4}$、$\\tan\\frac{\\pi}{3}$ 就直接写 $x=1$、$x=\\sqrt{3}$。算完用结果形态自检：正确结果里 $\\sqrt{3}\\pi$ 项应全部抵消，只剩 $\\frac{\\pi^{2}}{6}$ 这类干净项；若出现 $\\pi$、$\\sqrt{3}\\pi$、$\\pi^{2}$ 混杂，先回头核对交点与积分上下限。最后合并时先通分再加减，逐项检查分母。"
       },
-      "review_state": "未复习",
+      "review_state": "已重做",
       "attempts": [
         {
           "date": "2026-11-10",
           "grade": "half"
+        },
+        {
+          "date": "2026-11-20",
+          "grade": "correct"
         }
-      ]
+      ],
+      "review_updated": "2026-11-20"
     },
     "zt-2020-数二-解答19": {
       "id": "zt-2020-数二-解答19",
@@ -3030,13 +3044,18 @@
         "step": "极坐标穿线定限时把竖直线 $x=1$、$x=2$ 当成常数半径，写成 $1\\leqslant r\\leqslant2$；正确应为 $x=1\\Rightarrow r=\\sec\\theta$、$x=2\\Rightarrow r=2\\sec\\theta$。这样一来内层积分变成 $\\int_{1}^{2}r\\,\\mathrm{d}r=\\frac{3}{2}$（不含 $\\theta$），丢掉了 $\\sec^{2}\\theta$ 因子，外层只剩 $\\int\\sec\\theta\\,\\mathrm{d}\\theta$，结果与正确答案不符。",
         "advice": "极坐标定限先画射线：圆 $x^{2}+y^{2}=R^{2}\\Rightarrow r=R$；竖直线 $x=a\\Rightarrow r=a\\sec\\theta$；水平线 $y=b\\Rightarrow r=b\\csc\\theta$。定限后用特殊角检验——若内层 $\\int r\\,\\mathrm{d}r$ 的结果不含 $\\theta$（如 $\\int_{1}^{2}r\\,\\mathrm{d}r=\\frac{3}{2}$），几乎一定把直线当成了圆。本题正确内层为 $\\frac{3}{2}\\sec^{2}\\theta$，外层才会出现 $\\sec^{3}\\theta$。"
       },
-      "review_state": "未复习",
+      "review_state": "已重做",
       "attempts": [
         {
           "date": "2026-11-10",
           "grade": "half"
+        },
+        {
+          "date": "2026-11-20",
+          "grade": "correct"
         }
-      ]
+      ],
+      "review_updated": "2026-11-20"
     },
     "zt-2020-数二-解答21": {
       "id": "zt-2020-数二-解答21",
