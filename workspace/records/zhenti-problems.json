@@ -1351,6 +1351,10 @@
         {
           "date": "2026-11-06",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-11-20",
+          "grade": "correct"
         }
       ],
       "review_state": "已重做",
@@ -2213,9 +2217,14 @@
         {
           "date": "2026-10-31",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-11-20",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习"
+      "review_state": "已重做",
+      "review_updated": "2026-11-20"
     },
     "zt-2017-数二-选择2": {
       "id": "zt-2017-数二-选择2",
@@ -2510,9 +2519,13 @@
         {
           "date": "2026-11-17",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-11-20",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
@@ -2526,7 +2539,8 @@
         "label": "概念/定理错误",
         "step": "没理顺 $y(x)=1-\\cos t$ 与参数 $t$ 的一一对应，把「横坐标 $x$」与「参数 $t$」混为一谈：换元时被积函数写错（$x+2y$ 里的 $x$ 被当成常数 / 写成 $\\pi$），或 $y(x)$、$\\mathrm{d}x$ 未同步替换",
         "advice": "先把区域写成 $x$ 型：$0\\leqslant x\\leqslant 2\\pi$、$0\\leqslant y\\leqslant y(x)$，化累次积分得 $\\int_0^{2\\pi}[x\\,y(x)+y^2(x)]\\mathrm{d}x$；再做参数换元三同步——$x=t-\\sin t$、$\\mathrm{d}x=(1-\\cos t)\\mathrm{d}t$、$y(x)=1-\\cos t$。用 $x'(t)=1-\\cos t\\geqslant0$ 说明 $t$ 与 $x$ 一一对应，上下限才能平移不变"
-      }
+      },
+      "review_updated": "2026-11-20"
     },
     "zt-2018-数二-解答18": {
       "id": "zt-2018-数二-解答18",
@@ -2585,9 +2599,13 @@
         {
           "date": "2026-11-17",
           "grade": "wrong"
+        },
+        {
+          "date": "2026-11-20",
+          "grade": "correct"
         }
       ],
-      "review_state": "未复习",
+      "review_state": "已重做",
       "links": [
         {
           "path": "external-notes/考研数学/高数-一元函数积分学/错题本",
@@ -2601,7 +2619,8 @@
         "label": "概念/定理错误",
         "step": "把导数（曲线在 $P$ 处的切线斜率 $\\frac{8}{9}x_0$）当成直线 $AP$ 的斜率，写进 $y-1=k(x-0)$；实际 $AP$ 是过 $A(0,1)$ 与 $P(x_0,\\frac49x_0^2)$ 的割线，斜率应为 $\\frac{\\frac49x_0^2-1}{x_0}$",
         "advice": "写直线方程后用两个端点各代一次：$x=0$ 得 $y=1$（过 $A$），$x=x_0$ 必须得 $y=y_0$（过 $P$）。用切线斜率会得 $y(x_0)=\\frac89x_0^2+1\\neq y_0$，立刻发现；正确面积 $S(x_0)=\\frac{2}{27}x_0^3+\\frac12x_0$，$\\frac{\\mathrm{d}S}{\\mathrm{d}t}=10$"
-      }
+      },
+      "review_updated": "2026-11-20"
     },
     "zt-2018-数二-解答22": {
       "id": "zt-2018-数二-解答22",
@@ -3078,6 +3097,10 @@
         },
         {
           "date": "2026-11-17",
+          "grade": "wrong"
+        },
+        {
+          "date": "2026-11-20",
           "grade": "wrong"
         }
       ]
