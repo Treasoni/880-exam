@@ -1510,6 +1510,10 @@
         {
           "date": "2026-10-16",
           "grade": "correct"
+        },
+        {
+          "date": "2026-11-21",
+          "grade": "correct"
         }
       ],
       "review_state": "已重做",
@@ -1536,6 +1540,10 @@
       "attempts": [
         {
           "date": "2026-10-16",
+          "grade": "correct"
+        },
+        {
+          "date": "2026-11-21",
           "grade": "correct"
         }
       ],
@@ -1567,6 +1575,10 @@
         },
         {
           "date": "2026-10-16",
+          "grade": "correct"
+        },
+        {
+          "date": "2026-11-21",
           "grade": "correct"
         }
       ],
