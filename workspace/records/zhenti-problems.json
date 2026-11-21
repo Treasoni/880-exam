@@ -1513,7 +1513,7 @@
         },
         {
           "date": "2026-11-21",
-          "grade": "correct"
+          "grade": "partial"
         }
       ],
       "review_state": "已重做",
@@ -1579,7 +1579,7 @@
         },
         {
           "date": "2026-11-21",
-          "grade": "correct"
+          "grade": "wrong"
         }
       ],
       "review_state": "已重做",
