@@ -207,7 +207,7 @@
                 "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "2014"
+                "searchQuery": ""
               },
               "icon": "lucide-list",
               "title": "大纲"
@@ -246,7 +246,7 @@
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
-                      "conversationId": "conv-1795394132297-ctym5cq5r"
+                      "conversationId": "conv-1795395917265-si056x3s6"
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
@@ -261,7 +261,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -289,7 +289,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "9f7d7ea400c72fad",
+  "active": "b4b561f7809652dc",
   "lastOpenFiles": [
     "tests/test_prompt_cache.py",
     "workspace/习题集/数二知识点习题集.md",
