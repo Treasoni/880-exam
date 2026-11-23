@@ -207,7 +207,7 @@
                 "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": ""
+                "searchQuery": "2019"
               },
               "icon": "lucide-list",
               "title": "大纲"
@@ -242,11 +242,11 @@
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
-                      "conversationId": "conv-1795394381386-qm02uezyq"
+                      "conversationId": "conv-1795403470446-utacb6qc6"
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
-                      "conversationId": "conv-1795395917265-si056x3s6"
+                      "conversationId": "conv-1795404837141-abdvdkie8"
                     },
                     {
                       "tabId": "tab-1790218000549-4kkqcsg",
@@ -291,19 +291,22 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/workflow-runs/真题收录-2022数二填空16.workflow.md.OJ2itP",
+    "workspace/wrong-book/线代错题本.md",
+    "workspace/wrong-book/错题本.md",
+    "workspace/wrong-book/真题错题本.md",
     "workspace/wrong-book/images/zt-2023-数二-填空12-半圆面积示意图.png",
     "tests/test_prompt_cache.py",
     "workspace/习题集/数二知识点习题集.md",
-    "workspace/workflow-runs/真题收录-2021数二解答22.workflow.md",
-    "workspace/workflow-runs/真题收录-2021数二解答20.workflow.md",
-    "workspace/workflow-runs/真题收录-2021数二解答17.workflow.md",
-    "workspace/workflow-runs/真题收录-2021数二填空16.workflow.md",
-    "workspace/workflow-runs/真题收录-2021数二选择6.workflow.md",
-    "workspace/workflow-runs/真题收录-2021数二选择5.workflow.md",
-    "workspace/workflow-runs/真题收录-2021数二选择3.workflow.md",
-    "workspace/workflow-runs/真题收录-2021数二选择1.workflow.md",
+    "workspace/workflow-runs/真题收录-2022数二解答22.workflow.md",
+    "workspace/workflow-runs/真题收录-2022数二解答20.workflow.md",
+    "workspace/workflow-runs/真题收录-2022数二解答17.workflow.md",
+    "workspace/workflow-runs/真题收录-2022数二填空16.workflow.md",
+    "workspace/workflow-runs/真题收录-2022数二选择6.workflow.md",
+    "workspace/workflow-runs/真题收录-2022数二选择5.workflow.md",
+    "workspace/workflow-runs/真题收录-2022数二选择3.workflow.md",
+    "workspace/workflow-runs/真题收录-2022数二选择1.workflow.md",
     "workspace/习题集/数二知识点习题集-答案.md",
-    "workspace/wrong-book/真题错题本.md",
     "workspace/workflow-runs/真题收录-2020数二解答23.workflow.md",
     "workspace/workflow-runs/真题收录-2020数二解答22.workflow.md",
     "workspace/workflow-runs/真题收录-2020数二解答21.workflow.md.6DejE5",
@@ -332,10 +335,7 @@
     "真题/【合集】1987-2023年考研数学二/images/cbc812f9dedf96ab5c3249ca0d13ba78699d0c37d740cf334bc6a9c62b24207d.jpg",
     "真题/【合集】1987-2023年考研数学二/images/c59e68ce8e8db675d2e5b3f587f679798d26be52ebae250ec7a289d4c1779ce3.jpg",
     "真题/【合集】1987-2023年考研数学二/images/c29678de3312c9aba50d2ec074c9e4903cd6c96995239bf2016da78d7f33d870.jpg",
-    "真题/【合集】1987-2023年考研数学二/images/c272373413440c99b7b0c5bfb141d9d1bd5eb9fb33ca4ef833a149774eb5d046.jpg",
     "真题/【合集】1987-2023年考研数学二/full.md",
-    "真题/【合集】1987-2023年考研数学二纯真题版.pdf-c10a0735-b4d7-48dd-a586-72ff98a684f9/full.md",
-    "workspace/workflow-runs/真题错题复习-14.workflow.md",
-    "workspace/workflow-runs/真题收录-2019数二解答22.workflow.md"
+    "真题/【合集】1987-2023年考研数学二纯真题版.pdf-c10a0735-b4d7-48dd-a586-72ff98a684f9/full.md"
   ]
 }
