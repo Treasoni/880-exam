@@ -253,7 +253,7 @@
                       "conversationId": "conv-1794359897787-8kvmtzx15"
                     }
                   ],
-                  "activeTabId": "tab-1789908968076-9htz0xx"
+                  "activeTabId": "tab-1790061594608-a0amw1a"
                 }
               },
               "icon": "bot",
@@ -291,6 +291,7 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/wrong-book/images/zt-2023-数二-填空12-半圆面积示意图.png",
     "tests/test_prompt_cache.py",
     "workspace/习题集/数二知识点习题集.md",
     "workspace/workflow-runs/真题收录-2021数二解答22.workflow.md",
@@ -321,7 +322,6 @@
     "scripts/__pycache__/wrong_book.cpython-312.pyc",
     "scripts/__pycache__/merge_extraction.cpython-312.pyc",
     "scripts/__pycache__/make_paper.cpython-312.pyc",
-    "scripts/__pycache__/lint_content.cpython-312.pyc",
     "workspace/workflow-runs/真题收录-2020数二选择3.workflow.md",
     "真题/【合集】1987-2023年考研数学二/images/e600691480b2e3759f3ec541f204a877867eabb381ada955e44fda8b228bc4ba.jpg",
     "真题/【合集】1987-2023年考研数学二/images/e568d8a7ef00f77922665b2bc40da7acb13b11d51d8782485a8965350d921233.jpg",
