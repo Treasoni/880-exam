@@ -1,86 +1,52 @@
-# .llm/prompt-cache — LLM usage observability
+---
+type: 文档
+updated: 2026-11-23
+tags: [880, LLM, 提示缓存]
+---
 
-字段合同与回归样本所在目录（由 `prompt-cache-optimizer` skill 的 bootstrap 安装）。
-本目录不是采集器：自动采集由下面的 collector 完成。
+# LLM 用量与提示缓存
 
-## 自动采集管线
+## 启动上下文
 
-```
-Claude Code 会话 transcript（~/.claude/projects/-Users-zhqznc-code-880-exam/*.jsonl）
-        ↓  python3 .claude/scripts/collect_llm_usage.py
-.llm/prompt-cache/usage-events.jsonl   （本地 JSONL，已被 .gitignore 排除）
-```
+Claude Code `SessionStart` 默认只输出固定的经验索引。做相关任务之前，按索引定位 [[.learnings/RULES.md|铁律]] 的对应章节；仅在需要时读 [[.learnings/ERRORS.md|错误日志]] 和 [[.learnings/LEARNINGS.md|学习心得]]。启动时不再随经验库滚动注入最近条目。需要查看旧式摘录时，可手动运行 `python3 .claude/hooks/read_learnings.py --tail-lines 50`。
 
-Claude Code 每会话一个 append-only JSONL，assistant 记录带 provider `usage`
-（input/output/cache_read/cache_creation tokens）。collector 解析后按
-`llm-usage-event.schema.json` 输出事件，增量续写（`collector-state.json` 记录
-每文件处理到的字节偏移）。
+## 自动采集
 
-**自动触发**（`.claude/settings.json`，均为 `--quiet` 静默运行）：
-- `Stop` hook：每轮回复结束后自动增量采集，实现实时收集；
-- `SessionStart` hook：会话启动时补齐上次会话及漏采数据。
+`SessionStart` 与 `Stop` 静默执行 `.claude/scripts/collect_llm_usage.py --quiet`，读取当前项目的 Claude Code JSONL transcript，增量写入 `usage-events.jsonl`。`collector-state.json` 保存读取偏移和去重所需状态。两者均不入库。采集器只记录用量及分类，不保存用户输入或模型正文，也不更新回归基线。
 
-## 字段映射（与 schema 的约定）
-
-| 事件字段 | 来源 |
+| 事件字段 | 口径 |
 | --- | --- |
-| timestamp / model | transcript 记录字段 |
-| input/output_tokens | usage.input_tokens / output_tokens |
-| cache_read_tokens | usage.cache_read_input_tokens（提供方未返回、或违反 0≤cache_read≤input 语义时省略，不编造） |
-| cache_write_tokens | usage.cache_creation_input_tokens（非负才记录） |
-| latency_ms | 本 assistant 记录与其前一条记录的时间差（近似值） |
-| request_type / template_id | 按会话首个用户消息关键词分类（见下表） |
-| input_reference | `文件名:消息uuid`（安全引用，不含原始输入） |
-| status / cost_usd | status 恒 success；cost 由提供方返回时才记录 |
+| `input_tokens` / `output_tokens` | 原样记录非负整数；`input_tokens` 不一定是总输入，取决于来源 |
+| `cache_read_tokens` / `cache_write_tokens` | 原样记录提供方返回的非负整数；缺失或非法时省略，不补零 |
+| `latency_ms` | 相邻 transcript 记录的时间差，非 API 延迟或整轮任务耗时；无法计算时为 0 |
+| `request_type` / `template_id` | 从每个会话首条非元数据用户文本推断；不是实际技能调用记录。已有会话的标签继续沿用 |
+| `template_version` | 分类标签保持 `"1"`，不表示实际模板内容版本 |
+| `metadata.collector_version` | `2` 为新口径；字段缺省为历史口径，不与新记录混算 |
+| `metadata.cache_semantics` | 默认 `unknown`。经验证的原生 Anthropic 来源可用 `--cache-semantics anthropic`，且仅在三种输入字段齐全时标记为 `anthropic` |
+| `input_reference` | `文件名:消息uuid`，不含原始输入 |
+| `cost_usd` | 当前 transcript 未提供可靠实际费用，不记录、不估算 |
 
-## 请求分类表（collector 与回归样本共用，保持稳定）
-
-| 关键词 | request_type | template_id |
-| --- | --- | --- |
-| 拼卷/拼张卷/出卷/生成卷子/来张卷 | paper | skill/880-paper |
-| 判分/改卷/对答案/判分卡 | grade | skill/880-grade |
-| 错题本/看错题/重练/复习错题 | wrongbook | skill/880-wrongbook |
-| 进度/预览 | progress | skill/880-progress |
-| 入库/重建索引/初始化题库 | build-index | skill/880-build-index |
-| 同步技能/注册表 | sync-skill-registry | skill/sync-skill-registry |
-| review since | code-review | skill/code-review |
-| research/调研/查文档 | research | skill/research |
-| 其他 | general-dev | claude-code/session |
-
-## 使用
+同一 transcript 的连续 `message.id` 快照只记录一次（包括跨采集批次）；无消息 ID 时不能可靠去重。`<synthetic>` 响应不计入新样本。旧数据不重写，跨旧版和新版采集边界的重复仍可能存在。
 
 ```bash
-# 采集并续写事件
-python3 .claude/scripts/collect_llm_usage.py
-
-# 只看本次新增量，不写文件
+# 检查增量而不写盘
 python3 .claude/scripts/collect_llm_usage.py --dry-run
 
-# 含 subagent/workflow 子目录 transcript
-python3 .claude/scripts/collect_llm_usage.py --recursive
-
-# 自定义 transcript 目录（跨平台/换机器时）
-python3 .claude/scripts/collect_llm_usage.py --transcript-dir /path/to/projects/<sanitized-root>
+# 仅当确认该目录全部采用 Anthropic 原生口径时，写到独立的本地分析输出。
+# 两个输出路径必须与自动采集隔离，避免历史重复写入主日志。
+python3 .claude/scripts/collect_llm_usage.py --transcript-dir /path/to/verified-transcripts \
+  --cache-semantics anthropic --output /path/to/local-analysis/events.jsonl \
+  --state-file /path/to/local-analysis/state.json
 ```
 
-## 指标口径（同 measurement.md）
+## 如何解释缓存数据
 
-- `cache_read_rate = Σcache_read_tokens / Σinput_tokens`，按
-  request_type + template_id + template_version + model 分组计算，仅作同项目趋势指标。
-- **该口径只在 Anthropic cache 语义下有效**。部分网关在同一字段名下上报非标准
-  计数（如累计值，`cache_read > input`）。collector 对这类事件省略 cache 字段并在
-  `metadata.cache_semantics="non-anthropic"` 标记；计算 rate 前先剔除被标记事件。
-- 模型、工具定义或模板版本变化时分组比较，不混入同一基线。
-- 无实测数据不下"节省"结论；第一次运行得到的是基线，不是优化收益。
+> [!warning] 不能从代理模型名、字段名或计数大小推断缓存口径
+> Anthropic 原生 `input_tokens` 只是未缓存部分，因此 `cache_read_tokens > input_tokens` 并不异常。旧采集器据此丢弃了不少缓存读取字段，历史记录不能当作可靠的缓存比例基线。
 
-## 回归样本
+- 仅对已确认 Anthropic 口径且三个字段齐全的样本计算：总输入 = 未缓存输入 + 缓存写入 + 缓存读取；缓存读取占比 = 总缓存读取量 ÷ 总输入量（总输入量非零）。占比不等于命中请求比例，也不等于费用节省。
+- 按请求类型、模板 ID、模板版本、模型、采集版本和来源口径分组。未知口径仅看原始字段，不汇总为命中率。
 
-`regression-cases.json` 含 8 个高频请求（880 拼卷/判分/错题本/进度/入库、
-通用开发、code review、research），`fixtures/` 存放脱敏的稳定请求文本；
-质量检查项在 `quality_checks`。指标经 collector 自动回填 baseline。
+## 回归验证
 
-## 最小评审表
-
-| 请求类型 | 模板版本 | 样本数 | 输入 token | 缓存读取 token | 输出 token | 延迟 | 费用 | 质量 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 待首次重放回填 | v1 | 8 | — | — | — | — | N/A | 未评估 |
+`regression-cases.json` 与 `fixtures/` 保存脱敏任务和质量检查项。现有 collector **不会自动重放或回填基线**。固定请求如果会拼卷、判分或重建索引，须在隔离的副本中重放，不要直接运行在当前 Vault 上。对比前固定模型、工具、初始状态和缓存冷热条件，并验证两边的产出质量。没有可比重放数据时，只报告可验证的本地变化（例如 hook 输出字节数），不报告缓存、延迟或费用收益。

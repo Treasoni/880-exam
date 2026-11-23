@@ -19,13 +19,15 @@
 
 ## Cache Rate
 
-当提供方返回 `cache_read_tokens` 时，可按同一 `request_type + template_id + template_version + model` 分组计算：
+仅当输入计数口径已确认且所需字段齐全时，才计算缓存读取占比：
 
 ```text
-cache_read_rate = sum(cache_read_tokens) / sum(input_tokens)
+cache_read_share = sum(cache_read_tokens) / sum(total_prompt_tokens)
 ```
 
-这不是所有平台的官方“缓存命中率”定义，但适合作为同项目内的趋势指标。模型、工具定义或模板版本发生变化时，应分组比较，不能混在同一基线中。
+如果提供方的 `input_tokens` 已经是总输入，直接使用它。原生 Anthropic 的 `input_tokens` 只是未缓存输入，须加上缓存读取和缓存写入得到总输入；此时缓存读取大于 `input_tokens` 是合法的。对缺失值、总输入为零或口径未知的网关，不计算占比；不要按模型名或数值大小推断来源口径。
+
+占比不是命中请求数占比，也不等于费用节省。按 `request_type + template_id + template_version + model` 及一致的采集口径分组；工具定义变化也要标明，不混作同一条基线。
 
 ## Regression Cases
 

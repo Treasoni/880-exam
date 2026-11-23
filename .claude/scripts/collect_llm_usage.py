@@ -3,9 +3,9 @@
 
 Automatic pipeline:
   Claude Code writes one append-only JSONL transcript per session under
-  ~/.claude/projects/<sanitized-project-path>/; every assistant record carries a
-  provider `usage` block (input/output/cache tokens). This script parses those
-  transcripts, maps each request to a request_type/template_id, and appends
+  ~/.claude/projects/<sanitized-project-path>/. Assistant records can carry a
+  provider `usage` block (input/output/cache tokens), repeated across multiple
+  blocks of one message. This script maps observed usage to session labels and appends
   schema-conformant events (see .llm/prompt-cache/llm-usage-event.schema.json)
   to .llm/prompt-cache/usage-events.jsonl (gitignored local file).
 
@@ -28,6 +28,7 @@ from pathlib import Path
 from typing import Any
 
 TEMPLATE_VERSION = "1"
+COLLECTOR_VERSION = 2
 GENERAL = "general-dev"
 SESSION_TEMPLATE = "claude-code/session"
 
@@ -76,28 +77,26 @@ def user_text(record: dict[str, Any]) -> str:
     return ""
 
 
-def classify_file(path: Path) -> dict[str, str]:
-    """Classify one session file from its first user message."""
-    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
-        try:
-            record = json.loads(line)
-        except json.JSONDecodeError:
-            continue
-        if record.get("type") == "user":
-            text = user_text(record)
-            for pattern, request_type, template_id in TRIGGERS:
-                if re.search(pattern, text):
-                    return {"request_type": request_type, "template_id": template_id}
-            break
+def classify_text(text: str) -> dict[str, str]:
+    for pattern, request_type, template_id in TRIGGERS:
+        if re.search(pattern, text):
+            return {"request_type": request_type, "template_id": template_id}
     return {"request_type": GENERAL, "template_id": SESSION_TEMPLATE}
 
 
-def build_event(record: dict[str, Any], cls: dict[str, str], file_name: str, latency_ms: float) -> dict[str, Any]:
+def valid_token_count(value: Any) -> bool:
+    return type(value) is int and value >= 0
+
+
+def build_event(
+    record: dict[str, Any], cls: dict[str, Any], file_name: str, latency_ms: float,
+    cache_semantics: str,
+) -> dict[str, Any]:
     usage = record["message"]["usage"]
     event: dict[str, Any] = {
         "timestamp": record["timestamp"],
-        "request_type": cls["request_type"],
-        "template_id": cls["template_id"],
+        "request_type": cls.get("request_type", GENERAL),
+        "template_id": cls.get("template_id", SESSION_TEMPLATE),
         "template_version": TEMPLATE_VERSION,
         "model": record["message"].get("model") or "unknown",
         "input_tokens": usage["input_tokens"],
@@ -108,61 +107,68 @@ def build_event(record: dict[str, Any], cls: dict[str, str], file_name: str, lat
         "metadata": {
             "session_id": record.get("sessionId"),
             "git_branch": record.get("gitBranch"),
+            "collector_version": COLLECTOR_VERSION,
+            "cache_semantics": "unknown",
         },
     }
-    # Record cache tokens only when the provider supplies them AND the values
-    # satisfy Anthropic cache semantics (cache_read <= input_tokens). Some
-    # gateways report a cumulative cache size or non-anthropic counter under the
-    # same field name; keeping those would corrupt the cache_read_rate metric.
-    input_tokens = usage.get("input_tokens", 0)
-    if "cache_read_input_tokens" in usage:
-        cr = usage["cache_read_input_tokens"]
-        if cr is not None and 0 <= cr <= input_tokens:
-            event["cache_read_tokens"] = cr
-        else:
-            event["metadata"]["cache_semantics"] = "non-anthropic"
-    if "cache_creation_input_tokens" in usage:
-        cw = usage["cache_creation_input_tokens"]
-        if cw is not None and cw >= 0:
-            event["cache_write_tokens"] = cw
-        else:
-            event["metadata"]["cache_semantics"] = "non-anthropic"
+    for source, target in (
+        ("cache_read_input_tokens", "cache_read_tokens"),
+        ("cache_creation_input_tokens", "cache_write_tokens"),
+    ):
+        value = usage.get(source)
+        if valid_token_count(value):
+            event[target] = value
+    # Native Anthropic input_tokens excludes both cache buckets. Gateways can
+    # expose the same field names with different meanings: never infer semantics
+    # from token magnitudes or the model name.
+    if "cache_read_tokens" in event and "cache_write_tokens" in event:
+        event["metadata"]["cache_semantics"] = cache_semantics
     return event
 
 
-def process_file(path: Path, state: dict[str, Any]) -> list[dict[str, Any]]:
+def process_file(path: Path, state: dict[str, Any], cache_semantics: str) -> list[dict[str, Any]]:
     key = str(path.resolve())
-    info = state.get(key)
-    if info is None:
-        info = classify_file(path)
-        info["offset"] = 0
-        state[key] = info
     size = path.stat().st_size
-    if info.get("offset", 0) > size:
-        info["offset"] = 0  # transcript rotated
+    info = state.get(key)
+    if info is None or info.get("offset", 0) > size:
+        info = {"offset": 0}
+        state[key] = info
+    offset = int(info["offset"])
+    if offset == size:
+        return []
     events: list[dict[str, Any]] = []
-    offset = int(info.get("offset", 0))
-    prev_ts: datetime | None = None
-    with path.open(encoding="utf-8") as fh:
+    prev_ts = parse_ts(info["last_timestamp"]) if "last_timestamp" in info else None
+    with path.open("rb") as fh:
         fh.seek(offset)
-        while True:
-            line_start = fh.tell()
-            line = fh.readline()
-            if not line:
-                break
+        while line := fh.readline():
+            if not line.endswith(b"\n"):
+                break  # incomplete trailing record; retry next run
+            info["offset"] = fh.tell()
             try:
                 record = json.loads(line)
-            except json.JSONDecodeError:
-                info["offset"] = line_start  # partial trailing line; retry next run
-                break
-            ts_value = record.get("timestamp")
-            ts = parse_ts(ts_value) if ts_value else None
-            if record.get("type") == "assistant" and record.get("message", {}).get("usage"):
-                latency = (ts - prev_ts).total_seconds() * 1000.0 if ts and prev_ts else 0.0
-                events.append(build_event(record, info, path.name, latency))
+                ts_value = record.get("timestamp")
+                ts = parse_ts(ts_value) if ts_value else None
+            except (AttributeError, TypeError, ValueError):
+                continue  # a bad complete record must not block future collection
+            if record.get("type") == "user" and "template_id" not in info and not record.get("isMeta"):
+                text = user_text(record)
+                if text.strip():
+                    info.update(classify_text(text))
+            if record.get("type") == "assistant" and ts:
+                message = record.get("message") or {}
+                usage = message.get("usage") or {}
+                message_id = message.get("id")
+                if (message.get("model") != "<synthetic>"
+                        and valid_token_count(usage.get("input_tokens"))
+                        and valid_token_count(usage.get("output_tokens"))
+                        and (not message_id or message_id != info.get("last_usage_message_id"))):
+                    latency = (ts - prev_ts).total_seconds() * 1000.0 if prev_ts else 0.0
+                    events.append(build_event(record, info, path.name, max(0.0, latency), cache_semantics))
+                    if message_id:
+                        info["last_usage_message_id"] = message_id
             if ts:
                 prev_ts = ts
-            info["offset"] = fh.tell()
+                info["last_timestamp"] = ts_value
     return events
 
 
@@ -173,6 +179,8 @@ def main() -> int:
     parser.add_argument("--output", type=Path, default=None, help="Events JSONL path (default: <root>/.llm/prompt-cache/usage-events.jsonl).")
     parser.add_argument("--state-file", type=Path, default=None, help="Incremental state file (default: <root>/.llm/prompt-cache/collector-state.json).")
     parser.add_argument("--recursive", action="store_true", help="Also collect subagent/workflow transcripts under subdirectories.")
+    parser.add_argument("--cache-semantics", choices=("unknown", "anthropic"), default="unknown",
+                        help="Declare native Anthropic token semantics only for a verified, homogeneous source.")
     parser.add_argument("--dry-run", action="store_true", help="Print the summary without appending events.")
     parser.add_argument("--quiet", action="store_true", help="Suppress the summary; used by hooks so per-turn output stays silent.")
     args = parser.parse_args()
@@ -185,22 +193,23 @@ def main() -> int:
     pattern = "**/*.jsonl" if args.recursive else "*.jsonl"
     transcripts = sorted(transcript_dir.glob(pattern)) if transcript_dir.is_dir() else []
 
-    state: dict[str, Any] = {}
-    if state_file.is_file():
-        state = json.loads(state_file.read_text(encoding="utf-8"))
+    saved_state = state_file.read_text(encoding="utf-8") if state_file.is_file() else "{}"
+    state: dict[str, Any] = json.loads(saved_state)
 
     new_events: list[dict[str, Any]] = []
     for path in transcripts:
-        new_events.extend(process_file(path, state))
+        new_events.extend(process_file(path, state, args.cache_semantics))
 
-    if new_events:
-        if not args.dry_run:
+    if not args.dry_run:
+        if new_events:
             events_file.parent.mkdir(parents=True, exist_ok=True)
             with events_file.open("a", encoding="utf-8") as fh:
                 for event in new_events:
                     fh.write(json.dumps(event, ensure_ascii=False) + "\n")
+        updated_state = json.dumps(state, ensure_ascii=False, indent=2)
+        if updated_state != saved_state:
             state_file.parent.mkdir(parents=True, exist_ok=True)
-            state_file.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
+            state_file.write_text(updated_state, encoding="utf-8")
 
     # summary
     if not args.quiet:

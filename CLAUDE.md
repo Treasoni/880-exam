@@ -69,7 +69,7 @@ Windows 下用 `py -3` 替代 `python3`。
 
 ## LLM Usage Observability
 
-- 自动采集由 `Stop`/`SessionStart` hooks 静默运行 `collect_llm_usage.py --quiet`，增量写入 `.llm/prompt-cache/usage-events.jsonl`（本地不入库）。改动模板/模型后按 `.llm/prompt-cache/regression-cases.json` 重放对比；口径见 `.llm/prompt-cache/README.md`，无前后实测不下「节省」结论。
+- `Stop`/`SessionStart` 静默采集用量；不自动重放或回填基线。修改模板/模型后，在隔离副本用 `.llm/prompt-cache/regression-cases.json` 重放对比。口径见 [[.llm/prompt-cache/README.md]]；无可比实测不下「节省」结论。
 
 <!-- workflow-todo-state:start -->
 ## Workflow Todo State
