@@ -3512,6 +3512,32 @@
           "note": "两题都用等长区间平移；周期情形差值为零，本题平移后还需积分差值。"
         }
       ]
+    },
+    "zt-2023-数二-解答18": {
+      "id": "zt-2023-数二-解答18",
+      "module": "高数-多元函数微分学",
+      "year": 2023,
+      "paper": "数二",
+      "no": "解答18",
+      "stem": "求函数 $f(x,y)=x\\mathrm{e}^{\\cos y}+\\dfrac{x^{2}}{2}$ 的极值。",
+      "answer": "在 $(-\\mathrm{e},2k\\pi)$（$k\\in\\mathbb{Z}$）处取得极小值 $-\\dfrac{\\mathrm{e}^{2}}{2}$；无极大值。",
+      "solution": "> [!info] 题眼\n> 先求齐全部驻点，再用二阶偏导判别。$y$ 未限制范围，遇到 $\\sin y=0$ 必须写通解并按奇偶分类。\n\n**1. 找全驻点。** 一阶偏导为\n\n$$\nf_x=\\mathrm{e}^{\\cos y}+x,\\qquad f_y=-x\\sin y\\,\\mathrm{e}^{\\cos y}.\n$$\n\n由 $f_x=0$ 得 $x=-\\mathrm{e}^{\\cos y}\\ne0$。因此 $f_y=0$ 等价于 $\\sin y=0$，即 $y=k\\pi$（$k\\in\\mathbb{Z}$）。按 $\\cos(k\\pi)$ 的正负，分为两类：\n\n- $y=2k\\pi$ 时，$x=-\\mathrm{e}$；\n- $y=(2k+1)\\pi$ 时，$x=-\\mathrm{e}^{-1}$。\n\n**2. 求二阶偏导并分类。** 记 $A=f_{xx}$、$B=f_{xy}$、$C=f_{yy}$，则\n\n$$\nA=1,\\qquad B=-\\sin y\\,\\mathrm{e}^{\\cos y},\\qquad C=x\\mathrm{e}^{\\cos y}(\\sin^2y-\\cos y).\n$$\n\n| 驻点 | $A$ | $B$ | $C$ | 判别 |\n| --- | --- | --- | --- | --- |\n| $(-\\mathrm{e},2k\\pi)$ | $1$ | $0$ | $\\mathrm{e}^2$ | $AC-B^2>0$ 且 $A>0$，为极小值点 |\n| $(-\\mathrm{e}^{-1},(2k+1)\\pi)$ | $1$ | $0$ | $-\\mathrm{e}^{-2}$ | $AC-B^2<0$，不是极值点 |\n\n**3. 回代原函数。** $f(-\\mathrm{e},2k\\pi)=-\\mathrm{e}^2+\\mathrm{e}^2/2=-\\mathrm{e}^2/2$。驻点已找全，因此无极大值。",
+      "attempts": [],
+      "review_state": "未复习",
+      "cause": {
+        "label": "计算/代数错误",
+        "step": "把 $x^2/2$ 的偏导写成 $2x$，导致 $f_x$ 和 $f_{xx}$ 都错；又把 $\\sin y=0$ 只解成 $y=0$，漏掉其余周期驻点和奇数倍的情形。$f_{yy}$ 的计算是对的。",
+        "advice": "逐项求导时核对原式系数：$(x^2/2)'=x$。解驻点方程时先用 $f_x=0$ 排除 $x=0$，再写 $y=k\\pi$（$k\\in\\mathbb{Z}$）并分奇偶代入。"
+      },
+      "links": [
+        {
+          "path": "external-notes/考研数学/高数-多元函数微分学/错题本",
+          "anchor": "错题27：无条件极值标准化求解——ABC判别法 + 定义域排雷",
+          "label": "错题27：无条件极值与 ABC 判别法",
+          "confidence": "high",
+          "note": "同用先求全驻点、再逐点代入 ABC 判别的流程；本题重点是三角方程的周期解和奇偶分类。"
+        }
+      ]
     }
   },
   "coverage": {}
