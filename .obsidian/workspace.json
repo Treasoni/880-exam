@@ -207,7 +207,7 @@
                 "file": "workspace/wrong-book/真题错题本.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "2018"
+                "searchQuery": ""
               },
               "icon": "lucide-list",
               "title": "大纲"
@@ -242,7 +242,7 @@
                     },
                     {
                       "tabId": "tab-1789908968076-9htz0xx",
-                      "conversationId": "conv-1795403470446-utacb6qc6"
+                      "conversationId": "conv-1795438198177-443qnwq12"
                     },
                     {
                       "tabId": "tab-1790061594608-a0amw1a",
@@ -291,6 +291,7 @@
   },
   "active": "b4b561f7809652dc",
   "lastOpenFiles": [
+    "workspace/preview/数二补分优先级.md",
     "workspace/workflow-runs/真题收录-2022数二填空16.workflow.md.OJ2itP",
     "workspace/wrong-book/线代错题本.md",
     "workspace/wrong-book/错题本.md",
@@ -324,7 +325,6 @@
     "scripts/__pycache__/zhenti_wrong_book.cpython-312.pyc",
     "scripts/__pycache__/wrong_book.cpython-312.pyc",
     "scripts/__pycache__/merge_extraction.cpython-312.pyc",
-    "scripts/__pycache__/make_paper.cpython-312.pyc",
     "workspace/workflow-runs/真题收录-2020数二选择3.workflow.md",
     "真题/【合集】1987-2023年考研数学二/images/e600691480b2e3759f3ec541f204a877867eabb381ada955e44fda8b228bc4ba.jpg",
     "真题/【合集】1987-2023年考研数学二/images/e568d8a7ef00f77922665b2bc40da7acb13b11d51d8782485a8965350d921233.jpg",
